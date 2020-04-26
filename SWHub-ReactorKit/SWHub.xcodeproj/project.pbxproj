@@ -12,6 +12,7 @@
 		79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A9124554B09001BDB90 /* LaunchScreen.storyboard */; };
 		79AF4A9E24554B0A001BDB90 /* SWHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4A9D24554B0A001BDB90 /* SWHubTests.swift */; };
 		79AF4AA924554B0A001BDB90 /* SWHubUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4AA824554B0A001BDB90 /* SWHubUITests.swift */; };
+		FD3249B3375F87DD51CA1684 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D533708BEF6D86D6FB5EB17 /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
 		79AF4A8324554B08001BDB90 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AF4A8624554B08001BDB90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79AF4A8F24554B09001BDB90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,6 +45,8 @@
 		79AF4AA424554B0A001BDB90 /* SWHubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SWHubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AF4AA824554B0A001BDB90 /* SWHubUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWHubUITests.swift; sourceTree = "<group>"; };
 		79AF4AAA24554B0A001BDB90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4D31A282BEF0A84BF48C2B7 /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3249B3375F87DD51CA1684 /* Pods_SWHub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		075714F0C4CFCC3A08057129 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		79AF4A7A24554B08001BDB90 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +90,8 @@
 				79AF4A9C24554B0A001BDB90 /* SWHubTests */,
 				79AF4AA724554B0A001BDB90 /* SWHubUITests */,
 				79AF4A8424554B08001BDB90 /* Products */,
+				D8A78E795493EC5C4980DEE5 /* Pods */,
+				075714F0C4CFCC3A08057129 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +142,16 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		D8A78E795493EC5C4980DEE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4D31A282BEF0A84BF48C2B7 /* Pods-SWHub.debug.xcconfig */,
+				1D533708BEF6D86D6FB5EB17 /* Pods-SWHub.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79AF4AAD24554B0A001BDB90 /* Build configuration list for PBXNativeTarget "SWHub" */;
 			buildPhases = (
+				561BC93F734B91FF3593E4D1 /* [CP] Check Pods Manifest.lock */,
 				79AF4A7F24554B08001BDB90 /* Sources */,
 				79AF4A8024554B08001BDB90 /* Frameworks */,
 				79AF4A8124554B08001BDB90 /* Resources */,
+				E326C65FBDA9DF3B5FFBEC89 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,6 +278,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		561BC93F734B91FF3593E4D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWHub-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E326C65FBDA9DF3B5FFBEC89 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWHub/Pods-SWHub-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SWHub/Pods-SWHub-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SWHub/Pods-SWHub-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		79AF4A7F24554B08001BDB90 /* Sources */ = {
@@ -420,6 +489,7 @@
 		};
 		79AF4AAE24554B0A001BDB90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4D31A282BEF0A84BF48C2B7 /* Pods-SWHub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -438,6 +508,7 @@
 		};
 		79AF4AAF24554B0A001BDB90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D533708BEF6D86D6FB5EB17 /* Pods-SWHub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
