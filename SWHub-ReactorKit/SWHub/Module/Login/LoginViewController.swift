@@ -48,6 +48,42 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         imageView.sizeToFit()
         return imageView
     }()
+    
+    lazy var accountField: UITextField = {
+        let textField = UITextField()
+        textField.textAlignment = .center
+        textField.keyboardType = .emailAddress
+        textField.autocapitalizationType = .none
+        textField.font = .normal(16)
+        textField.placeholder = R.string.localizable.loginTitle()
+        textField.borderWidth = 1
+        textField.cornerRadius = 5
+        textField.sizeToFit()
+        return textField
+    }()
+    
+    lazy var passwordField: UITextField = {
+        let textField = UITextField()
+        textField.textAlignment = .center
+        textField.isSecureTextEntry = true
+        textField.font = .normal(16)
+        textField.placeholder = R.string.localizable.loginPassword()
+        textField.borderWidth = 1
+        textField.cornerRadius = 5
+        textField.sizeToFit()
+        return textField
+    }()
+    
+    lazy var loginButton: Button = {
+        let button = Button(type: .custom)
+        button.titleLabel?.font = .normal(18)
+        button.imageForNormal = R.image.icon()
+        button.titleForNormal = R.string.localizable.loginTitle()
+        button.centerTextAndImage(spacing: 10)
+        button.cornerRadius = 5
+        button.sizeToFit()
+        return button
+    }()
 
     init(_ navigator: NavigatorType, _ reactor: LoginViewReactor) {
         defer {
@@ -62,46 +98,43 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.hbd_barAlpha = 0
-//        self.hbd_barShadowHidden = true
-//        //self.navigationBar.transparet()
-//
-//        self.view.addSubview(self.bgImageView)
-//        self.bgImageView.size = self.view.size
-//        self.bgImageView.left = 0
-//        self.bgImageView.top = 0
-//
-//        self.view.addSubview(self.logoImageView)
-//        self.logoImageView.left = self.logoImageView.leftWhenCenter
-//        self.logoImageView.top = flat(self.logoImageView.topWhenCenter * 0.4)
-//
-//        self.view.addSubview(self.loginButton)
-//        self.loginButton.width = flat(self.view.width * 0.65)
-//        self.loginButton.height = metric(50)
-//        self.loginButton.left = self.loginButton.leftWhenCenter
-//        self.loginButton.top = flat(self.loginButton.topWhenCenter * 1.6)
-//
-//        self.view.addSubview(self.termLabel)
-//        self.termLabel.left = self.termLabel.leftWhenCenter
-//        self.termLabel.top = self.loginButton.bottom + 10
-//
-//        themeService.rx
-//            .bind({ $0.primaryColor }, to: self.loginButton.rx.backgroundColor)
-//            .bind({ $0.textColor }, to: self.loginButton.rx.titleColor(for: .normal))
-//            .bind({ $0.placeholderColor }, to: self.termLabel.rx.textColor)
-//            .disposed(by: self.disposeBag)
         self.view.addSubview(self.logoImageView)
+        self.view.addSubview(self.accountField)
+        self.view.addSubview(self.passwordField)
+        self.view.addSubview(self.loginButton)
         
         themeService.rx
-            .bind({ $0.textColor }, to: self.logoImageView.rx.tintColor)
+            .bind({ $0.textColor }, to: [self.logoImageView.rx.tintColor, self.accountField.rx.textColor, self.passwordField.rx.textColor])
+            .bind({ $0.bodyColor }, to: [self.accountField.rx.placeHolderColor, self.passwordField.rx.placeHolderColor])
+            .bind({ $0.borderColor }, to: [self.accountField.rx.borderColor, self.passwordField.rx.borderColor])
+            .bind({ $0.primaryColor }, to: [self.accountField.rx.tintColor, self.passwordField.rx.tintColor])
+            .bind({ $0.backgroundColor }, to: self.loginButton.rx.titleColor(for: .normal))
+            .bind({ UIImage(color: $0.primaryColor, size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .normal))
+            .bind({ UIImage(color: $0.primaryColor.withAlphaComponent(0.9), size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .selected))
+            .bind({ UIImage(color: $0.primaryColor.withAlphaComponent(0.6), size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .disabled))
+            .bind({ $0.keyboardAppearance }, to: [self.accountField.rx.keyboardAppearance, self.passwordField.rx.keyboardAppearance])
             .disposed(by: self.disposeBag)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // self.loginButton.cornerRadius = self.loginButton.height / 2.f
         self.logoImageView.top = self.contentTop + metric(50)
         self.logoImageView.left = self.logoImageView.leftWhenCenter
+        
+        self.accountField.width = flat(self.view.width * 0.8)
+        self.accountField.height = metric(44)
+        self.accountField.top = self.logoImageView.bottom + 8
+        self.accountField.left = self.accountField.leftWhenCenter
+        
+        self.passwordField.width = self.accountField.width
+        self.passwordField.height = self.accountField.height
+        self.passwordField.top = self.accountField.bottom + 8
+        self.passwordField.left = self.passwordField.leftWhenCenter
+        
+        self.loginButton.width = self.accountField.width
+        self.loginButton.height = self.accountField.height
+        self.loginButton.top = self.passwordField.bottom + 8
+        self.loginButton.left = self.loginButton.leftWhenCenter
     }
     
     func bind(reactor: LoginViewReactor) {

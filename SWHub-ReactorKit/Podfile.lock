@@ -11,6 +11,7 @@ PODS:
     - UICKeyChainStore (~> 2.1.0)
   - FLEX (3.0.0)
   - HBDNavigationBar (1.6.6)
+  - IQKeyboardManagerSwift (6.5.5)
   - KeychainAccess (3.2.0)
   - Kingfisher (4.10.1)
   - MLeaksFinder (1.0.0):
@@ -124,6 +125,7 @@ PODS:
 
 DEPENDENCIES:
   - FLEX (= 3.0.0)
+  - IQKeyboardManagerSwift (= 6.5.5)
   - MLeaksFinder (= 1.0.0)
   - R.swift (= 5.1.0)
   - ReusableKit/RxSwift (= 3.0.0)
@@ -145,6 +147,7 @@ SPEC REPOS:
     - FCUUID
     - FLEX
     - HBDNavigationBar
+    - IQKeyboardManagerSwift
     - KeychainAccess
     - Kingfisher
     - MLeaksFinder
@@ -190,6 +193,7 @@ SPEC CHECKSUMS:
   FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
   FLEX: d66c759bce0f6ebbbf472c742380874d846f2883
   HBDNavigationBar: b3c63058aa0c1509da6646469c491d9b70edbde1
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
@@ -220,6 +224,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: e933e212894b888125a38c09d126869d13d0d3ef
+PODFILE CHECKSUM: aceef5feb2ea8f8e4938b231be104734f1c766ea
 
 COCOAPODS: 1.9.1

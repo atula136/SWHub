@@ -18,11 +18,11 @@ let themeService = ThemeType.service(initial: .default)
 public protocol Theme {
     var backgroundColor: UIColor { get }                            // 背景
     var foregroundColor: UIColor { get }                            // 前景
+    var maskColor: UIColor { get }                                  // 深色
     var primaryColor: UIColor { get }                               // 主色
     var secondaryColor: UIColor { get }                             // 次色
     var thirdlyColor: UIColor { get }                               // 第三
-    var dimColor: UIColor { get }                                   // 浅色
-    var maskColor: UIColor { get }                                  // 深色
+    var fourthColor: UIColor { get }                                // 第四
     var textColor: UIColor { get }                                  // 文本
     var bodyColor: UIColor { get }                                  // 内容
     var headColor: UIColor { get }                                  // 头部
@@ -41,13 +41,13 @@ public protocol Theme {
 public struct DefaultTheme: Theme {
     public let backgroundColor = UIColor.white
     public let foregroundColor = UIColor.black
+    public let maskColor = UIColor.Material.grey200
     public let primaryColor = UIColor.Material.red
     public let secondaryColor = UIColor(0xf6ed4a)!
     public let thirdlyColor = UIColor(0xff5777)!
-    public let dimColor = UIColor.Material.grey200
-    public let maskColor = UIColor(0xff433e)!
+    public let fourthColor = UIColor(0xff5777)!
     public let textColor = UIColor.Material.grey900
-    public let bodyColor = UIColor(0x666666)!
+    public let bodyColor = UIColor.Material.grey
     public let headColor = UIColor(0x666666)!
     public let footColor = UIColor(0x999999)!
     public let borderColor = UIColor.Material.grey900

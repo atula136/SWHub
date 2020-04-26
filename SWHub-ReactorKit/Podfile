@@ -8,6 +8,7 @@ target 'SWHub' do
 	pod 'SWFrame', :path => '../../SWFrame'
 	
 	# 界面
+	pod 'IQKeyboardManagerSwift', '6.5.5'
 	pod 'ReusableKit/RxSwift', '3.0.0'
 	
 	# 网络
@@ -27,7 +28,6 @@ target 'SWHub' do
 		
 	# 平台
 	
-	# pod 'IQKeyboardManagerSwift', '6.4.0'
 	# pod 'CocoaLumberjack/Swift', '3.5.3'
 	# pod 'ReachabilitySwift', '5.0.0-beta1'
 	# pod 'Kingfisher', '4.10.1'

@@ -7,20 +7,16 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class Library {
 
-    public class func setup() {
-//        // 百川平台基础SDK初始化，加载并初始化各个业务能力插件
-//        AlibcTradeSDK.sharedInstance()?.setDebugLogOpen(true) // 开发阶段打开日志开关，方便排查错误信息
-//        AlibcTradeSDK.sharedInstance()?.setIsvVersion(UIApplication.shared.version)
-//        AlibcTradeSDK.sharedInstance()?.setIsvAppName(UIApplication.shared.displayName)
-//        AlibcTradeSDK.sharedInstance()?.asyncInit(success: {
-//            // log.info("百川SDK初始化成功") // YJX_TODO log
-//            print("百川SDK初始化成功")
-//        }, failure: { error in
-//            // log.error("百川SDK初始化失败: \(String(describing: error?.localizedDescription))")
-//        })
+    public static func setup() {
+        self.setupKeyboardManager()
+    }
+    
+    static func setupKeyboardManager() {
+        IQKeyboardManager.shared.enable = true
     }
     
 }

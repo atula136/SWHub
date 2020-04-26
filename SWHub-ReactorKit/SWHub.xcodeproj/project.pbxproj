@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79020CB124559CDA00FF1978 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 79020CB024559CDA00FF1978 /* readme.txt */; };
 		7906C317245558B10030764D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7906C316245558B10030764D /* Theme.swift */; };
 		7906C319245558FD0030764D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7906C318245558FD0030764D /* Localizable.strings */; };
 		7906C31B245559180030764D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7906C31A245559170030764D /* R.generated.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		1D533708BEF6D86D6FB5EB17 /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
+		79020CB024559CDA00FF1978 /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		7906C316245558B10030764D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7906C318245558FD0030764D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7906C31A245559170030764D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				7906C318245558FD0030764D /* Localizable.strings */,
 				7906C31A245559170030764D /* R.generated.swift */,
 				7924EE2824554DF8007F7FDE /* SWHub.entitlements */,
+				79020CB024559CDA00FF1978 /* readme.txt */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			files = (
 				79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */,
 				7906C319245558FD0030764D /* Localizable.strings in Resources */,
+				79020CB124559CDA00FF1978 /* readme.txt in Resources */,
 				79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
