@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D642455561D00856757 /* LoginViewReactor.swift */; };
+		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
+		792F6D692455563700856757 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User.swift */; };
 		79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4A8624554B08001BDB90 /* AppDelegate.swift */; };
 		79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A8F24554B09001BDB90 /* Assets.xcassets */; };
 		79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A9124554B09001BDB90 /* LaunchScreen.storyboard */; };
@@ -35,6 +38,9 @@
 /* Begin PBXFileReference section */
 		1D533708BEF6D86D6FB5EB17 /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
 		7924EE2824554DF8007F7FDE /* SWHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWHub.entitlements; sourceTree = "<group>"; };
+		792F6D642455561D00856757 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
+		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		792F6D682455563700856757 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		79AF4A8324554B08001BDB90 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AF4A8624554B08001BDB90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79AF4A8F24554B09001BDB90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +90,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		792F6D5E245555B700856757 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				792F6D63245555E900856757 /* Login */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		792F6D5F245555BF00856757 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		792F6D60245555C800856757 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		792F6D61245555CE00856757 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				792F6D62245555D800856757 /* Stub */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		792F6D62245555D800856757 /* Stub */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stub;
+			sourceTree = "<group>";
+		};
+		792F6D63245555E900856757 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				792F6D642455561D00856757 /* LoginViewReactor.swift */,
+				792F6D662455562F00856757 /* LoginViewController.swift */,
+				792F6D682455563700856757 /* User.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		79AF4A7A24554B08001BDB90 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +162,10 @@
 		79AF4A8524554B08001BDB90 /* SWHub */ = {
 			isa = PBXGroup;
 			children = (
+				792F6D61245555CE00856757 /* Resource */,
+				792F6D60245555C800856757 /* Component */,
+				792F6D5F245555BF00856757 /* Extension */,
+				792F6D5E245555B700856757 /* Module */,
 				79AF4AB624554B10001BDB90 /* Core */,
 			);
 			path = SWHub;
@@ -348,7 +405,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				792F6D692455563700856757 /* User.swift in Sources */,
+				792F6D672455562F00856757 /* LoginViewController.swift in Sources */,
 				79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */,
+				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

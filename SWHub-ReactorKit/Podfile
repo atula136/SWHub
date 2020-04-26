@@ -7,10 +7,26 @@ inhibit_all_warnings!
 target 'SWHub' do
 	pod 'SWFrame', :path => '../../SWFrame'
 	
-	# 资源
-	pod 'R.swift', '5.1.0'
+	# 界面
+	pod 'ReusableKit/RxSwift', '3.0.0'
 	
-	# pod 'RxTheme', '4.0.0'
+	# 网络
+	# pod 'Kingfisher', '4.10.1'
+	
+	# 响应
+	pod 'RxOptional', '4.0.0'
+	pod 'RxGesture', '3.0.0'
+		
+	# 资源
+	pod 'RxTheme', '4.0.0'
+	pod 'R.swift', '5.1.0'
+		
+	# 工具
+	pod 'FLEX', '3.0.0'
+	pod 'MLeaksFinder', '1.0.0'
+		
+	# 平台
+	
 	# pod 'IQKeyboardManagerSwift', '6.4.0'
 	# pod 'CocoaLumberjack/Swift', '3.5.3'
 	# pod 'ReachabilitySwift', '5.0.0-beta1'
