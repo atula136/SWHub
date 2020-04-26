@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  SWHub
+
+  Created by 杨建祥 on 2020/4/26.
+  Copyright © 2020 杨建祥. All rights reserved.
+*/
+
+/* 共同 */
+"Common.Yes" = "是";
+"Common.No" = "否";
+"Common.OK" = "确认";
+"Common.ISee" = "知道了";
+"Common.Cancel" = "取消";
+"Common.Fan" = "返";
+"Common.Yuan" = "元";
+/* 登录 */
+"Login.Title" = "登录";
+"Login.Password" = "密码";

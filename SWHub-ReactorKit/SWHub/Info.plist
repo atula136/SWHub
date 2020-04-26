@@ -29,17 +29,7 @@
 			<string>app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>swifthub</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>alibc</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>tbopen24607161</string>
+				<string>swhub</string>
 			</array>
 		</dict>
 	</array>
