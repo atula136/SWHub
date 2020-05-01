@@ -60,8 +60,8 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 sections.append([repository])
             }
             var preference: [ModelType] = []
-            preference.append(Setting(id: .night, showSwitcher: true))
-            preference.append(Setting(id: .theme, showSwitcher: true))
+            preference.append(Setting(id: .night, showSwitcher: true, switched: ThemeType.currentTheme().isDark))
+            // preference.append(Setting(id: .theme, showSwitcher: true))
             sections.append(preference)
             return .concat([
                 .just(.setLoading(true)),

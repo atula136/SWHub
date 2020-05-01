@@ -67,7 +67,7 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         if let item = viewController?.tabBarItem {
             themeService.rx
                 .bind({ [NSAttributedString.Key.foregroundColor: $0.textColor] }, to: item.rx.titleTextAttributes(for: .normal))
-                .bind({ [NSAttributedString.Key.foregroundColor: $0.secondaryColor] }, to: item.rx.titleTextAttributes(for: .selected))
+                .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: item.rx.titleTextAttributes(for: .selected))
                 .disposed(by: self.disposeBag)
         }
         return viewController!

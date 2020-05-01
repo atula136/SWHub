@@ -134,7 +134,7 @@ DEPENDENCIES:
   - RxGesture (= 3.0.0)
   - RxOptional (= 4.0.0)
   - RxTheme (= 4.0.0)
-  - SWFrame (from `../../SWFrame`)
+  - SWFrame (from `../SWFrame`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -182,7 +182,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   SWFrame:
-    :path: "../../SWFrame"
+    :path: "../SWFrame"
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -228,6 +228,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: aceef5feb2ea8f8e4938b231be104734f1c766ea
+PODFILE CHECKSUM: 0be70811f58b97f2e6ebeaf494bff4b809b8e848
 
 COCOAPODS: 1.9.1

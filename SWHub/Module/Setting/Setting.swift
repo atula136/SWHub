@@ -49,6 +49,7 @@ struct Setting: ModelType, Identifiable {
     var id: Category?
     var showIndicator = true
     var showSwitcher = false
+    var switched = false
     var title: String?
     var detail: NSAttributedString?
     var icon: ImageSource?
@@ -57,9 +58,10 @@ struct Setting: ModelType, Identifiable {
         
     }
     
-    init(id: Category, showSwitcher: Bool = false) {
+    init(id: Category, showSwitcher: Bool = false, switched: Bool = false) {
         self.id = id
         self.showSwitcher = showSwitcher
+        self.switched = switched
         self.title = id.title
         self.icon = id.icon
     }

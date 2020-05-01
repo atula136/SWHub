@@ -69,7 +69,7 @@ class NormalCell: CollectionCell, ReactorKit.View {
         
         themeService.rx
             .bind({ $0.textColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
-            .bind({ $0.secondaryColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
+            .bind({ $0.foregroundColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
             .disposed(by: self.disposeBag)
     }
     
@@ -154,4 +154,10 @@ class NormalCell: CollectionCell, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
     
+}
+
+extension Reactive where Base: NormalCell {
+    var switched: ControlEvent<Bool> {
+        return ControlEvent(events: self.base.switcher.rx.value)
+    }
 }

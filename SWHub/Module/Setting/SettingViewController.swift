@@ -93,7 +93,18 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                     let cell = collectionView.dequeue(Reusable.projectCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
-                case .logout(let item), .night(let item), .theme(let item):
+                case .night(let item):
+                    let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
+                    cell.bind(reactor: item)
+                    cell.rx.switched.subscribe(onNext: { isDark in
+                        var theme = ThemeType.currentTheme()
+                        if theme.isDark != isDark {
+                            theme = theme.toggled()
+                        }
+                        themeService.switch(theme)
+                    }).disposed(by: cell.disposeBag)
+                    return cell
+                case .logout(let item), .theme(let item):
                     let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
