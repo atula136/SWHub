@@ -43,7 +43,7 @@ public struct DefaultTheme: Theme {
     public let textColor = UIColor.Material.grey900
     public let bodyColor = UIColor.Material.grey
     public let headColor = UIColor(0x666666)!
-    public let footColor = UIColor(0x999999)!
+    public let footColor = UIColor.Material.grey
     public let borderColor = UIColor.Material.grey900
     public let indicatorColor = UIColor.orange
     public let separatorColor = UIColor(0xd1d1d1)!

@@ -41,4 +41,6 @@ enum SettingSectionItem {
     case user(SettingUserItem)
     case repository(SettingProjectItem)
     case logout(SettingItem)
+    case night(SettingItem)
+    case theme(SettingItem)
 }

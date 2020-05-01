@@ -20,7 +20,13 @@ class RepositoryCell: CollectionCell, ReactorKit.View {
     lazy var titleLabel: Label = {
         let label = Label()
         label.font = .normal(14)
-        label.textColor = .black
+        label.sizeToFit()
+        return label
+    }()
+    
+    lazy var subtitleLabel: Label = {
+        let label = Label()
+        label.font = .normal(12)
         label.sizeToFit()
         return label
     }()
@@ -63,6 +69,7 @@ class RepositoryCell: CollectionCell, ReactorKit.View {
         self.cornerRadius = 6
         
         self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.subtitleLabel)
         self.contentView.addSubview(self.detailLabel)
         
         self.iconImageView.height = flat(frame.size.height * 0.8)
@@ -75,6 +82,8 @@ class RepositoryCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.indicatorImageView)
         
         themeService.rx
+            .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.footColor }, to: self.subtitleLabel.rx.textColor)
             .bind({ $0.secondaryColor }, to: self.indicatorImageView.rx.tintColor)
             .disposed(by: self.disposeBag)
     }
@@ -86,33 +95,45 @@ class RepositoryCell: CollectionCell, ReactorKit.View {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.titleLabel.text = nil
+        self.subtitleLabel.text = nil
         self.detailLabel.attributedText = nil
         self.iconImageView.image = nil
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.indicatorImageView.top = self.indicatorImageView.topWhenCenter
+        self.indicatorImageView.right = self.contentView.width - 15
+        
         self.iconImageView.left = 10
         self.iconImageView.top = self.iconImageView.topWhenCenter
         self.badgeImageView.left = self.iconImageView.left
         self.badgeImageView.bottom = self.iconImageView.bottom
         
+        self.subtitleLabel.sizeToFit()
+        self.subtitleLabel.left = self.iconImageView.right + 8
+        self.subtitleLabel.top = self.subtitleLabel.topWhenCenter
+        self.subtitleLabel.width = self.indicatorImageView.left - self.subtitleLabel.left - 8 - 8
+        
         self.titleLabel.sizeToFit()
-        self.titleLabel.left = self.iconImageView.right + 8
-        self.titleLabel.bottom = self.contentView.height / 2.0
+        self.titleLabel.left = self.subtitleLabel.left
+        self.titleLabel.bottom = self.subtitleLabel.top
         
         self.detailLabel.sizeToFit()
         self.detailLabel.left = self.titleLabel.left
-        self.detailLabel.top = self.titleLabel.bottom + 6
-        
-        self.indicatorImageView.top = self.indicatorImageView.topWhenCenter
-        self.indicatorImageView.right = self.contentView.width - 15
+        self.detailLabel.top = self.subtitleLabel.bottom + 4
     }
     
     func bind(reactor: RepositoryItem) {
         super.bind(item: reactor)
         reactor.state.map{ $0.title }
             .bind(to: self.titleLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map{ $0.subtitle }
+            .bind(to: self.subtitleLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map{ $0.subtitle == nil }
+            .bind(to: self.subtitleLabel.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.detail }
             .bind(to: self.detailLabel.rx.attributedText)

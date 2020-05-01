@@ -17,9 +17,12 @@ struct Repository: ModelType, Storable, Subjective {
     var fork: Bool?
     var privated: Bool?
     var id: Int?
+    var stargazersCount: Int?
     var name: String?
     var fullName: String?
     var nodeId: String?
+    var language: String?
+    var languageColor: String?
     var description: String?
     var keysUrl: String?
     var collaboratorsUrl: String?
@@ -73,9 +76,12 @@ struct Repository: ModelType, Storable, Subjective {
         fork                    <- map["fork"]
         privated                <- map["private"]
         id                      <- map["id"]
+        stargazersCount         <- map["stargazers_count"]
         name                    <- map["name"]
         fullName                <- map["full_name"]
         nodeId                  <- map["node_id"]
+        language                <- map["language"]
+        languageColor           <- map["languageColor"]
         description             <- map["description"]
         keysUrl                 <- map["keys_url"]
         collaboratorsUrl        <- map["collaborators_url"]
@@ -116,6 +122,24 @@ struct Repository: ModelType, Storable, Subjective {
         downloadsUrl            <- (map["downloads_url"], URLTransform())
         deploymentsUrl          <- (map["deployments_url"], URLTransform())
         owner                   <- map["owner"]
+    }
+    
+    func detail() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.text))
+        let starsImage = R.image.setting_badge_star()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
+        texts.append(.composed(of: [
+            starsImage, Special.space, starsString, Special.space, Special.tab
+        ]))
+        
+        if let languageString = self.language?.styled(with: .color(.text)) {
+            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(self.languageColor ?? "") ?? .clear)]))
+            texts.append(.composed(of: [
+                languageColorShape, Special.space, languageString
+            ]))
+        }
+        
+        return .composed(of: texts)
     }
     
 }

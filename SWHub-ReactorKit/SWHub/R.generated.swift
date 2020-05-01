@@ -117,16 +117,24 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 3 files.
   struct file {
     /// Resource file `readme.txt`.
     static let readmeTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "readme", pathExtension: "txt")
+    /// Resource file `repos-tospery-SWHub.json`.
+    static let reposTosperySWHubJson = Rswift.FileResource(bundle: R.hostingBundle, name: "repos-tospery-SWHub", pathExtension: "json")
     /// Resource file `user.json`.
     static let userJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user", pathExtension: "json")
 
     /// `bundle.url(forResource: "readme", withExtension: "txt")`
     static func readmeTxt(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.readmeTxt
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "repos-tospery-SWHub", withExtension: "json")`
+    static func reposTosperySWHubJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.reposTosperySWHubJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -169,8 +177,6 @@ struct R: Rswift.Validatable {
     static let icon_cell_badge_push = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_push")
     /// Image `icon_cell_badge_search`.
     static let icon_cell_badge_search = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_search")
-    /// Image `icon_cell_badge_star`.
-    static let icon_cell_badge_star = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_star")
     /// Image `icon_cell_badge_tag`.
     static let icon_cell_badge_tag = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_tag")
     /// Image `icon_cell_badge_trending`.
@@ -297,6 +303,8 @@ struct R: Rswift.Validatable {
     static let setting_badge_collaborator = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_badge_collaborator")
     /// Image `setting_badge_repository`.
     static let setting_badge_repository = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_badge_repository")
+    /// Image `setting_badge_star`.
+    static let setting_badge_star = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_badge_star")
     /// Image `setting_badge_user`.
     static let setting_badge_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_badge_user")
     /// Image `setting_cell_logout`.
@@ -404,13 +412,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_cell_badge_search", bundle: ..., traitCollection: ...)`
     static func icon_cell_badge_search(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_badge_search, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_cell_badge_star", bundle: ..., traitCollection: ...)`
-    static func icon_cell_badge_star(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_cell_badge_star, compatibleWith: traitCollection)
     }
     #endif
 
@@ -845,6 +846,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "setting_badge_repository", bundle: ..., traitCollection: ...)`
     static func setting_badge_repository(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.setting_badge_repository, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "setting_badge_star", bundle: ..., traitCollection: ...)`
+    static func setting_badge_star(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.setting_badge_star, compatibleWith: traitCollection)
     }
     #endif
 

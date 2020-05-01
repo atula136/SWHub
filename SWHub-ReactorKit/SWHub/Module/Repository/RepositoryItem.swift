@@ -19,6 +19,7 @@ class RepositoryItem: CollectionItem, ReactorKit.Reactor {
     
     struct State {
         var title: String?
+        var subtitle: String?
         var detail: NSAttributedString?
         var icon: URL?
     }
@@ -30,7 +31,8 @@ class RepositoryItem: CollectionItem, ReactorKit.Reactor {
         guard let repository = model as? Repository else { return }
         self.initialState = State(
             title: repository.fullName,
-            // detail: user.detail(),
+            subtitle: repository.description,
+            detail: repository.detail(),
             icon: repository.owner?.avatar
         )
     }

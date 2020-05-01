@@ -25,7 +25,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setLoading(Bool)
         case setRepository(Repository)
         case setError(Error?)
-        case initial([ModelType])
+        case initial([[ModelType]])
     }
     
     struct State {
@@ -34,7 +34,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var title: String?
         var error: Error?
         var repository: Repository?
-        var sections = [SettingSection]()
+        var sections: [SettingSection] = []
     }
     
     var initialState = State()
@@ -50,18 +50,24 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
-            var models = [ModelType]()
+            var sections: [[ModelType]] = []
+            var account: [ModelType] = []
             if let user = User.current() {
-                models.append(user)
+                account.append(user)
+                var logout = Setting(id: .logout)
+                logout.indicated = false
+                logout.title = R.string.localizable.settingAccountLogout()
+                logout.icon = R.image.setting_cell_logout()?.template
+                account.append(logout)
+                sections.append(account)
             }
-            var logout = Setting(id: .logout)
-            logout.indicated = false
-            logout.title = R.string.localizable.settingAccountLogout()
-            logout.icon = R.image.setting_cell_logout()?.template
-            models.append(logout)
+            var preference: [ModelType] = []
+            preference.append(Setting(id: .night, title: R.string.localizable.settingPreferencesNight()))
+            preference.append(Setting(id: .theme, title: R.string.localizable.settingPreferencesTheme()))
+            sections.append(preference)
             return .concat([
                 .just(.setLoading(true)),
-                .just(.initial(models)),
+                .just(.initial(sections)),
                 self.provider.repository(user: "tospery", project: "SWHub").map(Mutation.setRepository).catchError({.just(.setError($0))}),
                 .just(.setLoading(false))
             ])
@@ -73,20 +79,30 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
-        case let .initial(models):
-            let items = models.map { model -> SettingSectionItem in
-                if let user = model as? User {
-                    return .user(SettingUserItem(user))
+        case let .initial(sections):
+            state.sections = sections.map { models -> SettingSection in
+                var header = R.string.localizable.settingPreferences()
+                var items: [SettingSectionItem] = []
+                for model in models {
+                    if let user = model as? User {
+                        header = R.string.localizable.settingAccount()
+                        items.append(.user(SettingUserItem(user)))
+                    }
+                    if let setting = model as? Setting {
+                        let item = SettingItem(setting)
+                        switch setting.id! {
+                        case .logout:
+                            header = R.string.localizable.settingAccount()
+                            items.append(.logout(item))
+                        case .night:
+                            items.append(.night(item))
+                        case .theme:
+                            items.append(.theme(item))
+                        }
+                    }
                 }
-                let setting = model as! Setting
-                switch setting.id! {
-                case .logout:
-                    return .logout(SettingItem(setting))
-                default:
-                    return .logout(SettingItem(setting))
-                }
+                return .setting(header: header, items: items)
             }
-            state.sections = [.setting(header: R.string.localizable.settingAccount(), items: items)]
         case let .setRepository(repository):
             state.repository = repository
             state.sections.insert(.setting(header: R.string.localizable.settingMyProject(), items: [.repository(SettingProjectItem(repository))]), at: 1)
