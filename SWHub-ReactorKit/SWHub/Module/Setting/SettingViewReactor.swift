@@ -11,22 +11,29 @@ import RxSwift
 import RxCocoa
 import Rswift
 import ReactorKit
+import RxOptional
 import SWFrame
 
 class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     
     enum Action {
         case load
+        //case update
     }
     
     enum Mutation {
         case setLoading(Bool)
+        case setRepository(Repository)
+        case setError(Error?)
         case initial([ModelType])
     }
     
     struct State {
         var isLoading = false
+        //var isUpdating = false
         var title: String?
+        var error: Error?
+        var repository: Repository?
         var sections = [SettingSection]()
     }
     
@@ -43,12 +50,6 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
-//            var user = Setting(id: .user)
-//            if let current = User.current() {
-//                user.title = current.login
-//                user.avatar = current.avatar
-//                user.detail = current.detail()
-//            }
             var models = [ModelType]()
             if let user = User.current() {
                 models.append(user)
@@ -61,6 +62,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setLoading(true)),
                 .just(.initial(models)),
+                self.provider.repository(user: "tospery", project: "SWHub").map(Mutation.setRepository).catchError({.just(.setError($0))}),
                 .just(.setLoading(false))
             ])
         }
@@ -74,7 +76,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .initial(models):
             let items = models.map { model -> SettingSectionItem in
                 if let user = model as? User {
-                    return .user(UserItem(user))
+                    return .user(SettingUserItem(user))
                 }
                 let setting = model as! Setting
                 switch setting.id! {
@@ -85,6 +87,11 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 }
             }
             state.sections = [.setting(header: R.string.localizable.settingAccount(), items: items)]
+        case let .setRepository(repository):
+            state.repository = repository
+            state.sections.insert(.setting(header: R.string.localizable.settingMyProject(), items: [.repository(SettingProjectItem(repository))]), at: 1)
+        case let .setError(error):
+            state.error = error
         }
         return state
     }

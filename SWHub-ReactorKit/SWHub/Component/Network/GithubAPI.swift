@@ -17,6 +17,7 @@ import SWFrame
 
 enum GithubAPI {
     case profile
+    case repository(fullname: String)
 //    case wechatInfo
 //    case homePages
 //    case homeModule(pageID: String)
@@ -36,8 +37,8 @@ extension GithubAPI: TargetType {
     
     var path: String {
         switch self {
-        case .profile:
-            return "/user"
+        case .profile: return "/user"
+        case let .repository(fullname): return "/repos/\(fullname)"
 //        case .wechatInfo:
 //            return "/jxh5/wx_info"
 //        case .homePages:

@@ -1,8 +1,8 @@
 //
-//  UserItem.swift
+//  RepositoryItem.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/4/29.
+//  Created by 杨建祥 on 2020/5/1.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class UserItem: CollectionItem, ReactorKit.Reactor {
+class RepositoryItem: CollectionItem, ReactorKit.Reactor {
     
     typealias Action = NoAction
     
@@ -27,11 +27,11 @@ class UserItem: CollectionItem, ReactorKit.Reactor {
     
     required init(_ model: ModelType) {
         super.init(model)
-        guard let user = model as? User else { return }
+        guard let repository = model as? Repository else { return }
         self.initialState = State(
-            title: user.login,
-            detail: user.detail(),
-            icon: user.avatar
+            title: repository.fullName,
+            // detail: user.detail(),
+            icon: repository.owner?.avatar
         )
     }
     

@@ -21,7 +21,8 @@ import SWFrame
 class SettingViewController: CollectionViewController, ReactorKit.View {
     
     struct Reusable {
-        static let userCell = ReusableCell<UserCell>()
+        static let userCell = ReusableCell<SettingUserCell>()
+        static let repositoryCell = ReusableCell<RepositoryCell>()
         static let settingCell = ReusableCell<SettingCell>()
         static let headerView = ReusableView<SettingHeaderView>()
     }
@@ -54,6 +55,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.userCell)
+        self.collectionView.register(Reusable.repositoryCell)
         self.collectionView.register(Reusable.settingCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
         themeService.rx
@@ -85,6 +87,10 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 switch sectionItem {
                 case let .user(item):
                     let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
+                    cell.bind(reactor: item)
+                    return cell
+                case let .repository(item):
+                    let cell = collectionView.dequeue(Reusable.repositoryCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 case let .logout(item):
@@ -123,6 +129,8 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
         switch self.dataSource[indexPath] {
         case let .user(item):
             return Reusable.userCell.class.size(width: width, item: item)
+        case let .repository(item):
+            return Reusable.repositoryCell.class.size(width: width, item: item)
         case let .logout(item):
             return Reusable.settingCell.class.size(width: width, item: item)
         }

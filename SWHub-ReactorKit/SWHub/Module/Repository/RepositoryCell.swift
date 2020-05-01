@@ -1,8 +1,8 @@
 //
-//  UserCell.swift
+//  RepositoryCell.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/4/29.
+//  Created by 杨建祥 on 2020/5/1.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ import SwifterSwift
 import Kingfisher
 import SWFrame
 
-class UserCell: CollectionCell, ReactorKit.View {
+class RepositoryCell: CollectionCell, ReactorKit.View {
     
     lazy var titleLabel: Label = {
         let label = Label()
@@ -42,7 +42,7 @@ class UserCell: CollectionCell, ReactorKit.View {
         let imageView = UIImageView()
         imageView.backgroundColor = .white
         imageView.tintColor = UIColor.Material.green900
-        imageView.image = R.image.setting_badge_user()?.template
+        imageView.image = R.image.setting_badge_repository()?.template
         imageView.sizeToFit()
         imageView.size = CGSize(width: 20, height: 20)
         imageView.borderColor = .white
@@ -71,6 +71,7 @@ class UserCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.iconImageView)
         
         self.contentView.addSubview(self.badgeImageView)
+        
         self.contentView.addSubview(self.indicatorImageView)
         
         themeService.rx
@@ -87,7 +88,6 @@ class UserCell: CollectionCell, ReactorKit.View {
         self.titleLabel.text = nil
         self.detailLabel.attributedText = nil
         self.iconImageView.image = nil
-        self.badgeImageView.image = nil
     }
     
     override func layoutSubviews() {
@@ -109,7 +109,7 @@ class UserCell: CollectionCell, ReactorKit.View {
         self.indicatorImageView.right = self.contentView.width - 15
     }
     
-    func bind(reactor: UserItem) {
+    func bind(reactor: RepositoryItem) {
         super.bind(item: reactor)
         reactor.state.map{ $0.title }
             .bind(to: self.titleLabel.rx.text)

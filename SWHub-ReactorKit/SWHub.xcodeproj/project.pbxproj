@@ -27,6 +27,8 @@
 		792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D642455561D00856757 /* LoginViewReactor.swift */; };
 		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
 		792F6D692455563700856757 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User.swift */; };
+		79740E6E245C4ED1003F441A /* SettingProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79740E6D245C4ED1003F441A /* SettingProjectItem.swift */; };
+		79740E70245C4EDE003F441A /* SettingProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79740E6F245C4EDE003F441A /* SettingProjectCell.swift */; };
 		7976AC9C24581F6700093046 /* MainViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9B24581F6700093046 /* MainViewReactor.swift */; };
 		7976AC9E24581F7E00093046 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9D24581F7E00093046 /* MainViewController.swift */; };
 		7976ACA4245826FA00093046 /* MessageViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACA3245826FA00093046 /* MessageViewReactor.swift */; };
@@ -43,8 +45,8 @@
 		7976ACBD2459339D00093046 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACBC2459339D00093046 /* CollectionCell.swift */; };
 		7976ACBF245933E200093046 /* CollectionViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACBE245933E200093046 /* CollectionViewReactor.swift */; };
 		7976ACC1245933F000093046 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACC0245933F000093046 /* CollectionViewController.swift */; };
-		7976ACC3245934CA00093046 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACC2245934CA00093046 /* UserItem.swift */; };
-		7976ACC5245934D600093046 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACC4245934D600093046 /* UserCell.swift */; };
+		7976ACC3245934CA00093046 /* SettingUserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACC2245934CA00093046 /* SettingUserItem.swift */; };
+		7976ACC5245934D600093046 /* SettingUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACC4245934D600093046 /* SettingUserCell.swift */; };
 		79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4A8624554B08001BDB90 /* AppDelegate.swift */; };
 		79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A8F24554B09001BDB90 /* Assets.xcassets */; };
 		79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A9124554B09001BDB90 /* LaunchScreen.storyboard */; };
@@ -59,6 +61,10 @@
 		79E67A47245C0E5700FE6093 /* SupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E67A46245C0E5700FE6093 /* SupplementaryView.swift */; };
 		79E67A49245C0E9000FE6093 /* SupplementaryReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E67A48245C0E9000FE6093 /* SupplementaryReactor.swift */; };
 		79E67A4B245C0F5600FE6093 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E67A4A245C0F5600FE6093 /* SettingHeaderView.swift */; };
+		79F936A9245C3B0900AA775A /* repos-tospery-SWHub.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */; };
+		79F936AC245C3B4000AA775A /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F936AB245C3B4000AA775A /* Repository.swift */; };
+		79F936AE245C457900AA775A /* RepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F936AD245C457900AA775A /* RepositoryItem.swift */; };
+		79F936B0245C458A00AA775A /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F936AF245C458A00AA775A /* RepositoryCell.swift */; };
 		FD3249B3375F87DD51CA1684 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +108,8 @@
 		792F6D642455561D00856757 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		792F6D682455563700856757 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		79740E6D245C4ED1003F441A /* SettingProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProjectItem.swift; sourceTree = "<group>"; };
+		79740E6F245C4EDE003F441A /* SettingProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProjectCell.swift; sourceTree = "<group>"; };
 		7976AC9B24581F6700093046 /* MainViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewReactor.swift; sourceTree = "<group>"; };
 		7976AC9D24581F7E00093046 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7976ACA3245826FA00093046 /* MessageViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewReactor.swift; sourceTree = "<group>"; };
@@ -118,8 +126,8 @@
 		7976ACBC2459339D00093046 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		7976ACBE245933E200093046 /* CollectionViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewReactor.swift; sourceTree = "<group>"; };
 		7976ACC0245933F000093046 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		7976ACC2245934CA00093046 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
-		7976ACC4245934D600093046 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		7976ACC2245934CA00093046 /* SettingUserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserItem.swift; sourceTree = "<group>"; };
+		7976ACC4245934D600093046 /* SettingUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserCell.swift; sourceTree = "<group>"; };
 		79AF4A8324554B08001BDB90 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AF4A8624554B08001BDB90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79AF4A8F24554B09001BDB90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +148,10 @@
 		79E67A46245C0E5700FE6093 /* SupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryView.swift; sourceTree = "<group>"; };
 		79E67A48245C0E9000FE6093 /* SupplementaryReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryReactor.swift; sourceTree = "<group>"; };
 		79E67A4A245C0F5600FE6093 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
+		79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-tospery-SWHub.json"; sourceTree = "<group>"; };
+		79F936AB245C3B4000AA775A /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		79F936AD245C457900AA775A /* RepositoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryItem.swift; sourceTree = "<group>"; };
+		79F936AF245C458A00AA775A /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D31A282BEF0A84BF48C2B7 /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +218,7 @@
 		792F6D5E245555B700856757 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				79F936AA245C3B3800AA775A /* Repository */,
 				7976ACA2245826E900093046 /* Setting */,
 				7976ACA1245826E400093046 /* Search */,
 				7976ACA0245826DF00093046 /* Activity */,
@@ -247,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				790767AA2456C23E00CD0AAF /* user.json */,
+				79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -301,7 +315,8 @@
 		7976ACA2245826E900093046 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				7976ACCA245935B800093046 /* Profile */,
+				7976ACC2245934CA00093046 /* SettingUserItem.swift */,
+				7976ACC4245934D600093046 /* SettingUserCell.swift */,
 				7976ACAF2458273900093046 /* SettingViewReactor.swift */,
 				7976ACB12458274300093046 /* SettingViewController.swift */,
 				7976ACB72459335600093046 /* SettingSection.swift */,
@@ -309,6 +324,8 @@
 				79B2E5692459915500D6E162 /* SettingItem.swift */,
 				79B2E56B2459916100D6E162 /* SettingCell.swift */,
 				79E67A4A245C0F5600FE6093 /* SettingHeaderView.swift */,
+				79740E6D245C4ED1003F441A /* SettingProjectItem.swift */,
+				79740E6F245C4EDE003F441A /* SettingProjectCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -326,15 +343,6 @@
 				79E67A48245C0E9000FE6093 /* SupplementaryReactor.swift */,
 			);
 			path = Collection;
-			sourceTree = "<group>";
-		};
-		7976ACCA245935B800093046 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				7976ACC2245934CA00093046 /* UserItem.swift */,
-				7976ACC4245934D600093046 /* UserCell.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		79AF4A7A24554B08001BDB90 = {
@@ -403,6 +411,16 @@
 				79020CB024559CDA00FF1978 /* readme.txt */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		79F936AA245C3B3800AA775A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				79F936AB245C3B4000AA775A /* Repository.swift */,
+				79F936AD245C457900AA775A /* RepositoryItem.swift */,
+				79F936AF245C458A00AA775A /* RepositoryCell.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		D8A78E795493EC5C4980DEE5 /* Pods */ = {
@@ -523,6 +541,7 @@
 			files = (
 				79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */,
 				7906C319245558FD0030764D /* Localizable.strings in Resources */,
+				79F936A9245C3B0900AA775A /* repos-tospery-SWHub.json in Resources */,
 				79020CB124559CDA00FF1978 /* readme.txt in Resources */,
 				79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */,
 				790767AB2456C23E00CD0AAF /* user.json in Resources */,
@@ -621,11 +640,13 @@
 				7906832C24564EAB00BFDCB2 /* AuthManager.swift in Sources */,
 				792F6D692455563700856757 /* User.swift in Sources */,
 				792F6D672455562F00856757 /* LoginViewController.swift in Sources */,
+				79F936AC245C3B4000AA775A /* Repository.swift in Sources */,
 				7976ACB02458273900093046 /* SettingViewReactor.swift in Sources */,
 				7976ACB62458494A00093046 /* UIColorExt.swift in Sources */,
 				7976ACAE2458272E00093046 /* SearchViewController.swift in Sources */,
 				79E67A47245C0E5700FE6093 /* SupplementaryView.swift in Sources */,
 				7906C317245558B10030764D /* Theme.swift in Sources */,
+				79F936B0245C458A00AA775A /* RepositoryCell.swift in Sources */,
 				7906C32B24555DFD0030764D /* Appearance.swift in Sources */,
 				79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */,
 				7976ACB82459335600093046 /* SettingSection.swift in Sources */,
@@ -641,22 +662,25 @@
 				7976ACB22458274300093046 /* SettingViewController.swift in Sources */,
 				7976ACBF245933E200093046 /* CollectionViewReactor.swift in Sources */,
 				790767B02456C42000CD0AAF /* GithubNetworking.swift in Sources */,
-				7976ACC3245934CA00093046 /* UserItem.swift in Sources */,
+				7976ACC3245934CA00093046 /* SettingUserItem.swift in Sources */,
 				7906C32724555DE40030764D /* Enumeration.swift in Sources */,
 				79B2E56E245BD88900D6E162 /* IntExt.swift in Sources */,
+				79740E70245C4EDE003F441A /* SettingProjectCell.swift in Sources */,
 				7976ACC1245933F000093046 /* CollectionViewController.swift in Sources */,
 				7976ACAA2458271900093046 /* ActivityViewController.swift in Sources */,
 				7976ACA62458270400093046 /* MessageViewController.swift in Sources */,
 				7976ACBD2459339D00093046 /* CollectionCell.swift in Sources */,
+				79740E6E245C4ED1003F441A /* SettingProjectItem.swift in Sources */,
 				79B2E56A2459915500D6E162 /* SettingItem.swift in Sources */,
 				7906C32324555DC70030764D /* Runtime.swift in Sources */,
-				7976ACC5245934D600093046 /* UserCell.swift in Sources */,
+				7976ACC5245934D600093046 /* SettingUserCell.swift in Sources */,
 				7906C31D245559E80030764D /* AppDependency.swift in Sources */,
 				79B2E56C2459916100D6E162 /* SettingCell.swift in Sources */,
 				79E67A4B245C0F5600FE6093 /* SettingHeaderView.swift in Sources */,
 				7976AC9E24581F7E00093046 /* MainViewController.swift in Sources */,
 				79E67A49245C0E9000FE6093 /* SupplementaryReactor.swift in Sources */,
 				7976ACAC2458272400093046 /* SearchViewReactor.swift in Sources */,
+				79F936AE245C457900AA775A /* RepositoryItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
