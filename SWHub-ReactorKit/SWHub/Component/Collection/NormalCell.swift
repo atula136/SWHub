@@ -51,6 +51,12 @@ class NormalCell: CollectionCell, ReactorKit.View {
         return imageView
     }()
     
+    lazy var switcher: UISwitch = {
+        let switcher = UISwitch()
+        switcher.sizeToFit()
+        return switcher
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -59,6 +65,7 @@ class NormalCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.iconImageView)
         self.contentView.addSubview(self.avatarImageView)
         self.contentView.addSubview(self.indicatorImageView)
+        self.contentView.addSubview(self.switcher)
         
         themeService.rx
             .bind({ $0.textColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
@@ -77,12 +84,16 @@ class NormalCell: CollectionCell, ReactorKit.View {
         self.iconImageView.image = nil
         self.avatarImageView.image = nil
         self.indicatorImageView.isHidden = true
+        self.switcher.isHidden = true
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.indicatorImageView.top = self.indicatorImageView.topWhenCenter
         self.indicatorImageView.right = self.contentView.width - 15
+        
+        self.switcher.right = self.indicatorImageView.right
+        self.switcher.top = self.switcher.topWhenCenter
         
         self.iconImageView.sizeToFit()
         if self.iconImageView.isHidden {
@@ -117,7 +128,7 @@ class NormalCell: CollectionCell, ReactorKit.View {
     
     func bind(reactor: NormalItem) {
         super.bind(item: reactor)
-        reactor.state.map{ !$0.indicated }
+        reactor.state.map{ !$0.showIndicator || $0.showSwitcher }
             .bind(to: self.indicatorImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.title }
@@ -131,6 +142,12 @@ class NormalCell: CollectionCell, ReactorKit.View {
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.icon == nil }
             .bind(to: self.iconImageView.rx.isHidden)
+            .disposed(by: self.disposeBag)
+        reactor.state.map{ !$0.showSwitcher }
+            .bind(to: self.switcher.rx.isHidden)
+            .disposed(by: self.disposeBag)
+        reactor.state.map{ $0.switched }
+            .bind(to: self.switcher.rx.value)
             .disposed(by: self.disposeBag)
         reactor.state.map{ _ in }
             .bind(to: self.rx.setNeedsLayout)

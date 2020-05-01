@@ -17,6 +17,28 @@ struct Setting: ModelType, Identifiable {
         case night
         case theme
         
+        var title: String {
+            switch self {
+            case .logout:
+                return R.string.localizable.settingAccountLogout()
+            case .night:
+                return R.string.localizable.settingPreferencesNight()
+            case .theme:
+                return R.string.localizable.settingPreferencesTheme()
+            }
+        }
+        
+        var icon: UIImage? {
+            switch self {
+            case .logout:
+                return R.image.setting_cell_logout()?.template
+            case .night:
+                return R.image.setting_cell_night()?.template
+            case .theme:
+                return R.image.setting_cell_theme()?.template
+            }
+        }
+        
         enum CodingKeys: String, CodingKey {
             case logout     = "logout"
             case night      = "night"
@@ -25,7 +47,8 @@ struct Setting: ModelType, Identifiable {
     }
     
     var id: Category?
-    var indicated = true
+    var showIndicator = true
+    var showSwitcher = false
     var title: String?
     var detail: NSAttributedString?
     var icon: ImageSource?
@@ -34,9 +57,11 @@ struct Setting: ModelType, Identifiable {
         
     }
     
-    init(id: Category, title: String? = nil) {
+    init(id: Category, showSwitcher: Bool = false) {
         self.id = id
-        self.title = title
+        self.showSwitcher = showSwitcher
+        self.title = id.title
+        self.icon = id.icon
     }
     
     init?(map: Map) {

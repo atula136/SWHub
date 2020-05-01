@@ -219,8 +219,6 @@ struct R: Rswift.Validatable {
     static let icon_cell_language = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_language")
     /// Image `icon_cell_link`.
     static let icon_cell_link = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_link")
-    /// Image `icon_cell_night_mode`.
-    static let icon_cell_night_mode = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_night_mode")
     /// Image `icon_cell_profile_summary`.
     static let icon_cell_profile_summary = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_profile_summary")
     /// Image `icon_cell_readme`.
@@ -241,8 +239,6 @@ struct R: Rswift.Validatable {
     static let icon_cell_stars_history = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_stars_history")
     /// Image `icon_cell_submodule`.
     static let icon_cell_submodule = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_submodule")
-    /// Image `icon_cell_theme`.
-    static let icon_cell_theme = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_theme")
     /// Image `icon_cell_updated`.
     static let icon_cell_updated = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_updated")
     /// Image `icon_cell_whats_new`.
@@ -309,6 +305,10 @@ struct R: Rswift.Validatable {
     static let setting_badge_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_badge_user")
     /// Image `setting_cell_logout`.
     static let setting_cell_logout = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_cell_logout")
+    /// Image `setting_cell_night`.
+    static let setting_cell_night = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_cell_night")
+    /// Image `setting_cell_theme`.
+    static let setting_cell_theme = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_cell_theme")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "AppLaunch", bundle: ..., traitCollection: ...)`
@@ -563,13 +563,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_cell_night_mode", bundle: ..., traitCollection: ...)`
-    static func icon_cell_night_mode(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_cell_night_mode, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "icon_cell_profile_summary", bundle: ..., traitCollection: ...)`
     static func icon_cell_profile_summary(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_profile_summary, compatibleWith: traitCollection)
@@ -636,13 +629,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_cell_submodule", bundle: ..., traitCollection: ...)`
     static func icon_cell_submodule(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_submodule, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_cell_theme", bundle: ..., traitCollection: ...)`
-    static func icon_cell_theme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_cell_theme, compatibleWith: traitCollection)
     }
     #endif
 
@@ -870,6 +856,20 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "setting_cell_night", bundle: ..., traitCollection: ...)`
+    static func setting_cell_night(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.setting_cell_night, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "setting_cell_theme", bundle: ..., traitCollection: ...)`
+    static func setting_cell_theme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.setting_cell_theme, compatibleWith: traitCollection)
+    }
+    #endif
+
     fileprivate init() {}
   }
 
@@ -888,7 +888,7 @@ struct R: Rswift.Validatable {
       /// Value: 密码
       static let loginPassword = Rswift.StringResource(key: "Login.Password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的项目
-      static let settingMyProject = Rswift.StringResource(key: "Setting.MyProject", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let settingProject = Rswift.StringResource(key: "Setting.Project", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 搜索
       static let mainTabBarSearch = Rswift.StringResource(key: "Main.TabBar.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
@@ -982,16 +982,16 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 我的项目
-      static func settingMyProject(preferredLanguages: [String]? = nil) -> String {
+      static func settingProject(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Setting.MyProject", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Setting.Project", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Setting.MyProject"
+          return "Setting.Project"
         }
 
-        return NSLocalizedString("Setting.MyProject", bundle: bundle, comment: "")
+        return NSLocalizedString("Setting.Project", bundle: bundle, comment: "")
       }
 
       /// Value: 搜索

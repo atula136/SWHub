@@ -19,7 +19,9 @@ class NormalItem: CollectionItem, ReactorKit.Reactor {
     typealias Action = NoAction
     
     struct State {
-        var indicated = true
+        var showIndicator = true
+        var showSwitcher = false
+        var switched = false
         var title: String?
         var detail: NSAttributedString?
         var icon: ImageSource?

@@ -22,7 +22,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     
     struct Reusable {
         static let userCell = ReusableCell<SettingUserCell>()
-        static let repositoryCell = ReusableCell<RepositoryCell>()
+        static let projectCell = ReusableCell<SettingProjectCell>()
         static let settingCell = ReusableCell<SettingCell>()
         static let headerView = ReusableView<SettingHeaderView>()
     }
@@ -55,7 +55,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.userCell)
-        self.collectionView.register(Reusable.repositoryCell)
+        self.collectionView.register(Reusable.projectCell)
         self.collectionView.register(Reusable.settingCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
         themeService.rx
@@ -89,8 +89,8 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                     let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
-                case let .repository(item):
-                    let cell = collectionView.dequeue(Reusable.repositoryCell, for: indexPath)
+                case let .project(item):
+                    let cell = collectionView.dequeue(Reusable.projectCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 case .logout(let item), .night(let item), .theme(let item):
@@ -129,8 +129,8 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
         switch self.dataSource[indexPath] {
         case let .user(item):
             return Reusable.userCell.class.size(width: width, item: item)
-        case let .repository(item):
-            return Reusable.repositoryCell.class.size(width: width, item: item)
+        case let .project(item):
+            return Reusable.projectCell.class.size(width: width, item: item)
         case .logout(let item), .night(let item), .theme(let item):
             return Reusable.settingCell.class.size(width: width, item: item)
         }

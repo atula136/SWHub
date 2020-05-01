@@ -39,7 +39,7 @@ extension SettingSection: SectionModelType {
 
 enum SettingSectionItem {
     case user(SettingUserItem)
-    case repository(SettingProjectItem)
+    case project(SettingProjectItem)
     case logout(SettingItem)
     case night(SettingItem)
     case theme(SettingItem)

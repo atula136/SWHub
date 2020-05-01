@@ -51,19 +51,17 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
             var sections: [[ModelType]] = []
-            var account: [ModelType] = []
             if let user = User.current() {
-                account.append(user)
                 var logout = Setting(id: .logout)
-                logout.indicated = false
-                logout.title = R.string.localizable.settingAccountLogout()
-                logout.icon = R.image.setting_cell_logout()?.template
-                account.append(logout)
-                sections.append(account)
+                logout.showIndicator = false
+                sections.append([user, logout])
+            }
+            if let repository = Repository.current() {
+                sections.append([repository])
             }
             var preference: [ModelType] = []
-            preference.append(Setting(id: .night, title: R.string.localizable.settingPreferencesNight()))
-            preference.append(Setting(id: .theme, title: R.string.localizable.settingPreferencesTheme()))
+            preference.append(Setting(id: .night, showSwitcher: true))
+            preference.append(Setting(id: .theme, showSwitcher: true))
             sections.append(preference)
             return .concat([
                 .just(.setLoading(true)),
@@ -88,6 +86,10 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                         header = R.string.localizable.settingAccount()
                         items.append(.user(SettingUserItem(user)))
                     }
+                    if let repository = model as? Repository {
+                        header = R.string.localizable.settingProject()
+                        items.append(.project(SettingProjectItem(repository)))
+                    }
                     if let setting = model as? Setting {
                         let item = SettingItem(setting)
                         switch setting.id! {
@@ -105,7 +107,13 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             }
         case let .setRepository(repository):
             state.repository = repository
-            state.sections.insert(.setting(header: R.string.localizable.settingMyProject(), items: [.repository(SettingProjectItem(repository))]), at: 1)
+            var sections = state.sections
+            if sections.count >= 3 {
+                sections.remove(at: 1)
+            }
+            sections.insert(.setting(header: R.string.localizable.settingProject(), items: [.project(SettingProjectItem(repository))]), at: 1)
+            state.sections = sections
+            Repository.update(repository)
         case let .setError(error):
             state.error = error
         }
