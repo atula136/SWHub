@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Rswift
 import ReactorKit
 import SWFrame
 
@@ -52,9 +53,14 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             if let user = User.current() {
                 models.append(user)
             }
+            var logout = Setting(id: .logout)
+            logout.indicated = false
+            logout.title = R.string.localizable.settingAccountLogout()
+            logout.icon = R.image.setting_cell_logout()?.template
+            models.append(logout)
             return .concat([
                 .just(.setLoading(true)),
-                .just(.initial(/*[user, Setting(id: .logout)]*/models)),
+                .just(.initial(models)),
                 .just(.setLoading(false))
             ])
         }
@@ -66,25 +72,19 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
         case let .initial(models):
-//            let items = settings.map { setting -> SettingSectionItem in
-//                switch setting.id! {
-//                case .user:
-//                    return .user(UserItem(setting))
-//                case .logout:
-//                    return .logout(LogoutItem(setting))
-////                case .theme:
-////                    return .setting(SettingItem(setting))
-//                }
-//            }
-//            state.sections = [.setting(header: "账户", items: items)]
-            
             let items = models.map { model -> SettingSectionItem in
                 if let user = model as? User {
                     return .user(UserItem(user))
                 }
-                return .logout(LogoutItem(model))
+                let setting = model as! Setting
+                switch setting.id! {
+                case .logout:
+                    return .logout(SettingItem(setting))
+                default:
+                    return .logout(SettingItem(setting))
+                }
             }
-            state.sections = [.setting(header: "账户", items: items)]
+            state.sections = [.setting(header: R.string.localizable.settingAccount(), items: items)]
         }
         return state
     }

@@ -726,6 +726,7 @@
 		7914799ACA6BCF56C6A8BF72D23A5BEC /* URLNavigator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6454A10DCCAF117FF8AF223A5A21EBE3 /* URLNavigator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7922DA8E2456453A002D03E7 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7922DA8D2456453A002D03E7 /* Library.swift */; };
 		7957E784D94898E376F8C159F52E9A8C /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A3CE11A1EFF4B955FCB3DD51A472FF /* Photos.framework */; };
+		795C8028245C14C000E95120 /* UITableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C8027245C14C000E95120 /* UITableViewExt.swift */; };
 		7976ACB4245843A300093046 /* UITabBarItemExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACB3245843A300093046 /* UITabBarItemExt.swift */; };
 		79D50578884F88CF3AD5B15D63C6CDB4 /* UINavigationBar+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DC4F598ACE758A05046D383B496E21 /* UINavigationBar+Theme.swift */; };
 		7A448B4F66DEFA5C23219332F8FD0FCA /* UIBarItem+QMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A63C82C9B320A0290E0FABF1AB0898 /* UIBarItem+QMUI.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -2830,6 +2831,7 @@
 		7934BDB258DFA1C68D520818365B87DF /* FBBlockInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBBlockInterface.h; path = FBRetainCycleDetector/Layout/Blocks/FBBlockInterface.h; sourceTree = "<group>"; };
 		7945B38EC59A81DF0777BBB076BA73B6 /* ReactorKitRuntime.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReactorKitRuntime.m; path = Sources/ReactorKitRuntime/ReactorKitRuntime.m; sourceTree = "<group>"; };
 		794E96BABEEB3B098F8C4CB598545B09 /* FLEXMultilineTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FLEXMultilineTableViewCell.m; path = Classes/ObjectExplorers/Views/FLEXMultilineTableViewCell.m; sourceTree = "<group>"; };
+		795C8027245C14C000E95120 /* UITableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UITableViewExt.swift; path = SWFrame/Classes/UITableViewExt.swift; sourceTree = "<group>"; };
 		7976ACB3245843A300093046 /* UITabBarItemExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UITabBarItemExt.swift; path = SWFrame/Classes/UITabBarItemExt.swift; sourceTree = "<group>"; };
 		79A7C3E59269615949CE383A559C372F /* UITabBar+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITabBar+Rx.swift"; path = "RxTheme/Classes/RxExtensions/UITabBar+Rx.swift"; sourceTree = "<group>"; };
 		79BD73C2D71A927CD6DE4823C39F10E2 /* AlertActionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlertActionType.swift; path = SWFrame/Classes/AlertActionType.swift; sourceTree = "<group>"; };
@@ -5077,6 +5079,7 @@
 				F5102869B1EE5206E04866AC2C35F0CA /* Support Files */,
 				7922DA8D2456453A002D03E7 /* Library.swift */,
 				7976ACB3245843A300093046 /* UITabBarItemExt.swift */,
+				795C8027245C14C000E95120 /* UITableViewExt.swift */,
 			);
 			name = SWFrame;
 			path = ../../../SWFrame;
@@ -8829,6 +8832,7 @@
 				D4D3FA10FC9571FB2EC209C479EFB0B7 /* NormalCollectionCell.swift in Sources */,
 				B1E60AB061693346B9C40E19BD8578FA /* NormalCollectionItem.swift in Sources */,
 				6C4BE28A7BDCE9268D4998FFCE3750C7 /* NSErrorExt.swift in Sources */,
+				795C8028245C14C000E95120 /* UITableViewExt.swift in Sources */,
 				FA03367E85E12B29B48B5C6A79D4C558 /* NSObjectExt.swift in Sources */,
 				0340CF4B0BF6473ABB181C8C96E01D17 /* ObservableExt.swift in Sources */,
 				93E26AE5E081C01F9489C54C90DBAF86 /* Parameter.swift in Sources */,

@@ -25,9 +25,10 @@ struct Setting: ModelType, Identifiable {
     }
     
     var id: Category?
+    var indicated = true
     var title: String?
     var detail: NSAttributedString?
-    var avatar: URL?
+    var icon: ImageSource?
     
     init() {
         

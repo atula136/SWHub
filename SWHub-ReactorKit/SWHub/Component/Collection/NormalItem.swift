@@ -19,10 +19,10 @@ class NormalItem: CollectionItem, ReactorKit.Reactor {
     typealias Action = NoAction
     
     struct State {
-        public var indicated = true
-        public var title: String?
-        public var detail: String?
-        public var avatar: ImageSource?
+        var indicated = true
+        var title: String?
+        var detail: NSAttributedString?
+        var icon: ImageSource?
     }
     
     var initialState = State()

@@ -13,24 +13,16 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class SettingItem: CollectionItem, ReactorKit.Reactor {
-    typealias Action = NoAction
-    
-    struct State {
-        var title: String?
-        var detail: NSAttributedString?
-        var avatar: URL?
-    }
-    
-    var initialState = State()
+class SettingItem: NormalItem {
     
     required init(_ model: ModelType) {
         super.init(model)
         guard let setting = model as? Setting else { return }
         self.initialState = State(
+            indicated: setting.indicated,
             title: setting.title,
             detail: setting.detail,
-            avatar: setting.avatar
+            icon: setting.icon
         )
     }
     

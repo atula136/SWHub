@@ -62,7 +62,7 @@ class NormalCell: CollectionCell, ReactorKit.View {
         
         themeService.rx
             .bind({ $0.textColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
-            .bind({ $0.secondaryColor }, to: self.indicatorImageView.rx.tintColor)
+            .bind({ $0.secondaryColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
             .disposed(by: self.disposeBag)
     }
     
@@ -84,8 +84,15 @@ class NormalCell: CollectionCell, ReactorKit.View {
         self.indicatorImageView.top = self.indicatorImageView.topWhenCenter
         self.indicatorImageView.right = self.contentView.width - 15
         
+        self.iconImageView.sizeToFit()
+        if self.iconImageView.isHidden {
+            self.iconImageView.frame = .zero
+        }
+        self.iconImageView.left = 15
+        self.iconImageView.top = self.iconImageView.topWhenCenter
+        
         self.titleLabel.sizeToFit()
-        self.titleLabel.left = 15
+        self.titleLabel.left = self.iconImageView.right + (self.iconImageView.isHidden ? 0.f : 10.f)
         self.titleLabel.top = self.titleLabel.topWhenCenter
         
         self.detailLabel.sizeToFit()
@@ -108,7 +115,7 @@ class NormalCell: CollectionCell, ReactorKit.View {
         }
     }
     
-    func bind(reactor: NormalCollectionItem) {
+    func bind(reactor: NormalItem) {
         super.bind(item: reactor)
         reactor.state.map{ !$0.indicated }
             .bind(to: self.indicatorImageView.rx.isHidden)
@@ -117,10 +124,13 @@ class NormalCell: CollectionCell, ReactorKit.View {
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.detail }
-            .bind(to: self.detailLabel.rx.text)
+            .bind(to: self.detailLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.avatar }
-            .bind(to: self.avatarImageView.rx.image)
+        reactor.state.map{ $0.icon }
+            .bind(to: self.iconImageView.rx.image)
+            .disposed(by: self.disposeBag)
+        reactor.state.map{ $0.icon == nil }
+            .bind(to: self.iconImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map{ _ in }
             .bind(to: self.rx.setNeedsLayout)

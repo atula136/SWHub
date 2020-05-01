@@ -22,10 +22,21 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     
     struct Reusable {
         static let userCell = ReusableCell<UserCell>()
-        static let logoutCell = ReusableCell<LogoutCell>()
+        static let settingCell = ReusableCell<SettingCell>()
+        static let headerView = ReusableView<SettingHeaderView>()
     }
     
     let dataSource: RxCollectionViewSectionedReloadDataSource<SettingSection>
+    
+    override var layout: UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = .init(horizontal: 30, vertical: 0)
+        layout.headerReferenceSize = CGSize(width: screenWidth, height: metric(30))
+        return layout
+    }
     
     init(_ navigator: NavigatorType, _ reactor: SettingViewReactor) {
         defer {
@@ -43,7 +54,8 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.userCell)
-        self.collectionView.register(Reusable.logoutCell)
+        self.collectionView.register(Reusable.settingCell)
+        self.collectionView.register(Reusable.headerView, kind: .header)
         themeService.rx
             .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.disposeBag)
@@ -76,11 +88,30 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                     cell.bind(reactor: item)
                     return cell
                 case let .logout(item):
-                    let cell = collectionView.dequeue(Reusable.logoutCell, for: indexPath)
+                    let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 }
-        })
+            },
+            configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
+                switch kind {
+                case UICollectionView.elementKindSectionHeader:
+                    let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
+                    reactor.state.map { $0.sections[indexPath.section].header }
+                        .distinctUntilChanged()
+                        .bind(to: view.titleLabel.rx.text)
+                        .disposed(by: view.disposeBag)
+                    reactor.state.map { $0.sections[indexPath.section].header }
+                        .distinctUntilChanged()
+                        .map{ _ in }
+                        .bind(to: view.rx.setNeedsLayout)
+                        .disposed(by: view.disposeBag)
+                    return view
+                default:
+                    return collectionView.emptyView(for: indexPath, kind: kind)
+                }
+            }
+        )
     }
     
 }
@@ -88,13 +119,26 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
 extension SettingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.sectionWidth(at: indexPath.section) - 30
+        let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
         case let .user(item):
             return Reusable.userCell.class.size(width: width, item: item)
         case let .logout(item):
-            return Reusable.logoutCell.class.size(width: width, item: item)
+            return Reusable.settingCell.class.size(width: width, item: item)
         }
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        let width = collectionView.sectionWidth(at: section)
+//        return CGSize(width: width, height: metric(30))
+//    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return .init(horizontal: 30, vertical: 0)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10
+//    }
     
 }

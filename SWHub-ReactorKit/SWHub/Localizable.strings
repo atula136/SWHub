@@ -22,5 +22,12 @@
 "Main.TabBar.Search" = "搜索";
 "Main.TabBar.Activity" = "活动";
 "Main.TabBar.Setting" = "设置";
+/* 设置 */
+"Setting.Account" = "账户";
+"Setting.Account.Logout" = "退出";
+"Setting.MyProject" = "我的项目";
+"Setting.Preferences" = "首选项";
+"Setting.Preferences.Night" = "夜间模式";
+"Setting.Preferences.Theme" = "颜色主题";
 
 
