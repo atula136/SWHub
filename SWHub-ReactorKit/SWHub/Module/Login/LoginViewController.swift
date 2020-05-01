@@ -8,6 +8,9 @@
 
 import UIKit
 import QMUIKit
+import RxSwift
+import RxCocoa
+import RxOptional
 import ReactorKit
 import HBDNavigationBar
 import CGFloatLiteral
@@ -16,31 +19,6 @@ import URLNavigator
 import SWFrame
 
 class LoginViewController: ScrollViewController, ReactorKit.View {
-    
-//    lazy var bgImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.image = R.image.loginBg()
-//        imageView.sizeToFit()
-//        return imageView
-//    }()
-//
-//
-//    lazy var loginButton: Button = {
-//        let button = Button(type: .custom)
-//        button.titleLabel?.font = UIFont.normal(16)
-//        button.setTitle(R.string.localizable.loginAuth(), for: .normal)
-//        button.sizeToFit()
-//        return button
-//    }()
-//
-//    lazy var termLabel: Label = {
-//        let label = Label()
-//        label.textAlignment = .center
-//        label.font = UIFont.normal(12)
-//        label.text = R.string.localizable.loginTerm()
-//        label.sizeToFit()
-//        return label
-//    }()
     
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -107,11 +85,11 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             .bind({ $0.textColor }, to: [self.logoImageView.rx.tintColor, self.accountField.rx.textColor, self.passwordField.rx.textColor])
             .bind({ $0.bodyColor }, to: [self.accountField.rx.placeHolderColor, self.passwordField.rx.placeHolderColor])
             .bind({ $0.borderColor }, to: [self.accountField.rx.borderColor, self.passwordField.rx.borderColor])
-            .bind({ $0.primaryColor }, to: [self.accountField.rx.tintColor, self.passwordField.rx.tintColor])
-            .bind({ $0.backgroundColor }, to: self.loginButton.rx.titleColor(for: .normal))
-            .bind({ UIImage(color: $0.primaryColor, size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .normal))
-            .bind({ UIImage(color: $0.primaryColor.withAlphaComponent(0.9), size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .selected))
-            .bind({ UIImage(color: $0.primaryColor.withAlphaComponent(0.6), size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .disabled))
+            .bind({ $0.secondaryColor }, to: [self.accountField.rx.tintColor, self.passwordField.rx.tintColor])
+            .bind({ $0.primaryColor }, to: self.loginButton.rx.titleColor(for: .normal))
+            .bind({ UIImage(color: $0.secondaryColor, size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .normal))
+            .bind({ UIImage(color: $0.secondaryColor.withAlphaComponent(0.9), size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .selected))
+            .bind({ UIImage(color: $0.secondaryColor.withAlphaComponent(0.6), size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .disabled))
             .bind({ $0.keyboardAppearance }, to: [self.accountField.rx.keyboardAppearance, self.passwordField.rx.keyboardAppearance])
             .disposed(by: self.disposeBag)
     }
@@ -139,17 +117,21 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     
     func bind(reactor: LoginViewReactor) {
         super.bind(reactor: reactor)
-        
-//        // action
-//        self.loginButton.rx.tap
-//            .map { Reactor.Action.login }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
+        // action
+        self.accountField.rx.text
+            .map{ Reactor.Action.account($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.passwordField.rx.text
+            .map{ Reactor.Action.password($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.loginButton.rx.tap
+            .map { Reactor.Action.login }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
 //
 //        // state
-//        reactor.state.map { $0.isLoading }
-//            .bind(to: self.rx.loading(active: true))
-//            .disposed(by: self.disposeBag)
 //        reactor.state.map { $0.user }
 //            .distinctUntilChanged()
 //            .filter{ $0 != nil }
@@ -157,9 +139,18 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
 //                guard let `self` = self else { return }
 //                self.dismiss(animated: true, completion: nil)
 //            }).disposed(by: self.disposeBag)
+        
         // state
+        reactor.state.map { $0.isLoading }
+            .bind(to: self.rx.loading(active: true))
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.title }
             .bind(to: self.navigationItem.rx.title)
+            .disposed(by: self.disposeBag)
+        Observable.combineLatest(reactor.state.map { $0.account }.replaceNilWith(""), reactor.state.map { $0.password }.replaceNilWith(""))
+            .map { $0.isNotEmpty && $1.isNotEmpty }
+            .distinctUntilChanged()
+            .bind(to: self.loginButton.rx.isEnabled)
             .disposed(by: self.disposeBag)
     }
 

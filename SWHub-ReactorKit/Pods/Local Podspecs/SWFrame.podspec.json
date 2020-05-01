@@ -102,6 +102,9 @@
     "WebViewJavascriptBridge": [
       "6.0.3"
     ],
+    "SwiftyBeaver": [
+      "1.9.0"
+    ],
     "QMUIKit/QMUICore": [
       "4.0.4"
     ],

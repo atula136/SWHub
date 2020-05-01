@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import URLNavigator
 import SWFrame
 
@@ -15,6 +17,7 @@ final class AppDependency: AppDependencyType {
     var window: UIWindow!
     let navigator: NavigatorType
     let provider: ProviderType
+    let disposeBag = DisposeBag()
     
     static var shared = AppDependency()
     
@@ -27,16 +30,21 @@ final class AppDependency: AppDependencyType {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         self.window = window
-//
-//        let mainViewReactor = MainViewReactor(self.provider, nil)
-//        let mainViewController = MainViewController(self.navigator, mainViewReactor)
-//        self.window.rootViewController = mainViewController
-//        self.window.makeKeyAndVisible()
         
-        let loginViewReactor = LoginViewReactor(self.provider, nil)
-        let loginViewController = LoginViewController(self.navigator, loginViewReactor)
-        self.window.rootViewController = NavigationController(rootViewController: loginViewController)
-        self.window.makeKeyAndVisible()
+        User.subject().distinctUntilChanged().observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] user in
+            guard let `self` = self else { return }
+            if let _ = user {
+                let mainViewReactor = MainViewReactor(self.provider, nil)
+                let mainViewController = MainViewController(self.navigator, mainViewReactor)
+                self.window.rootViewController = mainViewController
+                self.window.makeKeyAndVisible()
+            } else {
+                let loginViewReactor = LoginViewReactor(self.provider, nil)
+                let loginViewController = LoginViewController(self.navigator, loginViewReactor)
+                self.window.rootViewController = NavigationController(rootViewController: loginViewController)
+                self.window.makeKeyAndVisible()
+            }
+        }).disposed(by: self.disposeBag)
     }
     
     func application(_ application: UIApplication, entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) {

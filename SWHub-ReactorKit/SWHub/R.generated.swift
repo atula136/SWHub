@@ -117,6 +117,28 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.file` struct is generated, and contains static references to 2 files.
+  struct file {
+    /// Resource file `readme.txt`.
+    static let readmeTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "readme", pathExtension: "txt")
+    /// Resource file `user.json`.
+    static let userJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user", pathExtension: "json")
+
+    /// `bundle.url(forResource: "readme", withExtension: "txt")`
+    static func readmeTxt(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.readmeTxt
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "user", withExtension: "json")`
+    static func userJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.userJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    fileprivate init() {}
+  }
+
   /// This `R.image` struct is generated, and contains static references to 80 images.
   struct image {
     /// Image `AppLaunch`.
@@ -133,8 +155,6 @@ struct R: Rswift.Validatable {
     static let icon_cell_acknowledgements = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_acknowledgements")
     /// Image `icon_cell_badge_branch`.
     static let icon_cell_badge_branch = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_branch")
-    /// Image `icon_cell_badge_collaborator`.
-    static let icon_cell_badge_collaborator = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_collaborator")
     /// Image `icon_cell_badge_comment`.
     static let icon_cell_badge_comment = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_comment")
     /// Image `icon_cell_badge_commit`.
@@ -147,8 +167,6 @@ struct R: Rswift.Validatable {
     static let icon_cell_badge_pull_request = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_pull_request")
     /// Image `icon_cell_badge_push`.
     static let icon_cell_badge_push = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_push")
-    /// Image `icon_cell_badge_repository`.
-    static let icon_cell_badge_repository = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_repository")
     /// Image `icon_cell_badge_search`.
     static let icon_cell_badge_search = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_search")
     /// Image `icon_cell_badge_star`.
@@ -157,8 +175,6 @@ struct R: Rswift.Validatable {
     static let icon_cell_badge_tag = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_tag")
     /// Image `icon_cell_badge_trending`.
     static let icon_cell_badge_trending = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_trending")
-    /// Image `icon_cell_badge_user`.
-    static let icon_cell_badge_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_badge_user")
     /// Image `icon_cell_check`.
     static let icon_cell_check = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_cell_check")
     /// Image `icon_cell_cloc`.
@@ -247,18 +263,10 @@ struct R: Rswift.Validatable {
     static let icon_navigation_theme = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_navigation_theme")
     /// Image `icon_navigation_web`.
     static let icon_navigation_web = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_navigation_web")
-    /// Image `icon_tabbar_activity`.
-    static let icon_tabbar_activity = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_tabbar_activity")
     /// Image `icon_tabbar_login`.
     static let icon_tabbar_login = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_tabbar_login")
-    /// Image `icon_tabbar_news`.
-    static let icon_tabbar_news = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_tabbar_news")
     /// Image `icon_tabbar_profile`.
     static let icon_tabbar_profile = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_tabbar_profile")
-    /// Image `icon_tabbar_search`.
-    static let icon_tabbar_search = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_tabbar_search")
-    /// Image `icon_tabbar_settings`.
-    static let icon_tabbar_settings = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_tabbar_settings")
     /// Image `icon_toast_error`.
     static let icon_toast_error = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_toast_error")
     /// Image `icon_toast_success`.
@@ -279,6 +287,20 @@ struct R: Rswift.Validatable {
     static let launch_image = Rswift.ImageResource(bundle: R.hostingBundle, name: "launch_image")
     /// Image `logo`.
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
+    /// Image `main_tabbar_activity`.
+    static let main_tabbar_activity = Rswift.ImageResource(bundle: R.hostingBundle, name: "main_tabbar_activity")
+    /// Image `main_tabbar_message`.
+    static let main_tabbar_message = Rswift.ImageResource(bundle: R.hostingBundle, name: "main_tabbar_message")
+    /// Image `main_tabbar_search`.
+    static let main_tabbar_search = Rswift.ImageResource(bundle: R.hostingBundle, name: "main_tabbar_search")
+    /// Image `main_tabbar_settings`.
+    static let main_tabbar_settings = Rswift.ImageResource(bundle: R.hostingBundle, name: "main_tabbar_settings")
+    /// Image `setting_badge_collaborator`.
+    static let setting_badge_collaborator = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_badge_collaborator")
+    /// Image `setting_badge_repository`.
+    static let setting_badge_repository = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_badge_repository")
+    /// Image `setting_badge_user`.
+    static let setting_badge_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_badge_user")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "AppLaunch", bundle: ..., traitCollection: ...)`
@@ -337,13 +359,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_cell_badge_collaborator", bundle: ..., traitCollection: ...)`
-    static func icon_cell_badge_collaborator(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_cell_badge_collaborator, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "icon_cell_badge_comment", bundle: ..., traitCollection: ...)`
     static func icon_cell_badge_comment(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_badge_comment, compatibleWith: traitCollection)
@@ -386,13 +401,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_cell_badge_repository", bundle: ..., traitCollection: ...)`
-    static func icon_cell_badge_repository(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_cell_badge_repository, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "icon_cell_badge_search", bundle: ..., traitCollection: ...)`
     static func icon_cell_badge_search(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_badge_search, compatibleWith: traitCollection)
@@ -417,13 +425,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_cell_badge_trending", bundle: ..., traitCollection: ...)`
     static func icon_cell_badge_trending(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_cell_badge_trending, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_cell_badge_user", bundle: ..., traitCollection: ...)`
-    static func icon_cell_badge_user(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_cell_badge_user, compatibleWith: traitCollection)
     }
     #endif
 
@@ -736,13 +737,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_tabbar_activity", bundle: ..., traitCollection: ...)`
-    static func icon_tabbar_activity(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_tabbar_activity, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "icon_tabbar_login", bundle: ..., traitCollection: ...)`
     static func icon_tabbar_login(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_tabbar_login, compatibleWith: traitCollection)
@@ -750,30 +744,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_tabbar_news", bundle: ..., traitCollection: ...)`
-    static func icon_tabbar_news(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_tabbar_news, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "icon_tabbar_profile", bundle: ..., traitCollection: ...)`
     static func icon_tabbar_profile(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_tabbar_profile, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_tabbar_search", bundle: ..., traitCollection: ...)`
-    static func icon_tabbar_search(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_tabbar_search, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_tabbar_settings", bundle: ..., traitCollection: ...)`
-    static func icon_tabbar_settings(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_tabbar_settings, compatibleWith: traitCollection)
     }
     #endif
 
@@ -840,12 +813,61 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "main_tabbar_activity", bundle: ..., traitCollection: ...)`
+    static func main_tabbar_activity(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.main_tabbar_activity, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "main_tabbar_message", bundle: ..., traitCollection: ...)`
+    static func main_tabbar_message(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.main_tabbar_message, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "main_tabbar_search", bundle: ..., traitCollection: ...)`
+    static func main_tabbar_search(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.main_tabbar_search, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "main_tabbar_settings", bundle: ..., traitCollection: ...)`
+    static func main_tabbar_settings(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.main_tabbar_settings, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "setting_badge_collaborator", bundle: ..., traitCollection: ...)`
+    static func setting_badge_collaborator(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.setting_badge_collaborator, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "setting_badge_repository", bundle: ..., traitCollection: ...)`
+    static func setting_badge_repository(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.setting_badge_repository, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "setting_badge_user", bundle: ..., traitCollection: ...)`
+    static func setting_badge_user(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.setting_badge_user, compatibleWith: traitCollection)
+    }
+    #endif
+
     fileprivate init() {}
   }
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 9 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 13 localization keys.
     struct localizable {
       /// Value: 元
       static let commonYuan = Rswift.StringResource(key: "Common.Yuan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -855,14 +877,22 @@ struct R: Rswift.Validatable {
       static let commonNo = Rswift.StringResource(key: "Common.No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 密码
       static let loginPassword = Rswift.StringResource(key: "Login.Password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 搜索
+      static let mainTabBarSearch = Rswift.StringResource(key: "Main.TabBar.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
       static let commonYes = Rswift.StringResource(key: "Common.Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 活动
+      static let mainTabBarActivity = Rswift.StringResource(key: "Main.TabBar.Activity", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 消息
+      static let mainTabBarMessage = Rswift.StringResource(key: "Main.TabBar.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录
       static let loginTitle = Rswift.StringResource(key: "Login.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 知道了
       static let commonISee = Rswift.StringResource(key: "Common.ISee", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确认
       static let commonOK = Rswift.StringResource(key: "Common.OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 设置
+      static let mainTabBarSetting = Rswift.StringResource(key: "Main.TabBar.Setting", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 返
       static let commonFan = Rswift.StringResource(key: "Common.Fan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
 
@@ -918,6 +948,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Login.Password", bundle: bundle, comment: "")
       }
 
+      /// Value: 搜索
+      static func mainTabBarSearch(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Main.TabBar.Search", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Main.TabBar.Search"
+        }
+
+        return NSLocalizedString("Main.TabBar.Search", bundle: bundle, comment: "")
+      }
+
       /// Value: 是
       static func commonYes(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -929,6 +972,32 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Common.Yes", bundle: bundle, comment: "")
+      }
+
+      /// Value: 活动
+      static func mainTabBarActivity(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Main.TabBar.Activity", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Main.TabBar.Activity"
+        }
+
+        return NSLocalizedString("Main.TabBar.Activity", bundle: bundle, comment: "")
+      }
+
+      /// Value: 消息
+      static func mainTabBarMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Main.TabBar.Message", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Main.TabBar.Message"
+        }
+
+        return NSLocalizedString("Main.TabBar.Message", bundle: bundle, comment: "")
       }
 
       /// Value: 登录
@@ -968,6 +1037,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Common.OK", bundle: bundle, comment: "")
+      }
+
+      /// Value: 设置
+      static func mainTabBarSetting(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Main.TabBar.Setting", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Main.TabBar.Setting"
+        }
+
+        return NSLocalizedString("Main.TabBar.Setting", bundle: bundle, comment: "")
       }
 
       /// Value: 返

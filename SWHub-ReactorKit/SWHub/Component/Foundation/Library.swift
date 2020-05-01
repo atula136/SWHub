@@ -8,14 +8,16 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import SWFrame
 
-class Library {
-
-    public static func setup() {
+class Library: SWFrame.Library {
+    
+    override class func setup() {
+        super.setup()
         self.setupKeyboardManager()
     }
     
-    static func setupKeyboardManager() {
+    class func setupKeyboardManager() {
         IQKeyboardManager.shared.enable = true
     }
     

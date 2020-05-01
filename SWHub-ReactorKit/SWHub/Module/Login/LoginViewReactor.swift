@@ -16,16 +16,22 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case login
+        case account(String?)
+        case password(String?)
     }
     
     enum Mutation {
         case setLoading(Bool)
+        case setAccount(String?)
+        case setPassword(String?)
         case setUser(User?)
     }
     
     struct State {
         var isLoading = false
         var title: String?
+        var account: String?
+        var password: String?
         var user: User?
     }
     
@@ -40,24 +46,18 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .account(let account):
+            return .just(.setAccount(account))
+        case .password(let password):
+            return .just(.setPassword(password))
         case .login:
+            guard let account = self.currentState.account else { return .empty() }
+            guard let password = self.currentState.password else { return .empty() }
             guard !self.currentState.isLoading else { return .empty() }
+            User.token = "\(account):\(password)".base64Encoded
             return .concat([
                 .just(.setLoading(true)),
-//                self.provider.auth(sender: UIViewController.topMost!).flatMap({ session -> Observable<User> in
-//                    let user1: ALBBUser = session.getUser()
-//                    let token = (user1.openId + Constant.Platform.Alibc.appSecret).qmui_md5
-//                    return self.provider.login(nickName: user1.nick, avatarUrl: user1.avatarUrl.urlEncoded, openId: user1.openId, token: token)
-//                }).flatMap({ user2 -> Observable<User?> in
-//                    return self.provider.userInfo().map { user3 -> User in
-//                        var user = user2
-//                        user.info = user3.info
-//                        user.inviter = user3.inviter
-//                        return user
-//                    }
-//                }).do(onNext: { user5 in
-//                    User.update(user5)
-//                }).catchErrorJustReturn(nil).map(Mutation.setUser),
+                self.provider.profile().map(Mutation.setUser),
                 .just(.setLoading(false)),
                 ])
         }
@@ -68,8 +68,13 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
+        case let .setAccount(account):
+            state.account = account
+        case let .setPassword(password):
+            state.password = password
         case let .setUser(user):
             state.user = user
+            User.update(user)
         }
         return state
     }
