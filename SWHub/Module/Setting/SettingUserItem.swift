@@ -25,4 +25,15 @@ class SettingUserItem: RepositoryItem {
         )
     }
     
+    override func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case .setNight(_):
+            if let user = self.model as? User {
+                state.detail = user.detail()
+            }
+        }
+        return state
+    }
+    
 }
