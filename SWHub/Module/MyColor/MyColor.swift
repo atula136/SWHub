@@ -10,7 +10,11 @@ import UIKit
 import ObjectMapper
 import SWFrame
 
-struct MyColor: ModelType, Identifiable {
+struct MyColor: ModelType, Identifiable, Eventable {
+    
+    enum Event {
+        case updateColor(ColorTheme)
+    }
     
     var id: ColorTheme?
     

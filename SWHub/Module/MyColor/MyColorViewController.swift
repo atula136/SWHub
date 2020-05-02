@@ -59,6 +59,18 @@ class MyColorViewController: CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.colorCell)
+        
+        self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { sectionItem in
+            switch sectionItem {
+            case let .color(item):
+                if let color = item.model as? MyColor, !color.checked() {
+                    let theme = ThemeType.currentTheme().withColor(color: color.id!)
+                    themeService.switch(theme)
+                    MyColor.event.onNext(.updateColor(color.id!))
+                }
+            }
+        }).disposed(by: self.disposeBag)
+        
         themeService.rx
             .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)

@@ -58,9 +58,6 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         self.collectionView.register(Reusable.projectCell)
         self.collectionView.register(Reusable.settingCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
-        themeService.rx
-            .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
-            .disposed(by: self.rx.disposeBag)
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] item in
             guard let `self` = self else { return }
             switch item {
@@ -70,6 +67,9 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 break;
             }
         }).disposed(by: self.disposeBag)
+        themeService.rx
+            .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
+            .disposed(by: self.rx.disposeBag)
     }
     
     func bind(reactor: SettingViewReactor) {

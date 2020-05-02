@@ -14,7 +14,7 @@ import Kingfisher
 import SwifterSwift
 import SWFrame
 
-class NormalItem: CollectionItem, ReactorKit.Reactor {
+class NormalItem: DefaultCollectionItem, ReactorKit.Reactor {
     
     enum AccessoryType: Equatable {
         case none
