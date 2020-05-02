@@ -26,6 +26,10 @@
 		790767B02456C42000CD0AAF /* GithubNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790767AF2456C42000CD0AAF /* GithubNetworking.swift */; };
 		790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790767B32456CB3D00CD0AAF /* ResponseType.swift */; };
 		790767B62456CE5500CD0AAF /* ProviderType+Github.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790767B52456CE5500CD0AAF /* ProviderType+Github.swift */; };
+		79094568245DD17900D69366 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79094567245DD17900D69366 /* MyColor.swift */; };
+		7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79094569245DD1F200D69366 /* MyColorItem.swift */; };
+		7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456B245DD1F900D69366 /* MyColorCell.swift */; };
+		7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456D245DD2E200D69366 /* MyColorSection.swift */; };
 		792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D642455561D00856757 /* LoginViewReactor.swift */; };
 		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
 		792F6D692455563700856757 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User.swift */; };
@@ -112,6 +116,10 @@
 		790767AF2456C42000CD0AAF /* GithubNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubNetworking.swift; sourceTree = "<group>"; };
 		790767B32456CB3D00CD0AAF /* ResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
 		790767B52456CE5500CD0AAF /* ProviderType+Github.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProviderType+Github.swift"; sourceTree = "<group>"; };
+		79094567245DD17900D69366 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
+		79094569245DD1F200D69366 /* MyColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorItem.swift; sourceTree = "<group>"; };
+		7909456B245DD1F900D69366 /* MyColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorCell.swift; sourceTree = "<group>"; };
+		7909456D245DD2E200D69366 /* MyColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorSection.swift; sourceTree = "<group>"; };
 		7924EE2824554DF8007F7FDE /* SWHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWHub.entitlements; sourceTree = "<group>"; };
 		792F6D642455561D00856757 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +215,10 @@
 			children = (
 				79042E95245D8FC200DB30ED /* MyColorViewReactor.swift */,
 				79042E97245D8FCC00DB30ED /* MyColorViewController.swift */,
+				79094567245DD17900D69366 /* MyColor.swift */,
+				79094569245DD1F200D69366 /* MyColorItem.swift */,
+				7909456B245DD1F900D69366 /* MyColorCell.swift */,
+				7909456D245DD2E200D69366 /* MyColorSection.swift */,
 			);
 			path = MyColor;
 			sourceTree = "<group>";
@@ -665,6 +677,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */,
 				7906C32124555DB60030764D /* Router.swift in Sources */,
 				79E67A43245C04D100FE6093 /* NormalItem.swift in Sources */,
 				7976ACA4245826FA00093046 /* MessageViewReactor.swift in Sources */,
@@ -683,11 +696,13 @@
 				79E67A47245C0E5700FE6093 /* SupplementaryView.swift in Sources */,
 				7906C317245558B10030764D /* Theme.swift in Sources */,
 				79F936B0245C458A00AA775A /* RepositoryCell.swift in Sources */,
+				7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */,
 				7906C32B24555DFD0030764D /* Appearance.swift in Sources */,
 				79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */,
 				7976ACB82459335600093046 /* SettingSection.swift in Sources */,
 				7976ACBB2459339100093046 /* CollectionItem.swift in Sources */,
 				79B2E56824598DC400D6E162 /* Setting.swift in Sources */,
+				79094568245DD17900D69366 /* MyColor.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
 				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
@@ -699,6 +714,7 @@
 				7906C32524555DD60030764D /* Constant.swift in Sources */,
 				7976ACB22458274300093046 /* SettingViewController.swift in Sources */,
 				79042E96245D8FC200DB30ED /* MyColorViewReactor.swift in Sources */,
+				7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */,
 				7976ACBF245933E200093046 /* CollectionViewReactor.swift in Sources */,
 				790767B02456C42000CD0AAF /* GithubNetworking.swift in Sources */,
 				7976ACC3245934CA00093046 /* SettingUserItem.swift in Sources */,

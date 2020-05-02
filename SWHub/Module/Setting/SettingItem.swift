@@ -19,12 +19,10 @@ class SettingItem: NormalItem {
         super.init(model)
         guard let setting = model as? Setting else { return }
         self.initialState = State(
-            showIndicator: setting.showIndicator,
-            showSwitcher: setting.showSwitcher,
-            switched: setting.switched,
+            icon: setting.icon,
             title: setting.title,
             detail: setting.detail,
-            icon: setting.icon
+            accessory: setting.accessory
         )
     }
     

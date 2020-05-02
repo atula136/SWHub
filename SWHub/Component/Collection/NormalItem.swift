@@ -16,15 +16,32 @@ import SWFrame
 
 class NormalItem: CollectionItem, ReactorKit.Reactor {
     
+    enum AccessoryType: Equatable {
+        case none
+        case indicator
+        case checkmark
+        case switcher(Bool)
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            switch (lhs, rhs) {
+            case (.none, .none),
+                 (.indicator, .indicator),
+                 (.checkmark, .checkmark),
+                 (.switcher, .switcher):
+                return true
+            default:
+                return false
+            }
+        }
+    }
+    
     typealias Action = NoAction
     
     struct State {
-        var showIndicator = true
-        var showSwitcher = false
-        var switched = false
+        var icon: ImageSource?
         var title: String?
         var detail: NSAttributedString?
-        var icon: ImageSource?
+        var accessory = AccessoryType.indicator
     }
     
     var initialState = State()

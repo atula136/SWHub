@@ -51,9 +51,7 @@ struct Setting: ModelType, Identifiable, Eventable {
     }
     
     var id: Category?
-    var showIndicator = true
-    var showSwitcher = false
-    var switched = false
+    var accessory = NormalItem.AccessoryType.indicator
     var title: String?
     var detail: NSAttributedString?
     var icon: ImageSource?
@@ -62,10 +60,9 @@ struct Setting: ModelType, Identifiable, Eventable {
         
     }
     
-    init(id: Category, showSwitcher: Bool = false, switched: Bool = false) {
+    init(id: Category, accessory: NormalItem.AccessoryType = .indicator) {
         self.id = id
-        self.showSwitcher = showSwitcher
-        self.switched = switched
+        self.accessory = accessory
         self.title = id.title
         self.icon = id.icon
     }

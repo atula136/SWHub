@@ -52,15 +52,14 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             guard self.currentState.isLoading == false else { return .empty() }
             var sections: [[ModelType]] = []
             if let user = User.current() {
-                var logout = Setting(id: .logout)
-                logout.showIndicator = false
+                let logout = Setting(id: .logout)
                 sections.append([user, logout])
             }
             if let repository = Repository.current() {
                 sections.append([repository])
             }
             var preference: [ModelType] = []
-            preference.append(Setting(id: .night, showSwitcher: true, switched: ThemeType.currentTheme().isDark))
+            preference.append(Setting(id: .night, accessory: .switcher(ThemeType.currentTheme().isDark)))
             preference.append(Setting(id: .color))
             sections.append(preference)
             return .concat([

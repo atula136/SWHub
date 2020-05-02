@@ -34,6 +34,7 @@ class NormalCell: CollectionCell, ReactorKit.View {
     
     lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         imageView.sizeToFit()
         return imageView
     }()
@@ -44,7 +45,7 @@ class NormalCell: CollectionCell, ReactorKit.View {
         return imageView
     }()
     
-    lazy var indicatorImageView: UIImageView = {
+    lazy var accessoryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.indicator.template
         imageView.sizeToFit()
@@ -62,14 +63,18 @@ class NormalCell: CollectionCell, ReactorKit.View {
         
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.detailLabel)
+        
+        self.iconImageView.height = flat(frame.size.height * 0.6)
+        self.iconImageView.width = self.iconImageView.height
         self.contentView.addSubview(self.iconImageView)
+        
         self.contentView.addSubview(self.avatarImageView)
-        self.contentView.addSubview(self.indicatorImageView)
+        self.contentView.addSubview(self.accessoryImageView)
         self.contentView.addSubview(self.switcher)
         
         themeService.rx
             .bind({ $0.textColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
-            .bind({ $0.foregroundColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
+            .bind({ $0.foregroundColor }, to: [self.iconImageView.rx.tintColor, self.accessoryImageView.rx.tintColor])
             .disposed(by: self.rx.disposeBag)
     }
     
@@ -83,35 +88,31 @@ class NormalCell: CollectionCell, ReactorKit.View {
         self.detailLabel.text = nil
         self.iconImageView.image = nil
         self.avatarImageView.image = nil
-        self.indicatorImageView.isHidden = true
+        self.accessoryImageView.image = nil
         self.switcher.isHidden = true
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.indicatorImageView.top = self.indicatorImageView.topWhenCenter
-        self.indicatorImageView.right = self.contentView.width - 15
+        self.accessoryImageView.top = self.accessoryImageView.topWhenCenter
+        self.accessoryImageView.right = self.contentView.width - 15
         
-        self.switcher.right = self.indicatorImageView.right
+        self.switcher.right = self.accessoryImageView.right
         self.switcher.top = self.switcher.topWhenCenter
         
-        self.iconImageView.sizeToFit()
-        if self.iconImageView.isHidden {
-            self.iconImageView.frame = .zero
-        }
         self.iconImageView.left = 15
         self.iconImageView.top = self.iconImageView.topWhenCenter
         
         self.titleLabel.sizeToFit()
-        self.titleLabel.left = self.iconImageView.right + (self.iconImageView.isHidden ? 0.f : 10.f)
+        self.titleLabel.left = self.iconImageView.isHidden ? self.iconImageView.left : self.iconImageView.right + 10.f
         self.titleLabel.top = self.titleLabel.topWhenCenter
         
         self.detailLabel.sizeToFit()
         self.detailLabel.top = self.detailLabel.topWhenCenter
-        if self.indicatorImageView.isHidden {
-            self.detailLabel.right = self.indicatorImageView.right
+        if self.accessoryImageView.isHidden {
+            self.detailLabel.right = self.accessoryImageView.right
         } else {
-            self.detailLabel.right = self.indicatorImageView.left - 8
+            self.detailLabel.right = self.accessoryImageView.left - 8
         }
         
         if self.avatarImageView.isHidden {
@@ -128,9 +129,6 @@ class NormalCell: CollectionCell, ReactorKit.View {
     
     func bind(reactor: NormalItem) {
         super.bind(item: reactor)
-        reactor.state.map{ !$0.showIndicator || $0.showSwitcher }
-            .bind(to: self.indicatorImageView.rx.isHidden)
-            .disposed(by: self.disposeBag)
         reactor.state.map{ $0.title }
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
@@ -143,12 +141,30 @@ class NormalCell: CollectionCell, ReactorKit.View {
         reactor.state.map{ $0.icon == nil }
             .bind(to: self.iconImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ !$0.showSwitcher }
+        reactor.state.map{ $0.accessory != .indicator && $0.accessory != .checkmark }
+            .bind(to: self.accessoryImageView.rx.isHidden)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { state -> UIImage? in
+            switch state.accessory {
+            case .indicator:
+                return UIImage.indicator.template
+            case .checkmark:
+                return UIImage.checkmark1.template
+            default:
+                return nil
+            }
+        }.bind(to: self.accessoryImageView.rx.image).disposed(by: self.disposeBag)
+        reactor.state.map{ $0.accessory != .switcher(true) && $0.accessory != .switcher(false) }
             .bind(to: self.switcher.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.switched }
-            .bind(to: self.switcher.rx.isOn)
-            .disposed(by: self.disposeBag)
+        reactor.state.map { state -> Bool in
+            switch state.accessory {
+            case let .switcher(isOn):
+                return isOn
+            default:
+                return false
+            }
+        }.bind(to: self.switcher.rx.isOn).disposed(by: self.disposeBag)
         reactor.state.map{ _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)

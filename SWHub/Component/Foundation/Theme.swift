@@ -188,12 +188,15 @@ extension ThemeType {
     }
     
     static func currentTheme() -> ThemeType {
-        let defaults = UserDefaults.standard
-        let isDark = defaults.bool(forKey: Keys.isDark)
-        let colorTheme = ColorTheme(rawValue: defaults.integer(forKey: Keys.themeIndex)) ?? ColorTheme.red
+        let isDark = UserDefaults.standard.bool(forKey: Keys.isDark)
+        let colorTheme = self.colorTheme()
         let theme = isDark ? ThemeType.dark(color: colorTheme) : ThemeType.light(color: colorTheme)
         theme.save()
         return theme
+    }
+    
+    static func colorTheme() -> ColorTheme {
+        return ColorTheme(rawValue: UserDefaults.standard.integer(forKey: Keys.themeIndex)) ?? ColorTheme.red
     }
 
     func save() {
