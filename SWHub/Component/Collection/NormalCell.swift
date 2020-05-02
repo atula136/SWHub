@@ -147,7 +147,7 @@ class NormalCell: CollectionCell, ReactorKit.View {
             .bind(to: self.switcher.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.switched }
-            .bind(to: self.switcher.rx.value)
+            .bind(to: self.switcher.rx.isOn)
             .disposed(by: self.disposeBag)
         reactor.state.map{ _ in }
             .bind(to: self.rx.setNeedsLayout)

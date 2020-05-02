@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 import RxOptional
 import ReactorKit
-import HBDNavigationBar
 import CGFloatLiteral
 import Rswift
 import URLNavigator
@@ -145,7 +144,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             .bind(to: self.rx.loading(active: true))
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.title }
-            .bind(to: self.navigationItem.rx.title)
+            .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
         Observable.combineLatest(reactor.state.map { $0.account }.replaceNilWith(""), reactor.state.map { $0.password }.replaceNilWith(""))
             .map { $0.isNotEmpty && $1.isNotEmpty }

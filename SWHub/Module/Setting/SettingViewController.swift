@@ -80,7 +80,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
         // state
         reactor.state.map { $0.title }
-            .bind(to: self.navigationItem.rx.title)
+            .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
@@ -102,7 +102,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 case .night(let item):
                     let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
                     cell.bind(reactor: item)
-                    cell.rx.switched.subscribe(onNext: { isDark in
+                    cell.rx.switched.skip(1).subscribe(onNext: { isDark in
                         var theme = ThemeType.currentTheme()
                         if theme.isDark != isDark {
                             theme = theme.toggled()

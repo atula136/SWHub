@@ -21,6 +21,7 @@ class SettingItem: NormalItem {
         self.initialState = State(
             showIndicator: setting.showIndicator,
             showSwitcher: setting.showSwitcher,
+            switched: setting.switched,
             title: setting.title,
             detail: setting.detail,
             icon: setting.icon

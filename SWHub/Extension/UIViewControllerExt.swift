@@ -55,16 +55,16 @@ extension UIViewController {
 //
 //    }
     
-    @objc func my_viewDidLoad() {
-        self.my_viewDidLoad()
-        globalStatusBarStyle.mapToVoid().subscribe(onNext: { [weak self] _ in
-            guard let `self` = self else { return }
-            self.setNeedsStatusBarAppearanceUpdate()
-        }).disposed(by: self.rx.disposeBag)
-    }
-    
-    @objc var my_preferredStatusBarStyle: UIStatusBarStyle {
-        return globalStatusBarStyle.value
-    }
+//    @objc func my_viewDidLoad() {
+//        self.my_viewDidLoad()
+//        globalStatusBarStyle.mapToVoid().subscribe(onNext: { [weak self] _ in
+//            guard let `self` = self else { return }
+//            self.setNeedsStatusBarAppearanceUpdate()
+//        }).disposed(by: self.rx.disposeBag)
+//    }
+//    
+//    @objc var my_preferredStatusBarStyle: UIStatusBarStyle {
+//        return globalStatusBarStyle.value
+//    }
     
 }

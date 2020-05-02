@@ -70,8 +70,6 @@ target 'SWHub' do
   # pod 'ReactorKit', '2.0.1'
   
   # 界面库
-  # pod 'Toast-Swift', '5.0.0'
-  # pod 'HBDNavigationBar', '1.6.6'
   
   # 资源库
   
