@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		79020CB124559CDA00FF1978 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 79020CB024559CDA00FF1978 /* readme.txt */; };
+		79042E96245D8FC200DB30ED /* MyColorViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79042E95245D8FC200DB30ED /* MyColorViewReactor.swift */; };
+		79042E98245D8FCC00DB30ED /* MyColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79042E97245D8FCC00DB30ED /* MyColorViewController.swift */; };
 		7906832C24564EAB00BFDCB2 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7906832B24564EAB00BFDCB2 /* AuthManager.swift */; };
 		7906C317245558B10030764D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7906C316245558B10030764D /* Theme.swift */; };
 		7906C319245558FD0030764D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7906C318245558FD0030764D /* Localizable.strings */; };
@@ -60,7 +62,6 @@
 		79B2E56C2459916100D6E162 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2E56B2459916100D6E162 /* SettingCell.swift */; };
 		79B2E56E245BD88900D6E162 /* IntExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2E56D245BD88900D6E162 /* IntExt.swift */; };
 		79DAF291245D728D0006E6A5 /* NavigationBarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */; };
-		79DAF293245D88290006E6A5 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DAF292245D88290006E6A5 /* Global.swift */; };
 		79E67A43245C04D100FE6093 /* NormalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E67A42245C04D100FE6093 /* NormalItem.swift */; };
 		79E67A45245C04DB00FE6093 /* NormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E67A44245C04DB00FE6093 /* NormalCell.swift */; };
 		79E67A47245C0E5700FE6093 /* SupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E67A46245C0E5700FE6093 /* SupplementaryView.swift */; };
@@ -93,6 +94,8 @@
 /* Begin PBXFileReference section */
 		1D533708BEF6D86D6FB5EB17 /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
 		79020CB024559CDA00FF1978 /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		79042E95245D8FC200DB30ED /* MyColorViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorViewReactor.swift; sourceTree = "<group>"; };
+		79042E97245D8FCC00DB30ED /* MyColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorViewController.swift; sourceTree = "<group>"; };
 		7906832B24564EAB00BFDCB2 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		7906C316245558B10030764D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7906C318245558FD0030764D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -152,7 +155,6 @@
 		79B2E56B2459916100D6E162 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		79B2E56D245BD88900D6E162 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
 		79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExt.swift; sourceTree = "<group>"; };
-		79DAF292245D88290006E6A5 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		79E67A42245C04D100FE6093 /* NormalItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalItem.swift; sourceTree = "<group>"; };
 		79E67A44245C04DB00FE6093 /* NormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCell.swift; sourceTree = "<group>"; };
 		79E67A46245C0E5700FE6093 /* SupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		79042E94245D8FB200DB30ED /* MyColor */ = {
+			isa = PBXGroup;
+			children = (
+				79042E95245D8FC200DB30ED /* MyColorViewReactor.swift */,
+				79042E97245D8FCC00DB30ED /* MyColorViewController.swift */,
+			);
+			path = MyColor;
+			sourceTree = "<group>";
+		};
 		7906C3152455589B0030764D /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,7 +221,6 @@
 				7906C32624555DE40030764D /* Enumeration.swift */,
 				7906C32824555DEF0030764D /* Library.swift */,
 				7906C32A24555DFD0030764D /* Appearance.swift */,
-				79DAF292245D88290006E6A5 /* Global.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -229,6 +239,7 @@
 		792F6D5E245555B700856757 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				79042E94245D8FB200DB30ED /* MyColor */,
 				79F936AA245C3B3800AA775A /* Repository */,
 				7976ACA2245826E900093046 /* Setting */,
 				7976ACA1245826E400093046 /* Search */,
@@ -680,13 +691,14 @@
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
 				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
+				79042E98245D8FCC00DB30ED /* MyColorViewController.swift in Sources */,
 				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
 				7906C31B245559180030764D /* R.generated.swift in Sources */,
-				79DAF293245D88290006E6A5 /* Global.swift in Sources */,
 				7976ACA82458271000093046 /* ActivityViewReactor.swift in Sources */,
 				79E67A45245C04DB00FE6093 /* NormalCell.swift in Sources */,
 				7906C32524555DD60030764D /* Constant.swift in Sources */,
 				7976ACB22458274300093046 /* SettingViewController.swift in Sources */,
+				79042E96245D8FC200DB30ED /* MyColorViewReactor.swift in Sources */,
 				7976ACBF245933E200093046 /* CollectionViewReactor.swift in Sources */,
 				790767B02456C42000CD0AAF /* GithubNetworking.swift in Sources */,
 				7976ACC3245934CA00093046 /* SettingUserItem.swift in Sources */,

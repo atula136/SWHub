@@ -19,6 +19,7 @@ enum Router {
     case toast
     case login
     case setting
+    case color
     case help
     case category
     
@@ -69,6 +70,8 @@ enum Router {
             path = "login"
         case .setting:
             path = "setting"
+        case .color:
+            path = "color"
         case .help:
             path = "help"
         case .category:

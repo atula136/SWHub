@@ -10,7 +10,11 @@ import UIKit
 import ObjectMapper
 import SWFrame
 
-struct Setting: ModelType, Identifiable {
+struct Setting: ModelType, Identifiable, Eventable {
+    
+    enum Event {
+        case night(Bool)
+    }
     
     enum Category: Int, Codable {
         case logout

@@ -53,7 +53,7 @@ class RepositoryItem: CollectionItem, ReactorKit.Reactor {
     }
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let nightEvent = Global.event.flatMap { event -> Observable<Mutation> in
+        let nightEvent = Setting.event.flatMap { event -> Observable<Mutation> in
             switch event {
             case let .night(isDark):
                 return .just(.setNight(isDark))

@@ -108,7 +108,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                             theme = theme.toggled()
                         }
                         themeService.switch(theme)
-                        Global.event.onNext(.night(isDark))
+                        Setting.event.onNext(.night(isDark))
                     }).disposed(by: cell.disposeBag)
                     return cell
                 case .logout(let item), .theme(let item):
