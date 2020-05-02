@@ -61,12 +61,15 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         themeService.rx
             .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
-//        if let item = self.tabBarItem {
-//            themeService.rx
-//                .bind({ [NSAttributedString.Key.foregroundColor: $0.highlightedColor] }, to: item.rx.titleTextAttributes(for: .normal))
-//                // .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: item.rx.titleTextAttributes(for: .selected))
-//                .disposed(by: self.rx.disposeBag)
-//        }
+        self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] item in
+            guard let `self` = self else { return }
+            switch item {
+            case .color:
+                self.navigator.push(Router.color.url)
+            default:
+                break;
+            }
+        }).disposed(by: self.disposeBag)
     }
     
     func bind(reactor: SettingViewReactor) {
@@ -111,7 +114,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         Setting.event.onNext(.night(isDark))
                     }).disposed(by: cell.disposeBag)
                     return cell
-                case .logout(let item), .theme(let item):
+                case .logout(let item), .color(let item):
                     let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
@@ -149,7 +152,7 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
             return Reusable.userCell.class.size(width: width, item: item)
         case let .project(item):
             return Reusable.projectCell.class.size(width: width, item: item)
-        case .logout(let item), .night(let item), .theme(let item):
+        case .logout(let item), .night(let item), .color(let item):
             return Reusable.settingCell.class.size(width: width, item: item)
         }
     }

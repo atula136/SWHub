@@ -81,6 +81,22 @@ enum Router {
     }
     
     static func initialize(_ provider: ProviderType, _ navigator: NavigatorType) {
+        let parameters = { (url: URLConvertible, values: [String: Any], context: Any?) -> Dictionary<String, Any>? in
+            var parameters: Dictionary<String, Any> = url.queryParameters
+            for (key, value) in values {
+                parameters[key] = value
+            }
+            if let context = context {
+                parameters[Parameter.routeContext] = context
+            }
+            return parameters
+        }
+        
+        // 1. 颜色主题
+        navigator.register(self.color.url) { url, values, context in
+            MyColorViewController(navigator, MyColorViewReactor(provider, parameters(url, values, context)))
+        }
+        
 //        // 1. 网页
 //        let webFactory: ViewControllerFactory = { (url: URLConvertible, values: [String: Any], context: Any?) in
 //            guard let url = url.urlValue else { return nil }

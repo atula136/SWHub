@@ -42,5 +42,5 @@ enum SettingSectionItem {
     case project(SettingProjectItem)
     case logout(SettingItem)
     case night(SettingItem)
-    case theme(SettingItem)
+    case color(SettingItem)
 }

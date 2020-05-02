@@ -19,7 +19,7 @@ struct Setting: ModelType, Identifiable, Eventable {
     enum Category: Int, Codable {
         case logout
         case night
-        case theme
+        case color
         
         var title: String {
             switch self {
@@ -27,7 +27,7 @@ struct Setting: ModelType, Identifiable, Eventable {
                 return R.string.localizable.settingAccountLogout()
             case .night:
                 return R.string.localizable.settingPreferencesNight()
-            case .theme:
+            case .color:
                 return R.string.localizable.settingPreferencesTheme()
             }
         }
@@ -38,7 +38,7 @@ struct Setting: ModelType, Identifiable, Eventable {
                 return R.image.setting_cell_logout()?.template
             case .night:
                 return R.image.setting_cell_night()?.template
-            case .theme:
+            case .color:
                 return R.image.setting_cell_theme()?.template
             }
         }
@@ -46,7 +46,7 @@ struct Setting: ModelType, Identifiable, Eventable {
         enum CodingKeys: String, CodingKey {
             case logout     = "logout"
             case night      = "night"
-            case theme      = "theme"
+            case color      = "color"
         }
     }
     

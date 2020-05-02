@@ -61,7 +61,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             }
             var preference: [ModelType] = []
             preference.append(Setting(id: .night, showSwitcher: true, switched: ThemeType.currentTheme().isDark))
-            preference.append(Setting(id: .theme))
+            preference.append(Setting(id: .color))
             sections.append(preference)
             return .concat([
                 .just(.setLoading(true)),
@@ -98,8 +98,8 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                             items.append(.logout(item))
                         case .night:
                             items.append(.night(item))
-                        case .theme:
-                            items.append(.theme(item))
+                        case .color:
+                            items.append(.color(item))
                         }
                     }
                 }
