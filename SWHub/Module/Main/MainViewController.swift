@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import ReactorKit
 import SwifterSwift
 import URLNavigator
+import NSObject_Rx
 import SWFrame
 
 class MainViewController: TabBarViewController, ReactorKit.View {
@@ -29,6 +32,29 @@ class MainViewController: TabBarViewController, ReactorKit.View {
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
+        themeService.rx
+            .bind({ $0.primaryColor }, to: self.innerTabBarController.tabBar.rx.barTintColor)
+            .bind({ $0.foregroundColor }, to: self.innerTabBarController.tabBar.rx.tintColor)
+            //.bind({ $0.textColor }, to: self.innerTabBarController.tabBar.rx.imageTintColor)
+            //.bind({ $0.foregroundColor }, to: self.innerTabBarController.tabBar.rx.selectedImageTintColor)
+            .disposed(by: self.rx.disposeBag)
+        if #available(iOS 10.0, *) {
+            themeService.rx
+                .bind({ $0.textColor }, to: self.innerTabBarController.tabBar.rx.unselectedItemTintColor)
+                .disposed(by: self.rx.disposeBag)
+        }
+         
+        themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] theme in
+            guard let `self` = self else { return }
+            if let items = self.innerTabBarController.tabBar.items {
+                let color = theme.associatedObject.textColor
+                let selectedColor = theme.associatedObject.foregroundColor
+                for item in items {
+                    item.image = item.image?.qmui_image(withTintColor: color)?.original
+                    item.selectedImage = item.selectedImage?.qmui_image(withTintColor: selectedColor)?.original
+                }
+            }
+        }).disposed(by: self.rx.disposeBag)
     }
     
     // MARK: - Method
@@ -65,10 +91,13 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         }
         viewController?.hidesBottomBarWhenPushed = false
         if let item = viewController?.tabBarItem {
-            themeService.rx
-                .bind({ [NSAttributedString.Key.foregroundColor: $0.textColor] }, to: item.rx.titleTextAttributes(for: .normal))
-                .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: item.rx.titleTextAttributes(for: .selected))
-                .disposed(by: self.disposeBag)
+            if #available(iOS 10.0, *) {
+            } else {
+                themeService.rx
+                    .bind({ [NSAttributedString.Key.foregroundColor: $0.textColor] }, to: item.rx.titleTextAttributes(for: .normal))
+                    .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: item.rx.titleTextAttributes(for: .selected))
+                    .disposed(by: self.rx.disposeBag)
+            }
         }
         return viewController!
     }

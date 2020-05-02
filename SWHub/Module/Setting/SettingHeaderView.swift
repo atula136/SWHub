@@ -25,7 +25,7 @@ class SettingHeaderView: SupplementaryView {
         self.addSubview(self.titleLabel)
         themeService.rx
             .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
-            .disposed(by: self.disposeBag)
+            .disposed(by: self.rx.disposeBag)
     }
     
     required init?(coder: NSCoder) {

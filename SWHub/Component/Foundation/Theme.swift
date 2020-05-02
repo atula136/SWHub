@@ -13,6 +13,7 @@ import RxTheme
 import SwifterSwift
 import SWFrame
 
+let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 let themeService = ThemeType.service(initial: ThemeType.currentTheme())
 
 protocol Theme {
@@ -50,7 +51,7 @@ struct LightTheme: Theme {
     let indicatorColor = UIColor.orange
     let separatorColor = UIColor(0xd1d1d1)!
     let placeholderColor = UIColor.Material.grey
-    let highlightedColor = UIColor(0xffca03)!
+    let highlightedColor = UIColor.green
     let barStyle = UIBarStyle.default
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light

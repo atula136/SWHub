@@ -60,7 +60,13 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         self.collectionView.register(Reusable.headerView, kind: .header)
         themeService.rx
             .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
-            .disposed(by: self.disposeBag)
+            .disposed(by: self.rx.disposeBag)
+//        if let item = self.tabBarItem {
+//            themeService.rx
+//                .bind({ [NSAttributedString.Key.foregroundColor: $0.highlightedColor] }, to: item.rx.titleTextAttributes(for: .normal))
+//                // .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: item.rx.titleTextAttributes(for: .selected))
+//                .disposed(by: self.rx.disposeBag)
+//        }
     }
     
     func bind(reactor: SettingViewReactor) {

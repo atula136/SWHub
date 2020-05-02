@@ -70,7 +70,7 @@ class NormalCell: CollectionCell, ReactorKit.View {
         themeService.rx
             .bind({ $0.textColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
             .bind({ $0.foregroundColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
-            .disposed(by: self.disposeBag)
+            .disposed(by: self.rx.disposeBag)
     }
     
     required init?(coder: NSCoder) {

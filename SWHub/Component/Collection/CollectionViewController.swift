@@ -15,7 +15,7 @@ class CollectionViewController: SWFrame.CollectionViewController {
         super.viewDidLoad()
         themeService.rx
             .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
-            .disposed(by: self.disposeBag)
+            .disposed(by: self.rx.disposeBag)
     }
     
 //    override func setupRefresh(should: Bool) {

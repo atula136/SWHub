@@ -84,8 +84,8 @@ class RepositoryCell: CollectionCell, ReactorKit.View {
         themeService.rx
             .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.footColor }, to: self.subtitleLabel.rx.textColor)
-            .bind({ $0.secondaryColor }, to: self.indicatorImageView.rx.tintColor)
-            .disposed(by: self.disposeBag)
+            .bind({ $0.foregroundColor }, to: self.indicatorImageView.rx.tintColor)
+            .disposed(by: self.rx.disposeBag)
     }
     
     required init?(coder: NSCoder) {

@@ -19,7 +19,7 @@ class SupplementaryView: BaseSupplementaryView {
         super.init(frame: frame)
         themeService.rx
             .bind({ $0.primaryColor }, to: self.rx.backgroundColor)
-            .disposed(by: self.disposeBag)
+            .disposed(by: self.rx.disposeBag)
     }
     
     required init?(coder: NSCoder) {

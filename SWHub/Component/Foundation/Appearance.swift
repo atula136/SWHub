@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import NSObject_Rx
 
 class Appearance {
     
@@ -17,8 +18,8 @@ class Appearance {
         // 导航栏
 //        let navBar = UINavigationBar.appearance()
 //        themeService.rx
-//            .bind({ $0.backgroundColor }, to: navBar.rx.barTintColor)
-//            .bind({ $0.textColor }, to: navBar.rx.tintColor)
+//            .bind({ $0.primaryColor }, to: navBar.rx.barTintColor)
+//            .bind({ $0.foregroundColor }, to: navBar.rx.tintColor)
 //            .bind({ [.foregroundColor: $0.textColor, .font: UIFont.systemFont(ofSize: 17)] }, to: navBar.rx.titleTextAttributes)
 //            .disposed(by: self.disposeBag)
 //        navBar.isTranslucent = false

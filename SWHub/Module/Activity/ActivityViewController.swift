@@ -27,6 +27,16 @@ class ActivityViewController: BaseViewController, ReactorKit.View {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        if let item = self.tabBarItem {
+//            themeService.rx
+//                .bind({ [NSAttributedString.Key.foregroundColor: $0.highlightedColor] }, to: item.rx.titleTextAttributes(for: .normal))
+//                // .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: item.rx.titleTextAttributes(for: .selected))
+//                .disposed(by: self.rx.disposeBag)
+//        }
+    }
+    
     func bind(reactor: ActivityViewReactor) {
         super.bind(reactor: reactor)
     }

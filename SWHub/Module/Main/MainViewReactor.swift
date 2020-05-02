@@ -16,7 +16,7 @@ class MainViewReactor: TabBarViewReactor, ReactorKit.Reactor {
     
     struct State {
         let keys: [MainKey] = [
-            .message, .search, .activity, .setting
+            .search, .message, .setting
         ]
     }
     

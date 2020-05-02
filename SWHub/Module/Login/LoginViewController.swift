@@ -91,7 +91,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             .bind({ UIImage(color: $0.foregroundColor.withAlphaComponent(0.9), size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .selected))
             .bind({ UIImage(color: $0.foregroundColor.withAlphaComponent(0.6), size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .disabled))
             .bind({ $0.keyboardAppearance }, to: [self.accountField.rx.keyboardAppearance, self.passwordField.rx.keyboardAppearance])
-            .disposed(by: self.disposeBag)
+            .disposed(by: self.rx.disposeBag)
     }
     
     override func viewDidLayoutSubviews() {

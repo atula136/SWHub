@@ -84,7 +84,7 @@ class SettingUserCell: RepositoryCell {
 //        self.contentView.addSubview(self.indicatorImageView)
 //
 //        themeService.rx
-//            .bind({ $0.secondaryColor }, to: self.indicatorImageView.rx.tintColor)
+//            .bind({ $0.foregroundColor }, to: self.indicatorImageView.rx.tintColor)
 //            .disposed(by: self.disposeBag)
 //    }
 //

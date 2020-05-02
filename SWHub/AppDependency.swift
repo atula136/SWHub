@@ -12,7 +12,7 @@ import RxCocoa
 import URLNavigator
 import SWFrame
 
-final class AppDependency: AppDependencyType {
+final class AppDependency: NSObject, AppDependencyType {
     
     var window: UIWindow!
     let navigator: NavigatorType
@@ -21,7 +21,7 @@ final class AppDependency: AppDependencyType {
     
     static var shared = AppDependency()
     
-    init() {
+    override init() {
         self.navigator = Navigator()
         self.provider = Provider()
     }
@@ -45,6 +45,10 @@ final class AppDependency: AppDependencyType {
                 self.window.makeKeyAndVisible()
             }
         }).disposed(by: self.disposeBag)
+        
+        themeService.rx
+            .bind({ $0.statusBarStyle }, to: UIApplication.shared.rx.statusBarStyle)
+            .disposed(by: self.rx.disposeBag)
     }
     
     func application(_ application: UIApplication, entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) {

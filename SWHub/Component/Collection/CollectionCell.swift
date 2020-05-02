@@ -14,8 +14,8 @@ class CollectionCell: BaseCollectionCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         themeService.rx
-            .bind({ $0.primaryColor }, to: self.rx.backgroundColor)
-            .disposed(by: self.disposeBag)
+            .bind({ $0.backgroundColor }, to: self.contentView.rx.backgroundColor)
+            .disposed(by: self.rx.disposeBag)
     }
     
     required init?(coder: NSCoder) {

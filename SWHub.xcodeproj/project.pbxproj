@@ -47,6 +47,9 @@
 		7976ACC1245933F000093046 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACC0245933F000093046 /* CollectionViewController.swift */; };
 		7976ACC3245934CA00093046 /* SettingUserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACC2245934CA00093046 /* SettingUserItem.swift */; };
 		7976ACC5245934D600093046 /* SettingUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACC4245934D600093046 /* SettingUserCell.swift */; };
+		799547CE245D4403002A7999 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CD245D4403002A7999 /* NavigationController.swift */; };
+		799547D0245D4998002A7999 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CF245D4998002A7999 /* UIApplicationExt.swift */; };
+		799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547D3245D607F002A7999 /* UIViewControllerExt.swift */; };
 		79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4A8624554B08001BDB90 /* AppDelegate.swift */; };
 		79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A8F24554B09001BDB90 /* Assets.xcassets */; };
 		79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A9124554B09001BDB90 /* LaunchScreen.storyboard */; };
@@ -128,6 +131,9 @@
 		7976ACC0245933F000093046 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		7976ACC2245934CA00093046 /* SettingUserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserItem.swift; sourceTree = "<group>"; };
 		7976ACC4245934D600093046 /* SettingUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserCell.swift; sourceTree = "<group>"; };
+		799547CD245D4403002A7999 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		799547CF245D4998002A7999 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
+		799547D3245D607F002A7999 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		79AF4A8324554B08001BDB90 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AF4A8624554B08001BDB90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79AF4A8F24554B09001BDB90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -234,6 +240,8 @@
 			children = (
 				7976ACB52458494A00093046 /* UIColorExt.swift */,
 				79B2E56D245BD88900D6E162 /* IntExt.swift */,
+				799547CF245D4998002A7999 /* UIApplicationExt.swift */,
+				799547D3245D607F002A7999 /* UIViewControllerExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -241,6 +249,7 @@
 		792F6D60245555C800856757 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				799547CC245D43F3002A7999 /* Navigation */,
 				7976ACB92459338200093046 /* Collection */,
 				790767AC2456C26F00CD0AAF /* Network */,
 				7906C3152455589B0030764D /* Foundation */,
@@ -343,6 +352,14 @@
 				79E67A48245C0E9000FE6093 /* SupplementaryReactor.swift */,
 			);
 			path = Collection;
+			sourceTree = "<group>";
+		};
+		799547CC245D43F3002A7999 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				799547CD245D4403002A7999 /* NavigationController.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		79AF4A7A24554B08001BDB90 = {
@@ -639,6 +656,7 @@
 				790767AE2456C27B00CD0AAF /* GithubAPI.swift in Sources */,
 				7906832C24564EAB00BFDCB2 /* AuthManager.swift in Sources */,
 				792F6D692455563700856757 /* User.swift in Sources */,
+				799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */,
 				792F6D672455562F00856757 /* LoginViewController.swift in Sources */,
 				79F936AC245C3B4000AA775A /* Repository.swift in Sources */,
 				7976ACB02458273900093046 /* SettingViewReactor.swift in Sources */,
@@ -653,6 +671,7 @@
 				7976ACBB2459339100093046 /* CollectionItem.swift in Sources */,
 				79B2E56824598DC400D6E162 /* Setting.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
+				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
 				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
 				7906C31B245559180030764D /* R.generated.swift in Sources */,
@@ -674,6 +693,7 @@
 				79B2E56A2459915500D6E162 /* SettingItem.swift in Sources */,
 				7906C32324555DC70030764D /* Runtime.swift in Sources */,
 				7976ACC5245934D600093046 /* SettingUserCell.swift in Sources */,
+				799547D0245D4998002A7999 /* UIApplicationExt.swift in Sources */,
 				7906C31D245559E80030764D /* AppDependency.swift in Sources */,
 				79B2E56C2459916100D6E162 /* SettingCell.swift in Sources */,
 				79E67A4B245C0F5600FE6093 /* SettingHeaderView.swift in Sources */,
