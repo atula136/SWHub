@@ -147,7 +147,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 80 images.
+  /// This `R.image` struct is generated, and contains static references to 81 images.
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
@@ -289,6 +289,8 @@ struct R: Rswift.Validatable {
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
     /// Image `main_tabbar_activity`.
     static let main_tabbar_activity = Rswift.ImageResource(bundle: R.hostingBundle, name: "main_tabbar_activity")
+    /// Image `main_tabbar_home`.
+    static let main_tabbar_home = Rswift.ImageResource(bundle: R.hostingBundle, name: "main_tabbar_home")
     /// Image `main_tabbar_message`.
     static let main_tabbar_message = Rswift.ImageResource(bundle: R.hostingBundle, name: "main_tabbar_message")
     /// Image `main_tabbar_search`.
@@ -801,6 +803,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "main_tabbar_home", bundle: ..., traitCollection: ...)`
+    static func main_tabbar_home(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.main_tabbar_home, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "main_tabbar_message", bundle: ..., traitCollection: ...)`
     static func main_tabbar_message(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.main_tabbar_message, compatibleWith: traitCollection)
@@ -875,7 +884,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 19 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 20 localization keys.
     struct localizable {
       /// Value: 元
       static let commonYuan = Rswift.StringResource(key: "Common.Yuan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -915,6 +924,8 @@ struct R: Rswift.Validatable {
       static let settingPreferencesTheme = Rswift.StringResource(key: "Setting.Preferences.Theme", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 首选项
       static let settingPreferences = Rswift.StringResource(key: "Setting.Preferences", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 首页
+      static let mainTabBarHome = Rswift.StringResource(key: "Main.TabBar.Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
 
       /// Value: 元
       static func commonYuan(preferredLanguages: [String]? = nil) -> String {
@@ -1161,6 +1172,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Setting.Preferences", bundle: bundle, comment: "")
+      }
+
+      /// Value: 首页
+      static func mainTabBarHome(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Main.TabBar.Home", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Main.TabBar.Home"
+        }
+
+        return NSLocalizedString("Main.TabBar.Home", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

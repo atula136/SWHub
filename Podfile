@@ -5,12 +5,13 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'SWHub' do
-	# pod 'SWFrame', :path => '../SWFrame'
-	pod 'SWFrame', '1.0.1'
+	pod 'SWFrame', :path => '../SWFrame'
+	# pod 'SWFrame', '1.0.1'
   
 	# 界面
 	pod 'IQKeyboardManagerSwift', '6.5.5'
 	pod 'ReusableKit/RxSwift', '3.0.0'
+	pod 'Parchment', '2.3.0'
 	
 	# 网络
 	# pod 'Kingfisher', '4.10.1'
@@ -36,7 +37,6 @@ target 'SWHub' do
 	# pod 'RxGesture', '3.0.0'
 	# pod 'RxDataSources', '4.0.1'
 	# pod 'FSPagerView', '0.8.2'
-	# pod 'Parchment', '1.7.0'
 	# pod 'LGButton', '1.1.6'
 	# pod 'DZNEmptyDataSet', '1.8.1'
 	# pod 'ReusableKit/RxSwift', '3.0.0'

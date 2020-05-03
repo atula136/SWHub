@@ -18,6 +18,7 @@
 "Login.Title" = "登录";
 "Login.Password" = "密码";
 /* 主页 */
+"Main.TabBar.Home" = "首页";
 "Main.TabBar.Message" = "消息";
 "Main.TabBar.Search" = "搜索";
 "Main.TabBar.Activity" = "活动";

@@ -72,6 +72,10 @@ class MainViewController: TabBarViewController, ReactorKit.View {
     func viewController(with key: MainKey) -> BaseViewController {
         var viewController: BaseViewController?
         switch key {
+        case .home:
+            viewController = HomeViewController(self.navigator, HomeViewReactor(self.reactor!.provider, nil))
+            viewController?.tabBarItem.image = R.image.main_tabbar_home()?.qmui_image(withTintColor: .text)?.original
+            viewController?.tabBarItem.selectedImage = R.image.main_tabbar_home()?.qmui_image(withTintColor: .secondary)?.original
         case .message:
             viewController = MessageViewController(self.navigator, MessageViewReactor(self.reactor!.provider, nil))
             viewController?.tabBarItem.image = R.image.main_tabbar_message()?.qmui_image(withTintColor: .text)?.original
