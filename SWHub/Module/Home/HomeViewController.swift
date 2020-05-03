@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import ReactorKit
 import URLNavigator
 import Rswift
@@ -21,6 +23,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         let paging = NavigationBarPagingViewController()
         paging.menuBackgroundColor = .clear
         paging.menuHorizontalAlignment = .center
+        paging.borderOptions = .hidden
         paging.menuItemSize = .selfSizing(estimatedWidth: 100, height: navigationBarHeight)
         return paging
     }()
@@ -47,6 +50,15 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.paging.dataSource = self
         
         self.navigationBar.titleView = self.paging.collectionView
+        
+        themeService.rx
+            .bind({ $0.foregroundColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
+            .bind({ $0.textColor }, to: self.paging.rx.textColor)
+            .disposed(by: self.rx.disposeBag)
+        themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+            self.paging.reloadMenu()
+        }).disposed(by: self.rx.disposeBag)
     }
     
     override func viewDidLayoutSubviews() {

@@ -30,7 +30,7 @@ class RepositoryListViewController: BaseViewController, ReactorKit.View {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .orange
+        // self.view.backgroundColor = .orange
     }
     
     func bind(reactor: RepositoryListViewReactor) {

@@ -31,6 +31,15 @@
 		7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456B245DD1F900D69366 /* MyColorCell.swift */; };
 		7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456D245DD2E200D69366 /* MyColorSection.swift */; };
 		790B88D4245EC97C000C89D4 /* PagingViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */; };
+		790B88D6245F5882000C89D4 /* repositories-daily.json in Resources */ = {isa = PBXBuildFile; fileRef = 790B88D5245F5882000C89D4 /* repositories-daily.json */; };
+		790B88D9245F5989000C89D4 /* TrendingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88D8245F5989000C89D4 /* TrendingRepository.swift */; };
+		790B88DB245F59B4000C89D4 /* developers-daily.json in Resources */ = {isa = PBXBuildFile; fileRef = 790B88DA245F59B4000C89D4 /* developers-daily.json */; };
+		790B88DD245F59ED000C89D4 /* TrendingDeveloper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88DC245F59ED000C89D4 /* TrendingDeveloper.swift */; };
+		790B88DF245F6046000C89D4 /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88DE245F6046000C89D4 /* TrendingAPI.swift */; };
+		790B88E1245F61FA000C89D4 /* TrendingNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */; };
+		790B88E3245F624A000C89D4 /* ProviderType+Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E2245F624A000C89D4 /* ProviderType+Trending.swift */; };
+		790B88E5245F6498000C89D4 /* TrendingSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E4245F6498000C89D4 /* TrendingSince.swift */; };
+		790B88E7245F64E9000C89D4 /* TrendingLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E6245F64E9000C89D4 /* TrendingLanguage.swift */; };
 		792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D642455561D00856757 /* LoginViewReactor.swift */; };
 		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
 		792F6D692455563700856757 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User.swift */; };
@@ -130,6 +139,15 @@
 		7909456B245DD1F900D69366 /* MyColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorCell.swift; sourceTree = "<group>"; };
 		7909456D245DD2E200D69366 /* MyColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorSection.swift; sourceTree = "<group>"; };
 		790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewControllerExt.swift; sourceTree = "<group>"; };
+		790B88D5245F5882000C89D4 /* repositories-daily.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repositories-daily.json"; sourceTree = "<group>"; };
+		790B88D8245F5989000C89D4 /* TrendingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepository.swift; sourceTree = "<group>"; };
+		790B88DA245F59B4000C89D4 /* developers-daily.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "developers-daily.json"; sourceTree = "<group>"; };
+		790B88DC245F59ED000C89D4 /* TrendingDeveloper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDeveloper.swift; sourceTree = "<group>"; };
+		790B88DE245F6046000C89D4 /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
+		790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingNetworking.swift; sourceTree = "<group>"; };
+		790B88E2245F624A000C89D4 /* ProviderType+Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProviderType+Trending.swift"; sourceTree = "<group>"; };
+		790B88E4245F6498000C89D4 /* TrendingSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingSince.swift; sourceTree = "<group>"; };
+		790B88E6245F64E9000C89D4 /* TrendingLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingLanguage.swift; sourceTree = "<group>"; };
 		7924EE2824554DF8007F7FDE /* SWHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWHub.entitlements; sourceTree = "<group>"; };
 		792F6D642455561D00856757 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -260,15 +278,30 @@
 			children = (
 				790767AD2456C27B00CD0AAF /* GithubAPI.swift */,
 				790767AF2456C42000CD0AAF /* GithubNetworking.swift */,
-				790767B32456CB3D00CD0AAF /* ResponseType.swift */,
 				790767B52456CE5500CD0AAF /* ProviderType+Github.swift */,
+				790767B32456CB3D00CD0AAF /* ResponseType.swift */,
+				790B88DE245F6046000C89D4 /* TrendingAPI.swift */,
+				790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */,
+				790B88E2245F624A000C89D4 /* ProviderType+Trending.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		790B88D7245F596E000C89D4 /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				790B88D8245F5989000C89D4 /* TrendingRepository.swift */,
+				790B88DC245F59ED000C89D4 /* TrendingDeveloper.swift */,
+				790B88E4245F6498000C89D4 /* TrendingSince.swift */,
+				790B88E6245F64E9000C89D4 /* TrendingLanguage.swift */,
+			);
+			path = Trending;
 			sourceTree = "<group>";
 		};
 		792F6D5E245555B700856757 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				790B88D7245F596E000C89D4 /* Trending */,
 				79EE8AA0245E8E5C00A2438C /* Developer */,
 				79EE8A92245E88B400A2438C /* Home */,
 				79042E94245D8FB200DB30ED /* MyColor */,
@@ -321,6 +354,8 @@
 			children = (
 				790767AA2456C23E00CD0AAF /* user.json */,
 				79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */,
+				790B88D5245F5882000C89D4 /* repositories-daily.json */,
+				790B88DA245F59B4000C89D4 /* developers-daily.json */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -641,6 +676,8 @@
 				79F936A9245C3B0900AA775A /* repos-tospery-SWHub.json in Resources */,
 				79020CB124559CDA00FF1978 /* readme.txt in Resources */,
 				79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */,
+				790B88D6245F5882000C89D4 /* repositories-daily.json in Resources */,
+				790B88DB245F59B4000C89D4 /* developers-daily.json in Resources */,
 				790767AB2456C23E00CD0AAF /* user.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -728,6 +765,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790B88E7245F64E9000C89D4 /* TrendingLanguage.swift in Sources */,
 				7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */,
 				79EE8AA4245E8ED300A2438C /* DeveloperListViewController.swift in Sources */,
 				7906C32124555DB60030764D /* Router.swift in Sources */,
@@ -748,17 +786,22 @@
 				7976ACAE2458272E00093046 /* SearchViewController.swift in Sources */,
 				79E67A47245C0E5700FE6093 /* SupplementaryView.swift in Sources */,
 				7906C317245558B10030764D /* Theme.swift in Sources */,
+				790B88DD245F59ED000C89D4 /* TrendingDeveloper.swift in Sources */,
 				79F936B0245C458A00AA775A /* RepositoryCell.swift in Sources */,
 				7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */,
 				79EE8A94245E88CF00A2438C /* HomeViewReactor.swift in Sources */,
 				7906C32B24555DFD0030764D /* Appearance.swift in Sources */,
+				790B88DF245F6046000C89D4 /* TrendingAPI.swift in Sources */,
 				79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */,
 				7976ACB82459335600093046 /* SettingSection.swift in Sources */,
 				7976ACBB2459339100093046 /* CollectionItem.swift in Sources */,
 				79B2E56824598DC400D6E162 /* Setting.swift in Sources */,
+				790B88E1245F61FA000C89D4 /* TrendingNetworking.swift in Sources */,
+				790B88D9245F5989000C89D4 /* TrendingRepository.swift in Sources */,
 				79094568245DD17900D69366 /* MyColor.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
 				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
+				790B88E5245F6498000C89D4 /* TrendingSince.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
 				79042E98245D8FCC00DB30ED /* MyColorViewController.swift in Sources */,
 				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
@@ -767,6 +810,7 @@
 				79E67A45245C04DB00FE6093 /* NormalCell.swift in Sources */,
 				7906C32524555DD60030764D /* Constant.swift in Sources */,
 				7976ACB22458274300093046 /* SettingViewController.swift in Sources */,
+				790B88E3245F624A000C89D4 /* ProviderType+Trending.swift in Sources */,
 				79042E96245D8FC200DB30ED /* MyColorViewReactor.swift in Sources */,
 				7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */,
 				7976ACBF245933E200093046 /* CollectionViewReactor.swift in Sources */,

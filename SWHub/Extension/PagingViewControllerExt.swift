@@ -13,11 +13,29 @@ import Parchment
 import NSObject_Rx
 import SWFrame
 
-extension Reactive where Base: Parchment.PagingViewController {
+extension Reactive where Base: PagingViewController {
     
     var reloadData: Binder<Void> {
         return Binder(self.base) { paging, _ in
             paging.reloadData()
+        }
+    }
+    
+    var indicatorColor: Binder<UIColor> {
+        return Binder(self.base) { paging, color in
+            paging.indicatorColor = color
+        }
+    }
+    
+    var textColor: Binder<UIColor> {
+        return Binder(self.base) { paging, color in
+            paging.textColor = color
+        }
+    }
+    
+    var selectedTextColor: Binder<UIColor> {
+        return Binder(self.base) { paging, color in
+            paging.selectedTextColor = color
         }
     }
     

@@ -15,13 +15,11 @@ struct Constant {
         static let timeout = 10.0
         static let useStaging = false  // set true for tests and generating screenshots with fastlane
         static let loggingEnabled = false
-    //        static let kujiaUrl = "https://m.kujia.com"   // YJX_TODO https/http
-    //        static let PasswordUrl = "https://passport.kujia.com"
-    //        static let trendingGithubBaseUrl = "https://github-trending-api.now.sh"
     //        static let githistoryBaseUrl = "https://github.githistory.xyz"
     //        static let starHistoryBaseUrl = "https://star-history.t9t.io"
     //        static let profileSummaryBaseUrl = "https://profile-summary-for-github.com"
         static let baseApiUrl = "https://api.github.com"
+        static let trendingApiUrl = "https://github-trending-api.now.sh"
         static let baseWebUrl = "https://m.kujia.com/jxh5/"
     }
     
