@@ -884,8 +884,10 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 20 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 22 localization keys.
     struct localizable {
+      /// Value: 仓库
+      static let homeRepository = Rswift.StringResource(key: "Home.Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 元
       static let commonYuan = Rswift.StringResource(key: "Common.Yuan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 取消
@@ -896,6 +898,8 @@ struct R: Rswift.Validatable {
       static let settingPreferencesNight = Rswift.StringResource(key: "Setting.Preferences.Night", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 密码
       static let loginPassword = Rswift.StringResource(key: "Login.Password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 开发者
+      static let homeDeveloper = Rswift.StringResource(key: "Home.Developer", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的项目
       static let settingProject = Rswift.StringResource(key: "Setting.Project", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 搜索
@@ -926,6 +930,19 @@ struct R: Rswift.Validatable {
       static let settingPreferences = Rswift.StringResource(key: "Setting.Preferences", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 首页
       static let mainTabBarHome = Rswift.StringResource(key: "Main.TabBar.Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+
+      /// Value: 仓库
+      static func homeRepository(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Home.Repository", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Home.Repository"
+        }
+
+        return NSLocalizedString("Home.Repository", bundle: bundle, comment: "")
+      }
 
       /// Value: 元
       static func commonYuan(preferredLanguages: [String]? = nil) -> String {
@@ -990,6 +1007,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Login.Password", bundle: bundle, comment: "")
+      }
+
+      /// Value: 开发者
+      static func homeDeveloper(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Home.Developer", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Home.Developer"
+        }
+
+        return NSLocalizedString("Home.Developer", bundle: bundle, comment: "")
       }
 
       /// Value: 我的项目

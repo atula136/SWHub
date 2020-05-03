@@ -10,12 +10,13 @@ import UIKit
 import ReactorKit
 import SWFrame
 
-class HomeViewReactor: PagingViewReactor, ReactorKit.Reactor {
+class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     
     typealias Action = NoAction
     
     struct State {
         var title: String?
+        var items: [HomeKey] = [.repository, .developer]
     }
     
     var initialState = State()
@@ -23,8 +24,22 @@ class HomeViewReactor: PagingViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
         super.init(provider, parameters)
         self.initialState = State(
-            // title: stringDefault(self.title, R.string.localizable.mainTabBarHome())
+            title: stringDefault(self.title, R.string.localizable.mainTabBarHome())
         )
     }
     
+}
+
+enum HomeKey {
+    case repository
+    case developer
+    
+    var title: String {
+        switch self {
+        case .repository:
+            return R.string.localizable.homeRepository()
+        case .developer:
+            return R.string.localizable.homeDeveloper()
+        }
+    }
 }

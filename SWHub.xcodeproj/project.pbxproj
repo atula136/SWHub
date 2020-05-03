@@ -30,6 +30,7 @@
 		7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79094569245DD1F200D69366 /* MyColorItem.swift */; };
 		7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456B245DD1F900D69366 /* MyColorCell.swift */; };
 		7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456D245DD2E200D69366 /* MyColorSection.swift */; };
+		790B88D4245EC97C000C89D4 /* PagingViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */; };
 		792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D642455561D00856757 /* LoginViewReactor.swift */; };
 		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
 		792F6D692455563700856757 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User.swift */; };
@@ -75,8 +76,6 @@
 		79E67A4B245C0F5600FE6093 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E67A4A245C0F5600FE6093 /* SettingHeaderView.swift */; };
 		79EE8A94245E88CF00A2438C /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8A93245E88CF00A2438C /* HomeViewReactor.swift */; };
 		79EE8A96245E88DB00A2438C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8A95245E88DB00A2438C /* HomeViewController.swift */; };
-		79EE8A99245E8AE500A2438C /* PagingViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8A98245E8AE500A2438C /* PagingViewReactor.swift */; };
-		79EE8A9B245E8AF100A2438C /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8A9A245E8AF100A2438C /* PagingViewController.swift */; };
 		79EE8A9D245E8D9700A2438C /* RepositoryListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8A9C245E8D9700A2438C /* RepositoryListViewReactor.swift */; };
 		79EE8A9F245E8DA300A2438C /* RepositoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8A9E245E8DA300A2438C /* RepositoryListViewController.swift */; };
 		79EE8AA2245E8EC800A2438C /* DeveloperListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8AA1245E8EC800A2438C /* DeveloperListViewReactor.swift */; };
@@ -130,6 +129,7 @@
 		79094569245DD1F200D69366 /* MyColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorItem.swift; sourceTree = "<group>"; };
 		7909456B245DD1F900D69366 /* MyColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorCell.swift; sourceTree = "<group>"; };
 		7909456D245DD2E200D69366 /* MyColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorSection.swift; sourceTree = "<group>"; };
+		790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewControllerExt.swift; sourceTree = "<group>"; };
 		7924EE2824554DF8007F7FDE /* SWHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWHub.entitlements; sourceTree = "<group>"; };
 		792F6D642455561D00856757 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -182,8 +182,6 @@
 		79E67A4A245C0F5600FE6093 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		79EE8A93245E88CF00A2438C /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
 		79EE8A95245E88DB00A2438C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		79EE8A98245E8AE500A2438C /* PagingViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewReactor.swift; sourceTree = "<group>"; };
-		79EE8A9A245E8AF100A2438C /* PagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
 		79EE8A9C245E8D9700A2438C /* RepositoryListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewReactor.swift; sourceTree = "<group>"; };
 		79EE8A9E245E8DA300A2438C /* RepositoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewController.swift; sourceTree = "<group>"; };
 		79EE8AA1245E8EC800A2438C /* DeveloperListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperListViewReactor.swift; sourceTree = "<group>"; };
@@ -293,6 +291,7 @@
 				799547CF245D4998002A7999 /* UIApplicationExt.swift */,
 				799547D3245D607F002A7999 /* UIViewControllerExt.swift */,
 				79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */,
+				790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -496,8 +495,6 @@
 		79EE8A97245E8AD400A2438C /* Paging */ = {
 			isa = PBXGroup;
 			children = (
-				79EE8A98245E8AE500A2438C /* PagingViewReactor.swift */,
-				79EE8A9A245E8AF100A2438C /* PagingViewController.swift */,
 			);
 			path = Paging;
 			sourceTree = "<group>";
@@ -757,7 +754,6 @@
 				7906C32B24555DFD0030764D /* Appearance.swift in Sources */,
 				79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */,
 				7976ACB82459335600093046 /* SettingSection.swift in Sources */,
-				79EE8A9B245E8AF100A2438C /* PagingViewController.swift in Sources */,
 				7976ACBB2459339100093046 /* CollectionItem.swift in Sources */,
 				79B2E56824598DC400D6E162 /* Setting.swift in Sources */,
 				79094568245DD17900D69366 /* MyColor.swift in Sources */,
@@ -781,7 +777,6 @@
 				79DA6EF1245E0F7D0052F2D7 /* DefaultCollectionCell.swift in Sources */,
 				79740E70245C4EDE003F441A /* SettingProjectCell.swift in Sources */,
 				7976ACC1245933F000093046 /* CollectionViewController.swift in Sources */,
-				79EE8A99245E8AE500A2438C /* PagingViewReactor.swift in Sources */,
 				7976ACAA2458271900093046 /* ActivityViewController.swift in Sources */,
 				7976ACA62458270400093046 /* MessageViewController.swift in Sources */,
 				7976ACBD2459339D00093046 /* CollectionCell.swift in Sources */,
@@ -794,6 +789,7 @@
 				79B2E56C2459916100D6E162 /* SettingCell.swift in Sources */,
 				79E67A4B245C0F5600FE6093 /* SettingHeaderView.swift in Sources */,
 				79EE8AA2245E8EC800A2438C /* DeveloperListViewReactor.swift in Sources */,
+				790B88D4245EC97C000C89D4 /* PagingViewControllerExt.swift in Sources */,
 				7976AC9E24581F7E00093046 /* MainViewController.swift in Sources */,
 				79EE8A96245E88DB00A2438C /* HomeViewController.swift in Sources */,
 				79DA6EEF245E0F700052F2D7 /* DefaultCollectionItem.swift in Sources */,

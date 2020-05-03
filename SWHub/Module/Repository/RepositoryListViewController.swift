@@ -20,6 +20,7 @@ class RepositoryListViewController: BaseViewController, ReactorKit.View {
             self.reactor = reactor
         }
         super.init(navigator, reactor)
+        self.hidesNavigationBar = boolMember(reactor.parameters, Parameter.hideNavBar, true)
         self.tabBarItem.title = reactor.currentState.title
     }
     
@@ -29,6 +30,7 @@ class RepositoryListViewController: BaseViewController, ReactorKit.View {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .orange
     }
     
     func bind(reactor: RepositoryListViewReactor) {

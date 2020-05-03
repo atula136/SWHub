@@ -6,3 +6,4 @@
 9. swiftlint
 10. Parchment源码
 11. 自定义下拉刷新/加载效果，采用ScrollViewController运行时方式
+12. hashValue

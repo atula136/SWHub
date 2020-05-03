@@ -33,20 +33,20 @@ class MainViewController: TabBarViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         themeService.rx
-            .bind({ $0.primaryColor }, to: self.innerTabBarController.tabBar.rx.barTintColor)
-            .bind({ $0.foregroundColor }, to: self.innerTabBarController.tabBar.rx.tintColor)
-            //.bind({ $0.textColor }, to: self.innerTabBarController.tabBar.rx.imageTintColor)
-            //.bind({ $0.foregroundColor }, to: self.innerTabBarController.tabBar.rx.selectedImageTintColor)
+            .bind({ $0.primaryColor }, to: self.tab.tabBar.rx.barTintColor)
+            .bind({ $0.foregroundColor }, to: self.tab.tabBar.rx.tintColor)
+            //.bind({ $0.textColor }, to: self.tab.tabBar.rx.imageTintColor)
+            //.bind({ $0.foregroundColor }, to: self.tab.tabBar.rx.selectedImageTintColor)
             .disposed(by: self.rx.disposeBag)
         if #available(iOS 10.0, *) {
             themeService.rx
-                .bind({ $0.textColor }, to: self.innerTabBarController.tabBar.rx.unselectedItemTintColor)
+                .bind({ $0.textColor }, to: self.tab.tabBar.rx.unselectedItemTintColor)
                 .disposed(by: self.rx.disposeBag)
         }
          
         themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] theme in
             guard let `self` = self else { return }
-            if let items = self.innerTabBarController.tabBar.items {
+            if let items = self.tab.tabBar.items {
                 let color = theme.associatedObject.textColor
                 let selectedColor = theme.associatedObject.foregroundColor
                 for item in items {
@@ -63,7 +63,7 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         
         reactor.state.map { $0.keys }.subscribe(onNext: { [weak self] keys in
             guard let `self` = self else { return }
-            self.innerTabBarController.viewControllers = keys.map {
+            self.tab.viewControllers = keys.map {
                 NavigationController(rootViewController: self.viewController(with: $0))
             }
         }).disposed(by: self.disposeBag)
