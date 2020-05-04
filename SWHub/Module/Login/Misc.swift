@@ -29,4 +29,8 @@ struct Misc: ModelType, Subjective {
         language    <- map["language"]
     }
     
+    static func objectStoreKey(id: String? = nil) -> String {
+        return "misc"
+    }
+    
 }

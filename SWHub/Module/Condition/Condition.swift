@@ -60,6 +60,10 @@ struct Condition {
             urlParam        <- map["urlParam"]
         }
         
+        static func arrayStoreKey() -> String {
+            return "languages"
+        }
+        
     }
     
 }

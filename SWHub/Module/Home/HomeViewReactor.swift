@@ -43,6 +43,7 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
+            let a1 = Condition.Language.cachedArray()
             var load = Observable.just(Mutation.setLoading(true))
             load = load.concat(self.provider.languages().map{ Mutation.setLanguages($0) })
             load = load.concat(Observable.just(.setLoading(false)))
