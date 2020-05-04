@@ -9,7 +9,7 @@
 import UIKit
 import SWFrame
 
-class TrendingRepositoryItem: RepositoryItem {
+class TrendingRepositoryItem: InfoItem {
     
     required init(_ model: ModelType) {
         super.init(model)
@@ -17,7 +17,7 @@ class TrendingRepositoryItem: RepositoryItem {
         self.initialState = State(
             title: "\(repository.author ?? "")/\(repository.name ?? "")",
             subtitle: repository.description,
-            detail: repository.detail(),
+            detail: repository.detail(since: "每日"),
             icon: repository.avatar
         )
     }
@@ -27,7 +27,7 @@ class TrendingRepositoryItem: RepositoryItem {
         switch mutation {
         case .setNight(_):
             if let repository = self.model as? TrendingRepository {
-                state.detail = repository.detail()
+                state.detail = repository.detail(since: "每日")
             }
         }
         return state

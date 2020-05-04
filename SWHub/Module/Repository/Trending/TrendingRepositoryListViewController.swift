@@ -28,8 +28,8 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 10
-        // layout.sectionInset = .init(horizontal: 30, vertical: 0)
-        layout.sectionInset = .init(top: 10, left: 15, bottom: 0, right: 15)
+        layout.sectionInset = .init(horizontal: 30, vertical: 20)
+        //layout.sectionInset = .init(top: 10, left: 15, bottom: 10, right: 15)
         return layout
     }
     
@@ -50,6 +50,7 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.repositoryCell)
+        self.collectionView.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - navigationContentTopConstant - tabBarHeight)
     }
     
     func bind(reactor: TrendingRepositoryListViewReactor) {

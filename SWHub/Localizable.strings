@@ -14,6 +14,12 @@
 "Common.Cancel" = "取消";
 "Common.Fan" = "返";
 "Common.Yuan" = "元";
+/* 刷新 */
+"Pull to refresh" = "下拉刷新";
+"Release to refresh" = "松开刷新";
+"Loading..." = "加载中";
+"Loading more" = "正在加载更多";
+"No more data" = "没有更多的了";
 /* 登录 */
 "Login.Title" = "登录";
 "Login.Password" = "密码";
@@ -24,7 +30,7 @@
 "Main.TabBar.Activity" = "活动";
 "Main.TabBar.Setting" = "设置";
 /* 首页 */
-"Home.GithubRepository" = "仓库";
+"Home.Repository" = "仓库";
 "Home.Developer" = "开发者";
 /* 设置 */
 "Setting.Account" = "账户";

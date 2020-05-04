@@ -23,7 +23,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         case setLoading(Bool)
         case setRefreshing(Bool)
         case setError(Error?)
-        case initial([TrendingRepository])
+        case initial([TrendingRepository], toCache: Bool)
     }
     
     struct State {
@@ -34,15 +34,11 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         var sections: [TrendingRepositorySection] = []
     }
     
-//    let pageSource = "sec_category"
-//    var categoryId: String?
     var initialState = State()
     
     required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
         super.init(provider, parameters)
-        // self.categoryId = stringMember(parameters, Parameter.categoryId, nil)
         self.initialState = State(
-            title: stringDefault(self.title, R.string.localizable.mainTabBarSearch())
         )
     }
     
@@ -53,9 +49,9 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             var load = Observable.just(Mutation.setError(nil))
             load = load.concat(Observable.just(.setLoading(true)))
             if let repositories = TrendingRepository.cachedArray() {
-                load = load.concat(Observable.just(.initial(repositories)))
+                load = load.concat(Observable.just(.initial(repositories, toCache: false)))
             } else {
-                load = load.concat(self.provider.repositories(language: nil, since: "daily").map{ Mutation.initial($0) }.catchError({ .just(.setError($0)) }))
+                load = load.concat(self.provider.repositories(language: nil, since: "daily").map{ Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }))
             }
             load = load.concat(Observable.just(.setLoading(false)))
             return load
@@ -64,7 +60,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.provider.repositories(language: nil, since: "daily").map{ Mutation.initial($0) }.catchError({ .just(.setError($0)) }),
+                self.provider.repositories(language: nil, since: "daily").map{ Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }),
                 .just(.setRefreshing(false))
             ])
         }
@@ -79,8 +75,10 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             state.isRefreshing = isRefreshing
         case let .setError(error):
             state.error = error
-        case let .initial(repositories):
-            TrendingRepository.storeArray(repositories)
+        case let .initial(repositories, toCache):
+            if toCache {
+                TrendingRepository.storeArray(repositories)
+            }
             state.sections = [.repositories(repositories.map{ TrendingRepositorySectionItem.repository(TrendingRepositoryItem($0)) })]
         }
         return state

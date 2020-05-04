@@ -43,14 +43,16 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // self.view.frame = self.contentFrame
+        
         self.addChild(self.paging)
         self.view.addSubview(self.paging.view)
-        // self.paging.view.snp.makeConstraints { $0.edges.equalToSuperview() }
+        //self.paging.view.snp.makeConstraints { $0.edges.equalToSuperview() }
         self.paging.view.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.top.equalToSuperview().offset(self.contentTop)
             make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(self.contentBottom)
+            make.bottom.equalToSuperview().offset(-self.contentBottom)
         }
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
@@ -65,10 +67,6 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
             guard let `self` = self else { return }
             self.paging.reloadMenu()
         }).disposed(by: self.rx.disposeBag)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
     }
     
     func bind(reactor: HomeViewReactor) {

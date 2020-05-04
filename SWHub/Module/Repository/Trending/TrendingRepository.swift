@@ -58,22 +58,17 @@ struct TrendingRepository: ModelType, Storable {
         builtBy                 <- map["builtBy"]
     }
     
-    func detail() -> NSAttributedString? {
-        var texts: [NSAttributedString] = []
+    func detail(since: String) -> NSAttributedString? {
+        let starImage = R.image.setting_badge_star()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
         let starsString = (self.stars ?? 0).kFormatted().styled(with: .color(.text))
-        let starsImage = R.image.setting_badge_star()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
-        texts.append(.composed(of: [
-            starsImage, Special.space, starsString, Special.space, Special.tab
-        ]))
-
-        if let languageString = self.language?.styled(with: .color(.text)) {
-            let languageColorShape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .clear)]))
-            texts.append(.composed(of: [
-                languageColorShape, Special.space, languageString
-            ]))
-        }
-
-        return .composed(of: texts)
+        let currentPeriodStarsString = "\((self.currentPeriodStars ?? 0).kFormatted())\(since.lowercased())".styled(with: .color(.text))
+        let languageColorShape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .clear)]))
+        let languageString = (self.language ?? "").styled(with: .color(.text))
+        return .composed(of: [
+            starImage, Special.space, starsString, Special.space, Special.tab,
+            starImage, Special.space, currentPeriodStarsString, Special.space, Special.tab,
+            languageColorShape, Special.space, languageString
+        ])
     }
     
 }

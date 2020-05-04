@@ -32,6 +32,7 @@ class MainViewController: TabBarViewController, ReactorKit.View {
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tab.viewControllers = self.reactor?.currentState.keys.map{ NavigationController(rootViewController: self.viewController(with: $0)) }
         themeService.rx
             .bind({ $0.primaryColor }, to: self.tab.tabBar.rx.barTintColor)
             .bind({ $0.foregroundColor }, to: self.tab.tabBar.rx.tintColor)
@@ -43,7 +44,6 @@ class MainViewController: TabBarViewController, ReactorKit.View {
                 .bind({ $0.textColor }, to: self.tab.tabBar.rx.unselectedItemTintColor)
                 .disposed(by: self.rx.disposeBag)
         }
-         
         themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] theme in
             guard let `self` = self else { return }
             if let items = self.tab.tabBar.items {
@@ -60,13 +60,12 @@ class MainViewController: TabBarViewController, ReactorKit.View {
     // MARK: - Method
     func bind(reactor: MainViewReactor) {
         super.bind(reactor: reactor)
-        
-        reactor.state.map { $0.keys }.subscribe(onNext: { [weak self] keys in
-            guard let `self` = self else { return }
-            self.tab.viewControllers = keys.map {
-                NavigationController(rootViewController: self.viewController(with: $0))
-            }
-        }).disposed(by: self.disposeBag)
+//        reactor.state.map { $0.keys }.subscribe(onNext: { [weak self] keys in
+//            guard let `self` = self else { return }
+//            self.tab.viewControllers = keys.map {
+//                NavigationController(rootViewController: self.viewController(with: $0))
+//            }
+//        }).disposed(by: self.disposeBag)
     }
     
     func viewController(with key: MainKey) -> BaseViewController {

@@ -117,14 +117,24 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 3 files.
+  /// This `R.file` struct is generated, and contains static references to 5 files.
   struct file {
+    /// Resource file `developers-daily.json`.
+    static let developersDailyJson = Rswift.FileResource(bundle: R.hostingBundle, name: "developers-daily", pathExtension: "json")
     /// Resource file `readme.txt`.
     static let readmeTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "readme", pathExtension: "txt")
     /// Resource file `repos-tospery-SWHub.json`.
     static let reposTosperySWHubJson = Rswift.FileResource(bundle: R.hostingBundle, name: "repos-tospery-SWHub", pathExtension: "json")
+    /// Resource file `repositories-daily.json`.
+    static let repositoriesDailyJson = Rswift.FileResource(bundle: R.hostingBundle, name: "repositories-daily", pathExtension: "json")
     /// Resource file `user.json`.
     static let userJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user", pathExtension: "json")
+
+    /// `bundle.url(forResource: "developers-daily", withExtension: "json")`
+    static func developersDailyJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.developersDailyJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
 
     /// `bundle.url(forResource: "readme", withExtension: "txt")`
     static func readmeTxt(_: Void = ()) -> Foundation.URL? {
@@ -135,6 +145,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "repos-tospery-SWHub", withExtension: "json")`
     static func reposTosperySWHubJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.reposTosperySWHubJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "repositories-daily", withExtension: "json")`
+    static func repositoriesDailyJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.repositoriesDailyJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -884,12 +900,16 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 22 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 27 localization keys.
     struct localizable {
+      /// Value: 下拉刷新
+      static let pullToRefresh = Rswift.StringResource(key: "Pull to refresh", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 仓库
-      static let homeRepository = Rswift.StringResource(key: "Home.GithubRepository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let homeRepository = Rswift.StringResource(key: "Home.Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 元
       static let commonYuan = Rswift.StringResource(key: "Common.Yuan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 加载中
+      static let loading = Rswift.StringResource(key: "Loading...", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 取消
       static let commonCancel = Rswift.StringResource(key: "Common.Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
@@ -906,6 +926,12 @@ struct R: Rswift.Validatable {
       static let mainTabBarSearch = Rswift.StringResource(key: "Main.TabBar.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
       static let commonYes = Rswift.StringResource(key: "Common.Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 松开刷新
+      static let releaseToRefresh = Rswift.StringResource(key: "Release to refresh", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 正在加载更多
+      static let loadingMore = Rswift.StringResource(key: "Loading more", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 没有更多的了
+      static let noMoreData = Rswift.StringResource(key: "No more data", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 活动
       static let mainTabBarActivity = Rswift.StringResource(key: "Main.TabBar.Activity", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 消息
@@ -931,17 +957,30 @@ struct R: Rswift.Validatable {
       /// Value: 首页
       static let mainTabBarHome = Rswift.StringResource(key: "Main.TabBar.Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
 
-      /// Value: 仓库
-      static func homeRepository(preferredLanguages: [String]? = nil) -> String {
+      /// Value: 下拉刷新
+      static func pullToRefresh(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Home.GithubRepository", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Pull to refresh", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Home.GithubRepository"
+          return "Pull to refresh"
         }
 
-        return NSLocalizedString("Home.GithubRepository", bundle: bundle, comment: "")
+        return NSLocalizedString("Pull to refresh", bundle: bundle, comment: "")
+      }
+
+      /// Value: 仓库
+      static func homeRepository(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Home.Repository", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Home.Repository"
+        }
+
+        return NSLocalizedString("Home.Repository", bundle: bundle, comment: "")
       }
 
       /// Value: 元
@@ -955,6 +994,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Common.Yuan", bundle: bundle, comment: "")
+      }
+
+      /// Value: 加载中
+      static func loading(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Loading...", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Loading..."
+        }
+
+        return NSLocalizedString("Loading...", bundle: bundle, comment: "")
       }
 
       /// Value: 取消
@@ -1059,6 +1111,45 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Common.Yes", bundle: bundle, comment: "")
+      }
+
+      /// Value: 松开刷新
+      static func releaseToRefresh(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Release to refresh", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Release to refresh"
+        }
+
+        return NSLocalizedString("Release to refresh", bundle: bundle, comment: "")
+      }
+
+      /// Value: 正在加载更多
+      static func loadingMore(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Loading more", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Loading more"
+        }
+
+        return NSLocalizedString("Loading more", bundle: bundle, comment: "")
+      }
+
+      /// Value: 没有更多的了
+      static func noMoreData(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("No more data", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "No more data"
+        }
+
+        return NSLocalizedString("No more data", bundle: bundle, comment: "")
       }
 
       /// Value: 活动

@@ -78,6 +78,11 @@
 		79B2E56A2459915500D6E162 /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2E5692459915500D6E162 /* SettingItem.swift */; };
 		79B2E56C2459916100D6E162 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2E56B2459916100D6E162 /* SettingCell.swift */; };
 		79B2E56E245BD88900D6E162 /* IntExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2E56D245BD88900D6E162 /* IntExt.swift */; };
+		79CE935624602FA6009D6243 /* InfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935524602FA6009D6243 /* InfoItem.swift */; };
+		79CE935824602FB1009D6243 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935724602FB1009D6243 /* InfoCell.swift */; };
+		79CE935A24603390009D6243 /* TrendingDeveloperItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935924603390009D6243 /* TrendingDeveloperItem.swift */; };
+		79CE935C24603399009D6243 /* TrendingDeveloperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935B24603399009D6243 /* TrendingDeveloperCell.swift */; };
+		79CE935E246034BC009D6243 /* TrendingDeveloperSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935D246034BC009D6243 /* TrendingDeveloperSection.swift */; };
 		79DA6EEF245E0F700052F2D7 /* DefaultCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA6EEE245E0F700052F2D7 /* DefaultCollectionItem.swift */; };
 		79DA6EF1245E0F7D0052F2D7 /* DefaultCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA6EF0245E0F7D0052F2D7 /* DefaultCollectionCell.swift */; };
 		79DAF291245D728D0006E6A5 /* NavigationBarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */; };
@@ -194,6 +199,11 @@
 		79B2E5692459915500D6E162 /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		79B2E56B2459916100D6E162 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		79B2E56D245BD88900D6E162 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
+		79CE935524602FA6009D6243 /* InfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItem.swift; sourceTree = "<group>"; };
+		79CE935724602FB1009D6243 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		79CE935924603390009D6243 /* TrendingDeveloperItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDeveloperItem.swift; sourceTree = "<group>"; };
+		79CE935B24603399009D6243 /* TrendingDeveloperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDeveloperCell.swift; sourceTree = "<group>"; };
+		79CE935D246034BC009D6243 /* TrendingDeveloperSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDeveloperSection.swift; sourceTree = "<group>"; };
 		79DA6EEE245E0F700052F2D7 /* DefaultCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollectionItem.swift; sourceTree = "<group>"; };
 		79DA6EF0245E0F7D0052F2D7 /* DefaultCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollectionCell.swift; sourceTree = "<group>"; };
 		79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExt.swift; sourceTree = "<group>"; };
@@ -427,6 +437,8 @@
 				79E67A48245C0E9000FE6093 /* SupplementaryReactor.swift */,
 				79DA6EEE245E0F700052F2D7 /* DefaultCollectionItem.swift */,
 				79DA6EF0245E0F7D0052F2D7 /* DefaultCollectionCell.swift */,
+				79CE935524602FA6009D6243 /* InfoItem.swift */,
+				79CE935724602FB1009D6243 /* InfoCell.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -486,6 +498,9 @@
 				79EE8AA3245E8ED300A2438C /* TrendingDeveloperListViewController.swift */,
 				79EE8AA1245E8EC800A2438C /* TrendingDeveloperListViewReactor.swift */,
 				790B88DC245F59ED000C89D4 /* TrendingDeveloper.swift */,
+				79CE935924603390009D6243 /* TrendingDeveloperItem.swift */,
+				79CE935B24603399009D6243 /* TrendingDeveloperCell.swift */,
+				79CE935D246034BC009D6243 /* TrendingDeveloperSection.swift */,
 			);
 			path = Trending;
 			sourceTree = "<group>";
@@ -805,6 +820,7 @@
 				7976ACAE2458272E00093046 /* SearchViewController.swift in Sources */,
 				79E67A47245C0E5700FE6093 /* SupplementaryView.swift in Sources */,
 				7906C317245558B10030764D /* Theme.swift in Sources */,
+				79CE935E246034BC009D6243 /* TrendingDeveloperSection.swift in Sources */,
 				79322484245FF91F00BED07A /* TrendingRepositoryItem.swift in Sources */,
 				790B88DD245F59ED000C89D4 /* TrendingDeveloper.swift in Sources */,
 				7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */,
@@ -818,11 +834,15 @@
 				79B2E56824598DC400D6E162 /* Setting.swift in Sources */,
 				790B88E1245F61FA000C89D4 /* TrendingNetworking.swift in Sources */,
 				790B88D9245F5989000C89D4 /* TrendingRepository.swift in Sources */,
+				79CE935C24603399009D6243 /* TrendingDeveloperCell.swift in Sources */,
 				79094568245DD17900D69366 /* MyColor.swift in Sources */,
+				79CE935624602FA6009D6243 /* InfoItem.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
 				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
+				79CE935A24603390009D6243 /* TrendingDeveloperItem.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
 				79042E98245D8FCC00DB30ED /* MyColorViewController.swift in Sources */,
+				79CE935824602FB1009D6243 /* InfoCell.swift in Sources */,
 				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
 				7906C31B245559180030764D /* R.generated.swift in Sources */,
 				7976ACA82458271000093046 /* ActivityViewReactor.swift in Sources */,
