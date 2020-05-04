@@ -887,7 +887,7 @@ struct R: Rswift.Validatable {
     /// This `R.string.localizable` struct is generated, and contains static references to 22 localization keys.
     struct localizable {
       /// Value: 仓库
-      static let homeRepository = Rswift.StringResource(key: "Home.Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let homeRepository = Rswift.StringResource(key: "Home.GithubRepository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 元
       static let commonYuan = Rswift.StringResource(key: "Common.Yuan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 取消
@@ -934,14 +934,14 @@ struct R: Rswift.Validatable {
       /// Value: 仓库
       static func homeRepository(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Home.Repository", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.GithubRepository", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Home.Repository"
+          return "Home.GithubRepository"
         }
 
-        return NSLocalizedString("Home.Repository", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.GithubRepository", bundle: bundle, comment: "")
       }
 
       /// Value: 元

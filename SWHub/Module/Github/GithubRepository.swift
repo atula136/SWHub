@@ -1,5 +1,5 @@
 //
-//  Repository.swift
+//  GithubRepository.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/1.
@@ -12,7 +12,7 @@ import ObjectMapper
 import KeychainAccess
 import SWFrame
 
-struct Repository: ModelType, Storable, Subjective {
+struct GithubRepository: ModelType, Storable, Subjective {
     
     var fork: Bool?
     var privated: Bool?

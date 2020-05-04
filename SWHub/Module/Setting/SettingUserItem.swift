@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class SettingUserItem: RepositoryItem {
+class SettingUserItem: GithubRepositoryItem {
     
     required init(_ model: ModelType) {
         super.init(model)

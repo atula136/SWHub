@@ -1,5 +1,5 @@
 //
-//  RepositoryListViewController.swift
+//  TrendingRepositoryListViewController.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -13,9 +13,9 @@ import Rswift
 import SwifterSwift
 import SWFrame
 
-class RepositoryListViewController: BaseViewController, ReactorKit.View {
+class TrendingRepositoryListViewController: BaseViewController, ReactorKit.View {
     
-    init(_ navigator: NavigatorType, _ reactor: RepositoryListViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: TrendingRepositoryListViewReactor) {
         defer {
             self.reactor = reactor
         }
@@ -33,7 +33,7 @@ class RepositoryListViewController: BaseViewController, ReactorKit.View {
         // self.view.backgroundColor = .orange
     }
     
-    func bind(reactor: RepositoryListViewReactor) {
+    func bind(reactor: TrendingRepositoryListViewReactor) {
         super.bind(reactor: reactor)
     }
     

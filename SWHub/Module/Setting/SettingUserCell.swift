@@ -15,7 +15,7 @@ import SwifterSwift
 import Kingfisher
 import SWFrame
 
-class SettingUserCell: RepositoryCell {
+class SettingUserCell: GithubRepositoryCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

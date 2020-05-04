@@ -13,6 +13,6 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class SettingProjectItem: RepositoryItem {
+class SettingProjectItem: GithubRepositoryItem {
     
 }

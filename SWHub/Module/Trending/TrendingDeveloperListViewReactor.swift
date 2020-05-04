@@ -1,5 +1,5 @@
 //
-//  DeveloperListViewReactor.swift
+//  TrendingDeveloperListViewReactor.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -10,7 +10,7 @@ import UIKit
 import ReactorKit
 import SWFrame
 
-class DeveloperListViewReactor: BaseViewReactor, ReactorKit.Reactor {
+class TrendingDeveloperListViewReactor: BaseViewReactor, ReactorKit.Reactor {
     
     typealias Action = NoAction
     

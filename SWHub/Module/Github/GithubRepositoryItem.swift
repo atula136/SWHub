@@ -1,5 +1,5 @@
 //
-//  RepositoryItem.swift
+//  GithubRepositoryItem.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/1.
@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class RepositoryItem: CollectionItem, ReactorKit.Reactor {
+class GithubRepositoryItem: CollectionItem, ReactorKit.Reactor {
     
     typealias Action = NoAction
     
@@ -32,7 +32,7 @@ class RepositoryItem: CollectionItem, ReactorKit.Reactor {
     
     required init(_ model: ModelType) {
         super.init(model)
-        guard let repository = model as? Repository else { return }
+        guard let repository = model as? GithubRepository else { return }
         self.initialState = State(
             title: repository.fullName,
             subtitle: repository.description,
@@ -45,7 +45,7 @@ class RepositoryItem: CollectionItem, ReactorKit.Reactor {
         var state = state
         switch mutation {
         case .setNight(_):
-            if let repository = self.model as? Repository {
+            if let repository = self.model as? GithubRepository {
                 state.detail = repository.detail()
             }
         }

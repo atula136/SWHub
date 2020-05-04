@@ -1,5 +1,5 @@
 //
-//  DeveloperListViewController.swift
+//  TrendingDeveloperListViewController.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -13,9 +13,9 @@ import Rswift
 import SwifterSwift
 import SWFrame
 
-class DeveloperListViewController: BaseViewController, ReactorKit.View {
+class TrendingDeveloperListViewController: BaseViewController, ReactorKit.View {
     
-    init(_ navigator: NavigatorType, _ reactor: DeveloperListViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: TrendingDeveloperListViewReactor) {
         defer {
             self.reactor = reactor
         }
@@ -33,7 +33,7 @@ class DeveloperListViewController: BaseViewController, ReactorKit.View {
         self.view.backgroundColor = .purple
     }
     
-    func bind(reactor: DeveloperListViewReactor) {
+    func bind(reactor: TrendingDeveloperListViewReactor) {
         super.bind(reactor: reactor)
     }
     

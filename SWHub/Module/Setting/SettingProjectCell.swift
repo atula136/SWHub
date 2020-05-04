@@ -15,6 +15,6 @@ import SwifterSwift
 import Kingfisher
 import SWFrame
 
-class SettingProjectCell: RepositoryCell {
+class SettingProjectCell: GithubRepositoryCell {
     
 }
