@@ -38,8 +38,6 @@
 		790B88DF245F6046000C89D4 /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88DE245F6046000C89D4 /* TrendingAPI.swift */; };
 		790B88E1245F61FA000C89D4 /* TrendingNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */; };
 		790B88E3245F624A000C89D4 /* ProviderType+Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E2245F624A000C89D4 /* ProviderType+Trending.swift */; };
-		790B88E5245F6498000C89D4 /* TrendingSince.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E4245F6498000C89D4 /* TrendingSince.swift */; };
-		790B88E7245F64E9000C89D4 /* TrendingLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E6245F64E9000C89D4 /* TrendingLanguage.swift */; };
 		792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D642455561D00856757 /* LoginViewReactor.swift */; };
 		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
 		792F6D692455563700856757 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User.swift */; };
@@ -146,8 +144,6 @@
 		790B88DE245F6046000C89D4 /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
 		790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingNetworking.swift; sourceTree = "<group>"; };
 		790B88E2245F624A000C89D4 /* ProviderType+Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProviderType+Trending.swift"; sourceTree = "<group>"; };
-		790B88E4245F6498000C89D4 /* TrendingSince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingSince.swift; sourceTree = "<group>"; };
-		790B88E6245F64E9000C89D4 /* TrendingLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingLanguage.swift; sourceTree = "<group>"; };
 		7924EE2824554DF8007F7FDE /* SWHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWHub.entitlements; sourceTree = "<group>"; };
 		792F6D642455561D00856757 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -287,26 +283,11 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		790B88D7245F596E000C89D4 /* Trending */ = {
-			isa = PBXGroup;
-			children = (
-				79EE8AA1245E8EC800A2438C /* TrendingDeveloperListViewReactor.swift */,
-				79EE8AA3245E8ED300A2438C /* TrendingDeveloperListViewController.swift */,
-				79EE8A9C245E8D9700A2438C /* TrendingRepositoryListViewReactor.swift */,
-				79EE8A9E245E8DA300A2438C /* TrendingRepositoryListViewController.swift */,
-				790B88D8245F5989000C89D4 /* TrendingRepository.swift */,
-				790B88DC245F59ED000C89D4 /* TrendingDeveloper.swift */,
-				790B88E4245F6498000C89D4 /* TrendingSince.swift */,
-				790B88E6245F64E9000C89D4 /* TrendingLanguage.swift */,
-			);
-			path = Trending;
-			sourceTree = "<group>";
-		};
 		792F6D5E245555B700856757 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				79A8BDD8245FC68E00E88DB2 /* Github */,
-				790B88D7245F596E000C89D4 /* Trending */,
+				79A8BDDA245FC83000E88DB2 /* Developer */,
+				79A8BDD9245FC82700E88DB2 /* Repository */,
 				79EE8A92245E88B400A2438C /* Home */,
 				79042E94245D8FB200DB30ED /* MyColor */,
 				7976ACA2245826E900093046 /* Setting */,
@@ -335,7 +316,6 @@
 		792F6D60245555C800856757 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				79EE8A97245E8AD400A2438C /* Paging */,
 				799547CC245D43F3002A7999 /* Navigation */,
 				7976ACB92459338200093046 /* Collection */,
 				790767AC2456C26F00CD0AAF /* Network */,
@@ -453,12 +433,57 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		79A8BDD8245FC68E00E88DB2 /* Github */ = {
+		79A8BDD9245FC82700E88DB2 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				79A8BDDC245FC90600E88DB2 /* Trending */,
+				79A8BDDB245FC8FD00E88DB2 /* Github */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		79A8BDDA245FC83000E88DB2 /* Developer */ = {
+			isa = PBXGroup;
+			children = (
+				79A8BDDE245FC90D00E88DB2 /* Github */,
+				79A8BDDD245FC90900E88DB2 /* Trending */,
+			);
+			path = Developer;
+			sourceTree = "<group>";
+		};
+		79A8BDDB245FC8FD00E88DB2 /* Github */ = {
 			isa = PBXGroup;
 			children = (
 				79F936AB245C3B4000AA775A /* GithubRepository.swift */,
 				79F936AD245C457900AA775A /* GithubRepositoryItem.swift */,
 				79F936AF245C458A00AA775A /* GithubRepositoryCell.swift */,
+			);
+			path = Github;
+			sourceTree = "<group>";
+		};
+		79A8BDDC245FC90600E88DB2 /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				790B88D8245F5989000C89D4 /* TrendingRepository.swift */,
+				79EE8A9E245E8DA300A2438C /* TrendingRepositoryListViewController.swift */,
+				79EE8A9C245E8D9700A2438C /* TrendingRepositoryListViewReactor.swift */,
+			);
+			path = Trending;
+			sourceTree = "<group>";
+		};
+		79A8BDDD245FC90900E88DB2 /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				79EE8AA3245E8ED300A2438C /* TrendingDeveloperListViewController.swift */,
+				79EE8AA1245E8EC800A2438C /* TrendingDeveloperListViewReactor.swift */,
+				790B88DC245F59ED000C89D4 /* TrendingDeveloper.swift */,
+			);
+			path = Trending;
+			sourceTree = "<group>";
+		};
+		79A8BDDE245FC90D00E88DB2 /* Github */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Github;
 			sourceTree = "<group>";
@@ -538,13 +563,6 @@
 				79EE8A95245E88DB00A2438C /* HomeViewController.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		79EE8A97245E8AD400A2438C /* Paging */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Paging;
 			sourceTree = "<group>";
 		};
 		D8A78E795493EC5C4980DEE5 /* Pods */ = {
@@ -757,7 +775,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				790B88E7245F64E9000C89D4 /* TrendingLanguage.swift in Sources */,
 				7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */,
 				79EE8AA4245E8ED300A2438C /* TrendingDeveloperListViewController.swift in Sources */,
 				7906C32124555DB60030764D /* Router.swift in Sources */,
@@ -793,7 +810,6 @@
 				79094568245DD17900D69366 /* MyColor.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
 				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
-				790B88E5245F6498000C89D4 /* TrendingSince.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
 				79042E98245D8FCC00DB30ED /* MyColorViewController.swift in Sources */,
 				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
