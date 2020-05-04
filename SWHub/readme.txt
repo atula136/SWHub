@@ -7,3 +7,7 @@
 11. 自定义下拉刷新/加载效果，采用ScrollViewController运行时方式
 12. hashValue
 15. requestArray为空的error
+16. 适配iPhoneX
+17. 首页 重名 趋势（Trending）
+18. 嵌套类型全路径
+19. languages.json 代码手动变更为 Language#array.json，本地保留一份

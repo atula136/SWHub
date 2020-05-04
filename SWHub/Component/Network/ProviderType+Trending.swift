@@ -16,6 +16,10 @@ extension ProviderType {
         return TrendingNetworking(provider: NetworkProvider<TrendingAPI>(endpointClosure: TrendingNetworking.endpointsClosure(), requestClosure: TrendingNetworking.endpointResolver(), stubClosure: TrendingNetworking.APIKeysBasedStubBehaviour, plugins: TrendingNetworking.plugins))
     }
     
+    func languages() -> Observable<[Condition.Language]> {
+        return self.trendingNetworking.requestArray(.languages, type: Condition.Language.self)
+    }
+    
     func repositories(language: String?, since: String?) -> Observable<[TrendingRepository]> {
         return self.trendingNetworking.requestArray(.repositories(language: language, since: since), type: TrendingRepository.self)
     }

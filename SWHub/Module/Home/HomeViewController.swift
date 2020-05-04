@@ -33,6 +33,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
             self.reactor = reactor
         }
         super.init(navigator, reactor)
+        self.hidesBottomBarWhenPushed = true
         self.tabBarItem.title = reactor.currentState.title
     }
     
@@ -43,11 +44,8 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // self.view.frame = self.contentFrame
-        
         self.addChild(self.paging)
         self.view.addSubview(self.paging.view)
-        //self.paging.view.snp.makeConstraints { $0.edges.equalToSuperview() }
         self.paging.view.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.top.equalToSuperview().offset(self.contentTop)
@@ -57,9 +55,20 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
         
+        self.navigationBar.addButtonToRight(R.image.nav_condition()!).rx.tap.subscribe(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+//            if var url = Router.condition.url.url {
+//                url.appendQueryParameters([Parameter.since: "1"])
+//                self.navigator.present(url, wrap: NavigationController.self)
+//            }
+            self.navigator.present(Router.condition.url, wrap: NavigationController.self)
+        }).disposed(by: self.disposeBag)
+        
+        self.paging.collectionView.size = CGSize(width: self.view.width, height: navigationBarHeight)
         self.navigationBar.titleView = self.paging.collectionView
         
         themeService.rx
+            .bind({ $0.primaryColor }, to: self.paging.view.rx.backgroundColor)
             .bind({ $0.foregroundColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
             .bind({ $0.textColor }, to: self.paging.rx.textColor)
             .disposed(by: self.rx.disposeBag)
@@ -71,6 +80,10 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
     
     func bind(reactor: HomeViewReactor) {
         super.bind(reactor: reactor)
+        // action
+        self.rx.viewDidLoad.map{ Reactor.Action.load }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // state
         reactor.state.map{ $0.items }
             .mapToVoid()

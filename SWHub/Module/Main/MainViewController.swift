@@ -73,24 +73,24 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         switch key {
         case .home:
             viewController = HomeViewController(self.navigator, HomeViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.main_tabbar_home()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.main_tabbar_home()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = R.image.tab_home()?.qmui_image(withTintColor: .text)?.original
+            viewController?.tabBarItem.selectedImage = R.image.tab_home()?.qmui_image(withTintColor: .secondary)?.original
         case .message:
             viewController = MessageViewController(self.navigator, MessageViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.main_tabbar_message()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.main_tabbar_message()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = R.image.tab_message()?.qmui_image(withTintColor: .text)?.original
+            viewController?.tabBarItem.selectedImage = R.image.tab_message()?.qmui_image(withTintColor: .secondary)?.original
         case .search:
             viewController = SearchViewController(self.navigator, SearchViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.main_tabbar_search()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.main_tabbar_search()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = R.image.tab_search()?.qmui_image(withTintColor: .text)?.original
+            viewController?.tabBarItem.selectedImage = R.image.tab_search()?.qmui_image(withTintColor: .secondary)?.original
         case .activity:
             viewController = ActivityViewController(self.navigator, ActivityViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.main_tabbar_activity()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.main_tabbar_activity()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = R.image.tab_activity()?.qmui_image(withTintColor: .text)?.original
+            viewController?.tabBarItem.selectedImage = R.image.tab_activity()?.qmui_image(withTintColor: .secondary)?.original
         case .setting:
             viewController = SettingViewController(self.navigator, SettingViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.main_tabbar_settings()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.main_tabbar_settings()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = R.image.tab_settings()?.qmui_image(withTintColor: .text)?.original
+            viewController?.tabBarItem.selectedImage = R.image.tab_settings()?.qmui_image(withTintColor: .secondary)?.original
         }
         viewController?.hidesBottomBarWhenPushed = false
         if let item = viewController?.tabBarItem {

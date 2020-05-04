@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import ReactorKit
 import SWFrame
 
 class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     
-    typealias Action = NoAction
+    enum Action {
+        case load
+    }
+    
+    enum Mutation {
+        case setLoading(Bool)
+        case setLanguages([Condition.Language])
+    }
     
     struct State {
+        var isLoading = false
         var title: String?
+        var languages: [Condition.Language]?
         var items: [HomeKey] = [.repository, .developer]
     }
     
@@ -26,6 +37,29 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         self.initialState = State(
             title: stringDefault(self.title, R.string.localizable.mainTabBarHome())
         )
+    }
+    
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .load:
+            guard self.currentState.isLoading == false else { return .empty() }
+            var load = Observable.just(Mutation.setLoading(true))
+            load = load.concat(self.provider.languages().map{ Mutation.setLanguages($0) })
+            load = load.concat(Observable.just(.setLoading(false)))
+            return load
+        }
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
+        case let .setLanguages(languages):
+            state.languages = languages
+            Condition.Language.storeArray(languages)
+        }
+        return state
     }
     
 }
