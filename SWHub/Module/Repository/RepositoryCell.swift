@@ -1,8 +1,8 @@
 //
-//  GithubRepositoryCell.swift
+//  RepositoryCell.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/5/1.
+//  Created by 杨建祥 on 2020/5/4.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ import SwifterSwift
 import Kingfisher
 import SWFrame
 
-class GithubRepositoryCell: CollectionCell, ReactorKit.View {
+class RepositoryCell: CollectionCell, ReactorKit.View {
     
     lazy var titleLabel: Label = {
         let label = Label()
@@ -124,7 +124,7 @@ class GithubRepositoryCell: CollectionCell, ReactorKit.View {
         self.detailLabel.top = self.subtitleLabel.bottom + 4
     }
     
-    func bind(reactor: GithubRepositoryItem) {
+    func bind(reactor: RepositoryItem) {
         super.bind(item: reactor)
         reactor.state.map{ $0.title }
             .bind(to: self.titleLabel.rx.text)

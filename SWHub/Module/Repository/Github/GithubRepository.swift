@@ -133,7 +133,7 @@ struct GithubRepository: ModelType, Storable, Subjective {
         ]))
         
         if let languageString = self.language?.styled(with: .color(.text)) {
-            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(self.languageColor ?? "") ?? .clear)]))
+            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: self.languageColor ?? "") ?? .clear)]))
             texts.append(.composed(of: [
                 languageColorShape, Special.space, languageString
             ]))

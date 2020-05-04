@@ -45,7 +45,13 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         
         self.addChild(self.paging)
         self.view.addSubview(self.paging.view)
-        self.paging.view.snp.makeConstraints { $0.edges.equalToSuperview() }
+        // self.paging.view.snp.makeConstraints { $0.edges.equalToSuperview() }
+        self.paging.view.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.top.equalToSuperview().offset(self.contentTop)
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(self.contentBottom)
+        }
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
         

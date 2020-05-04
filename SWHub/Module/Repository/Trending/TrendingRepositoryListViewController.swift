@@ -7,21 +7,40 @@
 //
 
 import UIKit
-import ReactorKit
+import RxSwift
+import RxCocoa
 import URLNavigator
-import Rswift
-import SwifterSwift
+import ReactorKit
+import ReusableKit
+import RxDataSources
 import SWFrame
 
-class TrendingRepositoryListViewController: BaseViewController, ReactorKit.View {
+class TrendingRepositoryListViewController: CollectionViewController, ReactorKit.View {
+    
+    struct Reusable {
+        static let repositoryCell = ReusableCell<TrendingRepositoryCell>()
+    }
+    
+    let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingRepositorySection>
+    
+    override var layout: UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 10
+        // layout.sectionInset = .init(horizontal: 30, vertical: 0)
+        layout.sectionInset = .init(top: 10, left: 15, bottom: 0, right: 15)
+        return layout
+    }
     
     init(_ navigator: NavigatorType, _ reactor: TrendingRepositoryListViewReactor) {
         defer {
             self.reactor = reactor
         }
+        self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
         self.hidesNavigationBar = boolMember(reactor.parameters, Parameter.hideNavBar, true)
-        self.tabBarItem.title = reactor.currentState.title
+        self.shouldRefresh = boolMember(reactor.parameters, Parameter.shouldRefresh, true)
     }
     
     required init?(coder: NSCoder) {
@@ -30,12 +49,61 @@ class TrendingRepositoryListViewController: BaseViewController, ReactorKit.View 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.view.backgroundColor = .orange
+        self.collectionView.register(Reusable.repositoryCell)
     }
     
     func bind(reactor: TrendingRepositoryListViewReactor) {
         super.bind(reactor: reactor)
+        // action
+        self.rx.viewDidLoad.map{ Reactor.Action.load }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.rx.emptyDataSet.map{ Reactor.Action.load }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.rx.refresh.map{ Reactor.Action.refresh }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        // state
+        reactor.state.map { $0.isLoading }
+            .distinctUntilChanged()
+            .bind(to: self.rx.loading())
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.isRefreshing }
+            .distinctUntilChanged()
+            .bind(to: self.rx.isRefreshing)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.error }
+            .bind(to: self.rx.error)
+            .disposed(by: self.disposeBag)
+        reactor.state.map{ $0.sections }
+            .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+            .disposed(by: self.disposeBag)
     }
     
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingRepositoryListViewReactor) -> RxCollectionViewSectionedReloadDataSource<TrendingRepositorySection> {
+        return .init(
+            configureCell: { dataSource, collectionView, indexPath, sectionItem in
+                switch sectionItem {
+                case let .repository(item):
+                    let cell = collectionView.dequeue(Reusable.repositoryCell, for: indexPath)
+                    cell.bind(reactor: item)
+                    return cell
+                }
+        })
+    }
+    
+}
+
+extension TrendingRepositoryListViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.sectionWidth(at: indexPath.section)
+        switch self.dataSource[indexPath] {
+        case let .repository(item):
+            return Reusable.repositoryCell.class.size(width: width, item: item)
+        }
+    }
+
 }
 

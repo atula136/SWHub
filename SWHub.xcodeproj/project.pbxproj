@@ -41,6 +41,9 @@
 		792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D642455561D00856757 /* LoginViewReactor.swift */; };
 		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
 		792F6D692455563700856757 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User.swift */; };
+		79322482245FF8D400BED07A /* TrendingRepositorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79322481245FF8D400BED07A /* TrendingRepositorySection.swift */; };
+		79322484245FF91F00BED07A /* TrendingRepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79322483245FF91F00BED07A /* TrendingRepositoryItem.swift */; };
+		79322486245FF92A00BED07A /* TrendingRepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79322485245FF92A00BED07A /* TrendingRepositoryCell.swift */; };
 		79740E6E245C4ED1003F441A /* SettingProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79740E6D245C4ED1003F441A /* SettingProjectItem.swift */; };
 		79740E70245C4EDE003F441A /* SettingProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79740E6F245C4EDE003F441A /* SettingProjectCell.swift */; };
 		7976AC9C24581F6700093046 /* MainViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9B24581F6700093046 /* MainViewReactor.swift */; };
@@ -64,6 +67,8 @@
 		799547CE245D4403002A7999 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CD245D4403002A7999 /* NavigationController.swift */; };
 		799547D0245D4998002A7999 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CF245D4998002A7999 /* UIApplicationExt.swift */; };
 		799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547D3245D607F002A7999 /* UIViewControllerExt.swift */; };
+		79A8BDE0245FCA0900E88DB2 /* RepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8BDDF245FCA0900E88DB2 /* RepositoryItem.swift */; };
+		79A8BDE2245FCA2600E88DB2 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A8BDE1245FCA2600E88DB2 /* RepositoryCell.swift */; };
 		79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4A8624554B08001BDB90 /* AppDelegate.swift */; };
 		79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A8F24554B09001BDB90 /* Assets.xcassets */; };
 		79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A9124554B09001BDB90 /* LaunchScreen.storyboard */; };
@@ -89,8 +94,6 @@
 		79EE8AA4245E8ED300A2438C /* TrendingDeveloperListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8AA3245E8ED300A2438C /* TrendingDeveloperListViewController.swift */; };
 		79F936A9245C3B0900AA775A /* repos-tospery-SWHub.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */; };
 		79F936AC245C3B4000AA775A /* GithubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F936AB245C3B4000AA775A /* GithubRepository.swift */; };
-		79F936AE245C457900AA775A /* GithubRepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F936AD245C457900AA775A /* GithubRepositoryItem.swift */; };
-		79F936B0245C458A00AA775A /* GithubRepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F936AF245C458A00AA775A /* GithubRepositoryCell.swift */; };
 		FD3249B3375F87DD51CA1684 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +151,9 @@
 		792F6D642455561D00856757 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		792F6D682455563700856757 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		79322481245FF8D400BED07A /* TrendingRepositorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepositorySection.swift; sourceTree = "<group>"; };
+		79322483245FF91F00BED07A /* TrendingRepositoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryItem.swift; sourceTree = "<group>"; };
+		79322485245FF92A00BED07A /* TrendingRepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepositoryCell.swift; sourceTree = "<group>"; };
 		79740E6D245C4ED1003F441A /* SettingProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProjectItem.swift; sourceTree = "<group>"; };
 		79740E6F245C4EDE003F441A /* SettingProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProjectCell.swift; sourceTree = "<group>"; };
 		7976AC9B24581F6700093046 /* MainViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewReactor.swift; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 		799547CD245D4403002A7999 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		799547CF245D4998002A7999 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
 		799547D3245D607F002A7999 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		79A8BDDF245FCA0900E88DB2 /* RepositoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryItem.swift; sourceTree = "<group>"; };
+		79A8BDE1245FCA2600E88DB2 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		79AF4A8324554B08001BDB90 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AF4A8624554B08001BDB90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79AF4A8F24554B09001BDB90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,8 +210,6 @@
 		79EE8AA3245E8ED300A2438C /* TrendingDeveloperListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDeveloperListViewController.swift; sourceTree = "<group>"; };
 		79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-tospery-SWHub.json"; sourceTree = "<group>"; };
 		79F936AB245C3B4000AA775A /* GithubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepository.swift; sourceTree = "<group>"; };
-		79F936AD245C457900AA775A /* GithubRepositoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepositoryItem.swift; sourceTree = "<group>"; };
-		79F936AF245C458A00AA775A /* GithubRepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepositoryCell.swift; sourceTree = "<group>"; };
 		97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D31A282BEF0A84BF48C2B7 /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -438,6 +444,8 @@
 			children = (
 				79A8BDDC245FC90600E88DB2 /* Trending */,
 				79A8BDDB245FC8FD00E88DB2 /* Github */,
+				79A8BDDF245FCA0900E88DB2 /* RepositoryItem.swift */,
+				79A8BDE1245FCA2600E88DB2 /* RepositoryCell.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -455,8 +463,6 @@
 			isa = PBXGroup;
 			children = (
 				79F936AB245C3B4000AA775A /* GithubRepository.swift */,
-				79F936AD245C457900AA775A /* GithubRepositoryItem.swift */,
-				79F936AF245C458A00AA775A /* GithubRepositoryCell.swift */,
 			);
 			path = Github;
 			sourceTree = "<group>";
@@ -467,6 +473,9 @@
 				790B88D8245F5989000C89D4 /* TrendingRepository.swift */,
 				79EE8A9E245E8DA300A2438C /* TrendingRepositoryListViewController.swift */,
 				79EE8A9C245E8D9700A2438C /* TrendingRepositoryListViewReactor.swift */,
+				79322481245FF8D400BED07A /* TrendingRepositorySection.swift */,
+				79322483245FF91F00BED07A /* TrendingRepositoryItem.swift */,
+				79322485245FF92A00BED07A /* TrendingRepositoryCell.swift */,
 			);
 			path = Trending;
 			sourceTree = "<group>";
@@ -786,6 +795,7 @@
 				7906832C24564EAB00BFDCB2 /* AuthManager.swift in Sources */,
 				792F6D692455563700856757 /* User.swift in Sources */,
 				79EE8A9D245E8D9700A2438C /* TrendingRepositoryListViewReactor.swift in Sources */,
+				79A8BDE2245FCA2600E88DB2 /* RepositoryCell.swift in Sources */,
 				799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */,
 				792F6D672455562F00856757 /* LoginViewController.swift in Sources */,
 				79F936AC245C3B4000AA775A /* GithubRepository.swift in Sources */,
@@ -795,13 +805,14 @@
 				7976ACAE2458272E00093046 /* SearchViewController.swift in Sources */,
 				79E67A47245C0E5700FE6093 /* SupplementaryView.swift in Sources */,
 				7906C317245558B10030764D /* Theme.swift in Sources */,
+				79322484245FF91F00BED07A /* TrendingRepositoryItem.swift in Sources */,
 				790B88DD245F59ED000C89D4 /* TrendingDeveloper.swift in Sources */,
-				79F936B0245C458A00AA775A /* GithubRepositoryCell.swift in Sources */,
 				7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */,
 				79EE8A94245E88CF00A2438C /* HomeViewReactor.swift in Sources */,
 				7906C32B24555DFD0030764D /* Appearance.swift in Sources */,
 				790B88DF245F6046000C89D4 /* TrendingAPI.swift in Sources */,
 				79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */,
+				79322486245FF92A00BED07A /* TrendingRepositoryCell.swift in Sources */,
 				7976ACB82459335600093046 /* SettingSection.swift in Sources */,
 				7976ACBB2459339100093046 /* CollectionItem.swift in Sources */,
 				79B2E56824598DC400D6E162 /* Setting.swift in Sources */,
@@ -823,10 +834,12 @@
 				7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */,
 				7976ACBF245933E200093046 /* CollectionViewReactor.swift in Sources */,
 				790767B02456C42000CD0AAF /* GithubNetworking.swift in Sources */,
+				79322482245FF8D400BED07A /* TrendingRepositorySection.swift in Sources */,
 				7976ACC3245934CA00093046 /* SettingUserItem.swift in Sources */,
 				7906C32724555DE40030764D /* Enumeration.swift in Sources */,
 				79B2E56E245BD88900D6E162 /* IntExt.swift in Sources */,
 				79DA6EF1245E0F7D0052F2D7 /* DefaultCollectionCell.swift in Sources */,
+				79A8BDE0245FCA0900E88DB2 /* RepositoryItem.swift in Sources */,
 				79740E70245C4EDE003F441A /* SettingProjectCell.swift in Sources */,
 				7976ACC1245933F000093046 /* CollectionViewController.swift in Sources */,
 				7976ACAA2458271900093046 /* ActivityViewController.swift in Sources */,
@@ -848,7 +861,6 @@
 				79EE8A9F245E8DA300A2438C /* TrendingRepositoryListViewController.swift in Sources */,
 				79E67A49245C0E9000FE6093 /* SupplementaryReactor.swift in Sources */,
 				7976ACAC2458272400093046 /* SearchViewReactor.swift in Sources */,
-				79F936AE245C457900AA775A /* GithubRepositoryItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

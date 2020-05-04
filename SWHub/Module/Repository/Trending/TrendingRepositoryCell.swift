@@ -1,25 +1,19 @@
 //
-//  SettingUserCell.swift
+//  TrendingRepositoryCell.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/4/29.
+//  Created by 杨建祥 on 2020/5/4.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
 import UIKit
-import QMUIKit
-import RxSwift
-import RxCocoa
-import ReactorKit
-import SwifterSwift
-import Kingfisher
 import SWFrame
 
-class SettingUserCell: RepositoryCell {
+class TrendingRepositoryCell: RepositoryCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.badgeImageView.image = R.image.setting_badge_user()?.template
+        // self.badgeImageView.image = R.image.setting_badge_user()?.template
     }
     
     required init?(coder: NSCoder) {
@@ -27,4 +21,3 @@ class SettingUserCell: RepositoryCell {
     }
     
 }
-
