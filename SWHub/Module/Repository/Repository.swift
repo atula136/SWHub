@@ -11,7 +11,7 @@ import BonMot
 import ObjectMapper
 import SWFrame
 
-struct Repository: ModelType, Subjective {
+struct Repository: ModelType, Subjective, Eventable {
     
     var `private` = false
     var fork = false
@@ -179,6 +179,28 @@ struct Repository: ModelType, Subjective {
         owner                       <- map["owner"]
     }
     
+    func detail() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.text))
+        let starsImage = R.image.setting_badge_star()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
+        texts.append(.composed(of: [
+            starsImage, Special.space, starsString, Special.space, Special.tab
+        ]))
+        
+        if let languageString = self.language?.styled(with: .color(.text)) {
+            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
+            texts.append(.composed(of: [
+                languageColorShape, Special.space, languageString
+            ]))
+        }
+        // YJX_TODO languageColor
+        
+        return .composed(of: texts)
+    }
+    
+    enum Event {
+        
+    }
     
     struct License: ModelType, Subjective {
         
@@ -232,10 +254,3 @@ struct Repository: ModelType, Subjective {
     
 }
 
-extension Repository: Eventable {
-    
-    enum Event {
-        
-    }
-    
-}

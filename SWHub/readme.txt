@@ -23,3 +23,4 @@ state -> refresh ui效果
 https://api.github.com/repos/rxhanson/Rectangle
 https://api.github.com/repos/rxhanson/Rectangle/readme
 https://api.github.com/user/starred/rxhanson/Rectangle
+languageColor
