@@ -23,7 +23,8 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         case setLoading(Bool)
         case setRefreshing(Bool)
         case setError(Error?)
-        case initial([TrendingRepository], toCache: Bool)
+        // case setCondition(Condition.Since, Condition.Language)
+        case start([TrendingRepository], toCache: Bool)
     }
     
     struct State {
@@ -31,6 +32,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         var isRefreshing = false
         var title: String?
         var error: Error?
+        var condition = Condition.current()!
         var sections: [TrendingRepositorySection] = []
     }
     
@@ -49,9 +51,9 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             var load = Observable.just(Mutation.setError(nil))
             load = load.concat(Observable.just(.setLoading(true)))
             if let repositories = TrendingRepository.cachedArray() {
-                load = load.concat(Observable.just(.initial(repositories, toCache: false)))
+                load = load.concat(Observable.just(.start(repositories, toCache: false)))
             } else {
-                load = load.concat(self.provider.repositories(language: nil, since: "daily").map{ Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }))
+                load = load.concat(self.provider.repositories(language: self.currentState.condition.language.urlParam, since: self.currentState.condition.since.paramValue).map{ Mutation.start($0, toCache: true) }.catchError({ .just(.setError($0)) }))
             }
             load = load.concat(Observable.just(.setLoading(false)))
             return load
@@ -60,7 +62,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.provider.repositories(language: nil, since: "daily").map{ Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }),
+                self.provider.repositories(language: self.currentState.condition.language.urlParam, since: self.currentState.condition.since.paramValue).map{ Mutation.start($0, toCache: true) }.catchError({ .just(.setError($0)) }),
                 .just(.setRefreshing(false))
             ])
         }
@@ -75,7 +77,10 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             state.isRefreshing = isRefreshing
         case let .setError(error):
             state.error = error
-        case let .initial(repositories, toCache):
+//        case let .setCondition(since, language):
+//            state.since = since
+//            state.language = language
+        case let .start(repositories, toCache):
             if toCache {
                 TrendingRepository.storeArray(repositories)
             }
@@ -83,6 +88,16 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         }
         return state
     }
+    
+//    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+//        let conditionEvent = Condition.event.flatMap { event -> Observable<Mutation> in
+//            switch event {
+//            case let .update(since, language):
+//                return .just(.setCondition(since, language))
+//            }
+//        }
+//        return .merge(mutation, conditionEvent)
+//    }
     
 }
 

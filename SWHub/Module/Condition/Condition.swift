@@ -18,10 +18,32 @@ import SwifterSwift
 import Rswift
 import SWFrame
 
-struct Condition: ModelType, Eventable {
+struct Condition: ModelType, Subjective, Equatable /*, Eventable */ {
     
-    enum Event {
-        case update(Since, Language)
+//    enum Event {
+//        case update(Since, Language)
+//    }
+    
+    var id: Int?
+    var since = Since.daily
+    var language = Language.init(name: "All languages")
+    
+    init() {
+        
+    }
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        since       <- map["since"]
+        language    <- map["language"]
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.since.rawValue == rhs.since.rawValue &&
+            lhs.language.urlParam == rhs.language.urlParam
     }
     
     enum Since: Int, Codable {
@@ -53,8 +75,8 @@ struct Condition: ModelType, Eventable {
         
     }
     
-    struct Language: ModelType, Subjective, Eventable {
-        
+    struct Language: ModelType, Subjective, Eventable, Equatable {
+
         enum Event {
             case select(String?)
         }
@@ -65,7 +87,11 @@ struct Condition: ModelType, Eventable {
         var urlParam: String?
         
         init() {
-            // self.name = "All languages"
+            
+        }
+        
+        init(name: String? = nil) {
+            self.name = name
         }
         
         init?(map: Map) {
@@ -75,6 +101,10 @@ struct Condition: ModelType, Eventable {
         mutating func mapping(map: Map) {
             name            <- map["name"]
             urlParam        <- map["urlParam"]
+        }
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            return lhs.urlParam == rhs.urlParam
         }
         
         static func arrayStoreKey() -> String {
@@ -201,18 +231,6 @@ struct Condition: ModelType, Eventable {
         enum SectionItem {
             case language(Item)
         }
-        
-    }
-    
-    init() {
-        
-    }
-    
-    init?(map: Map) {
-        
-    }
-    
-    mutating func mapping(map: Map) {
         
     }
     

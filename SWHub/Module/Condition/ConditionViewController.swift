@@ -60,16 +60,25 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
         let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.commonSave())
         saveButton.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
-            var misc = Misc.current()!
-            misc.since = self.reactor?.currentState.since
-            misc.language = self.reactor?.currentState.language
-            Misc.update(misc)
-            Condition.event.onNext(.update(misc.since, misc.language))
+//            var misc = Misc.current()!
+//            misc.condition.since = self.reactor!.currentState.since
+//            misc.condition.language = self.reactor!.currentState.language
+//            Misc.update(misc)
+//            Condition.event.onNext(.update(misc.since, misc.language))
+            var condition = Condition.init()
+            condition.since = self.reactor!.currentState.since
+            condition.language = self.reactor!.currentState.language
+            Condition.update(condition)
             self.dismiss(animated: true, completion: nil)
         }).disposed(by: self.disposeBag)
         self.navigationBar.titleView = self.segment
         
         self.collectionView.register(Reusable.languageCell)
+        
+        themeService.rx
+            .bind({ [NSAttributedString.Key.foregroundColor: $0.textColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
+            .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: self.segment.rx.titleTextAttributes(for: .selected))
+            .disposed(by: self.rx.disposeBag)
     }
     
     func bind(reactor: ConditionViewReactor) {

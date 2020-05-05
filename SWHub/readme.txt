@@ -18,3 +18,4 @@
 自适应navButton大小
 暗黑模式：下拉刷新活动指示器、Since文本
 设置页的暗黑模式的切换按钮的状态应该是单向的
+state -> refresh ui效果

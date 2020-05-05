@@ -31,8 +31,8 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     struct State {
         var isLoading = false
         var error: Error?
-        var since: Condition.Since!
-        var language: Condition.Language!
+        var since = Condition.Since.daily
+        var language = Condition.Language.init(name: "All languages")
         var sections: [Condition.Language.Section] = []
     }
     
@@ -40,12 +40,12 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     
     required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
         super.init(provider, parameters)
-        let misc = Misc.current()!
+        let condition = Condition.current()!
         // since
-        let value = stringMember(self.parameters, Parameter.since, misc.since.paramValue)!
+        let value = stringMember(self.parameters, Parameter.since, condition.since.paramValue)!
         let since = value.since
         // language
-        let urlParam = stringMember(self.parameters, Parameter.language, misc.language.urlParam)
+        let urlParam = stringMember(self.parameters, Parameter.language, condition.language.urlParam)
         var language = Condition.Language.init()
         language.urlParam = urlParam
         // sections

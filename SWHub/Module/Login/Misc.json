@@ -1,7 +1,9 @@
 {
-    "since":0,
-    "language":{
-        "urlParam":null,
-        "name":"All languages"
+    "condition":{
+        "since":0,
+        "language":{
+            "urlParam":null,
+            "name":"All languages"
+        }
     }
 }

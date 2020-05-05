@@ -80,6 +80,13 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
         reactor.state.map{ $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
+//        reactor.state.map{ $0.since }.distinctUntilChanged().skip(1).subscribe(onNext: { since in
+//            let abc = self
+//            print("")
+//        }).disposed(by: self.disposeBag)
+//        reactor.state.map{ ($0.since, $0.language) }.skip(1).subscribe(onNext: { (since, language) in
+//            print("")
+//        }).disposed(by: self.disposeBag)
     }
     
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingRepositoryListViewReactor) -> RxCollectionViewSectionedReloadDataSource<TrendingRepositorySection> {
