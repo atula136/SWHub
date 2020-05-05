@@ -14,7 +14,7 @@ struct Misc: ModelType, Subjective {
     
     var id: Int?
     var since = Condition.Since.daily
-    var language: String?
+    var language = Condition.Language.init()
     
     init() {
         
@@ -30,7 +30,7 @@ struct Misc: ModelType, Subjective {
     }
     
     static func objectStoreKey(id: String? = nil) -> String {
-        return "misc"
+        return "Misc"
     }
     
 }

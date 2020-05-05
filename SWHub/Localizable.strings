@@ -24,6 +24,7 @@
 "Condition.Since.Daily" = "每日";
 "Condition.Since.Weekly" = "本周";
 "Condition.Since.Monthly" = "本月";
+"All languages" = "所有语言";
 /* 登录 */
 "Login.Title" = "登录";
 "Login.Password" = "密码";

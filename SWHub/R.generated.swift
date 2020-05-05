@@ -117,10 +117,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 5 files.
+  /// This `R.file` struct is generated, and contains static references to 7 files.
   struct file {
+    /// Resource file `Misc.json`.
+    static let miscJson = Rswift.FileResource(bundle: R.hostingBundle, name: "Misc", pathExtension: "json")
     /// Resource file `developers-daily.json`.
     static let developersDailyJson = Rswift.FileResource(bundle: R.hostingBundle, name: "developers-daily", pathExtension: "json")
+    /// Resource file `languages.json`.
+    static let languagesJson = Rswift.FileResource(bundle: R.hostingBundle, name: "languages", pathExtension: "json")
     /// Resource file `readme.txt`.
     static let readmeTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "readme", pathExtension: "txt")
     /// Resource file `repos-tospery-SWHub.json`.
@@ -130,9 +134,21 @@ struct R: Rswift.Validatable {
     /// Resource file `user.json`.
     static let userJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user", pathExtension: "json")
 
+    /// `bundle.url(forResource: "Misc", withExtension: "json")`
+    static func miscJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.miscJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
     /// `bundle.url(forResource: "developers-daily", withExtension: "json")`
     static func developersDailyJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.developersDailyJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "languages", withExtension: "json")`
+    static func languagesJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.languagesJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -900,7 +916,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 30 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 31 localization keys.
     struct localizable {
       /// Value: 下拉刷新
       static let pullToRefresh = Rswift.StringResource(key: "Pull to refresh", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -922,6 +938,8 @@ struct R: Rswift.Validatable {
       static let homeDeveloper = Rswift.StringResource(key: "Home.Developer", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的项目
       static let settingProject = Rswift.StringResource(key: "Setting.Project", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 所有语言
+      static let allLanguages = Rswift.StringResource(key: "All languages", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 搜索
       static let mainTabBarSearch = Rswift.StringResource(key: "Main.TabBar.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
@@ -1091,6 +1109,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Setting.Project", bundle: bundle, comment: "")
+      }
+
+      /// Value: 所有语言
+      static func allLanguages(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("All languages", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "All languages"
+        }
+
+        return NSLocalizedString("All languages", bundle: bundle, comment: "")
       }
 
       /// Value: 搜索

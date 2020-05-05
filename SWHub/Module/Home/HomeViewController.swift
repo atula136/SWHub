@@ -81,9 +81,9 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
     func bind(reactor: HomeViewReactor) {
         super.bind(reactor: reactor)
         // action
-        self.rx.viewDidLoad.map{ Reactor.Action.load }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
+//        self.rx.viewDidLoad.map{ Reactor.Action.load }
+//            .bind(to: reactor.action)
+//            .disposed(by: self.disposeBag)
         // state
         reactor.state.map{ $0.items }
             .mapToVoid()

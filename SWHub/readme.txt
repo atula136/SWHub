@@ -10,4 +10,4 @@
 16. 适配iPhoneX
 17. 首页 重名 趋势（Trending）
 18. 嵌套类型全路径
-19. languages.json 代码手动变更为 Language#array.json，本地保留一份
+20. 下拉刷新/加载更多，自定义UI
