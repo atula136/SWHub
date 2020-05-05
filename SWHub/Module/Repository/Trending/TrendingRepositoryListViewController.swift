@@ -51,6 +51,13 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
         super.viewDidLoad()
         self.collectionView.register(Reusable.repositoryCell)
         self.collectionView.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - navigationContentTopConstant - tabBarHeight)
+        self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] sectionItem in
+            guard let `self` = self else { return }
+            switch sectionItem {
+            case let .repository(_):
+                self.navigator.push(Router.Repository.detail.pattern)
+            }
+        }).disposed(by: self.disposeBag)
     }
     
     func bind(reactor: TrendingRepositoryListViewReactor) {

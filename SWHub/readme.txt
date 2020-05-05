@@ -20,3 +20,6 @@
 设置页的暗黑模式的切换按钮的状态应该是单向的
 state -> refresh ui效果
 “每日”明文问题
+https://api.github.com/repos/rxhanson/Rectangle
+https://api.github.com/repos/rxhanson/Rectangle/readme
+https://api.github.com/user/starred/rxhanson/Rectangle
