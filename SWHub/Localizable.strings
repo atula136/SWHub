@@ -13,7 +13,7 @@
 "Common.ISee" = "知道了";
 "Common.Cancel" = "取消";
 "Common.Fan" = "返";
-"Common.Yuan" = "元";
+"Common.Save" = "保存";
 /* 刷新 */
 "Pull to refresh" = "下拉刷新";
 "Release to refresh" = "松开刷新";

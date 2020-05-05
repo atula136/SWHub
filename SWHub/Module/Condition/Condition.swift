@@ -18,7 +18,11 @@ import SwifterSwift
 import Rswift
 import SWFrame
 
-struct Condition {
+struct Condition: ModelType, Eventable {
+    
+    enum Event {
+        case update(Since, Language)
+    }
     
     enum Since: Int, Codable {
         case daily, weekly, monthly
@@ -49,15 +53,19 @@ struct Condition {
         
     }
     
-    struct Language: ModelType, Subjective/*, CustomStringConvertible*/ {
+    struct Language: ModelType, Subjective, Eventable {
+        
+        enum Event {
+            case select(String?)
+        }
         
         var id: Int?
-        //var selected = false
+        var checked = false
         var name: String?
         var urlParam: String?
         
         init() {
-            self.name = "All languages"
+            // self.name = "All languages"
         }
         
         init?(map: Map) {
@@ -73,13 +81,13 @@ struct Condition {
             return "languages"
         }
         
-//        var description: String {
-//            return "Condition.Language"
-//        }
-        
         class Item: CollectionItem, ReactorKit.Reactor {
             
             typealias Action = NoAction
+            
+            enum Mutation {
+                case setSelect(String?)
+            }
             
             struct State {
                 var checked = false
@@ -92,9 +100,30 @@ struct Condition {
                 super.init(model)
                 guard let language = model as? Language else { return }
                 self.initialState = State(
-                    checked: language.urlParam == Misc.current()?.language.urlParam,
+                    checked: language.checked,
                     title: language.urlParam == nil ? NSLocalizedString(language.name ?? R.string.localizable.allLanguages(), comment: "") : language.name
                 )
+            }
+            
+            func reduce(state: State, mutation: Mutation) -> State {
+                var state = state
+                switch mutation {
+                case let .setSelect(urlParam):
+                    if let language = self.model as? Language {
+                        state.checked = urlParam == language.urlParam
+                    }
+                }
+                return state
+            }
+            
+            func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+                let languageSelectEvent = Language.event.flatMap { event -> Observable<Mutation> in
+                    switch event {
+                    case let .select(urlParam):
+                        return .just(.setSelect(urlParam))
+                    }
+                }
+                return .merge(mutation, languageSelectEvent)
             }
             
         }
@@ -172,6 +201,18 @@ struct Condition {
         enum SectionItem {
             case language(Item)
         }
+        
+    }
+    
+    init() {
+        
+    }
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
         
     }
     

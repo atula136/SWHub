@@ -13,11 +13,12 @@ import SWFrame
 struct Misc: ModelType, Subjective {
     
     var id: Int?
-    var since = Condition.Since.daily
-    var language = Condition.Language.init()
+    var since: Condition.Since!
+    var language: Condition.Language!
     
     init() {
-        
+        self.since = Condition.Since.daily
+        self.language = Condition.Language.init()
     }
     
     init?(map: Map) {

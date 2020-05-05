@@ -56,7 +56,7 @@ enum Router {
 //        }
 //    }
     
-    var url: String {
+    var pattern: String {
         var path: String?
         switch self {
         case .alert:
@@ -96,11 +96,11 @@ enum Router {
         }
         
         // 1. 颜色主题
-        navigator.register(self.color.url) { url, values, context in
+        navigator.register(self.color.pattern) { url, values, context in
             MyColorViewController(navigator, MyColorViewReactor(provider, parameters(url, values, context)))
         }
         // 2. 搜索条件
-        navigator.register(self.condition.url) { url, values, context in
+        navigator.register(self.condition.pattern) { url, values, context in
             ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))
         }
         

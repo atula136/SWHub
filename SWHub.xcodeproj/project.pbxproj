@@ -45,6 +45,7 @@
 		791160B9246095B400737F4B /* ParameterExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791160B8246095B400737F4B /* ParameterExt.swift */; };
 		791160BB24609F3C00737F4B /* languages.json in Resources */ = {isa = PBXBuildFile; fileRef = 791160BA24609F3C00737F4B /* languages.json */; };
 		791160BF2460A11200737F4B /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791160BE2460A11200737F4B /* Condition.swift */; };
+		7922DC9324615DAC0090A3EC /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7922DC9224615DAC0090A3EC /* StringExt.swift */; };
 		792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D642455561D00856757 /* LoginViewReactor.swift */; };
 		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
 		792F6D692455563700856757 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User.swift */; };
@@ -166,6 +167,7 @@
 		791160B8246095B400737F4B /* ParameterExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterExt.swift; sourceTree = "<group>"; };
 		791160BA24609F3C00737F4B /* languages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = languages.json; sourceTree = "<group>"; };
 		791160BE2460A11200737F4B /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
+		7922DC9224615DAC0090A3EC /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		7924EE2824554DF8007F7FDE /* SWHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SWHub.entitlements; sourceTree = "<group>"; };
 		792F6D642455561D00856757 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */,
 				790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */,
 				791160B8246095B400737F4B /* ParameterExt.swift */,
+				7922DC9224615DAC0090A3EC /* StringExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -864,6 +867,7 @@
 				791160B3246042AF00737F4B /* ConditionViewController.swift in Sources */,
 				791160BF2460A11200737F4B /* Condition.swift in Sources */,
 				79322486245FF92A00BED07A /* TrendingRepositoryCell.swift in Sources */,
+				7922DC9324615DAC0090A3EC /* StringExt.swift in Sources */,
 				7976ACB82459335600093046 /* SettingSection.swift in Sources */,
 				7976ACBB2459339100093046 /* CollectionItem.swift in Sources */,
 				79B2E56824598DC400D6E162 /* Setting.swift in Sources */,

@@ -922,8 +922,8 @@ struct R: Rswift.Validatable {
       static let pullToRefresh = Rswift.StringResource(key: "Pull to refresh", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 仓库
       static let homeRepository = Rswift.StringResource(key: "Home.Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 元
-      static let commonYuan = Rswift.StringResource(key: "Common.Yuan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 保存
+      static let commonSave = Rswift.StringResource(key: "Common.Save", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 加载中
       static let loading = Rswift.StringResource(key: "Loading...", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 取消
@@ -1007,17 +1007,17 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Home.Repository", bundle: bundle, comment: "")
       }
 
-      /// Value: 元
-      static func commonYuan(preferredLanguages: [String]? = nil) -> String {
+      /// Value: 保存
+      static func commonSave(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Common.Yuan", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Common.Save", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Common.Yuan"
+          return "Common.Save"
         }
 
-        return NSLocalizedString("Common.Yuan", bundle: bundle, comment: "")
+        return NSLocalizedString("Common.Save", bundle: bundle, comment: "")
       }
 
       /// Value: 加载中
