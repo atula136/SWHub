@@ -72,7 +72,7 @@ PODS:
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
   - SnapKit (4.2.0)
-  - SWFrame (1.0.1):
+  - SWFrame (1.0.2):
     - BonMot (= 5.4.1)
     - Cache (= 5.2.0)
     - CGFloatLiteral (= 0.5.0)
@@ -134,7 +134,7 @@ DEPENDENCIES:
   - RxGesture (= 3.0.0)
   - RxOptional (= 4.0.0)
   - RxTheme (= 4.0.0)
-  - SWFrame (from `../SWFrame`)
+  - SWFrame (= 1.0.2)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -173,16 +173,13 @@ SPEC REPOS:
     - RxTheme
     - RxViewController
     - SnapKit
+    - SWFrame
     - SwifterSwift
     - SwiftyBeaver
     - Toast-Swift
     - UICKeyChainStore
     - URLNavigator
     - WebViewJavascriptBridge
-
-EXTERNAL SOURCES:
-  SWFrame:
-    :path: "../SWFrame"
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -220,7 +217,7 @@ SPEC CHECKSUMS:
   RxTheme: 0b642f47c7d197a803c6b9c083964188c34f7ddb
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SWFrame: d28d800bd9b24700ed4af2ae761e65869c544e0f
+  SWFrame: 3d7dfa6a1556450fa47289926e0651bd2502bc61
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
@@ -228,6 +225,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 4efd7f8220dcb07eff79b3dc213c9a364fa0b872
+PODFILE CHECKSUM: 7a4031189355f28b6f95d660dc34f9cecccb9d22
 
 COCOAPODS: 1.9.1
