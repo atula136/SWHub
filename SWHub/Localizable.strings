@@ -14,14 +14,29 @@
 "Common.Cancel" = "取消";
 "Common.Fan" = "返";
 "Common.Yuan" = "元";
+/* 刷新 */
+"Pull to refresh" = "下拉刷新";
+"Release to refresh" = "松开刷新";
+"Loading..." = "加载中";
+"Loading more" = "正在加载更多";
+"No more data" = "没有更多的了";
+/* 条件 */
+"Condition.Since.Daily" = "每日";
+"Condition.Since.Weekly" = "本周";
+"Condition.Since.Monthly" = "本月";
+"All languages" = "所有语言";
 /* 登录 */
 "Login.Title" = "登录";
 "Login.Password" = "密码";
 /* 主页 */
+"Main.TabBar.Home" = "首页";
 "Main.TabBar.Message" = "消息";
 "Main.TabBar.Search" = "搜索";
 "Main.TabBar.Activity" = "活动";
 "Main.TabBar.Setting" = "设置";
+/* 首页 */
+"Home.Repository" = "仓库";
+"Home.Developer" = "开发者";
 /* 设置 */
 "Setting.Account" = "账户";
 "Setting.Account.Logout" = "退出";

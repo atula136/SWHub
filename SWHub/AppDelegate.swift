@@ -30,7 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        
+//        if let misc = Misc.current() {
+//            print("")
+//        }
+//        let a1 = Condition.Language.self.init()
+//        let a2 = String(describing: Subject)
+//        print("")
     }
     
     // MARK: - url handle

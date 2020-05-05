@@ -2,7 +2,7 @@
 //  RepositoryItem.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/5/1.
+//  Created by 杨建祥 on 2020/5/4.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -32,23 +32,36 @@ class RepositoryItem: CollectionItem, ReactorKit.Reactor {
     
     required init(_ model: ModelType) {
         super.init(model)
-        guard let repository = model as? Repository else { return }
-        self.initialState = State(
-            title: repository.fullName,
-            subtitle: repository.description,
-            detail: repository.detail(),
-            icon: repository.owner?.avatar
-        )
+//        if let repository = model as? GithubRepository {
+//            self.initialState = State(
+//                title: repository.fullName,
+//                subtitle: repository.description,
+//                detail: repository.detail(),
+//                icon: repository.owner?.avatar
+//            )
+//        }
+//        if let repository = model as? TrendingRepository {
+//            self.initialState = State(
+//                title: "\(repository.author ?? "")/\(repository.name ?? "")",
+//                subtitle: repository.description,
+//                detail: repository.detail(),
+//                icon: repository.avatar
+//            )
+//        }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
-        switch mutation {
-        case .setNight(_):
-            if let repository = self.model as? Repository {
-                state.detail = repository.detail()
-            }
-        }
+//        var state = state
+//        switch mutation {
+//        case .setNight(_):
+//            if let repository = self.model as? GithubRepository {
+//                state.detail = repository.detail()
+//            }
+//            if let repository = self.model as? TrendingRepository {
+//                state.detail = repository.detail()
+//            }
+//        }
+//        return state
         return state
     }
     

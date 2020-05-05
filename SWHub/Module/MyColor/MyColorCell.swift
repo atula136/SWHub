@@ -50,7 +50,7 @@ class MyColorCell: DefaultCollectionCell, ReactorKit.View {
             case .indicator:
                 return UIImage.indicator.template
             case .checkmark:
-                return UIImage.checkmark1.template
+                return UIImage.check.template
             default:
                 return nil
             }

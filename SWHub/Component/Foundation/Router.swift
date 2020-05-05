@@ -22,6 +22,7 @@ enum Router {
     case color
     case help
     case category
+    case condition
     
     enum Message {
         case list
@@ -76,6 +77,8 @@ enum Router {
             path = "help"
         case .category:
             path = "tag_page/<string:categoryId>"
+        case .condition:
+            path = "condition"
         }
         return UIApplication.shared.scheme + "://" + path!
     }
@@ -95,6 +98,10 @@ enum Router {
         // 1. 颜色主题
         navigator.register(self.color.url) { url, values, context in
             MyColorViewController(navigator, MyColorViewReactor(provider, parameters(url, values, context)))
+        }
+        // 2. 搜索条件
+        navigator.register(self.condition.url) { url, values, context in
+            ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))
         }
         
 //        // 1. 网页

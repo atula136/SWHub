@@ -27,6 +27,7 @@ PODS:
   - "NSObject+Rx (5.0.0)":
     - RxSwift (~> 5.0)
   - ObjectMapper (3.5.1)
+  - Parchment (2.3.0)
   - QMUIKit/QMUIComponents/QMUIButton (4.0.4):
     - QMUIKit/QMUICore
   - QMUIKit/QMUIComponents/QMUILabel (4.0.4):
@@ -127,12 +128,13 @@ DEPENDENCIES:
   - FLEX (= 3.0.0)
   - IQKeyboardManagerSwift (= 6.5.5)
   - MLeaksFinder (= 1.0.0)
+  - Parchment (= 2.3.0)
   - R.swift (= 5.1.0)
   - ReusableKit/RxSwift (= 3.0.0)
   - RxGesture (= 3.0.0)
   - RxOptional (= 4.0.0)
   - RxTheme (= 4.0.0)
-  - SWFrame (= 1.0.1)
+  - SWFrame (from `../SWFrame`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -154,6 +156,7 @@ SPEC REPOS:
     - Moya-ObjectMapper-Swift5
     - "NSObject+Rx"
     - ObjectMapper
+    - Parchment
     - QMUIKit
     - R.swift
     - R.swift.Library
@@ -170,13 +173,16 @@ SPEC REPOS:
     - RxTheme
     - RxViewController
     - SnapKit
-    - SWFrame
     - SwifterSwift
     - SwiftyBeaver
     - Toast-Swift
     - UICKeyChainStore
     - URLNavigator
     - WebViewJavascriptBridge
+
+EXTERNAL SOURCES:
+  SWFrame:
+    :path: "../SWFrame"
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -197,6 +203,7 @@ SPEC CHECKSUMS:
   Moya-ObjectMapper-Swift5: 02653eed3c084fd46b1526efe689ecfac00fee9f
   "NSObject+Rx": 6151a97d171f7187c4183746acc42d9451952a7b
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Parchment: 72a7eb8072454a9500a53dd84776e04fba24e740
   QMUIKit: 73899f707bdd51f44d16e10d11f224fb821fbe74
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
@@ -221,6 +228,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 8e65d9190d5c1d33804666f20d1e87f57287be0e
+PODFILE CHECKSUM: 4efd7f8220dcb07eff79b3dc213c9a364fa0b872
 
 COCOAPODS: 1.9.1
