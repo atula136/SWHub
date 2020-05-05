@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxOptional
 import ReactorKit
 import SWFrame
 
@@ -23,7 +24,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         case setLoading(Bool)
         case setRefreshing(Bool)
         case setError(Error?)
-        // case setCondition(Condition.Since, Condition.Language)
+        case setCondition(Condition)
         case start([TrendingRepository], toCache: Bool)
     }
     
@@ -77,9 +78,8 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             state.isRefreshing = isRefreshing
         case let .setError(error):
             state.error = error
-//        case let .setCondition(since, language):
-//            state.since = since
-//            state.language = language
+        case let .setCondition(condition):
+            state.condition = condition
         case let .start(repositories, toCache):
             if toCache {
                 TrendingRepository.storeArray(repositories)
@@ -98,6 +98,13 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
 //        }
 //        return .merge(mutation, conditionEvent)
 //    }
+    
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        return .merge(
+            mutation,
+            Condition.subject().asObservable().filterNil().distinctUntilChanged().map(Mutation.setCondition)
+        )
+    }
     
 }
 

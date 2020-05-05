@@ -41,6 +41,10 @@ struct Condition: ModelType, Subjective, Equatable /*, Eventable */ {
         language    <- map["language"]
     }
     
+    static func objectStoreKey(id: String? = nil) -> String {
+        return "Condition"
+    }
+    
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.since.rawValue == rhs.since.rawValue &&
             lhs.language.urlParam == rhs.language.urlParam
