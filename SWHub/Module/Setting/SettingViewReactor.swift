@@ -23,7 +23,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     
     enum Mutation {
         case setLoading(Bool)
-        case setRepository(GithubRepository)
+        case setRepository(Repository)
         case setError(Error?)
         case initial([[ModelType]])
     }
@@ -33,7 +33,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         //var isUpdating = false
         var title: String?
         var error: Error?
-        var repository: GithubRepository?
+        var repository: Repository?
         var sections: [SettingSection] = []
     }
     
@@ -55,7 +55,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 let logout = Setting(id: .logout)
                 sections.append([user, logout])
             }
-            if let repository = GithubRepository.current() {
+            if let repository = Repository.current() {
                 sections.append([repository])
             }
             var preference: [ModelType] = []
@@ -85,7 +85,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                         header = R.string.localizable.settingAccount()
                         items.append(.user(SettingUserItem(user)))
                     }
-                    if let repository = model as? GithubRepository {
+                    if let repository = model as? Repository {
                         header = R.string.localizable.settingProject()
                         items.append(.project(SettingProjectItem(repository)))
                     }
@@ -112,7 +112,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             }
             sections.insert(.setting(header: R.string.localizable.settingProject(), items: [.project(SettingProjectItem(repository))]), at: 1)
             state.sections = sections
-            GithubRepository.update(repository)
+            Repository.update(repository)
         case let .setError(error):
             state.error = error
         }

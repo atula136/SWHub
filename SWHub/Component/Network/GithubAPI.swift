@@ -18,6 +18,8 @@ import SWFrame
 enum GithubAPI {
     case profile
     case repository(fullname: String)
+    case readme(fullname: String, ref: String?)
+    case unstarRepository(fullname: String)
 //    case wechatInfo
 //    case homePages
 //    case homeModule(pageID: String)
@@ -39,29 +41,15 @@ extension GithubAPI: TargetType {
         switch self {
         case .profile: return "/user"
         case let .repository(fullname): return "/repos/\(fullname)"
-//        case .wechatInfo:
-//            return "/jxh5/wx_info"
-//        case .homePages:
-//            return "/jxh5/tags"
-//        case .homeModule:
-//            return "/jxh5/banners/v4"
-//        case .dailyBest:
-//            return "/j/api/community/items"
-//        case .helpInfo:
-//            return "/j/api/help/categories"
-//        case .helpQuestions(let categoryID):
-//            return "/j/api/help/category/" + categoryID + "/questions"
-//        case .messageCenter:
-//            return "/cn/api/message/my"
-//        case .messageList:
-//            return "/cn/api/message/list"
-//        case .productList:
-//            return "/api/deals/sec"
+        case let .readme(fullname): return "/repos/\(fullname)/readme"
+        case let .unstarRepository(fullname): return "/user/starred/\(fullname)"
         }
     }
     
     var method: Moya.Method {
         switch self {
+        case .unstarRepository:
+            return .delete
         default:
             return .get
         }
@@ -75,37 +63,13 @@ extension GithubAPI: TargetType {
     }
     
     var task: Task {
-        let parameters: [String: Any] = [:]
-//        parameters["platform"] = Constant.Information.platform
-//        parameters["version"] = UIApplication.shared.version!
-//        var userType: UserType = .normal
-//        if let user = User.current(), user.info.userType != .unlogin {
-//            userType = user.info.userType
-//        }
-//        parameters["user_type"] = userType.rawValue
-//        switch self {
-//        case let .homeModule(pageID):
-//            parameters["url_name"] = pageID
-//        case .dailyBest:
-//            parameters["page_source"] = "home"
-//        case .helpInfo:
-//            parameters["role"] = userType.rawValue
-//        case let .helpQuestions(categoryID):
-//            parameters["categoryID"] = categoryID
-//        case let .messageList(type, index, size):
-//            parameters["message_type"] = type.rawValue
-//            parameters["page"] = index
-//            parameters["per_page"] = size
-//        case let .productList(categoryId, sortType, pageIndex, pageSize, pageSource):
-//            parameters["url_name"] = categoryId
-//            parameters["sort_type"] = sortType
-//            parameters["page"] = pageIndex
-//            parameters["per_page"] = pageSize
-//            parameters["page_source"] = pageSource
-//            parameters["pid"] = stringDefault(User.current()?.info.pid, Constant.Platform.Alibc.officialPid)
-//        default:
-//            break
-//        }
+        var parameters: [String: Any] = [:]
+        switch self {
+        case let .readme(_, ref):
+            parameters["ref"] = ref
+        default:
+            break
+        }
         if parameters.isEmpty {
             return .requestPlain
         }

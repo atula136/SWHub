@@ -52,12 +52,6 @@ extension TrendingAPI: TargetType {
         case .repositories(let language, let since), .developers(let language, let since):
             parameters["language"] = language
             parameters["since"] = since
-//            if let language = language {
-//                parameters["language"] = language
-//            }
-//            if let since = since {
-//                parameters["since"] = since
-//            }
         default:
             break
         }

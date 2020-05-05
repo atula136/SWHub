@@ -17,7 +17,7 @@ class SettingProjectItem: InfoItem {
     
     required init(_ model: ModelType) {
         super.init(model)
-        guard let repository = model as? GithubRepository else { return }
+        guard let repository = model as? Repository else { return }
         self.initialState = State(
             title: repository.fullName,
             subtitle: repository.description,
@@ -30,7 +30,7 @@ class SettingProjectItem: InfoItem {
         var state = state
         switch mutation {
         case .setNight(_):
-            if let repository = self.model as? GithubRepository {
+            if let repository = self.model as? Repository {
                 state.detail = repository.detail()
             }
         }

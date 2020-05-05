@@ -92,7 +92,6 @@
 		79D8C81B2462084900A905F0 /* RepositoryViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8C81A2462084900A905F0 /* RepositoryViewReactor.swift */; };
 		79D8C81D2462085200A905F0 /* RepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8C81C2462085200A905F0 /* RepositoryViewController.swift */; };
 		79D8C81F24620AB900A905F0 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8C81E24620AB900A905F0 /* Repository.swift */; };
-		79D8C82124620BA200A905F0 /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8C82024620BA200A905F0 /* Developer.swift */; };
 		79D8C8232462161D00A905F0 /* Readme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8C8222462161D00A905F0 /* Readme.swift */; };
 		79D8C8252462181400A905F0 /* Starred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8C8242462181400A905F0 /* Starred.swift */; };
 		79DA6EEF245E0F700052F2D7 /* DefaultCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA6EEE245E0F700052F2D7 /* DefaultCollectionItem.swift */; };
@@ -114,7 +113,6 @@
 		79EE8AA2245E8EC800A2438C /* TrendingDeveloperListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8AA1245E8EC800A2438C /* TrendingDeveloperListViewReactor.swift */; };
 		79EE8AA4245E8ED300A2438C /* TrendingDeveloperListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8AA3245E8ED300A2438C /* TrendingDeveloperListViewController.swift */; };
 		79F936A9245C3B0900AA775A /* repos-tospery-SWHub.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */; };
-		79F936AC245C3B4000AA775A /* GithubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F936AB245C3B4000AA775A /* GithubRepository.swift */; };
 		FD3249B3375F87DD51CA1684 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -229,7 +227,6 @@
 		79D8C81A2462084900A905F0 /* RepositoryViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewReactor.swift; sourceTree = "<group>"; };
 		79D8C81C2462085200A905F0 /* RepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewController.swift; sourceTree = "<group>"; };
 		79D8C81E24620AB900A905F0 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		79D8C82024620BA200A905F0 /* Developer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Developer.swift; sourceTree = "<group>"; };
 		79D8C8222462161D00A905F0 /* Readme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readme.swift; sourceTree = "<group>"; };
 		79D8C8242462181400A905F0 /* Starred.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starred.swift; sourceTree = "<group>"; };
 		79DA6EEE245E0F700052F2D7 /* DefaultCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollectionItem.swift; sourceTree = "<group>"; };
@@ -251,7 +248,6 @@
 		79EE8AA1245E8EC800A2438C /* TrendingDeveloperListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDeveloperListViewReactor.swift; sourceTree = "<group>"; };
 		79EE8AA3245E8ED300A2438C /* TrendingDeveloperListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDeveloperListViewController.swift; sourceTree = "<group>"; };
 		79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-tospery-SWHub.json"; sourceTree = "<group>"; };
-		79F936AB245C3B4000AA775A /* GithubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepository.swift; sourceTree = "<group>"; };
 		97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D31A282BEF0A84BF48C2B7 /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -522,7 +518,6 @@
 			children = (
 				79A8BDDE245FC90D00E88DB2 /* Github */,
 				79A8BDDD245FC90900E88DB2 /* Trending */,
-				79D8C82024620BA200A905F0 /* Developer.swift */,
 			);
 			path = Developer;
 			sourceTree = "<group>";
@@ -530,7 +525,6 @@
 		79A8BDDB245FC8FD00E88DB2 /* Github */ = {
 			isa = PBXGroup;
 			children = (
-				79F936AB245C3B4000AA775A /* GithubRepository.swift */,
 			);
 			path = Github;
 			sourceTree = "<group>";
@@ -876,7 +870,6 @@
 				79D8C8232462161D00A905F0 /* Readme.swift in Sources */,
 				799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */,
 				792F6D672455562F00856757 /* LoginViewController.swift in Sources */,
-				79F936AC245C3B4000AA775A /* GithubRepository.swift in Sources */,
 				79D8C81B2462084900A905F0 /* RepositoryViewReactor.swift in Sources */,
 				79DAF291245D728D0006E6A5 /* NavigationBarExt.swift in Sources */,
 				7976ACB02458273900093046 /* SettingViewReactor.swift in Sources */,
@@ -898,7 +891,6 @@
 				79322486245FF92A00BED07A /* TrendingRepositoryCell.swift in Sources */,
 				7922DC9324615DAC0090A3EC /* StringExt.swift in Sources */,
 				7976ACB82459335600093046 /* SettingSection.swift in Sources */,
-				79D8C82124620BA200A905F0 /* Developer.swift in Sources */,
 				7976ACBB2459339100093046 /* CollectionItem.swift in Sources */,
 				79B2E56824598DC400D6E162 /* Setting.swift in Sources */,
 				790B88E1245F61FA000C89D4 /* TrendingNetworking.swift in Sources */,

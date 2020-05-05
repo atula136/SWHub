@@ -89,7 +89,7 @@ struct Repository: ModelType, Subjective, Eventable {
     var deploymentsUrl: String?
     var license: License?
     var permissions: Permissions?
-    var owner: Developer?
+    var owner: User?
     
     init() {
         

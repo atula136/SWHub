@@ -54,8 +54,13 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] sectionItem in
             guard let `self` = self else { return }
             switch sectionItem {
-            case let .repository(_):
-                self.navigator.push(Router.Repository.detail.pattern)
+            case let .repository(item):
+                if var url = Router.Repository.detail.pattern.url,
+                    let fullname = item.currentState.title {
+                    url.appendQueryParameters([Parameter.fullname: fullname])
+                    self.navigator.push(url)
+                }
+                // self.navigator.push(Router.Repository.detail.pattern)
             }
         }).disposed(by: self.disposeBag)
     }

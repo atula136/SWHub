@@ -12,4 +12,5 @@ import SWFrame
 extension Parameter {
     static var language: String { "language" }
     static var since: String { "since" }
+    static var fullname: String { "fullname" }
 }
