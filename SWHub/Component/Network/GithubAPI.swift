@@ -34,7 +34,7 @@ enum GithubAPI {
 extension GithubAPI: TargetType {
     
     var baseURL: URL {
-        return Constant.Network.baseApiUrl.url!
+        return UIApplication.shared.baseApiUrl.url!
     }
     
     var path: String {

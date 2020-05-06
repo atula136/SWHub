@@ -84,8 +84,9 @@ enum Router {
             guard let url = url.urlValue else { return nil }
             // (1) 原生支持
             let string = url.absoluteString
-            if string.hasPrefix(Constant.Network.baseWebUrl) {
-                let url = string.replacingOccurrences(of: Constant.Network.baseWebUrl + "/", with: UIApplication.shared.scheme + "://")
+            let base = UIApplication.shared.baseWebUrl + "/"
+            if string.hasPrefix(base) {
+                let url = string.replacingOccurrences(of: base, with: UIApplication.shared.scheme + "://")
                 if let _ = navigator.push(url, context: context) {
                     return nil
                 }

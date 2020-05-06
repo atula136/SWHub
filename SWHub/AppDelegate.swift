@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
 //        let a1 = Condition.Language.self.init()
 //        let a2 = String(describing: Subject)
+//        let aaa = UIApplication.shared.baseApiUrl
+//        let bbb = UIApplication.shared.baseWebUrl
 //        print("")
     }
     

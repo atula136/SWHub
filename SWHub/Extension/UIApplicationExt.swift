@@ -9,6 +9,19 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwifterSwift
+
+extension UIApplication {
+    
+    @objc var my_baseApiUrl: String {
+        return "https://api.github.com"
+    }
+    
+    @objc var my_baseWebUrl: String {
+        return "https://github.com"
+    }
+    
+}
 
 extension Reactive where Base: UIApplication {
     

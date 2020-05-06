@@ -24,5 +24,4 @@ state -> refresh ui效果
 “每日”明文问题
 languageColor
 打星功能（viewerHasStarred）
-baseURL/baseWeb -> UIApplication
 

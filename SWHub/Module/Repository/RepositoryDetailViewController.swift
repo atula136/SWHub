@@ -51,7 +51,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
         super.viewDidLoad()
         self.navigationBar.addButtonToRight(R.image.nav_github()).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
-            self.navigator.push("\(Constant.Network.baseWebUrl)/\(self.reactor?.fullname ?? "")")
+            self.navigator.push("\(UIApplication.shared.baseWebUrl)/\(self.reactor?.fullname ?? "")")
         }).disposed(by: self.disposeBag)
         
         self.collectionView.register(Reusable.detailCell)
