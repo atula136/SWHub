@@ -1,5 +1,5 @@
 //
-//  DefaultCollectionItem.swift
+//  DefaultCollectionItem2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -14,6 +14,6 @@ import Kingfisher
 import SwifterSwift
 import SWFrame
 
-class DefaultCollectionItem: CollectionItem {
+class DefaultCollectionItem2: CollectionItem {
     
 }

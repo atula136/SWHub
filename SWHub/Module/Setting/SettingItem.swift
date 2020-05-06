@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class SettingItem: NormalItem {
+class SettingItem: NormalItem2 {
     
     required init(_ model: ModelType) {
         super.init(model)

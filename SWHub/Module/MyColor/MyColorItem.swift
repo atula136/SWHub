@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class MyColorItem: DefaultCollectionItem, ReactorKit.Reactor {
+class MyColorItem: DefaultCollectionItem2, ReactorKit.Reactor {
     
     enum AccessoryType: Equatable {
         case none

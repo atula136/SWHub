@@ -1,5 +1,5 @@
 //
-//  DefaultCollectionCell.swift
+//  DefaultCollectionCell2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -15,7 +15,7 @@ import Kingfisher
 import SwifterSwift
 import SWFrame
 
-class DefaultCollectionCell: CollectionCell {
+class DefaultCollectionCell2: CollectionCell {
     
     lazy var titleLabel: Label = {
         let label = Label()
@@ -129,7 +129,7 @@ class DefaultCollectionCell: CollectionCell {
     
 }
 
-extension Reactive where Base: DefaultCollectionCell {
+extension Reactive where Base: DefaultCollectionCell2 {
     var switched: ControlEvent<Bool> {
         return ControlEvent(events: self.base.switcher.rx.value)
     }

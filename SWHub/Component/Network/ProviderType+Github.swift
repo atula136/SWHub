@@ -20,8 +20,8 @@ extension ProviderType {
         return self.githubNetworking.requestObject(.profile, type: User.self)
     }
     
-    func repository(user: String, project: String) -> Observable<Repository> {
-        return self.githubNetworking.requestObject(.repository(fullname: "\(user)/\(project)"), type: Repository.self)
+    func repository(fullname: String) -> Observable<Repository> {
+        return self.githubNetworking.requestObject(.repository(fullname: fullname), type: Repository.self)
     }
     
 }

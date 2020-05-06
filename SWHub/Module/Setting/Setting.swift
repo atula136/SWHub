@@ -51,7 +51,7 @@ struct Setting: ModelType, Identifiable, Eventable {
     }
     
     var id: Category?
-    var accessory = NormalItem.AccessoryType.indicator
+    var accessory = NormalItem2.AccessoryType.indicator
     var title: String?
     var detail: NSAttributedString?
     var icon: ImageSource?
@@ -60,7 +60,7 @@ struct Setting: ModelType, Identifiable, Eventable {
         
     }
     
-    init(id: Category, accessory: NormalItem.AccessoryType = .indicator) {
+    init(id: Category, accessory: NormalItem2.AccessoryType = .indicator) {
         self.id = id
         self.accessory = accessory
         self.title = id.title

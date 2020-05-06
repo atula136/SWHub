@@ -89,7 +89,7 @@ enum Router {
         }
         // 3. 仓库详情
         navigator.register(self.Repository.detail.pattern) { url, values, context in
-            RepositoryViewController(navigator, RepositoryViewReactor(provider, parameters(url, values, context)))
+            RepositoryDetailViewController(navigator, RepositoryDetailViewReactor(provider, parameters(url, values, context)))
         }
         
 //        // 1. 网页

@@ -1,5 +1,5 @@
 //
-//  RepositoryViewReactor.swift
+//  RepositoryDetailViewReactor.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -12,20 +12,17 @@ import RxCocoa
 import ReactorKit
 import SWFrame
 
-class RepositoryViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     
     enum Action {
         case load
-        case since(Int)
-        case language(String?)
     }
     
     enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
-        case setSince(Int)
-        case setLanguage(String?)
-        case start([Condition.Language])
+        case setRepository(Repository)
+        // case start([Condition.Language])
     }
     
     struct State {
@@ -63,32 +60,35 @@ class RepositoryViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         )
     }
     
-//    func mutate(action: Action) -> Observable<Mutation> {
-//        switch action {
-//        case .load:
-//            guard self.currentState.isLoading == false else { return .empty() }
-//            return .concat([
-//                .just(.setError(nil)),
-//                .just(.setLoading(true)),
-//                self.provider.languages().map{ Mutation.start($0) },
-//                .just(.setLoading(false))
-//            ])
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .load:
+            guard self.currentState.isLoading == false else { return .empty() }
+            guard let fullname = self.currentState.repository.fullName else { return .empty() }
+            return .concat([
+                .just(.setError(nil)),
+                .just(.setLoading(true)),
+                self.provider.repository(fullname: fullname).map{ Mutation.setRepository($0) },
+                .just(.setLoading(false))
+            ])
 //        case let .since(value):
 //            guard value != self.currentState.since.rawValue else { return .empty() }
 //            return .just(.setSince(value))
 //        case let .language(urlParam):
 //            guard urlParam != self.currentState.language.urlParam else { return .empty() }
 //            return .just(.setLanguage(urlParam))
-//        }
-//    }
-//
-//    func reduce(state: State, mutation: Mutation) -> State {
-//        var state = state
-//        switch mutation {
-//        case let .setLoading(isLoading):
-//            state.isLoading = isLoading
-//        case let .setError(error):
-//            state.error = error
+        }
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
+        case let .setError(error):
+            state.error = error
+        case let .setRepository(repository):
+            state.repository = repository
 //        case let .setSince(value):
 //            if let since = Condition.Since.init(rawValue: value) {
 //                state.since = since
@@ -101,9 +101,9 @@ class RepositoryViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 //            Condition.Language.storeArray(languages)
 //            let langs = self.languages(languages: languages, selected: state.language.urlParam)
 //            state.sections = [.languages(langs.map{ Condition.Language.Item($0) }.map{ Condition.Language.SectionItem.language($0) })]
-//        }
-//        return state
-//    }
+        }
+        return state
+    }
 //
 //    func languages(languages: [Condition.Language], selected: String?) -> [Condition.Language] {
 //        var langs = languages

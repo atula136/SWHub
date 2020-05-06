@@ -1,5 +1,5 @@
 //
-//  NormalCell.swift
+//  NormalCell2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/1.
@@ -15,9 +15,9 @@ import Kingfisher
 import SwifterSwift
 import SWFrame
 
-class NormalCell: DefaultCollectionCell, ReactorKit.View {
+class NormalCell2: DefaultCollectionCell2, ReactorKit.View {
     
-    func bind(reactor: NormalItem) {
+    func bind(reactor: NormalItem2) {
         super.bind(item: reactor)
         reactor.state.map{ $0.title }
             .bind(to: self.titleLabel.rx.text)

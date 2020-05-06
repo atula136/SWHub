@@ -1,5 +1,5 @@
 //
-//  NormalItem.swift
+//  NormalItem2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/1.
@@ -14,7 +14,7 @@ import Kingfisher
 import SwifterSwift
 import SWFrame
 
-class NormalItem: DefaultCollectionItem, ReactorKit.Reactor {
+class NormalItem2: DefaultCollectionItem2, ReactorKit.Reactor {
     
     enum AccessoryType: Equatable {
         case none
