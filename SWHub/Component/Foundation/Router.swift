@@ -24,39 +24,23 @@ enum Router {
     case category
     case condition
     
-    enum Message {
+    enum Repository {
         case list
-        case center
+        case detail
 
-        var url: String {
+        var pattern: String {
             var path: String?
             switch self {
             case .list:
-                path = "message/list"
-            case .center:
-                path = "message/center"
+                path = "repository/list"
+            case .detail:
+                path = "repository/detail"
             }
             return UIApplication.shared.scheme + "://" + path!
         }
     }
     
-//    enum Product {
-//        case list
-//        case detail
-//
-//        var url: String {
-//            var path: String?
-//            switch self {
-//            case .list:
-//                path = "product/list"
-//            case .detail:
-//                path = "product/detail"
-//            }
-//            return UIApplication.shared.scheme + "://" + path!
-//        }
-//    }
-    
-    var url: String {
+    var pattern: String {
         var path: String?
         switch self {
         case .alert:
@@ -96,12 +80,16 @@ enum Router {
         }
         
         // 1. 颜色主题
-        navigator.register(self.color.url) { url, values, context in
+        navigator.register(self.color.pattern) { url, values, context in
             MyColorViewController(navigator, MyColorViewReactor(provider, parameters(url, values, context)))
         }
         // 2. 搜索条件
-        navigator.register(self.condition.url) { url, values, context in
+        navigator.register(self.condition.pattern) { url, values, context in
             ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))
+        }
+        // 3. 仓库详情
+        navigator.register(self.Repository.detail.pattern) { url, values, context in
+            RepositoryDetailViewController(navigator, RepositoryDetailViewReactor(provider, parameters(url, values, context)))
         }
         
 //        // 1. 网页

@@ -1,3 +1,6 @@
+一、功能
+条件中的搜索
+二、问题
 1. log
 2. 隐藏键盘顶部工具栏
 4. RxOptional
@@ -11,3 +14,12 @@
 17. 首页 重名 趋势（Trending）
 18. 嵌套类型全路径
 20. 下拉刷新/加载更多，自定义UI
+测试模拟数据
+自适应navButton大小
+暗黑模式：下拉刷新活动指示器、Since文本
+设置页的暗黑模式的切换按钮的状态应该是单向的
+state -> refresh ui效果
+“每日”明文问题
+languageColor
+打星功能（viewerHasStarred）
+

@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class SettingCell: NormalCell {
+class SettingCell: NormalCell2 {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

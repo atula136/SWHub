@@ -51,6 +51,18 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
         super.viewDidLoad()
         self.collectionView.register(Reusable.repositoryCell)
         self.collectionView.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - navigationContentTopConstant - tabBarHeight)
+        self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] sectionItem in
+            guard let `self` = self else { return }
+            switch sectionItem {
+            case let .repository(item):
+                if var url = Router.Repository.detail.pattern.url,
+                    let fullname = item.currentState.title {
+                    url.appendQueryParameters([Parameter.fullname: fullname])
+                    self.navigator.push(url)
+                }
+                // self.navigator.push(Router.Repository.detail.pattern)
+            }
+        }).disposed(by: self.disposeBag)
     }
     
     func bind(reactor: TrendingRepositoryListViewReactor) {
@@ -76,6 +88,12 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.error }
             .bind(to: self.rx.error)
+            .disposed(by: self.disposeBag)
+        reactor.state.map{ $0.condition }
+            .distinctUntilChanged()
+            .skip(1)
+            .mapToVoid()
+            .bind(to: self.rx.startPullToRefresh)
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))

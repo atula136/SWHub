@@ -62,7 +62,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             guard let `self` = self else { return }
             switch item {
             case .color:
-                self.navigator.push(Router.color.url)
+                self.navigator.push(Router.color.pattern)
             default:
                 break;
             }

@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxOptional
 import ReactorKit
 import SWFrame
 
@@ -23,7 +24,8 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         case setLoading(Bool)
         case setRefreshing(Bool)
         case setError(Error?)
-        case initial([TrendingRepository], toCache: Bool)
+        case setCondition(Condition)
+        case start([TrendingRepository])
     }
     
     struct State {
@@ -31,6 +33,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         var isRefreshing = false
         var title: String?
         var error: Error?
+        var condition: Condition!
         var sections: [TrendingRepositorySection] = []
     }
     
@@ -39,6 +42,8 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
     required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
         super.init(provider, parameters)
         self.initialState = State(
+            condition: Condition.current(),
+            sections: [.repositories((TrendingRepository.cachedArray() ?? []).map{ .repository(TrendingRepositoryItem($0)) })]
         )
     }
     
@@ -46,21 +51,18 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
-            var load = Observable.just(Mutation.setError(nil))
-            load = load.concat(Observable.just(.setLoading(true)))
-            if let repositories = TrendingRepository.cachedArray() {
-                load = load.concat(Observable.just(.initial(repositories, toCache: false)))
-            } else {
-                load = load.concat(self.provider.repositories(language: nil, since: "daily").map{ Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }))
-            }
-            load = load.concat(Observable.just(.setLoading(false)))
-            return load
+            return .concat([
+                .just(.setError(nil)),
+                .just(.setLoading(true)),
+                self.provider.repositories(language: self.currentState.condition.language.urlParam, since: self.currentState.condition.since.paramValue).map{ Mutation.start($0) }.catchError({ .just(.setError($0)) }),
+                .just(.setLoading(false))
+            ])
         case .refresh:
             guard self.currentState.isRefreshing == false else { return .empty() }
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.provider.repositories(language: nil, since: "daily").map{ Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }),
+                self.provider.repositories(language: self.currentState.condition.language.urlParam, since: self.currentState.condition.since.paramValue).map{ Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setRefreshing(false))
             ])
         }
@@ -75,13 +77,30 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             state.isRefreshing = isRefreshing
         case let .setError(error):
             state.error = error
-        case let .initial(repositories, toCache):
-            if toCache {
-                TrendingRepository.storeArray(repositories)
-            }
-            state.sections = [.repositories(repositories.map{ TrendingRepositorySectionItem.repository(TrendingRepositoryItem($0)) })]
+        case let .setCondition(condition):
+            state.condition = condition
+        case let .start(repositories):
+            TrendingRepository.storeArray(repositories)
+            state.sections = [.repositories(repositories.map{ .repository(TrendingRepositoryItem($0)) })]
         }
         return state
+    }
+    
+//    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+//        let conditionEvent = Condition.event.flatMap { event -> Observable<Mutation> in
+//            switch event {
+//            case let .update(since, language):
+//                return .just(.setCondition(since, language))
+//            }
+//        }
+//        return .merge(mutation, conditionEvent)
+//    }
+    
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        return .merge(
+            mutation,
+            Condition.subject().asObservable().filterNil().distinctUntilChanged().map(Mutation.setCondition)
+        )
     }
     
 }

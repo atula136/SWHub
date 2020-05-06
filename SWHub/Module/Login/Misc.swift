@@ -13,8 +13,7 @@ import SWFrame
 struct Misc: ModelType, Subjective {
     
     var id: Int?
-    var since = Condition.Since.daily
-    var language = Condition.Language.init()
+    // var condition = Condition.init()
     
     init() {
         
@@ -25,8 +24,7 @@ struct Misc: ModelType, Subjective {
     }
     
     mutating func mapping(map: Map) {
-        since       <- map["since"]
-        language    <- map["language"]
+        // condition   <- map["condition"]
     }
     
     static func objectStoreKey(id: String? = nil) -> String {

@@ -2,7 +2,7 @@
 //  NormalCell.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/5/1.
+//  Created by 杨建祥 on 2020/5/6.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ import Kingfisher
 import SwifterSwift
 import SWFrame
 
-class NormalCell: DefaultCollectionCell, ReactorKit.View {
+class NormalCell: DefaultCell, ReactorKit.View {
     
     func bind(reactor: NormalItem) {
         super.bind(item: reactor)
@@ -31,9 +31,6 @@ class NormalCell: DefaultCollectionCell, ReactorKit.View {
         reactor.state.map{ $0.icon == nil }
             .bind(to: self.iconImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.accessory != .indicator && $0.accessory != .checkmark }
-            .bind(to: self.accessoryImageView.rx.isHidden)
-            .disposed(by: self.disposeBag)
         reactor.state.map { state -> UIImage? in
             switch state.accessory {
             case .indicator:
@@ -44,20 +41,13 @@ class NormalCell: DefaultCollectionCell, ReactorKit.View {
                 return nil
             }
         }.bind(to: self.accessoryImageView.rx.image).disposed(by: self.disposeBag)
-        reactor.state.map{ $0.accessory != .switcher(true) && $0.accessory != .switcher(false) }
-            .bind(to: self.switcher.rx.isHidden)
+        reactor.state.map{ $0.accessory == .none }
+            .bind(to: self.accessoryImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map { state -> Bool in
-            switch state.accessory {
-            case let .switcher(isOn):
-                return isOn
-            default:
-                return false
-            }
-        }.bind(to: self.switcher.rx.isOn).disposed(by: self.disposeBag)
         reactor.state.map{ _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
     
 }
+

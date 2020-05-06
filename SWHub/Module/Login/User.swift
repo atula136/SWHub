@@ -24,8 +24,8 @@ struct User: ModelType, Storable, Subjective {
         set { keychain[Key.token] = newValue }
     }
     
-    var siteAdmin: Bool?
-    var twoFactorAuthentication: Bool?
+    var siteAdmin = false
+    var twoFactorAuthentication = false
     var id: Int?
     var publicRepos: Int?
     var publicGists: Int?
@@ -46,6 +46,7 @@ struct User: ModelType, Storable, Subjective {
     var email: String?
     var hireable: String?
     var bio: String?
+    var gravatarId: String?
     var url: URL?
     var avatar: URL?
     var htmlUrl: URL?
@@ -55,6 +56,8 @@ struct User: ModelType, Storable, Subjective {
     var starredUrl: URL?
     var subscriptionsUrl: URL?
     var reposUrl: URL?
+    var eventsUrl: URL?
+    var organizationsUrl: URL?
     var receivedEventsUrl: URL?
     var createdAt: Date?
     var updatedAt: Date?
@@ -90,6 +93,7 @@ struct User: ModelType, Storable, Subjective {
         email                           <- map["email"]
         hireable                        <- map["hireable"]
         bio                             <- map["bio"]
+        gravatarId                      <- map["gravatar_id"]
         url                             <- (map["url"], URLTransform())
         avatar                          <- (map["avatar_url"], URLTransform())
         htmlUrl                         <- (map["html_url"], URLTransform())
@@ -99,9 +103,11 @@ struct User: ModelType, Storable, Subjective {
         starredUrl                      <- (map["starred_url"], URLTransform())
         subscriptionsUrl                <- (map["subscriptions_url"], URLTransform())
         reposUrl                        <- (map["repos_url"], URLTransform())
+        eventsUrl                       <- (map["events_url"], URLTransform())
+        organizationsUrl                <- (map["organizations_url"], URLTransform())
         receivedEventsUrl               <- (map["received_events_url"], URLTransform())
-        createdAt                       <- (map["received_events_url"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
-        updatedAt                       <- (map["received_events_url"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
+        createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
+        updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
     }
     
     func detail() -> NSAttributedString? {

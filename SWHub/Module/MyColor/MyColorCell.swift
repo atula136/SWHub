@@ -14,7 +14,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class MyColorCell: DefaultCollectionCell, ReactorKit.View {
+class MyColorCell: DefaultCollectionCell2, ReactorKit.View {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

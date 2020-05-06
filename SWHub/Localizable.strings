@@ -13,7 +13,7 @@
 "Common.ISee" = "知道了";
 "Common.Cancel" = "取消";
 "Common.Fan" = "返";
-"Common.Yuan" = "元";
+"Common.Save" = "保存";
 /* 刷新 */
 "Pull to refresh" = "下拉刷新";
 "Release to refresh" = "松开刷新";
@@ -25,6 +25,20 @@
 "Condition.Since.Weekly" = "本周";
 "Condition.Since.Monthly" = "本月";
 "All languages" = "所有语言";
+/* 详情 */
+"Detail.Cell.Pull" = "拉取请求";
+"Detail.Cell.Commit" = "提交";
+"Detail.Cell.Branch" = "所有分支";
+"Detail.Cell.Release" = "已发布";
+"Detail.Cell.Contributor" = "贡献值";
+"Detail.Cell.Event" = "事件";
+"Detail.Cell.Notification" = "我的通知";
+"Detail.Cell.Code" = "源代码";
+"Detail.Cell.Star" = "打星历史";
+"Detail.Cell.Line" = "计算行数";
+"Detail.Btn.Follow" = "观察者";
+"Detail.Btn.Star" = "星星";
+"Detail.Btn.Fork" = "复制仓库";
 /* 登录 */
 "Login.Title" = "登录";
 "Login.Password" = "密码";

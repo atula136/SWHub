@@ -57,11 +57,14 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         
         self.navigationBar.addButtonToRight(R.image.nav_condition()!).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
-//            if var url = Router.condition.url.url {
-//                url.appendQueryParameters([Parameter.since: "1"])
+//            if var url = Router.condition.pattern.url, let misc = Misc.current() {
+//                url.appendQueryParameters([Parameter.since: misc.since.paramValue])
+//                if let language = misc.language.urlParam {
+//                    url.appendQueryParameters([Parameter.language: language])
+//                }
 //                self.navigator.present(url, wrap: NavigationController.self)
 //            }
-            self.navigator.present(Router.condition.url, wrap: NavigationController.self)
+            self.navigator.present(Router.condition.pattern, wrap: NavigationController.self)
         }).disposed(by: self.disposeBag)
         
         self.paging.collectionView.size = CGSize(width: self.view.width, height: navigationBarHeight)

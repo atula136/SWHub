@@ -57,8 +57,28 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.commonSave())
+        saveButton.rx.tap.subscribe(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+//            var misc = Misc.current()!
+//            misc.condition.since = self.reactor!.currentState.since
+//            misc.condition.language = self.reactor!.currentState.language
+//            Misc.update(misc)
+//            Condition.event.onNext(.update(misc.since, misc.language))
+            var condition = Condition.init()
+            condition.since = self.reactor!.currentState.since
+            condition.language = self.reactor!.currentState.language
+            Condition.update(condition)
+            self.dismiss(animated: true, completion: nil)
+        }).disposed(by: self.disposeBag)
         self.navigationBar.titleView = self.segment
+        
         self.collectionView.register(Reusable.languageCell)
+        
+        themeService.rx
+            .bind({ [NSAttributedString.Key.foregroundColor: $0.textColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
+            .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: self.segment.rx.titleTextAttributes(for: .selected))
+            .disposed(by: self.rx.disposeBag)
     }
     
     func bind(reactor: ConditionViewReactor) {
@@ -70,10 +90,28 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
         self.rx.emptyDataSet.map{ Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        self.segment.rx.selectedSegmentIndex.skip(1).distinctUntilChanged().map{ Reactor.Action.since($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.collectionView.rx.itemSelected(dataSource: self.dataSource).map { sectionItem -> String? in
+            switch sectionItem {
+            case let .language(item):
+                if let language = item.model as? Condition.Language {
+                    return language.urlParam
+                }
+                return nil
+            }}.distinctUntilChanged().map{ Reactor.Action.language($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // state
         reactor.state.map { $0.since.rawValue }
             .distinctUntilChanged()
+            .ignore(self.segment.selectedSegmentIndex)
             .bind(to: self.segment.rx.selectedSegmentIndex)
+            .disposed(by: self.disposeBag)
+        reactor.state.map{ $0.language.urlParam }
+            .distinctUntilChanged()
+            .bind(to: self.rx.language)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.isLoading }
             .distinctUntilChanged()
@@ -111,4 +149,14 @@ extension ConditionViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 
+}
+
+extension Reactive where Base: ConditionViewController {
+    
+    var language: Binder<String?> {
+        return Binder(self.base) { viewController, attr in
+            Condition.Language.event.onNext(.select(attr))
+        }
+    }
+    
 }

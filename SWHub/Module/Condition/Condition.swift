@@ -18,7 +18,37 @@ import SwifterSwift
 import Rswift
 import SWFrame
 
-struct Condition {
+struct Condition: ModelType, Subjective, Equatable /*, Eventable */ {
+    
+//    enum Event {
+//        case update(Since, Language)
+//    }
+    
+    var id: Int?
+    var since = Since.daily
+    var language = Language.init(name: "All languages")
+    
+    init() {
+        
+    }
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        since       <- map["since"]
+        language    <- map["language"]
+    }
+    
+    static func objectStoreKey(id: String? = nil) -> String {
+        return "Condition"
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.since.rawValue == rhs.since.rawValue &&
+            lhs.language.urlParam == rhs.language.urlParam
+    }
     
     enum Since: Int, Codable {
         case daily, weekly, monthly
@@ -49,15 +79,23 @@ struct Condition {
         
     }
     
-    struct Language: ModelType, Subjective/*, CustomStringConvertible*/ {
+    struct Language: ModelType, Subjective, Eventable, Equatable {
+
+        enum Event {
+            case select(String?)
+        }
         
         var id: Int?
-        //var selected = false
+        var checked = false
         var name: String?
         var urlParam: String?
         
         init() {
-            self.name = "All languages"
+            
+        }
+        
+        init(name: String? = nil) {
+            self.name = name
         }
         
         init?(map: Map) {
@@ -69,17 +107,21 @@ struct Condition {
             urlParam        <- map["urlParam"]
         }
         
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            return lhs.urlParam == rhs.urlParam
+        }
+        
         static func arrayStoreKey() -> String {
             return "languages"
         }
         
-//        var description: String {
-//            return "Condition.Language"
-//        }
-        
         class Item: CollectionItem, ReactorKit.Reactor {
             
             typealias Action = NoAction
+            
+            enum Mutation {
+                case setSelect(String?)
+            }
             
             struct State {
                 var checked = false
@@ -92,9 +134,30 @@ struct Condition {
                 super.init(model)
                 guard let language = model as? Language else { return }
                 self.initialState = State(
-                    checked: language.urlParam == Misc.current()?.language.urlParam,
+                    checked: language.checked,
                     title: language.urlParam == nil ? NSLocalizedString(language.name ?? R.string.localizable.allLanguages(), comment: "") : language.name
                 )
+            }
+            
+            func reduce(state: State, mutation: Mutation) -> State {
+                var state = state
+                switch mutation {
+                case let .setSelect(urlParam):
+                    if let language = self.model as? Language {
+                        state.checked = urlParam == language.urlParam
+                    }
+                }
+                return state
+            }
+            
+            func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+                let languageSelectEvent = Language.event.flatMap { event -> Observable<Mutation> in
+                    switch event {
+                    case let .select(urlParam):
+                        return .just(.setSelect(urlParam))
+                    }
+                }
+                return .merge(mutation, languageSelectEvent)
             }
             
         }
