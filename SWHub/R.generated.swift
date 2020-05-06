@@ -215,6 +215,10 @@ struct R: Rswift.Validatable {
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
+    /// Image `detail_btn_star`.
+    static let detail_btn_star = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_btn_star")
+    /// Image `detail_btn_unstar`.
+    static let detail_btn_unstar = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_btn_unstar")
     /// Image `detail_cell_branch`.
     static let detail_cell_branch = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_cell_branch")
     /// Image `detail_cell_code`.
@@ -235,10 +239,6 @@ struct R: Rswift.Validatable {
     static let detail_cell_release = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_cell_release")
     /// Image `detail_cell_star`.
     static let detail_cell_star = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_cell_star")
-    /// Image `icon_button_star`.
-    static let icon_button_star = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_button_star")
-    /// Image `icon_button_unstar`.
-    static let icon_button_unstar = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_button_unstar")
     /// Image `icon_button_user_plus`.
     static let icon_button_user_plus = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_button_user_plus")
     /// Image `icon_button_user_x`.
@@ -386,6 +386,20 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "detail_btn_star", bundle: ..., traitCollection: ...)`
+    static func detail_btn_star(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.detail_btn_star, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "detail_btn_unstar", bundle: ..., traitCollection: ...)`
+    static func detail_btn_unstar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.detail_btn_unstar, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "detail_cell_branch", bundle: ..., traitCollection: ...)`
     static func detail_cell_branch(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.detail_cell_branch, compatibleWith: traitCollection)
@@ -459,20 +473,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon", bundle: ..., traitCollection: ...)`
     static func icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_button_star", bundle: ..., traitCollection: ...)`
-    static func icon_button_star(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_button_star, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_button_unstar", bundle: ..., traitCollection: ...)`
-    static func icon_button_unstar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_button_unstar, compatibleWith: traitCollection)
     }
     #endif
 
@@ -957,7 +957,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 41 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 44 localization keys.
     struct localizable {
       /// Value: 下拉刷新
       static let pullToRefresh = Rswift.StringResource(key: "Pull to refresh", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -973,6 +973,8 @@ struct R: Rswift.Validatable {
       static let commonCancel = Rswift.StringResource(key: "Common.Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
       static let commonNo = Rswift.StringResource(key: "Common.No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 复制仓库
+      static let detailBtnFork = Rswift.StringResource(key: "Detail.Btn.Fork", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 夜间模式
       static let settingPreferencesNight = Rswift.StringResource(key: "Setting.Preferences.Night", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 密码
@@ -997,6 +999,8 @@ struct R: Rswift.Validatable {
       static let detailCellCommit = Rswift.StringResource(key: "Detail.Cell.Commit", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 搜索
       static let mainTabBarSearch = Rswift.StringResource(key: "Main.TabBar.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 星星
+      static let detailBtnStar = Rswift.StringResource(key: "Detail.Btn.Star", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
       static let commonYes = Rswift.StringResource(key: "Common.Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 本周
@@ -1023,6 +1027,8 @@ struct R: Rswift.Validatable {
       static let commonISee = Rswift.StringResource(key: "Common.ISee", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确认
       static let commonOK = Rswift.StringResource(key: "Common.OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 观察者
+      static let detailBtnFollow = Rswift.StringResource(key: "Detail.Btn.Follow", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 计算行数
       static let detailCellLine = Rswift.StringResource(key: "Detail.Cell.Line", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 设置
@@ -1131,6 +1137,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Common.No", bundle: bundle, comment: "")
+      }
+
+      /// Value: 复制仓库
+      static func detailBtnFork(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Detail.Btn.Fork", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Detail.Btn.Fork"
+        }
+
+        return NSLocalizedString("Detail.Btn.Fork", bundle: bundle, comment: "")
       }
 
       /// Value: 夜间模式
@@ -1287,6 +1306,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Main.TabBar.Search", bundle: bundle, comment: "")
+      }
+
+      /// Value: 星星
+      static func detailBtnStar(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Detail.Btn.Star", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Detail.Btn.Star"
+        }
+
+        return NSLocalizedString("Detail.Btn.Star", bundle: bundle, comment: "")
       }
 
       /// Value: 是
@@ -1456,6 +1488,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Common.OK", bundle: bundle, comment: "")
+      }
+
+      /// Value: 观察者
+      static func detailBtnFollow(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Detail.Btn.Follow", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Detail.Btn.Follow"
+        }
+
+        return NSLocalizedString("Detail.Btn.Follow", bundle: bundle, comment: "")
       }
 
       /// Value: 计算行数

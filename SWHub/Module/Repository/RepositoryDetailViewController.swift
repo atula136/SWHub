@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QMUIKit
 import RxSwift
 import RxCocoa
 import URLNavigator
@@ -19,6 +20,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
     
     struct Reusable {
         static let detailCell = ReusableCell<RepositoryDetailCell>()
+        static let headerView = ReusableView<RepositoryDetailHeaderView>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<RepositoryDetailSection>
@@ -29,6 +31,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 10
         layout.sectionInset = .init(horizontal: 30, vertical: 20)
+        layout.headerReferenceSize = CGSize(width: screenWidth, height: flat(10 + metric(90) + 20 + metric(30) + 10))
         return layout
     }
     
@@ -58,6 +61,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
 //        self.navigationBar.titleView = self.segment
 //
         self.collectionView.register(Reusable.detailCell)
+        self.collectionView.register(Reusable.headerView, kind: .header)
     }
     
     func bind(reactor: RepositoryDetailViewReactor) {
@@ -110,13 +114,24 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepositoryDetailViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepositoryDetailSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
-                switch sectionItem {
-                case let .detail(item):
-                    let cell = collectionView.dequeue(Reusable.detailCell, for: indexPath)
-                    cell.bind(reactor: item)
-                    return cell
+                    switch sectionItem {
+                    case let .detail(item):
+                        let cell = collectionView.dequeue(Reusable.detailCell, for: indexPath)
+                        cell.bind(reactor: item)
+                        return cell
+                    }
+            },
+            configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
+                switch kind {
+                case UICollectionView.elementKindSectionHeader:
+                    let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
+                    view.bind(reactor: RepositoryDetailHeaderReactor(reactor.currentState.repository))
+                    return view
+                default:
+                    return collectionView.emptyView(for: indexPath, kind: kind)
                 }
-        })
+            }
+        )
     }
     
 }

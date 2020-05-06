@@ -198,6 +198,14 @@ struct Repository: ModelType, Subjective, Eventable {
         return .composed(of: texts)
     }
     
+    func count(title: String, value: Int) -> NSAttributedString {
+        let titleText = title.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 12)), .alignment(.center))
+        let valueText = value.string.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 18)), .alignment(.center))
+        return .composed(of: [
+            titleText, Special.nextLine, valueText
+        ])
+    }
+    
     enum Event {
         
     }

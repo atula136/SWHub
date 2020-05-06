@@ -36,6 +36,9 @@
 "Detail.Cell.Code" = "源代码";
 "Detail.Cell.Star" = "打星历史";
 "Detail.Cell.Line" = "计算行数";
+"Detail.Btn.Follow" = "观察者";
+"Detail.Btn.Star" = "星星";
+"Detail.Btn.Fork" = "复制仓库";
 /* 登录 */
 "Login.Title" = "登录";
 "Login.Password" = "密码";

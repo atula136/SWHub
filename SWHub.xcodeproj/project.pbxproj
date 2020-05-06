@@ -121,6 +121,8 @@
 		79F936A9245C3B0900AA775A /* repos-tospery-SWHub.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */; };
 		79FA54422462707E0089EB8F /* RepositoryDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA54412462707E0089EB8F /* RepositoryDetailSection.swift */; };
 		79FA5444246271CB0089EB8F /* DefaultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA5443246271CB0089EB8F /* DefaultItem.swift */; };
+		79FAF5E424628DAD00CEC4D0 /* RepositoryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FAF5E324628DAD00CEC4D0 /* RepositoryDetailHeaderView.swift */; };
+		79FAF5E62462954100CEC4D0 /* RepositoryDetailHeaderReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FAF5E52462954100CEC4D0 /* RepositoryDetailHeaderReactor.swift */; };
 		FD3249B3375F87DD51CA1684 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -264,6 +266,8 @@
 		79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-tospery-SWHub.json"; sourceTree = "<group>"; };
 		79FA54412462707E0089EB8F /* RepositoryDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailSection.swift; sourceTree = "<group>"; };
 		79FA5443246271CB0089EB8F /* DefaultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultItem.swift; sourceTree = "<group>"; };
+		79FAF5E324628DAD00CEC4D0 /* RepositoryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailHeaderView.swift; sourceTree = "<group>"; };
+		79FAF5E52462954100CEC4D0 /* RepositoryDetailHeaderReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailHeaderReactor.swift; sourceTree = "<group>"; };
 		97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D31A282BEF0A84BF48C2B7 /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -533,6 +537,8 @@
 				794307F1246275A00050F3E3 /* RepositoryDetailItem.swift */,
 				794307F3246275A90050F3E3 /* RepositoryDetailCell.swift */,
 				794307F524627DEC0050F3E3 /* RepositoryDetailModel.swift */,
+				79FAF5E324628DAD00CEC4D0 /* RepositoryDetailHeaderView.swift */,
+				79FAF5E52462954100CEC4D0 /* RepositoryDetailHeaderReactor.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -881,6 +887,7 @@
 			files = (
 				7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */,
 				79EE8AA4245E8ED300A2438C /* TrendingDeveloperListViewController.swift in Sources */,
+				79FAF5E424628DAD00CEC4D0 /* RepositoryDetailHeaderView.swift in Sources */,
 				7906C32124555DB60030764D /* Router.swift in Sources */,
 				79E67A43245C04D100FE6093 /* NormalItem2.swift in Sources */,
 				7976ACA4245826FA00093046 /* MessageViewReactor.swift in Sources */,
@@ -896,6 +903,7 @@
 				792F6D672455562F00856757 /* LoginViewController.swift in Sources */,
 				79D8C81B2462084900A905F0 /* RepositoryDetailViewReactor.swift in Sources */,
 				79DAF291245D728D0006E6A5 /* NavigationBarExt.swift in Sources */,
+				79FAF5E62462954100CEC4D0 /* RepositoryDetailHeaderReactor.swift in Sources */,
 				7976ACB02458273900093046 /* SettingViewReactor.swift in Sources */,
 				791160B52460917700737F4B /* Misc.swift in Sources */,
 				7976ACB62458494A00093046 /* UIColorExt.swift in Sources */,
