@@ -17,6 +17,15 @@ import SWFrame
 
 class NormalCell: DefaultCell, ReactorKit.View {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.cornerRadius = 6
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func bind(reactor: NormalItem) {
         super.bind(item: reactor)
         reactor.state.map{ $0.title }

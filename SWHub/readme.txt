@@ -1,3 +1,5 @@
+一、规范
+嵌套类型仅用在Model定义中
 一、功能
 条件中的搜索
 二、问题
@@ -22,4 +24,5 @@ state -> refresh ui效果
 “每日”明文问题
 languageColor
 打星功能（viewerHasStarred）
+baseURL/baseWeb -> UIApplication
 

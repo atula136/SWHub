@@ -315,8 +315,6 @@ struct R: Rswift.Validatable {
     static let icon_navigation_close = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_navigation_close")
     /// Image `icon_navigation_forward`.
     static let icon_navigation_forward = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_navigation_forward")
-    /// Image `icon_navigation_github`.
-    static let icon_navigation_github = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_navigation_github")
     /// Image `icon_navigation_history`.
     static let icon_navigation_history = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_navigation_history")
     /// Image `icon_navigation_refresh`.
@@ -353,6 +351,8 @@ struct R: Rswift.Validatable {
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
     /// Image `nav_condition`.
     static let nav_condition = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_condition")
+    /// Image `nav_github`.
+    static let nav_github = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_github")
     /// Image `setting_badge_collaborator`.
     static let setting_badge_collaborator = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting_badge_collaborator")
     /// Image `setting_badge_repository`.
@@ -743,13 +743,6 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "icon_navigation_github", bundle: ..., traitCollection: ...)`
-    static func icon_navigation_github(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.icon_navigation_github, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "icon_navigation_history", bundle: ..., traitCollection: ...)`
     static func icon_navigation_history(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.icon_navigation_history, compatibleWith: traitCollection)
@@ -865,6 +858,13 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "nav_condition", bundle: ..., traitCollection: ...)`
     static func nav_condition(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.nav_condition, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nav_github", bundle: ..., traitCollection: ...)`
+    static func nav_github(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nav_github, compatibleWith: traitCollection)
     }
     #endif
 

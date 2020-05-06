@@ -1,8 +1,8 @@
 //
-//  NormalItem2.swift
+//  SettingSwitchItem.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/5/1.
+//  Created by 杨建祥 on 2020/5/6.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -14,30 +14,12 @@ import Kingfisher
 import SwifterSwift
 import SWFrame
 
-class NormalItem2: DefaultCollectionItem2, ReactorKit.Reactor {
-    
-    enum AccessoryType: Equatable {
-        case none
-        case indicator
-        case checkmark
-        case switcher(Bool)
-        
-        static func == (lhs: Self, rhs: Self) -> Bool {
-            switch (lhs, rhs) {
-            case (.none, .none),
-                 (.indicator, .indicator),
-                 (.checkmark, .checkmark),
-                 (.switcher, .switcher):
-                return true
-            default:
-                return false
-            }
-        }
-    }
+class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
     
     typealias Action = NoAction
     
     struct State {
+        var switched = false
         var icon: ImageSource?
         var title: String?
         var detail: NSAttributedString?
@@ -48,6 +30,14 @@ class NormalItem2: DefaultCollectionItem2, ReactorKit.Reactor {
     
     required init(_ model: ModelType) {
         super.init(model)
+        guard let setting = model as? Setting else { return }
+        self.initialState = State(
+            switched: setting.switched,
+            icon: setting.icon,
+            title: setting.title,
+            detail: setting.detail,
+            accessory: setting.accessory
+        )
     }
     
     func transform(state: Observable<State>) -> Observable<State> {
@@ -55,3 +45,4 @@ class NormalItem2: DefaultCollectionItem2, ReactorKit.Reactor {
     }
     
 }
+

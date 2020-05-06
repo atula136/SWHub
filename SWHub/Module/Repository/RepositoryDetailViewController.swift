@@ -49,17 +49,11 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.commonSave())
-//        saveButton.rx.tap.subscribe(onNext: { [weak self] _ in
-//            guard let `self` = self else { return }
-//            var condition = Condition.init()
-//            condition.since = self.reactor!.currentState.since
-//            condition.language = self.reactor!.currentState.language
-//            Condition.update(condition)
-//            self.dismiss(animated: true, completion: nil)
-//        }).disposed(by: self.disposeBag)
-//        self.navigationBar.titleView = self.segment
-//
+        self.navigationBar.addButtonToRight(R.image.nav_github()).rx.tap.subscribe(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+            self.navigator.push("\(Constant.Network.baseWebUrl)/\(self.reactor?.fullname ?? "")")
+        }).disposed(by: self.disposeBag)
+        
         self.collectionView.register(Reusable.detailCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
     }

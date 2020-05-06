@@ -1,8 +1,8 @@
 //
-//  DefaultCollectionItem2.swift
+//  SettingNormalCell.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/5/3.
+//  Created by 杨建祥 on 2020/5/6.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -11,9 +11,8 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 import Kingfisher
-import SwifterSwift
 import SWFrame
 
-class DefaultCollectionItem2: CollectionItem {
+class SettingNormalCell: NormalCell {
     
 }

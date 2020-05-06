@@ -79,80 +79,40 @@ enum Router {
             return parameters
         }
         
-        // 1. 颜色主题
+        // 1. 网页
+        let webFactory: ViewControllerFactory = { (url: URLConvertible, values: [String: Any], context: Any?) in
+            guard let url = url.urlValue else { return nil }
+            // (1) 原生支持
+            let string = url.absoluteString
+            if string.hasPrefix(Constant.Network.baseWebUrl) {
+                let url = string.replacingOccurrences(of: Constant.Network.baseWebUrl + "/", with: UIApplication.shared.scheme + "://")
+                if let _ = navigator.push(url, context: context) {
+                    return nil
+                }
+            }
+            // (2) 网页跳转
+            var paramters = [Parameter.url: url.absoluteString]
+            if let title = url.queryValue(for: Parameter.title) {
+                paramters[Parameter.title] = title
+            }
+            return WebViewController(navigator, WebViewReactor(provider, paramters))
+        }
+        navigator.register("http://<path:_>", webFactory)
+        navigator.register("https://<path:_>", webFactory)
+        
+        // 2. 颜色主题
         navigator.register(self.color.pattern) { url, values, context in
             MyColorViewController(navigator, MyColorViewReactor(provider, parameters(url, values, context)))
         }
-        // 2. 搜索条件
+        // 3. 搜索条件
         navigator.register(self.condition.pattern) { url, values, context in
             ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))
         }
-        // 3. 仓库详情
+        // 4. 仓库详情
         navigator.register(self.Repository.detail.pattern) { url, values, context in
             RepositoryDetailViewController(navigator, RepositoryDetailViewReactor(provider, parameters(url, values, context)))
         }
         
-//        // 1. 网页
-//        let webFactory: ViewControllerFactory = { (url: URLConvertible, values: [String: Any], context: Any?) in
-//            guard let url = url.urlValue else { return nil }
-//            // 1. 判断是否有原生实现
-//            let string = url.absoluteString
-//            if string.hasPrefix(Constant.Network.baseWebUrl) {
-//                let url = string.replacingOccurrences(of: Constant.Network.baseWebUrl, with: UIApplication.shared.scheme + "://")
-//                if let _ = navigator.push(url, context: context) {
-//                    return nil
-//                }
-//            }
-//            // 2. 网页跳转
-//            var paramters = [Parameter.url: url.absoluteString]
-//            if let title = url.queryValue(for: Parameter.title) {
-//                paramters[Parameter.title] = title
-//            }
-//            return WebViewController(navigator, WebViewReactor(provider, paramters))
-//        }
-//        navigator.register("http://<path:_>", webFactory)
-//        navigator.register("https://<path:_>", webFactory)
-//
-//        // 2. 模式
-//        let parameters = { (url: URLConvertible, values: [String: Any], context: Any?) -> Dictionary<String, Any>? in
-//            var parameters: Dictionary<String, Any> = url.queryParameters
-//            for (key, value) in values {
-//                parameters[key] = value
-//            }
-//            if let context = context {
-//                parameters[routeContextKey] = context
-//            }
-//            return parameters
-//        }
-//
-////        navigator.register(self.help.rawValue) { _, _, _ -> UIViewController? in
-////            HelpViewController(navigator: navigator, reactor: HelpViewReactor(provider: provider, params: nil))
-////        }
-//
-//        navigator.register(self.login.url) { _, values, _ in
-//            LoginViewController(navigator, LoginViewReactor(provider, nil))
-//        }
-//
-////        navigator.register(self.message.url) { _, values, _ in
-////            MessageCenterViewController(navigator, MessageCenterViewReactor(provider, nil))
-////        }
-//
-//        navigator.register(self.Message.center.url) { url, values, context in
-//            MessageCenterViewController(navigator, MessageCenterViewReactor(provider, nil))
-//        }
-//
-//        navigator.register(self.Message.list.url) { url, values, context in
-//            MessageListViewController(navigator, MessageListViewReactor(provider, url.queryParameters))
-//        }
-//
-//        navigator.register(self.setting.url) { _, values, _ in
-//            SettingViewController(navigator, SettingViewReactor(provider, nil))
-//        }
-//
-//        navigator.register(self.category.url) { url, values, context in
-//            ProductListViewController(navigator, ProductListViewReactor(provider, parameters(url, values, context)))
-//        }
-//
 //        // 3. 弹窗
 //        navigator.handle(self.alert.url) { url, values, context -> Bool in
 //            let title = url.queryParameters[Parameter.title]

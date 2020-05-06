@@ -17,7 +17,7 @@ struct Constant {
         static let loggingEnabled = false
         static let baseApiUrl = "https://api.github.com"
         static let trendingApiUrl = "https://github-trending-api.now.sh"
-        static let baseWebUrl = "https://m.kujia.com/jxh5/"
+        static let baseWebUrl = "https://github.com"
         static let gitHistoryUrl = "https://github.githistory.xyz"
         static let starHistoryUrl = "https://star-history.t9t.io"
         static let codetabsUrl = "https://api.codetabs.com/v1"

@@ -14,7 +14,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class MyColorCell: DefaultCollectionCell2, ReactorKit.View {
+class MyColorCell: DefaultCell, ReactorKit.View {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,7 +42,7 @@ class MyColorCell: DefaultCollectionCell2, ReactorKit.View {
         reactor.state.map{ $0.icon == nil }
             .bind(to: self.iconImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.accessory != .indicator && $0.accessory != .checkmark }
+        reactor.state.map{ $0.accessory == .none }
             .bind(to: self.accessoryImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map { state -> UIImage? in
@@ -55,17 +55,6 @@ class MyColorCell: DefaultCollectionCell2, ReactorKit.View {
                 return nil
             }
         }.bind(to: self.accessoryImageView.rx.image).disposed(by: self.disposeBag)
-        reactor.state.map{ $0.accessory != .switcher(true) && $0.accessory != .switcher(false) }
-            .bind(to: self.switcher.rx.isHidden)
-            .disposed(by: self.disposeBag)
-        reactor.state.map { state -> Bool in
-            switch state.accessory {
-            case let .switcher(isOn):
-                return isOn
-            default:
-                return false
-            }
-        }.bind(to: self.switcher.rx.isOn).disposed(by: self.disposeBag)
         reactor.state.map{ _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)

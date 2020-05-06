@@ -18,19 +18,20 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     
     enum Action {
         case load
-        //case update
+        case night(Bool)
     }
     
     enum Mutation {
         case setLoading(Bool)
-        case setRepository(Repository)
+        case setNight(Bool)
         case setError(Error?)
-        case initial([[ModelType]])
+        case setRepository(Repository)
+        case start([[ModelType]])
     }
     
     struct State {
         var isLoading = false
-        //var isUpdating = false
+        var isNight = false
         var title: String?
         var error: Error?
         var repository: Repository?
@@ -42,6 +43,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
         super.init(provider, parameters)
         self.initialState = State(
+            isNight: ThemeType.currentTheme().isDark,
             title: stringDefault(self.title, R.string.localizable.mainTabBarSetting())
         )
     }
@@ -59,15 +61,20 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 sections.append([repository])
             }
             var preference: [ModelType] = []
-            preference.append(Setting(id: .night, accessory: .switcher(ThemeType.currentTheme().isDark)))
+            var night = Setting(id: .night, accessory: .none)
+            night.switched = ThemeType.currentTheme().isDark
+            preference.append(night)
             preference.append(Setting(id: .color))
             sections.append(preference)
             return .concat([
                 .just(.setLoading(true)),
-                .just(.initial(sections)),
+                .just(.start(sections)),
                 self.provider.repository(fullname: "tospery/SWHub").map(Mutation.setRepository).catchError({.just(.setError($0))}),
                 .just(.setLoading(false))
             ])
+        case let .night(isNight):
+            guard isNight != self.currentState.isNight else { return .empty() }
+            return .just(.setNight(isNight))
         }
     }
     
@@ -76,29 +83,32 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
-        case let .initial(sections):
+        case let .setNight(isNight):
+            state.isNight = isNight
+        case let .start(sections):
             state.sections = sections.map { models -> SettingSection in
                 var header = R.string.localizable.settingPreferences()
                 var items: [SettingSectionItem] = []
                 for model in models {
                     if let user = model as? User {
                         header = R.string.localizable.settingAccount()
-                        items.append(.user(SettingUserItem(user)))
+                        items.append(.profile(SettingProfileItem(user)))
                     }
                     if let repository = model as? Repository {
                         header = R.string.localizable.settingProject()
                         items.append(.project(SettingProjectItem(repository)))
                     }
                     if let setting = model as? Setting {
-                        let item = SettingItem(setting)
                         switch setting.id! {
                         case .logout:
                             header = R.string.localizable.settingAccount()
-                            items.append(.logout(item))
+                            items.append(.logout(SettingNormalItem(setting)))
                         case .night:
-                            items.append(.night(item))
+                            items.append(.night(SettingSwitchItem(setting)))
                         case .color:
-                            items.append(.color(item))
+                            items.append(.color(SettingNormalItem(setting)))
+                        default:
+                            break
                         }
                     }
                 }

@@ -1,8 +1,8 @@
 //
-//  SettingUserCell.swift
+//  SettingProfileCell.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/4/29.
+//  Created by 杨建祥 on 2020/5/6.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ import SwifterSwift
 import Kingfisher
 import SWFrame
 
-class SettingUserCell: InfoCell {
+class SettingProfileCell: InfoCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,4 +27,3 @@ class SettingUserCell: InfoCell {
     }
     
 }
-
