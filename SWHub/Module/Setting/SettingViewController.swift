@@ -87,9 +87,9 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         reactor.state.map { $0.title }
             .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.isDark }
+        reactor.state.map{ $0.isNight }
             .distinctUntilChanged()
-            .bind(to: self.rx.dark)
+            .bind(to: self.rx.night)
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
@@ -111,7 +111,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 case .dark(let item):
                     let cell = collectionView.dequeue(Reusable.switchCell, for: indexPath)
                     cell.bind(reactor: item)
-                    cell.rx.switched.distinctUntilChanged().skip(1).map{ Reactor.Action.dark($0) }
+                    cell.rx.switched.distinctUntilChanged().skip(1).map{ Reactor.Action.night($0) }
                         .bind(to: reactor.action)
                         .disposed(by: cell.disposeBag)
                     return cell
@@ -164,14 +164,14 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
 
 extension Reactive where Base: SettingViewController {
     
-    var dark: Binder<Bool> {
+    var night: Binder<Bool> {
         return Binder(self.base) { viewController, attr in
             var theme = ThemeType.currentTheme()
             if theme.isDark != attr {
                 theme = theme.toggled()
             }
             themeService.switch(theme)
-            Setting.event.onNext(.dark(attr))
+            Setting.event.onNext(.night(attr))
         }
     }
     

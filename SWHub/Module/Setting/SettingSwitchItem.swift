@@ -16,11 +16,13 @@ import SWFrame
 
 class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
     
-    typealias Action = NoAction
+    enum Action {
+        case `switch`(Bool)
+    }
     
-//    enum Mutation {
-//        case setDark(Bool)
-//    }
+    enum Mutation {
+        case setSwitch(Bool)
+    }
     
     struct State {
         var switched = false
@@ -44,14 +46,22 @@ class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
         )
     }
     
-//    func reduce(state: State, mutation: Mutation) -> State {
-//        var state = state
-//        switch mutation {
-//        case let .setDark(isDark):
-//            state.switched = isDark
-//        }
-//        return state
-//    }
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case let .switch(switched):
+            guard switched != self.currentState.switched else { return .empty() }
+            return .just(.setSwitch(switched))
+        }
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setSwitch(switched):
+            state.switched = switched
+        }
+        return state
+    }
 //
 //    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
 //        let nightEvent = Setting.event.flatMap { event -> Observable<Mutation> in

@@ -39,21 +39,21 @@ struct Setting: ModelType, Identifiable, Eventable {
     }
     
     enum Event {
-        case dark(Bool)
+        case night(Bool)
     }
     
     enum Key: Int, Codable {
         case profile
         case project
         case logout
-        case dark
+        case night
         case color
         
         var title: String? {
             switch self {
             case .logout:
                 return R.string.localizable.settingAccountLogout()
-            case .dark:
+            case .night:
                 return R.string.localizable.settingPreferencesNight()
             case .color:
                 return R.string.localizable.settingPreferencesTheme()
@@ -66,7 +66,7 @@ struct Setting: ModelType, Identifiable, Eventable {
             switch self {
             case .logout:
                 return R.image.setting_cell_logout()?.template
-            case .dark:
+            case .night:
                 return R.image.setting_cell_night()?.template
             case .color:
                 return R.image.setting_cell_theme()?.template
@@ -79,7 +79,7 @@ struct Setting: ModelType, Identifiable, Eventable {
             case profile        = "profile"
             case logout         = "logout"
             case project        = "project"
-            case dark           = "dark"
+            case night          = "night"
             case color          = "color"
         }
     }

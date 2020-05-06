@@ -41,8 +41,8 @@ class InfoItem: CollectionItem, ReactorKit.Reactor {
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
         let nightEvent = Setting.event.flatMap { event -> Observable<Mutation> in
             switch event {
-            case let .dark(isDark):
-                return .just(.setDark(isDark))
+            case let .night(isNight):
+                return .just(.setDark(isNight))
             }
         }
         return .merge(mutation, nightEvent)

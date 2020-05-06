@@ -46,6 +46,11 @@ class SettingSwitchCell: DefaultCell, ReactorKit.View {
     
     func bind(reactor: SettingSwitchItem) {
         super.bind(item: reactor)
+        // action
+        self.switcher.rx.isOn.distinctUntilChanged().skip(1).map{ Reactor.Action.switch($0) }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        // state
         reactor.state.map{ $0.title }
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
