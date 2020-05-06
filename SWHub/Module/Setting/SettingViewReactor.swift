@@ -18,12 +18,12 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     
     enum Action {
         case load
-        case night(Bool)
+        case dark(Bool)
     }
     
     enum Mutation {
         case setLoading(Bool)
-        case setNight(Bool)
+        case setDark(Bool)
         case setError(Error?)
         case setRepository(Repository)
         case start([[ModelType]])
@@ -31,7 +31,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     
     struct State {
         var isLoading = false
-        var isNight = false
+        var isDark = false
         var title: String?
         var error: Error?
         var repository: Repository?
@@ -43,7 +43,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
         super.init(provider, parameters)
         self.initialState = State(
-            isNight: ThemeType.currentTheme().isDark,
+            isDark: ThemeType.currentTheme().isDark,
             title: stringDefault(self.title, R.string.localizable.mainTabBarSetting())
         )
     }
@@ -61,9 +61,9 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 sections.append([repository])
             }
             var preference: [ModelType] = []
-            var night = Setting(id: .night, accessory: .none)
-            night.switched = ThemeType.currentTheme().isDark
-            preference.append(night)
+            var dark = Setting(id: .dark, accessory: .none)
+            dark.switched = ThemeType.currentTheme().isDark
+            preference.append(dark)
             preference.append(Setting(id: .color))
             sections.append(preference)
             return .concat([
@@ -72,9 +72,9 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 self.provider.repository(fullname: "tospery/SWHub").map(Mutation.setRepository).catchError({.just(.setError($0))}),
                 .just(.setLoading(false))
             ])
-        case let .night(isNight):
-            guard isNight != self.currentState.isNight else { return .empty() }
-            return .just(.setNight(isNight))
+        case let .dark(isDark):
+            guard isDark != self.currentState.isDark else { return .empty() }
+            return .just(.setDark(isDark))
         }
     }
     
@@ -83,8 +83,8 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
-        case let .setNight(isNight):
-            state.isNight = isNight
+        case let .setDark(isDark):
+            state.isDark = isDark
         case let .start(sections):
             state.sections = sections.map { models -> SettingSection in
                 var header = R.string.localizable.settingPreferences()
@@ -103,8 +103,8 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                         case .logout:
                             header = R.string.localizable.settingAccount()
                             items.append(.logout(SettingNormalItem(setting)))
-                        case .night:
-                            items.append(.night(SettingSwitchItem(setting)))
+                        case .dark:
+                            items.append(.dark(SettingSwitchItem(setting)))
                         case .color:
                             items.append(.color(SettingNormalItem(setting)))
                         default:

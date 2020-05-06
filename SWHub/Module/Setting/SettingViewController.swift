@@ -87,9 +87,9 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         reactor.state.map { $0.title }
             .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.isNight }
+        reactor.state.map{ $0.isDark }
             .distinctUntilChanged()
-            .bind(to: self.rx.night)
+            .bind(to: self.rx.dark)
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
@@ -108,18 +108,10 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                     let cell = collectionView.dequeue(Reusable.projectCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
-                case .night(let item):
+                case .dark(let item):
                     let cell = collectionView.dequeue(Reusable.switchCell, for: indexPath)
                     cell.bind(reactor: item)
-//                    cell.rx.switched.skip(1).subscribe(onNext: { isDark in
-//                        var theme = ThemeType.currentTheme()
-//                        if theme.isDark != isDark {
-//                            theme = theme.toggled()
-//                        }
-//                        themeService.switch(theme)
-//                        Setting.event.onNext(.night(isDark))
-//                    }).disposed(by: cell.disposeBag)
-                    cell.rx.switched.distinctUntilChanged().skip(1).map{ Reactor.Action.night($0) }
+                    cell.rx.switched.distinctUntilChanged().skip(1).map{ Reactor.Action.dark($0) }
                         .bind(to: reactor.action)
                         .disposed(by: cell.disposeBag)
                     return cell
@@ -161,7 +153,7 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
             return Reusable.profileCell.class.size(width: width, item: item)
         case let .project(item):
             return Reusable.projectCell.class.size(width: width, item: item)
-        case let .night(item):
+        case let .dark(item):
             return Reusable.switchCell.class.size(width: width, item: item)
         case .logout(let item), .color(let item):
             return Reusable.settingCell.class.size(width: width, item: item)
@@ -172,14 +164,14 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
 
 extension Reactive where Base: SettingViewController {
     
-    var night: Binder<Bool> {
+    var dark: Binder<Bool> {
         return Binder(self.base) { viewController, attr in
             var theme = ThemeType.currentTheme()
             if theme.isDark != attr {
                 theme = theme.toggled()
             }
             themeService.switch(theme)
-            Setting.event.onNext(.night(attr))
+            Setting.event.onNext(.dark(attr))
         }
     }
     

@@ -18,7 +18,7 @@ class InfoItem: CollectionItem, ReactorKit.Reactor {
     typealias Action = NoAction
     
     enum Mutation {
-        case setNight(Bool)
+        case setDark(Bool)
     }
     
     struct State {
@@ -41,8 +41,8 @@ class InfoItem: CollectionItem, ReactorKit.Reactor {
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
         let nightEvent = Setting.event.flatMap { event -> Observable<Mutation> in
             switch event {
-            case let .night(isDark):
-                return .just(.setNight(isDark))
+            case let .dark(isDark):
+                return .just(.setDark(isDark))
             }
         }
         return .merge(mutation, nightEvent)

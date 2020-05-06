@@ -75,6 +75,7 @@ class SettingSwitchCell: DefaultCell, ReactorKit.View {
             .bind(to: self.switcher.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map{ $0.switched }
+            .distinctUntilChanged()
             .bind(to: self.switcher.rx.isOn)
             .disposed(by: self.disposeBag)
         reactor.state.map{ _ in }
@@ -88,7 +89,8 @@ class SettingSwitchCell: DefaultCell, ReactorKit.View {
 extension Reactive where Base: SettingSwitchCell {
     
     var switched: ControlEvent<Bool> {
-        return ControlEvent(events: self.base.switcher.rx.isOn)
+        let source = self.base.switcher.rx.isOn
+        return ControlEvent(events: source)
     }
     
 }

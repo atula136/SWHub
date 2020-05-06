@@ -28,7 +28,7 @@ class SettingProfileItem: InfoItem {
     override func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case .setNight(_):
+        case .setDark(_):
             if let user = self.model as? User {
                 state.detail = user.detail()
             }

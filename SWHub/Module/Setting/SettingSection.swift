@@ -41,6 +41,6 @@ enum SettingSectionItem {
     case profile(SettingProfileItem)
     case project(SettingProjectItem)
     case logout(SettingNormalItem)
-    case night(SettingSwitchItem)
+    case dark(SettingSwitchItem)
     case color(SettingNormalItem)
 }

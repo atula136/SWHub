@@ -18,6 +18,10 @@ class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
     
     typealias Action = NoAction
     
+//    enum Mutation {
+//        case setDark(Bool)
+//    }
+    
     struct State {
         var switched = false
         var icon: ImageSource?
@@ -40,9 +44,28 @@ class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
         )
     }
     
-    func transform(state: Observable<State>) -> Observable<State> {
-        return state
-    }
+//    func reduce(state: State, mutation: Mutation) -> State {
+//        var state = state
+//        switch mutation {
+//        case let .setDark(isDark):
+//            state.switched = isDark
+//        }
+//        return state
+//    }
+//
+//    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+//        let nightEvent = Setting.event.flatMap { event -> Observable<Mutation> in
+//            switch event {
+//            case let .dark(isDark):
+//                return .just(.setDark(isDark))
+//            }
+//        }
+//        return .merge(mutation, nightEvent)
+//    }
+//
+//    func transform(state: Observable<State>) -> Observable<State> {
+//        return state
+//    }
     
 }
 

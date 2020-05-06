@@ -29,7 +29,7 @@ class SettingProjectItem: InfoItem {
     override func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case .setNight(_):
+        case .setDark(_):
             if let repository = self.model as? Repository {
                 state.detail = repository.detail()
             }
