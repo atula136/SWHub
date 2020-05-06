@@ -17,38 +17,27 @@ import SWFrame
 
 class RepositoryDetailViewController: CollectionViewController, ReactorKit.View {
     
-//    struct Reusable {
-//        static let languageCell = ReusableCell<Condition.Language.Cell>()
-//    }
-//
-//    let dataSource: RxCollectionViewSectionedReloadDataSource<Condition.Language.Section>
-//
-//    override var layout: UICollectionViewLayout {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        layout.minimumInteritemSpacing = 0
-//        layout.minimumLineSpacing = 10
-//        layout.sectionInset = .init(horizontal: 30, vertical: 20)
-//        return layout
-//    }
-//
-//    lazy var segment: UISegmentedControl = {
-//        let segment = UISegmentedControl(items: Condition.Since.allValues.map{ $0.title })
-//        for index in 0..<segment.numberOfSegments {
-//            segment.setWidth(60, forSegmentAt: index)
-//        }
-//        segment.sizeToFit()
-//        return segment
-//    }()
+    struct Reusable {
+        static let detailCell = ReusableCell<RepositoryDetailCell>()
+    }
+
+    let dataSource: RxCollectionViewSectionedReloadDataSource<RepositoryDetailSection>
+
+    override var layout: UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = .init(horizontal: 30, vertical: 20)
+        return layout
+    }
     
     init(_ navigator: NavigatorType, _ reactor: RepositoryDetailViewReactor) {
         defer {
             self.reactor = reactor
         }
-        // self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
+        self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
-        // self.hidesNavigationBar = boolMember(reactor.parameters, Parameter.hideNavBar, true)
-        // self.shouldRefresh = boolMember(reactor.parameters, Parameter.shouldRefresh, true)
     }
     
     required init?(coder: NSCoder) {
@@ -68,12 +57,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
 //        }).disposed(by: self.disposeBag)
 //        self.navigationBar.titleView = self.segment
 //
-//        self.collectionView.register(Reusable.languageCell)
-//
-//        themeService.rx
-//            .bind({ [NSAttributedString.Key.foregroundColor: $0.textColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
-//            .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: self.segment.rx.titleTextAttributes(for: .selected))
-//            .disposed(by: self.rx.disposeBag)
+        self.collectionView.register(Reusable.detailCell)
     }
     
     func bind(reactor: RepositoryDetailViewReactor) {
@@ -108,41 +92,44 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
 //            .distinctUntilChanged()
 //            .bind(to: self.rx.language)
 //            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.isLoading }
-//            .distinctUntilChanged()
-//            .bind(to: self.rx.loading())
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.error }
-//            .bind(to: self.rx.error)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map{ $0.sections }
-//            .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
-//            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.isLoading }
+            .distinctUntilChanged()
+            .bind(to: self.rx.loading())
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.title }
+            .bind(to: self.navigationBar.titleLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.error }
+            .bind(to: self.rx.error)
+            .disposed(by: self.disposeBag)
+        reactor.state.map{ $0.sections }
+            .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+            .disposed(by: self.disposeBag)
     }
     
-//    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: ConditionViewReactor) -> RxCollectionViewSectionedReloadDataSource<Condition.Language.Section> {
-//        return .init(
-//            configureCell: { dataSource, collectionView, indexPath, sectionItem in
-//                switch sectionItem {
-//                case let .language(item):
-//                    let cell = collectionView.dequeue(Reusable.languageCell, for: indexPath)
-//                    cell.bind(reactor: item)
-//                    return cell
-//                }
-//        })
-//    }
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepositoryDetailViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepositoryDetailSection> {
+        return .init(
+            configureCell: { dataSource, collectionView, indexPath, sectionItem in
+                switch sectionItem {
+                case let .detail(item):
+                    let cell = collectionView.dequeue(Reusable.detailCell, for: indexPath)
+                    cell.bind(reactor: item)
+                    return cell
+                }
+        })
+    }
     
 }
 
 extension RepositoryDetailViewController: UICollectionViewDelegateFlowLayout {
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = collectionView.sectionWidth(at: indexPath.section)
-//        switch self.dataSource[indexPath] {
-//        case let .language(item):
-//            return Reusable.languageCell.class.size(width: width, item: item)
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.sectionWidth(at: indexPath.section)
+        switch self.dataSource[indexPath] {
+        case let .detail(item):
+            return Reusable.detailCell.class.size(width: width, item: item)
+        }
+    }
 
 }
 

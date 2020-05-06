@@ -25,6 +25,17 @@
 "Condition.Since.Weekly" = "本周";
 "Condition.Since.Monthly" = "本月";
 "All languages" = "所有语言";
+/* 详情 */
+"Detail.Cell.Pull" = "拉取请求";
+"Detail.Cell.Commit" = "提交";
+"Detail.Cell.Branch" = "所有分支";
+"Detail.Cell.Release" = "已发布";
+"Detail.Cell.Contributor" = "贡献值";
+"Detail.Cell.Event" = "事件";
+"Detail.Cell.Notification" = "我的通知";
+"Detail.Cell.Code" = "源代码";
+"Detail.Cell.Star" = "打星历史";
+"Detail.Cell.Line" = "计算行数";
 /* 登录 */
 "Login.Title" = "登录";
 "Login.Password" = "密码";

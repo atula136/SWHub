@@ -18,4 +18,24 @@ import SwifterSwift
 import Rswift
 import SWFrame
 
+enum RepositoryDetailSection {
+    case details([RepositoryDetailSectionItem])
+}
 
+extension RepositoryDetailSection: SectionModelType {
+    var items: [RepositoryDetailSectionItem] {
+        switch self {
+        case let .details(items): return items
+        }
+    }
+    
+    init(original: RepositoryDetailSection, items: [RepositoryDetailSectionItem]) {
+        switch original {
+        case .details: self = .details(items)
+        }
+    }
+}
+
+enum RepositoryDetailSectionItem {
+    case detail(RepositoryDetailItem)
+}

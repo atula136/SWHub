@@ -27,18 +27,21 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     
     struct State {
         var isLoading = false
+        var title: String?
         var error: Error?
         var repository: Repository!
-        var sections: [Condition.Language.Section] = []
+        var sections: [RepositoryDetailSection] = []
     }
     
+    var fullname: String?
     var initialState = State()
     
     required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
         super.init(provider, parameters)
-        let fullname = stringMember(self.parameters, Parameter.fullname, nil)
-        var repository = Repository.init()
-        repository.fullName = fullname
+//        let fullname = stringMember(self.parameters, Parameter.fullname, nil)
+//        var repository = Repository.init()
+//        repository.fullName = fullname
+        self.fullname = stringMember(self.parameters, Parameter.fullname, nil)
 //        let condition = Condition.current()!
 //        // since
 //        let value = stringMember(self.parameters, Parameter.since, condition.since.paramValue)!
@@ -56,7 +59,8 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 //            sections = [.languages(sectionItems)]
 //        }
         self.initialState = State(
-            repository: repository
+            title: stringDefault(self.title, self.fullname ?? "")
+            // repository: repository
         )
     }
     
@@ -64,7 +68,7 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
-            guard let fullname = self.currentState.repository.fullName else { return .empty() }
+            guard let fullname = self.fullname else { return .empty() }
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
@@ -89,18 +93,19 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.error = error
         case let .setRepository(repository):
             state.repository = repository
-//        case let .setSince(value):
-//            if let since = Condition.Since.init(rawValue: value) {
-//                state.since = since
-//            }
-//        case let .setLanguage(urlParam):
-//            var language = Condition.Language.init()
-//            language.urlParam = urlParam
-//            state.language = language
-//        case let .start(languages):
-//            Condition.Language.storeArray(languages)
-//            let langs = self.languages(languages: languages, selected: state.language.urlParam)
-//            state.sections = [.languages(langs.map{ Condition.Language.Item($0) }.map{ Condition.Language.SectionItem.language($0) })]
+            let items = RepositoryDetailModel.Key.allValues.map { key -> RepositoryDetailSectionItem in
+                var model = RepositoryDetailModel(key: key)
+                switch key {
+                case .branch:
+                    model.detail = repository.defaultBranch
+                case .star:
+                    model.detail = Constant.Network.starHistoryUrl
+                default:
+                    break
+                }
+                return .detail(RepositoryDetailItem(model))
+            }
+            state.sections = [.details(items)]
         }
         return state
     }
