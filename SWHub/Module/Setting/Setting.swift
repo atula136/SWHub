@@ -72,12 +72,12 @@ struct Setting: ModelType, Identifiable, Eventable {
             }
         }
 
-        enum CodingKeys: String, CodingKey {
-            case profile        = "profile"
-            case logout         = "logout"
-            case project        = "project"
-            case night          = "night"
-            case color          = "color"
-        }
+//        enum CodingKeys: String, CodingKey {
+//            case profile        = "profile"
+//            case logout         = "logout"
+//            case project        = "project"
+//            case night          = "night"
+//            case color          = "color"
+//        }
     }
 }

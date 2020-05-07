@@ -29,9 +29,9 @@ extension TrendingAPI: TargetType {
 
     var path: String {
         switch self {
-            case .languages: return "/languages"
-            case .repositories: return "/repositories"
-            case .developers: return "/developers"
+        case .languages: return "/languages"
+        case .repositories: return "/repositories"
+        case .developers: return "/developers"
         }
     }
 

@@ -66,7 +66,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             case .color:
                 self.navigator.push(Router.color.pattern)
             default:
-                break;
+                break
             }
         }).disposed(by: self.disposeBag)
         themeService.rx

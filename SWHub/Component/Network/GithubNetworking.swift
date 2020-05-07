@@ -23,7 +23,9 @@ struct GithubNetworking: NetworkingType {
     static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint where T: TargetType {
         return { target in
 //            if target.path == "/cn/api/message/list" {
-//                return Endpoint(url: target.baseURL.appendingPathComponent(target.path).absoluteString, sampleResponseClosure: { .networkError(NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: nil)) }, method: target.method, task: target.task, httpHeaderFields: target.headers)
+//                return Endpoint(url: target.baseURL.appendingPathComponent(target.path).absoluteString, sampleResponseClosure:
+            // { .networkError(NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: nil)) },
+            // method: target.method, task: target.task, httpHeaderFields: target.headers)
 //            }
             return MoyaProvider.defaultEndpointMapping(for: target)
         }

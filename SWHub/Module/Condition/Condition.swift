@@ -69,11 +69,11 @@ struct Condition: ModelType, Subjective, Equatable /*, Eventable */ {
             }
         }
 
-        enum CodingKeys: String, CodingKey {
-            case daily      = "daily"
-            case weekly     = "weekly"
-            case monthly    = "monthly"
-        }
+//        enum CodingKeys: String, CodingKey {
+//            case daily      = "daily"
+//            case weekly     = "weekly"
+//            case monthly    = "monthly"
+//        }
 
     }
 

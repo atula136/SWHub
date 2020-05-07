@@ -87,7 +87,7 @@ enum Router {
             let base = UIApplication.shared.baseWebUrl + "/"
             if string.hasPrefix(base) {
                 let url = string.replacingOccurrences(of: base, with: UIApplication.shared.scheme + "://")
-                if let _ = navigator.push(url, context: context) {
+                if navigator.push(url, context: context) != nil {
                     return nil
                 }
             }

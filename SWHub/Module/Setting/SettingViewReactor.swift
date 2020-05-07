@@ -86,34 +86,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .setNight(isNight):
             state.isNight = isNight
         case let .start(sections):
-            state.sections = sections.map { models -> SettingSection in
-                var header = R.string.localizable.settingPreferences()
-                var items: [SettingSectionItem] = []
-                for model in models {
-                    if let user = model as? User {
-                        header = R.string.localizable.settingAccount()
-                        items.append(.profile(SettingProfileItem(user)))
-                    }
-                    if let repository = model as? Repository {
-                        header = R.string.localizable.settingProject()
-                        items.append(.project(SettingProjectItem(repository)))
-                    }
-                    if let setting = model as? Setting {
-                        switch setting.id! {
-                        case .logout:
-                            header = R.string.localizable.settingAccount()
-                            items.append(.logout(SettingNormalItem(setting)))
-                        case .night:
-                            items.append(.dark(SettingSwitchItem(setting)))
-                        case .color:
-                            items.append(.color(SettingNormalItem(setting)))
-                        default:
-                            break
-                        }
-                    }
-                }
-                return .setting(header: header, items: items)
-            }
+            state.sections = self.sections(sections)
         case let .setRepository(repository):
             state.repository = repository
             var sections = state.sections
@@ -127,5 +100,36 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.error = error
         }
         return state
+    }
+
+    func sections(_ sections: [[ModelType]]) -> [SettingSection] {
+        return sections.map { models -> SettingSection in
+            var header = R.string.localizable.settingPreferences()
+            var items: [SettingSectionItem] = []
+            for model in models {
+                if let user = model as? User {
+                    header = R.string.localizable.settingAccount()
+                    items.append(.profile(SettingProfileItem(user)))
+                }
+                if let repository = model as? Repository {
+                    header = R.string.localizable.settingProject()
+                    items.append(.project(SettingProjectItem(repository)))
+                }
+                if let setting = model as? Setting {
+                    switch setting.id! {
+                    case .logout:
+                        header = R.string.localizable.settingAccount()
+                        items.append(.logout(SettingNormalItem(setting)))
+                    case .night:
+                        items.append(.dark(SettingSwitchItem(setting)))
+                    case .color:
+                        items.append(.color(SettingNormalItem(setting)))
+                    default:
+                        break
+                    }
+                }
+            }
+            return .setting(header: header, items: items)
+        }
     }
 }

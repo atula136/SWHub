@@ -58,7 +58,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setLoading(true)),
                 self.provider.profile().map(Mutation.setUser),
-                .just(.setLoading(false)),
+                .just(.setLoading(false))
                 ])
         }
     }
