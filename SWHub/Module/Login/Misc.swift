@@ -11,24 +11,21 @@ import ObjectMapper
 import SWFrame
 
 struct Misc: ModelType, Subjective {
-    
+
     var id: Int?
     // var condition = Condition.init()
-    
+
     init() {
-        
     }
-    
+
     init?(map: Map) {
-        
     }
-    
+
     mutating func mapping(map: Map) {
         // condition   <- map["condition"]
     }
-    
+
     static func objectStoreKey(id: String? = nil) -> String {
         return "Misc"
     }
-    
 }

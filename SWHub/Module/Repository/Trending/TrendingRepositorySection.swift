@@ -22,7 +22,7 @@ extension TrendingRepositorySection: SectionModelType {
         case let .repositories(items): return items
         }
     }
-    
+
     init(original: TrendingRepositorySection, items: [TrendingRepositorySectionItem]) {
         switch original {
         case .repositories: self = .repositories(items)

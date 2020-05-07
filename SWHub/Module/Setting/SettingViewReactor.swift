@@ -15,12 +15,12 @@ import RxOptional
 import SWFrame
 
 class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
-    
+
     enum Action {
         case load
         case night(Bool)
     }
-    
+
     enum Mutation {
         case setLoading(Bool)
         case setNight(Bool)
@@ -28,7 +28,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setRepository(Repository)
         case start([[ModelType]])
     }
-    
+
     struct State {
         var isLoading = false
         var isNight = false
@@ -37,9 +37,9 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var repository: Repository?
         var sections: [SettingSection] = []
     }
-    
+
     var initialState = State()
-    
+
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
@@ -47,7 +47,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             title: stringDefault(self.title, R.string.localizable.mainTabBarSetting())
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
@@ -77,7 +77,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .just(.setNight(isNight))
         }
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -128,5 +128,4 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         }
         return state
     }
-    
 }

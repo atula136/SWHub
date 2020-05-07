@@ -40,19 +40,17 @@ func mappingMessage(map: Map) -> String {
 }
 
 struct ObjectResponse<Data: ModelType>: ResponseType, ModelType {
-    
+
     var code: Int = 0
     var message: String = ""
     var data: Data?
-    
+
     init() {
-        
     }
-    
+
     init?(map: Map) {
-        
     }
-    
+
     mutating func mapping(map: Map) {
         code = mappingCode(map: map)
         message = mappingMessage(map: map)
@@ -61,23 +59,20 @@ struct ObjectResponse<Data: ModelType>: ResponseType, ModelType {
             data        <- map["result"]
         }
     }
-    
 }
 
 struct ArrayResponse<Data: ModelType>: ResponseType, ModelType {
-    
+
     var code: Int = 0
     var message: String = ""
     var data: [Data]?
-    
+
     init() {
-        
     }
-    
+
     init?(map: Map) {
-        
     }
-    
+
     mutating func mapping(map: Map) {
         code = mappingCode(map: map)
         message = mappingMessage(map: map)
@@ -86,6 +81,4 @@ struct ArrayResponse<Data: ModelType>: ResponseType, ModelType {
             data        <- map["result"]
         }
     }
-    
 }
-

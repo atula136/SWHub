@@ -15,15 +15,15 @@ import SwifterSwift
 import SWFrame
 
 class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
-    
+
     enum Action {
         case `switch`(Bool)
     }
-    
+
     enum Mutation {
         case setSwitch(Bool)
     }
-    
+
     struct State {
         var switched = false
         var icon: ImageSource?
@@ -31,9 +31,9 @@ class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
         var detail: NSAttributedString?
         var accessory = AccessoryType.indicator
     }
-    
+
     var initialState = State()
-    
+
     required init(_ model: ModelType) {
         super.init(model)
         guard let setting = model as? Setting else { return }
@@ -45,7 +45,7 @@ class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
             accessory: setting.accessory
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .switch(switched):
@@ -53,7 +53,7 @@ class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
             return .just(.setSwitch(switched))
         }
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -76,6 +76,4 @@ class SettingSwitchItem: DefaultItem, ReactorKit.Reactor {
 //    func transform(state: Observable<State>) -> Observable<State> {
 //        return state
 //    }
-    
 }
-

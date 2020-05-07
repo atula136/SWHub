@@ -14,7 +14,7 @@ import Kingfisher
 import SWFrame
 
 class SettingProfileItem: InfoItem {
-    
+
     required init(_ model: ModelType) {
         super.init(model)
         guard let user = model as? User else { return }
@@ -24,16 +24,16 @@ class SettingProfileItem: InfoItem {
             icon: user.avatar
         )
     }
-    
+
     override func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case .setDark(_):
+        case .setDark:
             if let user = self.model as? User {
                 state.detail = user.detail()
             }
         }
         return state
     }
-    
+
 }

@@ -14,30 +14,30 @@ import Kingfisher
 import SWFrame
 
 class InfoItem: CollectionItem, ReactorKit.Reactor {
-    
+
     typealias Action = NoAction
-    
+
     enum Mutation {
         case setDark(Bool)
     }
-    
+
     struct State {
         var title: String?
         var subtitle: String?
         var detail: NSAttributedString?
         var icon: URL?
     }
-    
+
     var initialState = State()
-    
+
     required init(_ model: ModelType) {
         super.init(model)
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         return state
     }
-    
+
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
         let nightEvent = Setting.event.flatMap { event -> Observable<Mutation> in
             switch event {
@@ -47,6 +47,5 @@ class InfoItem: CollectionItem, ReactorKit.Reactor {
         }
         return .merge(mutation, nightEvent)
     }
-    
-}
 
+}

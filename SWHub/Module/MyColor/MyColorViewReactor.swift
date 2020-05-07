@@ -15,31 +15,31 @@ import RxOptional
 import SWFrame
 
 class MyColorViewReactor: CollectionViewReactor, ReactorKit.Reactor {
-    
+
     enum Action {
         case load
     }
-    
+
     enum Mutation {
         case setLoading(Bool)
         case initial([MyColor])
     }
-    
+
     struct State {
         var isLoading = false
         var title: String?
         var sections: [MyColorSection] = []
     }
-    
+
     var initialState = State()
-    
+
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
             title: stringDefault(self.title, R.string.localizable.settingPreferencesTheme())
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
@@ -51,7 +51,7 @@ class MyColorViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             ])
         }
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -62,5 +62,4 @@ class MyColorViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         }
         return state
     }
-    
 }

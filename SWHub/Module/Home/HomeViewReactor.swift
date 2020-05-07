@@ -13,32 +13,32 @@ import ReactorKit
 import SWFrame
 
 class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
-    
+
     enum Action {
         case load
     }
-    
+
     enum Mutation {
         case setLoading(Bool)
         case setLanguages([Condition.Language])
     }
-    
+
     struct State {
         var isLoading = false
         var title: String?
         var languages: [Condition.Language]?
         var items: [HomeKey] = [.repository, .developer]
     }
-    
+
     var initialState = State()
-    
+
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
             title: stringDefault(self.title, R.string.localizable.mainTabBarHome())
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
@@ -49,7 +49,7 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             return load
         }
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -61,13 +61,13 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         }
         return state
     }
-    
+
 }
 
 enum HomeKey {
     case repository
     case developer
-    
+
     var title: String {
         switch self {
         case .repository:

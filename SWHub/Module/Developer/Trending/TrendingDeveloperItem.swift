@@ -10,7 +10,7 @@ import UIKit
 import SWFrame
 
 class TrendingDeveloperItem: InfoItem {
-    
+
     required init(_ model: ModelType) {
         super.init(model)
         guard let developer = model as? TrendingDeveloper else { return }
@@ -20,5 +20,5 @@ class TrendingDeveloperItem: InfoItem {
             icon: developer.avatar
         )
     }
-    
+
 }

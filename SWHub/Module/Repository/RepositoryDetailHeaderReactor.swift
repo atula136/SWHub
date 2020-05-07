@@ -14,9 +14,9 @@ import SwifterSwift
 import SWFrame
 
 class RepositoryDetailHeaderReactor: SupplementaryReactor, ReactorKit.Reactor {
-    
+
     typealias Action = NoAction
-    
+
     struct State {
         var starred = false
         var avatar: URL?
@@ -25,9 +25,9 @@ class RepositoryDetailHeaderReactor: SupplementaryReactor, ReactorKit.Reactor {
         var star: NSAttributedString?
         var fork: NSAttributedString?
     }
-    
+
     var initialState = State()
-    
+
     required init(_ model: ModelType) {
         super.init(model)
         guard let repository = model as? Repository else { return }
@@ -39,5 +39,4 @@ class RepositoryDetailHeaderReactor: SupplementaryReactor, ReactorKit.Reactor {
             fork: repository.count(title: R.string.localizable.detailBtnFork(), value: repository.forksCount ?? 0)
         )
     }
-    
 }

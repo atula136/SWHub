@@ -14,7 +14,7 @@ import SwifterSwift
 import SWFrame
 
 class ActivityViewController: BaseViewController, ReactorKit.View {
-    
+
     init(_ navigator: NavigatorType, _ reactor: ActivityViewReactor) {
         defer {
             self.reactor = reactor
@@ -22,11 +22,11 @@ class ActivityViewController: BaseViewController, ReactorKit.View {
         super.init(navigator, reactor)
         self.tabBarItem.title = reactor.currentState.title
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 //        if let item = self.tabBarItem {
@@ -36,9 +36,8 @@ class ActivityViewController: BaseViewController, ReactorKit.View {
 //                .disposed(by: self.rx.disposeBag)
 //        }
     }
-    
+
     func bind(reactor: ActivityViewReactor) {
         super.bind(reactor: reactor)
     }
-    
 }

@@ -12,7 +12,6 @@ import ObjectMapper
 import SWFrame
 
 struct Repository: ModelType, Subjective, Eventable {
-    
     var `private` = false
     var fork = false
     var hasIssues = false
@@ -90,15 +89,13 @@ struct Repository: ModelType, Subjective, Eventable {
     var license: License?
     var permissions: Permissions?
     var owner: User?
-    
+
     init() {
-        
     }
-    
+
     init?(map: Map) {
-        
     }
-    
+
     mutating func mapping(map: Map) {
         `private`                   <- map["private"]
         fork                        <- map["fork"]
@@ -178,7 +175,7 @@ struct Repository: ModelType, Subjective, Eventable {
         permissions                 <- map["permissions"]
         owner                       <- map["owner"]
     }
-    
+
     func detail() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
         let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.text))
@@ -186,7 +183,7 @@ struct Repository: ModelType, Subjective, Eventable {
         texts.append(.composed(of: [
             starsImage, Special.space, starsString, Special.space, Special.tab
         ]))
-        
+
         if let languageString = self.language?.styled(with: .color(.text)) {
 //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
             let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
@@ -195,10 +192,9 @@ struct Repository: ModelType, Subjective, Eventable {
             ]))
         }
         // YJX_TODO languageColor
-        
         return .composed(of: texts)
     }
-    
+
     func count(title: String, value: Int) -> NSAttributedString {
         let titleText = title.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 12)), .alignment(.center))
         let valueText = value.string.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 18)), .alignment(.center))
@@ -206,28 +202,24 @@ struct Repository: ModelType, Subjective, Eventable {
             titleText, Special.nextLine, valueText
         ])
     }
-    
+
     enum Event {
-        
     }
-    
+
     struct License: ModelType, Subjective {
-        
         var id: Int?
         var key: String?
         var name: String?
         var spdxId: String?
         var url: String?
         var nodeId: String?
-        
+
         init() {
-            
         }
-        
+
         init?(map: Map) {
-            
         }
-        
+
         mutating func mapping(map: Map) {
             key                     <- map["key"]
             name                    <- map["name"]
@@ -235,31 +227,24 @@ struct Repository: ModelType, Subjective, Eventable {
             url                     <- map["url"]
             nodeId                  <- map["node_id"]
         }
-        
     }
-    
+
     struct Permissions: ModelType, Subjective {
-        
         var id: Int?
         var admin = false
         var push = false
         var pull = false
-        
+
         init() {
-            
         }
-        
+
         init?(map: Map) {
-            
         }
-        
+
         mutating func mapping(map: Map) {
             admin                   <- map["admin"]
             push                    <- map["push"]
             pull                    <- map["pull"]
         }
-        
     }
-    
 }
-

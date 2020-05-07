@@ -11,44 +11,41 @@ import ObjectMapper
 import SWFrame
 
 struct Setting: ModelType, Identifiable, Eventable {
-    
+
     var id: Key?
     var switched = false
     var title: String?
     var detail: NSAttributedString?
     var icon: ImageSource?
     var accessory = AccessoryType.indicator
-    
+
     init() {
-        
     }
-    
+
     init(id: Key, accessory: AccessoryType = .indicator) {
         self.id = id
         self.accessory = accessory
         self.title = id.title
         self.icon = id.icon
     }
-    
+
     init?(map: Map) {
-        
     }
-    
+
     mutating func mapping(map: Map) {
-        
     }
-    
+
     enum Event {
         case night(Bool)
     }
-    
+
     enum Key: Int, Codable {
         case profile
         case project
         case logout
         case night
         case color
-        
+
         var title: String? {
             switch self {
             case .logout:
@@ -61,7 +58,7 @@ struct Setting: ModelType, Identifiable, Eventable {
                 return nil
             }
         }
-        
+
         var icon: UIImage? {
             switch self {
             case .logout:
@@ -74,7 +71,7 @@ struct Setting: ModelType, Identifiable, Eventable {
                 return nil
             }
         }
-        
+
         enum CodingKeys: String, CodingKey {
             case profile        = "profile"
             case logout         = "logout"
@@ -83,5 +80,4 @@ struct Setting: ModelType, Identifiable, Eventable {
             case color          = "color"
         }
     }
-    
 }

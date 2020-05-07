@@ -11,7 +11,7 @@ import NSObject_Rx
 import SWFrame
 
 extension NavigationBar {
-    
+
     @objc func my_init(frame: CGRect) {
         self.my_init(frame: frame)
         themeService.rx
@@ -21,5 +21,5 @@ extension NavigationBar {
             .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
-    
+
 }

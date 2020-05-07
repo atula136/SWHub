@@ -13,7 +13,7 @@ import NSObject_Rx
 import SWFrame
 
 extension UIViewController {
-    
+
 //    struct RuntimeKey {
 //        static let automaticallySetModalPresentationStyleKey = UnsafeRawPointer.init(bitPattern: "automaticallySetModalPresentationStyleKey".hashValue)
 //    }
@@ -46,15 +46,15 @@ extension UIViewController {
 //        }
 //        self.sf_present(viewControllerToPresent, animated: flag, completion: completion)
 //    }
-    
+
 //    open override var preferredStatusBarStyle: UIStatusBarStyle {
 //        return (self.topViewController?.preferredStatusBarStyle)!
 //    }
-    
+
 //    @objc var my_preferredStatusBarStyle: UIStatusBarStyle {
 //
 //    }
-    
+
 //    @objc func my_viewDidLoad() {
 //        self.my_viewDidLoad()
 //        globalStatusBarStyle.mapToVoid().subscribe(onNext: { [weak self] _ in
@@ -66,5 +66,5 @@ extension UIViewController {
 //    @objc var my_preferredStatusBarStyle: UIStatusBarStyle {
 //        return globalStatusBarStyle.value
 //    }
-    
+
 }

@@ -13,17 +13,17 @@ import KeychainAccess
 import SWFrame
 
 struct User: ModelType, Storable, Subjective {
-    
+
     fileprivate struct Key {
         static let token = "token"
     }
-    
+
     fileprivate static let keychain = Keychain()
     static var token: String? {
         get { keychain[Key.token] }
         set { keychain[Key.token] = newValue }
     }
-    
+
     var siteAdmin = false
     var twoFactorAuthentication = false
     var id: Int?
@@ -61,15 +61,13 @@ struct User: ModelType, Storable, Subjective {
     var receivedEventsUrl: URL?
     var createdAt: Date?
     var updatedAt: Date?
-    
+
     init() {
-        
     }
-    
+
     init?(map: Map) {
-        
     }
-    
+
     mutating func mapping(map: Map) {
         siteAdmin                       <- map["site_admin"]
         twoFactorAuthentication         <- map["two_factor_authentication"]
@@ -109,7 +107,7 @@ struct User: ModelType, Storable, Subjective {
         createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
         updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
     }
-    
+
     func detail() -> NSAttributedString? {
         var texts = [NSAttributedString]()
         if let repositoriesString = self.publicRepos?.string.styled(with: .color(.text)) {
@@ -126,5 +124,4 @@ struct User: ModelType, Storable, Subjective {
         }
         return .composed(of: texts)
     }
-    
 }

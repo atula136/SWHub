@@ -15,28 +15,24 @@ import Kingfisher
 import SWFrame
 
 struct RepositoryDetailModel: ModelType {
-    
+
     var key = Key.pull
     var detail: String?
-    
+
     init() {
-        
     }
-    
+
     init(key: Key, detail: String? = nil) {
         self.key = key
         self.detail = detail
     }
-    
+
     init?(map: Map) {
-        
     }
-    
+
     mutating func mapping(map: Map) {
-        
     }
-    
-    
+
     enum Key {
         case pull
         case commit
@@ -48,13 +44,13 @@ struct RepositoryDetailModel: ModelType {
         case code
         case star
         case line
-        
+
         static let allValues = [
             pull, commit, branch,
             release, contributor, event,
             notification, code, star, line
         ]
-        
+
         var title: String {
             switch self {
             case .pull: return R.string.localizable.detailCellPull()
@@ -69,7 +65,7 @@ struct RepositoryDetailModel: ModelType {
             case .line: return R.string.localizable.detailCellLine()
             }
         }
-        
+
         var image: UIImage? {
             switch self {
             case .pull: return R.image.detail_cell_pull()
@@ -84,7 +80,5 @@ struct RepositoryDetailModel: ModelType {
             case .line: return R.image.detail_cell_line()
             }
         }
-        
     }
-    
 }

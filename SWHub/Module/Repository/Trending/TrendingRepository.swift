@@ -12,7 +12,6 @@ import ObjectMapper
 import SWFrame
 
 struct TrendingRepository: ModelType, Storable {
-    
     var id: Int?
     var stars: Int?
     var forks: Int?
@@ -25,11 +24,10 @@ struct TrendingRepository: ModelType, Storable {
     var url: URL?
     var avatar: URL?
     var builtBy: [TrendingDeveloper]?
-    
+
     init() {
-        
     }
-    
+
     init?(map: Map) {
 //        name                    = try? map.value("name")
 //        stars                   = try? map.value("stars")
@@ -43,7 +41,7 @@ struct TrendingRepository: ModelType, Storable {
 //        avatar                  = try? map.value("avatar", using: URLTransform())
 //        builtBy                 = try? map.value("builtBy")
     }
-    
+
     mutating func mapping(map: Map) {
         name                    <- map["name"]
         stars                   <- map["stars"]
@@ -57,7 +55,7 @@ struct TrendingRepository: ModelType, Storable {
         avatar                  <- (map["avatar"], URLTransform())
         builtBy                 <- map["builtBy"]
     }
-    
+
     func detail(since: String) -> NSAttributedString? {
         let starImage = R.image.setting_badge_star()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
         let starsString = (self.stars ?? 0).kFormatted().styled(with: .color(.text))
@@ -70,5 +68,4 @@ struct TrendingRepository: ModelType, Storable {
             languageColorShape, Special.space, languageString
         ])
     }
-    
 }

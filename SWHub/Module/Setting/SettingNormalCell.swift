@@ -14,5 +14,5 @@ import Kingfisher
 import SWFrame
 
 class SettingNormalCell: NormalCell {
-    
+
 }

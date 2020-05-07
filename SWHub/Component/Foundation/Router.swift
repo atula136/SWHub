@@ -23,7 +23,7 @@ enum Router {
     case help
     case category
     case condition
-    
+
     enum Repository {
         case list
         case detail
@@ -39,7 +39,7 @@ enum Router {
             return UIApplication.shared.scheme + "://" + path!
         }
     }
-    
+
     var pattern: String {
         var path: String?
         switch self {
@@ -66,7 +66,7 @@ enum Router {
         }
         return UIApplication.shared.scheme + "://" + path!
     }
-    
+
     static func initialize(_ provider: ProviderType, _ navigator: NavigatorType) {
         let parameters = { (url: URLConvertible, values: [String: Any], context: Any?) -> [String: Any]? in
             var parameters: [String: Any] = url.queryParameters
@@ -78,7 +78,7 @@ enum Router {
             }
             return parameters
         }
-        
+
         // 1. 网页
         let webFactory: ViewControllerFactory = { (url: URLConvertible, values: [String: Any], context: Any?) in
             guard let url = url.urlValue else { return nil }
@@ -100,7 +100,7 @@ enum Router {
         }
         navigator.register("http://<path:_>", webFactory)
         navigator.register("https://<path:_>", webFactory)
-        
+
         // 2. 颜色主题
         navigator.register(self.color.pattern) { url, values, context in
             MyColorViewController(navigator, MyColorViewReactor(provider, parameters(url, values, context)))
@@ -113,7 +113,7 @@ enum Router {
         navigator.register(self.Repository.detail.pattern) { url, values, context in
             RepositoryDetailViewController(navigator, RepositoryDetailViewReactor(provider, parameters(url, values, context)))
         }
-        
+
 //        // 3. 弹窗
 //        navigator.handle(self.alert.url) { url, values, context -> Bool in
 //            let title = url.queryParameters[Parameter.title]
@@ -135,5 +135,4 @@ enum Router {
 //            return true
 //        }
     }
-    
 }

@@ -10,14 +10,14 @@ import UIKit
 import SWFrame
 
 class WebViewController: SWFrame.WebViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         themeService.rx
             .bind({ $0.foregroundColor }, to: self.progressView.barView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
-    
+
 //    override func loadPage() {
 //        guard let url = self.url else { return }
 //        let request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
@@ -35,6 +35,4 @@ class WebViewController: SWFrame.WebViewController {
 //            self.webView.load(request)
 //        }
 //    }
-    
 }
-

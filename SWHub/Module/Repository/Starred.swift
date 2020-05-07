@@ -12,27 +12,23 @@ import ObjectMapper
 import SWFrame
 
 extension Repository {
-    
+
     struct Starred: ModelType, Subjective {
-        
+
         var id: Int?
         var message: String?
         var documentationUrl: String?
-        
+
         init() {
-            
         }
-        
+
         init?(map: Map) {
-            
         }
-        
+
         mutating func mapping(map: Map) {
             id                      <- map["id"]
             message                 <- map["message"]
             documentationUrl        <- map["documentation_url"]
         }
-        
     }
-    
 }

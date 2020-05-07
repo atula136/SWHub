@@ -15,24 +15,24 @@ import SwifterSwift
 import SWFrame
 
 class NormalItem: DefaultItem, ReactorKit.Reactor {
-    
+
     typealias Action = NoAction
-    
+
     struct State {
         var icon: ImageSource?
         var title: String?
         var detail: NSAttributedString?
         var accessory = AccessoryType.indicator
     }
-    
+
     var initialState = State()
-    
+
     required init(_ model: ModelType) {
         super.init(model)
     }
-    
+
     func transform(state: Observable<State>) -> Observable<State> {
         return state
     }
-    
+
 }

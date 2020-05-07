@@ -15,7 +15,7 @@ import Kingfisher
 import SWFrame
 
 class MyColorCell: DefaultCell, ReactorKit.View {
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.cornerRadius = 6
@@ -23,11 +23,11 @@ class MyColorCell: DefaultCell, ReactorKit.View {
         self.iconImageView.width = self.iconImageView.height
         self.iconImageView.cornerRadius = self.iconImageView.height / 2.f
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func bind(reactor: MyColorItem) {
         super.bind(item: reactor)
         reactor.state.map { $0.title }
@@ -59,5 +59,4 @@ class MyColorCell: DefaultCell, ReactorKit.View {
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
-    
 }

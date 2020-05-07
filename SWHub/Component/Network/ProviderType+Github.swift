@@ -11,17 +11,17 @@ import RxSwift
 import SWFrame
 
 extension ProviderType {
-    
+
     private var githubNetworking: GithubNetworking {
         return GithubNetworking(provider: NetworkProvider<GithubAPI>(endpointClosure: GithubNetworking.endpointsClosure(), requestClosure: GithubNetworking.endpointResolver(), stubClosure: GithubNetworking.APIKeysBasedStubBehaviour, plugins: GithubNetworking.plugins))
     }
-    
+
     func profile() -> Observable<User> {
         return self.githubNetworking.requestObject(.profile, type: User.self)
     }
-    
+
     func repository(fullname: String) -> Observable<Repository> {
         return self.githubNetworking.requestObject(.repository(fullname: fullname), type: Repository.self)
     }
-    
+
 }

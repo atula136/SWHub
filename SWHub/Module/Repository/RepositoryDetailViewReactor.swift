@@ -13,18 +13,18 @@ import ReactorKit
 import SWFrame
 
 class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
-    
+
     enum Action {
         case load
     }
-    
+
     enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
         case setRepository(Repository)
         // case start([Condition.Language])
     }
-    
+
     struct State {
         var isLoading = false
         var title: String?
@@ -32,10 +32,10 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var repository: Repository!
         var sections: [RepositoryDetailSection] = []
     }
-    
+
     var fullname: String?
     var initialState = State()
-    
+
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
 //        let fullname = stringMember(self.parameters, Parameter.fullname, nil)
@@ -63,7 +63,7 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             // repository: repository
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
@@ -124,5 +124,4 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 //        }
 //        return langs
 //    }
-    
 }

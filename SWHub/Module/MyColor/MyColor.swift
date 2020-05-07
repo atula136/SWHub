@@ -11,28 +11,28 @@ import ObjectMapper
 import SWFrame
 
 struct MyColor: ModelType, Identifiable, Eventable {
-    
+
     enum Event {
         case updateColor(ColorTheme)
     }
-    
+
     var id: ColorTheme?
-    
+
     init() {
     }
-    
+
     init(id: ColorTheme) {
         self.id = id
     }
-    
+
     init?(map: Map) {
     }
-    
+
     mutating func mapping(map: Map) {
     }
-    
+
     func checked() -> Bool {
         return self.id! == ThemeType.colorTheme()
     }
-    
+
 }

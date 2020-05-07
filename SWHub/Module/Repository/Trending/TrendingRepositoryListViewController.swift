@@ -16,13 +16,13 @@ import RxDataSources
 import SWFrame
 
 class TrendingRepositoryListViewController: CollectionViewController, ReactorKit.View {
-    
+
     struct Reusable {
         static let repositoryCell = ReusableCell<TrendingRepositoryCell>()
     }
-    
+
     let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingRepositorySection>
-    
+
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -32,7 +32,7 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
         //layout.sectionInset = .init(top: 10, left: 15, bottom: 10, right: 15)
         return layout
     }
-    
+
     init(_ navigator: NavigatorType, _ reactor: TrendingRepositoryListViewReactor) {
         defer {
             self.reactor = reactor
@@ -42,11 +42,11 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
         self.hidesNavigationBar = boolMember(reactor.parameters, Parameter.hideNavBar, true)
         self.shouldRefresh = boolMember(reactor.parameters, Parameter.shouldRefresh, true)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.repositoryCell)
@@ -64,7 +64,7 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
             }
         }).disposed(by: self.disposeBag)
     }
-    
+
     func bind(reactor: TrendingRepositoryListViewReactor) {
         super.bind(reactor: reactor)
         // action
@@ -99,7 +99,7 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
     }
-    
+
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingRepositoryListViewReactor) -> RxCollectionViewSectionedReloadDataSource<TrendingRepositorySection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
@@ -111,7 +111,6 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
                 }
         })
     }
-    
 }
 
 extension TrendingRepositoryListViewController: UICollectionViewDelegateFlowLayout {
@@ -125,4 +124,3 @@ extension TrendingRepositoryListViewController: UICollectionViewDelegateFlowLayo
     }
 
 }
-

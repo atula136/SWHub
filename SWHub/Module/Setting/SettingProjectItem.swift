@@ -14,7 +14,7 @@ import Kingfisher
 import SWFrame
 
 class SettingProjectItem: InfoItem {
-    
+
     required init(_ model: ModelType) {
         super.init(model)
         guard let repository = model as? Repository else { return }
@@ -25,16 +25,15 @@ class SettingProjectItem: InfoItem {
             icon: repository.owner?.avatar
         )
     }
-    
+
     override func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case .setDark(_):
+        case .setDark:
             if let repository = self.model as? Repository {
                 state.detail = repository.detail()
             }
         }
         return state
     }
-    
 }

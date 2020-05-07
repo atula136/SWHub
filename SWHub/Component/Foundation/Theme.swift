@@ -34,7 +34,7 @@ protocol Theme {
     var statusBarStyle: UIStatusBarStyle { get }                    // 状态栏
     var keyboardAppearance: UIKeyboardAppearance { get }            // 键盘表现
     var blurStyle: UIBlurEffect.Style { get }                       // 毛玻璃
-    
+
     init(colorTheme: ColorTheme)
 }
 
@@ -56,7 +56,7 @@ struct LightTheme: Theme {
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
     let blurStyle = UIBlurEffect.Style.extraLight
-    
+
     init(colorTheme: ColorTheme) {
         self.foregroundColor = colorTheme.color
     }
@@ -80,7 +80,7 @@ struct DarkTheme: Theme {
     let statusBarStyle = UIStatusBarStyle.lightContent
     let keyboardAppearance = UIKeyboardAppearance.dark
     let blurStyle = UIBlurEffect.Style.dark
-    
+
     init(colorTheme: ColorTheme) {
         self.foregroundColor = colorTheme.color
     }
@@ -143,21 +143,21 @@ enum ColorTheme: Int {
 enum ThemeType: ThemeProvider {
     case light(color: ColorTheme)
     case dark(color: ColorTheme)
-    
+
     var associatedObject: Theme {
         switch self {
         case .light(let color): return LightTheme(colorTheme: color)
         case .dark(let color): return DarkTheme(colorTheme: color)
         }
     }
-    
+
     var isDark: Bool {
         switch self {
         case .dark: return true
         default: return false
         }
     }
-    
+
     func toggled() -> ThemeType {
         var theme: ThemeType
         switch self {
@@ -177,16 +177,15 @@ enum ThemeType: ThemeProvider {
         theme.save()
         return theme
     }
-    
 }
 
 extension ThemeType {
-    
+
     struct Keys {
         static let isDark = "ThemeType.Keys.isDark"
         static let themeIndex = "ThemeType.Keys.themeIndex"
     }
-    
+
     static func currentTheme() -> ThemeType {
         let isDark = UserDefaults.standard.bool(forKey: Keys.isDark)
         let colorTheme = self.colorTheme()
@@ -194,7 +193,7 @@ extension ThemeType {
         theme.save()
         return theme
     }
-    
+
     static func colorTheme() -> ColorTheme {
         return ColorTheme(rawValue: UserDefaults.standard.integer(forKey: Keys.themeIndex)) ?? ColorTheme.red
     }
@@ -207,5 +206,4 @@ extension ThemeType {
         case .dark(let color): defaults.set(color.rawValue, forKey: Keys.themeIndex)
         }
     }
-    
 }

@@ -16,7 +16,7 @@ import NSObject_Rx
 import SWFrame
 
 class MainViewController: TabBarViewController, ReactorKit.View {
-    
+
     // MARK: - Init
     init(_ navigator: NavigatorType, _ reactor: MainViewReactor) {
         defer {
@@ -24,11 +24,11 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         }
         super.init(navigator, reactor)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,7 @@ class MainViewController: TabBarViewController, ReactorKit.View {
             }
         }).disposed(by: self.rx.disposeBag)
     }
-    
+
     // MARK: - Method
     func bind(reactor: MainViewReactor) {
         super.bind(reactor: reactor)
@@ -67,7 +67,7 @@ class MainViewController: TabBarViewController, ReactorKit.View {
 //            }
 //        }).disposed(by: self.disposeBag)
     }
-    
+
     func viewController(with key: MainKey) -> BaseViewController {
         var viewController: BaseViewController?
         switch key {
@@ -104,6 +104,4 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         }
         return viewController!
     }
-    
 }
-

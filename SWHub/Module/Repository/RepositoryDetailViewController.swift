@@ -17,7 +17,6 @@ import RxDataSources
 import SWFrame
 
 class RepositoryDetailViewController: CollectionViewController, ReactorKit.View {
-    
     struct Reusable {
         static let detailCell = ReusableCell<RepositoryDetailCell>()
         static let headerView = ReusableView<RepositoryDetailHeaderView>()
@@ -34,7 +33,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
         layout.headerReferenceSize = CGSize(width: screenWidth, height: flat(10 + metric(90) + 20 + metric(30) + 10))
         return layout
     }
-    
+
     init(_ navigator: NavigatorType, _ reactor: RepositoryDetailViewReactor) {
         defer {
             self.reactor = reactor
@@ -42,22 +41,21 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
         self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.addButtonToRight(R.image.nav_github()).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
             self.navigator.push("\(UIApplication.shared.baseWebUrl)/\(self.reactor?.fullname ?? "")")
         }).disposed(by: self.disposeBag)
-        
         self.collectionView.register(Reusable.detailCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
     }
-    
+
     func bind(reactor: RepositoryDetailViewReactor) {
         super.bind(reactor: reactor)
         // action
@@ -104,7 +102,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
     }
-    
+
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepositoryDetailViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepositoryDetailSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
@@ -127,7 +125,6 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
             }
         )
     }
-    
 }
 
 extension RepositoryDetailViewController: UICollectionViewDelegateFlowLayout {
@@ -143,11 +140,9 @@ extension RepositoryDetailViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension Reactive where Base: RepositoryDetailViewController {
-    
 //    var language: Binder<String?> {
 //        return Binder(self.base) { viewController, attr in
 //            Condition.Language.event.onNext(.select(attr))
 //        }
 //    }
-    
 }

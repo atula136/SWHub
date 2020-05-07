@@ -32,11 +32,11 @@ enum GithubAPI {
 }
 
 extension GithubAPI: TargetType {
-    
+
     var baseURL: URL {
         return UIApplication.shared.baseApiUrl.url!
     }
-    
+
     var path: String {
         switch self {
         case .profile: return "/user"
@@ -45,7 +45,7 @@ extension GithubAPI: TargetType {
         case let .unstarRepository(fullname): return "/user/starred/\(fullname)"
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
         case .unstarRepository:
@@ -54,14 +54,14 @@ extension GithubAPI: TargetType {
             return .get
         }
     }
-    
+
     var headers: [String: String]? {
         if let token = User.token {
             return ["Authorization": "Basic \(token)"]
         }
         return nil
     }
-    
+
     var task: Task {
         var parameters: [String: Any] = [:]
         switch self {
@@ -75,16 +75,16 @@ extension GithubAPI: TargetType {
         }
         return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
     }
-    
+
     var validationType: ValidationType {
         return .none
     }
-    
+
     var sampleData: Data {
         var path = self.path.replacingOccurrences(of: "/", with: "-")
         let index = path.index(after: path.startIndex)
         path = String(path[index...])
-        
+
 //        switch self {
 //        case .messageList(let type, let index, _):
 //            path = path + "\(type.rawValue)\(index)"
@@ -93,11 +93,11 @@ extension GithubAPI: TargetType {
 //        default:
 //            break
 //        }
-        
+
 //        if path == "cn-api-message-list11" {
 //            path = "error-401"
 //        }
-        
+
         if let url = Bundle.main.url(forResource: path, withExtension: "json"),
             let data = try? Data(contentsOf: url) {
             return data

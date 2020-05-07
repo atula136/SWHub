@@ -19,7 +19,7 @@ import RxDataSources
 import SWFrame
 
 class SettingViewController: CollectionViewController, ReactorKit.View {
-    
+
     struct Reusable {
         static let profileCell = ReusableCell<SettingProfileCell>()
         static let projectCell = ReusableCell<SettingProjectCell>()
@@ -27,9 +27,9 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         static let settingCell = ReusableCell<SettingNormalCell>()
         static let headerView = ReusableView<SettingHeaderView>()
     }
-    
+
     let dataSource: RxCollectionViewSectionedReloadDataSource<SettingSection>
-    
+
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -39,7 +39,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         layout.headerReferenceSize = CGSize(width: screenWidth, height: metric(30))
         return layout
     }
-    
+
     init(_ navigator: NavigatorType, _ reactor: SettingViewReactor) {
         defer {
             self.reactor = reactor
@@ -48,11 +48,11 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         super.init(navigator, reactor)
         self.tabBarItem.title = reactor.currentState.title
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.profileCell)
@@ -73,7 +73,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
-    
+
     func bind(reactor: SettingViewReactor) {
         super.bind(reactor: reactor)
         // action
@@ -95,7 +95,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
     }
-    
+
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: SettingViewReactor) -> RxCollectionViewSectionedReloadDataSource<SettingSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
@@ -141,11 +141,10 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             }
         )
     }
-    
 }
 
 extension SettingViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
@@ -159,13 +158,12 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
             return Reusable.settingCell.class.size(width: width, item: item)
         }
     }
-    
 }
 
 extension Reactive where Base: SettingViewController {
-    
+
     var night: Binder<Bool> {
-        return Binder(self.base) { viewController, attr in
+        return Binder(self.base) { _, attr in
             var theme = ThemeType.currentTheme()
             if theme.isDark != attr {
                 theme = theme.toggled()
@@ -174,5 +172,4 @@ extension Reactive where Base: SettingViewController {
             Setting.event.onNext(.night(attr))
         }
     }
-    
 }

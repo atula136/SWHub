@@ -28,7 +28,7 @@ extension RepositoryDetailSection: SectionModelType {
         case let .details(items): return items
         }
     }
-    
+
     init(original: RepositoryDetailSection, items: [RepositoryDetailSectionItem]) {
         switch original {
         case .details: self = .details(items)

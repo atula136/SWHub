@@ -16,19 +16,19 @@ enum MyColorSection {
 }
 
 extension MyColorSection: SectionModelType {
-    
+
     var items: [MyColorSectionItem] {
         switch self {
         case let .color(items): return items
         }
     }
-    
+
     init(original: MyColorSection, items: [MyColorSectionItem]) {
         switch original {
         case .color: self = .color(items)
         }
     }
-    
+
 }
 
 enum MyColorSectionItem {

@@ -19,14 +19,14 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case account(String?)
         case password(String?)
     }
-    
+
     enum Mutation {
         case setLoading(Bool)
         case setAccount(String?)
         case setPassword(String?)
         case setUser(User?)
     }
-    
+
     struct State {
         var isLoading = false
         var title: String?
@@ -34,16 +34,16 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         var password: String?
         var user: User?
     }
-    
+
     var initialState = State()
-    
+
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
             title: stringDefault(self.title, R.string.localizable.loginTitle())
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .account(let account):
@@ -62,7 +62,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
                 ])
         }
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -78,5 +78,4 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         }
         return state
     }
-    
 }

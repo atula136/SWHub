@@ -14,12 +14,12 @@ import ReactorKit
 import SWFrame
 
 class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
-    
+
     enum Action {
         case load
         case refresh
     }
-    
+
     enum Mutation {
         case setLoading(Bool)
         case setRefreshing(Bool)
@@ -27,7 +27,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         case setCondition(Condition)
         case start([TrendingRepository])
     }
-    
+
     struct State {
         var isLoading = false
         var isRefreshing = false
@@ -36,9 +36,9 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         var condition: Condition!
         var sections: [TrendingRepositorySection] = []
     }
-    
+
     var initialState = State()
-    
+
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
@@ -46,7 +46,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             sections: [.repositories((TrendingRepository.cachedArray() ?? []).map { .repository(TrendingRepositoryItem($0)) })]
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
@@ -73,7 +73,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             ])
         }
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -91,23 +91,11 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         }
         return state
     }
-    
-//    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-//        let conditionEvent = Condition.event.flatMap { event -> Observable<Mutation> in
-//            switch event {
-//            case let .update(since, language):
-//                return .just(.setCondition(since, language))
-//            }
-//        }
-//        return .merge(mutation, conditionEvent)
-//    }
-    
+
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
         return .merge(
             mutation,
             Condition.subject().asObservable().filterNil().distinctUntilChanged().map(Mutation.setCondition)
         )
     }
-    
 }
-

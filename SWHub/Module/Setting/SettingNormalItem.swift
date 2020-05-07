@@ -14,7 +14,7 @@ import Kingfisher
 import SWFrame
 
 class SettingNormalItem: NormalItem {
-    
+
     required init(_ model: ModelType) {
         super.init(model)
         guard let setting = model as? Setting else { return }
@@ -25,5 +25,4 @@ class SettingNormalItem: NormalItem {
             accessory: setting.accessory
         )
     }
-    
 }

@@ -10,5 +10,5 @@ import UIKit
 import SWFrame
 
 class DefaultItem: CollectionItem {
-    
+
 }

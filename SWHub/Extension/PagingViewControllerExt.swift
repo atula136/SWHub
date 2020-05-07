@@ -26,13 +26,13 @@ extension Reactive where Base: PagingViewController {
             paging.indicatorColor = color
         }
     }
-    
+
     var textColor: Binder<UIColor> {
         return Binder(self.base) { paging, color in
             paging.textColor = color
         }
     }
-    
+
     var selectedTextColor: Binder<UIColor> {
         return Binder(self.base) { paging, color in
             paging.selectedTextColor = color

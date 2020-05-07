@@ -10,7 +10,7 @@ import UIKit
 import SWFrame
 
 class TrendingRepositoryItem: InfoItem {
-    
+
     required init(_ model: ModelType) {
         super.init(model)
         guard let repository = model as? TrendingRepository else { return }
@@ -21,16 +21,15 @@ class TrendingRepositoryItem: InfoItem {
             icon: repository.avatar
         )
     }
-    
+
     override func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case .setDark(_):
+        case .setDark:
             if let repository = self.model as? TrendingRepository {
                 state.detail = repository.detail(since: "每日")
             }
         }
         return state
     }
-    
 }

@@ -19,7 +19,7 @@ struct GithubNetworking: NetworkingType {
 
     typealias T = GithubAPI
     let provider: NetworkProvider<GithubAPI>
-    
+
     static func endpointsClosure<T>(_ xAccessToken: String? = nil) -> (T) -> Endpoint where T: TargetType {
         return { target in
 //            if target.path == "/cn/api/message/list" {
@@ -28,7 +28,7 @@ struct GithubNetworking: NetworkingType {
             return MoyaProvider.defaultEndpointMapping(for: target)
         }
     }
-    
+
     static func APIKeysBasedStubBehaviour<T>(_: T) -> Moya.StubBehavior {
 //        if true {
 //            // return .immediate
@@ -36,34 +36,34 @@ struct GithubNetworking: NetworkingType {
 //        }
         return .never
     }
-    
+
     func request(_ token: GithubAPI) -> Observable<Moya.Response> {
         return self.provider.request(token)
     }
-    
+
     func requestRaw(_ target: GithubAPI) -> Observable<Moya.Response> {
         return self.request(target)
             .observeOn(MainScheduler.instance)
     }
-    
+
     func requestJSON(_ target: GithubAPI) -> Observable<Any> {
         return self.request(target)
             .mapJSON()
             .observeOn(MainScheduler.instance)
     }
-    
+
     func requestObject<T: ModelType>(_ target: GithubAPI, type: T.Type) -> Observable<T> {
         return self.request(target)
             .mapObject(T.self)
             .observeOn(MainScheduler.instance)
     }
-    
+
     func requestArray<T: ModelType>(_ target: GithubAPI, type: T.Type) -> Observable<[T]> {
         return self.request(target)
             .mapArray(T.self)
             .observeOn(MainScheduler.instance)
     }
-    
+
     func requestModel<T: ModelType>(_ target: GithubAPI, type: T.Type) -> Observable<T> {
         return .create { observer -> Disposable in
             let disposable = self.request(target).mapObject(ObjectResponse<T>.self).subscribe(onNext: { response in
@@ -107,7 +107,7 @@ struct GithubNetworking: NetworkingType {
             }
         }
     }
-    
+
     func requestList<T: ModelType>(_ target: GithubAPI, type: T.Type) -> Observable<List<T>> {
         return .create { observer -> Disposable in
             let disposable = self.request(target).mapObject(ObjectResponse<List<T>>.self).subscribe(onNext: { response in
@@ -140,6 +140,4 @@ struct GithubNetworking: NetworkingType {
             }
         }
     }
-    
 }
-

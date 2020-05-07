@@ -16,13 +16,12 @@ import RxDataSources
 import SWFrame
 
 class ConditionViewController: CollectionViewController, ReactorKit.View {
-    
     struct Reusable {
         static let languageCell = ReusableCell<Condition.Language.Cell>()
     }
-    
+
     let dataSource: RxCollectionViewSectionedReloadDataSource<Condition.Language.Section>
-    
+
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -31,7 +30,7 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
         layout.sectionInset = .init(horizontal: 30, vertical: 20)
         return layout
     }
-    
+
     lazy var segment: UISegmentedControl = {
         let segment = UISegmentedControl(items: Condition.Since.allValues.map { $0.title })
         for index in 0..<segment.numberOfSegments {
@@ -40,7 +39,7 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
         segment.sizeToFit()
         return segment
     }()
-    
+
     init(_ navigator: NavigatorType, _ reactor: ConditionViewReactor) {
         defer {
             self.reactor = reactor
@@ -50,11 +49,11 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
         // self.hidesNavigationBar = boolMember(reactor.parameters, Parameter.hideNavBar, true)
         // self.shouldRefresh = boolMember(reactor.parameters, Parameter.shouldRefresh, true)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.commonSave())
@@ -72,15 +71,15 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
             self.dismiss(animated: true, completion: nil)
         }).disposed(by: self.disposeBag)
         self.navigationBar.titleView = self.segment
-        
+
         self.collectionView.register(Reusable.languageCell)
-        
+
         themeService.rx
             .bind({ [NSAttributedString.Key.foregroundColor: $0.textColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
             .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: self.segment.rx.titleTextAttributes(for: .selected))
             .disposed(by: self.rx.disposeBag)
     }
-    
+
     func bind(reactor: ConditionViewReactor) {
         super.bind(reactor: reactor)
         // action
@@ -124,7 +123,7 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
     }
-    
+
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: ConditionViewReactor) -> RxCollectionViewSectionedReloadDataSource<Condition.Language.Section> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
@@ -136,7 +135,6 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
                 }
         })
     }
-    
 }
 
 extension ConditionViewController: UICollectionViewDelegateFlowLayout {
@@ -152,11 +150,10 @@ extension ConditionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension Reactive where Base: ConditionViewController {
-    
+
     var language: Binder<String?> {
-        return Binder(self.base) { viewController, attr in
+        return Binder(self.base) { _, attr in
             Condition.Language.event.onNext(.select(attr))
         }
     }
-    
 }

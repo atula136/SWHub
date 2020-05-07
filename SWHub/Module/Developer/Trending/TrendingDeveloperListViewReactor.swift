@@ -13,19 +13,19 @@ import ReactorKit
 import SWFrame
 
 class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
-    
+
     enum Action {
         case load
         case refresh
     }
-    
+
     enum Mutation {
         case setLoading(Bool)
         case setRefreshing(Bool)
         case setError(Error?)
         case initial([TrendingDeveloper], toCache: Bool)
     }
-    
+
     struct State {
         var isLoading = false
         var isRefreshing = false
@@ -33,15 +33,15 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
         var error: Error?
         var sections: [TrendingDeveloperSection] = []
     }
-    
+
     var initialState = State()
-    
+
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
@@ -65,7 +65,7 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
             ])
         }
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -83,5 +83,5 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
         }
         return state
     }
-    
+
 }

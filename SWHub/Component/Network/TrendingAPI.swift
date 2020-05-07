@@ -22,11 +22,11 @@ enum TrendingAPI {
 }
 
 extension TrendingAPI: TargetType {
-    
+
     var baseURL: URL {
         return Constant.Network.trendingApiUrl.url!
     }
-    
+
     var path: String {
         switch self {
             case .languages: return "/languages"
@@ -34,18 +34,18 @@ extension TrendingAPI: TargetType {
             case .developers: return "/developers"
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
         default:
             return .get
         }
     }
-    
+
     var headers: [String: String]? {
         return nil
     }
-    
+
     var task: Task {
         var parameters: [String: Any] = [:]
         switch self {
@@ -60,11 +60,11 @@ extension TrendingAPI: TargetType {
         }
         return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
     }
-    
+
     var validationType: ValidationType {
         return .none
     }
-    
+
     var sampleData: Data {
         var path = self.path.replacingOccurrences(of: "/", with: "-")
         let index = path.index(after: path.startIndex)

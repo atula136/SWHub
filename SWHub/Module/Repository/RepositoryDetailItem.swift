@@ -14,7 +14,6 @@ import Kingfisher
 import SWFrame
 
 class RepositoryDetailItem: NormalItem {
-    
     required init(_ model: ModelType) {
         super.init(model)
         guard let model = model as? RepositoryDetailModel else { return }
@@ -25,5 +24,4 @@ class RepositoryDetailItem: NormalItem {
             accessory: .indicator
         )
     }
-    
 }
