@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIColor {
-    
+
     static var background: UIColor {
         return themeService.type.associatedObject.backgroundColor
     }
@@ -49,7 +49,7 @@ extension UIColor {
     static var indicator: UIColor {
         return themeService.type.associatedObject.indicatorColor
     }
-    
+
     static var separator: UIColor {
         return themeService.type.associatedObject.separatorColor
     }
@@ -61,6 +61,5 @@ extension UIColor {
     static var highlighted: UIColor {
         return themeService.type.associatedObject.highlightedColor
     }
-    
-}
 
+}

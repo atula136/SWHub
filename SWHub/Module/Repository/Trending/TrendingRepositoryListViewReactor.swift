@@ -51,18 +51,24 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
+            let urlParam = self.currentState.condition.language.urlParam
+            let paramValue = self.currentState.condition.since.paramValue
+            let request = self.provider.repositories(language: urlParam, since: paramValue)
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.provider.repositories(language: self.currentState.condition.language.urlParam, since: self.currentState.condition.since.paramValue).map{ Mutation.start($0) }.catchError({ .just(.setError($0)) }),
+                request.map{ Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setLoading(false))
             ])
         case .refresh:
             guard self.currentState.isRefreshing == false else { return .empty() }
+            let urlParam = self.currentState.condition.language.urlParam
+            let paramValue = self.currentState.condition.since.paramValue
+            let request = self.provider.repositories(language: urlParam, since: paramValue)
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.provider.repositories(language: self.currentState.condition.language.urlParam, since: self.currentState.condition.since.paramValue).map{ Mutation.start($0) }.catchError({ .just(.setError($0)) }),
+                request.map{ Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setRefreshing(false))
             ])
         }

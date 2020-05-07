@@ -29,13 +29,6 @@ class MessageViewController: BaseViewController, ReactorKit.View {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let item = self.tabBarItem {
-//            themeService.rx
-//                .bind({ [NSAttributedString.Key.foregroundColor: $0.highlightedColor] }, to: item.rx.titleTextAttributes(for: .normal))
-//                // .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: item.rx.titleTextAttributes(for: .selected))
-//                .disposed(by: self.rx.disposeBag)
-            print("")
-        }
     }
     
     func bind(reactor: MessageViewReactor) {

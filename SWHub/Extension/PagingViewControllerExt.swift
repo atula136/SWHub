@@ -14,13 +14,13 @@ import NSObject_Rx
 import SWFrame
 
 extension Reactive where Base: PagingViewController {
-    
+
     var reloadData: Binder<Void> {
         return Binder(self.base) { paging, _ in
             paging.reloadData()
         }
     }
-    
+
     var indicatorColor: Binder<UIColor> {
         return Binder(self.base) { paging, color in
             paging.indicatorColor = color
@@ -38,5 +38,5 @@ extension Reactive where Base: PagingViewController {
             paging.selectedTextColor = color
         }
     }
-    
+
 }

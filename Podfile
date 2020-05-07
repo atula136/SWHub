@@ -25,6 +25,7 @@ target 'SWHub' do
 	pod 'R.swift', '5.1.0'
 		
 	# 工具
+	pod 'SwiftLint', '0.39.2'
 	pod 'FLEX', '3.0.0'
 	pod 'MLeaksFinder', '1.0.0'
 		

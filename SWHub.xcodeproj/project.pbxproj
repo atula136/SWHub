@@ -253,6 +253,7 @@
 		79DABBDF2461E2EA00EC1E81 /* repos-rxhanson-Rectangle-readme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-readme.json"; sourceTree = "<group>"; };
 		79DABBE12461E37000EC1E81 /* user-starred-rxhanson-Rectangle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "user-starred-rxhanson-Rectangle.json"; sourceTree = "<group>"; };
 		79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExt.swift; sourceTree = "<group>"; };
+		79DD8FD02463CFAF008F930B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		79DEC3F52461D0FC00264EE3 /* Condition.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Condition.json; sourceTree = "<group>"; };
 		79E67A46245C0E5700FE6093 /* SupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryView.swift; sourceTree = "<group>"; };
 		79E67A48245C0E9000FE6093 /* SupplementaryReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementaryReactor.swift; sourceTree = "<group>"; };
@@ -646,6 +647,7 @@
 		79AF4AB624554B10001BDB90 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				79DD8FD02463CFAF008F930B /* .swiftlint.yml */,
 				79AF4A8624554B08001BDB90 /* AppDelegate.swift */,
 				7906C31C245559E80030764D /* AppDependency.swift */,
 				79AF4A8F24554B09001BDB90 /* Assets.xcassets */,
@@ -694,6 +696,7 @@
 			buildConfigurationList = 79AF4AAD24554B0A001BDB90 /* Build configuration list for PBXNativeTarget "SWHub" */;
 			buildPhases = (
 				561BC93F734B91FF3593E4D1 /* [CP] Check Pods Manifest.lock */,
+				79DD8FCD2463CD24008F930B /* SwiftLint */,
 				7924EE29245550D4007F7FDE /* R.swift */,
 				79AF4A7F24554B08001BDB90 /* Sources */,
 				79AF4A8024554B08001BDB90 /* Frameworks */,
@@ -868,6 +871,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/SWHub/R.generated.swift\"\n";
+		};
+		79DD8FCD2463CD24008F930B /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 		E326C65FBDA9DF3B5FFBEC89 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

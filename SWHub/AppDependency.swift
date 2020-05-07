@@ -33,7 +33,7 @@ final class AppDependency: NSObject, AppDependencyType {
         
         User.subject().distinctUntilChanged().observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] user in
             guard let `self` = self else { return }
-            if let _ = user {
+            if user != nil {
                 let mainViewReactor = MainViewReactor(self.provider, nil)
                 let mainViewController = MainViewController(self.navigator, mainViewReactor)
                 self.window.rootViewController = mainViewController
@@ -58,10 +58,9 @@ final class AppDependency: NSObject, AppDependencyType {
         Router.initialize(self.provider, self.navigator)
     }
     
-    func application(_ application: UIApplication, leaveDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) {
+    func application(_ application: UIApplication, leaveDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         
     }
-    
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
 //        var optionParam: [String: Any] = [:]

@@ -9,7 +9,7 @@
 import UIKit
 
 extension String {
-    
+
     var since: Condition.Since {
         switch self {
         case Condition.Since.daily.paramValue:
@@ -22,5 +22,5 @@ extension String {
             return .daily
         }
     }
-    
+
 }
