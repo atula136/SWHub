@@ -79,14 +79,14 @@ class MyColorViewController: CollectionViewController, ReactorKit.View {
     func bind(reactor: MyColorViewReactor) {
         super.bind(reactor: reactor)
         // action
-        self.rx.viewDidLoad.map{ Reactor.Action.load }
+        self.rx.viewDidLoad.map { Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // state
         reactor.state.map { $0.title }
             .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.sections }
+        reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
     }

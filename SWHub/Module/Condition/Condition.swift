@@ -212,13 +212,13 @@ struct Condition: ModelType, Subjective, Equatable /*, Eventable */ {
             
             func bind(reactor: Item) {
                 super.bind(item: reactor)
-                reactor.state.map{ $0.title }
+                reactor.state.map { $0.title }
                     .bind(to: self.titleLabel.rx.text)
                     .disposed(by: self.disposeBag)
-                reactor.state.map{ !$0.checked }
+                reactor.state.map { !$0.checked }
                     .bind(to: self.checkImageView.rx.isHidden)
                     .disposed(by: self.disposeBag)
-                reactor.state.map{ _ in }
+                reactor.state.map { _ in }
                     .bind(to: self.rx.setNeedsLayout)
                     .disposed(by: self.disposeBag)
             }

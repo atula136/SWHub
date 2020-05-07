@@ -1,29 +1,39 @@
 disabled_rules:
-  - identifier_name
-  - opening_brace
-  - nesting
-  - empty_enum_arguments
-  - trailing_newline
-  - trailing_whitespace
-  - function_body_length
-  - vertical_whitespace
-  - for_where
-  - unused_closure_parameter
-  - redundant_string_enum_value
-  - duplicate_imports
-  - trailing_semicolon
-  - cyclomatic_complexity
-  - trailing_comma
-  - switch_case_alignment
-  - type_name
-  - line_length
-  - unused_optional_binding
+    # - opening_brace
+    - nesting
+    - empty_enum_arguments
+    - trailing_newline
+    - trailing_whitespace
+    - function_body_length
+    - vertical_whitespace
+    - for_where
+    - unused_closure_parameter
+    - redundant_string_enum_value
+    - duplicate_imports
+    - trailing_semicolon
+    - cyclomatic_complexity
+    - trailing_comma
+    - switch_case_alignment
+    - type_name
+    - line_length
+    - unused_optional_binding
 
 included: # 执行 linting 时包含的路径。如果出现这个 `--path` 会被忽略。
-  - SWHub
+    - SWHub
 
 excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高。
-  - Pods
-  - SWHub/R.generated.swift
+    - Pods
+    - SWHub/R.generated.swift
 
 line_length: 300
+
+identifier_name:
+    min_length: # 只有最小长度
+        error: 3 # 只有错误
+    excluded: # 排除某些名字
+        - x
+        - y
+        - id
+        - vc
+        - in
+        - kf

@@ -43,7 +43,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         super.init(provider, parameters)
         self.initialState = State(
             condition: Condition.current(),
-            sections: [.repositories((TrendingRepository.cachedArray() ?? []).map{ .repository(TrendingRepositoryItem($0)) })]
+            sections: [.repositories((TrendingRepository.cachedArray() ?? []).map { .repository(TrendingRepositoryItem($0)) })]
         )
     }
     
@@ -57,7 +57,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                request.map{ Mutation.start($0) }.catchError({ .just(.setError($0)) }),
+                request.map { Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setLoading(false))
             ])
         case .refresh:
@@ -68,7 +68,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                request.map{ Mutation.start($0) }.catchError({ .just(.setError($0)) }),
+                request.map { Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setRefreshing(false))
             ])
         }
@@ -87,7 +87,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
             state.condition = condition
         case let .start(repositories):
             TrendingRepository.storeArray(repositories)
-            state.sections = [.repositories(repositories.map{ .repository(TrendingRepositoryItem($0)) })]
+            state.sections = [.repositories(repositories.map { .repository(TrendingRepositoryItem($0)) })]
         }
         return state
     }

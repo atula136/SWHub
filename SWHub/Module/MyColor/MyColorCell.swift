@@ -30,19 +30,19 @@ class MyColorCell: DefaultCell, ReactorKit.View {
     
     func bind(reactor: MyColorItem) {
         super.bind(item: reactor)
-        reactor.state.map{ $0.title }
+        reactor.state.map { $0.title }
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.detail }
+        reactor.state.map { $0.detail }
             .bind(to: self.detailLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.icon }
+        reactor.state.map { $0.icon }
             .bind(to: self.iconImageView.rx.image)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.icon == nil }
+        reactor.state.map { $0.icon == nil }
             .bind(to: self.iconImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.accessory == .none }
+        reactor.state.map { $0.accessory == .none }
             .bind(to: self.accessoryImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map { state -> UIImage? in
@@ -55,7 +55,7 @@ class MyColorCell: DefaultCell, ReactorKit.View {
                 return nil
             }
         }.bind(to: self.accessoryImageView.rx.image).disposed(by: self.disposeBag)
-        reactor.state.map{ _ in }
+        reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

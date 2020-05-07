@@ -32,7 +32,7 @@ class MainViewController: TabBarViewController, ReactorKit.View {
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tab.viewControllers = self.reactor?.currentState.keys.map{ NavigationController(rootViewController: self.viewController(with: $0)) }
+        self.tab.viewControllers = self.reactor?.currentState.keys.map { NavigationController(rootViewController: self.viewController(with: $0)) }
         themeService.rx
             .bind({ $0.primaryColor }, to: self.tab.tabBar.rx.barTintColor)
             .bind({ $0.foregroundColor }, to: self.tab.tabBar.rx.tintColor)

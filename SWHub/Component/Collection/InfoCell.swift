@@ -126,25 +126,25 @@ class InfoCell: CollectionCell, ReactorKit.View {
     
     func bind(reactor: InfoItem) {
         super.bind(item: reactor)
-        reactor.state.map{ $0.title }
+        reactor.state.map { $0.title }
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.subtitle }
+        reactor.state.map { $0.subtitle }
             .bind(to: self.subtitleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.subtitle == nil }
+        reactor.state.map { $0.subtitle == nil }
             .bind(to: self.subtitleLabel.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.detail }
+        reactor.state.map { $0.detail }
             .bind(to: self.detailLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.detail == nil }
+        reactor.state.map { $0.detail == nil }
             .bind(to: self.detailLabel.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.icon }
+        reactor.state.map { $0.icon }
             .bind(to: self.iconImageView.rx.image)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ _ in }
+        reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

@@ -54,8 +54,8 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 //        var sections: [Condition.Language.Section] = []
 //        if let languages = Condition.Language.cachedArray() {
 //            let langs = self.languages(languages: languages, selected: language.urlParam)
-//            let items = langs.map{ Condition.Language.Item($0) }
-//            let sectionItems = items.map{ Condition.Language.SectionItem.language($0) }
+//            let items = langs.map { Condition.Language.Item($0) }
+//            let sectionItems = items.map { Condition.Language.SectionItem.language($0) }
 //            sections = [.languages(sectionItems)]
 //        }
         self.initialState = State(
@@ -72,7 +72,7 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.provider.repository(fullname: fullname).map{ Mutation.setRepository($0) },
+                self.provider.repository(fullname: fullname).map { Mutation.setRepository($0) },
                 .just(.setLoading(false))
             ])
 //        case let .since(value):

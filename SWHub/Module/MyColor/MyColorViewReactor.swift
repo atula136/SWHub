@@ -46,7 +46,7 @@ class MyColorViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             guard self.currentState.isLoading == false else { return .empty() }
             return .concat([
                 .just(.setLoading(true)),
-                .just(.initial(ColorTheme.allValues.map{ MyColor(id: $0) })),
+                .just(.initial(ColorTheme.allValues.map { MyColor(id: $0) })),
                 .just(.setLoading(false))
             ])
         }
@@ -58,7 +58,7 @@ class MyColorViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
         case let .initial(colors):
-            state.sections = [.color(colors.map{ MyColorItem($0) }.map{ MyColorSectionItem.color($0) })]
+            state.sections = [.color(colors.map { MyColorItem($0) }.map { MyColorSectionItem.color($0) })]
         }
         return state
     }

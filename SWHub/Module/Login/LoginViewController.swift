@@ -118,11 +118,11 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         super.bind(reactor: reactor)
         // action
         self.accountField.rx.text
-            .map{ Reactor.Action.account($0) }
+            .map { Reactor.Action.account($0) }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.passwordField.rx.text
-            .map{ Reactor.Action.password($0) }
+            .map { Reactor.Action.password($0) }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.loginButton.rx.tap

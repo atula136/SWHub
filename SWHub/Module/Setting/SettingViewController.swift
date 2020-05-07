@@ -77,21 +77,21 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     func bind(reactor: SettingViewReactor) {
         super.bind(reactor: reactor)
         // action
-        self.rx.viewDidLoad.map{ Reactor.Action.load }
+        self.rx.viewDidLoad.map { Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.rx.emptyDataSet.map{ Reactor.Action.load }
+        self.rx.emptyDataSet.map { Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // state
         reactor.state.map { $0.title }
             .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.isNight }
+        reactor.state.map { $0.isNight }
             .distinctUntilChanged()
             .bind(to: self.rx.night)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.sections }
+        reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
     }
@@ -111,7 +111,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 case .dark(let item):
                     let cell = collectionView.dequeue(Reusable.switchCell, for: indexPath)
                     cell.bind(reactor: item)
-                    cell.rx.switched.distinctUntilChanged().skip(1).map{ Reactor.Action.night($0) }
+                    cell.rx.switched.distinctUntilChanged().skip(1).map { Reactor.Action.night($0) }
                         .bind(to: reactor.action)
                         .disposed(by: cell.disposeBag)
                     return cell
@@ -131,7 +131,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         .disposed(by: view.disposeBag)
                     reactor.state.map { $0.sections[indexPath.section].header }
                         .distinctUntilChanged()
-                        .map{ _ in }
+                        .map { _ in }
                         .bind(to: view.rx.setNeedsLayout)
                         .disposed(by: view.disposeBag)
                     return view

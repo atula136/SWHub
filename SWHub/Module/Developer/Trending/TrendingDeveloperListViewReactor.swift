@@ -51,7 +51,7 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
             if let developers = TrendingDeveloper.cachedArray() {
                 load = load.concat(Observable.just(.initial(developers, toCache: false)))
             } else {
-                load = load.concat(self.provider.developers(language: nil, since: "daily").map{ Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }))
+                load = load.concat(self.provider.developers(language: nil, since: "daily").map { Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }))
             }
             load = load.concat(Observable.just(.setLoading(false)))
             return load
@@ -60,7 +60,7 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.provider.developers(language: nil, since: "daily").map{ Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }),
+                self.provider.developers(language: nil, since: "daily").map { Mutation.initial($0, toCache: true) }.catchError({ .just(.setError($0)) }),
                 .just(.setRefreshing(false))
             ])
         }
@@ -79,7 +79,7 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
             if toCache {
                 TrendingDeveloper.storeArray(developers)
             }
-            state.sections = [.developers(developers.map{ TrendingDeveloperSectionItem.developer(TrendingDeveloperItem($0)) })]
+            state.sections = [.developers(developers.map { TrendingDeveloperSectionItem.developer(TrendingDeveloperItem($0)) })]
         }
         return state
     }

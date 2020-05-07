@@ -61,13 +61,13 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
     func bind(reactor: RepositoryDetailViewReactor) {
         super.bind(reactor: reactor)
         // action
-        self.rx.viewDidLoad.map{ Reactor.Action.load }
+        self.rx.viewDidLoad.map { Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.rx.emptyDataSet.map{ Reactor.Action.load }
+        self.rx.emptyDataSet.map { Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-//        self.segment.rx.selectedSegmentIndex.skip(1).distinctUntilChanged().map{ Reactor.Action.since($0) }
+//        self.segment.rx.selectedSegmentIndex.skip(1).distinctUntilChanged().map { Reactor.Action.since($0) }
 //            .bind(to: reactor.action)
 //            .disposed(by: self.disposeBag)
 //        self.collectionView.rx.itemSelected(dataSource: self.dataSource).map { sectionItem -> String? in
@@ -77,7 +77,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
 //                    return language.urlParam
 //                }
 //                return nil
-//            }}.distinctUntilChanged().map{ Reactor.Action.language($0) }
+//            }}.distinctUntilChanged().map { Reactor.Action.language($0) }
 //            .bind(to: reactor.action)
 //            .disposed(by: self.disposeBag)
             // state
@@ -86,7 +86,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
 //            .ignore(self.segment.selectedSegmentIndex)
 //            .bind(to: self.segment.rx.selectedSegmentIndex)
 //            .disposed(by: self.disposeBag)
-//        reactor.state.map{ $0.language.urlParam }
+//        reactor.state.map { $0.language.urlParam }
 //            .distinctUntilChanged()
 //            .bind(to: self.rx.language)
 //            .disposed(by: self.disposeBag)
@@ -100,7 +100,7 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
         reactor.state.map { $0.error }
             .bind(to: self.rx.error)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.sections }
+        reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
     }

@@ -47,20 +47,20 @@ class SettingSwitchCell: DefaultCell, ReactorKit.View {
     func bind(reactor: SettingSwitchItem) {
         super.bind(item: reactor)
         // action
-        self.switcher.rx.isOn.distinctUntilChanged().skip(1).map{ Reactor.Action.switch($0) }
+        self.switcher.rx.isOn.distinctUntilChanged().skip(1).map { Reactor.Action.switch($0) }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // state
-        reactor.state.map{ $0.title }
+        reactor.state.map { $0.title }
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.detail }
+        reactor.state.map { $0.detail }
             .bind(to: self.detailLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.icon }
+        reactor.state.map { $0.icon }
             .bind(to: self.iconImageView.rx.image)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.icon == nil }
+        reactor.state.map { $0.icon == nil }
             .bind(to: self.iconImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map { state -> UIImage? in
@@ -73,17 +73,17 @@ class SettingSwitchCell: DefaultCell, ReactorKit.View {
                 return nil
             }
         }.bind(to: self.accessoryImageView.rx.image).disposed(by: self.disposeBag)
-        reactor.state.map{ $0.accessory == .none }
+        reactor.state.map { $0.accessory == .none }
             .bind(to: self.accessoryImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.accessory != .none }
+        reactor.state.map { $0.accessory != .none }
             .bind(to: self.switcher.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.switched }
+        reactor.state.map { $0.switched }
             .distinctUntilChanged()
             .bind(to: self.switcher.rx.isOn)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ _ in }
+        reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

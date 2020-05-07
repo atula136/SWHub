@@ -124,25 +124,25 @@ class RepositoryDetailHeaderView: SupplementaryView, ReactorKit.View {
     
     func bind(reactor: RepositoryDetailHeaderReactor) {
         super.bind(reactor: reactor)
-        reactor.state.map{ $0.avatar }
+        reactor.state.map { $0.avatar }
             .bind(to: self.avatarImageView.rx.image())
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.title }
+        reactor.state.map { $0.title }
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.starred }
+        reactor.state.map { $0.starred }
             .bind(to: self.starButton.rx.isSelected)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.follow }
+        reactor.state.map { $0.follow }
             .bind(to: self.followButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.star }
+        reactor.state.map { $0.star }
             .bind(to: self.starCountButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.fork }
+        reactor.state.map { $0.fork }
             .bind(to: self.forkButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
-        reactor.state.map{ _ in }
+        reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

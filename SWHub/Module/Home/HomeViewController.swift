@@ -84,11 +84,11 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
     func bind(reactor: HomeViewReactor) {
         super.bind(reactor: reactor)
         // action
-//        self.rx.viewDidLoad.map{ Reactor.Action.load }
+//        self.rx.viewDidLoad.map { Reactor.Action.load }
 //            .bind(to: reactor.action)
 //            .disposed(by: self.disposeBag)
         // state
-        reactor.state.map{ $0.items }
+        reactor.state.map { $0.items }
             .mapToVoid()
             .bind(to: self.paging.rx.reloadData)
             .disposed(by: self.disposeBag)
@@ -120,7 +120,7 @@ extension HomeViewController: PagingViewControllerDataSource {
 class NavigationBarPagingView: PagingView {
   
     override func setupConstraints() {
-        pageView.snp.makeConstraints{ $0.edges.equalToSuperview() }
+        pageView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
     
 }

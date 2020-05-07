@@ -55,13 +55,13 @@ class TrendingDeveloperListViewController: CollectionViewController, ReactorKit.
     func bind(reactor: TrendingDeveloperListViewReactor) {
         super.bind(reactor: reactor)
         // action
-        self.rx.viewDidLoad.map{ Reactor.Action.load }
+        self.rx.viewDidLoad.map { Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.rx.emptyDataSet.map{ Reactor.Action.load }
+        self.rx.emptyDataSet.map { Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.rx.refresh.map{ Reactor.Action.refresh }
+        self.rx.refresh.map { Reactor.Action.refresh }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // state
@@ -76,7 +76,7 @@ class TrendingDeveloperListViewController: CollectionViewController, ReactorKit.
         reactor.state.map { $0.error }
             .bind(to: self.rx.error)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.sections }
+        reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
     }
