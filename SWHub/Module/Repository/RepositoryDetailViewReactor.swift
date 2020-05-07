@@ -36,7 +36,7 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     var fullname: String?
     var initialState = State()
     
-    required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
+    required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
 //        let fullname = stringMember(self.parameters, Parameter.fullname, nil)
 //        var repository = Repository.init()

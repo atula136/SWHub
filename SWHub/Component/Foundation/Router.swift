@@ -68,8 +68,8 @@ enum Router {
     }
     
     static func initialize(_ provider: ProviderType, _ navigator: NavigatorType) {
-        let parameters = { (url: URLConvertible, values: [String: Any], context: Any?) -> Dictionary<String, Any>? in
-            var parameters: Dictionary<String, Any> = url.queryParameters
+        let parameters = { (url: URLConvertible, values: [String: Any], context: Any?) -> [String: Any]? in
+            var parameters: [String: Any] = url.queryParameters
             for (key, value) in values {
                 parameters[key] = value
             }

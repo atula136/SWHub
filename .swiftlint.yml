@@ -1,6 +1,4 @@
 disabled_rules:
-  - colon
-  - syntactic_sugar
   - identifier_name
   - opening_brace
   - nesting

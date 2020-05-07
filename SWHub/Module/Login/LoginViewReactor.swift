@@ -37,7 +37,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     
     var initialState = State()
     
-    required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
+    required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
             title: stringDefault(self.title, R.string.localizable.loginTitle())

@@ -51,7 +51,7 @@ final class AppDependency: NSObject, AppDependencyType {
             .disposed(by: self.rx.disposeBag)
     }
     
-    func application(_ application: UIApplication, entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) {
+    func application(_ application: UIApplication, entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         Runtime.work()
         Library.setup()
         Appearance.config()
@@ -62,7 +62,7 @@ final class AppDependency: NSObject, AppDependencyType {
         
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
 //        var optionParam: [String: Any] = [:]
 //        for (kind, value) in options {
 //            optionParam[kind.rawValue] = value

@@ -7,7 +7,6 @@
 2. 隐藏键盘顶部工具栏
 4. RxOptional
 8. 更换SWFrame的Label/Button/ImageView
-9. swiftlint
 10. Parchment源码/ReactorKit源码
 11. 自定义下拉刷新/加载效果，采用ScrollViewController运行时方式
 12. hashValue
@@ -24,4 +23,4 @@ state -> refresh ui效果
 “每日”明文问题
 languageColor
 打星功能（viewerHasStarred）
-
+swiftlint
