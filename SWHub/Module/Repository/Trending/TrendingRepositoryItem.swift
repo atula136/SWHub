@@ -17,7 +17,7 @@ class TrendingRepositoryItem: InfoItem {
         self.initialState = State(
             title: "\(repository.author ?? "")/\(repository.name ?? "")",
             subtitle: repository.description,
-            detail: repository.detail(since: "每日"),
+            detail: repository.detail(since: Condition.current()!.since.title),
             icon: repository.avatar
         )
     }
@@ -27,7 +27,7 @@ class TrendingRepositoryItem: InfoItem {
         switch mutation {
         case .setDark:
             if let repository = self.model as? TrendingRepository {
-                state.detail = repository.detail(since: "每日")
+                state.detail = repository.detail(since: Condition.current()!.since.title)
             }
         }
         return state

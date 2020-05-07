@@ -48,4 +48,13 @@ class InfoItem: CollectionItem, ReactorKit.Reactor {
         return .merge(mutation, nightEvent)
     }
 
+    func transform(state: Observable<State>) -> Observable<State> {
+        guard let repository = self.model as? TrendingRepository else { return state }
+        return state.flatMap { state -> Observable<State> in
+            var state = state
+            state.detail = repository.detail(since: Condition.current()!.since.title)
+            return .just(state)
+        }
+    }
+
 }
