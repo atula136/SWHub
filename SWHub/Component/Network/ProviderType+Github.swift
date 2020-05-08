@@ -28,6 +28,14 @@ extension ProviderType {
         return self.githubNetworking.requestRaw(.checkStarring(fullname: fullname)).map { emptyDataStatusCodes.contains($0.statusCode) }
     }
 
+    func starRepository(fullname: String) -> Observable<Void> {
+        return self.githubNetworking.requestRaw(.starRepository(fullname: fullname)).map { _ in }
+    }
+
+    func unstarRepository(fullname: String) -> Observable<Void> {
+        return self.githubNetworking.requestRaw(.unstarRepository(fullname: fullname)).map { _ in }
+    }
+
 }
 
 private let emptyDataStatusCodes: Set<Int> = [204, 205]

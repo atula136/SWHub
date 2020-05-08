@@ -82,9 +82,11 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             ])
         case let .star(star):
             guard self.currentState.starred != star else { return .empty() }
+            guard let fullname = self.fullname else { return .empty() }
+            let request = star ? self.provider.starRepository(fullname: fullname) : self.provider.unstarRepository(fullname: fullname)
             return .concat([
                 .just(.setActivating(true)),
-                self.provider.checkStarring(fullname: "").map { Mutation.setStarred($0) },
+                request.map { Mutation.setStarred(star) },
                 .just(.setActivating(false))
             ])
         }
