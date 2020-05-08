@@ -191,7 +191,6 @@ struct Repository: ModelType, Subjective, Eventable {
                 languageColorShape, Special.space, languageString
             ]))
         }
-        // YJX_TODO languageColor
         return .composed(of: texts)
     }
 

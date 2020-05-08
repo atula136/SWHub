@@ -16,17 +16,21 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
+        case star(Bool)
     }
 
     enum Mutation {
         case setLoading(Bool)
+        case setActivating(Bool)
+        case setStarred(Bool)
         case setError(Error?)
         case setRepository(Repository)
-        // case start([Condition.Language])
     }
 
     struct State {
         var isLoading = false
+        var isActivating = false
+        var starred = false
         var title: String?
         var error: Error?
         var repository: Repository!
@@ -73,14 +77,16 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
                 self.provider.repository(fullname: fullname).map { Mutation.setRepository($0) },
+                self.provider.checkStarring(fullname: fullname).map { Mutation.setStarred($0) },
                 .just(.setLoading(false))
             ])
-//        case let .since(value):
-//            guard value != self.currentState.since.rawValue else { return .empty() }
-//            return .just(.setSince(value))
-//        case let .language(urlParam):
-//            guard urlParam != self.currentState.language.urlParam else { return .empty() }
-//            return .just(.setLanguage(urlParam))
+        case let .star(star):
+            guard self.currentState.starred != star else { return .empty() }
+            return .concat([
+                .just(.setActivating(true)),
+                self.provider.checkStarring(fullname: "").map { Mutation.setStarred($0) },
+                .just(.setActivating(false))
+            ])
         }
     }
 
@@ -89,6 +95,10 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
+        case let .setActivating(isActivating):
+            state.isActivating = isActivating
+        case let .setStarred(starred):
+            state.starred = starred
         case let .setError(error):
             state.error = error
         case let .setRepository(repository):

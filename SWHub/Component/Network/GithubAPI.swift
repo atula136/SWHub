@@ -19,6 +19,8 @@ enum GithubAPI {
     case profile
     case repository(fullname: String)
     case readme(fullname: String, ref: String?)
+    case checkStarring(fullname: String)
+    case starRepository(fullname: String)
     case unstarRepository(fullname: String)
 //    case wechatInfo
 //    case homePages
@@ -42,12 +44,17 @@ extension GithubAPI: TargetType {
         case .profile: return "/user"
         case let .repository(fullname): return "/repos/\(fullname)"
         case let .readme(fullname): return "/repos/\(fullname)/readme"
-        case let .unstarRepository(fullname): return "/user/starred/\(fullname)"
+        case .checkStarring(let fullname),
+             .starRepository(let fullname),
+             .unstarRepository(let fullname):
+            return "/user/starred/\(fullname)"
         }
     }
 
     var method: Moya.Method {
         switch self {
+        case .starRepository:
+            return .put
         case .unstarRepository:
             return .delete
         default:
@@ -84,20 +91,6 @@ extension GithubAPI: TargetType {
         var path = self.path.replacingOccurrences(of: "/", with: "-")
         let index = path.index(after: path.startIndex)
         path = String(path[index...])
-
-//        switch self {
-//        case .messageList(let type, let index, _):
-//            path = path + "\(type.rawValue)\(index)"
-//        case .productList(_, _, let pageIndex, _, _):
-//            path = path + "\(pageIndex)"
-//        default:
-//            break
-//        }
-
-//        if path == "cn-api-message-list11" {
-//            path = "error-401"
-//        }
-
         if let url = Bundle.main.url(forResource: path, withExtension: "json"),
             let data = try? Data(contentsOf: url) {
             return data

@@ -92,6 +92,10 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
             .disposed(by: self.disposeBag)
+        reactor.state.map { $0.isActivating }
+            .distinctUntilChanged()
+            .bind(to: self.rx.activating())
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.title }
             .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
@@ -118,6 +122,13 @@ class RepositoryDetailViewController: CollectionViewController, ReactorKit.View 
                 case UICollectionView.elementKindSectionHeader:
                     let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
                     view.bind(reactor: RepositoryDetailHeaderReactor(reactor.currentState.repository))
+                    view.rx.star.map { Reactor.Action.star($0) }
+                        .bind(to: reactor.action)
+                        .disposed(by: view.disposeBag)
+                    reactor.state.map { $0.starred }
+                        .distinctUntilChanged()
+                        .bind(to: view.rx.starred)
+                        .disposed(by: view.disposeBag)
                     return view
                 default:
                     return collectionView.emptyView(for: indexPath, kind: kind)

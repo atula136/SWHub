@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79009F942465132400CC4C1F /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 79009F932465132400CC4C1F /* empty.json */; };
+		79009F96246514C600CC4C1F /* repos-rxhanson-Rectangle-subscribers.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79009F95246514C600CC4C1F /* repos-rxhanson-Rectangle-subscribers.1.json */; };
+		79009F982465152200CC4C1F /* repos-rxhanson-Rectangle-stargazers.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79009F972465152200CC4C1F /* repos-rxhanson-Rectangle-stargazers.1.json */; };
+		79009F9A2465159000CC4C1F /* repos-rxhanson-Rectangle-forks.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79009F992465159000CC4C1F /* repos-rxhanson-Rectangle-forks.1.json */; };
+		79009F9C2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79009F9B2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json */; };
+		79009F9E246516FA00CC4C1F /* repos-rxhanson-Rectangle-branches.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79009F9D246516FA00CC4C1F /* repos-rxhanson-Rectangle-branches.1.json */; };
 		79020CB124559CDA00FF1978 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 79020CB024559CDA00FF1978 /* readme.txt */; };
 		79042E96245D8FC200DB30ED /* MyColorViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79042E95245D8FC200DB30ED /* MyColorViewReactor.swift */; };
 		79042E98245D8FCC00DB30ED /* MyColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79042E97245D8FCC00DB30ED /* MyColorViewController.swift */; };
@@ -143,6 +149,12 @@
 
 /* Begin PBXFileReference section */
 		1D533708BEF6D86D6FB5EB17 /* Pods-SWHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.release.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.release.xcconfig"; sourceTree = "<group>"; };
+		79009F932465132400CC4C1F /* empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		79009F95246514C600CC4C1F /* repos-rxhanson-Rectangle-subscribers.1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-subscribers.1.json"; sourceTree = "<group>"; };
+		79009F972465152200CC4C1F /* repos-rxhanson-Rectangle-stargazers.1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-stargazers.1.json"; sourceTree = "<group>"; };
+		79009F992465159000CC4C1F /* repos-rxhanson-Rectangle-forks.1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-forks.1.json"; sourceTree = "<group>"; };
+		79009F9B2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-issues.open1.json"; sourceTree = "<group>"; };
+		79009F9D246516FA00CC4C1F /* repos-rxhanson-Rectangle-branches.1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-branches.1.json"; sourceTree = "<group>"; };
 		79020CB024559CDA00FF1978 /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		79042E95245D8FC200DB30ED /* MyColorViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorViewReactor.swift; sourceTree = "<group>"; };
 		79042E97245D8FCC00DB30ED /* MyColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorViewController.swift; sourceTree = "<group>"; };
@@ -336,10 +348,10 @@
 				790767AD2456C27B00CD0AAF /* GithubAPI.swift */,
 				790767AF2456C42000CD0AAF /* GithubNetworking.swift */,
 				790767B52456CE5500CD0AAF /* ProviderType+Github.swift */,
+				790B88E2245F624A000C89D4 /* ProviderType+Trending.swift */,
 				790767B32456CB3D00CD0AAF /* ResponseType.swift */,
 				790B88DE245F6046000C89D4 /* TrendingAPI.swift */,
 				790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */,
-				790B88E2245F624A000C89D4 /* ProviderType+Trending.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -419,6 +431,12 @@
 				79DABBDD2461E27400EC1E81 /* repos-rxhanson-Rectangle.json */,
 				79DABBDF2461E2EA00EC1E81 /* repos-rxhanson-Rectangle-readme.json */,
 				79DABBE12461E37000EC1E81 /* user-starred-rxhanson-Rectangle.json */,
+				79009F932465132400CC4C1F /* empty.json */,
+				79009F95246514C600CC4C1F /* repos-rxhanson-Rectangle-subscribers.1.json */,
+				79009F972465152200CC4C1F /* repos-rxhanson-Rectangle-stargazers.1.json */,
+				79009F992465159000CC4C1F /* repos-rxhanson-Rectangle-forks.1.json */,
+				79009F9B2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json */,
+				79009F9D246516FA00CC4C1F /* repos-rxhanson-Rectangle-branches.1.json */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -791,19 +809,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				791160B7246094A700737F4B /* Misc.json in Resources */,
+				79009F9A2465159000CC4C1F /* repos-rxhanson-Rectangle-forks.1.json in Resources */,
+				79009F942465132400CC4C1F /* empty.json in Resources */,
+				79009F9E246516FA00CC4C1F /* repos-rxhanson-Rectangle-branches.1.json in Resources */,
 				79DEC3F62461D0FC00264EE3 /* Condition.json in Resources */,
 				791160BB24609F3C00737F4B /* languages.json in Resources */,
 				79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */,
 				7906C319245558FD0030764D /* Localizable.strings in Resources */,
 				79F936A9245C3B0900AA775A /* repos-tospery-SWHub.json in Resources */,
 				79020CB124559CDA00FF1978 /* readme.txt in Resources */,
+				79009F982465152200CC4C1F /* repos-rxhanson-Rectangle-stargazers.1.json in Resources */,
 				79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */,
 				790B88D6245F5882000C89D4 /* repositories-daily.json in Resources */,
 				79DABBDE2461E27400EC1E81 /* repos-rxhanson-Rectangle.json in Resources */,
+				79009F9C2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json in Resources */,
 				79DABBE22461E37000EC1E81 /* user-starred-rxhanson-Rectangle.json in Resources */,
 				790B88DB245F59B4000C89D4 /* developers-daily.json in Resources */,
 				790767AB2456C23E00CD0AAF /* user.json in Resources */,
 				79DABBE02461E2EA00EC1E81 /* repos-rxhanson-Rectangle-readme.json in Resources */,
+				79009F96246514C600CC4C1F /* repos-rxhanson-Rectangle-subscribers.1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

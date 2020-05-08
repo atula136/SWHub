@@ -18,7 +18,7 @@ class RepositoryDetailHeaderReactor: SupplementaryReactor, ReactorKit.Reactor {
     typealias Action = NoAction
 
     struct State {
-        var starred = false
+        // var starred = false
         var avatar: URL?
         var title: String?
         var follow: NSAttributedString?

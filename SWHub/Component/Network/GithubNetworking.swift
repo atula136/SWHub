@@ -69,7 +69,7 @@ struct GithubNetworking: NetworkingType {
     func requestModel<T: ModelType>(_ target: GithubAPI, type: T.Type) -> Observable<T> {
         return .create { observer -> Disposable in
             let disposable = self.request(target).mapObject(ObjectResponse<T>.self).subscribe(onNext: { response in
-                if response.code == 200, response.data != nil { // YJX_TODO 容错处理
+                if response.code == 200, response.data != nil {
                     observer.onNext(response.data!)
                     observer.onCompleted()
                 } else {
@@ -93,7 +93,7 @@ struct GithubNetworking: NetworkingType {
     func requestModels<T: ModelType>(_ target: GithubAPI, type: T.Type) -> Observable<[T]> {
         return .create { observer -> Disposable in
             let disposable = self.request(target).mapObject(ArrayResponse<T>.self).subscribe(onNext: { response in
-                if response.code == 200, response.data != nil { // YJX_TODO 容错处理
+                if response.code == 200, response.data != nil {
                     observer.onNext(response.data!)
                     observer.onCompleted()
                 } else {
@@ -113,7 +113,7 @@ struct GithubNetworking: NetworkingType {
     func requestList<T: ModelType>(_ target: GithubAPI, type: T.Type) -> Observable<List<T>> {
         return .create { observer -> Disposable in
             let disposable = self.request(target).mapObject(ObjectResponse<List<T>>.self).subscribe(onNext: { response in
-                if response.code == 200, response.data != nil { // YJX_TODO 容错处理
+                if response.code == 200, response.data != nil {
                     if let list = response.data {
                         if let items = list.items, items.count != 0 {
                             observer.onNext(response.data!)

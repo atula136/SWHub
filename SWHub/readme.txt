@@ -19,8 +19,23 @@
 暗黑模式：下拉刷新活动指示器、Since文本
 设置页的暗黑模式的切换按钮的状态应该是单向的
 state -> refresh ui效果
-“每日”明文问题
 languageColor
 打星功能（viewerHasStarred）
-黑暗模式时第二页文本
-启动页的白色背景问题
+
+https://api.github.com/user/starred/rxhanson/Rectangle
+
+
+starRepository:
+https://api.github.com/user/starred/rxhanson/Rectangle
+watchers:
+https://api.github.com/repos/rxhanson/Rectangle/subscribers?page=1
+stargazers:
+https://api.github.com/repos/rxhanson/Rectangle/stargazers?page=1
+forks:
+https://api.github.com/repos/rxhanson/Rectangle/forks?page=1
+issues:
+https://api.github.com/repos/rxhanson/Rectangle/issues?page=1&state=open|closed
+pullRequests:
+https://api.github.com/repos/rxhanson/Rectangle/pulls?page=1&state=open
+branches:
+https://api.github.com/repos/rxhanson/Rectangle/branches?page=1

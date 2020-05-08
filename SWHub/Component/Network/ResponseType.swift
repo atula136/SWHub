@@ -17,7 +17,7 @@ protocol ResponseType {
 
 func mappingCode(map: Map) -> Int {
     var code: Int = 0
-    code        <- map["code"] // YJX_TODO
+    code        <- map["code"]
     if code == 0 {
         code    <- map["statusCode"]
     }

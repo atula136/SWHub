@@ -33,8 +33,8 @@ class RepositoryDetailHeaderView: SupplementaryView, ReactorKit.View {
 
     lazy var starButton: Button = {
         let button = Button(type: .custom)
-        button.setImage(R.image.detail_btn_unstar()?.template, for: .normal)
-        button.setImage(R.image.detail_btn_star()?.template, for: .selected)
+        button.setImage(R.image.detail_btn_unstarred()?.template, for: .normal)
+        button.setImage(R.image.detail_btn_starred()?.template, for: .selected)
         button.sizeToFit()
         button.size = CGSize(width: metric(30), height: metric(30))
         button.borderWidth = 1
@@ -130,9 +130,10 @@ class RepositoryDetailHeaderView: SupplementaryView, ReactorKit.View {
         reactor.state.map { $0.title }
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.starred }
-            .bind(to: self.starButton.rx.isSelected)
-            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.starred }
+//            .distinctUntilChanged()
+//            .bind(to: self.starButton.rx.isSelected)
+//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.follow }
             .bind(to: self.followButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
@@ -146,4 +147,22 @@ class RepositoryDetailHeaderView: SupplementaryView, ReactorKit.View {
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
+}
+
+extension Reactive where Base: RepositoryDetailHeaderView {
+
+    var starred: Binder<Bool> {
+        return Binder(self.base) { view, attr in
+            view.starButton.isSelected = attr
+        }
+    }
+
+    var star: ControlEvent<Bool> {
+        let source = self.base.starButton.rx.tap.map { [weak view = self.base] _ -> Bool in
+            guard let view = view else { return false }
+            return !view.starButton.isSelected
+        }
+        return ControlEvent(events: source)
+    }
+
 }

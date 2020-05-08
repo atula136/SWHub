@@ -117,7 +117,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 11 files.
+  /// This `R.file` struct is generated, and contains static references to 17 files.
   struct file {
     /// Resource file `Condition.json`.
     static let conditionJson = Rswift.FileResource(bundle: R.hostingBundle, name: "Condition", pathExtension: "json")
@@ -125,12 +125,24 @@ struct R: Rswift.Validatable {
     static let miscJson = Rswift.FileResource(bundle: R.hostingBundle, name: "Misc", pathExtension: "json")
     /// Resource file `developers-daily.json`.
     static let developersDailyJson = Rswift.FileResource(bundle: R.hostingBundle, name: "developers-daily", pathExtension: "json")
+    /// Resource file `empty.json`.
+    static let emptyJson = Rswift.FileResource(bundle: R.hostingBundle, name: "empty", pathExtension: "json")
     /// Resource file `languages.json`.
     static let languagesJson = Rswift.FileResource(bundle: R.hostingBundle, name: "languages", pathExtension: "json")
     /// Resource file `readme.txt`.
     static let readmeTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "readme", pathExtension: "txt")
+    /// Resource file `repos-rxhanson-Rectangle-branches.1.json`.
+    static let reposRxhansonRectangleBranches1Json = Rswift.FileResource(bundle: R.hostingBundle, name: "repos-rxhanson-Rectangle-branches.1", pathExtension: "json")
+    /// Resource file `repos-rxhanson-Rectangle-forks.1.json`.
+    static let reposRxhansonRectangleForks1Json = Rswift.FileResource(bundle: R.hostingBundle, name: "repos-rxhanson-Rectangle-forks.1", pathExtension: "json")
+    /// Resource file `repos-rxhanson-Rectangle-issues.open1.json`.
+    static let reposRxhansonRectangleIssuesOpen1Json = Rswift.FileResource(bundle: R.hostingBundle, name: "repos-rxhanson-Rectangle-issues.open1", pathExtension: "json")
     /// Resource file `repos-rxhanson-Rectangle-readme.json`.
     static let reposRxhansonRectangleReadmeJson = Rswift.FileResource(bundle: R.hostingBundle, name: "repos-rxhanson-Rectangle-readme", pathExtension: "json")
+    /// Resource file `repos-rxhanson-Rectangle-stargazers.1.json`.
+    static let reposRxhansonRectangleStargazers1Json = Rswift.FileResource(bundle: R.hostingBundle, name: "repos-rxhanson-Rectangle-stargazers.1", pathExtension: "json")
+    /// Resource file `repos-rxhanson-Rectangle-subscribers.1.json`.
+    static let reposRxhansonRectangleSubscribers1Json = Rswift.FileResource(bundle: R.hostingBundle, name: "repos-rxhanson-Rectangle-subscribers.1", pathExtension: "json")
     /// Resource file `repos-rxhanson-Rectangle.json`.
     static let reposRxhansonRectangleJson = Rswift.FileResource(bundle: R.hostingBundle, name: "repos-rxhanson-Rectangle", pathExtension: "json")
     /// Resource file `repos-tospery-SWHub.json`.
@@ -160,6 +172,12 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
+    /// `bundle.url(forResource: "empty", withExtension: "json")`
+    static func emptyJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.emptyJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
     /// `bundle.url(forResource: "languages", withExtension: "json")`
     static func languagesJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.languagesJson
@@ -178,9 +196,39 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
+    /// `bundle.url(forResource: "repos-rxhanson-Rectangle-branches.1", withExtension: "json")`
+    static func reposRxhansonRectangleBranches1Json(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.reposRxhansonRectangleBranches1Json
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "repos-rxhanson-Rectangle-forks.1", withExtension: "json")`
+    static func reposRxhansonRectangleForks1Json(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.reposRxhansonRectangleForks1Json
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "repos-rxhanson-Rectangle-issues.open1", withExtension: "json")`
+    static func reposRxhansonRectangleIssuesOpen1Json(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.reposRxhansonRectangleIssuesOpen1Json
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
     /// `bundle.url(forResource: "repos-rxhanson-Rectangle-readme", withExtension: "json")`
     static func reposRxhansonRectangleReadmeJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.reposRxhansonRectangleReadmeJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "repos-rxhanson-Rectangle-stargazers.1", withExtension: "json")`
+    static func reposRxhansonRectangleStargazers1Json(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.reposRxhansonRectangleStargazers1Json
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "repos-rxhanson-Rectangle-subscribers.1", withExtension: "json")`
+    static func reposRxhansonRectangleSubscribers1Json(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.reposRxhansonRectangleSubscribers1Json
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -215,10 +263,10 @@ struct R: Rswift.Validatable {
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
-    /// Image `detail_btn_star`.
-    static let detail_btn_star = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_btn_star")
-    /// Image `detail_btn_unstar`.
-    static let detail_btn_unstar = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_btn_unstar")
+    /// Image `detail_btn_starred`.
+    static let detail_btn_starred = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_btn_starred")
+    /// Image `detail_btn_unstarred`.
+    static let detail_btn_unstarred = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_btn_unstarred")
     /// Image `detail_cell_branch`.
     static let detail_cell_branch = Rswift.ImageResource(bundle: R.hostingBundle, name: "detail_cell_branch")
     /// Image `detail_cell_code`.
@@ -386,16 +434,16 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "detail_btn_star", bundle: ..., traitCollection: ...)`
-    static func detail_btn_star(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.detail_btn_star, compatibleWith: traitCollection)
+    /// `UIImage(named: "detail_btn_starred", bundle: ..., traitCollection: ...)`
+    static func detail_btn_starred(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.detail_btn_starred, compatibleWith: traitCollection)
     }
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "detail_btn_unstar", bundle: ..., traitCollection: ...)`
-    static func detail_btn_unstar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.detail_btn_unstar, compatibleWith: traitCollection)
+    /// `UIImage(named: "detail_btn_unstarred", bundle: ..., traitCollection: ...)`
+    static func detail_btn_unstarred(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.detail_btn_unstarred, compatibleWith: traitCollection)
     }
     #endif
 
