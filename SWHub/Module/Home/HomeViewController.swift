@@ -18,7 +18,7 @@ import SwifterSwift
 import SWFrame
 
 class HomeViewController: ScrollViewController, ReactorKit.View {
-    
+
     lazy var paging: NavigationBarPagingViewController = {
         let paging = NavigationBarPagingViewController()
         paging.menuBackgroundColor = .clear
@@ -27,7 +27,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         paging.menuItemSize = .selfSizing(estimatedWidth: 100, height: navigationBarHeight)
         return paging
     }()
-    
+
     init(_ navigator: NavigatorType, _ reactor: HomeViewReactor) {
         defer {
             self.reactor = reactor
@@ -36,14 +36,14 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.hidesBottomBarWhenPushed = true
         self.tabBarItem.title = reactor.currentState.title
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.addChild(self.paging)
         self.view.addSubview(self.paging.view)
         self.paging.view.snp.makeConstraints { make in
@@ -54,7 +54,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         }
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
-        
+
         self.navigationBar.addButtonToRight(R.image.nav_condition()!).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
 //            if var url = Router.condition.pattern.url, let misc = Misc.current() {
@@ -66,10 +66,10 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
 //            }
             self.navigator.present(Router.condition.pattern, wrap: NavigationController.self)
         }).disposed(by: self.disposeBag)
-        
+
         self.paging.collectionView.size = CGSize(width: self.view.width, height: navigationBarHeight)
         self.navigationBar.titleView = self.paging.collectionView
-        
+
         themeService.rx
             .bind({ $0.primaryColor }, to: self.paging.view.rx.backgroundColor)
             .bind({ $0.foregroundColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
@@ -80,20 +80,20 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
             self.paging.reloadMenu()
         }).disposed(by: self.rx.disposeBag)
     }
-    
+
     func bind(reactor: HomeViewReactor) {
         super.bind(reactor: reactor)
         // action
-//        self.rx.viewDidLoad.map{ Reactor.Action.load }
+//        self.rx.viewDidLoad.map { Reactor.Action.load }
 //            .bind(to: reactor.action)
 //            .disposed(by: self.disposeBag)
         // state
-        reactor.state.map{ $0.items }
+        reactor.state.map { $0.items }
             .mapToVoid()
             .bind(to: self.paging.rx.reloadData)
             .disposed(by: self.disposeBag)
     }
-    
+
 }
 
 extension HomeViewController: PagingViewControllerDataSource {
@@ -109,7 +109,7 @@ extension HomeViewController: PagingViewControllerDataSource {
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
         switch self.reactor!.currentState.items[index] {
         case .repository:
-            return TrendingRepositoryListViewController(self.navigator, TrendingRepositoryListViewReactor(self.reactor!.provider, nil))
+            return TrendingRepoListViewController(self.navigator, TrendingRepoListViewReactor(self.reactor!.provider, nil))
         case .developer:
             return TrendingDeveloperListViewController(self.navigator, TrendingDeveloperListViewReactor(self.reactor!.provider, nil))
         }
@@ -118,17 +118,17 @@ extension HomeViewController: PagingViewControllerDataSource {
 }
 
 class NavigationBarPagingView: PagingView {
-  
+
     override func setupConstraints() {
-        pageView.snp.makeConstraints{ $0.edges.equalToSuperview() }
+        pageView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
-    
+
 }
 
 class NavigationBarPagingViewController: PagingViewController {
-    
+
     override func loadView() {
         view = NavigationBarPagingView(options: options, collectionView: collectionView, pageView: pageViewController.view)
     }
-    
+
 }

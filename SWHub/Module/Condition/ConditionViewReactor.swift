@@ -13,13 +13,11 @@ import ReactorKit
 import SWFrame
 
 class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
-    
     enum Action {
         case load
         case since(Int)
         case language(String?)
     }
-    
     enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
@@ -27,7 +25,7 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setLanguage(String?)
         case start([Condition.Language])
     }
-    
+
     struct State {
         var isLoading = false
         var error: Error?
@@ -35,10 +33,10 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var language = Condition.Language.init(name: "All languages")
         var sections: [Condition.Language.Section] = []
     }
-    
+
     var initialState = State()
-    
-    required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
+
+    required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         let condition = Condition.current()!
         // since
@@ -52,8 +50,8 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var sections: [Condition.Language.Section] = []
         if let languages = Condition.Language.cachedArray() {
             let langs = self.languages(languages: languages, selected: language.urlParam)
-            let items = langs.map{ Condition.Language.Item($0) }
-            let sectionItems = items.map{ Condition.Language.SectionItem.language($0) }
+            let items = langs.map { Condition.Language.Item($0) }
+            let sectionItems = items.map { Condition.Language.SectionItem.language($0) }
             sections = [.languages(sectionItems)]
         }
         self.initialState = State(
@@ -62,7 +60,7 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             sections: sections
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
@@ -70,7 +68,7 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.provider.languages().map{ Mutation.start($0) },
+                self.provider.languages().map { Mutation.start($0) },
                 .just(.setLoading(false))
             ])
         case let .since(value):
@@ -100,25 +98,21 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .start(languages):
             Condition.Language.storeArray(languages)
             let langs = self.languages(languages: languages, selected: state.language.urlParam)
-            state.sections = [.languages(langs.map{ Condition.Language.Item($0) }.map{ Condition.Language.SectionItem.language($0) })]
+            state.sections = [.languages(langs.map { Condition.Language.Item($0) }.map { Condition.Language.SectionItem.language($0) })]
         }
         return state
     }
-    
+
     func languages(languages: [Condition.Language], selected: String?) -> [Condition.Language] {
         var langs = languages
         langs.insert(Condition.Language.init(), at: 0)
-        for (index, lang) in langs.enumerated() {
-            if lang.urlParam == selected {
-                var selected = lang
-                selected.checked = true
-                langs.remove(at: index)
-                langs.insert(selected, at: index)
-                break
-            }
+        for (index, lang) in langs.filter({ $0.urlParam == selected }).enumerated() {
+            var selected = lang
+            selected.checked = true
+            langs.remove(at: index)
+            langs.insert(selected, at: index)
+            break
         }
         return langs
     }
-    
 }
-

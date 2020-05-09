@@ -14,8 +14,8 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class MyColorCell: DefaultCollectionCell2, ReactorKit.View {
-    
+class MyColorCell: DefaultCell, ReactorKit.View {
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.cornerRadius = 6
@@ -23,26 +23,26 @@ class MyColorCell: DefaultCollectionCell2, ReactorKit.View {
         self.iconImageView.width = self.iconImageView.height
         self.iconImageView.cornerRadius = self.iconImageView.height / 2.f
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func bind(reactor: MyColorItem) {
         super.bind(item: reactor)
-        reactor.state.map{ $0.title }
+        reactor.state.map { $0.title }
             .bind(to: self.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.detail }
+        reactor.state.map { $0.detail }
             .bind(to: self.detailLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.icon }
+        reactor.state.map { $0.icon }
             .bind(to: self.iconImageView.rx.image)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.icon == nil }
+        reactor.state.map { $0.icon == nil }
             .bind(to: self.iconImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.accessory != .indicator && $0.accessory != .checkmark }
+        reactor.state.map { $0.accessory == .none }
             .bind(to: self.accessoryImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map { state -> UIImage? in
@@ -55,20 +55,8 @@ class MyColorCell: DefaultCollectionCell2, ReactorKit.View {
                 return nil
             }
         }.bind(to: self.accessoryImageView.rx.image).disposed(by: self.disposeBag)
-        reactor.state.map{ $0.accessory != .switcher(true) && $0.accessory != .switcher(false) }
-            .bind(to: self.switcher.rx.isHidden)
-            .disposed(by: self.disposeBag)
-        reactor.state.map { state -> Bool in
-            switch state.accessory {
-            case let .switcher(isOn):
-                return isOn
-            default:
-                return false
-            }
-        }.bind(to: self.switcher.rx.isOn).disposed(by: self.disposeBag)
-        reactor.state.map{ _ in }
+        reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
-    
 }

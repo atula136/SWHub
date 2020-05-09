@@ -1,0 +1,35 @@
+disabled_rules:
+    - nesting
+
+included: # 执行 linting 时包含的路径。如果出现这个 `--path` 会被忽略。
+    - SWHub
+
+excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高。
+    - Pods
+    - SWHub/R.generated.swift
+
+line_length: 300
+
+function_body_length:
+    - 300 # warning
+    - 400 # error
+
+type_name:
+    min_length: 3
+    max_length:
+        warning: 40
+        error: 50
+    excluded:
+        - T
+        - E
+
+identifier_name:
+    min_length: # 只有最小长度
+        error: 3 # 只有错误
+    excluded: # 排除某些名字
+        - x
+        - y
+        - id
+        - vc
+        - in
+        - kf

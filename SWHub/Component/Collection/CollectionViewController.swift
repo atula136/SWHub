@@ -10,14 +10,14 @@ import UIKit
 import SWFrame
 
 class CollectionViewController: SWFrame.CollectionViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         themeService.rx
             .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
-    
+
 //    override func setupRefresh(should: Bool) {
 //        if should {
 //            let animator = RefreshHeaderAnimator.init(frame: .zero)
@@ -68,5 +68,5 @@ class CollectionViewController: SWFrame.CollectionViewController {
 //        loadingView.sizeToFit()
 //        return loadingView
 //    }
-    
+
 }

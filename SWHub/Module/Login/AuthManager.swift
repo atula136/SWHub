@@ -24,34 +24,31 @@ enum TokenType {
 }
 
 struct Token: ModelType {
-    
+
     var isValid = false
     var value: String?
-    
+
     init() {
-        
     }
-    
+
     init(_ value: String) {
         self.value = value
     }
-    
+
     init?(map: Map) {
-        
     }
-    
+
     mutating func mapping(map: Map) {
         isValid <- map["valid"]
         value <- map["value"]
     }
-    
+
     func type() -> TokenType {
         if let token = value {
             return .basic(token: token)
         }
         return .unauthorized
     }
-    
 }
 
 class AuthManager {
@@ -64,7 +61,6 @@ class AuthManager {
     fileprivate let keychain = Keychain()
 
     init() {
-        
     }
 
     var token: Token? {
@@ -96,8 +92,5 @@ class AuthManager {
 //    class func tokenValidated() {
 //        AuthManager.shared.token?.isValid = true
 //    }
-    
+
 }
-
-
-

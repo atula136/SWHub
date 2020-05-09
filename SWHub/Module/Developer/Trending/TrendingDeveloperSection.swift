@@ -22,7 +22,7 @@ extension TrendingDeveloperSection: SectionModelType {
         case let .developers(items): return items
         }
     }
-    
+
     init(original: TrendingDeveloperSection, items: [TrendingDeveloperSectionItem]) {
         switch original {
         case .developers: self = .developers(items)
@@ -31,6 +31,5 @@ extension TrendingDeveloperSection: SectionModelType {
 }
 
 enum TrendingDeveloperSectionItem {
-    case developer(TrendingDeveloperItem)
+    case developer(UserItem)
 }
-

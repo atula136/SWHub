@@ -18,14 +18,14 @@ import URLNavigator
 import SWFrame
 
 class LoginViewController: ScrollViewController, ReactorKit.View {
-    
+
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = R.image.logo()?.template
         imageView.sizeToFit()
         return imageView
     }()
-    
+
     lazy var accountField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
@@ -38,7 +38,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         textField.sizeToFit()
         return textField
     }()
-    
+
     lazy var passwordField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
@@ -50,7 +50,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         textField.sizeToFit()
         return textField
     }()
-    
+
     lazy var loginButton: Button = {
         let button = Button(type: .custom)
         button.titleLabel?.font = .normal(18)
@@ -68,18 +68,18 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         }
         super.init(navigator, reactor)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(self.logoImageView)
         self.view.addSubview(self.accountField)
         self.view.addSubview(self.passwordField)
         self.view.addSubview(self.loginButton)
-        
+
         themeService.rx
             .bind({ $0.textColor }, to: [self.logoImageView.rx.tintColor, self.accountField.rx.textColor, self.passwordField.rx.textColor])
             .bind({ $0.bodyColor }, to: [self.accountField.rx.placeHolderColor, self.passwordField.rx.placeHolderColor])
@@ -92,37 +92,37 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             .bind({ $0.keyboardAppearance }, to: [self.accountField.rx.keyboardAppearance, self.passwordField.rx.keyboardAppearance])
             .disposed(by: self.rx.disposeBag)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.logoImageView.top = self.contentTop + metric(50)
         self.logoImageView.left = self.logoImageView.leftWhenCenter
-        
+
         self.accountField.width = flat(self.view.width * 0.8)
         self.accountField.height = metric(44)
         self.accountField.top = self.logoImageView.bottom + 8
         self.accountField.left = self.accountField.leftWhenCenter
-        
+
         self.passwordField.width = self.accountField.width
         self.passwordField.height = self.accountField.height
         self.passwordField.top = self.accountField.bottom + 8
         self.passwordField.left = self.passwordField.leftWhenCenter
-        
+
         self.loginButton.width = self.accountField.width
         self.loginButton.height = self.accountField.height
         self.loginButton.top = self.passwordField.bottom + 8
         self.loginButton.left = self.loginButton.leftWhenCenter
     }
-    
+
     func bind(reactor: LoginViewReactor) {
         super.bind(reactor: reactor)
         // action
         self.accountField.rx.text
-            .map{ Reactor.Action.account($0) }
+            .map { Reactor.Action.account($0) }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.passwordField.rx.text
-            .map{ Reactor.Action.password($0) }
+            .map { Reactor.Action.password($0) }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.loginButton.rx.tap
@@ -138,7 +138,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
 //                guard let `self` = self else { return }
 //                self.dismiss(animated: true, completion: nil)
 //            }).disposed(by: self.disposeBag)
-        
+
         // state
         reactor.state.map { $0.isLoading }
             .bind(to: self.rx.loading(active: true))
@@ -152,5 +152,4 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             .bind(to: self.loginButton.rx.isEnabled)
             .disposed(by: self.disposeBag)
     }
-
 }

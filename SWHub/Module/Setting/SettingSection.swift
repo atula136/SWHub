@@ -16,19 +16,18 @@ enum SettingSection {
 }
 
 extension SettingSection: SectionModelType {
-    
     var header: String {
         switch self {
         case let .setting(header, _): return header
         }
     }
-    
+
     var items: [SettingSectionItem] {
         switch self {
         case let .setting(_, items): return items
         }
     }
-    
+
     init(original: SettingSection, items: [SettingSectionItem]) {
         switch original {
         case let .setting(header, items):
@@ -38,9 +37,9 @@ extension SettingSection: SectionModelType {
 }
 
 enum SettingSectionItem {
-    case user(SettingUserItem)
+    case profile(SettingProfileItem)
     case project(SettingProjectItem)
-    case logout(SettingItem)
-    case night(SettingItem)
-    case color(SettingItem)
+    case logout(SettingNormalItem)
+    case dark(SettingSwitchItem)
+    case color(SettingNormalItem)
 }

@@ -14,5 +14,5 @@ import SwifterSwift
 import SWFrame
 
 class SupplementaryReactor: BaseSupplementaryReactor {
-    
+
 }

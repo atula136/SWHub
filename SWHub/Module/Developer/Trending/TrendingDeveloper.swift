@@ -12,23 +12,21 @@ import ObjectMapper
 import SWFrame
 
 struct TrendingDeveloper: ModelType, Storable {
-    
+
     var id: Int?
     var name: String?
     var username: String?
     var url: URL?
     var avatar: URL?
     var href: URL?
-    var repo: TrendingRepository?
-    
+    var repo: TrendingRepo?
+
     init() {
-        
     }
-    
+
     init?(map: Map) {
-        
     }
-    
+
     mutating func mapping(map: Map) {
         name            <- map["name"]
         username        <- map["username"]
@@ -37,5 +35,5 @@ struct TrendingDeveloper: ModelType, Storable {
         href            <- (map["href"], URLTransform())
         repo            <- map["repo"]
     }
-    
+
 }

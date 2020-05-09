@@ -13,7 +13,7 @@ import NSObject_Rx
 import SWFrame
 
 class NavigationController: SWFrame.NavigationController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.isTranslucent = false
@@ -22,9 +22,9 @@ class NavigationController: SWFrame.NavigationController {
             self.setNeedsStatusBarAppearanceUpdate()
         }).disposed(by: self.rx.disposeBag)
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return globalStatusBarStyle.value
     }
-    
+
 }

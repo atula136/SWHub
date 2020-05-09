@@ -19,16 +19,17 @@ import RxDataSources
 import SWFrame
 
 class SettingViewController: CollectionViewController, ReactorKit.View {
-    
+
     struct Reusable {
-        static let userCell = ReusableCell<SettingUserCell>()
+        static let profileCell = ReusableCell<SettingProfileCell>()
         static let projectCell = ReusableCell<SettingProjectCell>()
-        static let settingCell = ReusableCell<SettingCell>()
+        static let switchCell = ReusableCell<SettingSwitchCell>()
+        static let settingCell = ReusableCell<SettingNormalCell>()
         static let headerView = ReusableView<SettingHeaderView>()
     }
-    
+
     let dataSource: RxCollectionViewSectionedReloadDataSource<SettingSection>
-    
+
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -38,7 +39,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         layout.headerReferenceSize = CGSize(width: screenWidth, height: metric(30))
         return layout
     }
-    
+
     init(_ navigator: NavigatorType, _ reactor: SettingViewReactor) {
         defer {
             self.reactor = reactor
@@ -47,15 +48,16 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         super.init(navigator, reactor)
         self.tabBarItem.title = reactor.currentState.title
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.userCell)
+        self.collectionView.register(Reusable.profileCell)
         self.collectionView.register(Reusable.projectCell)
+        self.collectionView.register(Reusable.switchCell)
         self.collectionView.register(Reusable.settingCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] item in
@@ -64,55 +66,54 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             case .color:
                 self.navigator.push(Router.color.pattern)
             default:
-                break;
+                break
             }
         }).disposed(by: self.disposeBag)
         themeService.rx
             .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
-    
+
     func bind(reactor: SettingViewReactor) {
         super.bind(reactor: reactor)
         // action
-        Observable.merge(
-            self.rx.viewDidLoad.asObservable(),
-            self.rx.emptyDataSet.asObservable()
-        ).map{ Reactor.Action.load }
+        self.rx.viewDidLoad.map { Reactor.Action.load }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.rx.emptyDataSet.map { Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // state
         reactor.state.map { $0.title }
             .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map{ $0.sections }
+        reactor.state.map { $0.isNight }
+            .distinctUntilChanged()
+            .bind(to: self.rx.night)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
     }
-    
+
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: SettingViewReactor) -> RxCollectionViewSectionedReloadDataSource<SettingSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .user(item):
-                    let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
+                case let .profile(item):
+                    let cell = collectionView.dequeue(Reusable.profileCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 case let .project(item):
                     let cell = collectionView.dequeue(Reusable.projectCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
-                case .night(let item):
-                    let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
+                case .dark(let item):
+                    let cell = collectionView.dequeue(Reusable.switchCell, for: indexPath)
                     cell.bind(reactor: item)
-                    cell.rx.switched.skip(1).subscribe(onNext: { isDark in
-                        var theme = ThemeType.currentTheme()
-                        if theme.isDark != isDark {
-                            theme = theme.toggled()
-                        }
-                        themeService.switch(theme)
-                        Setting.event.onNext(.night(isDark))
-                    }).disposed(by: cell.disposeBag)
+                    cell.rx.switched.distinctUntilChanged().skip(1).map { Reactor.Action.night($0) }
+                        .bind(to: reactor.action)
+                        .disposed(by: cell.disposeBag)
                     return cell
                 case .logout(let item), .color(let item):
                     let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
@@ -130,7 +131,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         .disposed(by: view.disposeBag)
                     reactor.state.map { $0.sections[indexPath.section].header }
                         .distinctUntilChanged()
-                        .map{ _ in }
+                        .map { _ in }
                         .bind(to: view.rx.setNeedsLayout)
                         .disposed(by: view.disposeBag)
                     return view
@@ -140,34 +141,35 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             }
         )
     }
-    
 }
 
 extension SettingViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .user(item):
-            return Reusable.userCell.class.size(width: width, item: item)
+        case let .profile(item):
+            return Reusable.profileCell.class.size(width: width, item: item)
         case let .project(item):
             return Reusable.projectCell.class.size(width: width, item: item)
-        case .logout(let item), .night(let item), .color(let item):
+        case let .dark(item):
+            return Reusable.switchCell.class.size(width: width, item: item)
+        case .logout(let item), .color(let item):
             return Reusable.settingCell.class.size(width: width, item: item)
         }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        let width = collectionView.sectionWidth(at: section)
-//        return CGSize(width: width, height: metric(30))
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return .init(horizontal: 30, vertical: 0)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10
-//    }
-    
+}
+
+extension Reactive where Base: SettingViewController {
+
+    var night: Binder<Bool> {
+        return Binder(self.base) { _, attr in
+            var theme = ThemeType.currentTheme()
+            if theme.isDark != attr {
+                theme = theme.toggled()
+            }
+            themeService.switch(theme)
+            Setting.event.onNext(.night(attr))
+        }
+    }
 }

@@ -14,16 +14,16 @@ import SwifterSwift
 import SWFrame
 
 class SupplementaryView: BaseSupplementaryView {
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         themeService.rx
             .bind({ $0.primaryColor }, to: self.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }

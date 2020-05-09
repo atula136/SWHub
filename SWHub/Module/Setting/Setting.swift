@@ -2,7 +2,7 @@
 //  Setting.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/4/29.
+//  Created by 杨建祥 on 2020/5/6.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -11,17 +11,42 @@ import ObjectMapper
 import SWFrame
 
 struct Setting: ModelType, Identifiable, Eventable {
-    
+
+    var id: Key?
+    var switched = false
+    var title: String?
+    var detail: NSAttributedString?
+    var icon: ImageSource?
+    var accessory = AccessoryType.indicator
+
+    init() {
+    }
+
+    init(id: Key, accessory: AccessoryType = .indicator) {
+        self.id = id
+        self.accessory = accessory
+        self.title = id.title
+        self.icon = id.icon
+    }
+
+    init?(map: Map) {
+    }
+
+    mutating func mapping(map: Map) {
+    }
+
     enum Event {
         case night(Bool)
     }
-    
-    enum Category: Int, Codable {
+
+    enum Key: Int, Codable {
+        case profile
+        case project
         case logout
         case night
         case color
-        
-        var title: String {
+
+        var title: String? {
             switch self {
             case .logout:
                 return R.string.localizable.settingAccountLogout()
@@ -29,9 +54,11 @@ struct Setting: ModelType, Identifiable, Eventable {
                 return R.string.localizable.settingPreferencesNight()
             case .color:
                 return R.string.localizable.settingPreferencesTheme()
+            default:
+                return nil
             }
         }
-        
+
         var icon: UIImage? {
             switch self {
             case .logout:
@@ -40,40 +67,17 @@ struct Setting: ModelType, Identifiable, Eventable {
                 return R.image.setting_cell_night()?.template
             case .color:
                 return R.image.setting_cell_theme()?.template
+            default:
+                return nil
             }
         }
-        
-        enum CodingKeys: String, CodingKey {
-            case logout     = "logout"
-            case night      = "night"
-            case color      = "color"
-        }
+
+//        enum CodingKeys: String, CodingKey {
+//            case profile        = "profile"
+//            case logout         = "logout"
+//            case project        = "project"
+//            case night          = "night"
+//            case color          = "color"
+//        }
     }
-    
-    var id: Category?
-    var accessory = NormalItem2.AccessoryType.indicator
-    var title: String?
-    var detail: NSAttributedString?
-    var icon: ImageSource?
-    
-    init() {
-        
-    }
-    
-    init(id: Category, accessory: NormalItem2.AccessoryType = .indicator) {
-        self.id = id
-        self.accessory = accessory
-        self.title = id.title
-        self.icon = id.icon
-    }
-    
-    init?(map: Map) {
-        
-    }
-    
-    mutating func mapping(map: Map) {
-        id          <- map["id"]
-        title       <- map["title"]
-    }
-    
 }

@@ -11,7 +11,7 @@ import RxSwift
 import NSObject_Rx
 
 class Appearance {
-    
+
     static let disposeBag = DisposeBag()
 
     public class func config() {
@@ -24,5 +24,4 @@ class Appearance {
 //            .disposed(by: self.disposeBag)
 //        navBar.isTranslucent = false
     }
-    
 }

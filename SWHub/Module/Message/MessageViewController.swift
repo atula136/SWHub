@@ -14,7 +14,7 @@ import SwifterSwift
 import SWFrame
 
 class MessageViewController: BaseViewController, ReactorKit.View {
-    
+
     init(_ navigator: NavigatorType, _ reactor: MessageViewReactor) {
         defer {
             self.reactor = reactor
@@ -22,24 +22,16 @@ class MessageViewController: BaseViewController, ReactorKit.View {
         super.init(navigator, reactor)
         self.tabBarItem.title = reactor.currentState.title
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let item = self.tabBarItem {
-//            themeService.rx
-//                .bind({ [NSAttributedString.Key.foregroundColor: $0.highlightedColor] }, to: item.rx.titleTextAttributes(for: .normal))
-//                // .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: item.rx.titleTextAttributes(for: .selected))
-//                .disposed(by: self.rx.disposeBag)
-            print("")
-        }
     }
-    
+
     func bind(reactor: MessageViewReactor) {
         super.bind(reactor: reactor)
     }
-    
 }

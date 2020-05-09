@@ -15,37 +15,39 @@ import RxOptional
 import SWFrame
 
 class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
-    
+
     enum Action {
         case load
-        //case update
+        case night(Bool)
     }
-    
+
     enum Mutation {
         case setLoading(Bool)
-        case setRepository(Repository)
+        case setNight(Bool)
         case setError(Error?)
-        case initial([[ModelType]])
+        case setRepository(Repo)
+        case start([[ModelType]])
     }
-    
+
     struct State {
         var isLoading = false
-        //var isUpdating = false
+        var isNight = false
         var title: String?
         var error: Error?
-        var repository: Repository?
+        var repository: Repo?
         var sections: [SettingSection] = []
     }
-    
+
     var initialState = State()
-    
-    required init(_ provider: ProviderType, _ parameters: Dictionary<String, Any>?) {
+
+    required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
+            isNight: ThemeType.currentTheme().isDark,
             title: stringDefault(self.title, R.string.localizable.mainTabBarSetting())
         )
     }
-    
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
@@ -55,55 +57,36 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 let logout = Setting(id: .logout)
                 sections.append([user, logout])
             }
-            if let repository = Repository.current() {
+            if let repository = Repo.current() {
                 sections.append([repository])
             }
             var preference: [ModelType] = []
-            preference.append(Setting(id: .night, accessory: .switcher(ThemeType.currentTheme().isDark)))
+            var dark = Setting(id: .night, accessory: .none)
+            dark.switched = ThemeType.currentTheme().isDark
+            preference.append(dark)
             preference.append(Setting(id: .color))
             sections.append(preference)
             return .concat([
                 .just(.setLoading(true)),
-                .just(.initial(sections)),
-                self.provider.repository(fullname: "tospery/SWHub").map(Mutation.setRepository).catchError({.just(.setError($0))}),
+                .just(.start(sections)),
+                self.provider.repo(fullname: "tospery/SWHub").map(Mutation.setRepository).catchError({.just(.setError($0))}),
                 .just(.setLoading(false))
             ])
+        case let .night(isNight):
+            guard isNight != self.currentState.isNight else { return .empty() }
+            return .just(.setNight(isNight))
         }
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
-        case let .initial(sections):
-            state.sections = sections.map { models -> SettingSection in
-                var header = R.string.localizable.settingPreferences()
-                var items: [SettingSectionItem] = []
-                for model in models {
-                    if let user = model as? User {
-                        header = R.string.localizable.settingAccount()
-                        items.append(.user(SettingUserItem(user)))
-                    }
-                    if let repository = model as? Repository {
-                        header = R.string.localizable.settingProject()
-                        items.append(.project(SettingProjectItem(repository)))
-                    }
-                    if let setting = model as? Setting {
-                        let item = SettingItem(setting)
-                        switch setting.id! {
-                        case .logout:
-                            header = R.string.localizable.settingAccount()
-                            items.append(.logout(item))
-                        case .night:
-                            items.append(.night(item))
-                        case .color:
-                            items.append(.color(item))
-                        }
-                    }
-                }
-                return .setting(header: header, items: items)
-            }
+        case let .setNight(isNight):
+            state.isNight = isNight
+        case let .start(sections):
+            state.sections = self.sections(sections)
         case let .setRepository(repository):
             state.repository = repository
             var sections = state.sections
@@ -112,11 +95,41 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             }
             sections.insert(.setting(header: R.string.localizable.settingProject(), items: [.project(SettingProjectItem(repository))]), at: 1)
             state.sections = sections
-            Repository.update(repository)
+            Repo.update(repository)
         case let .setError(error):
             state.error = error
         }
         return state
     }
-    
+
+    func sections(_ sections: [[ModelType]]) -> [SettingSection] {
+        return sections.map { models -> SettingSection in
+            var header = R.string.localizable.settingPreferences()
+            var items: [SettingSectionItem] = []
+            for model in models {
+                if let user = model as? User {
+                    header = R.string.localizable.settingAccount()
+                    items.append(.profile(SettingProfileItem(user)))
+                }
+                if let repository = model as? Repo {
+                    header = R.string.localizable.settingProject()
+                    items.append(.project(SettingProjectItem(repository)))
+                }
+                if let setting = model as? Setting {
+                    switch setting.id! {
+                    case .logout:
+                        header = R.string.localizable.settingAccount()
+                        items.append(.logout(SettingNormalItem(setting)))
+                    case .night:
+                        items.append(.dark(SettingSwitchItem(setting)))
+                    case .color:
+                        items.append(.color(SettingNormalItem(setting)))
+                    default:
+                        break
+                    }
+                }
+            }
+            return .setting(header: header, items: items)
+        }
+    }
 }

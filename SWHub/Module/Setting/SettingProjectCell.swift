@@ -16,5 +16,5 @@ import Kingfisher
 import SWFrame
 
 class SettingProjectCell: InfoCell {
-    
+
 }

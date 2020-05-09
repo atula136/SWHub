@@ -17,9 +17,14 @@ import SWFrame
 
 enum GithubAPI {
     case profile
-    case repository(fullname: String)
+    case repo(fullname: String)
     case readme(fullname: String, ref: String?)
-    case unstarRepository(fullname: String)
+    case checkStarring(fullname: String)
+    case starRepo(fullname: String)
+    case unstarRepo(fullname: String)
+    case watchers(fullname: String, page: Int)
+    case stargazers(fullname: String, page: Int)
+    case forks(fullname: String, page: Int)
 //    case wechatInfo
 //    case homePages
 //    case homeModule(pageID: String)
@@ -32,41 +37,51 @@ enum GithubAPI {
 }
 
 extension GithubAPI: TargetType {
-    
+
     var baseURL: URL {
-        return Constant.Network.baseApiUrl.url!
+        return UIApplication.shared.baseApiUrl.url!
     }
-    
+
     var path: String {
         switch self {
         case .profile: return "/user"
-        case let .repository(fullname): return "/repos/\(fullname)"
+        case let .repo(fullname): return "/repos/\(fullname)"
         case let .readme(fullname): return "/repos/\(fullname)/readme"
-        case let .unstarRepository(fullname): return "/user/starred/\(fullname)"
+        case .checkStarring(let fullname),
+             .starRepo(let fullname),
+             .unstarRepo(let fullname):
+            return "/user/starred/\(fullname)"
+        case let .watchers(fullname, _): return "/repos/\(fullname)/subscribers"
+        case let .stargazers(fullname, _): return "/repos/\(fullname)/stargazers"
+        case let .forks(fullname, _): return "/repos/\(fullname)/forks"
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
-        case .unstarRepository:
+        case .starRepo:
+            return .put
+        case .unstarRepo:
             return .delete
         default:
             return .get
         }
     }
-    
+
     var headers: [String: String]? {
         if let token = User.token {
             return ["Authorization": "Basic \(token)"]
         }
         return nil
     }
-    
+
     var task: Task {
         var parameters: [String: Any] = [:]
         switch self {
         case let .readme(_, ref):
             parameters["ref"] = ref
+        case .watchers(_, let page), .stargazers(_, let page), .forks(_, let page):
+            parameters["page"] = page
         default:
             break
         }
@@ -75,29 +90,15 @@ extension GithubAPI: TargetType {
         }
         return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
     }
-    
+
     var validationType: ValidationType {
         return .none
     }
-    
+
     var sampleData: Data {
         var path = self.path.replacingOccurrences(of: "/", with: "-")
         let index = path.index(after: path.startIndex)
         path = String(path[index...])
-        
-//        switch self {
-//        case .messageList(let type, let index, _):
-//            path = path + "\(type.rawValue)\(index)"
-//        case .productList(_, _, let pageIndex, _, _):
-//            path = path + "\(pageIndex)"
-//        default:
-//            break
-//        }
-        
-//        if path == "cn-api-message-list11" {
-//            path = "error-401"
-//        }
-        
         if let url = Bundle.main.url(forResource: path, withExtension: "json"),
             let data = try? Data(contentsOf: url) {
             return data

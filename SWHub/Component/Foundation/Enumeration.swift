@@ -8,3 +8,25 @@
 
 import UIKit
 
+enum ListType: String {
+    case watchers
+    case stargazers
+    case forks
+}
+
+enum AccessoryType: Equatable {
+    case none
+    case indicator
+    case checkmark
+
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.none, .none),
+             (.indicator, .indicator),
+             (.checkmark, .checkmark):
+            return true
+        default:
+            return false
+        }
+    }
+}
