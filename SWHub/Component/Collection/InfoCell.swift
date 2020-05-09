@@ -122,6 +122,7 @@ class InfoCell: CollectionCell, ReactorKit.View {
         self.detailLabel.sizeToFit()
         self.detailLabel.left = self.titleLabel.left
         self.detailLabel.top = self.subtitleLabel.bottom + 4
+        self.detailLabel.extendToRight = self.indicatorImageView.left - 8
     }
 
     func bind(reactor: InfoItem) {

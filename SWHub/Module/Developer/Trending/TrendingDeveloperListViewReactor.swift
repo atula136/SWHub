@@ -79,7 +79,7 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
             if toCache {
                 TrendingDeveloper.storeArray(developers)
             }
-            state.sections = [.developers(developers.map { TrendingDeveloperSectionItem.developer(TrendingDeveloperItem($0)) })]
+            state.sections = [.developers(developers.map { TrendingDeveloperSectionItem.developer(UserItem($0)) })]
         }
         return state
     }

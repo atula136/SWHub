@@ -13,15 +13,22 @@ class UserItem: InfoItem {
 
     required init(_ model: ModelType) {
         super.init(model)
+        var title: String?
+        var subtitle: String?
+        var icon: URL?
         if let user = model as? User {
-            self.initialState = State(title: user.login, icon: user.avatar)
-        } else if let developer = model as? TrendingDeveloper {
-            self.initialState = State(
-                title: "\(developer.username ?? "")/\(developer.name ?? "")",
-                subtitle: "\(developer.username ?? "")/\(developer.repo?.name ?? "")",
-                icon: developer.avatar
-            )
+            title = user.login
+            icon = user.avatar
+        } else if let user = model as? TrendingDeveloper {
+            title = user.name
+            subtitle = user.repo?.name
+            icon = user.avatar
         }
+        self.initialState = State(
+            title: title,
+            subtitle: subtitle,
+            icon: icon
+        )
     }
 
 }

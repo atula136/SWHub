@@ -31,5 +31,5 @@ extension TrendingDeveloperSection: SectionModelType {
 }
 
 enum TrendingDeveloperSectionItem {
-    case developer(TrendingDeveloperItem)
+    case developer(UserItem)
 }

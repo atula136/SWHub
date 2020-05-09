@@ -25,8 +25,6 @@ languageColor
 https://api.github.com/user/starred/rxhanson/Rectangle
 
 
-watchers:
-https://api.github.com/repos/rxhanson/Rectangle/subscribers?page=1
 stargazers:
 https://api.github.com/repos/rxhanson/Rectangle/stargazers?page=1
 forks:

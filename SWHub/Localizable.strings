@@ -6,6 +6,9 @@
   Copyright © 2020 杨建祥. All rights reserved.
 */
 
+"Watch" = "观察";
+"Star" = "打星";
+"Fork" = "复制";
 /* 共同 */
 "Common.Yes" = "是";
 "Common.No" = "否";
@@ -36,9 +39,6 @@
 "Detail.Cell.Code" = "源代码";
 "Detail.Cell.Star" = "打星历史";
 "Detail.Cell.Line" = "计算行数";
-"Detail.Btn.Watch" = "观察";
-"Detail.Btn.Star" = "打星";
-"Detail.Btn.Fork" = "复制";
 /* 登录 */
 "Login.Title" = "登录";
 "Login.Password" = "密码";

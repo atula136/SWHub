@@ -42,21 +42,21 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
         return button
     }()
 
-    lazy var watchButton: Button = {
+    lazy var watchersButton: Button = {
         let button = Button(type: .custom)
         button.cornerRadius = 4
         button.titleLabel?.numberOfLines = 2
         return button
     }()
 
-    lazy var starCountButton: Button = {
+    lazy var stargazersButton: Button = {
         let button = Button(type: .custom)
         button.cornerRadius = 4
         button.titleLabel?.numberOfLines = 2
         return button
     }()
 
-    lazy var forkButton: Button = {
+    lazy var forkersButton: Button = {
         let button = Button(type: .custom)
         button.cornerRadius = 4
         button.titleLabel?.numberOfLines = 2
@@ -75,17 +75,17 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
 
         let width = flat((self.width - 20 * 2 - 10 * 2) / 3.f)
         let height = flat(self.height - self.avatarImageView.bottom - 10 - 20)
-        self.watchButton.size = CGSize(width: width, height: height)
-        self.starCountButton.size = self.watchButton.size
-        self.forkButton.size = self.watchButton.size
-        self.addSubview(self.watchButton)
-        self.addSubview(self.starCountButton)
-        self.addSubview(self.forkButton)
+        self.watchersButton.size = CGSize(width: width, height: height)
+        self.stargazersButton.size = self.watchersButton.size
+        self.forkersButton.size = self.watchersButton.size
+        self.addSubview(self.watchersButton)
+        self.addSubview(self.stargazersButton)
+        self.addSubview(self.forkersButton)
 
         themeService.rx
             .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.backgroundColor }, to: [self.starButton.rx.borderColor, self.starButton.rx.tintColor])
-            .bind({ $0.foregroundColor }, to: [self.starButton.rx.backgroundColor, self.watchButton.rx.backgroundColor, self.starCountButton.rx.backgroundColor, self.forkButton.rx.backgroundColor])
+            .bind({ $0.foregroundColor }, to: [self.starButton.rx.backgroundColor, self.watchersButton.rx.backgroundColor, self.stargazersButton.rx.backgroundColor, self.forkersButton.rx.backgroundColor])
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -97,9 +97,9 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
         super.prepareForReuse()
         self.titleLabel.text = nil
         self.avatarImageView.image = nil
-        self.watchButton.setAttributedTitle(nil, for: .normal)
-        self.starCountButton.setAttributedTitle(nil, for: .normal)
-        self.forkButton.setAttributedTitle(nil, for: .normal)
+        self.watchersButton.setAttributedTitle(nil, for: .normal)
+        self.stargazersButton.setAttributedTitle(nil, for: .normal)
+        self.forkersButton.setAttributedTitle(nil, for: .normal)
     }
 
     override func layoutSubviews() {
@@ -114,12 +114,12 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
         self.titleLabel.width = self.width - self.avatarImageView.right - 10 - 20
         self.titleLabel.center = CGPoint(x: self.avatarImageView.right + 10 + self.titleLabel.width / 2, y: self.avatarImageView.center.y)
 
-        self.watchButton.left = 20
-        self.watchButton.bottom = self.height - 10
-        self.starCountButton.left = self.watchButton.right + 10
-        self.starCountButton.bottom = self.watchButton.bottom
-        self.forkButton.left = self.starCountButton.right + 10
-        self.forkButton.bottom = self.watchButton.bottom
+        self.watchersButton.left = 20
+        self.watchersButton.bottom = self.height - 10
+        self.stargazersButton.left = self.watchersButton.right + 10
+        self.stargazersButton.bottom = self.watchersButton.bottom
+        self.forkersButton.left = self.stargazersButton.right + 10
+        self.forkersButton.bottom = self.watchersButton.bottom
     }
 
     func bind(reactor: RepoDetailHeaderReactor) {
@@ -135,13 +135,13 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
 //            .bind(to: self.starButton.rx.isSelected)
 //            .disposed(by: self.disposeBag)
         reactor.state.map { $0.follow }
-            .bind(to: self.watchButton.rx.attributedTitle(for: .normal))
+            .bind(to: self.watchersButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.star }
-            .bind(to: self.starCountButton.rx.attributedTitle(for: .normal))
+            .bind(to: self.stargazersButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.fork }
-            .bind(to: self.forkButton.rx.attributedTitle(for: .normal))
+            .bind(to: self.forkersButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
@@ -165,8 +165,28 @@ extension Reactive where Base: RepoDetailHeaderView {
         return ControlEvent(events: source)
     }
 
-    var watch: ControlEvent<Void> {
-        return ControlEvent(events: self.base.watchButton.rx.tap)
+    var watchers: ControlEvent<[String: String]> {
+        let source = self.base.watchersButton.rx.tap.map { [
+            Parameter.title: R.string.localizable.watch(),
+            Parameter.list: User.ListType.watchers.rawValue
+        ] }
+        return ControlEvent(events: source)
+    }
+
+    var stargazers: ControlEvent<[String: String]> {
+        let source = self.base.stargazersButton.rx.tap.map { [
+            Parameter.title: R.string.localizable.star(),
+            Parameter.list: User.ListType.stargazers.rawValue
+        ] }
+        return ControlEvent(events: source)
+    }
+
+    var forkers: ControlEvent<[String: String]> {
+        let source = self.base.forkersButton.rx.tap.map { [
+            Parameter.title: R.string.localizable.fork(),
+            Parameter.list: User.ListType.forkers.rawValue
+        ] }
+        return ControlEvent(events: source)
     }
 
 }

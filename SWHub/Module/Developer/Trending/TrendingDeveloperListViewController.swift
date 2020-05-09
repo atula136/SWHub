@@ -18,7 +18,7 @@ import SWFrame
 class TrendingDeveloperListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let developerCell = ReusableCell<TrendingDeveloperCell>()
+        static let developerCell = ReusableCell<UserCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingDeveloperSection>

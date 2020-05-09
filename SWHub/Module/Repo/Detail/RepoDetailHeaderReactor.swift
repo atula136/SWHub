@@ -34,9 +34,9 @@ class RepoDetailHeaderReactor: SupplementaryReactor, ReactorKit.Reactor {
         self.initialState = State(
             avatar: repository.owner?.avatar,
             title: repository.description,
-            follow: repository.count(title: R.string.localizable.detailBtnWatch(), value: repository.watchersCount ?? 0),
-            star: repository.count(title: R.string.localizable.detailBtnStar(), value: repository.stargazersCount ?? 0),
-            fork: repository.count(title: R.string.localizable.detailBtnFork(), value: repository.forksCount ?? 0)
+            follow: repository.count(title: R.string.localizable.watch(), value: repository.watchersCount ?? 0),
+            star: repository.count(title: R.string.localizable.star(), value: repository.stargazersCount ?? 0),
+            fork: repository.count(title: R.string.localizable.fork(), value: repository.forksCount ?? 0)
         )
     }
 }

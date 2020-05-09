@@ -137,6 +137,8 @@ struct User: ModelType, Storable, Subjective {
 
     enum ListType: String {
         case watchers
+        case stargazers
+        case forkers
     }
 
 }
