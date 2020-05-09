@@ -42,29 +42,9 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-//        let fullname = stringMember(self.parameters, Parameter.fullname, nil)
-//        var repository = Repo.init()
-//        repository.fullName = fullname
         self.fullname = stringMember(self.parameters, Parameter.fullname, nil)
-//        let condition = Condition.current()!
-//        // since
-//        let value = stringMember(self.parameters, Parameter.since, condition.since.paramValue)!
-//        let since = value.since
-//        // language
-//        let urlParam = stringMember(self.parameters, Parameter.language, condition.language.urlParam)
-//        var language = Condition.Language.init()
-//        language.urlParam = urlParam
-//        // sections
-//        var sections: [Condition.Language.Section] = []
-//        if let languages = Condition.Language.cachedArray() {
-//            let langs = self.languages(languages: languages, selected: language.urlParam)
-//            let items = langs.map { Condition.Language.Item($0) }
-//            let sectionItems = items.map { Condition.Language.SectionItem.language($0) }
-//            sections = [.languages(sectionItems)]
-//        }
         self.initialState = State(
             title: stringDefault(self.title, self.fullname ?? "")
-            // repository: repository
         )
     }
 
@@ -121,19 +101,5 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         }
         return state
     }
-//
-//    func languages(languages: [Condition.Language], selected: String?) -> [Condition.Language] {
-//        var langs = languages
-//        langs.insert(Condition.Language.init(), at: 0)
-//        for (index, lang) in langs.enumerated() {
-//            if lang.urlParam == selected {
-//                var selected = lang
-//                selected.checked = true
-//                langs.remove(at: index)
-//                langs.insert(selected, at: index)
-//                break
-//            }
-//        }
-//        return langs
-//    }
+
 }

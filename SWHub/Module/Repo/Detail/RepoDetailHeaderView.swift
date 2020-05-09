@@ -168,7 +168,7 @@ extension Reactive where Base: RepoDetailHeaderView {
     var watchers: ControlEvent<[String: String]> {
         let source = self.base.watchersButton.rx.tap.map { [
             Parameter.title: R.string.localizable.watch(),
-            Parameter.list: User.ListType.watchers.rawValue
+            Parameter.list: ListType.watchers.rawValue
         ] }
         return ControlEvent(events: source)
     }
@@ -176,15 +176,15 @@ extension Reactive where Base: RepoDetailHeaderView {
     var stargazers: ControlEvent<[String: String]> {
         let source = self.base.stargazersButton.rx.tap.map { [
             Parameter.title: R.string.localizable.star(),
-            Parameter.list: User.ListType.stargazers.rawValue
+            Parameter.list: ListType.stargazers.rawValue
         ] }
         return ControlEvent(events: source)
     }
 
-    var forkers: ControlEvent<[String: String]> {
+    var forks: ControlEvent<[String: String]> {
         let source = self.base.forkersButton.rx.tap.map { [
             Parameter.title: R.string.localizable.fork(),
-            Parameter.list: User.ListType.forkers.rawValue
+            Parameter.list: ListType.forks.rawValue
         ] }
         return ControlEvent(events: source)
     }

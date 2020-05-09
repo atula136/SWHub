@@ -1,5 +1,5 @@
 //
-//  UserListViewReactor.swift
+//  RepoListViewReactor.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/9.
@@ -12,7 +12,7 @@ import RxCocoa
 import ReactorKit
 import SWFrame
 
-class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
@@ -25,8 +25,8 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setRefreshing(Bool)
         case setLoadingMore(Bool)
         case setError(Error?)
-        case start([User], toCache: Bool)
-        case append([User])
+        case start([Repo], toCache: Bool)
+        case append([Repo])
     }
 
     struct State {
@@ -36,24 +36,21 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var noMoreData = false
         var title: String?
         var error: Error?
-        var sections: [UserListSection] = []
+        var sections: [RepoListSection] = []
     }
 
     var fullname: String?
-    var request: (String, Int) -> Observable<[User]> = { _, _ in .empty() }
+    var request: (String, Int) -> Observable<[Repo]> = { _, _ in .empty() }
     var initialState = State()
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-        let list = User.ListType.init(rawValue: stringDefault(stringMember(self.parameters, Parameter.list, nil), User.ListType.watchers.rawValue)) ?? User.ListType.watchers
-        self.request = { (fullname: String, page: Int) -> Observable<[User]> in
+        let list = ListType.init(rawValue: stringDefault(stringMember(self.parameters, Parameter.list, nil), ListType.watchers.rawValue)) ?? ListType.watchers
+        self.request = { (fullname: String, page: Int) -> Observable<[Repo]> in
             switch list {
-            case .watchers:
-                return provider.watchers(fullname: fullname, page: page)
-            case .stargazers:
-                return provider.stargazers(fullname: fullname, page: page)
-            case .forkers:
-                // return provider.forkers(fullname: fullname, page: page)
+            case .forks:
+                return provider.forks(fullname: fullname, page: page)
+            default:
                 return .empty()
             }
         }
@@ -113,16 +110,16 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.isLoadingMore = isLoadingMore
         case let .setError(error):
             state.error = error
-        case let .start(users, toCache):
+        case let .start(repos, toCache):
             if toCache {
-                User.storeArray(users)
+                Repo.storeArray(repos)
             }
-            state.sections = [.users(users.map { .user(UserItem($0)) })]
-        case let .append(users):
-            state.noMoreData = users.count < self.pageSize
+            state.sections = [.repos(repos.map { .repo(RepoItem($0)) })]
+        case let .append(repos):
+            state.noMoreData = repos.count < self.pageSize
             var items = state.sections[0].items
-            items += users.map { .user(UserItem($0)) }
-            state.sections = [.users(items)]
+            items += repos.map { .repo(RepoItem($0)) }
+            state.sections = [.repos(items)]
         }
         return state
     }

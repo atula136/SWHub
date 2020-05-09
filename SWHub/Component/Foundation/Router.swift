@@ -125,11 +125,15 @@ enum Router {
         navigator.register(self.condition.pattern) { url, values, context in
             ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))
         }
-        // 4. 仓库详情
+        // 4. 仓库列表
+        navigator.register(Repo.list.pattern) { url, values, context in
+            RepoListViewController(navigator, RepoListViewReactor(provider, parameters(url, values, context)))
+        }
+        // 5. 仓库详情
         navigator.register(Repo.detail.pattern) { url, values, context in
             RepoDetailViewController(navigator, RepoDetailViewReactor(provider, parameters(url, values, context)))
         }
-        // 5. 用户列表
+        // 6. 用户列表
         navigator.register(User.list.pattern) { url, values, context in
             UserListViewController(navigator, UserListViewReactor(provider, parameters(url, values, context)))
         }

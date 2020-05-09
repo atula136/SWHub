@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum ListType: String {
+    case watchers
+    case stargazers
+    case forks
+}
+
 enum AccessoryType: Equatable {
     case none
     case indicator

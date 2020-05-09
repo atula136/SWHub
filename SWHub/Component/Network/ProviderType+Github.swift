@@ -44,8 +44,8 @@ extension ProviderType {
         return self.githubNetworking.requestArray(.stargazers(fullname: fullname, page: page), type: User.self)
     }
 
-    func forkers(fullname: String, page: Int) -> Observable<[Repo]> {
-        return self.githubNetworking.requestArray(.forkers(fullname: fullname, page: page), type: Repo.self)
+    func forks(fullname: String, page: Int) -> Observable<[Repo]> {
+        return self.githubNetworking.requestArray(.forks(fullname: fullname, page: page), type: Repo.self)
     }
 
 }

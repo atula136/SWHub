@@ -135,10 +135,4 @@ struct User: ModelType, Storable, Subjective {
         return .composed(of: texts)
     }
 
-    enum ListType: String {
-        case watchers
-        case stargazers
-        case forkers
-    }
-
 }

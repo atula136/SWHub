@@ -56,14 +56,17 @@
 		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
 		792F6D692455563700856757 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User.swift */; };
 		79322482245FF8D400BED07A /* TrendingRepoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79322481245FF8D400BED07A /* TrendingRepoSection.swift */; };
-		79322484245FF91F00BED07A /* TrendingRepoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79322483245FF91F00BED07A /* TrendingRepoItem.swift */; };
-		79322486245FF92A00BED07A /* TrendingRepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79322485245FF92A00BED07A /* TrendingRepoCell.swift */; };
 		794307EC246271ED0050F3E3 /* DefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307EB246271ED0050F3E3 /* DefaultCell.swift */; };
 		794307EE246274560050F3E3 /* NormalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307ED246274560050F3E3 /* NormalItem.swift */; };
 		794307F0246274650050F3E3 /* NormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307EF246274650050F3E3 /* NormalCell.swift */; };
 		794307F2246275A00050F3E3 /* RepoDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307F1246275A00050F3E3 /* RepoDetailItem.swift */; };
 		794307F4246275A90050F3E3 /* RepoDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307F3246275A90050F3E3 /* RepoDetailCell.swift */; };
 		794307F624627DEC0050F3E3 /* RepoDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307F524627DEC0050F3E3 /* RepoDetailModel.swift */; };
+		794E3BF124668D11003DDDFB /* RepoListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF024668D11003DDDFB /* RepoListViewReactor.swift */; };
+		794E3BF324668D1C003DDDFB /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF224668D1C003DDDFB /* RepoListViewController.swift */; };
+		794E3BF524668D30003DDDFB /* RepoListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF424668D30003DDDFB /* RepoListSection.swift */; };
+		794E3BF724668D47003DDDFB /* RepoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF624668D47003DDDFB /* RepoItem.swift */; };
+		794E3BF924668D51003DDDFB /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF824668D51003DDDFB /* RepoCell.swift */; };
 		79740E6E245C4ED1003F441A /* SettingProjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79740E6D245C4ED1003F441A /* SettingProjectItem.swift */; };
 		79740E70245C4EDE003F441A /* SettingProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79740E6F245C4EDE003F441A /* SettingProjectCell.swift */; };
 		7976AC9C24581F6700093046 /* MainViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9B24581F6700093046 /* MainViewReactor.swift */; };
@@ -202,14 +205,17 @@
 		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		792F6D682455563700856757 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		79322481245FF8D400BED07A /* TrendingRepoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepoSection.swift; sourceTree = "<group>"; };
-		79322483245FF91F00BED07A /* TrendingRepoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepoItem.swift; sourceTree = "<group>"; };
-		79322485245FF92A00BED07A /* TrendingRepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepoCell.swift; sourceTree = "<group>"; };
 		794307EB246271ED0050F3E3 /* DefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCell.swift; sourceTree = "<group>"; };
 		794307ED246274560050F3E3 /* NormalItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalItem.swift; sourceTree = "<group>"; };
 		794307EF246274650050F3E3 /* NormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCell.swift; sourceTree = "<group>"; };
 		794307F1246275A00050F3E3 /* RepoDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailItem.swift; sourceTree = "<group>"; };
 		794307F3246275A90050F3E3 /* RepoDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailCell.swift; sourceTree = "<group>"; };
 		794307F524627DEC0050F3E3 /* RepoDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailModel.swift; sourceTree = "<group>"; };
+		794E3BF024668D11003DDDFB /* RepoListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewReactor.swift; sourceTree = "<group>"; };
+		794E3BF224668D1C003DDDFB /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
+		794E3BF424668D30003DDDFB /* RepoListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListSection.swift; sourceTree = "<group>"; };
+		794E3BF624668D47003DDDFB /* RepoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoItem.swift; sourceTree = "<group>"; };
+		794E3BF824668D51003DDDFB /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
 		79740E6D245C4ED1003F441A /* SettingProjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProjectItem.swift; sourceTree = "<group>"; };
 		79740E6F245C4EDE003F441A /* SettingProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProjectCell.swift; sourceTree = "<group>"; };
 		7976AC9B24581F6700093046 /* MainViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewReactor.swift; sourceTree = "<group>"; };
@@ -460,6 +466,26 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		794E3BEE24668CE9003DDDFB /* List */ = {
+			isa = PBXGroup;
+			children = (
+				79CC24AB24663E8100794CFD /* UserListViewReactor.swift */,
+				79CC24AD24663E8B00794CFD /* UserListViewController.swift */,
+				79CC24AF24663F2C00794CFD /* UserListSection.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		794E3BEF24668CF5003DDDFB /* List */ = {
+			isa = PBXGroup;
+			children = (
+				794E3BF024668D11003DDDFB /* RepoListViewReactor.swift */,
+				794E3BF224668D1C003DDDFB /* RepoListViewController.swift */,
+				794E3BF424668D30003DDDFB /* RepoListSection.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		7976AC9A24581F5000093046 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,9 +587,12 @@
 		79A8BDD9245FC82700E88DB2 /* Repo */ = {
 			isa = PBXGroup;
 			children = (
+				794E3BEF24668CF5003DDDFB /* List */,
 				799374772464204E00EC322C /* Detail */,
 				79A8BDDC245FC90600E88DB2 /* Trending */,
 				79D8C81E24620AB900A905F0 /* Repo.swift */,
+				794E3BF624668D47003DDDFB /* RepoItem.swift */,
+				794E3BF824668D51003DDDFB /* RepoCell.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -584,8 +613,6 @@
 				79EE8A9E245E8DA300A2438C /* TrendingRepoListViewController.swift */,
 				79EE8A9C245E8D9700A2438C /* TrendingRepoListViewReactor.swift */,
 				79322481245FF8D400BED07A /* TrendingRepoSection.swift */,
-				79322483245FF91F00BED07A /* TrendingRepoItem.swift */,
-				79322485245FF92A00BED07A /* TrendingRepoCell.swift */,
 			);
 			path = Trending;
 			sourceTree = "<group>";
@@ -689,10 +716,8 @@
 		79E2AFAC2466390500D63053 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				794E3BEE24668CE9003DDDFB /* List */,
 				792F6D682455563700856757 /* User.swift */,
-				79CC24AB24663E8100794CFD /* UserListViewReactor.swift */,
-				79CC24AD24663E8B00794CFD /* UserListViewController.swift */,
-				79CC24AF24663F2C00794CFD /* UserListSection.swift */,
 				79CC24B124663FA900794CFD /* UserItem.swift */,
 				79CC24B324663FB500794CFD /* UserCell.swift */,
 			);
@@ -961,6 +986,7 @@
 				79CC24B424663FB500794CFD /* UserCell.swift in Sources */,
 				790767B62456CE5500CD0AAF /* ProviderType+Github.swift in Sources */,
 				790767AE2456C27B00CD0AAF /* GithubAPI.swift in Sources */,
+				794E3BF324668D1C003DDDFB /* RepoListViewController.swift in Sources */,
 				79D261472462DCFA00A979D3 /* SettingNormalCell.swift in Sources */,
 				791160B1246042A200737F4B /* ConditionViewReactor.swift in Sources */,
 				79D261512462DEDC00A979D3 /* SettingProfileCell.swift in Sources */,
@@ -982,17 +1008,16 @@
 				7906C317245558B10030764D /* Theme.swift in Sources */,
 				79CE935E246034BC009D6243 /* TrendingDeveloperSection.swift in Sources */,
 				79D2614B2462DD1000A979D3 /* SettingSwitchCell.swift in Sources */,
-				79322484245FF91F00BED07A /* TrendingRepoItem.swift in Sources */,
 				790B88DD245F59ED000C89D4 /* TrendingDeveloper.swift in Sources */,
 				7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */,
 				79EE8A94245E88CF00A2438C /* HomeViewReactor.swift in Sources */,
+				794E3BF124668D11003DDDFB /* RepoListViewReactor.swift in Sources */,
 				7906C32B24555DFD0030764D /* Appearance.swift in Sources */,
 				79D2614D2462DDCC00A979D3 /* Setting.swift in Sources */,
 				790B88DF245F6046000C89D4 /* TrendingAPI.swift in Sources */,
 				79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */,
 				791160B3246042AF00737F4B /* ConditionViewController.swift in Sources */,
 				791160BF2460A11200737F4B /* Condition.swift in Sources */,
-				79322486245FF92A00BED07A /* TrendingRepoCell.swift in Sources */,
 				7922DC9324615DAC0090A3EC /* StringExt.swift in Sources */,
 				7976ACB82459335600093046 /* SettingSection.swift in Sources */,
 				7976ACBB2459339100093046 /* CollectionItem.swift in Sources */,
@@ -1009,6 +1034,7 @@
 				79042E98245D8FCC00DB30ED /* MyColorViewController.swift in Sources */,
 				79CE935824602FB1009D6243 /* InfoCell.swift in Sources */,
 				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
+				794E3BF724668D47003DDDFB /* RepoItem.swift in Sources */,
 				7906C31B245559180030764D /* R.generated.swift in Sources */,
 				794307F2246275A00050F3E3 /* RepoDetailItem.swift in Sources */,
 				7976ACA82458271000093046 /* ActivityViewReactor.swift in Sources */,
@@ -1043,6 +1069,7 @@
 				7976AC9E24581F7E00093046 /* MainViewController.swift in Sources */,
 				79EE8A96245E88DB00A2438C /* HomeViewController.swift in Sources */,
 				79D261492462DD0700A979D3 /* SettingSwitchItem.swift in Sources */,
+				794E3BF924668D51003DDDFB /* RepoCell.swift in Sources */,
 				794307F624627DEC0050F3E3 /* RepoDetailModel.swift in Sources */,
 				79EE8A9F245E8DA300A2438C /* TrendingRepoListViewController.swift in Sources */,
 				79D261432462D29900A979D3 /* WebViewController.swift in Sources */,
@@ -1050,6 +1077,7 @@
 				7976ACAC2458272400093046 /* SearchViewReactor.swift in Sources */,
 				79D261412462D28C00A979D3 /* WebViewReactor.swift in Sources */,
 				794307EE246274560050F3E3 /* NormalItem.swift in Sources */,
+				794E3BF524668D30003DDDFB /* RepoListSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

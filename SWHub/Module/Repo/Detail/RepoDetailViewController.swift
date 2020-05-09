@@ -122,8 +122,16 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
                 case UICollectionView.elementKindSectionHeader:
                     let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
                     view.bind(reactor: RepoDetailHeaderReactor(reactor.currentState.repository))
-                    Observable.merge(view.rx.watchers.asObservable(), view.rx.stargazers.asObservable(), view.rx.forkers.asObservable()).subscribe(onNext: { parameters in
+                    Observable.merge(view.rx.watchers.asObservable(), view.rx.stargazers.asObservable()).subscribe(onNext: { parameters in
                         if var url = Router.User.list.pattern.url,
+                            let fullname = reactor.fullname {
+                            url.appendQueryParameters(parameters)
+                            url.appendQueryParameters([ Parameter.fullname: fullname ])
+                            navigator.push(url)
+                        }
+                    }).disposed(by: view.disposeBag)
+                    view.rx.forks.subscribe(onNext: { parameters in
+                        if var url = Router.Repo.list.pattern.url,
                             let fullname = reactor.fullname {
                             url.appendQueryParameters(parameters)
                             url.appendQueryParameters([ Parameter.fullname: fullname ])
