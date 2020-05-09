@@ -42,7 +42,7 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
         return button
     }()
 
-    lazy var followButton: Button = {
+    lazy var watchButton: Button = {
         let button = Button(type: .custom)
         button.cornerRadius = 4
         button.titleLabel?.numberOfLines = 2
@@ -75,17 +75,17 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
 
         let width = flat((self.width - 20 * 2 - 10 * 2) / 3.f)
         let height = flat(self.height - self.avatarImageView.bottom - 10 - 20)
-        self.followButton.size = CGSize(width: width, height: height)
-        self.starCountButton.size = self.followButton.size
-        self.forkButton.size = self.followButton.size
-        self.addSubview(self.followButton)
+        self.watchButton.size = CGSize(width: width, height: height)
+        self.starCountButton.size = self.watchButton.size
+        self.forkButton.size = self.watchButton.size
+        self.addSubview(self.watchButton)
         self.addSubview(self.starCountButton)
         self.addSubview(self.forkButton)
 
         themeService.rx
             .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.backgroundColor }, to: [self.starButton.rx.borderColor, self.starButton.rx.tintColor])
-            .bind({ $0.foregroundColor }, to: [self.starButton.rx.backgroundColor, self.followButton.rx.backgroundColor, self.starCountButton.rx.backgroundColor, self.forkButton.rx.backgroundColor])
+            .bind({ $0.foregroundColor }, to: [self.starButton.rx.backgroundColor, self.watchButton.rx.backgroundColor, self.starCountButton.rx.backgroundColor, self.forkButton.rx.backgroundColor])
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -97,7 +97,7 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
         super.prepareForReuse()
         self.titleLabel.text = nil
         self.avatarImageView.image = nil
-        self.followButton.setAttributedTitle(nil, for: .normal)
+        self.watchButton.setAttributedTitle(nil, for: .normal)
         self.starCountButton.setAttributedTitle(nil, for: .normal)
         self.forkButton.setAttributedTitle(nil, for: .normal)
     }
@@ -114,12 +114,12 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
         self.titleLabel.width = self.width - self.avatarImageView.right - 10 - 20
         self.titleLabel.center = CGPoint(x: self.avatarImageView.right + 10 + self.titleLabel.width / 2, y: self.avatarImageView.center.y)
 
-        self.followButton.left = 20
-        self.followButton.bottom = self.height - 10
-        self.starCountButton.left = self.followButton.right + 10
-        self.starCountButton.bottom = self.followButton.bottom
+        self.watchButton.left = 20
+        self.watchButton.bottom = self.height - 10
+        self.starCountButton.left = self.watchButton.right + 10
+        self.starCountButton.bottom = self.watchButton.bottom
         self.forkButton.left = self.starCountButton.right + 10
-        self.forkButton.bottom = self.followButton.bottom
+        self.forkButton.bottom = self.watchButton.bottom
     }
 
     func bind(reactor: RepoDetailHeaderReactor) {
@@ -135,7 +135,7 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
 //            .bind(to: self.starButton.rx.isSelected)
 //            .disposed(by: self.disposeBag)
         reactor.state.map { $0.follow }
-            .bind(to: self.followButton.rx.attributedTitle(for: .normal))
+            .bind(to: self.watchButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.star }
             .bind(to: self.starCountButton.rx.attributedTitle(for: .normal))
@@ -163,6 +163,10 @@ extension Reactive where Base: RepoDetailHeaderView {
             return !view.starButton.isSelected
         }
         return ControlEvent(events: source)
+    }
+
+    var watch: ControlEvent<Void> {
+        return ControlEvent(events: self.base.watchButton.rx.tap)
     }
 
 }

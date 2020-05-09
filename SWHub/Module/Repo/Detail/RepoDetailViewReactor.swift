@@ -76,14 +76,14 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.provider.repository(fullname: fullname).map { Mutation.setRepository($0) },
+                self.provider.repo(fullname: fullname).map { Mutation.setRepository($0) },
                 self.provider.checkStarring(fullname: fullname).map { Mutation.setStarred($0) },
                 .just(.setLoading(false))
             ])
         case let .star(star):
             guard self.currentState.starred != star else { return .empty() }
             guard let fullname = self.fullname else { return .empty() }
-            let request = star ? self.provider.starRepository(fullname: fullname) : self.provider.unstarRepository(fullname: fullname)
+            let request = star ? self.provider.starRepo(fullname: fullname) : self.provider.unstarRepo(fullname: fullname)
             return .concat([
                 .just(.setActivating(true)),
                 request.map { Mutation.setStarred(star) },

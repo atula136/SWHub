@@ -71,7 +71,7 @@ enum HomeKey {
     var title: String {
         switch self {
         case .repository:
-            return R.string.localizable.homeRepository()
+            return R.string.localizable.homeRepo()
         case .developer:
             return R.string.localizable.homeDeveloper()
         }

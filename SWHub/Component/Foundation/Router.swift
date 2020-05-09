@@ -24,6 +24,22 @@ enum Router {
     case category
     case condition
 
+    enum User {
+        case list
+        case detail
+
+        var pattern: String {
+            var path: String?
+            switch self {
+            case .list:
+                path = "user/list"
+            case .detail:
+                path = "user/detail"
+            }
+            return UIApplication.shared.scheme + "://" + path!
+        }
+    }
+
     enum Repo {
         case list
         case detail
@@ -110,8 +126,12 @@ enum Router {
             ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))
         }
         // 4. 仓库详情
-        navigator.register(self.Repo.detail.pattern) { url, values, context in
+        navigator.register(Repo.detail.pattern) { url, values, context in
             RepoDetailViewController(navigator, RepoDetailViewReactor(provider, parameters(url, values, context)))
+        }
+        // 5. 用户列表
+        navigator.register(User.list.pattern) { url, values, context in
+            UserListViewController(navigator, UserListViewReactor(provider, parameters(url, values, context)))
         }
 
 //        // 3. 弹窗

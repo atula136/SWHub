@@ -122,6 +122,16 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
                 case UICollectionView.elementKindSectionHeader:
                     let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
                     view.bind(reactor: RepoDetailHeaderReactor(reactor.currentState.repository))
+                    view.rx.watch.subscribe(onNext: { _ in
+                        if var url = Router.User.list.pattern.url,
+                            let fullname = reactor.fullname {
+                            url.appendQueryParameters([
+                                Parameter.title: R.string.localizable.detailBtnWatch(),
+                                Parameter.fullname: fullname
+                            ])
+                            navigator.push(url)
+                        }
+                    }).disposed(by: view.disposeBag)
                     view.rx.star.map { Reactor.Action.star($0) }
                         .bind(to: reactor.action)
                         .disposed(by: view.disposeBag)

@@ -20,24 +20,24 @@ extension ProviderType {
         return self.githubNetworking.requestObject(.profile, type: User.self)
     }
 
-    func repository(fullname: String) -> Observable<Repo> {
-        return self.githubNetworking.requestObject(.repository(fullname: fullname), type: Repo.self)
+    func repo(fullname: String) -> Observable<Repo> {
+        return self.githubNetworking.requestObject(.repo(fullname: fullname), type: Repo.self)
     }
 
     func checkStarring(fullname: String) -> Observable<Bool> {
         return self.githubNetworking.requestRaw(.checkStarring(fullname: fullname)).map { emptyDataStatusCodes.contains($0.statusCode) }
     }
 
-    func starRepository(fullname: String) -> Observable<Void> {
-        return self.githubNetworking.requestRaw(.starRepository(fullname: fullname)).map { _ in }
+    func starRepo(fullname: String) -> Observable<Void> {
+        return self.githubNetworking.requestRaw(.starRepo(fullname: fullname)).map { _ in }
     }
 
-    func unstarRepository(fullname: String) -> Observable<Void> {
-        return self.githubNetworking.requestRaw(.unstarRepository(fullname: fullname)).map { _ in }
+    func unstarRepo(fullname: String) -> Observable<Void> {
+        return self.githubNetworking.requestRaw(.unstarRepo(fullname: fullname)).map { _ in }
     }
 
-    func watchers(fullname: String, page: Int) -> Observable<[Repo]> {
-        return self.githubNetworking.requestArray(.watchers(fullname: fullname, page: page), type: Repo.self)
+    func watchers(fullname: String, page: Int) -> Observable<[User]> {
+        return self.githubNetworking.requestArray(.watchers(fullname: fullname, page: page), type: User.self)
     }
 
 }

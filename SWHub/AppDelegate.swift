@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let a2 = String(describing: Subject)
 //        let aaa = UIApplication.shared.baseApiUrl
 //        let bbb = UIApplication.shared.baseWebUrl
+//        let abc = User.ListType.watchers.rawValue
 //        print("")
     }
 

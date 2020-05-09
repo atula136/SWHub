@@ -91,6 +91,11 @@
 		79AF4A9E24554B0A001BDB90 /* SWHubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4A9D24554B0A001BDB90 /* SWHubTests.swift */; };
 		79AF4AA924554B0A001BDB90 /* SWHubUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4AA824554B0A001BDB90 /* SWHubUITests.swift */; };
 		79B2E56E245BD88900D6E162 /* IntExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2E56D245BD88900D6E162 /* IntExt.swift */; };
+		79CC24AC24663E8100794CFD /* UserListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CC24AB24663E8100794CFD /* UserListViewReactor.swift */; };
+		79CC24AE24663E8B00794CFD /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CC24AD24663E8B00794CFD /* UserListViewController.swift */; };
+		79CC24B024663F2C00794CFD /* UserListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CC24AF24663F2C00794CFD /* UserListSection.swift */; };
+		79CC24B224663FA900794CFD /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CC24B124663FA900794CFD /* UserItem.swift */; };
+		79CC24B424663FB500794CFD /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CC24B324663FB500794CFD /* UserCell.swift */; };
 		79CE935624602FA6009D6243 /* InfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935524602FA6009D6243 /* InfoItem.swift */; };
 		79CE935824602FB1009D6243 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935724602FB1009D6243 /* InfoCell.swift */; };
 		79CE935A24603390009D6243 /* TrendingDeveloperItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935924603390009D6243 /* TrendingDeveloperItem.swift */; };
@@ -240,6 +245,11 @@
 		79AF4AA824554B0A001BDB90 /* SWHubUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWHubUITests.swift; sourceTree = "<group>"; };
 		79AF4AAA24554B0A001BDB90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79B2E56D245BD88900D6E162 /* IntExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExt.swift; sourceTree = "<group>"; };
+		79CC24AB24663E8100794CFD /* UserListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewReactor.swift; sourceTree = "<group>"; };
+		79CC24AD24663E8B00794CFD /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		79CC24AF24663F2C00794CFD /* UserListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListSection.swift; sourceTree = "<group>"; };
+		79CC24B124663FA900794CFD /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
+		79CC24B324663FB500794CFD /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		79CE935524602FA6009D6243 /* InfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItem.swift; sourceTree = "<group>"; };
 		79CE935724602FB1009D6243 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		79CE935924603390009D6243 /* TrendingDeveloperItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDeveloperItem.swift; sourceTree = "<group>"; };
@@ -391,14 +401,14 @@
 		792F6D5F245555BF00856757 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7976ACB52458494A00093046 /* UIColorExt.swift */,
 				79B2E56D245BD88900D6E162 /* IntExt.swift */,
-				799547CF245D4998002A7999 /* UIApplicationExt.swift */,
-				799547D3245D607F002A7999 /* UIViewControllerExt.swift */,
 				79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */,
 				790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */,
 				791160B8246095B400737F4B /* ParameterExt.swift */,
 				7922DC9224615DAC0090A3EC /* StringExt.swift */,
+				799547CF245D4998002A7999 /* UIApplicationExt.swift */,
+				7976ACB52458494A00093046 /* UIColorExt.swift */,
+				799547D3245D607F002A7999 /* UIViewControllerExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -686,6 +696,11 @@
 			isa = PBXGroup;
 			children = (
 				792F6D682455563700856757 /* User.swift */,
+				79CC24AB24663E8100794CFD /* UserListViewReactor.swift */,
+				79CC24AD24663E8B00794CFD /* UserListViewController.swift */,
+				79CC24AF24663F2C00794CFD /* UserListSection.swift */,
+				79CC24B124663FA900794CFD /* UserItem.swift */,
+				79CC24B324663FB500794CFD /* UserCell.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -943,9 +958,13 @@
 				7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */,
 				79EE8AA4245E8ED300A2438C /* TrendingDeveloperListViewController.swift in Sources */,
 				79FAF5E424628DAD00CEC4D0 /* RepoDetailHeaderView.swift in Sources */,
+				79CC24B024663F2C00794CFD /* UserListSection.swift in Sources */,
 				7906C32124555DB60030764D /* Router.swift in Sources */,
+				79CC24B224663FA900794CFD /* UserItem.swift in Sources */,
 				7976ACA4245826FA00093046 /* MessageViewReactor.swift in Sources */,
+				79CC24AE24663E8B00794CFD /* UserListViewController.swift in Sources */,
 				7976AC9C24581F6700093046 /* MainViewReactor.swift in Sources */,
+				79CC24B424663FB500794CFD /* UserCell.swift in Sources */,
 				790767B62456CE5500CD0AAF /* ProviderType+Github.swift in Sources */,
 				790767AE2456C27B00CD0AAF /* GithubAPI.swift in Sources */,
 				79D261472462DCFA00A979D3 /* SettingNormalCell.swift in Sources */,
@@ -954,6 +973,7 @@
 				7906832C24564EAB00BFDCB2 /* AuthManager.swift in Sources */,
 				792F6D692455563700856757 /* User.swift in Sources */,
 				79EE8A9D245E8D9700A2438C /* TrendingRepoListViewReactor.swift in Sources */,
+				79CC24AC24663E8100794CFD /* UserListViewReactor.swift in Sources */,
 				799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */,
 				792F6D672455562F00856757 /* LoginViewController.swift in Sources */,
 				79D8C81B2462084900A905F0 /* RepoDetailViewReactor.swift in Sources */,

@@ -69,7 +69,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setLoading(true)),
                 .just(.start(sections)),
-                self.provider.repository(fullname: "tospery/SWHub").map(Mutation.setRepository).catchError({.just(.setError($0))}),
+                self.provider.repo(fullname: "tospery/SWHub").map(Mutation.setRepository).catchError({.just(.setError($0))}),
                 .just(.setLoading(false))
             ])
         case let .night(isNight):

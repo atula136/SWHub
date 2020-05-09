@@ -1012,7 +1012,7 @@ struct R: Rswift.Validatable {
       /// Value: 事件
       static let detailCellEvent = Rswift.StringResource(key: "Detail.Cell.Event", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 仓库
-      static let homeRepository = Rswift.StringResource(key: "Home.Repo", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let homeRepo = Rswift.StringResource(key: "Home.Repo", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 保存
       static let commonSave = Rswift.StringResource(key: "Common.Save", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 加载中
@@ -1021,7 +1021,7 @@ struct R: Rswift.Validatable {
       static let commonCancel = Rswift.StringResource(key: "Common.Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
       static let commonNo = Rswift.StringResource(key: "Common.No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 复制仓库
+      /// Value: 复制
       static let detailBtnFork = Rswift.StringResource(key: "Detail.Btn.Fork", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 夜间模式
       static let settingPreferencesNight = Rswift.StringResource(key: "Setting.Preferences.Night", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -1039,6 +1039,8 @@ struct R: Rswift.Validatable {
       static let detailCellBranch = Rswift.StringResource(key: "Detail.Cell.Branch", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 所有语言
       static let allLanguages = Rswift.StringResource(key: "All languages", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 打星
+      static let detailBtnStar = Rswift.StringResource(key: "Detail.Btn.Star", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 打星历史
       static let detailCellStar = Rswift.StringResource(key: "Detail.Cell.Star", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 拉取请求
@@ -1047,8 +1049,6 @@ struct R: Rswift.Validatable {
       static let detailCellCommit = Rswift.StringResource(key: "Detail.Cell.Commit", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 搜索
       static let mainTabBarSearch = Rswift.StringResource(key: "Main.TabBar.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 星星
-      static let detailBtnStar = Rswift.StringResource(key: "Detail.Btn.Star", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
       static let commonYes = Rswift.StringResource(key: "Common.Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 本周
@@ -1075,8 +1075,8 @@ struct R: Rswift.Validatable {
       static let commonISee = Rswift.StringResource(key: "Common.ISee", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确认
       static let commonOK = Rswift.StringResource(key: "Common.OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 观察者
-      static let detailBtnFollow = Rswift.StringResource(key: "Detail.Btn.Follow", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 观察
+      static let detailBtnWatch = Rswift.StringResource(key: "Detail.Btn.Watch", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 计算行数
       static let detailCellLine = Rswift.StringResource(key: "Detail.Cell.Line", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 设置
@@ -1123,7 +1123,7 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 仓库
-      static func homeRepository(preferredLanguages: [String]? = nil) -> String {
+      static func homeRepo(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
           return NSLocalizedString("Home.Repo", bundle: hostingBundle, comment: "")
         }
@@ -1187,7 +1187,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Common.No", bundle: bundle, comment: "")
       }
 
-      /// Value: 复制仓库
+      /// Value: 复制
       static func detailBtnFork(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
           return NSLocalizedString("Detail.Btn.Fork", bundle: hostingBundle, comment: "")
@@ -1304,6 +1304,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("All languages", bundle: bundle, comment: "")
       }
 
+      /// Value: 打星
+      static func detailBtnStar(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Detail.Btn.Star", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Detail.Btn.Star"
+        }
+
+        return NSLocalizedString("Detail.Btn.Star", bundle: bundle, comment: "")
+      }
+
       /// Value: 打星历史
       static func detailCellStar(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -1354,19 +1367,6 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Main.TabBar.Search", bundle: bundle, comment: "")
-      }
-
-      /// Value: 星星
-      static func detailBtnStar(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Detail.Btn.Star", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Detail.Btn.Star"
-        }
-
-        return NSLocalizedString("Detail.Btn.Star", bundle: bundle, comment: "")
       }
 
       /// Value: 是
@@ -1538,17 +1538,17 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Common.OK", bundle: bundle, comment: "")
       }
 
-      /// Value: 观察者
-      static func detailBtnFollow(preferredLanguages: [String]? = nil) -> String {
+      /// Value: 观察
+      static func detailBtnWatch(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Detail.Btn.Follow", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Detail.Btn.Watch", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Detail.Btn.Follow"
+          return "Detail.Btn.Watch"
         }
 
-        return NSLocalizedString("Detail.Btn.Follow", bundle: bundle, comment: "")
+        return NSLocalizedString("Detail.Btn.Watch", bundle: bundle, comment: "")
       }
 
       /// Value: 计算行数

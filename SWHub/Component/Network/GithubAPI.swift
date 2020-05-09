@@ -17,11 +17,11 @@ import SWFrame
 
 enum GithubAPI {
     case profile
-    case repository(fullname: String)
+    case repo(fullname: String)
     case readme(fullname: String, ref: String?)
     case checkStarring(fullname: String)
-    case starRepository(fullname: String)
-    case unstarRepository(fullname: String)
+    case starRepo(fullname: String)
+    case unstarRepo(fullname: String)
     case watchers(fullname: String, page: Int)
 //    case wechatInfo
 //    case homePages
@@ -43,11 +43,11 @@ extension GithubAPI: TargetType {
     var path: String {
         switch self {
         case .profile: return "/user"
-        case let .repository(fullname): return "/repos/\(fullname)"
+        case let .repo(fullname): return "/repos/\(fullname)"
         case let .readme(fullname): return "/repos/\(fullname)/readme"
         case .checkStarring(let fullname),
-             .starRepository(let fullname),
-             .unstarRepository(let fullname):
+             .starRepo(let fullname),
+             .unstarRepo(let fullname):
             return "/user/starred/\(fullname)"
         case let .watchers(fullname, _): return "/repos/\(fullname)/subscribers"
         }
@@ -55,9 +55,9 @@ extension GithubAPI: TargetType {
 
     var method: Moya.Method {
         switch self {
-        case .starRepository:
+        case .starRepo:
             return .put
-        case .unstarRepository:
+        case .unstarRepo:
             return .delete
         default:
             return .get
