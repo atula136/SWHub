@@ -1,5 +1,5 @@
 //
-//  TrendingRepository.swift
+//  TrendingRepo.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/4.
@@ -11,7 +11,7 @@ import BonMot
 import ObjectMapper
 import SWFrame
 
-struct TrendingRepository: ModelType, Storable {
+struct TrendingRepo: ModelType, Storable {
     var id: Int?
     var stars: Int?
     var forks: Int?

@@ -49,7 +49,7 @@ class InfoItem: CollectionItem, ReactorKit.Reactor {
     }
 
     func transform(state: Observable<State>) -> Observable<State> {
-        guard let repository = self.model as? TrendingRepository else { return state }
+        guard let repository = self.model as? TrendingRepo else { return state }
         return state.flatMap { state -> Observable<State> in
             var state = state
             state.detail = repository.detail(since: Condition.current()!.since.title)

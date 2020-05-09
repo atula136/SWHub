@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailModel.swift
+//  RepoDetailModel.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -14,7 +14,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-struct RepositoryDetailModel: ModelType {
+struct RepoDetailModel: ModelType {
 
     var key = Key.pull
     var detail: String?

@@ -1,5 +1,5 @@
 //
-//  TrendingRepositoryListViewController.swift
+//  TrendingRepoListViewController.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -15,13 +15,13 @@ import ReusableKit
 import RxDataSources
 import SWFrame
 
-class TrendingRepositoryListViewController: CollectionViewController, ReactorKit.View {
+class TrendingRepoListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let repositoryCell = ReusableCell<TrendingRepositoryCell>()
+        static let repositoryCell = ReusableCell<TrendingRepoCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingRepositorySection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingRepoSection>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -33,7 +33,7 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
         return layout
     }
 
-    init(_ navigator: NavigatorType, _ reactor: TrendingRepositoryListViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: TrendingRepoListViewReactor) {
         defer {
             self.reactor = reactor
         }
@@ -55,17 +55,17 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
             guard let `self` = self else { return }
             switch sectionItem {
             case let .repository(item):
-                if var url = Router.Repository.detail.pattern.url,
+                if var url = Router.Repo.detail.pattern.url,
                     let fullname = item.currentState.title {
                     url.appendQueryParameters([Parameter.fullname: fullname])
                     self.navigator.push(url)
                 }
-                // self.navigator.push(Router.Repository.detail.pattern)
+                // self.navigator.push(Router.Repo.detail.pattern)
             }
         }).disposed(by: self.disposeBag)
     }
 
-    func bind(reactor: TrendingRepositoryListViewReactor) {
+    func bind(reactor: TrendingRepoListViewReactor) {
         super.bind(reactor: reactor)
         // action
         self.rx.viewDidLoad.map { Reactor.Action.load }
@@ -100,7 +100,7 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingRepositoryListViewReactor) -> RxCollectionViewSectionedReloadDataSource<TrendingRepositorySection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingRepoListViewReactor) -> RxCollectionViewSectionedReloadDataSource<TrendingRepoSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
@@ -113,7 +113,7 @@ class TrendingRepositoryListViewController: CollectionViewController, ReactorKit
     }
 }
 
-extension TrendingRepositoryListViewController: UICollectionViewDelegateFlowLayout {
+extension TrendingRepoListViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)

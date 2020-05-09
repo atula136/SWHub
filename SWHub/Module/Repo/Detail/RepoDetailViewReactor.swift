@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailViewReactor.swift
+//  RepoDetailViewReactor.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -12,7 +12,7 @@ import RxCocoa
 import ReactorKit
 import SWFrame
 
-class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
@@ -24,7 +24,7 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setActivating(Bool)
         case setStarred(Bool)
         case setError(Error?)
-        case setRepository(Repository)
+        case setRepository(Repo)
     }
 
     struct State {
@@ -33,8 +33,8 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var starred = false
         var title: String?
         var error: Error?
-        var repository: Repository!
-        var sections: [RepositoryDetailSection] = []
+        var repository: Repo!
+        var sections: [RepoDetailSection] = []
     }
 
     var fullname: String?
@@ -43,7 +43,7 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
 //        let fullname = stringMember(self.parameters, Parameter.fullname, nil)
-//        var repository = Repository.init()
+//        var repository = Repo.init()
 //        repository.fullName = fullname
         self.fullname = stringMember(self.parameters, Parameter.fullname, nil)
 //        let condition = Condition.current()!
@@ -105,8 +105,8 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.error = error
         case let .setRepository(repository):
             state.repository = repository
-            let items = RepositoryDetailModel.Key.allValues.map { key -> RepositoryDetailSectionItem in
-                var model = RepositoryDetailModel(key: key)
+            let items = RepoDetailModel.Key.allValues.map { key -> RepoDetailSectionItem in
+                var model = RepoDetailModel(key: key)
                 switch key {
                 case .branch:
                     model.detail = repository.defaultBranch
@@ -115,7 +115,7 @@ class RepositoryDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 default:
                     break
                 }
-                return .detail(RepositoryDetailItem(model))
+                return .detail(RepoDetailItem(model))
             }
             state.sections = [.details(items)]
         }

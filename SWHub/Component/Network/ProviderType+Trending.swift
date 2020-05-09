@@ -20,8 +20,8 @@ extension ProviderType {
         return self.trendingNetworking.requestArray(.languages, type: Condition.Language.self)
     }
 
-    func repositories(language: String?, since: String?) -> Observable<[TrendingRepository]> {
-        return self.trendingNetworking.requestArray(.repositories(language: language, since: since), type: TrendingRepository.self)
+    func repositories(language: String?, since: String?) -> Observable<[TrendingRepo]> {
+        return self.trendingNetworking.requestArray(.repositories(language: language, since: since), type: TrendingRepo.self)
     }
 
     func developers(language: String?, since: String?) -> Observable<[TrendingDeveloper]> {

@@ -1,5 +1,5 @@
 //
-//  TrendingRepositoryListViewReactor.swift
+//  TrendingRepoListViewReactor.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -13,7 +13,7 @@ import RxOptional
 import ReactorKit
 import SWFrame
 
-class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
@@ -25,7 +25,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         case setRefreshing(Bool)
         case setError(Error?)
         case setCondition(Condition)
-        case start([TrendingRepository])
+        case start([TrendingRepo])
     }
 
     struct State {
@@ -34,7 +34,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         var title: String?
         var error: Error?
         var condition: Condition!
-        var sections: [TrendingRepositorySection] = []
+        var sections: [TrendingRepoSection] = []
     }
 
     var initialState = State()
@@ -43,7 +43,7 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         super.init(provider, parameters)
         self.initialState = State(
             condition: Condition.current(),
-            sections: [.repositories((TrendingRepository.cachedArray() ?? []).map { .repository(TrendingRepositoryItem($0)) })]
+            sections: [.repositories((TrendingRepo.cachedArray() ?? []).map { .repository(TrendingRepoItem($0)) })]
         )
     }
 
@@ -86,8 +86,8 @@ class TrendingRepositoryListViewReactor: CollectionViewReactor, ReactorKit.React
         case let .setCondition(condition):
             state.condition = condition
         case let .start(repositories):
-            TrendingRepository.storeArray(repositories)
-            state.sections = [.repositories(repositories.map { .repository(TrendingRepositoryItem($0)) })]
+            TrendingRepo.storeArray(repositories)
+            state.sections = [.repositories(repositories.map { .repository(TrendingRepoItem($0)) })]
         }
         return state
     }

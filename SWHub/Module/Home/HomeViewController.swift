@@ -109,7 +109,7 @@ extension HomeViewController: PagingViewControllerDataSource {
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
         switch self.reactor!.currentState.items[index] {
         case .repository:
-            return TrendingRepositoryListViewController(self.navigator, TrendingRepositoryListViewReactor(self.reactor!.provider, nil))
+            return TrendingRepoListViewController(self.navigator, TrendingRepoListViewReactor(self.reactor!.provider, nil))
         case .developer:
             return TrendingDeveloperListViewController(self.navigator, TrendingDeveloperListViewReactor(self.reactor!.provider, nil))
         }

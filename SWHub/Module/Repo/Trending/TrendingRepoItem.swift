@@ -1,5 +1,5 @@
 //
-//  TrendingRepositoryItem.swift
+//  TrendingRepoItem.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/4.
@@ -9,11 +9,11 @@
 import UIKit
 import SWFrame
 
-class TrendingRepositoryItem: InfoItem {
+class TrendingRepoItem: InfoItem {
 
     required init(_ model: ModelType) {
         super.init(model)
-        guard let repository = model as? TrendingRepository else { return }
+        guard let repository = model as? TrendingRepo else { return }
         self.initialState = State(
             title: "\(repository.author ?? "")/\(repository.name ?? "")",
             subtitle: repository.description,
@@ -26,7 +26,7 @@ class TrendingRepositoryItem: InfoItem {
         var state = state
         switch mutation {
         case .setDark:
-            if let repository = self.model as? TrendingRepository {
+            if let repository = self.model as? TrendingRepo {
                 state.detail = repository.detail(since: Condition.current()!.since.title)
             }
         }

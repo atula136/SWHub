@@ -1,5 +1,5 @@
 //
-//  TrendingRepositoryCell.swift
+//  TrendingRepoCell.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/4.
@@ -9,7 +9,7 @@
 import UIKit
 import SWFrame
 
-class TrendingRepositoryCell: InfoCell {
+class TrendingRepoCell: InfoCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

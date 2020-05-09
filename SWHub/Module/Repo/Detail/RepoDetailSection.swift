@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailSection.swift
+//  RepoDetailSection.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -18,24 +18,24 @@ import SwifterSwift
 import Rswift
 import SWFrame
 
-enum RepositoryDetailSection {
-    case details([RepositoryDetailSectionItem])
+enum RepoDetailSection {
+    case details([RepoDetailSectionItem])
 }
 
-extension RepositoryDetailSection: SectionModelType {
-    var items: [RepositoryDetailSectionItem] {
+extension RepoDetailSection: SectionModelType {
+    var items: [RepoDetailSectionItem] {
         switch self {
         case let .details(items): return items
         }
     }
 
-    init(original: RepositoryDetailSection, items: [RepositoryDetailSectionItem]) {
+    init(original: RepoDetailSection, items: [RepoDetailSectionItem]) {
         switch original {
         case .details: self = .details(items)
         }
     }
 }
 
-enum RepositoryDetailSectionItem {
-    case detail(RepositoryDetailItem)
+enum RepoDetailSectionItem {
+    case detail(RepoDetailItem)
 }

@@ -49,7 +49,7 @@
 "Main.TabBar.Activity" = "活动";
 "Main.TabBar.Setting" = "设置";
 /* 首页 */
-"Home.Repository" = "仓库";
+"Home.Repo" = "仓库";
 "Home.Developer" = "开发者";
 /* 设置 */
 "Setting.Account" = "账户";

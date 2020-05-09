@@ -20,8 +20,8 @@ extension ProviderType {
         return self.githubNetworking.requestObject(.profile, type: User.self)
     }
 
-    func repository(fullname: String) -> Observable<Repository> {
-        return self.githubNetworking.requestObject(.repository(fullname: fullname), type: Repository.self)
+    func repository(fullname: String) -> Observable<Repo> {
+        return self.githubNetworking.requestObject(.repository(fullname: fullname), type: Repo.self)
     }
 
     func checkStarring(fullname: String) -> Observable<Bool> {
@@ -34,6 +34,10 @@ extension ProviderType {
 
     func unstarRepository(fullname: String) -> Observable<Void> {
         return self.githubNetworking.requestRaw(.unstarRepository(fullname: fullname)).map { _ in }
+    }
+
+    func watchers(fullname: String, page: Int) -> Observable<[Repo]> {
+        return self.githubNetworking.requestArray(.watchers(fullname: fullname, page: page), type: Repo.self)
     }
 
 }

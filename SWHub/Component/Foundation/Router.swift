@@ -24,7 +24,7 @@ enum Router {
     case category
     case condition
 
-    enum Repository {
+    enum Repo {
         case list
         case detail
 
@@ -110,8 +110,8 @@ enum Router {
             ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))
         }
         // 4. 仓库详情
-        navigator.register(self.Repository.detail.pattern) { url, values, context in
-            RepositoryDetailViewController(navigator, RepositoryDetailViewReactor(provider, parameters(url, values, context)))
+        navigator.register(self.Repo.detail.pattern) { url, values, context in
+            RepoDetailViewController(navigator, RepoDetailViewReactor(provider, parameters(url, values, context)))
         }
 
 //        // 3. 弹窗

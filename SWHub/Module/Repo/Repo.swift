@@ -1,5 +1,5 @@
 //
-//  Repository.swift
+//  Repo.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -11,7 +11,7 @@ import BonMot
 import ObjectMapper
 import SWFrame
 
-struct Repository: ModelType, Subjective, Eventable {
+struct Repo: ModelType, Subjective, Eventable {
     var `private` = false
     var fork = false
     var hasIssues = false
@@ -248,7 +248,7 @@ struct Repository: ModelType, Subjective, Eventable {
     }
 }
 
-extension Repository {
+extension Repo {
     struct Readme: ModelType, Subjective {
         var id: Int?
         var size: Int?
@@ -308,7 +308,7 @@ extension Repository {
     }
 }
 
-extension Repository {
+extension Repo {
 
     struct Starred: ModelType, Subjective {
 

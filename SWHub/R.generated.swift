@@ -1012,7 +1012,7 @@ struct R: Rswift.Validatable {
       /// Value: 事件
       static let detailCellEvent = Rswift.StringResource(key: "Detail.Cell.Event", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 仓库
-      static let homeRepository = Rswift.StringResource(key: "Home.Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let homeRepository = Rswift.StringResource(key: "Home.Repo", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 保存
       static let commonSave = Rswift.StringResource(key: "Common.Save", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 加载中
@@ -1125,14 +1125,14 @@ struct R: Rswift.Validatable {
       /// Value: 仓库
       static func homeRepository(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Home.Repository", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.Repo", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Home.Repository"
+          return "Home.Repo"
         }
 
-        return NSLocalizedString("Home.Repository", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.Repo", bundle: bundle, comment: "")
       }
 
       /// Value: 保存

@@ -1,5 +1,5 @@
 //
-//  RepositoryDetailHeaderReactor.swift
+//  RepoDetailHeaderReactor.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -13,7 +13,7 @@ import ReactorKit
 import SwifterSwift
 import SWFrame
 
-class RepositoryDetailHeaderReactor: SupplementaryReactor, ReactorKit.Reactor {
+class RepoDetailHeaderReactor: SupplementaryReactor, ReactorKit.Reactor {
 
     typealias Action = NoAction
 
@@ -30,7 +30,7 @@ class RepositoryDetailHeaderReactor: SupplementaryReactor, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        guard let repository = model as? Repository else { return }
+        guard let repository = model as? Repo else { return }
         self.initialState = State(
             avatar: repository.owner?.avatar,
             title: repository.description,

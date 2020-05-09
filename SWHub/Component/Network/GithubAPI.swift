@@ -22,6 +22,7 @@ enum GithubAPI {
     case checkStarring(fullname: String)
     case starRepository(fullname: String)
     case unstarRepository(fullname: String)
+    case watchers(fullname: String, page: Int)
 //    case wechatInfo
 //    case homePages
 //    case homeModule(pageID: String)
@@ -48,6 +49,7 @@ extension GithubAPI: TargetType {
              .starRepository(let fullname),
              .unstarRepository(let fullname):
             return "/user/starred/\(fullname)"
+        case let .watchers(fullname, _): return "/repos/\(fullname)/subscribers"
         }
     }
 
@@ -74,6 +76,8 @@ extension GithubAPI: TargetType {
         switch self {
         case let .readme(_, ref):
             parameters["ref"] = ref
+        case let .watchers(_, page):
+            parameters["page"] = page
         default:
             break
         }

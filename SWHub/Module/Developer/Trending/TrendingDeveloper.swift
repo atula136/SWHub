@@ -19,7 +19,7 @@ struct TrendingDeveloper: ModelType, Storable {
     var url: URL?
     var avatar: URL?
     var href: URL?
-    var repo: TrendingRepository?
+    var repo: TrendingRepo?
 
     init() {
     }

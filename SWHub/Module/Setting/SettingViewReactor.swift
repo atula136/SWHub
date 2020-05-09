@@ -25,7 +25,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setLoading(Bool)
         case setNight(Bool)
         case setError(Error?)
-        case setRepository(Repository)
+        case setRepository(Repo)
         case start([[ModelType]])
     }
 
@@ -34,7 +34,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var isNight = false
         var title: String?
         var error: Error?
-        var repository: Repository?
+        var repository: Repo?
         var sections: [SettingSection] = []
     }
 
@@ -57,7 +57,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 let logout = Setting(id: .logout)
                 sections.append([user, logout])
             }
-            if let repository = Repository.current() {
+            if let repository = Repo.current() {
                 sections.append([repository])
             }
             var preference: [ModelType] = []
@@ -95,7 +95,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             }
             sections.insert(.setting(header: R.string.localizable.settingProject(), items: [.project(SettingProjectItem(repository))]), at: 1)
             state.sections = sections
-            Repository.update(repository)
+            Repo.update(repository)
         case let .setError(error):
             state.error = error
         }
@@ -111,7 +111,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                     header = R.string.localizable.settingAccount()
                     items.append(.profile(SettingProfileItem(user)))
                 }
-                if let repository = model as? Repository {
+                if let repository = model as? Repo {
                     header = R.string.localizable.settingProject()
                     items.append(.project(SettingProjectItem(repository)))
                 }
