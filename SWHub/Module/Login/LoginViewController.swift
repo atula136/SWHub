@@ -129,16 +129,6 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
             .map { Reactor.Action.login }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-//
-//        // state
-//        reactor.state.map { $0.user }
-//            .distinctUntilChanged()
-//            .filter{ $0 != nil }
-//            .subscribe(onNext: { [weak self] _ in
-//                guard let `self` = self else { return }
-//                self.dismiss(animated: true, completion: nil)
-//            }).disposed(by: self.disposeBag)
-
         // state
         reactor.state.map { $0.isLoading }
             .bind(to: self.rx.loading(active: true))
@@ -146,6 +136,13 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         reactor.state.map { $0.title }
             .bind(to: self.navigationBar.titleLabel.rx.text)
             .disposed(by: self.disposeBag)
+        reactor.state.map { $0.user }
+            .distinctUntilChanged()
+            .filter { $0 != nil }
+            .subscribe(onNext: { [weak self] _ in
+                guard let `self` = self else { return }
+                self.dismiss(animated: true, completion: nil)
+            }).disposed(by: self.disposeBag)
         Observable.combineLatest(reactor.state.map { $0.account }.replaceNilWith(""), reactor.state.map { $0.password }.replaceNilWith(""))
             .map { $0.isNotEmpty && $1.isNotEmpty }
             .distinctUntilChanged()

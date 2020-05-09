@@ -56,14 +56,9 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.commonSave())
+        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.save())
         saveButton.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
-//            var misc = Misc.current()!
-//            misc.condition.since = self.reactor!.currentState.since
-//            misc.condition.language = self.reactor!.currentState.language
-//            Misc.update(misc)
-//            Condition.event.onNext(.update(misc.since, misc.language))
             var condition = Condition.init()
             condition.since = self.reactor!.currentState.since
             condition.language = self.reactor!.currentState.language

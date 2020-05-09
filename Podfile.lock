@@ -72,7 +72,7 @@ PODS:
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
   - SnapKit (4.2.0)
-  - SWFrame (1.0.4):
+  - SWFrame (1.0.5):
     - BonMot (= 5.4.1)
     - Cache (= 5.2.0)
     - CGFloatLiteral (= 0.5.0)
@@ -135,7 +135,7 @@ DEPENDENCIES:
   - RxGesture (= 3.0.0)
   - RxOptional (= 4.0.0)
   - RxTheme (= 4.0.0)
-  - SWFrame (= 1.0.4)
+  - SWFrame (from `../SWFrame`)
   - SwiftLint (= 0.39.2)
 
 SPEC REPOS:
@@ -175,7 +175,6 @@ SPEC REPOS:
     - RxTheme
     - RxViewController
     - SnapKit
-    - SWFrame
     - SwifterSwift
     - SwiftLint
     - SwiftyBeaver
@@ -183,6 +182,10 @@ SPEC REPOS:
     - UICKeyChainStore
     - URLNavigator
     - WebViewJavascriptBridge
+
+EXTERNAL SOURCES:
+  SWFrame:
+    :path: "../SWFrame"
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -220,7 +223,7 @@ SPEC CHECKSUMS:
   RxTheme: 0b642f47c7d197a803c6b9c083964188c34f7ddb
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SWFrame: f8ea3577fb1e94e53197d6a483340d25c8743c11
+  SWFrame: 61d515ba2f872dcf418efa9d0391fb3f2509ac2a
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d
@@ -229,6 +232,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: ca8cb2d13a1339db6ba83f62e1be2964b7cb30ca
+PODFILE CHECKSUM: 0d051632999977114e7af6965fcd04905a83e954
 
 COCOAPODS: 1.9.1

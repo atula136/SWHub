@@ -5,8 +5,8 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'SWHub' do
-	# pod 'SWFrame', :path => '../SWFrame'
-	pod 'SWFrame', '1.0.4'
+	pod 'SWFrame', :path => '../SWFrame'
+	# pod 'SWFrame', '1.0.4'
   
 	# 界面
 	pod 'IQKeyboardManagerSwift', '6.5.5'

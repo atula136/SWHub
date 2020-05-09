@@ -8,6 +8,15 @@
 
 import UIKit
 
+struct Information {
+////        static let clientType = ClientType.app.rawValue
+////        static let comeFrom = ComeFrom.unknown.rawValue
+//        static let channel = "88mq6l"
+//        static let platform = "iPhone"
+//        static let source = "tiaotiaoapp"
+    static let swhub = "tospery/SWHub"
+}
+
 struct Constant {
 
     // MARK: 网络
@@ -39,14 +48,6 @@ struct Constant {
 
     struct Font {
     }
-
-        struct Information {
-    //        static let clientType = ClientType.app.rawValue
-    //        static let comeFrom = ComeFrom.unknown.rawValue
-            static let channel = "88mq6l"
-            static let platform = "iPhone"
-            static let source = "tiaotiaoapp"
-        }
 
     struct Storage {
         static let themeKey = "ThemeKey"

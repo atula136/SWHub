@@ -1005,7 +1005,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 44 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 45 localization keys.
     struct localizable {
       /// Value: 下拉刷新
       static let pullToRefresh = Rswift.StringResource(key: "Pull to refresh", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -1014,13 +1014,13 @@ struct R: Rswift.Validatable {
       /// Value: 仓库
       static let homeRepo = Rswift.StringResource(key: "Home.Repo", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 保存
-      static let commonSave = Rswift.StringResource(key: "Common.Save", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let save = Rswift.StringResource(key: "Save", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 加载中
       static let loading = Rswift.StringResource(key: "Loading...", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 取消
-      static let commonCancel = Rswift.StringResource(key: "Common.Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let cancel = Rswift.StringResource(key: "Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
-      static let commonNo = Rswift.StringResource(key: "Common.No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 复制
       static let fork = Rswift.StringResource(key: "Fork", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 夜间模式
@@ -1031,6 +1031,8 @@ struct R: Rswift.Validatable {
       static let detailCellRelease = Rswift.StringResource(key: "Detail.Cell.Release", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 开发者
       static let homeDeveloper = Rswift.StringResource(key: "Home.Developer", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 您确定要退出%@吗
+      static let userExitPrompt = Rswift.StringResource(key: "User.Exit.Prompt", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的通知
       static let detailCellNotification = Rswift.StringResource(key: "Detail.Cell.Notification", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的项目
@@ -1050,7 +1052,7 @@ struct R: Rswift.Validatable {
       /// Value: 搜索
       static let mainTabBarSearch = Rswift.StringResource(key: "Main.TabBar.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
-      static let commonYes = Rswift.StringResource(key: "Common.Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let yes = Rswift.StringResource(key: "Yes", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 本周
       static let conditionSinceWeekly = Rswift.StringResource(key: "Condition.Since.Weekly", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 本月
@@ -1069,12 +1071,14 @@ struct R: Rswift.Validatable {
       static let mainTabBarMessage = Rswift.StringResource(key: "Main.TabBar.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 源代码
       static let detailCellCode = Rswift.StringResource(key: "Detail.Cell.Code", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 点击登录
+      static let clickToLogin = Rswift.StringResource(key: "Click to login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录
       static let loginTitle = Rswift.StringResource(key: "Login.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 知道了
-      static let commonISee = Rswift.StringResource(key: "Common.ISee", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let iSee = Rswift.StringResource(key: "I see", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确认
-      static let commonOK = Rswift.StringResource(key: "Common.OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let oK = Rswift.StringResource(key: "OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 观察
       static let watch = Rswift.StringResource(key: "Watch", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 计算行数
@@ -1085,10 +1089,8 @@ struct R: Rswift.Validatable {
       static let detailCellContributor = Rswift.StringResource(key: "Detail.Cell.Contributor", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 账户
       static let settingAccount = Rswift.StringResource(key: "Setting.Account", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 返
-      static let commonFan = Rswift.StringResource(key: "Common.Fan", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 退出
-      static let settingAccountLogout = Rswift.StringResource(key: "Setting.Account.Logout", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let exit = Rswift.StringResource(key: "Exit", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 颜色主题
       static let settingPreferencesTheme = Rswift.StringResource(key: "Setting.Preferences.Theme", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 首选项
@@ -1136,16 +1138,16 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 保存
-      static func commonSave(preferredLanguages: [String]? = nil) -> String {
+      static func save(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Common.Save", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Save", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Common.Save"
+          return "Save"
         }
 
-        return NSLocalizedString("Common.Save", bundle: bundle, comment: "")
+        return NSLocalizedString("Save", bundle: bundle, comment: "")
       }
 
       /// Value: 加载中
@@ -1162,29 +1164,29 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 取消
-      static func commonCancel(preferredLanguages: [String]? = nil) -> String {
+      static func cancel(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Common.Cancel", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Cancel", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Common.Cancel"
+          return "Cancel"
         }
 
-        return NSLocalizedString("Common.Cancel", bundle: bundle, comment: "")
+        return NSLocalizedString("Cancel", bundle: bundle, comment: "")
       }
 
       /// Value: 否
-      static func commonNo(preferredLanguages: [String]? = nil) -> String {
+      static func no(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Common.No", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("No", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Common.No"
+          return "No"
         }
 
-        return NSLocalizedString("Common.No", bundle: bundle, comment: "")
+        return NSLocalizedString("No", bundle: bundle, comment: "")
       }
 
       /// Value: 复制
@@ -1250,6 +1252,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Home.Developer", bundle: bundle, comment: "")
+      }
+
+      /// Value: 您确定要退出%@吗
+      static func userExitPrompt(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("User.Exit.Prompt", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "User.Exit.Prompt"
+        }
+
+        let format = NSLocalizedString("User.Exit.Prompt", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
       }
 
       /// Value: 我的通知
@@ -1370,16 +1387,16 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 是
-      static func commonYes(preferredLanguages: [String]? = nil) -> String {
+      static func yes(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Common.Yes", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Yes", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Common.Yes"
+          return "Yes"
         }
 
-        return NSLocalizedString("Common.Yes", bundle: bundle, comment: "")
+        return NSLocalizedString("Yes", bundle: bundle, comment: "")
       }
 
       /// Value: 本周
@@ -1499,6 +1516,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Detail.Cell.Code", bundle: bundle, comment: "")
       }
 
+      /// Value: 点击登录
+      static func clickToLogin(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Click to login", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Click to login"
+        }
+
+        return NSLocalizedString("Click to login", bundle: bundle, comment: "")
+      }
+
       /// Value: 登录
       static func loginTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -1513,29 +1543,29 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 知道了
-      static func commonISee(preferredLanguages: [String]? = nil) -> String {
+      static func iSee(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Common.ISee", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("I see", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Common.ISee"
+          return "I see"
         }
 
-        return NSLocalizedString("Common.ISee", bundle: bundle, comment: "")
+        return NSLocalizedString("I see", bundle: bundle, comment: "")
       }
 
       /// Value: 确认
-      static func commonOK(preferredLanguages: [String]? = nil) -> String {
+      static func oK(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Common.OK", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("OK", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Common.OK"
+          return "OK"
         }
 
-        return NSLocalizedString("Common.OK", bundle: bundle, comment: "")
+        return NSLocalizedString("OK", bundle: bundle, comment: "")
       }
 
       /// Value: 观察
@@ -1603,30 +1633,17 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Setting.Account", bundle: bundle, comment: "")
       }
 
-      /// Value: 返
-      static func commonFan(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Common.Fan", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Common.Fan"
-        }
-
-        return NSLocalizedString("Common.Fan", bundle: bundle, comment: "")
-      }
-
       /// Value: 退出
-      static func settingAccountLogout(preferredLanguages: [String]? = nil) -> String {
+      static func exit(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Setting.Account.Logout", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Exit", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Setting.Account.Logout"
+          return "Exit"
         }
 
-        return NSLocalizedString("Setting.Account.Logout", bundle: bundle, comment: "")
+        return NSLocalizedString("Exit", bundle: bundle, comment: "")
       }
 
       /// Value: 颜色主题

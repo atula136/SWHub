@@ -88,6 +88,8 @@
 		799547CE245D4403002A7999 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CD245D4403002A7999 /* NavigationController.swift */; };
 		799547D0245D4998002A7999 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CF245D4998002A7999 /* UIApplicationExt.swift */; };
 		799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547D3245D607F002A7999 /* UIViewControllerExt.swift */; };
+		799CCE362466AE4D007A1474 /* SettingLoginItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE352466AE4D007A1474 /* SettingLoginItem.swift */; };
+		799CCE382466AE58007A1474 /* SettingLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE372466AE58007A1474 /* SettingLoginCell.swift */; };
 		79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4A8624554B08001BDB90 /* AppDelegate.swift */; };
 		79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A8F24554B09001BDB90 /* Assets.xcassets */; };
 		79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A9124554B09001BDB90 /* LaunchScreen.storyboard */; };
@@ -237,6 +239,8 @@
 		799547CD245D4403002A7999 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		799547CF245D4998002A7999 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
 		799547D3245D607F002A7999 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		799CCE352466AE4D007A1474 /* SettingLoginItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginItem.swift; sourceTree = "<group>"; };
+		799CCE372466AE58007A1474 /* SettingLoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginCell.swift; sourceTree = "<group>"; };
 		79AF4A8324554B08001BDB90 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AF4A8624554B08001BDB90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79AF4A8F24554B09001BDB90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -525,19 +529,21 @@
 		7976ACA2245826E900093046 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				7976ACAF2458273900093046 /* SettingViewReactor.swift */,
-				7976ACB12458274300093046 /* SettingViewController.swift */,
-				7976ACB72459335600093046 /* SettingSection.swift */,
-				79E67A4A245C0F5600FE6093 /* SettingHeaderView.swift */,
-				79740E6D245C4ED1003F441A /* SettingProjectItem.swift */,
-				79740E6F245C4EDE003F441A /* SettingProjectCell.swift */,
-				79D261442462DCF100A979D3 /* SettingNormalItem.swift */,
-				79D261462462DCFA00A979D3 /* SettingNormalCell.swift */,
-				79D261482462DD0700A979D3 /* SettingSwitchItem.swift */,
-				79D2614A2462DD1000A979D3 /* SettingSwitchCell.swift */,
 				79D2614C2462DDCC00A979D3 /* Setting.swift */,
-				79D2614E2462DED100A979D3 /* SettingProfileItem.swift */,
+				79E67A4A245C0F5600FE6093 /* SettingHeaderView.swift */,
+				79D261462462DCFA00A979D3 /* SettingNormalCell.swift */,
+				79D261442462DCF100A979D3 /* SettingNormalItem.swift */,
 				79D261502462DEDC00A979D3 /* SettingProfileCell.swift */,
+				79D2614E2462DED100A979D3 /* SettingProfileItem.swift */,
+				79740E6F245C4EDE003F441A /* SettingProjectCell.swift */,
+				79740E6D245C4ED1003F441A /* SettingProjectItem.swift */,
+				7976ACB72459335600093046 /* SettingSection.swift */,
+				79D2614A2462DD1000A979D3 /* SettingSwitchCell.swift */,
+				79D261482462DD0700A979D3 /* SettingSwitchItem.swift */,
+				7976ACB12458274300093046 /* SettingViewController.swift */,
+				7976ACAF2458273900093046 /* SettingViewReactor.swift */,
+				799CCE352466AE4D007A1474 /* SettingLoginItem.swift */,
+				799CCE372466AE58007A1474 /* SettingLoginCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -977,6 +983,7 @@
 				7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */,
 				79EE8AA4245E8ED300A2438C /* TrendingDeveloperListViewController.swift in Sources */,
 				79FAF5E424628DAD00CEC4D0 /* RepoDetailHeaderView.swift in Sources */,
+				799CCE362466AE4D007A1474 /* SettingLoginItem.swift in Sources */,
 				79CC24B024663F2C00794CFD /* UserListSection.swift in Sources */,
 				7906C32124555DB60030764D /* Router.swift in Sources */,
 				79CC24B224663FA900794CFD /* UserItem.swift in Sources */,
@@ -1051,6 +1058,7 @@
 				79B2E56E245BD88900D6E162 /* IntExt.swift in Sources */,
 				79740E70245C4EDE003F441A /* SettingProjectCell.swift in Sources */,
 				7976ACC1245933F000093046 /* CollectionViewController.swift in Sources */,
+				799CCE382466AE58007A1474 /* SettingLoginCell.swift in Sources */,
 				7976ACAA2458271900093046 /* ActivityViewController.swift in Sources */,
 				791160B9246095B400737F4B /* ParameterExt.swift in Sources */,
 				79FA5444246271CB0089EB8F /* DefaultItem.swift in Sources */,

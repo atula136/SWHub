@@ -23,6 +23,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     struct Reusable {
         static let profileCell = ReusableCell<SettingProfileCell>()
         static let projectCell = ReusableCell<SettingProjectCell>()
+        static let loginCell = ReusableCell<SettingLoginCell>()
         static let switchCell = ReusableCell<SettingSwitchCell>()
         static let settingCell = ReusableCell<SettingNormalCell>()
         static let headerView = ReusableView<SettingHeaderView>()
@@ -57,12 +58,29 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         super.viewDidLoad()
         self.collectionView.register(Reusable.profileCell)
         self.collectionView.register(Reusable.projectCell)
+        self.collectionView.register(Reusable.loginCell)
         self.collectionView.register(Reusable.switchCell)
         self.collectionView.register(Reusable.settingCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] item in
             guard let `self` = self else { return }
             switch item {
+            case .login:
+                self.navigator.present(Router.login.pattern, wrap: NavigationController.self)
+            case .logout:
+                if let navigator = self.navigator as? Navigator,
+                    var url = Router.alert.pattern.url {
+                    url.appendQueryParameters([
+                        Parameter.title: self.reactor?.currentState.user?.login ?? "",
+                        Parameter.message: R.string.localizable.userExitPrompt(UIApplication.shared.displayName ?? "")
+                    ])
+                    navigator.rx.open(url, context: [AlertAction.cancel, AlertAction.destructive]).subscribe(onNext: { action in
+                        if let action = action as? AlertAction,
+                            action == .destructive {
+                            User.update(nil)
+                        }
+                    }).disposed(by: self.disposeBag)
+                }
             case .color:
                 self.navigator.push(Router.color.pattern)
             default:
@@ -108,7 +126,11 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                     let cell = collectionView.dequeue(Reusable.projectCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
-                case .dark(let item):
+                case let .login(item):
+                    let cell = collectionView.dequeue(Reusable.loginCell, for: indexPath)
+                    cell.bind(reactor: item)
+                    return cell
+                case .night(let item):
                     let cell = collectionView.dequeue(Reusable.switchCell, for: indexPath)
                     cell.bind(reactor: item)
                     cell.rx.switched.distinctUntilChanged().skip(1).map { Reactor.Action.night($0) }
@@ -141,6 +163,38 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             }
         )
     }
+
+    enum AlertAction: AlertActionType, Equatable {
+        case `default`
+        case cancel
+        case destructive
+
+        var title: String? {
+            switch self {
+            case .default:      return R.string.localizable.yes()
+            case .cancel:       return R.string.localizable.cancel()
+            case .destructive:  return R.string.localizable.exit()
+            }
+        }
+
+        var style: UIAlertAction.Style {
+            switch self {
+            case .default:      return .default
+            case .cancel:       return .cancel
+            case .destructive:  return .destructive
+            }
+        }
+
+        static func == (lhs: AlertAction, rhs: AlertAction) -> Bool {
+            switch (lhs, rhs) {
+            case (.default, .default), (.cancel, .cancel), (.destructive, .destructive):
+                return true
+            default:
+                return false
+            }
+        }
+    }
+
 }
 
 extension SettingViewController: UICollectionViewDelegateFlowLayout {
@@ -152,7 +206,9 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
             return Reusable.profileCell.class.size(width: width, item: item)
         case let .project(item):
             return Reusable.projectCell.class.size(width: width, item: item)
-        case let .dark(item):
+        case let .login(item):
+            return Reusable.loginCell.class.size(width: width, item: item)
+        case let .night(item):
             return Reusable.switchCell.class.size(width: width, item: item)
         case .logout(let item), .color(let item):
             return Reusable.settingCell.class.size(width: width, item: item)

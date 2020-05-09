@@ -20,15 +20,12 @@
 设置页的暗黑模式的切换按钮的状态应该是单向的
 state -> refresh ui效果
 languageColor
-打星功能（viewerHasStarred）
+iconfont
+首次安装、首页网络错误
 
 https://api.github.com/user/starred/rxhanson/Rectangle
 
 
-stargazers:
-https://api.github.com/repos/rxhanson/Rectangle/stargazers?page=1
-forks:
-https://api.github.com/repos/rxhanson/Rectangle/forks?page=1
 issues:
 https://api.github.com/repos/rxhanson/Rectangle/issues?page=1&state=open|closed
 pullRequests:

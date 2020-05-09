@@ -117,46 +117,46 @@ enum Router {
         navigator.register("http://<path:_>", webFactory)
         navigator.register("https://<path:_>", webFactory)
 
-        // 2. 颜色主题
+        // 2. 弹窗
+        navigator.handle(self.alert.pattern) { url, _, context -> Bool in
+            let title = url.queryParameters[Parameter.title]
+            let message = url.queryParameters[Parameter.message]
+            guard title != nil || message != nil else { return false }
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            if let context = context as? [String: Any],
+                let observer = context[Parameter.routeObserver] as? AnyObserver<AlertActionType>,
+                let actions = context[Parameter.routeContext] as? [AlertActionType] {
+                for action in actions {
+                    let alertAction = UIAlertAction(title: action.title, style: action.style) { _ in
+                        observer.onNext(action)
+                        observer.onCompleted()
+                    }
+                    alertController.addAction(alertAction)
+                }
+            }
+            navigator.present(alertController)
+            return true
+        }
+
+        // 3. 页面
         navigator.register(self.color.pattern) { url, values, context in
             MyColorViewController(navigator, MyColorViewReactor(provider, parameters(url, values, context)))
         }
-        // 3. 搜索条件
         navigator.register(self.condition.pattern) { url, values, context in
             ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))
         }
-        // 4. 仓库列表
         navigator.register(Repo.list.pattern) { url, values, context in
             RepoListViewController(navigator, RepoListViewReactor(provider, parameters(url, values, context)))
         }
-        // 5. 仓库详情
         navigator.register(Repo.detail.pattern) { url, values, context in
             RepoDetailViewController(navigator, RepoDetailViewReactor(provider, parameters(url, values, context)))
         }
-        // 6. 用户列表
         navigator.register(User.list.pattern) { url, values, context in
             UserListViewController(navigator, UserListViewReactor(provider, parameters(url, values, context)))
         }
+        navigator.register(self.login.pattern) { url, values, context in
+            LoginViewController(navigator, LoginViewReactor(provider, parameters(url, values, context)))
+        }
 
-//        // 3. 弹窗
-//        navigator.handle(self.alert.url) { url, values, context -> Bool in
-//            let title = url.queryParameters[Parameter.title]
-//            let message = url.queryParameters[Parameter.message]
-//            guard title != nil || message != nil else { return false }
-//            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//            if let context = context as? [String: Any],
-//                let observer = context[routeObserverKey] as? AnyObserver<AlertActionType>,
-//                let actions = context[routeContextKey] as? [AlertActionType] {
-//                for action in actions {
-//                    let alertAction = UIAlertAction(title: action.title, style: action.style) { _ in
-//                        observer.onNext(action)
-//                        observer.onCompleted()
-//                    }
-//                    alertController.addAction(alertAction)
-//                }
-//            }
-//            navigator.present(alertController)
-//            return true
-//        }
     }
 }

@@ -22,9 +22,10 @@ struct Setting: ModelType, Identifiable, Eventable {
     init() {
     }
 
-    init(id: Key, accessory: AccessoryType = .indicator) {
+    init(id: Key, accessory: AccessoryType = .indicator, switched: Bool = false) {
         self.id = id
         self.accessory = accessory
+        self.switched = switched
         self.title = id.title
         self.icon = id.icon
     }
@@ -42,6 +43,7 @@ struct Setting: ModelType, Identifiable, Eventable {
     enum Key: Int, Codable {
         case profile
         case project
+        case login
         case logout
         case night
         case color
@@ -49,7 +51,7 @@ struct Setting: ModelType, Identifiable, Eventable {
         var title: String? {
             switch self {
             case .logout:
-                return R.string.localizable.settingAccountLogout()
+                return R.string.localizable.exit()
             case .night:
                 return R.string.localizable.settingPreferencesNight()
             case .color:
