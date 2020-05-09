@@ -8,6 +8,7 @@
 
 import UIKit
 import BonMot
+import Iconic
 import ObjectMapper
 import SWFrame
 
@@ -179,7 +180,7 @@ struct Repo: ModelType, Subjective, Eventable {
     func detail() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
         let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.text))
-        let starsImage = R.image.setting_badge_star()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
+        let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .foreground).styled(with: .baselineOffset(-3))
         texts.append(.composed(of: [
             starsImage, Special.space, starsString, Special.space, Special.tab
         ]))

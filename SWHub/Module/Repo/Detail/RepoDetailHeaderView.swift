@@ -10,6 +10,7 @@ import UIKit
 import QMUIKit
 import RxSwift
 import RxCocoa
+import Iconic
 import ReactorKit
 import SwifterSwift
 import SWFrame
@@ -33,8 +34,8 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
 
     lazy var starButton: Button = {
         let button = Button(type: .custom)
-        button.setImage(R.image.detail_btn_unstarred()?.template, for: .normal)
-        button.setImage(R.image.detail_btn_starred()?.template, for: .selected)
+        button.setImage(FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .foreground).template, for: .normal)
+        button.setImage(FontAwesomeIcon.starEmptyIcon.image(ofSize: .s16, color: .foreground).template, for: .selected)
         button.sizeToFit()
         button.size = CGSize(width: metric(30), height: metric(30))
         button.borderWidth = 1

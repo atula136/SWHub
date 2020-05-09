@@ -89,7 +89,8 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             }
             let night = Setting(id: .night, accessory: .none, switched: ThemeType.currentTheme().isDark)
             let color = Setting(id: .color)
-            models.append([night, color])
+            let cache = Setting(id: .cache, accessory: .none)
+            models.append([night, color, cache])
             state.user = user
             state.sections = self.sections(models)
         case let .start(sections):
@@ -138,6 +139,8 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                         items.append(.night(SettingSwitchItem(setting)))
                     case .color:
                         items.append(.color(SettingNormalItem(setting)))
+                    case .cache:
+                        items.append(.cache(SettingNormalItem(setting)))
                     default:
                         break
                     }

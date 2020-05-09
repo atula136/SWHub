@@ -137,7 +137,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         .bind(to: reactor.action)
                         .disposed(by: cell.disposeBag)
                     return cell
-                case .logout(let item), .color(let item):
+                case .logout(let item), .color(let item), .cache(let item):
                     let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
@@ -210,7 +210,7 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
             return Reusable.loginCell.class.size(width: width, item: item)
         case let .night(item):
             return Reusable.switchCell.class.size(width: width, item: item)
-        case .logout(let item), .color(let item):
+        case .logout(let item), .color(let item), .cache(let item):
             return Reusable.settingCell.class.size(width: width, item: item)
         }
     }

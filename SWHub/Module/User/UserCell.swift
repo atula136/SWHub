@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Iconic
 import SWFrame
 
 class UserCell: InfoCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.badgeImageView.image = R.image.setting_badge_user()?.template
+        self.badgeImageView.image = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .foreground).template
     }
 
     required init?(coder: NSCoder) {

@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 import RxOptional
 import ReactorKit
+import Iconic
 import CGFloatLiteral
 import Rswift
 import URLNavigator
@@ -21,7 +22,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
 
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = R.image.logo()?.template
+        imageView.image = FontAwesomeIcon.githubSignIcon.image(ofSize: .s64, color: .black).template
         imageView.sizeToFit()
         return imageView
     }()
@@ -54,7 +55,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     lazy var loginButton: Button = {
         let button = Button(type: .custom)
         button.titleLabel?.font = .normal(18)
-        button.imageForNormal = R.image.icon()
+        button.imageForNormal = FontAwesomeIcon.githubIcon.image(ofSize: .s32, color: .white).template
         button.titleForNormal = R.string.localizable.loginTitle()
         button.centerTextAndImage(spacing: 10)
         button.cornerRadius = 5

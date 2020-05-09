@@ -10,6 +10,7 @@ PODS:
   - FCUUID (1.3.1):
     - UICKeyChainStore (~> 2.1.0)
   - FLEX (3.0.0)
+  - Iconic (1.5)
   - IQKeyboardManagerSwift (6.5.5)
   - KeychainAccess (3.2.0)
   - Kingfisher (4.10.1)
@@ -127,6 +128,7 @@ PODS:
 
 DEPENDENCIES:
   - FLEX (= 3.0.0)
+  - Iconic (= 1.5)
   - IQKeyboardManagerSwift (= 6.5.5)
   - MLeaksFinder (= 1.0.0)
   - Parchment (= 2.3.0)
@@ -150,6 +152,7 @@ SPEC REPOS:
     - FBRetainCycleDetector
     - FCUUID
     - FLEX
+    - Iconic
     - IQKeyboardManagerSwift
     - KeychainAccess
     - Kingfisher
@@ -198,6 +201,7 @@ SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
   FLEX: d66c759bce0f6ebbbf472c742380874d846f2883
+  Iconic: b202cfcb8a1e63e197e34e4e10662e1747073931
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
@@ -232,6 +236,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 0d051632999977114e7af6965fcd04905a83e954
+PODFILE CHECKSUM: c825158e27c0a2b08fb3f4b5cceea77c95e8d4b9
 
 COCOAPODS: 1.9.1

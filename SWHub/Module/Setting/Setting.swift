@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Iconic
 import ObjectMapper
 import SWFrame
 
@@ -47,6 +48,7 @@ struct Setting: ModelType, Identifiable, Eventable {
         case logout
         case night
         case color
+        case cache
 
         var title: String? {
             switch self {
@@ -56,6 +58,8 @@ struct Setting: ModelType, Identifiable, Eventable {
                 return R.string.localizable.settingPreferencesNight()
             case .color:
                 return R.string.localizable.settingPreferencesTheme()
+            case .cache:
+                return R.string.localizable.clearCache()
             default:
                 return nil
             }
@@ -64,22 +68,17 @@ struct Setting: ModelType, Identifiable, Eventable {
         var icon: UIImage? {
             switch self {
             case .logout:
-                return R.image.setting_cell_logout()?.template
+                return FontAwesomeIcon.signoutIcon.image(ofSize: .s32, color: .foreground).template
             case .night:
-                return R.image.setting_cell_night()?.template
+                return FontAwesomeIcon.lightBulbIcon.image(ofSize: .s32, color: .foreground).template
             case .color:
-                return R.image.setting_cell_theme()?.template
+                return FontAwesomeIcon.eyeOpenIcon.image(ofSize: .s32, color: .foreground).template
+            case .cache:
+                return FontAwesomeIcon.trashIcon.image(ofSize: .s32, color: .foreground).template
             default:
                 return nil
             }
         }
 
-//        enum CodingKeys: String, CodingKey {
-//            case profile        = "profile"
-//            case logout         = "logout"
-//            case project        = "project"
-//            case night          = "night"
-//            case color          = "color"
-//        }
     }
 }

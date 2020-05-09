@@ -10,6 +10,7 @@ import UIKit
 import QMUIKit
 import RxSwift
 import RxCocoa
+import Iconic
 import URLNavigator
 import ReactorKit
 import ReusableKit
@@ -48,7 +49,7 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.addButtonToRight(R.image.nav_github()).rx.tap.subscribe(onNext: { [weak self] _ in
+        self.navigationBar.addButtonToRight(FontAwesomeIcon.githubIcon.image(ofSize: .s32, color: .foreground).template).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
             self.navigator.push("\(UIApplication.shared.baseWebUrl)/\(self.reactor?.fullname ?? "")")
         }).disposed(by: self.disposeBag)

@@ -11,6 +11,7 @@ import QMUIKit
 import RxSwift
 import RxCocoa
 import ReactorKit
+import Iconic
 import SwifterSwift
 import Kingfisher
 import SWFrame
@@ -48,7 +49,7 @@ class InfoCell: CollectionCell, ReactorKit.View {
         let imageView = UIImageView()
         imageView.backgroundColor = .white
         imageView.tintColor = UIColor.Material.green900
-        imageView.image = R.image.setting_badge_repository()?.template
+        imageView.image = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .foreground).template
         imageView.sizeToFit()
         imageView.size = CGSize(width: 20, height: 20)
         imageView.borderColor = .white

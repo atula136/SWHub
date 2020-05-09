@@ -8,6 +8,7 @@
 
 import UIKit
 import BonMot
+import Iconic
 import ObjectMapper
 import KeychainAccess
 import SWFrame
@@ -61,10 +62,6 @@ struct User: ModelType, Storable, Subjective {
     var receivedEventsUrl: URL?
     var createdAt: Date?
     var updatedAt: Date?
-//    // 兼容Trending
-//    var username: String?
-//    var href: URL?
-//    var repo: Repo?
 
     init() {
     }
@@ -110,24 +107,18 @@ struct User: ModelType, Storable, Subjective {
         receivedEventsUrl               <- (map["received_events_url"], URLTransform())
         createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
         updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
-//        username                        <- map["username"]
-//        href                            <- (map["href"], URLTransform())
-//        repo                            <- map["repo"]
-//        if avatar == nil {
-//            avatar                      <- (map["avatar"], URLTransform())
-//        }
     }
 
     func detail() -> NSAttributedString? {
         var texts = [NSAttributedString]()
         if let repositoriesString = self.publicRepos?.string.styled(with: .color(.text)) {
-            let repositoriesImage = R.image.setting_badge_repository()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
+            let repositoriesImage = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .foreground).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
             ]))
         }
         if let followersString = self.followers?.kFormatted().styled(with: .color(.text)) {
-            let followersImage = R.image.setting_badge_collaborator()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
+            let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .foreground).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 followersImage, Special.space, followersString
             ]))

@@ -12,6 +12,7 @@ import RxCocoa
 import ReactorKit
 import URLNavigator
 import Rswift
+import Iconic
 import Parchment
 import SnapKit
 import SwifterSwift
@@ -55,7 +56,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
 
-        self.navigationBar.addButtonToRight(R.image.nav_condition()!).rx.tap.subscribe(onNext: { [weak self] _ in
+        self.navigationBar.addButtonToRight(FontAwesomeIcon.bookmarkIcon.image(ofSize: .s32, color: .foreground)).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
 //            if var url = Router.condition.pattern.url, let misc = Misc.current() {
 //                url.appendQueryParameters([Parameter.since: misc.since.paramValue])

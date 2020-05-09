@@ -43,4 +43,5 @@ enum SettingSectionItem {
     case logout(SettingNormalItem)
     case night(SettingSwitchItem)
     case color(SettingNormalItem)
+    case cache(SettingNormalItem)
 }

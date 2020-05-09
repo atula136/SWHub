@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 import Kingfisher
+import Iconic
 import SwifterSwift
 import SWFrame
 
@@ -27,7 +28,7 @@ class SettingLoginCell: CollectionCell, ReactorKit.View {
 
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = R.image.logo()?.template
+        imageView.image = FontAwesomeIcon.githubSignIcon.image(ofSize: .s64, color: .black).template
         imageView.sizeToFit()
         return imageView
     }()

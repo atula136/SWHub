@@ -16,6 +16,7 @@
 "Watch" = "观察";
 "Star" = "打星";
 "Fork" = "复制";
+"Clear cache" = "清除缓存";
 "Click to login" = "点击登录";
 "User.Exit.Prompt" = "您确定要退出%@吗";
 /* 刷新 */

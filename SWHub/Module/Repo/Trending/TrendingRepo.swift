@@ -8,6 +8,7 @@
 
 import UIKit
 import BonMot
+import Iconic
 import ObjectMapper
 import SWFrame
 
@@ -57,7 +58,7 @@ struct TrendingRepo: ModelType, Storable {
     }
 
     func detail(since: String) -> NSAttributedString? {
-        let starImage = R.image.setting_badge_star()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
+        let starImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .text).styled(with: .baselineOffset(-3))
         let starsString = (self.stars ?? 0).kFormatted().styled(with: .color(.text))
         let currentPeriodStarsString = "\((self.currentPeriodStars ?? 0).kFormatted())\(since.lowercased())".styled(with: .color(.text))
         let languageColorShape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .clear)]))

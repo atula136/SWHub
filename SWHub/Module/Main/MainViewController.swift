@@ -12,6 +12,7 @@ import RxCocoa
 import ReactorKit
 import SwifterSwift
 import URLNavigator
+import Iconic
 import NSObject_Rx
 import SWFrame
 
@@ -73,24 +74,24 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         switch key {
         case .home:
             viewController = HomeViewController(self.navigator, HomeViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.tab_home()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.tab_home()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = FontAwesomeIcon._481Icon.image(ofSize: .s32, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon._481Icon.image(ofSize: .s32, color: .foreground).original
         case .message:
             viewController = MessageViewController(self.navigator, MessageViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.tab_message()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.tab_message()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = FontAwesomeIcon.commentsIcon.image(ofSize: .s32, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.commentsIcon.image(ofSize: .s32, color: .foreground).original
         case .search:
             viewController = SearchViewController(self.navigator, SearchViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.tab_search()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.tab_search()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = FontAwesomeIcon.searchIcon.image(ofSize: .s32, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.searchIcon.image(ofSize: .s32, color: .foreground).original
         case .activity:
             viewController = ActivityViewController(self.navigator, ActivityViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.tab_activity()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.tab_activity()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = FontAwesomeIcon.bellIcon.image(ofSize: .s32, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.bellIcon.image(ofSize: .s32, color: .foreground).original
         case .setting:
             viewController = SettingViewController(self.navigator, SettingViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = R.image.tab_settings()?.qmui_image(withTintColor: .text)?.original
-            viewController?.tabBarItem.selectedImage = R.image.tab_settings()?.qmui_image(withTintColor: .secondary)?.original
+            viewController?.tabBarItem.image = FontAwesomeIcon.cogIcon.image(ofSize: .s32, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.cogIcon.image(ofSize: .s32, color: .foreground).original
         }
         viewController?.hidesBottomBarWhenPushed = false
         if let item = viewController?.tabBarItem {

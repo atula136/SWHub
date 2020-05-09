@@ -20,8 +20,9 @@
 设置页的暗黑模式的切换按钮的状态应该是单向的
 state -> refresh ui效果
 languageColor
-iconfont
 首次安装、首页网络错误
+开机广告
+iconfont
 
 https://api.github.com/user/starred/rxhanson/Rectangle
 

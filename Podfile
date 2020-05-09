@@ -22,6 +22,7 @@ target 'SWHub' do
 		
 	# 资源
 	pod 'RxTheme', '4.0.0'
+	pod 'Iconic', '1.5'
 	pod 'R.swift', '5.1.0'
 		
 	# 工具
