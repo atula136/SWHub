@@ -51,10 +51,9 @@ class InfoCell: CollectionCell, ReactorKit.View {
         imageView.tintColor = UIColor.Material.green900
         imageView.image = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .foreground).template
         imageView.sizeToFit()
-        imageView.size = CGSize(width: 20, height: 20)
         imageView.borderColor = .white
         imageView.borderWidth = 1
-        imageView.cornerRadius = 10
+        imageView.cornerRadius = imageView.width / 2.f
         return imageView
     }()
 

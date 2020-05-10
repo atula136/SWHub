@@ -112,7 +112,7 @@ struct User: ModelType, Storable, Subjective {
     func detail() -> NSAttributedString? {
         var texts = [NSAttributedString]()
         if let repositoriesString = self.publicRepos?.string.styled(with: .color(.text)) {
-            let repositoriesImage = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .foreground).template.styled(with: .baselineOffset(-3))
+            let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .foreground).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
             ]))
