@@ -70,28 +70,29 @@ class MainViewController: TabBarViewController, ReactorKit.View {
     }
 
     func viewController(with key: MainKey) -> BaseViewController {
+        let s28 = CGSize(width: 28, height: 28)
         var viewController: BaseViewController?
         switch key {
         case .home:
             viewController = HomeViewController(self.navigator, HomeViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon._481Icon.image(ofSize: .s32, color: .text).original
-            viewController?.tabBarItem.selectedImage = FontAwesomeIcon._481Icon.image(ofSize: .s32, color: .foreground).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .foreground).original
         case .message:
             viewController = MessageViewController(self.navigator, MessageViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.commentsIcon.image(ofSize: .s32, color: .text).original
-            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.commentsIcon.image(ofSize: .s32, color: .foreground).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.commentsIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.commentsIcon.image(ofSize: s28, color: .foreground).original
         case .search:
             viewController = SearchViewController(self.navigator, SearchViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.searchIcon.image(ofSize: .s32, color: .text).original
-            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.searchIcon.image(ofSize: .s32, color: .foreground).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.searchIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.searchIcon.image(ofSize: s28, color: .foreground).original
         case .activity:
             viewController = ActivityViewController(self.navigator, ActivityViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.bellIcon.image(ofSize: .s32, color: .text).original
-            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.bellIcon.image(ofSize: .s32, color: .foreground).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.bellIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.bellIcon.image(ofSize: s28, color: .foreground).original
         case .setting:
             viewController = SettingViewController(self.navigator, SettingViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.cogIcon.image(ofSize: .s32, color: .text).original
-            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.cogIcon.image(ofSize: .s32, color: .foreground).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .foreground).original
         }
         viewController?.hidesBottomBarWhenPushed = false
         if let item = viewController?.tabBarItem {

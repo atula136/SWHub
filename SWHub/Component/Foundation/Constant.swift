@@ -9,8 +9,8 @@
 import UIKit
 
 struct Information {
-////        static let clientType = ClientType.app.rawValue
-////        static let comeFrom = ComeFrom.unknown.rawValue
+//        static let clientType = ClientType.app.rawValue
+//        static let comeFrom = ComeFrom.unknown.rawValue
 //        static let channel = "88mq6l"
 //        static let platform = "iPhone"
 //        static let source = "tiaotiaoapp"

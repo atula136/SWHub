@@ -20,10 +20,18 @@ extension ProviderType {
         return self.trendingNetworking.requestArray(.languages, type: Condition.Language.self)
     }
 
+    /// 仓库趋势：https://github-trending-api.now.sh/repositories?language=Swift&since=monthly
+    /// - Parameters:
+    ///   - language: 语言
+    ///   - since: 时间
     func repositories(language: String?, since: String?) -> Observable<[TrendingRepo]> {
         return self.trendingNetworking.requestArray(.repositories(language: language, since: since), type: TrendingRepo.self)
     }
 
+    /// 用户趋势：https://github-trending-api.now.sh/developers?language=Swift&since=monthly
+    /// - Parameters:
+    ///   - language: 语言
+    ///   - since: 时间
     func developers(language: String?, since: String?) -> Observable<[TrendingDeveloper]> {
         return self.trendingNetworking.requestArray(.developers(language: language, since: since), type: TrendingDeveloper.self)
     }

@@ -30,17 +30,6 @@ struct TrendingRepo: ModelType, Storable {
     }
 
     init?(map: Map) {
-//        name                    = try? map.value("name")
-//        stars                   = try? map.value("stars")
-//        forks                   = try? map.value("forks")
-//        currentPeriodStars      = try? map.value("currentPeriodStars")
-//        author                  = try? map.value("author")
-//        language                = try? map.value("language")
-//        languageColor           = try? map.value("languageColor")
-//        description             = try? map.value("description")
-//        url                     = try? map.value("url", using: URLTransform())
-//        avatar                  = try? map.value("avatar", using: URLTransform())
-//        builtBy                 = try? map.value("builtBy")
     }
 
     mutating func mapping(map: Map) {

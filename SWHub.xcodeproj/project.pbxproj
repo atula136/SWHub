@@ -37,9 +37,9 @@
 		7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456B245DD1F900D69366 /* MyColorCell.swift */; };
 		7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456D245DD2E200D69366 /* MyColorSection.swift */; };
 		790B88D4245EC97C000C89D4 /* PagingViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */; };
-		790B88D6245F5882000C89D4 /* repositories-daily.json in Resources */ = {isa = PBXBuildFile; fileRef = 790B88D5245F5882000C89D4 /* repositories-daily.json */; };
+		790B88D6245F5882000C89D4 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 790B88D5245F5882000C89D4 /* repositories.json */; };
 		790B88D9245F5989000C89D4 /* TrendingRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88D8245F5989000C89D4 /* TrendingRepo.swift */; };
-		790B88DB245F59B4000C89D4 /* developers-daily.json in Resources */ = {isa = PBXBuildFile; fileRef = 790B88DA245F59B4000C89D4 /* developers-daily.json */; };
+		790B88DB245F59B4000C89D4 /* developers.json in Resources */ = {isa = PBXBuildFile; fileRef = 790B88DA245F59B4000C89D4 /* developers.json */; };
 		790B88DD245F59ED000C89D4 /* TrendingDeveloper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88DC245F59ED000C89D4 /* TrendingDeveloper.swift */; };
 		790B88DF245F6046000C89D4 /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88DE245F6046000C89D4 /* TrendingAPI.swift */; };
 		790B88E1245F61FA000C89D4 /* TrendingNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */; };
@@ -133,6 +133,7 @@
 		79F936A9245C3B0900AA775A /* repos-tospery-SWHub.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */; };
 		79FA54422462707E0089EB8F /* RepoDetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA54412462707E0089EB8F /* RepoDetailSection.swift */; };
 		79FA5444246271CB0089EB8F /* DefaultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA5443246271CB0089EB8F /* DefaultItem.swift */; };
+		79FA696E2467E8D700CD373E /* users-KalleHallden.json in Resources */ = {isa = PBXBuildFile; fileRef = 79FA696D2467E8D700CD373E /* users-KalleHallden.json */; };
 		79FAF5E424628DAD00CEC4D0 /* RepoDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FAF5E324628DAD00CEC4D0 /* RepoDetailHeaderView.swift */; };
 		79FAF5E62462954100CEC4D0 /* RepoDetailHeaderReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FAF5E52462954100CEC4D0 /* RepoDetailHeaderReactor.swift */; };
 		FD3249B3375F87DD51CA1684 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */; };
@@ -187,9 +188,9 @@
 		7909456B245DD1F900D69366 /* MyColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorCell.swift; sourceTree = "<group>"; };
 		7909456D245DD2E200D69366 /* MyColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorSection.swift; sourceTree = "<group>"; };
 		790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewControllerExt.swift; sourceTree = "<group>"; };
-		790B88D5245F5882000C89D4 /* repositories-daily.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repositories-daily.json"; sourceTree = "<group>"; };
+		790B88D5245F5882000C89D4 /* repositories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = repositories.json; sourceTree = "<group>"; };
 		790B88D8245F5989000C89D4 /* TrendingRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepo.swift; sourceTree = "<group>"; };
-		790B88DA245F59B4000C89D4 /* developers-daily.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "developers-daily.json"; sourceTree = "<group>"; };
+		790B88DA245F59B4000C89D4 /* developers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = developers.json; sourceTree = "<group>"; };
 		790B88DC245F59ED000C89D4 /* TrendingDeveloper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingDeveloper.swift; sourceTree = "<group>"; };
 		790B88DE245F6046000C89D4 /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
 		790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingNetworking.swift; sourceTree = "<group>"; };
@@ -291,6 +292,7 @@
 		79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-tospery-SWHub.json"; sourceTree = "<group>"; };
 		79FA54412462707E0089EB8F /* RepoDetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailSection.swift; sourceTree = "<group>"; };
 		79FA5443246271CB0089EB8F /* DefaultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultItem.swift; sourceTree = "<group>"; };
+		79FA696D2467E8D700CD373E /* users-KalleHallden.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "users-KalleHallden.json"; sourceTree = "<group>"; };
 		79FAF5E324628DAD00CEC4D0 /* RepoDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailHeaderView.swift; sourceTree = "<group>"; };
 		79FAF5E52462954100CEC4D0 /* RepoDetailHeaderReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailHeaderReactor.swift; sourceTree = "<group>"; };
 		97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -443,8 +445,8 @@
 			children = (
 				790767AA2456C23E00CD0AAF /* user.json */,
 				79F936A8245C3B0900AA775A /* repos-tospery-SWHub.json */,
-				790B88D5245F5882000C89D4 /* repositories-daily.json */,
-				790B88DA245F59B4000C89D4 /* developers-daily.json */,
+				790B88D5245F5882000C89D4 /* repositories.json */,
+				790B88DA245F59B4000C89D4 /* developers.json */,
 				79DABBDD2461E27400EC1E81 /* repos-rxhanson-Rectangle.json */,
 				79DABBDF2461E2EA00EC1E81 /* repos-rxhanson-Rectangle-readme.json */,
 				79DABBE12461E37000EC1E81 /* user-starred-rxhanson-Rectangle.json */,
@@ -454,6 +456,7 @@
 				79009F992465159000CC4C1F /* repos-rxhanson-Rectangle-forks.1.json */,
 				79009F9B2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json */,
 				79009F9D246516FA00CC4C1F /* repos-rxhanson-Rectangle-branches.1.json */,
+				79FA696D2467E8D700CD373E /* users-KalleHallden.json */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -867,12 +870,13 @@
 				79F936A9245C3B0900AA775A /* repos-tospery-SWHub.json in Resources */,
 				79020CB124559CDA00FF1978 /* readme.txt in Resources */,
 				79009F982465152200CC4C1F /* repos-rxhanson-Rectangle-stargazers.1.json in Resources */,
+				79FA696E2467E8D700CD373E /* users-KalleHallden.json in Resources */,
 				79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */,
-				790B88D6245F5882000C89D4 /* repositories-daily.json in Resources */,
+				790B88D6245F5882000C89D4 /* repositories.json in Resources */,
 				79DABBDE2461E27400EC1E81 /* repos-rxhanson-Rectangle.json in Resources */,
 				79009F9C2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json in Resources */,
 				79DABBE22461E37000EC1E81 /* user-starred-rxhanson-Rectangle.json in Resources */,
-				790B88DB245F59B4000C89D4 /* developers-daily.json in Resources */,
+				790B88DB245F59B4000C89D4 /* developers.json in Resources */,
 				790767AB2456C23E00CD0AAF /* user.json in Resources */,
 				79DABBE02461E2EA00EC1E81 /* repos-rxhanson-Rectangle-readme.json in Resources */,
 				79009F96246514C600CC4C1F /* repos-rxhanson-Rectangle-subscribers.1.json in Resources */,

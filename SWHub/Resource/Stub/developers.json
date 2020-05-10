@@ -1,0 +1,288 @@
+[
+    {
+        "username": "stephencelis",
+        "name": "Stephen Celis",
+        "url": "https://github.com/stephencelis",
+        "avatar": "https://avatars0.githubusercontent.com/u/658",
+        "repo": {
+            "name": "SQLite.swift",
+            "description": "A type-safe, Swift-language layer over SQLite3.",
+            "url": "https://github.com/stephencelis/SQLite.swift"
+        }
+    },
+    {
+        "username": "kean",
+        "name": "Alexander Grebenyuk",
+        "url": "https://github.com/kean",
+        "sponsorUrl": "https://github.com/sponsors/kean",
+        "avatar": "https://avatars3.githubusercontent.com/u/1567433",
+        "repo": {
+            "name": "Nuke",
+            "description": "Powerful image loading and caching system",
+            "url": "https://github.com/kean/Nuke"
+        }
+    },
+    {
+        "username": "joshdholtz",
+        "name": "Josh Holtz",
+        "url": "https://github.com/joshdholtz",
+        "sponsorUrl": "https://github.com/sponsors/joshdholtz",
+        "avatar": "https://avatars3.githubusercontent.com/u/401294",
+        "repo": {
+            "name": "crunchygif",
+            "description": "",
+            "url": "https://github.com/joshdholtz/crunchygif"
+        }
+    },
+    {
+        "username": "muukii",
+        "name": "Hiroshi Kimura",
+        "url": "https://github.com/muukii",
+        "sponsorUrl": "https://github.com/sponsors/muukii",
+        "avatar": "https://avatars1.githubusercontent.com/u/1888355",
+        "repo": {
+            "name": "Pixel",
+            "description": "🎨🖼 An image editor and engine using CoreImage",
+            "url": "https://github.com/muukii/Pixel"
+        }
+    },
+    {
+        "username": "groue",
+        "name": "Gwendal Roué",
+        "url": "https://github.com/groue",
+        "sponsorUrl": "https://github.com/sponsors/groue",
+        "avatar": "https://avatars1.githubusercontent.com/u/54219",
+        "repo": {
+            "name": "GRDB.swift",
+            "description": "A toolkit for SQLite databases, with a focus on application development",
+            "url": "https://github.com/groue/GRDB.swift"
+        }
+    },
+    {
+        "username": "onevcat",
+        "name": "Wei Wang",
+        "url": "https://github.com/onevcat",
+        "sponsorUrl": "https://github.com/sponsors/onevcat",
+        "avatar": "https://avatars0.githubusercontent.com/u/1019875",
+        "repo": {
+            "name": "Kingfisher",
+            "description": "A lightweight, pure-Swift library for downloading and caching images from the web.",
+            "url": "https://github.com/onevcat/Kingfisher"
+        }
+    },
+    {
+        "username": "JohnSundell",
+        "name": "John Sundell",
+        "url": "https://github.com/JohnSundell",
+        "avatar": "https://avatars0.githubusercontent.com/u/2466701",
+        "repo": {
+            "name": "Publish",
+            "description": "A static site generator for Swift developers",
+            "url": "https://github.com/JohnSundell/Publish"
+        }
+    },
+    {
+        "username": "Juanpe",
+        "name": "Juanpe Catalán",
+        "url": "https://github.com/Juanpe",
+        "sponsorUrl": "https://github.com/sponsors/Juanpe",
+        "avatar": "https://avatars0.githubusercontent.com/u/1409041",
+        "repo": {
+            "name": "About-SwiftUI",
+            "description": "Gathering all info published, both by Apple and by others, about new framework SwiftUI.",
+            "url": "https://github.com/Juanpe/About-SwiftUI"
+        }
+    },
+    {
+        "username": "MaxDesiatov",
+        "name": "Max Desiatov",
+        "url": "https://github.com/MaxDesiatov",
+        "sponsorUrl": "https://github.com/sponsors/MaxDesiatov",
+        "avatar": "https://avatars0.githubusercontent.com/u/112310",
+        "repo": {
+            "name": "Typology",
+            "description": "Swift type checking and semantic analysis for developer tools",
+            "url": "https://github.com/MaxDesiatov/Typology"
+        }
+    },
+    {
+        "username": "krzyzanowskim",
+        "name": "Marcin Krzyzanowski",
+        "url": "https://github.com/krzyzanowskim",
+        "sponsorUrl": "https://github.com/sponsors/krzyzanowskim",
+        "avatar": "https://avatars1.githubusercontent.com/u/758033",
+        "repo": {
+            "name": "CryptoSwift",
+            "description": "CryptoSwift is a growing collection of standard and secure cryptographic algorithms implemented in Swift",
+            "url": "https://github.com/krzyzanowskim/CryptoSwift"
+        }
+    },
+    {
+        "username": "sunshinejr",
+        "name": "Łukasz Mróz",
+        "url": "https://github.com/sunshinejr",
+        "sponsorUrl": "https://github.com/sponsors/sunshinejr",
+        "avatar": "https://avatars3.githubusercontent.com/u/5232779",
+        "repo": {
+            "name": "SwiftyUserDefaults",
+            "description": "Modern Swift API for NSUserDefaults",
+            "url": "https://github.com/sunshinejr/SwiftyUserDefaults"
+        }
+    },
+    {
+        "username": "ra1028",
+        "name": "Ryo Aoyama",
+        "url": "https://github.com/ra1028",
+        "avatar": "https://avatars2.githubusercontent.com/u/7347118",
+        "repo": {
+            "name": "DifferenceKit",
+            "description": "💻 A fast and flexible O(n) difference algorithm framework for Swift collection.",
+            "url": "https://github.com/ra1028/DifferenceKit"
+        }
+    },
+    {
+        "username": "yonaskolb",
+        "name": "Yonas Kolb",
+        "url": "https://github.com/yonaskolb",
+        "avatar": "https://avatars2.githubusercontent.com/u/2393781",
+        "repo": {
+            "name": "XcodeGen",
+            "description": "A Swift command line tool for generating your Xcode project",
+            "url": "https://github.com/yonaskolb/XcodeGen"
+        }
+    },
+    {
+        "username": "ikesyo",
+        "name": "IKEDA Sho",
+        "url": "https://github.com/ikesyo",
+        "avatar": "https://avatars3.githubusercontent.com/u/909674",
+        "repo": {
+            "name": "Himotoki",
+            "description": "A type-safe JSON decoding library purely written in Swift",
+            "url": "https://github.com/ikesyo/Himotoki"
+        }
+    },
+    {
+        "username": "kateinoigakukun",
+        "name": "Yuta Saito",
+        "url": "https://github.com/kateinoigakukun",
+        "avatar": "https://avatars3.githubusercontent.com/u/11702759",
+        "repo": {
+            "name": "JavaScriptKit",
+            "description": "Swift framework to interact with JavaScript through WebAssembly.",
+            "url": "https://github.com/kateinoigakukun/JavaScriptKit"
+        }
+    },
+    {
+        "username": "robb",
+        "name": "Robert Böhnke",
+        "url": "https://github.com/robb",
+        "avatar": "https://avatars1.githubusercontent.com/u/212465",
+        "repo": {
+            "name": "Cartography",
+            "description": "A declarative Auto Layout DSL for Swift 📱📐",
+            "url": "https://github.com/robb/Cartography"
+        }
+    },
+    {
+        "username": "matteocrippa",
+        "name": "Matteo Crippa",
+        "url": "https://github.com/matteocrippa",
+        "avatar": "https://avatars2.githubusercontent.com/u/475463",
+        "repo": {
+            "name": "awesome-swift",
+            "description": "A collaborative list of awesome Swift libraries and resources. Feel free to contribute!",
+            "url": "https://github.com/matteocrippa/awesome-swift"
+        }
+    },
+    {
+        "username": "nathantannar4",
+        "name": "Nathan Tannar",
+        "url": "https://github.com/nathantannar4",
+        "avatar": "https://avatars0.githubusercontent.com/u/15272998",
+        "repo": {
+            "name": "InputBarAccessoryView",
+            "description": "A simple and easily customizable InputAccessoryView for making powerful input bars with autocomplete and attachments",
+            "url": "https://github.com/nathantannar4/InputBarAccessoryView"
+        }
+    },
+    {
+        "username": "0xTim",
+        "name": "Tim Condon",
+        "url": "https://github.com/0xTim",
+        "sponsorUrl": "https://github.com/sponsors/0xTim",
+        "avatar": "https://avatars1.githubusercontent.com/u/9938337",
+        "repo": {
+            "name": "VaporAuthExample",
+            "description": "",
+            "url": "https://github.com/0xTim/VaporAuthExample"
+        }
+    },
+    {
+        "username": "SergioEstevao",
+        "name": "Sérgio Estêvão",
+        "url": "https://github.com/SergioEstevao",
+        "avatar": "https://avatars1.githubusercontent.com/u/651601",
+        "repo": {
+            "name": "SVEVideoUI",
+            "description": "A video component for SwiftUI",
+            "url": "https://github.com/SergioEstevao/SVEVideoUI"
+        }
+    },
+    {
+        "username": "tanner0101",
+        "name": "Tanner",
+        "url": "https://github.com/tanner0101",
+        "sponsorUrl": "https://github.com/sponsors/tanner0101",
+        "avatar": "https://avatars3.githubusercontent.com/u/1342803",
+        "repo": {
+            "name": "release-bot",
+            "description": "Webhook-based GitHub bot that automatically tags new releases and posts to Discord when you merge PRs",
+            "url": "https://github.com/tanner0101/release-bot"
+        }
+    },
+    {
+        "username": "AliSoftware",
+        "name": "Olivier Halligon",
+        "url": "https://github.com/AliSoftware",
+        "avatar": "https://avatars0.githubusercontent.com/u/216089",
+        "repo": {
+            "name": "Reusable",
+            "description": "A Swift mixin for reusing views easily and in a type-safe way (UITableViewCells, UICollectionViewCells, custom UIViews, ViewControllers, Storyboards…)",
+            "url": "https://github.com/AliSoftware/Reusable"
+        }
+    },
+    {
+        "username": "bizz84",
+        "name": "Andrea Bizzotto",
+        "url": "https://github.com/bizz84",
+        "avatar": "https://avatars3.githubusercontent.com/u/153167",
+        "repo": {
+            "name": "SwiftyStoreKit",
+            "description": "Lightweight In App Purchases Swift framework for iOS 8.0+, tvOS 9.0+ and macOS 10.10+ ⛺",
+            "url": "https://github.com/bizz84/SwiftyStoreKit"
+        }
+    },
+    {
+        "username": "mattt",
+        "name": "Mattt",
+        "url": "https://github.com/mattt",
+        "avatar": "https://avatars2.githubusercontent.com/u/7659",
+        "repo": {
+            "name": "CommonMarkAttributedString",
+            "description": "Create NSAttributedStrings from Markdown Text",
+            "url": "https://github.com/mattt/CommonMarkAttributedString"
+        }
+    },
+    {
+        "username": "nicklockwood",
+        "name": "Nick Lockwood",
+        "url": "https://github.com/nicklockwood",
+        "avatar": "https://avatars3.githubusercontent.com/u/546885",
+        "repo": {
+            "name": "SwiftFormat",
+            "description": "A command-line tool and Xcode Extension for formatting Swift code",
+            "url": "https://github.com/nicklockwood/SwiftFormat"
+        }
+    }
+]
