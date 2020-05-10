@@ -35,28 +35,13 @@ class RepoItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-//        var title: String?
-//        var subtitle: String?
-//        var detail: NSAttributedString?
-//        var icon: URL?
-//        if let repo = model as? Repo {
-//            title = repo.fullName
-//            subtitle = repo.description
-//            detail = repo.detail()
-//            icon = repo.owner?.avatar
-//        } else if let repo = model as? TrendingRepo {
-//            title = "\(repo.author ?? "")/\(repo.name ?? "")"
-//            subtitle = repo.description
-//            detail = repo.detail(since: Condition.current()!.since.title)
-//            icon = repo.avatar
-//        }
-//        self.initialState = State(
-//            title: title,
-//            subtitle: subtitle,
-//            detail: detail,
-//            icon: icon
-//        )
-        if let repo = model as? TrendingRepo {
+        if let repo = model as? Repo {
+            self.initialState = State(
+                name: repo.fullName,
+                description: repo.description,
+                avatar: repo.owner?.avatar
+            )
+        } else if let repo = model as? TrendingRepo {
             self.initialState = State(
                 name: "\(repo.author ?? "")/\(repo.name ?? "")",
                 description: repo.description,

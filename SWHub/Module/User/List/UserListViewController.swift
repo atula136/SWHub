@@ -18,7 +18,7 @@ import SWFrame
 class UserListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let userCell = ReusableCell<UserCell2>()
+        static let userCell = ReusableCell<UserCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<UserListSection>

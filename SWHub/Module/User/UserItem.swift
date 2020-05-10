@@ -32,23 +32,12 @@ class UserItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-//        var title: String?
-//        var subtitle: String?
-//        var icon: URL?
-//        if let user = model as? User {
-//            title = user.login
-//            icon = user.avatar
-//        } else if let user = model as? TrendingUser {
-//            title = user.name
-//            subtitle = user.repo?.name
-//            icon = user.avatar
-//        }
-//        self.initialState = State(
-//            title: title,
-//            subtitle: subtitle,
-//            icon: icon
-//        )
-        if let user = model as? TrendingUser {
+        if let user = model as? User {
+            self.initialState = State(
+                name: user.login,
+                avatar: user.avatar
+            )
+        } else if let user = model as? TrendingUser {
             self.initialState = State(
                 name: user.name,
                 description: user.repo?.description,

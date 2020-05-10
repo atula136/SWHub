@@ -116,11 +116,11 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             if toCache {
                 User.storeArray(users)
             }
-            state.sections = [.users(users.map { .user(UserItem2($0)) })]
+            state.sections = [.users(users.map { .user(UserItem($0)) })]
         case let .append(users):
             state.noMoreData = users.count < self.pageSize
             var items = state.sections[0].items
-            items += users.map { .user(UserItem2($0)) }
+            items += users.map { .user(UserItem($0)) }
             state.sections = [.users(items)]
         }
         return state
