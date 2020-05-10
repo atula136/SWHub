@@ -22,7 +22,8 @@ state -> refresh ui效果
 languageColor
 首次安装、首页网络错误
 开机广告
-iconfont
+默认头像
+首页底部没显示完整
 
 https://api.github.com/user/starred/rxhanson/Rectangle
 

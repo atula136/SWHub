@@ -45,7 +45,6 @@ class RepoCell: CollectionCell, ReactorKit.View {
     lazy var languageLabel: Label = {
         let label = Label()
         label.font = .normal(15)
-        label.textAlignment = .center
         label.sizeToFit()
         return label
     }()
@@ -53,7 +52,6 @@ class RepoCell: CollectionCell, ReactorKit.View {
     lazy var starsLabel: Label = {
         let label = Label()
         label.font = .normal(15)
-        label.textAlignment = .center
         label.sizeToFit()
         return label
     }()
@@ -61,7 +59,13 @@ class RepoCell: CollectionCell, ReactorKit.View {
     lazy var forksLabel: Label = {
         let label = Label()
         label.font = .normal(15)
-        label.textAlignment = .center
+        label.sizeToFit()
+        return label
+    }()
+
+    lazy var statusLabel: Label = {
+        let label = Label()
+        label.font = .normal(10)
         label.sizeToFit()
         return label
     }()
@@ -89,9 +93,11 @@ class RepoCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.languageLabel)
         self.contentView.addSubview(self.starsLabel)
         self.contentView.addSubview(self.forksLabel)
+        self.contentView.addSubview(self.statusLabel)
 
         themeService.rx
             .bind({ $0.headColor }, to: self.nameLabel.rx.textColor)
+            .bind({ $0.footColor }, to: self.statusLabel.rx.textColor)
             .bind({ $0.bodyColor }, to: self.descriptionLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
@@ -109,16 +115,20 @@ class RepoCell: CollectionCell, ReactorKit.View {
         self.descriptionLabel.extendToBottom = self.contentView.height - 40
 
         self.languageLabel.sizeToFit()
-        self.languageLabel.bottom = self.contentView.height - 10
+        self.languageLabel.bottom = self.contentView.height - 16
         self.languageLabel.left = self.avatarImageView.left
 
         self.starsLabel.sizeToFit()
         self.starsLabel.bottom = self.languageLabel.bottom
-        self.starsLabel.left = self.starsLabel.leftWhenCenter
+        self.starsLabel.left = flat(self.contentView.width / 2.f - 20)
 
         self.forksLabel.sizeToFit()
         self.forksLabel.bottom = self.languageLabel.bottom
-        self.forksLabel.right = self.contentView.width - 20
+        self.forksLabel.left = self.contentView.width - 70
+
+        self.statusLabel.sizeToFit()
+        self.statusLabel.top = self.forksLabel.bottom + 8
+        self.statusLabel.left = self.avatarImageView.left
     }
 
     override func prepareForReuse() {
@@ -127,6 +137,8 @@ class RepoCell: CollectionCell, ReactorKit.View {
         self.descriptionLabel.text = nil
         self.languageLabel.attributedText = nil
         self.starsLabel.attributedText = nil
+        self.forksLabel.attributedText = nil
+        self.statusLabel.text = nil
         self.avatarImageView.image = nil
     }
 
@@ -138,9 +150,9 @@ class RepoCell: CollectionCell, ReactorKit.View {
         reactor.state.map { $0.description }
             .bind(to: self.descriptionLabel.rx.text)
             .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.subtitle == nil }
-//            .bind(to: self.subtitleLabel.rx.isHidden)
-//            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.status }
+            .bind(to: self.statusLabel.rx.text)
+            .disposed(by: self.disposeBag)
         reactor.state.map { $0.language }
             .bind(to: self.languageLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
@@ -150,9 +162,6 @@ class RepoCell: CollectionCell, ReactorKit.View {
         reactor.state.map { $0.forks }
             .bind(to: self.forksLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.detail == nil }
-//            .bind(to: self.detailLabel.rx.isHidden)
-//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.avatar }
             .bind(to: self.avatarImageView.rx.image)
             .disposed(by: self.disposeBag)
@@ -165,7 +174,7 @@ class RepoCell: CollectionCell, ReactorKit.View {
         guard let item = item as? RepoItem else { return .zero }
         var height = 10 + Metric.avatarSize.height + 4
         height += (item.currentState.description ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.description)
-        height += 44
+        height += 50
         return CGSize(width: width, height: flat(height))
     }
 

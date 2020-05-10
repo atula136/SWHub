@@ -10,6 +10,7 @@ import UIKit
 import BonMot
 import Iconic
 import ObjectMapper
+import SwifterSwift
 import SWFrame
 
 struct TrendingRepo: ModelType, Storable {
@@ -24,7 +25,7 @@ struct TrendingRepo: ModelType, Storable {
     var description: String?
     var url: URL?
     var avatar: URL?
-    var builtBy: [TrendingDeveloper]?
+    var builtBy: [TrendingUser]?
 
     init() {
     }
@@ -61,8 +62,8 @@ struct TrendingRepo: ModelType, Storable {
 
     func languageText() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
-        let shape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .clear)]))
-        let string = (self.language ?? "").styled(with: .color(.head))
+        let shape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .random)]))
+        let string = (self.language ?? R.string.localizable.none()).styled(with: .color(.head))
         texts.append(.composed(of: [
             shape, Special.space, string
         ]))

@@ -112,7 +112,7 @@ extension HomeViewController: PagingViewControllerDataSource {
         case .repository:
             return TrendingRepoListViewController(self.navigator, TrendingRepoListViewReactor(self.reactor!.provider, nil))
         case .developer:
-            return TrendingDeveloperListViewController(self.navigator, TrendingDeveloperListViewReactor(self.reactor!.provider, nil))
+            return TrendingUserListViewController(self.navigator, TrendingUserListViewReactor(self.reactor!.provider, nil))
         }
     }
 

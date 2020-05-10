@@ -44,7 +44,7 @@ struct LightTheme: Theme {
     let secondaryColor = UIColor.Material.red
     let headColor = UIColor(hex: 0x333333)!
     let bodyColor = UIColor(hex: 0x666666)!
-    let footColor = UIColor.Material.grey
+    let footColor = UIColor(hex: 0x999999)!
     let borderColor = UIColor.Material.grey900
     let indicatorColor = UIColor.orange
     let separatorColor = UIColor(hex: 0xd1d1d1)!
@@ -65,8 +65,8 @@ struct DarkTheme: Theme {
     var foregroundColor = UIColor.Material.red
     let primaryColor = UIColor.Material.grey900
     let secondaryColor = UIColor.Material.red
-    let headColor = UIColor(hex: 0x333333)!
-    let bodyColor = UIColor(hex: 0x666666)!
+    let headColor = UIColor.Material.grey50
+    let bodyColor = UIColor.Material.grey200
     let footColor = UIColor.Material.grey
     let borderColor = UIColor.Material.grey900
     let indicatorColor = UIColor.orange

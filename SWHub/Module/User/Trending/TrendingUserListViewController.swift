@@ -1,5 +1,5 @@
 //
-//  TrendingDeveloperListViewController.swift
+//  TrendingUserListViewController.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -15,24 +15,24 @@ import ReusableKit
 import RxDataSources
 import SWFrame
 
-class TrendingDeveloperListViewController: CollectionViewController, ReactorKit.View {
+class TrendingUserListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let developerCell = ReusableCell<UserCell>()
+        static let userCell = ReusableCell<UserCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingDeveloperSection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingUserSection>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = .init(horizontal: 30, vertical: 20)
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 10
+//        layout.sectionInset = .init(horizontal: 30, vertical: 20)
         return layout
     }
 
-    init(_ navigator: NavigatorType, _ reactor: TrendingDeveloperListViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: TrendingUserListViewReactor) {
         defer {
             self.reactor = reactor
         }
@@ -48,11 +48,11 @@ class TrendingDeveloperListViewController: CollectionViewController, ReactorKit.
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.developerCell)
+        self.collectionView.register(Reusable.userCell)
         self.collectionView.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - navigationContentTopConstant - tabBarHeight)
     }
 
-    func bind(reactor: TrendingDeveloperListViewReactor) {
+    func bind(reactor: TrendingUserListViewReactor) {
         super.bind(reactor: reactor)
         // action
         self.rx.viewDidLoad.map { Reactor.Action.load }
@@ -81,12 +81,12 @@ class TrendingDeveloperListViewController: CollectionViewController, ReactorKit.
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingDeveloperListViewReactor) -> RxCollectionViewSectionedReloadDataSource<TrendingDeveloperSection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingUserListViewReactor) -> RxCollectionViewSectionedReloadDataSource<TrendingUserSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .developer(item):
-                    let cell = collectionView.dequeue(Reusable.developerCell, for: indexPath)
+                case let .user(item):
+                    let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 }
@@ -95,13 +95,13 @@ class TrendingDeveloperListViewController: CollectionViewController, ReactorKit.
 
 }
 
-extension TrendingDeveloperListViewController: UICollectionViewDelegateFlowLayout {
+extension TrendingUserListViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .developer(item):
-            return Reusable.developerCell.class.size(width: width, item: item)
+        case let .user(item):
+            return Reusable.userCell.class.size(width: width, item: item)
         }
     }
 

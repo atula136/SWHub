@@ -1,5 +1,5 @@
 //
-//  TrendingDeveloperListViewReactor.swift
+//  TrendingUserListViewReactor.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -12,7 +12,7 @@ import RxCocoa
 import ReactorKit
 import SWFrame
 
-class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
@@ -23,7 +23,7 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
         case setLoading(Bool)
         case setRefreshing(Bool)
         case setError(Error?)
-        case start([TrendingDeveloper], toCache: Bool)
+        case start([TrendingUser], toCache: Bool)
     }
 
     struct State {
@@ -31,7 +31,7 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
         var isRefreshing = false
         var title: String?
         var error: Error?
-        var sections: [TrendingDeveloperSection] = []
+        var sections: [TrendingUserSection] = []
     }
 
     var initialState = State()
@@ -48,7 +48,7 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
             guard self.currentState.isLoading == false else { return .empty() }
             var load = Observable.just(Mutation.setError(nil))
             load = load.concat(Observable.just(.setLoading(true)))
-            if let developers = TrendingDeveloper.cachedArray() {
+            if let developers = TrendingUser.cachedArray() {
                 load = load.concat(Observable.just(.start(developers, toCache: false)))
             } else {
                 load = load.concat(self.provider.developers(language: nil, since: "daily").map { Mutation.start($0, toCache: true) }.catchError({ .just(.setError($0)) }))
@@ -75,11 +75,11 @@ class TrendingDeveloperListViewReactor: CollectionViewReactor, ReactorKit.Reacto
             state.isRefreshing = isRefreshing
         case let .setError(error):
             state.error = error
-        case let .start(developers, toCache):
+        case let .start(users, toCache):
             if toCache {
-                TrendingDeveloper.storeArray(developers)
+                TrendingUser.storeArray(users)
             }
-            state.sections = [.developers(developers.map { TrendingDeveloperSectionItem.developer(UserItem($0)) })]
+            state.sections = [.users(users.map { TrendingUserSectionItem.user(UserItem($0)) })]
         }
         return state
     }

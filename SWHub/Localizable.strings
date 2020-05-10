@@ -8,6 +8,7 @@
 
 "Yes" = "是";
 "No" = "否";
+"None" = "无";
 "OK" = "确认";
 "Cancel" = "取消";
 "Save" = "保存";
@@ -16,8 +17,12 @@
 "Watch" = "观察";
 "Star" = "打星";
 "Fork" = "复制";
+"Daily" = "今日";
+"Weekly" = "本周";
+"Monthly" = "本月";
 "Clear cache" = "清除缓存";
 "Click to login" = "点击登录";
+"Trending.Repo.Stars.New" = "%@增加%d个星";
 "User.Exit.Prompt" = "您确定要退出%@吗";
 /* 刷新 */
 "Pull to refresh" = "下拉刷新";
@@ -26,9 +31,6 @@
 "Loading more" = "正在加载更多";
 "No more data" = "没有更多的了";
 /* 条件 */
-"Condition.Since.Daily" = "每日";
-"Condition.Since.Weekly" = "本周";
-"Condition.Since.Monthly" = "本月";
 "All languages" = "所有语言";
 /* 详情 */
 "Detail.Cell.Pull" = "拉取请求";

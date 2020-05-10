@@ -32,7 +32,7 @@ extension ProviderType {
     /// - Parameters:
     ///   - language: 语言
     ///   - since: 时间
-    func developers(language: String?, since: String?) -> Observable<[TrendingDeveloper]> {
-        return self.trendingNetworking.requestArray(.developers(language: language, since: since), type: TrendingDeveloper.self)
+    func developers(language: String?, since: String?) -> Observable<[TrendingUser]> {
+        return self.trendingNetworking.requestArray(.developers(language: language, since: since), type: TrendingUser.self)
     }
 }

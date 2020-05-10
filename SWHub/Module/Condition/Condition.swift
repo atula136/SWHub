@@ -55,9 +55,9 @@ struct Condition: ModelType, Subjective, Equatable /*, Eventable */ {
 
         var title: String {
             switch self {
-            case .daily: return R.string.localizable.conditionSinceDaily()
-            case .weekly: return R.string.localizable.conditionSinceWeekly()
-            case .monthly: return R.string.localizable.conditionSinceMonthly()
+            case .daily: return R.string.localizable.daily()
+            case .weekly: return R.string.localizable.weekly()
+            case .monthly: return R.string.localizable.monthly()
             }
         }
 

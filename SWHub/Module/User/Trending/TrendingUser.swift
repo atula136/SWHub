@@ -1,5 +1,5 @@
 //
-//  TrendingDeveloper.swift
+//  TrendingUser.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/4.
@@ -8,10 +8,11 @@
 
 import UIKit
 import BonMot
+import Iconic
 import ObjectMapper
 import SWFrame
 
-struct TrendingDeveloper: ModelType, Storable {
+struct TrendingUser: ModelType, Storable {
 
     var id: Int?
     var name: String?
@@ -34,6 +35,16 @@ struct TrendingDeveloper: ModelType, Storable {
         avatar          <- (map["avatar"], URLTransform())
         href            <- (map["href"], URLTransform())
         repo            <- map["repo"]
+    }
+
+    func repoText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = (self.repo?.name ?? "").styled(with: .color(.head))
+        let image = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .head).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
     }
 
 }

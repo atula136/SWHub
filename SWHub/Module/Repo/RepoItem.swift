@@ -24,6 +24,7 @@ class RepoItem: CollectionItem, ReactorKit.Reactor {
     struct State {
         var name: String?
         var description: String?
+        var status: String?
         var language: NSAttributedString?
         var stars: NSAttributedString?
         var forks: NSAttributedString?
@@ -59,6 +60,7 @@ class RepoItem: CollectionItem, ReactorKit.Reactor {
             self.initialState = State(
                 name: "\(repo.author ?? "")/\(repo.name ?? "")",
                 description: repo.description,
+                status: R.string.localizable.trendingRepoStarsNew(Condition.current()!.since.title, repo.currentPeriodStars ?? 0),
                 language: repo.languageText(),
                 stars: repo.starsText(),
                 forks: repo.forksText(),
@@ -82,13 +84,14 @@ class RepoItem: CollectionItem, ReactorKit.Reactor {
     }
 
     func transform(state: Observable<State>) -> Observable<State> {
-//        guard let repository = self.model as? TrendingRepo else { return state }
-//        return state.flatMap { state -> Observable<State> in
-//             var state = state
-//             state.detail = repository.detail(since: Condition.current()!.since.title)
-//            return .just(state)
-//        }
-        return state
+        guard let repo = self.model as? TrendingRepo else { return state }
+        return state.flatMap { state -> Observable<State> in
+            var state = state
+            state.language = repo.languageText()
+            state.stars = repo.starsText()
+            state.forks = repo.forksText()
+            return .just(state)
+        }
     }
 
 }
