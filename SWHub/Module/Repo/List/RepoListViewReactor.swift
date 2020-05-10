@@ -114,11 +114,11 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             if toCache {
                 Repo.storeArray(repos)
             }
-            state.sections = [.repos(repos.map { .repo(RepoItem($0)) })]
+            state.sections = [.repos(repos.map { .repo(RepoItem2($0)) })]
         case let .append(repos):
             state.noMoreData = repos.count < self.pageSize
             var items = state.sections[0].items
-            items += repos.map { .repo(RepoItem($0)) }
+            items += repos.map { .repo(RepoItem2($0)) }
             state.sections = [.repos(items)]
         }
         return state

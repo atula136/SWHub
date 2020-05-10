@@ -21,9 +21,8 @@ protocol Theme {
     var foregroundColor: UIColor { get }                            // 前景
     var primaryColor: UIColor { get }                               // 主色
     var secondaryColor: UIColor { get }                             // 次色
-    var textColor: UIColor { get }                                  // 文本
-    var bodyColor: UIColor { get }                                  // 内容
     var headColor: UIColor { get }                                  // 头部
+    var bodyColor: UIColor { get }                                  // 内容
     var footColor: UIColor { get }                                  // 尾部
     var borderColor: UIColor { get }                                // 边框
     var indicatorColor: UIColor { get }                             // 指示器
@@ -43,9 +42,8 @@ struct LightTheme: Theme {
     var foregroundColor = UIColor.Material.red
     let primaryColor = UIColor.Material.grey200
     let secondaryColor = UIColor.Material.red
-    let textColor = UIColor.Material.grey900
-    let bodyColor = UIColor.Material.grey
-    let headColor = UIColor(hex: 0x666666)!
+    let headColor = UIColor(hex: 0x333333)!
+    let bodyColor = UIColor(hex: 0x666666)!
     let footColor = UIColor.Material.grey
     let borderColor = UIColor.Material.grey900
     let indicatorColor = UIColor.orange
@@ -63,13 +61,12 @@ struct LightTheme: Theme {
 }
 
 struct DarkTheme: Theme {
-    let backgroundColor = UIColor.Material.grey800
+    let backgroundColor = UIColor(hex: 0x171a21)!
     var foregroundColor = UIColor.Material.red
     let primaryColor = UIColor.Material.grey900
     let secondaryColor = UIColor.Material.red
-    let textColor = UIColor.Material.grey50
-    let bodyColor = UIColor.Material.grey
-    let headColor = UIColor(hex: 0x666666)!
+    let headColor = UIColor(hex: 0x333333)!
+    let bodyColor = UIColor(hex: 0x666666)!
     let footColor = UIColor.Material.grey
     let borderColor = UIColor.Material.grey900
     let indicatorColor = UIColor.orange

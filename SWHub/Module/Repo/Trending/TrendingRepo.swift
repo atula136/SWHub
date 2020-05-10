@@ -47,15 +47,46 @@ struct TrendingRepo: ModelType, Storable {
     }
 
     func detail(since: String) -> NSAttributedString? {
-        let starImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .text).styled(with: .baselineOffset(-3))
-        let starsString = (self.stars ?? 0).kFormatted().styled(with: .color(.text))
-        let currentPeriodStarsString = "\((self.currentPeriodStars ?? 0).kFormatted())\(since.lowercased())".styled(with: .color(.text))
+        let starImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .head).styled(with: .baselineOffset(-3))
+        let starsString = (self.stars ?? 0).kFormatted().styled(with: .color(.head))
+        let currentPeriodStarsString = "\((self.currentPeriodStars ?? 0).kFormatted())\(since.lowercased())".styled(with: .color(.head))
         let languageColorShape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .clear)]))
-        let languageString = (self.language ?? "").styled(with: .color(.text))
+        let languageString = (self.language ?? "").styled(with: .color(.head))
         return .composed(of: [
             starImage, Special.space, starsString, Special.space, Special.tab,
             starImage, Special.space, currentPeriodStarsString, Special.space, Special.tab,
             languageColorShape, Special.space, languageString
         ])
     }
+
+    func languageText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let shape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .clear)]))
+        let string = (self.language ?? "").styled(with: .color(.head))
+        texts.append(.composed(of: [
+            shape, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
+
+    func starsText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = (self.stars ?? 0).kFormatted().styled(with: .color(.head))
+        let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .head).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
+
+    func forksText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = (self.forks ?? 0).kFormatted().styled(with: .color(.head))
+        let image = FontAwesomeIcon.codeForkIcon.image(ofSize: .s16, color: .head).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
+
 }

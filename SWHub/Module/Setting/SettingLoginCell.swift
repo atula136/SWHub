@@ -39,7 +39,7 @@ class SettingLoginCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.logoImageView)
         themeService.rx
-            .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.headColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.foregroundColor }, to: self.logoImageView.rx.tintColor)
             .disposed(by: self.rx.disposeBag)
     }

@@ -18,7 +18,7 @@ import SWFrame
 class RepoListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let repoCell = ReusableCell<RepoCell>()
+        static let repoCell = ReusableCell<RepoCell2>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<RepoListSection>

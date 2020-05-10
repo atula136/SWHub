@@ -37,18 +37,18 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         themeService.rx
             .bind({ $0.primaryColor }, to: self.tab.tabBar.rx.barTintColor)
             .bind({ $0.foregroundColor }, to: self.tab.tabBar.rx.tintColor)
-            //.bind({ $0.textColor }, to: self.tab.tabBar.rx.imageTintColor)
+            //.bind({ $0.headColor }, to: self.tab.tabBar.rx.imageTintColor)
             //.bind({ $0.foregroundColor }, to: self.tab.tabBar.rx.selectedImageTintColor)
             .disposed(by: self.rx.disposeBag)
         if #available(iOS 10.0, *) {
             themeService.rx
-                .bind({ $0.textColor }, to: self.tab.tabBar.rx.unselectedItemTintColor)
+                .bind({ $0.headColor }, to: self.tab.tabBar.rx.unselectedItemTintColor)
                 .disposed(by: self.rx.disposeBag)
         }
         themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] theme in
             guard let `self` = self else { return }
             if let items = self.tab.tabBar.items {
-                let color = theme.associatedObject.textColor
+                let color = theme.associatedObject.headColor
                 let selectedColor = theme.associatedObject.foregroundColor
                 for item in items {
                     item.image = item.image?.qmui_image(withTintColor: color)?.original
@@ -75,23 +75,23 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         switch key {
         case .home:
             viewController = HomeViewController(self.navigator, HomeViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .head).original
             viewController?.tabBarItem.selectedImage = FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .foreground).original
         case .message:
             viewController = MessageViewController(self.navigator, MessageViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.commentsIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.commentsIcon.image(ofSize: s28, color: .head).original
             viewController?.tabBarItem.selectedImage = FontAwesomeIcon.commentsIcon.image(ofSize: s28, color: .foreground).original
         case .search:
             viewController = SearchViewController(self.navigator, SearchViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.searchIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.searchIcon.image(ofSize: s28, color: .head).original
             viewController?.tabBarItem.selectedImage = FontAwesomeIcon.searchIcon.image(ofSize: s28, color: .foreground).original
         case .activity:
             viewController = ActivityViewController(self.navigator, ActivityViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.bellIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.bellIcon.image(ofSize: s28, color: .head).original
             viewController?.tabBarItem.selectedImage = FontAwesomeIcon.bellIcon.image(ofSize: s28, color: .foreground).original
         case .setting:
             viewController = SettingViewController(self.navigator, SettingViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .text).original
+            viewController?.tabBarItem.image = FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .head).original
             viewController?.tabBarItem.selectedImage = FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .foreground).original
         }
         viewController?.hidesBottomBarWhenPushed = false
@@ -99,7 +99,7 @@ class MainViewController: TabBarViewController, ReactorKit.View {
             if #available(iOS 10.0, *) {
             } else {
                 themeService.rx
-                    .bind({ [NSAttributedString.Key.foregroundColor: $0.textColor] }, to: item.rx.titleTextAttributes(for: .normal))
+                    .bind({ [NSAttributedString.Key.foregroundColor: $0.headColor] }, to: item.rx.titleTextAttributes(for: .normal))
                     .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: item.rx.titleTextAttributes(for: .selected))
                     .disposed(by: self.rx.disposeBag)
             }

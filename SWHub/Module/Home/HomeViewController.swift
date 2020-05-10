@@ -74,7 +74,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         themeService.rx
             .bind({ $0.primaryColor }, to: self.paging.view.rx.backgroundColor)
             .bind({ $0.foregroundColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
-            .bind({ $0.textColor }, to: self.paging.rx.textColor)
+            .bind({ $0.headColor }, to: self.paging.rx.textColor)
             .disposed(by: self.rx.disposeBag)
         themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }

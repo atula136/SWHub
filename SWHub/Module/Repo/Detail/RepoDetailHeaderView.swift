@@ -84,7 +84,7 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
         self.addSubview(self.forkersButton)
 
         themeService.rx
-            .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.headColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.backgroundColor }, to: [self.starButton.rx.borderColor, self.starButton.rx.tintColor])
             .bind({ $0.foregroundColor }, to: [self.starButton.rx.backgroundColor, self.watchersButton.rx.backgroundColor, self.stargazersButton.rx.backgroundColor, self.forkersButton.rx.backgroundColor])
             .disposed(by: self.rx.disposeBag)

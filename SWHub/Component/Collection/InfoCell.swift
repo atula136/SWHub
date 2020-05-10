@@ -82,7 +82,7 @@ class InfoCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.indicatorImageView)
 
         themeService.rx
-            .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.headColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.footColor }, to: self.subtitleLabel.rx.textColor)
             .bind({ $0.foregroundColor }, to: self.indicatorImageView.rx.tintColor)
             .disposed(by: self.rx.disposeBag)

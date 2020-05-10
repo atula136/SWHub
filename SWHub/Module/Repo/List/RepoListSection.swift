@@ -31,5 +31,5 @@ extension RepoListSection: SectionModelType {
 }
 
 enum RepoListSectionItem {
-    case repo(RepoItem)
+    case repo(RepoItem2)
 }

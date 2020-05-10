@@ -26,16 +26,12 @@ extension UIColor {
         return themeService.type.associatedObject.secondaryColor
     }
 
-    static var text: UIColor {
-        return themeService.type.associatedObject.textColor
+    static var head: UIColor {
+        return themeService.type.associatedObject.headColor
     }
 
     static var body: UIColor {
         return themeService.type.associatedObject.bodyColor
-    }
-
-    static var head: UIColor {
-        return themeService.type.associatedObject.headColor
     }
 
     static var foot: UIColor {
