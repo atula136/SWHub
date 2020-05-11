@@ -78,8 +78,8 @@ class UserCell: CollectionCell, ReactorKit.View {
 
         themeService.rx
             .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
-            .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
-            .bind({ $0.titleColor }, to: [self.nameLabel.rx.textColor, self.repoButton.rx.titleColor(for: .normal)])
+            .bind({ $0.bodyColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.headColor }, to: [self.nameLabel.rx.textColor, self.repoButton.rx.titleColor(for: .normal)])
             .disposed(by: self.rx.disposeBag)
     }
 

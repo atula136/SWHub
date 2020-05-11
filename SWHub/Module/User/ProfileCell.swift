@@ -111,9 +111,9 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         self.countView.addSubview(self.followingButton)
 
         themeService.rx
-            .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
-            .bind({ $0.statusColor }, to: self.descriptionLabel.rx.textColor)
-            .bind({ $0.detailColor }, to: self.statusLabel.rx.textColor)
+            .bind({ $0.headColor }, to: self.nameLabel.rx.textColor)
+            .bind({ $0.footColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.bodyColor }, to: self.statusLabel.rx.textColor)
             .bind({ $0.bgColor }, to: self.userView.rx.backgroundColor)
             .bind({ $0.tintColor }, to: self.indicatorImageView.rx.tintColor)
             .bind({ $0.borderColor }, to: self.userView.rx.qmui_borderColor)

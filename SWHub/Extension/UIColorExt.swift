@@ -18,24 +18,28 @@ extension UIColor {
         return themeService.type.associatedObject.fgColor
     }
 
-    static var primary: UIColor {
-        return themeService.type.associatedObject.primaryColor
+    static var dim: UIColor {
+        return themeService.type.associatedObject.dimColor
+    }
+
+    static var mask: UIColor {
+        return themeService.type.associatedObject.maskColor
     }
 
     static var tint: UIColor {
         return themeService.type.associatedObject.tintColor
     }
 
-    static var title: UIColor {
-        return themeService.type.associatedObject.titleColor
+    static var head: UIColor {
+        return themeService.type.associatedObject.headColor
     }
 
-    static var detail: UIColor {
-        return themeService.type.associatedObject.detailColor
+    static var body: UIColor {
+        return themeService.type.associatedObject.bodyColor
     }
 
-    static var status: UIColor {
-        return themeService.type.associatedObject.statusColor
+    static var foot: UIColor {
+        return themeService.type.associatedObject.footColor
     }
 
     static var border: UIColor {

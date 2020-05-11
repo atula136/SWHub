@@ -100,9 +100,9 @@ class RepoCell: CollectionCell, ReactorKit.View {
 
         themeService.rx
             .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
-            .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
-            .bind({ $0.statusColor }, to: self.statusLabel.rx.textColor)
-            .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.headColor }, to: self.nameLabel.rx.textColor)
+            .bind({ $0.footColor }, to: self.statusLabel.rx.textColor)
+            .bind({ $0.bodyColor }, to: self.descriptionLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
 

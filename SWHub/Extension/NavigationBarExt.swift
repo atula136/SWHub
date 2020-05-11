@@ -16,9 +16,9 @@ extension NavigationBar {
         self.my_init(frame: frame)
         themeService.rx
             .bind({ $0.tintColor }, to: self.rx.itemColor)
-            .bind({ $0.primaryColor }, to: self.rx.backgroundColor)
+            .bind({ $0.dimColor }, to: self.rx.backgroundColor)
             .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
-            .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.headColor }, to: self.titleLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
 

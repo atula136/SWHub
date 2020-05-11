@@ -65,7 +65,7 @@ class MyColorViewController: CollectionViewController, ReactorKit.View {
         }).disposed(by: self.disposeBag)
 
         themeService.rx
-            .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
+            .bind({ $0.dimColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
 

@@ -17,22 +17,23 @@ let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 let themeService = ThemeType.service(initial: ThemeType.currentTheme())
 
 protocol Theme {
-    var bgColor: UIColor { get }                            // 背景
-    var fgColor: UIColor { get }                            // 前景
-    var primaryColor: UIColor { get }                               // 主色
-    var tintColor: UIColor { get }                             // 次色
-    var titleColor: UIColor { get }                                  // 头部
-    var detailColor: UIColor { get }                                  // 内容
-    var statusColor: UIColor { get }                                  // 尾部
-    var borderColor: UIColor { get }                                // 边框
-    var indicatorColor: UIColor { get }                             // 指示器
-    var separatorColor: UIColor { get }                             // 分隔条
-    var placeholderColor: UIColor { get }                           // 占位符
-    var highlightedColor: UIColor { get }                           // 高亮的
-    var barStyle: UIBarStyle { get }                                // 栏样式
-    var statusBarStyle: UIStatusBarStyle { get }                    // 状态栏
-    var keyboardAppearance: UIKeyboardAppearance { get }            // 键盘表现
-    var blurStyle: UIBlurEffect.Style { get }                       // 毛玻璃
+    var bgColor: UIColor { get }
+    var fgColor: UIColor { get }
+    var dimColor: UIColor { get }
+    var maskColor: UIColor { get }
+    var tintColor: UIColor { get }
+    var headColor: UIColor { get }
+    var bodyColor: UIColor { get }
+    var footColor: UIColor { get }
+    var borderColor: UIColor { get }
+    var indicatorColor: UIColor { get }
+    var separatorColor: UIColor { get }
+    var placeholderColor: UIColor { get }
+    var highlightedColor: UIColor { get }
+    var barStyle: UIBarStyle { get }
+    var statusBarStyle: UIStatusBarStyle { get }
+    var keyboardAppearance: UIKeyboardAppearance { get }
+    var blurStyle: UIBlurEffect.Style { get }
 
     init(colorTheme: ColorTheme)
 }
@@ -40,11 +41,12 @@ protocol Theme {
 struct LightTheme: Theme {
     let bgColor = UIColor.Material.white
     let fgColor = UIColor.Material.black
-    let primaryColor = UIColor(hex: 0xFAFAFA)!
+    let dimColor = UIColor(hex: 0xFAFAFA)!
+    let maskColor = UIColor(hex: 0xFAFAFA)!
     var tintColor = UIColor.Material.red
-    let titleColor = UIColor(hex: 0x333333)!
-    let detailColor = UIColor(hex: 0x666666)!
-    let statusColor = UIColor(hex: 0x999999)!
+    let headColor = UIColor(hex: 0x333333)!
+    let bodyColor = UIColor(hex: 0x666666)!
+    let footColor = UIColor(hex: 0x999999)!
     let borderColor = UIColor(hex: 0xEEEEEE)!
     let indicatorColor = UIColor.orange
     let separatorColor = UIColor(hex: 0xd1d1d1)!
@@ -63,11 +65,12 @@ struct LightTheme: Theme {
 struct DarkTheme: Theme {
     let bgColor = UIColor(hex: 0x171a21)!
     let fgColor = UIColor.Material.black
-    let primaryColor = UIColor.Material.grey900
+    let dimColor = UIColor.Material.grey900
+    let maskColor = UIColor.Material.grey900
     var tintColor = UIColor.Material.red
-    let titleColor = UIColor.Material.grey50
-    let detailColor = UIColor.Material.grey200
-    let statusColor = UIColor.Material.grey
+    let headColor = UIColor.Material.grey50
+    let bodyColor = UIColor.Material.grey200
+    let footColor = UIColor.Material.grey
     let borderColor = UIColor(hex: 0xEEEEEE)!
     let indicatorColor = UIColor.orange
     let separatorColor = UIColor(hex: 0xd1d1d1)!
