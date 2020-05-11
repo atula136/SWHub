@@ -24,6 +24,13 @@ class ProfileItem: CollectionItem, ReactorKit.Reactor {
     struct State {
         var name: String?
         var description: String?
+        var company: String?
+        var city: String?
+        var email: String?
+        var website: String?
+        var reposText: NSAttributedString?
+        var followersText: NSAttributedString?
+        var followingText: NSAttributedString?
         var createDate: Date?
         var avatar: URL?
     }
@@ -36,6 +43,13 @@ class ProfileItem: CollectionItem, ReactorKit.Reactor {
         self.initialState = State(
             name: user.login,
             description: user.bio,
+            company: user.company,
+            city: user.location,
+            email: user.email,
+            website: user.blog,
+            reposText: user.count(title: R.string.localizable.repositories(), value: (user.publicRepos ?? 0) + (user.totalPrivateRepos ?? 0)),
+            followersText: user.count(title: R.string.localizable.followers(), value: (user.followers ?? 0)),
+            followingText: user.count(title: R.string.localizable.following(), value: (user.following ?? 0)),
             createDate: user.createdAt,
             avatar: user.avatar
         )

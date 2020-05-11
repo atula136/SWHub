@@ -41,7 +41,7 @@ protocol Theme {
 struct LightTheme: Theme {
     let bgColor = UIColor.Material.white
     let fgColor = UIColor.Material.black
-    let dimColor = UIColor(hex: 0xFAFAFA)!
+    let dimColor = UIColor(hex: 0xF3F3F3)!
     let maskColor = UIColor(hex: 0xFAFAFA)!
     var tintColor = UIColor.Material.red
     let headColor = UIColor(hex: 0x333333)!

@@ -22,7 +22,6 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
         static let profileCell = ReusableCell<ProfileCell>()
-        static let projectCell = ReusableCell<SettingProjectCell2>()
         static let loginCell = ReusableCell<SettingLoginCell>()
         static let switchCell = ReusableCell<SettingSwitchCell>()
         static let settingCell = ReusableCell<SettingNormalCell>()
@@ -30,16 +29,6 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<SettingSection>
-
-//    override var layout: UICollectionViewLayout {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        layout.minimumInteritemSpacing = 0
-//        layout.minimumLineSpacing = 10
-//        layout.sectionInset = .init(horizontal: 30, vertical: 0)
-//        layout.headerReferenceSize = CGSize(width: screenWidth, height: metric(30))
-//        return layout
-//    }
 
     init(_ navigator: NavigatorType, _ reactor: SettingViewReactor) {
         defer {
@@ -57,7 +46,6 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.profileCell)
-        self.collectionView.register(Reusable.projectCell)
         self.collectionView.register(Reusable.loginCell)
         self.collectionView.register(Reusable.switchCell)
         self.collectionView.register(Reusable.settingCell)
@@ -122,10 +110,6 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                     let cell = collectionView.dequeue(Reusable.profileCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
-                case let .project(item):
-                    let cell = collectionView.dequeue(Reusable.projectCell, for: indexPath)
-                    cell.bind(reactor: item)
-                    return cell
                 case let .login(item):
                     let cell = collectionView.dequeue(Reusable.loginCell, for: indexPath)
                     cell.bind(reactor: item)
@@ -146,17 +130,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
                 switch kind {
                 case UICollectionView.elementKindSectionHeader:
-                    let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
-                    reactor.state.map { $0.sections[indexPath.section].header }
-                        .distinctUntilChanged()
-                        .bind(to: view.titleLabel.rx.text)
-                        .disposed(by: view.disposeBag)
-                    reactor.state.map { $0.sections[indexPath.section].header }
-                        .distinctUntilChanged()
-                        .map { _ in }
-                        .bind(to: view.rx.setNeedsLayout)
-                        .disposed(by: view.disposeBag)
-                    return view
+                    return collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
                 default:
                     return collectionView.emptyView(for: indexPath, kind: kind)
                 }
@@ -204,8 +178,6 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
         switch self.dataSource[indexPath] {
         case let .profile(item):
             return Reusable.profileCell.class.size(width: width, item: item)
-        case let .project(item):
-            return Reusable.projectCell.class.size(width: width, item: item)
         case let .login(item):
             return Reusable.loginCell.class.size(width: width, item: item)
         case let .night(item):
@@ -214,6 +186,14 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
             return Reusable.settingCell.class.size(width: width, item: item)
         }
     }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return .zero
+        }
+        return CGSize(width: collectionView.sectionWidth(at: section), height: metric(20))
+    }
+
 }
 
 extension Reactive where Base: SettingViewController {

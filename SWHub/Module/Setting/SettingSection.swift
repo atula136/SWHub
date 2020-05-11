@@ -38,7 +38,6 @@ extension SettingSection: SectionModelType {
 
 enum SettingSectionItem {
     case profile(ProfileItem)
-    case project(SettingProjectItem)
     case login(SettingLoginItem)
     case logout(SettingNormalItem)
     case night(SettingSwitchItem)

@@ -126,4 +126,12 @@ struct User: ModelType, Storable, Subjective {
         return .composed(of: texts)
     }
 
+    func count(title: String, value: Int) -> NSAttributedString {
+        let valueText = value.string.styled(with: .color(.fg), .font(.bold(17)), .alignment(.center))
+        let titleText = title.styled(with: .color(.body), .font(.normal(13)), .alignment(.center))
+        return .composed(of: [
+            valueText, Special.nextLine, titleText
+        ])
+    }
+
 }

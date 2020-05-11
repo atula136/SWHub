@@ -22,6 +22,7 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         static let avatarSize = CGSize(width: metric(60), height: metric(60))
         static let userHeight = metric(80)
         static let countHeight = metric(50)
+        static let itemHeight = metric(44)
     }
 
     lazy var nameLabel: Label = {
@@ -45,20 +46,51 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         return label
     }()
 
+    lazy var companyLabel: Label = {
+        let label = Label()
+        label.font = .normal(15)
+        label.sizeToFit()
+        return label
+    }()
+
+    lazy var cityLabel: Label = {
+        let label = Label()
+        label.font = .normal(15)
+        label.sizeToFit()
+        return label
+    }()
+
+    lazy var emailLabel: Label = {
+        let label = Label()
+        label.font = .normal(15)
+        label.sizeToFit()
+        return label
+    }()
+
+    lazy var websiteLabel: Label = {
+        let label = Label()
+        label.font = .normal(15)
+        label.sizeToFit()
+        return label
+    }()
+
     lazy var reposButton: SWFrame.Button = {
         let button = SWFrame.Button(type: .custom)
+        button.titleLabel?.numberOfLines = 0
         button.sizeToFit()
         return button
     }()
 
     lazy var followersButton: SWFrame.Button = {
         let button = SWFrame.Button(type: .custom)
+        button.titleLabel?.numberOfLines = 0
         button.sizeToFit()
         return button
     }()
 
     lazy var followingButton: SWFrame.Button = {
         let button = SWFrame.Button(type: .custom)
+        button.titleLabel?.numberOfLines = 0
         button.sizeToFit()
         return button
     }()
@@ -72,6 +104,41 @@ class ProfileCell: CollectionCell, ReactorKit.View {
     }()
 
     lazy var indicatorImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage.indicator.template
+        imageView.sizeToFit()
+        return imageView
+    }()
+
+    lazy var companyImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = FontAwesomeIcon.userIcon.image(ofSize: .init(20), color: .tint).template
+        imageView.sizeToFit()
+        return imageView
+    }()
+
+    lazy var cityImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = FontAwesomeIcon.globeIcon.image(ofSize: .init(20), color: .tint).template
+        imageView.sizeToFit()
+        return imageView
+    }()
+
+    lazy var emailImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = FontAwesomeIcon.inboxIcon.image(ofSize: .init(20), color: .tint).template
+        imageView.sizeToFit()
+        return imageView
+    }()
+
+    lazy var websiteImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = FontAwesomeIcon._581Icon.image(ofSize: .init(20), color: .tint).template
+        imageView.sizeToFit()
+        return imageView
+    }()
+
+    lazy var websiteIndicator: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.indicator.template
         imageView.sizeToFit()
@@ -96,6 +163,42 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         return view
     }()
 
+    lazy var companyView: UIView = {
+        let view = UIView()
+        view.qmui_borderPosition = .bottom
+        view.qmui_borderWidth = pixelOne
+        view.sizeToFit()
+        view.height = Metric.itemHeight
+        return view
+    }()
+
+    lazy var cityView: UIView = {
+        let view = UIView()
+        view.qmui_borderPosition = .bottom
+        view.qmui_borderWidth = pixelOne
+        view.sizeToFit()
+        view.height = Metric.itemHeight
+        return view
+    }()
+
+    lazy var emailView: UIView = {
+        let view = UIView()
+        view.qmui_borderPosition = .bottom
+        view.qmui_borderWidth = pixelOne
+        view.sizeToFit()
+        view.height = Metric.itemHeight
+        return view
+    }()
+
+    lazy var websiteView: UIView = {
+        let view = UIView()
+        view.qmui_borderPosition = .bottom
+        view.qmui_borderWidth = pixelOne
+        view.sizeToFit()
+        view.height = Metric.itemHeight
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.contentView.addSubview(self.userView)
@@ -110,12 +213,30 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         self.countView.addSubview(self.followersButton)
         self.countView.addSubview(self.followingButton)
 
+        self.contentView.addSubview(self.companyView)
+        self.companyView.addSubview(self.companyImageView)
+        self.companyView.addSubview(self.companyLabel)
+
+        self.contentView.addSubview(self.cityView)
+        self.cityView.addSubview(self.cityImageView)
+        self.cityView.addSubview(self.cityLabel)
+
+        self.contentView.addSubview(self.emailView)
+        self.emailView.addSubview(self.emailImageView)
+        self.emailView.addSubview(self.emailLabel)
+
+        self.contentView.addSubview(self.websiteView)
+        self.websiteView.addSubview(self.websiteImageView)
+        self.websiteView.addSubview(self.websiteLabel)
+        self.websiteView.addSubview(self.websiteIndicator)
+
         themeService.rx
             .bind({ $0.headColor }, to: self.nameLabel.rx.textColor)
             .bind({ $0.footColor }, to: self.descriptionLabel.rx.textColor)
             .bind({ $0.bodyColor }, to: self.statusLabel.rx.textColor)
-            .bind({ $0.bgColor }, to: self.userView.rx.backgroundColor)
-            .bind({ $0.tintColor }, to: self.indicatorImageView.rx.tintColor)
+            .bind({ $0.headColor }, to: [self.companyLabel.rx.textColor, self.cityLabel.rx.textColor, self.emailLabel.rx.textColor, self.websiteLabel.rx.textColor])
+            .bind({ $0.tintColor }, to: [self.companyImageView.rx.tintColor, self.cityImageView.rx.tintColor, self.emailImageView.rx.tintColor, self.websiteImageView.rx.tintColor, self.indicatorImageView.rx.tintColor, self.websiteIndicator.rx.tintColor])
+            .bind({ $0.bgColor }, to: [self.userView.rx.backgroundColor, self.companyView.rx.backgroundColor, self.cityView.rx.backgroundColor, self.emailView.rx.backgroundColor, self.websiteView.rx.backgroundColor])
             .bind({ $0.borderColor }, to: self.userView.rx.qmui_borderColor)
             .disposed(by: self.rx.disposeBag)
     }
@@ -161,6 +282,49 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         self.followingButton.height = self.reposButton.height
         self.followingButton.left = self.followersButton.right
         self.followingButton.top = 0
+        // item
+        self.companyView.width = self.contentView.width
+        self.companyView.height = Metric.itemHeight
+        self.companyView.left = 0
+        self.companyView.top = self.countView.bottom
+        self.companyImageView.left = 20
+        self.companyImageView.top = self.companyImageView.topWhenCenter
+        self.companyLabel.sizeToFit()
+        self.companyLabel.left = self.companyImageView.right + 10
+        self.companyLabel.extendToRight = self.companyView.width - 60
+        self.companyLabel.top = self.companyLabel.topWhenCenter
+        self.cityView.width = self.contentView.width
+        self.cityView.height = Metric.itemHeight
+        self.cityView.left = 0
+        self.cityView.top = self.companyView.bottom
+        self.cityImageView.left = 20
+        self.cityImageView.top = self.cityImageView.topWhenCenter
+        self.cityLabel.sizeToFit()
+        self.cityLabel.left = self.cityImageView.right + 10
+        self.cityLabel.extendToRight = self.cityView.width - 60
+        self.cityLabel.top = self.cityLabel.topWhenCenter
+        self.emailView.width = self.contentView.width
+        self.emailView.height = Metric.itemHeight
+        self.emailView.left = 0
+        self.emailView.top = self.cityView.bottom
+        self.emailImageView.left = 20
+        self.emailImageView.top = self.emailImageView.topWhenCenter
+        self.emailLabel.sizeToFit()
+        self.emailLabel.left = self.emailImageView.right + 10
+        self.emailLabel.extendToRight = self.emailView.width - 60
+        self.emailLabel.top = self.emailLabel.topWhenCenter
+        self.websiteView.width = self.contentView.width
+        self.websiteView.height = Metric.itemHeight
+        self.websiteView.left = 0
+        self.websiteView.top = self.emailView.bottom
+        self.websiteImageView.left = 20
+        self.websiteImageView.top = self.websiteImageView.topWhenCenter
+        self.websiteIndicator.right = self.websiteView.width - 20
+        self.websiteIndicator.top = self.websiteIndicator.topWhenCenter
+        self.websiteLabel.sizeToFit()
+        self.websiteLabel.left = self.websiteImageView.right + 10
+        self.websiteLabel.extendToRight = self.websiteIndicator.left - 5
+        self.websiteLabel.top = self.websiteLabel.topWhenCenter
     }
 
     override func prepareForReuse() {
@@ -168,6 +332,13 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         self.nameLabel.text = nil
         self.descriptionLabel.text = nil
         self.statusLabel.text = nil
+        self.companyLabel.text = nil
+        self.cityLabel.text = nil
+        self.emailLabel.text = nil
+        self.websiteLabel.text = nil
+        self.reposButton.setAttributedTitle(nil, for: .normal)
+        self.followersButton.setAttributedTitle(nil, for: .normal)
+        self.followingButton.setAttributedTitle(nil, for: .normal)
         self.avatarImageView.image = nil
     }
 
@@ -185,38 +356,34 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         reactor.state.map { R.string.localizable.userJoinMessage($0.createDate?.string(withFormat: "yyyy-MM-dd") ?? "") }
             .bind(to: self.statusLabel.rx.text)
             .disposed(by: self.disposeBag)
-    //        reactor.state.map { $0.repo }
-    //            .bind(to: self.repoButton.rx.attributedTitle(for: .normal))
-    //            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.company }
+            .bind(to: self.companyLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.city }
+            .bind(to: self.cityLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.email }
+            .bind(to: self.emailLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.website }
+            .bind(to: self.websiteLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.reposText }
+            .bind(to: self.reposButton.rx.attributedTitle(for: .normal))
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.followersText }
+            .bind(to: self.followersButton.rx.attributedTitle(for: .normal))
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.followingText }
+            .bind(to: self.followingButton.rx.attributedTitle(for: .normal))
+            .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
 
-//
-//    fileprivate struct Font {
-//        static let repo = UIFont.bold(14)
-//        static let description = UIFont.normal(14)
-//    }
-//
-//
-//
-//
-
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//    }
-
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-//        guard let item = item as? UserItem else { return .zero }
-//        var height = 10 + Metric.avatarSize.height + 5 + Font.repo.lineHeight + 5
-//        height += (item.currentState.description ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.description)
-//        height += 5
-        return CGSize(width: width, height: metric(scale: 1))
+        return CGSize(width: width, height: flat(Metric.userHeight + Metric.countHeight + Metric.itemHeight * 4))
     }
 
 }

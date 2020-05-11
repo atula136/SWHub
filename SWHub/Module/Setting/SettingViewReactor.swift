@@ -59,7 +59,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             guard self.currentState.isLoading == false else { return .empty() }
             return .concat([
                 .just(.setLoading(true)),
-                self.provider.repo(fullname: self.fullName).map(Mutation.setRepo).catchError({.just(.setError($0))}),
+                //self.provider.repo(fullname: self.fullName).map(Mutation.setRepo).catchError({.just(.setError($0))}),
                 .just(.setLoading(false))
             ])
         case .login:
@@ -80,13 +80,13 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .setUser(user):
             var models: [[ModelType]] = []
             if let user = user {
-                models.append([user, Setting(id: .logout, accessory: .none)])
+                models.append([user/*, Setting(id: .logout, accessory: .none)*/])
             } else {
                 models.append([Setting(id: .login)])
             }
-            if let repo = state.repo {
-                models.append([repo])
-            }
+//            if let repo = state.repo {
+//                models.append([repo])
+//            }
             let night = Setting(id: .night, accessory: .none, switched: ThemeType.currentTheme().isDark)
             let color = Setting(id: .color)
             let cache = Setting(id: .cache, accessory: .none)
@@ -97,13 +97,13 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.sections = self.sections(sections)
         case let .setRepo(repo):
             state.repo = repo
-            var sections = state.sections
-            if sections.count >= 3 {
-                sections.remove(at: 1)
-            }
-            sections.insert(.settings(header: R.string.localizable.settingProject(), items: [.project(SettingProjectItem(repo))]), at: 1)
-            state.sections = sections
-            Repo.update(repo)
+//            var sections = state.sections
+//            if sections.count >= 3 {
+//                sections.remove(at: 1)
+//            }
+//            sections.insert(.settings(header: R.string.localizable.settingProject(), items: [.project(SettingProjectItem(repo))]), at: 1)
+//            state.sections = sections
+//            Repo.update(repo)
         case let .setError(error):
             state.error = error
         }
@@ -123,10 +123,10 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                     header = R.string.localizable.settingAccount()
                     items.append(.profile(ProfileItem(user)))
                 }
-                if let repository = model as? Repo {
-                    header = R.string.localizable.settingProject()
-                    items.append(.project(SettingProjectItem(repository)))
-                }
+//                if let repository = model as? Repo {
+//                    header = R.string.localizable.settingProject()
+//                    items.append(.project(SettingProjectItem(repository)))
+//                }
                 if let setting = model as? Setting {
                     switch setting.id! {
                     case .login:
