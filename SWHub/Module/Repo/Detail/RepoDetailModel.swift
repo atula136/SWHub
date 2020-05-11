@@ -69,16 +69,16 @@ struct RepoDetailModel: ModelType {
 
         var image: UIImage? {
             switch self {
-            case .pull: return FontAwesomeIcon.cloudDownloadIcon.image(ofSize: .s32, color: .foreground)
-            case .commit: return FontAwesomeIcon.cloudUploadIcon.image(ofSize: .s32, color: .foreground)
-            case .branch: return FontAwesomeIcon.codeForkIcon.image(ofSize: .s32, color: .foreground)
-            case .release: return FontAwesomeIcon.vkIcon.image(ofSize: .s32, color: .foreground)
-            case .contributor: return FontAwesomeIcon.userIcon.image(ofSize: .s32, color: .foreground)
-            case .event: return FontAwesomeIcon._526Icon.image(ofSize: .s32, color: .foreground)
-            case .notification: return FontAwesomeIcon.bellIcon.image(ofSize: .s32, color: .foreground)
-            case .code: return FontAwesomeIcon.codeIcon.image(ofSize: .s32, color: .foreground)
-            case .star: return FontAwesomeIcon.starEmptyIcon.image(ofSize: .s32, color: .foreground)
-            case .line: return FontAwesomeIcon.linkIcon.image(ofSize: .s32, color: .foreground)
+            case .pull: return FontAwesomeIcon.cloudDownloadIcon.image(ofSize: .s32, color: .tint)
+            case .commit: return FontAwesomeIcon.cloudUploadIcon.image(ofSize: .s32, color: .tint)
+            case .branch: return FontAwesomeIcon.codeForkIcon.image(ofSize: .s32, color: .tint)
+            case .release: return FontAwesomeIcon.vkIcon.image(ofSize: .s32, color: .tint)
+            case .contributor: return FontAwesomeIcon.userIcon.image(ofSize: .s32, color: .tint)
+            case .event: return FontAwesomeIcon._526Icon.image(ofSize: .s32, color: .tint)
+            case .notification: return FontAwesomeIcon.bellIcon.image(ofSize: .s32, color: .tint)
+            case .code: return FontAwesomeIcon.codeIcon.image(ofSize: .s32, color: .tint)
+            case .star: return FontAwesomeIcon.starEmptyIcon.image(ofSize: .s32, color: .tint)
+            case .line: return FontAwesomeIcon.linkIcon.image(ofSize: .s32, color: .tint)
             }
         }
     }

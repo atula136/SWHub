@@ -49,7 +49,7 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.addButtonToRight(FontAwesomeIcon.githubIcon.image(ofSize: .init(width: 24, height: 24), color: .foreground).template).rx.tap.subscribe(onNext: { [weak self] _ in
+        self.navigationBar.addButtonToRight(FontAwesomeIcon.githubIcon.image(ofSize: .init(width: 24, height: 24), color: .tint).template).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
             self.navigator.push("\(UIApplication.shared.baseWebUrl)/\(self.reactor?.fullname ?? "")")
         }).disposed(by: self.disposeBag)

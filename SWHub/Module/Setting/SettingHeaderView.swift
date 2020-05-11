@@ -24,7 +24,7 @@ class SettingHeaderView: SupplementaryView {
         super.init(frame: frame)
         self.addSubview(self.titleLabel)
         themeService.rx
-            .bind({ $0.headColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
 

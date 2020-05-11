@@ -20,7 +20,7 @@ class SettingProfileCell: InfoCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.badgeImageView.image = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .foreground).template
+        self.badgeImageView.image = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .tint).template
     }
 
     required init?(coder: NSCoder) {

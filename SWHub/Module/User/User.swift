@@ -105,20 +105,20 @@ struct User: ModelType, Storable, Subjective {
         eventsUrl                       <- (map["events_url"], URLTransform())
         organizationsUrl                <- (map["organizations_url"], URLTransform())
         receivedEventsUrl               <- (map["received_events_url"], URLTransform())
-        createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
-        updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
+        createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
+        updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
     }
 
     func detail() -> NSAttributedString? {
         var texts = [NSAttributedString]()
-        if let repositoriesString = self.publicRepos?.string.styled(with: .color(.head)) {
-            let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .foreground).template.styled(with: .baselineOffset(-3))
+        if let repositoriesString = self.publicRepos?.string.styled(with: .color(.title)) {
+            let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
             ]))
         }
-        if let followersString = self.followers?.kFormatted().styled(with: .color(.head)) {
-            let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .foreground).template.styled(with: .baselineOffset(-3))
+        if let followersString = self.followers?.kFormatted().styled(with: .color(.title)) {
+            let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 followersImage, Special.space, followersString
             ]))

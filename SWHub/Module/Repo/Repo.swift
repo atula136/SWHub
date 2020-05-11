@@ -179,13 +179,13 @@ struct Repo: ModelType, Subjective, Eventable {
 
     func detail() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
-        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.head))
-        let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .foreground).styled(with: .baselineOffset(-3))
+        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
+        let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
         texts.append(.composed(of: [
             starsImage, Special.space, starsString, Special.space, Special.tab
         ]))
 
-        if let languageString = self.language?.styled(with: .color(.head)) {
+        if let languageString = self.language?.styled(with: .color(.title)) {
 //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
             let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
             texts.append(.composed(of: [
@@ -202,28 +202,11 @@ struct Repo: ModelType, Subjective, Eventable {
             titleText, Special.nextLine, valueText
         ])
     }
-//
-//        func detail() -> NSAttributedString? {
-//            var texts: [NSAttributedString] = []
-//            let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.head))
-//            let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .foreground).styled(with: .baselineOffset(-3))
-//            texts.append(.composed(of: [
-//                starsImage, Special.space, starsString, Special.space, Special.tab
-//            ]))
-//
-//            if let languageString = self.language?.styled(with: .color(.head)) {
-//    //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
-//                let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
-//                texts.append(.composed(of: [
-//                    languageColorShape, Special.space, languageString
-//                ]))
-//            }
-//            return .composed(of: texts)
-//        }
+
     func starsText() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
-        let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.head))
-        let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .foreground).styled(with: .baselineOffset(-3))
+        let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
+        let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
         texts.append(.composed(of: [
             image, Special.space, string
         ]))

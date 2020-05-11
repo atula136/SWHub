@@ -80,6 +80,9 @@ class RepoCell: CollectionCell, ReactorKit.View {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.qmui_borderPosition = .bottom
+        self.qmui_borderWidth = pixelOne
+
         self.contentView.addSubview(self.avatarImageView)
         self.avatarImageView.top = 10
         self.avatarImageView.left = 20
@@ -96,9 +99,10 @@ class RepoCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.statusLabel)
 
         themeService.rx
-            .bind({ $0.headColor }, to: self.nameLabel.rx.textColor)
-            .bind({ $0.footColor }, to: self.statusLabel.rx.textColor)
-            .bind({ $0.bodyColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
+            .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
+            .bind({ $0.statusColor }, to: self.statusLabel.rx.textColor)
+            .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -115,7 +119,7 @@ class RepoCell: CollectionCell, ReactorKit.View {
         self.descriptionLabel.extendToBottom = self.contentView.height - 40
 
         self.languageLabel.sizeToFit()
-        self.languageLabel.bottom = self.contentView.height - 16
+        self.languageLabel.bottom = self.contentView.height - 25
         self.languageLabel.left = self.avatarImageView.left
 
         self.starsLabel.sizeToFit()
@@ -127,7 +131,7 @@ class RepoCell: CollectionCell, ReactorKit.View {
         self.forksLabel.left = self.contentView.width - 70
 
         self.statusLabel.sizeToFit()
-        self.statusLabel.top = self.forksLabel.bottom + 8
+        self.statusLabel.top = self.forksLabel.bottom + 5
         self.statusLabel.left = self.avatarImageView.left
     }
 
@@ -174,7 +178,7 @@ class RepoCell: CollectionCell, ReactorKit.View {
         guard let item = item as? RepoItem else { return .zero }
         var height = 10 + Metric.avatarSize.height + 4
         height += (item.currentState.description ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.description)
-        height += 50
+        height += 65
         return CGSize(width: width, height: flat(height))
     }
 
@@ -242,8 +246,8 @@ class RepoCell: CollectionCell, ReactorKit.View {
 //        self.contentView.addSubview(self.indicatorImageView)
 //
 //        themeService.rx
-//            .bind({ $0.headColor }, to: self.titleLabel.rx.textColor)
-//            .bind({ $0.footColor }, to: self.subtitleLabel.rx.textColor)
+//            .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
+//            .bind({ $0.statusColor }, to: self.subtitleLabel.rx.textColor)
 //            .bind({ $0.foregroundColor }, to: self.indicatorImageView.rx.tintColor)
 //            .disposed(by: self.rx.disposeBag)
 //    }

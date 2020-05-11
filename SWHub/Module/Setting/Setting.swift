@@ -68,13 +68,13 @@ struct Setting: ModelType, Identifiable, Eventable {
         var icon: UIImage? {
             switch self {
             case .logout:
-                return FontAwesomeIcon.signoutIcon.image(ofSize: .s32, color: .foreground).template
+                return FontAwesomeIcon.signoutIcon.image(ofSize: .s32, color: .tint).template
             case .night:
-                return FontAwesomeIcon.lightBulbIcon.image(ofSize: .s32, color: .foreground).template
+                return FontAwesomeIcon.lightBulbIcon.image(ofSize: .s32, color: .tint).template
             case .color:
-                return FontAwesomeIcon.eyeOpenIcon.image(ofSize: .s32, color: .foreground).template
+                return FontAwesomeIcon.eyeOpenIcon.image(ofSize: .s32, color: .tint).template
             case .cache:
-                return FontAwesomeIcon.trashIcon.image(ofSize: .s32, color: .foreground).template
+                return FontAwesomeIcon.trashIcon.image(ofSize: .s32, color: .tint).template
             default:
                 return nil
             }

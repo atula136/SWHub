@@ -22,8 +22,9 @@
 "Monthly" = "本月";
 "Clear cache" = "清除缓存";
 "Click to login" = "点击登录";
-"Trending.Repo.Stars.New" = "%@增加%d个星";
+"Trending.Repo.Stars.New" = "%@增加了%d个星";
 "User.Exit.Prompt" = "您确定要退出%@吗";
+"User.Join.Message" = "注册于%@";
 /* 刷新 */
 "Pull to refresh" = "下拉刷新";
 "Release to refresh" = "松开刷新";

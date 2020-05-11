@@ -56,7 +56,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
 
-        self.navigationBar.addButtonToRight(FontAwesomeIcon.reorderIcon.image(ofSize: .init(width: 20, height: 20), color: .foreground)).rx.tap.subscribe(onNext: { [weak self] _ in
+        self.navigationBar.addButtonToRight(FontAwesomeIcon.reorderIcon.image(ofSize: .init(width: 20, height: 20), color: .fg)).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
 //            if var url = Router.condition.pattern.url, let misc = Misc.current() {
 //                url.appendQueryParameters([Parameter.since: misc.since.paramValue])
@@ -73,8 +73,8 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
 
         themeService.rx
             .bind({ $0.primaryColor }, to: self.paging.view.rx.backgroundColor)
-            .bind({ $0.foregroundColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
-            .bind({ $0.headColor }, to: self.paging.rx.textColor)
+            .bind({ $0.tintColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
+            .bind({ $0.titleColor }, to: self.paging.rx.textColor)
             .disposed(by: self.rx.disposeBag)
         themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }

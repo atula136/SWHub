@@ -1,5 +1,5 @@
 //
-//  SettingProfileItem.swift
+//  SettingProfileItem2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class SettingProfileItem: InfoItem {
+class SettingProfileItem2: InfoItem {
 
     required init(_ model: ModelType) {
         super.init(model)

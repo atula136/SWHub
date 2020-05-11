@@ -70,8 +70,8 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
         self.collectionView.register(Reusable.languageCell)
 
         themeService.rx
-            .bind({ [NSAttributedString.Key.foregroundColor: $0.headColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
-            .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: self.segment.rx.titleTextAttributes(for: .selected))
+            .bind({ [NSAttributedString.Key.foregroundColor: $0.titleColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
+            .bind({ [NSAttributedString.Key.foregroundColor: $0.tintColor] }, to: self.segment.rx.titleTextAttributes(for: .selected))
             .disposed(by: self.rx.disposeBag)
     }
 

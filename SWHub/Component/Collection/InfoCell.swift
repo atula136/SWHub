@@ -49,7 +49,7 @@ class InfoCell: CollectionCell, ReactorKit.View {
         let imageView = UIImageView()
         imageView.backgroundColor = .white
         imageView.tintColor = UIColor.Material.green900
-        imageView.image = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .foreground).template
+        imageView.image = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .tint).template
         imageView.sizeToFit()
         imageView.borderColor = .white
         imageView.borderWidth = 1
@@ -82,9 +82,9 @@ class InfoCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.indicatorImageView)
 
         themeService.rx
-            .bind({ $0.headColor }, to: self.titleLabel.rx.textColor)
-            .bind({ $0.footColor }, to: self.subtitleLabel.rx.textColor)
-            .bind({ $0.foregroundColor }, to: self.indicatorImageView.rx.tintColor)
+            .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.statusColor }, to: self.subtitleLabel.rx.textColor)
+            .bind({ $0.tintColor }, to: self.indicatorImageView.rx.tintColor)
             .disposed(by: self.rx.disposeBag)
     }
 

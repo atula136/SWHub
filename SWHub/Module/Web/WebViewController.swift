@@ -14,7 +14,7 @@ class WebViewController: SWFrame.WebViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         themeService.rx
-            .bind({ $0.foregroundColor }, to: self.progressView.barView.rx.backgroundColor)
+            .bind({ $0.tintColor }, to: self.progressView.barView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
 

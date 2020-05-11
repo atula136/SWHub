@@ -58,8 +58,8 @@ class DefaultCell: CollectionCell {
         self.contentView.addSubview(self.accessoryImageView)
 
         themeService.rx
-            .bind({ $0.headColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
-            .bind({ $0.foregroundColor }, to: [self.iconImageView.rx.tintColor, self.accessoryImageView.rx.tintColor])
+            .bind({ $0.titleColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
+            .bind({ $0.tintColor }, to: [self.iconImageView.rx.tintColor, self.accessoryImageView.rx.tintColor])
             .disposed(by: self.rx.disposeBag)
     }
 

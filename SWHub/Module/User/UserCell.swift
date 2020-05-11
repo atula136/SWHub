@@ -61,6 +61,9 @@ class UserCell: CollectionCell, ReactorKit.View {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.qmui_borderPosition = .bottom
+        self.qmui_borderWidth = pixelOne
+
         self.contentView.addSubview(self.avatarImageView)
         self.avatarImageView.top = 10
         self.avatarImageView.left = 20
@@ -74,8 +77,9 @@ class UserCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.descriptionLabel)
 
         themeService.rx
-            .bind({ $0.bodyColor }, to: self.descriptionLabel.rx.textColor)
-            .bind({ $0.headColor }, to: [self.nameLabel.rx.textColor, self.repoButton.rx.titleColor(for: .normal)])
+            .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
+            .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.titleColor }, to: [self.nameLabel.rx.textColor, self.repoButton.rx.titleColor(for: .normal)])
             .disposed(by: self.rx.disposeBag)
     }
 

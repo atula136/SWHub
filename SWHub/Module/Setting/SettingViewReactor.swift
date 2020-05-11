@@ -121,7 +121,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             for model in models {
                 if let user = model as? User {
                     header = R.string.localizable.settingAccount()
-                    items.append(.profile(SettingProfileItem(user)))
+                    items.append(.profile(ProfileItem(user)))
                 }
                 if let repository = model as? Repo {
                     header = R.string.localizable.settingProject()

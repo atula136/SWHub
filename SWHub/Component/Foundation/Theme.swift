@@ -17,13 +17,13 @@ let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 let themeService = ThemeType.service(initial: ThemeType.currentTheme())
 
 protocol Theme {
-    var backgroundColor: UIColor { get }                            // 背景
-    var foregroundColor: UIColor { get }                            // 前景
+    var bgColor: UIColor { get }                            // 背景
+    var fgColor: UIColor { get }                            // 前景
     var primaryColor: UIColor { get }                               // 主色
-    var secondaryColor: UIColor { get }                             // 次色
-    var headColor: UIColor { get }                                  // 头部
-    var bodyColor: UIColor { get }                                  // 内容
-    var footColor: UIColor { get }                                  // 尾部
+    var tintColor: UIColor { get }                             // 次色
+    var titleColor: UIColor { get }                                  // 头部
+    var detailColor: UIColor { get }                                  // 内容
+    var statusColor: UIColor { get }                                  // 尾部
     var borderColor: UIColor { get }                                // 边框
     var indicatorColor: UIColor { get }                             // 指示器
     var separatorColor: UIColor { get }                             // 分隔条
@@ -38,14 +38,14 @@ protocol Theme {
 }
 
 struct LightTheme: Theme {
-    let backgroundColor = UIColor.Material.white
-    var foregroundColor = UIColor.Material.red
-    let primaryColor = UIColor.Material.grey200
-    let secondaryColor = UIColor.Material.red
-    let headColor = UIColor(hex: 0x333333)!
-    let bodyColor = UIColor(hex: 0x666666)!
-    let footColor = UIColor(hex: 0x999999)!
-    let borderColor = UIColor.Material.grey900
+    let bgColor = UIColor.Material.white
+    let fgColor = UIColor.Material.black
+    let primaryColor = UIColor(hex: 0xFAFAFA)!
+    var tintColor = UIColor.Material.red
+    let titleColor = UIColor(hex: 0x333333)!
+    let detailColor = UIColor(hex: 0x666666)!
+    let statusColor = UIColor(hex: 0x999999)!
+    let borderColor = UIColor(hex: 0xEEEEEE)!
     let indicatorColor = UIColor.orange
     let separatorColor = UIColor(hex: 0xd1d1d1)!
     let placeholderColor = UIColor.Material.grey
@@ -56,19 +56,19 @@ struct LightTheme: Theme {
     let blurStyle = UIBlurEffect.Style.extraLight
 
     init(colorTheme: ColorTheme) {
-        self.foregroundColor = colorTheme.color
+        self.tintColor = colorTheme.color
     }
 }
 
 struct DarkTheme: Theme {
-    let backgroundColor = UIColor(hex: 0x171a21)!
-    var foregroundColor = UIColor.Material.red
+    let bgColor = UIColor(hex: 0x171a21)!
+    let fgColor = UIColor.Material.black
     let primaryColor = UIColor.Material.grey900
-    let secondaryColor = UIColor.Material.red
-    let headColor = UIColor.Material.grey50
-    let bodyColor = UIColor.Material.grey200
-    let footColor = UIColor.Material.grey
-    let borderColor = UIColor.Material.grey900
+    var tintColor = UIColor.Material.red
+    let titleColor = UIColor.Material.grey50
+    let detailColor = UIColor.Material.grey200
+    let statusColor = UIColor.Material.grey
+    let borderColor = UIColor(hex: 0xEEEEEE)!
     let indicatorColor = UIColor.orange
     let separatorColor = UIColor(hex: 0xd1d1d1)!
     let placeholderColor = UIColor.Material.grey
@@ -79,7 +79,7 @@ struct DarkTheme: Theme {
     let blurStyle = UIBlurEffect.Style.dark
 
     init(colorTheme: ColorTheme) {
-        self.foregroundColor = colorTheme.color
+        self.tintColor = colorTheme.color
     }
 }
 

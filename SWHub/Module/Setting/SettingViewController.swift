@@ -21,8 +21,8 @@ import SWFrame
 class SettingViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let profileCell = ReusableCell<SettingProfileCell>()
-        static let projectCell = ReusableCell<SettingProjectCell>()
+        static let profileCell = ReusableCell<ProfileCell>()
+        static let projectCell = ReusableCell<SettingProjectCell2>()
         static let loginCell = ReusableCell<SettingLoginCell>()
         static let switchCell = ReusableCell<SettingSwitchCell>()
         static let settingCell = ReusableCell<SettingNormalCell>()
@@ -31,15 +31,15 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<SettingSection>
 
-    override var layout: UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = .init(horizontal: 30, vertical: 0)
-        layout.headerReferenceSize = CGSize(width: screenWidth, height: metric(30))
-        return layout
-    }
+//    override var layout: UICollectionViewLayout {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 10
+//        layout.sectionInset = .init(horizontal: 30, vertical: 0)
+//        layout.headerReferenceSize = CGSize(width: screenWidth, height: metric(30))
+//        return layout
+//    }
 
     init(_ navigator: NavigatorType, _ reactor: SettingViewReactor) {
         defer {

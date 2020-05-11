@@ -10,32 +10,32 @@ import UIKit
 
 extension UIColor {
 
-    static var background: UIColor {
-        return themeService.type.associatedObject.backgroundColor
+    static var bg: UIColor {
+        return themeService.type.associatedObject.bgColor
     }
 
-    static var foreground: UIColor {
-        return themeService.type.associatedObject.foregroundColor
+    static var fg: UIColor {
+        return themeService.type.associatedObject.fgColor
     }
 
     static var primary: UIColor {
         return themeService.type.associatedObject.primaryColor
     }
 
-    static var secondary: UIColor {
-        return themeService.type.associatedObject.secondaryColor
+    static var tint: UIColor {
+        return themeService.type.associatedObject.tintColor
     }
 
-    static var head: UIColor {
-        return themeService.type.associatedObject.headColor
+    static var title: UIColor {
+        return themeService.type.associatedObject.titleColor
     }
 
-    static var body: UIColor {
-        return themeService.type.associatedObject.bodyColor
+    static var detail: UIColor {
+        return themeService.type.associatedObject.detailColor
     }
 
-    static var foot: UIColor {
-        return themeService.type.associatedObject.footColor
+    static var status: UIColor {
+        return themeService.type.associatedObject.statusColor
     }
 
     static var border: UIColor {

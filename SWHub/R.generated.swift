@@ -473,9 +473,9 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 48 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 49 localization keys.
     struct localizable {
-      /// Value: %@增加%d个星
+      /// Value: %@增加了%d个星
       static let trendingRepoStarsNew = Rswift.StringResource(key: "Trending.Repo.Stars.New", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 下拉刷新
       static let pullToRefresh = Rswift.StringResource(key: "Pull to refresh", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -537,6 +537,8 @@ struct R: Rswift.Validatable {
       static let loadingMore = Rswift.StringResource(key: "Loading more", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 没有更多的了
       static let noMoreData = Rswift.StringResource(key: "No more data", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 注册于%@
+      static let userJoinMessage = Rswift.StringResource(key: "User.Join.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 活动
       static let mainTabBarActivity = Rswift.StringResource(key: "Main.TabBar.Activity", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 消息
@@ -572,7 +574,7 @@ struct R: Rswift.Validatable {
       /// Value: 首页
       static let mainTabBarHome = Rswift.StringResource(key: "Main.TabBar.Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
 
-      /// Value: %@增加%d个星
+      /// Value: %@增加了%d个星
       static func trendingRepoStarsNew(_ value1: String, _ value2: Int, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
           let format = NSLocalizedString("Trending.Repo.Stars.New", bundle: hostingBundle, comment: "")
@@ -977,6 +979,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("No more data", bundle: bundle, comment: "")
+      }
+
+      /// Value: 注册于%@
+      static func userJoinMessage(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("User.Join.Message", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "User.Join.Message"
+        }
+
+        let format = NSLocalizedString("User.Join.Message", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
       }
 
       /// Value: 活动

@@ -10,6 +10,10 @@ excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高�
 
 line_length: 300
 
+type_body_length:
+    - 300 # warning
+    - 400 # error
+
 function_body_length:
     - 300 # warning
     - 400 # error
@@ -33,3 +37,5 @@ identifier_name:
         - vc
         - in
         - kf
+        - bg
+        - fg

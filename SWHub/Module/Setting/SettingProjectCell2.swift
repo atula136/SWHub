@@ -1,5 +1,5 @@
 //
-//  SettingProjectCell.swift
+//  SettingProjectCell2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/1.
@@ -15,6 +15,6 @@ import SwifterSwift
 import Kingfisher
 import SWFrame
 
-class SettingProjectCell: InfoCell {
+class SettingProjectCell2: InfoCell {
 
 }
