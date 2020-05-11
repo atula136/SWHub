@@ -31,7 +31,7 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var error: Error?
         var since = Condition.Since.daily
         var language = Condition.Language.init(name: "All languages")
-        var sections: [Condition.Language.Section] = []
+        var sections: [ConditionSection] = []
     }
 
     var initialState = State()
@@ -47,11 +47,11 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var language = Condition.Language.init()
         language.urlParam = urlParam
         // sections
-        var sections: [Condition.Language.Section] = []
+        var sections: [ConditionSection] = []
         if let languages = Condition.Language.cachedArray() {
             let langs = self.languages(languages: languages, selected: language.urlParam)
-            let items = langs.map { Condition.Language.Item($0) }
-            let sectionItems = items.map { Condition.Language.SectionItem.language($0) }
+            let items = langs.map { ConditionLanguageItem($0) }
+            let sectionItems = items.map { ConditionSectionItem.language($0) }
             sections = [.languages(sectionItems)]
         }
         self.initialState = State(
@@ -98,7 +98,7 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .start(languages):
             Condition.Language.storeArray(languages)
             let langs = self.languages(languages: languages, selected: state.language.urlParam)
-            state.sections = [.languages(langs.map { Condition.Language.Item($0) }.map { Condition.Language.SectionItem.language($0) })]
+            state.sections = [.languages(langs.map { ConditionLanguageItem($0) }.map { ConditionSectionItem.language($0) })]
         }
         return state
     }

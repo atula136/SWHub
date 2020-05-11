@@ -17,19 +17,19 @@ import SWFrame
 
 class ConditionViewController: CollectionViewController, ReactorKit.View {
     struct Reusable {
-        static let languageCell = ReusableCell<Condition.Language.Cell>()
+        static let languageCell = ReusableCell<ConditionLanguageCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<Condition.Language.Section>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<ConditionSection>
 
-    override var layout: UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = .init(horizontal: 30, vertical: 20)
-        return layout
-    }
+//    override var layout: UICollectionViewLayout {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 10
+//        layout.sectionInset = .init(horizontal: 30, vertical: 20)
+//        return layout
+//    }
 
     lazy var segment: UISegmentedControl = {
         let segment = UISegmentedControl(items: Condition.Since.allValues.map { $0.title })
@@ -119,7 +119,7 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: ConditionViewReactor) -> RxCollectionViewSectionedReloadDataSource<Condition.Language.Section> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: ConditionViewReactor) -> RxCollectionViewSectionedReloadDataSource<ConditionSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
