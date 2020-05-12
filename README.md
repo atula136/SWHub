@@ -8,4 +8,4 @@
 <img alt="setting" src="https://github.com/tospery/SWHub/blob/1.0.4/screenshots/setting.jpeg?raw=true" width="280">&nbsp;
 
 ## Coffee
-<img alt="02_repository_details_screen" src="https://github.com/tospery/SWHub/blob/1.0.4/screenshots/coffee.jpeg?raw=true" width="120">&nbsp;
+<img alt="02_repository_details_screen" src="https://github.com/tospery/SWHub/blob/1.0.4/screenshots/coffee.jpeg?raw=true" width="300">&nbsp;
