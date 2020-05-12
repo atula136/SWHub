@@ -18,48 +18,44 @@ extension UIColor {
         return themeService.type.associatedObject.fgColor
     }
 
-    static var dim: UIColor {
-        return themeService.type.associatedObject.dimColor
-    }
-
-    static var mask: UIColor {
-        return themeService.type.associatedObject.maskColor
-    }
-
     static var tint: UIColor {
         return themeService.type.associatedObject.tintColor
     }
 
-    static var head: UIColor {
-        return themeService.type.associatedObject.headColor
+    static var dim: UIColor {
+        return themeService.type.associatedObject.dimColor
     }
 
-    static var body: UIColor {
-        return themeService.type.associatedObject.bodyColor
+    static var dimLight: UIColor {
+        return themeService.type.associatedObject.dimLightColor
     }
 
-    static var foot: UIColor {
-        return themeService.type.associatedObject.footColor
+    static var dimDark: UIColor {
+        return themeService.type.associatedObject.dimDarkColor
+    }
+
+    static var text: UIColor {
+        return themeService.type.associatedObject.textColor
+    }
+
+    static var textLight: UIColor {
+        return themeService.type.associatedObject.textLightColor
+    }
+
+    static var textDark: UIColor {
+        return themeService.type.associatedObject.textDarkColor
     }
 
     static var border: UIColor {
         return themeService.type.associatedObject.borderColor
     }
 
-    static var indicator: UIColor {
-        return themeService.type.associatedObject.indicatorColor
+    static var borderLight: UIColor {
+        return themeService.type.associatedObject.borderLightColor
     }
 
-    static var separator: UIColor {
-        return themeService.type.associatedObject.separatorColor
-    }
-
-    static var placeholder: UIColor {
-        return themeService.type.associatedObject.placeholderColor
-    }
-
-    static var highlighted: UIColor {
-        return themeService.type.associatedObject.highlightedColor
+    static var borderDark: UIColor {
+        return themeService.type.associatedObject.borderDarkColor
     }
 
 }

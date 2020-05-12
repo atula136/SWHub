@@ -19,17 +19,16 @@ let themeService = ThemeType.service(initial: ThemeType.currentTheme())
 protocol Theme {
     var bgColor: UIColor { get }
     var fgColor: UIColor { get }
-    var dimColor: UIColor { get }
-    var maskColor: UIColor { get }
     var tintColor: UIColor { get }
-    var headColor: UIColor { get }
-    var bodyColor: UIColor { get }
-    var footColor: UIColor { get }
+    var dimColor: UIColor { get }
+    var dimLightColor: UIColor { get }
+    var dimDarkColor: UIColor { get }
+    var textColor: UIColor { get }
+    var textLightColor: UIColor { get }
+    var textDarkColor: UIColor { get }
     var borderColor: UIColor { get }
-    var indicatorColor: UIColor { get }
-    var separatorColor: UIColor { get }
-    var placeholderColor: UIColor { get }
-    var highlightedColor: UIColor { get }
+    var borderLightColor: UIColor { get }
+    var borderDarkColor: UIColor { get }
     var barStyle: UIBarStyle { get }
     var statusBarStyle: UIStatusBarStyle { get }
     var keyboardAppearance: UIKeyboardAppearance { get }
@@ -41,17 +40,16 @@ protocol Theme {
 struct LightTheme: Theme {
     let bgColor = UIColor.Material.white
     let fgColor = UIColor.Material.black
-    let dimColor = UIColor(hex: 0xF3F3F3)!
-    let maskColor = UIColor(hex: 0xFAFAFA)!
     var tintColor = UIColor.Material.red
-    let headColor = UIColor(hex: 0x333333)!
-    let bodyColor = UIColor(hex: 0x666666)!
-    let footColor = UIColor(hex: 0x999999)!
+    let dimColor = UIColor(hex: 0xF3F3F3)!
+    let dimLightColor = UIColor(hex: 0xFAFAFA)!
+    let dimDarkColor = UIColor(hex: 0xFAFAFA)!
+    let textColor = UIColor(hex: 0x333333)!
+    let textLightColor = UIColor(hex: 0x666666)!
+    let textDarkColor = UIColor(hex: 0x999999)!
     let borderColor = UIColor(hex: 0xEEEEEE)!
-    let indicatorColor = UIColor.orange
-    let separatorColor = UIColor(hex: 0xDDDDDD)!
-    let placeholderColor = UIColor.Material.grey
-    let highlightedColor = UIColor.green
+    let borderLightColor = UIColor.orange
+    let borderDarkColor = UIColor(hex: 0xDDDDDD)!
     let barStyle = UIBarStyle.default
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
@@ -65,17 +63,16 @@ struct LightTheme: Theme {
 struct DarkTheme: Theme {
     let bgColor = UIColor(hex: 0x171a21)!
     let fgColor = UIColor.Material.black
-    let dimColor = UIColor.Material.grey900
-    let maskColor = UIColor.Material.grey900
     var tintColor = UIColor.Material.red
-    let headColor = UIColor.Material.grey50
-    let bodyColor = UIColor.Material.grey200
-    let footColor = UIColor.Material.grey
+    let dimColor = UIColor.Material.grey900
+    let dimLightColor = UIColor.Material.grey900
+    let dimDarkColor = UIColor.Material.grey900
+    let textColor = UIColor.Material.grey50
+    let textLightColor = UIColor.Material.grey200
+    let textDarkColor = UIColor.Material.grey
     let borderColor = UIColor(hex: 0xEEEEEE)!
-    let indicatorColor = UIColor.orange
-    let separatorColor = UIColor(hex: 0xDDDDDD)!
-    let placeholderColor = UIColor.Material.grey
-    let highlightedColor = UIColor(hex: 0xffca03)!
+    let borderLightColor = UIColor.orange
+    let borderDarkColor = UIColor(hex: 0xDDDDDD)!
     let barStyle = UIBarStyle.black
     let statusBarStyle = UIStatusBarStyle.lightContent
     let keyboardAppearance = UIKeyboardAppearance.dark

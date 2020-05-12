@@ -63,6 +63,9 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 break
             }
         }).disposed(by: self.disposeBag)
+        themeService.rx
+            .bind({ $0.dimColor }, to: self.collectionView.rx.backgroundColor)
+            .disposed(by: self.rx.disposeBag)
     }
 
     func bind(reactor: SettingViewReactor) {

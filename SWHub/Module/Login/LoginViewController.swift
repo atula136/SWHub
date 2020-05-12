@@ -82,9 +82,9 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         self.view.addSubview(self.loginButton)
 
         themeService.rx
-            .bind({ $0.headColor }, to: [self.logoImageView.rx.tintColor, self.accountField.rx.textColor, self.passwordField.rx.textColor])
-            .bind({ $0.bodyColor }, to: [self.accountField.rx.placeHolderColor, self.passwordField.rx.placeHolderColor])
-            .bind({ $0.borderColor }, to: [self.accountField.rx.borderColor, self.passwordField.rx.borderColor])
+            .bind({ $0.textDarkColor }, to: [self.logoImageView.rx.tintColor, self.accountField.rx.textColor, self.passwordField.rx.textColor])
+            .bind({ $0.textColor }, to: [self.accountField.rx.placeHolderColor, self.passwordField.rx.placeHolderColor])
+            .bind({ $0.borderLightColor }, to: [self.accountField.rx.borderColor, self.passwordField.rx.borderColor])
             .bind({ $0.tintColor }, to: [self.accountField.rx.tintColor, self.passwordField.rx.tintColor])
             .bind({ $0.dimColor }, to: self.loginButton.rx.titleColor(for: .normal))
             .bind({ UIImage(color: $0.tintColor, size: CGSize(width: 1, height: 1)) }, to: self.loginButton.rx.backgroundImage(for: .normal))

@@ -61,7 +61,7 @@ class DefaultCell: CollectionCell {
 
         themeService.rx
             .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
-            .bind({ $0.headColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
+            .bind({ $0.textDarkColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
             .bind({ $0.tintColor }, to: [self.iconImageView.rx.tintColor, self.accessoryImageView.rx.tintColor])
             .disposed(by: self.rx.disposeBag)
     }

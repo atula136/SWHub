@@ -111,13 +111,13 @@ struct User: ModelType, Storable, Subjective {
 
     func detail() -> NSAttributedString? {
         var texts = [NSAttributedString]()
-        if let repositoriesString = self.publicRepos?.string.styled(with: .color(.head)) {
+        if let repositoriesString = self.publicRepos?.string.styled(with: .color(.textDark)) {
             let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
             ]))
         }
-        if let followersString = self.followers?.kFormatted().styled(with: .color(.head)) {
+        if let followersString = self.followers?.kFormatted().styled(with: .color(.textDark)) {
             let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 followersImage, Special.space, followersString
@@ -128,7 +128,7 @@ struct User: ModelType, Storable, Subjective {
 
     func count(title: String, value: Int) -> NSAttributedString {
         let valueText = value.string.styled(with: .color(.fg), .font(.bold(17)), .alignment(.center))
-        let titleText = title.styled(with: .color(.body), .font(.normal(13)), .alignment(.center))
+        let titleText = title.styled(with: .color(.text), .font(.normal(13)), .alignment(.center))
         return .composed(of: [
             valueText, Special.nextLine, titleText
         ])
