@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import QMUIKit
 import RxSwift
 import RxCocoa
+import SwifterSwift
 import ReactorKit
 import SWFrame
 
@@ -46,6 +48,12 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         self.initialState = State(
             title: stringDefault(self.title, self.fullname ?? "")
         )
+//        self.provider.readme(fullname: self.fullname ?? "").subscribe(onNext: { readme in
+//            let content = readme.content
+//            let html = content?.base64Decoded
+//            let abc = "Y2FuIHlvdSBoZWxwIG1l".base64Decoded
+//            print("")
+//        })
     }
 
     func mutate(action: Action) -> Observable<Mutation> {

@@ -25,6 +25,10 @@ extension ProviderType {
         return self.githubNetworking.requestObject(.repo(fullname: fullname), type: Repo.self)
     }
 
+    func readme(fullname: String) -> Observable<Repo.Readme> {
+        return self.githubNetworking.requestObject(.readme(fullname: fullname, ref: nil), type: Repo.Readme.self)
+    }
+
     func checkStarring(fullname: String) -> Observable<Bool> {
         return self.githubNetworking.requestRaw(.checkStarring(fullname: fullname)).map { emptyDataStatusCodes.contains($0.statusCode) }
     }

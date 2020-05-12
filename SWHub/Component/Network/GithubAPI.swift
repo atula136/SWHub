@@ -46,7 +46,7 @@ extension GithubAPI: TargetType {
         switch self {
         case .profile: return "/user"
         case let .repo(fullname): return "/repos/\(fullname)"
-        case let .readme(fullname): return "/repos/\(fullname)/readme"
+        case let .readme(fullname, _): return "/repos/\(fullname)/readme"
         case .checkStarring(let fullname),
              .starRepo(let fullname),
              .unstarRepo(let fullname):
