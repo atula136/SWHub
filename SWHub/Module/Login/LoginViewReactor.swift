@@ -73,8 +73,8 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case let .setPassword(password):
             state.password = password
         case let .setUser(user):
-            state.user = user
             User.update(user)
+            state.user = user
         }
         return state
     }

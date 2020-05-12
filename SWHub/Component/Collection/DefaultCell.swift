@@ -48,6 +48,8 @@ class DefaultCell: CollectionCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.qmui_borderPosition = .bottom
+        self.qmui_borderWidth = pixelOne
 
         self.iconImageView.height = flat(frame.size.height * 0.5)
         self.iconImageView.width = self.iconImageView.height
@@ -58,8 +60,9 @@ class DefaultCell: CollectionCell {
         self.contentView.addSubview(self.accessoryImageView)
 
         themeService.rx
-            .bind({ $0.textColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
-            .bind({ $0.foregroundColor }, to: [self.iconImageView.rx.tintColor, self.accessoryImageView.rx.tintColor])
+            .bind({ $0.borderColor }, to: self.rx.qmui_borderColor)
+            .bind({ $0.textDarkColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
+            .bind({ $0.tintColor }, to: [self.iconImageView.rx.tintColor, self.accessoryImageView.rx.tintColor])
             .disposed(by: self.rx.disposeBag)
     }
 

@@ -10,56 +10,52 @@ import UIKit
 
 extension UIColor {
 
-    static var background: UIColor {
-        return themeService.type.associatedObject.backgroundColor
+    static var bg: UIColor {
+        return themeService.type.associatedObject.bgColor
     }
 
-    static var foreground: UIColor {
-        return themeService.type.associatedObject.foregroundColor
+    static var fg: UIColor {
+        return themeService.type.associatedObject.fgColor
     }
 
-    static var primary: UIColor {
-        return themeService.type.associatedObject.primaryColor
+    static var tint: UIColor {
+        return themeService.type.associatedObject.tintColor
     }
 
-    static var secondary: UIColor {
-        return themeService.type.associatedObject.secondaryColor
+    static var dim: UIColor {
+        return themeService.type.associatedObject.dimColor
+    }
+
+    static var dimLight: UIColor {
+        return themeService.type.associatedObject.dimLightColor
+    }
+
+    static var dimDark: UIColor {
+        return themeService.type.associatedObject.dimDarkColor
     }
 
     static var text: UIColor {
         return themeService.type.associatedObject.textColor
     }
 
-    static var body: UIColor {
-        return themeService.type.associatedObject.bodyColor
+    static var textLight: UIColor {
+        return themeService.type.associatedObject.textLightColor
     }
 
-    static var head: UIColor {
-        return themeService.type.associatedObject.headColor
-    }
-
-    static var foot: UIColor {
-        return themeService.type.associatedObject.footColor
+    static var textDark: UIColor {
+        return themeService.type.associatedObject.textDarkColor
     }
 
     static var border: UIColor {
         return themeService.type.associatedObject.borderColor
     }
 
-    static var indicator: UIColor {
-        return themeService.type.associatedObject.indicatorColor
+    static var borderLight: UIColor {
+        return themeService.type.associatedObject.borderLightColor
     }
 
-    static var separator: UIColor {
-        return themeService.type.associatedObject.separatorColor
-    }
-
-    static var placeholder: UIColor {
-        return themeService.type.associatedObject.placeholderColor
-    }
-
-    static var highlighted: UIColor {
-        return themeService.type.associatedObject.highlightedColor
+    static var borderDark: UIColor {
+        return themeService.type.associatedObject.borderDarkColor
     }
 
 }

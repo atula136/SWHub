@@ -10,6 +10,7 @@ import UIKit
 import QMUIKit
 import RxSwift
 import RxCocoa
+import Iconic
 import ReactorKit
 import SwifterSwift
 import SWFrame
@@ -33,8 +34,8 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
 
     lazy var starButton: Button = {
         let button = Button(type: .custom)
-        button.setImage(R.image.detail_btn_unstarred()?.template, for: .normal)
-        button.setImage(R.image.detail_btn_starred()?.template, for: .selected)
+        button.setImage(FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).template, for: .normal)
+        button.setImage(FontAwesomeIcon.starEmptyIcon.image(ofSize: .s16, color: .tint).template, for: .selected)
         button.sizeToFit()
         button.size = CGSize(width: metric(30), height: metric(30))
         button.borderWidth = 1
@@ -83,9 +84,9 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
         self.addSubview(self.forkersButton)
 
         themeService.rx
-            .bind({ $0.textColor }, to: self.titleLabel.rx.textColor)
-            .bind({ $0.backgroundColor }, to: [self.starButton.rx.borderColor, self.starButton.rx.tintColor])
-            .bind({ $0.foregroundColor }, to: [self.starButton.rx.backgroundColor, self.watchersButton.rx.backgroundColor, self.stargazersButton.rx.backgroundColor, self.forkersButton.rx.backgroundColor])
+            .bind({ $0.textDarkColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.bgColor }, to: [self.starButton.rx.borderColor, self.starButton.rx.tintColor])
+            .bind({ $0.tintColor }, to: [self.starButton.rx.backgroundColor, self.watchersButton.rx.backgroundColor, self.stargazersButton.rx.backgroundColor, self.forkersButton.rx.backgroundColor])
             .disposed(by: self.rx.disposeBag)
     }
 

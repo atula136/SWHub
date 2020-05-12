@@ -30,20 +30,11 @@ final class AppDependency: NSObject, AppDependencyType {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
         self.window = window
-        User.subject().distinctUntilChanged().observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] user in
-            guard let `self` = self else { return }
-            if user != nil {
-                let mainViewReactor = MainViewReactor(self.provider, nil)
-                let mainViewController = MainViewController(self.navigator, mainViewReactor)
-                self.window.rootViewController = mainViewController
-                self.window.makeKeyAndVisible()
-            } else {
-                let loginViewReactor = LoginViewReactor(self.provider, nil)
-                let loginViewController = LoginViewController(self.navigator, loginViewReactor)
-                self.window.rootViewController = NavigationController(rootViewController: loginViewController)
-                self.window.makeKeyAndVisible()
-            }
-        }).disposed(by: self.disposeBag)
+
+        let mainViewReactor = MainViewReactor(self.provider, nil)
+        let mainViewController = MainViewController(self.navigator, mainViewReactor)
+        self.window.rootViewController = mainViewController
+        self.window.makeKeyAndVisible()
 
         themeService.rx
             .bind({ $0.statusBarStyle }, to: UIApplication.shared.rx.statusBarStyle)

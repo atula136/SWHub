@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import ObjectMapper
+import Iconic
 import ReactorKit
 import Kingfisher
 import SWFrame
@@ -68,16 +69,16 @@ struct RepoDetailModel: ModelType {
 
         var image: UIImage? {
             switch self {
-            case .pull: return R.image.detail_cell_pull()
-            case .commit: return R.image.detail_cell_commit()
-            case .branch: return R.image.detail_cell_branch()
-            case .release: return R.image.detail_cell_release()
-            case .contributor: return R.image.detail_cell_contributor()
-            case .event: return R.image.detail_cell_event()
-            case .notification: return R.image.detail_cell_notification()
-            case .code: return R.image.detail_cell_code()
-            case .star: return R.image.detail_cell_star()
-            case .line: return R.image.detail_cell_line()
+            case .pull: return FontAwesomeIcon.cloudDownloadIcon.image(ofSize: .s32, color: .tint)
+            case .commit: return FontAwesomeIcon.cloudUploadIcon.image(ofSize: .s32, color: .tint)
+            case .branch: return FontAwesomeIcon.codeForkIcon.image(ofSize: .s32, color: .tint)
+            case .release: return FontAwesomeIcon.vkIcon.image(ofSize: .s32, color: .tint)
+            case .contributor: return FontAwesomeIcon.userIcon.image(ofSize: .s32, color: .tint)
+            case .event: return FontAwesomeIcon._526Icon.image(ofSize: .s32, color: .tint)
+            case .notification: return FontAwesomeIcon.bellIcon.image(ofSize: .s32, color: .tint)
+            case .code: return FontAwesomeIcon.codeIcon.image(ofSize: .s32, color: .tint)
+            case .star: return FontAwesomeIcon.starEmptyIcon.image(ofSize: .s32, color: .tint)
+            case .line: return FontAwesomeIcon.linkIcon.image(ofSize: .s32, color: .tint)
             }
         }
     }

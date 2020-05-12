@@ -8,6 +8,7 @@
 
 import UIKit
 import BonMot
+import Iconic
 import ObjectMapper
 import SWFrame
 
@@ -178,13 +179,13 @@ struct Repo: ModelType, Subjective, Eventable {
 
     func detail() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
-        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.text))
-        let starsImage = R.image.setting_badge_star()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
+        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.textDark))
+        let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
         texts.append(.composed(of: [
             starsImage, Special.space, starsString, Special.space, Special.tab
         ]))
 
-        if let languageString = self.language?.styled(with: .color(.text)) {
+        if let languageString = self.language?.styled(with: .color(.textDark)) {
 //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
             let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
             texts.append(.composed(of: [
@@ -200,6 +201,16 @@ struct Repo: ModelType, Subjective, Eventable {
         return .composed(of: [
             titleText, Special.nextLine, valueText
         ])
+    }
+
+    func starsText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.textDark))
+        let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
     }
 
     enum Event {

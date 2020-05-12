@@ -18,7 +18,7 @@ class SupplementaryView: BaseSupplementaryView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         themeService.rx
-            .bind({ $0.primaryColor }, to: self.rx.backgroundColor)
+            .bind({ $0.dimColor }, to: self.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
 

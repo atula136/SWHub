@@ -21,24 +21,15 @@ import SWFrame
 class SettingViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let profileCell = ReusableCell<SettingProfileCell>()
-        static let projectCell = ReusableCell<SettingProjectCell>()
+        static let profileCell = ReusableCell<ProfileCell>()
+        static let loginCell = ReusableCell<SettingLoginCell>()
         static let switchCell = ReusableCell<SettingSwitchCell>()
         static let settingCell = ReusableCell<SettingNormalCell>()
         static let headerView = ReusableView<SettingHeaderView>()
+        static let footerView = ReusableView<SettingFooterView>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<SettingSection>
-
-    override var layout: UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = .init(horizontal: 30, vertical: 0)
-        layout.headerReferenceSize = CGSize(width: screenWidth, height: metric(30))
-        return layout
-    }
 
     init(_ navigator: NavigatorType, _ reactor: SettingViewReactor) {
         defer {
@@ -56,13 +47,16 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.register(Reusable.profileCell)
-        self.collectionView.register(Reusable.projectCell)
+        self.collectionView.register(Reusable.loginCell)
         self.collectionView.register(Reusable.switchCell)
         self.collectionView.register(Reusable.settingCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
+        self.collectionView.register(Reusable.footerView, kind: .footer)
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] item in
             guard let `self` = self else { return }
             switch item {
+            case .login:
+                self.navigator.present(Router.login.pattern, wrap: NavigationController.self)
             case .color:
                 self.navigator.push(Router.color.pattern)
             default:
@@ -70,7 +64,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             }
         }).disposed(by: self.disposeBag)
         themeService.rx
-            .bind({ $0.primaryColor }, to: self.collectionView.rx.backgroundColor)
+            .bind({ $0.dimColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -103,19 +97,22 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 case let .profile(item):
                     let cell = collectionView.dequeue(Reusable.profileCell, for: indexPath)
                     cell.bind(reactor: item)
+                    cell.rx.blog.subscribe(onNext: { url in
+                        navigator.push(url)
+                    }).disposed(by: cell.disposeBag)
                     return cell
-                case let .project(item):
-                    let cell = collectionView.dequeue(Reusable.projectCell, for: indexPath)
+                case let .login(item):
+                    let cell = collectionView.dequeue(Reusable.loginCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
-                case .dark(let item):
+                case .night(let item):
                     let cell = collectionView.dequeue(Reusable.switchCell, for: indexPath)
                     cell.bind(reactor: item)
                     cell.rx.switched.distinctUntilChanged().skip(1).map { Reactor.Action.night($0) }
                         .bind(to: reactor.action)
                         .disposed(by: cell.disposeBag)
                     return cell
-                case .logout(let item), .color(let item):
+                case .color(let item), .cache(let item):
                     let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
@@ -124,23 +121,60 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
                 switch kind {
                 case UICollectionView.elementKindSectionHeader:
-                    let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
-                    reactor.state.map { $0.sections[indexPath.section].header }
-                        .distinctUntilChanged()
-                        .bind(to: view.titleLabel.rx.text)
-                        .disposed(by: view.disposeBag)
-                    reactor.state.map { $0.sections[indexPath.section].header }
-                        .distinctUntilChanged()
-                        .map { _ in }
-                        .bind(to: view.rx.setNeedsLayout)
-                        .disposed(by: view.disposeBag)
-                    return view
+                    return collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
+                case UICollectionView.elementKindSectionFooter:
+                    let footer = collectionView.dequeue(Reusable.footerView, kind: kind, for: indexPath)
+                    if let navigator = navigator as? Navigator,
+                        var url = Router.alert.pattern.url {
+                        url.appendQueryParameters([
+                            Parameter.title: reactor.currentState.user?.login ?? "",
+                            Parameter.message: R.string.localizable.userExitPrompt(UIApplication.shared.displayName ?? "")
+                        ])
+                        footer.rx.logout.flatMap { _ -> Observable<AlertActionType> in
+                            return navigator.rx.open(url, context: [AlertAction.cancel, AlertAction.destructive])
+                        }.map { $0 as? AlertAction }.pass(.destructive).subscribe(onNext: { _ in
+                            User.update(nil)
+                        }).disposed(by: footer.disposeBag)
+                    }
+                    return footer
                 default:
                     return collectionView.emptyView(for: indexPath, kind: kind)
                 }
             }
         )
     }
+
+    enum AlertAction: AlertActionType, Equatable {
+        case `default`
+        case cancel
+        case destructive
+
+        var title: String? {
+            switch self {
+            case .default:      return R.string.localizable.yes()
+            case .cancel:       return R.string.localizable.cancel()
+            case .destructive:  return R.string.localizable.exit()
+            }
+        }
+
+        var style: UIAlertAction.Style {
+            switch self {
+            case .default:      return .default
+            case .cancel:       return .cancel
+            case .destructive:  return .destructive
+            }
+        }
+
+        static func == (lhs: AlertAction, rhs: AlertAction) -> Bool {
+            switch (lhs, rhs) {
+            case (.default, .default), (.cancel, .cancel), (.destructive, .destructive):
+                return true
+            default:
+                return false
+            }
+        }
+    }
+
 }
 
 extension SettingViewController: UICollectionViewDelegateFlowLayout {
@@ -150,14 +184,29 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
         switch self.dataSource[indexPath] {
         case let .profile(item):
             return Reusable.profileCell.class.size(width: width, item: item)
-        case let .project(item):
-            return Reusable.projectCell.class.size(width: width, item: item)
-        case let .dark(item):
+        case let .login(item):
+            return Reusable.loginCell.class.size(width: width, item: item)
+        case let .night(item):
             return Reusable.switchCell.class.size(width: width, item: item)
-        case .logout(let item), .color(let item):
+        case .color(let item), .cache(let item):
             return Reusable.settingCell.class.size(width: width, item: item)
         }
     }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return .zero
+        }
+        return CGSize(width: collectionView.sectionWidth(at: section), height: metric(20))
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == 0 {
+            return .zero
+        }
+        return CGSize(width: collectionView.sectionWidth(at: section), height: metric(70))
+    }
+
 }
 
 extension Reactive where Base: SettingViewController {

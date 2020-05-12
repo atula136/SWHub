@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Iconic
 import ObjectMapper
 import SWFrame
 
@@ -22,9 +23,10 @@ struct Setting: ModelType, Identifiable, Eventable {
     init() {
     }
 
-    init(id: Key, accessory: AccessoryType = .indicator) {
+    init(id: Key, accessory: AccessoryType = .indicator, switched: Bool = false) {
         self.id = id
         self.accessory = accessory
+        self.switched = switched
         self.title = id.title
         self.icon = id.icon
     }
@@ -41,19 +43,19 @@ struct Setting: ModelType, Identifiable, Eventable {
 
     enum Key: Int, Codable {
         case profile
-        case project
-        case logout
+        case login
         case night
         case color
+        case cache
 
         var title: String? {
             switch self {
-            case .logout:
-                return R.string.localizable.settingAccountLogout()
             case .night:
                 return R.string.localizable.settingPreferencesNight()
             case .color:
                 return R.string.localizable.settingPreferencesTheme()
+            case .cache:
+                return R.string.localizable.clearCache()
             default:
                 return nil
             }
@@ -61,23 +63,16 @@ struct Setting: ModelType, Identifiable, Eventable {
 
         var icon: UIImage? {
             switch self {
-            case .logout:
-                return R.image.setting_cell_logout()?.template
             case .night:
-                return R.image.setting_cell_night()?.template
+                return FontAwesomeIcon.lightBulbIcon.image(ofSize: .s32, color: .tint).template
             case .color:
-                return R.image.setting_cell_theme()?.template
+                return FontAwesomeIcon.eyeOpenIcon.image(ofSize: .s32, color: .tint).template
+            case .cache:
+                return FontAwesomeIcon.trashIcon.image(ofSize: .s32, color: .tint).template
             default:
                 return nil
             }
         }
 
-//        enum CodingKeys: String, CodingKey {
-//            case profile        = "profile"
-//            case logout         = "logout"
-//            case project        = "project"
-//            case night          = "night"
-//            case color          = "color"
-//        }
     }
 }

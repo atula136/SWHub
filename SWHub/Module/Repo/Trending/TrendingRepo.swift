@@ -8,7 +8,9 @@
 
 import UIKit
 import BonMot
+import Iconic
 import ObjectMapper
+import SwifterSwift
 import SWFrame
 
 struct TrendingRepo: ModelType, Storable {
@@ -23,23 +25,12 @@ struct TrendingRepo: ModelType, Storable {
     var description: String?
     var url: URL?
     var avatar: URL?
-    var builtBy: [TrendingDeveloper]?
+    var builtBy: [TrendingUser]?
 
     init() {
     }
 
     init?(map: Map) {
-//        name                    = try? map.value("name")
-//        stars                   = try? map.value("stars")
-//        forks                   = try? map.value("forks")
-//        currentPeriodStars      = try? map.value("currentPeriodStars")
-//        author                  = try? map.value("author")
-//        language                = try? map.value("language")
-//        languageColor           = try? map.value("languageColor")
-//        description             = try? map.value("description")
-//        url                     = try? map.value("url", using: URLTransform())
-//        avatar                  = try? map.value("avatar", using: URLTransform())
-//        builtBy                 = try? map.value("builtBy")
     }
 
     mutating func mapping(map: Map) {
@@ -57,15 +48,46 @@ struct TrendingRepo: ModelType, Storable {
     }
 
     func detail(since: String) -> NSAttributedString? {
-        let starImage = R.image.setting_badge_star()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
-        let starsString = (self.stars ?? 0).kFormatted().styled(with: .color(.text))
-        let currentPeriodStarsString = "\((self.currentPeriodStars ?? 0).kFormatted())\(since.lowercased())".styled(with: .color(.text))
+        let starImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .textDark).styled(with: .baselineOffset(-3))
+        let starsString = (self.stars ?? 0).kFormatted().styled(with: .color(.textDark))
+        let currentPeriodStarsString = "\((self.currentPeriodStars ?? 0).kFormatted())\(since.lowercased())".styled(with: .color(.textDark))
         let languageColorShape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .clear)]))
-        let languageString = (self.language ?? "").styled(with: .color(.text))
+        let languageString = (self.language ?? "").styled(with: .color(.textDark))
         return .composed(of: [
             starImage, Special.space, starsString, Special.space, Special.tab,
             starImage, Special.space, currentPeriodStarsString, Special.space, Special.tab,
             languageColorShape, Special.space, languageString
         ])
     }
+
+    func languageText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let shape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .random)]))
+        let string = (self.language ?? R.string.localizable.none()).styled(with: .color(.textDark))
+        texts.append(.composed(of: [
+            shape, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
+
+    func starsText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = (self.stars ?? 0).kFormatted().styled(with: .color(.textDark))
+        let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .textDark).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
+
+    func forksText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = (self.forks ?? 0).kFormatted().styled(with: .color(.textDark))
+        let image = FontAwesomeIcon.codeForkIcon.image(ofSize: .s16, color: .textDark).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
+
 }

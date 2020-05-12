@@ -18,7 +18,7 @@ import SWFrame
 class TrendingRepoListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let repositoryCell = ReusableCell<RepoCell>()
+        static let repoCell = ReusableCell<RepoCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingRepoSection>
@@ -26,9 +26,9 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = .init(horizontal: 30, vertical: 20)
+        //layout.minimumInteritemSpacing = 0
+        //layout.minimumLineSpacing = 10
+        //layout.sectionInset = .init(horizontal: 30, vertical: 20)
         //layout.sectionInset = .init(top: 10, left: 15, bottom: 10, right: 15)
         return layout
     }
@@ -49,14 +49,14 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.repositoryCell)
+        self.collectionView.register(Reusable.repoCell)
         self.collectionView.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - navigationContentTopConstant - tabBarHeight)
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] sectionItem in
             guard let `self` = self else { return }
             switch sectionItem {
             case let .repository(item):
                 if var url = Router.Repo.detail.pattern.url,
-                    let fullname = item.currentState.title {
+                    let fullname = item.currentState.name {
                     url.appendQueryParameters([Parameter.fullname: fullname])
                     self.navigator.push(url)
                 }
@@ -105,7 +105,7 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
                 case let .repository(item):
-                    let cell = collectionView.dequeue(Reusable.repositoryCell, for: indexPath)
+                    let cell = collectionView.dequeue(Reusable.repoCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 }
@@ -119,7 +119,7 @@ extension TrendingRepoListViewController: UICollectionViewDelegateFlowLayout {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
         case let .repository(item):
-            return Reusable.repositoryCell.class.size(width: width, item: item)
+            return Reusable.repoCell.class.size(width: width, item: item)
         }
     }
 

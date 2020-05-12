@@ -20,18 +20,35 @@
 设置页的暗黑模式的切换按钮的状态应该是单向的
 state -> refresh ui效果
 languageColor
-打星功能（viewerHasStarred）
+首次安装、首页网络错误
+开机广告
+默认头像
+首页底部没显示完整
 
 https://api.github.com/user/starred/rxhanson/Rectangle
 
 
-stargazers:
-https://api.github.com/repos/rxhanson/Rectangle/stargazers?page=1
-forks:
-https://api.github.com/repos/rxhanson/Rectangle/forks?page=1
 issues:
 https://api.github.com/repos/rxhanson/Rectangle/issues?page=1&state=open|closed
 pullRequests:
 https://api.github.com/repos/rxhanson/Rectangle/pulls?page=1&state=open
 branches:
 https://api.github.com/repos/rxhanson/Rectangle/branches?page=1
+user
+https://api.github.com/users/KalleHallden
+checkFollowing/followUser/unfollowUser
+https://api.github.com/user/following/KalleHallden
+userRepositories
+https://api.github.com/users/KalleHallden/repos?page=1
+userFollowers
+https://api.github.com/users/KalleHallden/followers?page=1
+userFollowing
+https://api.github.com/users/KalleHallden/following?page=1
+userStarredRepositories
+https://api.github.com/users/KalleHallden/starred?page=1
+userWatchingRepositories
+https://api.github.com/users/KalleHallden/subscriptions?page=1
+userReceivedEvents
+https://api.github.com/users/KalleHallden/received_events?page=1
+
+

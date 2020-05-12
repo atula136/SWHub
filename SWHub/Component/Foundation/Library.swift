@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Iconic
 import IQKeyboardManagerSwift
 import SWFrame
 
@@ -14,7 +15,12 @@ class Library: SWFrame.Library {
 
     override class func setup() {
         super.setup()
+        self.setupIconic()
         self.setupKeyboardManager()
+    }
+
+    class func setupIconic() {
+        FontAwesomeIcon.register()
     }
 
     class func setupKeyboardManager() {

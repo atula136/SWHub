@@ -12,34 +12,34 @@ import RxCocoa
 import RxDataSources
 
 enum SettingSection {
-    case setting(header: String, items: [SettingSectionItem])
+    case settings(header: String, items: [SettingSectionItem])
 }
 
 extension SettingSection: SectionModelType {
     var header: String {
         switch self {
-        case let .setting(header, _): return header
+        case let .settings(header, _): return header
         }
     }
 
     var items: [SettingSectionItem] {
         switch self {
-        case let .setting(_, items): return items
+        case let .settings(_, items): return items
         }
     }
 
     init(original: SettingSection, items: [SettingSectionItem]) {
         switch original {
-        case let .setting(header, items):
-            self = .setting(header: header, items: items)
+        case let .settings(header, items):
+            self = .settings(header: header, items: items)
         }
     }
 }
 
 enum SettingSectionItem {
-    case profile(SettingProfileItem)
-    case project(SettingProjectItem)
-    case logout(SettingNormalItem)
-    case dark(SettingSwitchItem)
+    case profile(ProfileItem)
+    case login(SettingLoginItem)
+    case night(SettingSwitchItem)
     case color(SettingNormalItem)
+    case cache(SettingNormalItem)
 }

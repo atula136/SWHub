@@ -8,6 +8,7 @@
 
 import UIKit
 import BonMot
+import Iconic
 import ObjectMapper
 import KeychainAccess
 import SWFrame
@@ -61,10 +62,6 @@ struct User: ModelType, Storable, Subjective {
     var receivedEventsUrl: URL?
     var createdAt: Date?
     var updatedAt: Date?
-//    // 兼容Trending
-//    var username: String?
-//    var href: URL?
-//    var repo: Repo?
 
     init() {
     }
@@ -108,31 +105,33 @@ struct User: ModelType, Storable, Subjective {
         eventsUrl                       <- (map["events_url"], URLTransform())
         organizationsUrl                <- (map["organizations_url"], URLTransform())
         receivedEventsUrl               <- (map["received_events_url"], URLTransform())
-        createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
-        updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "YYYY-MM-DD"))
-//        username                        <- map["username"]
-//        href                            <- (map["href"], URLTransform())
-//        repo                            <- map["repo"]
-//        if avatar == nil {
-//            avatar                      <- (map["avatar"], URLTransform())
-//        }
+        createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
+        updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
     }
 
     func detail() -> NSAttributedString? {
         var texts = [NSAttributedString]()
-        if let repositoriesString = self.publicRepos?.string.styled(with: .color(.text)) {
-            let repositoriesImage = R.image.setting_badge_repository()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
+        if let repositoriesString = self.publicRepos?.string.styled(with: .color(.textDark)) {
+            let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
             ]))
         }
-        if let followersString = self.followers?.kFormatted().styled(with: .color(.text)) {
-            let followersImage = R.image.setting_badge_collaborator()?.filled(withColor: .text).scaled(toHeight: 15)?.styled(with: .baselineOffset(-3)) ?? NSAttributedString()
+        if let followersString = self.followers?.kFormatted().styled(with: .color(.textDark)) {
+            let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 followersImage, Special.space, followersString
             ]))
         }
         return .composed(of: texts)
+    }
+
+    func count(title: String, value: Int) -> NSAttributedString {
+        let valueText = value.string.styled(with: .color(.fg), .font(.bold(17)), .alignment(.center))
+        let titleText = title.styled(with: .color(.text), .font(.normal(13)), .alignment(.center))
+        return .composed(of: [
+            valueText, Special.nextLine, titleText
+        ])
     }
 
 }

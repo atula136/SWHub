@@ -18,14 +18,16 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
+        case login
         case night(Bool)
     }
 
     enum Mutation {
         case setLoading(Bool)
+        case setUser(User?)
         case setNight(Bool)
         case setError(Error?)
-        case setRepository(Repo)
+        case setRepo(Repo)
         case start([[ModelType]])
     }
 
@@ -34,17 +36,20 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var isNight = false
         var title: String?
         var error: Error?
-        var repository: Repo?
+        var user: User?
+        var repo: Repo?
         var sections: [SettingSection] = []
     }
 
+    let fullName = "tospery/SWHub"
     var initialState = State()
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
             isNight: ThemeType.currentTheme().isDark,
-            title: stringDefault(self.title, R.string.localizable.mainTabBarSetting())
+            title: stringDefault(self.title, R.string.localizable.mainTabBarSetting()),
+            repo: Repo.current()
         )
     }
 
@@ -52,26 +57,13 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
-            var sections: [[ModelType]] = []
-            if let user = User.current() {
-                let logout = Setting(id: .logout)
-                sections.append([user, logout])
-            }
-            if let repository = Repo.current() {
-                sections.append([repository])
-            }
-            var preference: [ModelType] = []
-            var dark = Setting(id: .night, accessory: .none)
-            dark.switched = ThemeType.currentTheme().isDark
-            preference.append(dark)
-            preference.append(Setting(id: .color))
-            sections.append(preference)
             return .concat([
                 .just(.setLoading(true)),
-                .just(.start(sections)),
-                self.provider.repo(fullname: "tospery/SWHub").map(Mutation.setRepository).catchError({.just(.setError($0))}),
+                //self.provider.repo(fullname: self.fullName).map(Mutation.setRepo).catchError({.just(.setError($0))}),
                 .just(.setLoading(false))
             ])
+        case .login:
+            return .empty()
         case let .night(isNight):
             guard isNight != self.currentState.isNight else { return .empty() }
             return .just(.setNight(isNight))
@@ -85,21 +77,41 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.isLoading = isLoading
         case let .setNight(isNight):
             state.isNight = isNight
+        case let .setUser(user):
+            var models: [[ModelType]] = []
+            if let user = user {
+                models.append([user/*, Setting(id: .logout, accessory: .none)*/])
+            } else {
+                models.append([Setting(id: .login)])
+            }
+//            if let repo = state.repo {
+//                models.append([repo])
+//            }
+            let night = Setting(id: .night, accessory: .none, switched: ThemeType.currentTheme().isDark)
+            let color = Setting(id: .color)
+            let cache = Setting(id: .cache, accessory: .none)
+            models.append([night, color, cache])
+            state.user = user
+            state.sections = self.sections(models)
         case let .start(sections):
             state.sections = self.sections(sections)
-        case let .setRepository(repository):
-            state.repository = repository
-            var sections = state.sections
-            if sections.count >= 3 {
-                sections.remove(at: 1)
-            }
-            sections.insert(.setting(header: R.string.localizable.settingProject(), items: [.project(SettingProjectItem(repository))]), at: 1)
-            state.sections = sections
-            Repo.update(repository)
+        case let .setRepo(repo):
+            state.repo = repo
+//            var sections = state.sections
+//            if sections.count >= 3 {
+//                sections.remove(at: 1)
+//            }
+//            sections.insert(.settings(header: R.string.localizable.settingProject(), items: [.project(SettingProjectItem(repo))]), at: 1)
+//            state.sections = sections
+//            Repo.update(repo)
         case let .setError(error):
             state.error = error
         }
         return state
+    }
+
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        return .merge(mutation, User.subject().asObservable().map(Mutation.setUser))
     }
 
     func sections(_ sections: [[ModelType]]) -> [SettingSection] {
@@ -109,27 +121,30 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             for model in models {
                 if let user = model as? User {
                     header = R.string.localizable.settingAccount()
-                    items.append(.profile(SettingProfileItem(user)))
+                    items.append(.profile(ProfileItem(user)))
                 }
-                if let repository = model as? Repo {
-                    header = R.string.localizable.settingProject()
-                    items.append(.project(SettingProjectItem(repository)))
-                }
+//                if let repository = model as? Repo {
+//                    header = R.string.localizable.settingProject()
+//                    items.append(.project(SettingProjectItem(repository)))
+//                }
                 if let setting = model as? Setting {
                     switch setting.id! {
-                    case .logout:
+                    case .login:
                         header = R.string.localizable.settingAccount()
-                        items.append(.logout(SettingNormalItem(setting)))
+                        items.append(.login(SettingLoginItem(setting)))
                     case .night:
-                        items.append(.dark(SettingSwitchItem(setting)))
+                        items.append(.night(SettingSwitchItem(setting)))
                     case .color:
                         items.append(.color(SettingNormalItem(setting)))
+                    case .cache:
+                        items.append(.cache(SettingNormalItem(setting)))
                     default:
                         break
                     }
                 }
             }
-            return .setting(header: header, items: items)
+            return .settings(header: header, items: items)
         }
     }
+
 }

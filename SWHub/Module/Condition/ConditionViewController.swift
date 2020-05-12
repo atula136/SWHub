@@ -17,19 +17,19 @@ import SWFrame
 
 class ConditionViewController: CollectionViewController, ReactorKit.View {
     struct Reusable {
-        static let languageCell = ReusableCell<Condition.Language.Cell>()
+        static let languageCell = ReusableCell<ConditionLanguageCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<Condition.Language.Section>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<ConditionSection>
 
-    override var layout: UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = .init(horizontal: 30, vertical: 20)
-        return layout
-    }
+//    override var layout: UICollectionViewLayout {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 10
+//        layout.sectionInset = .init(horizontal: 30, vertical: 20)
+//        return layout
+//    }
 
     lazy var segment: UISegmentedControl = {
         let segment = UISegmentedControl(items: Condition.Since.allValues.map { $0.title })
@@ -56,14 +56,9 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.commonSave())
+        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.save())
         saveButton.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
-//            var misc = Misc.current()!
-//            misc.condition.since = self.reactor!.currentState.since
-//            misc.condition.language = self.reactor!.currentState.language
-//            Misc.update(misc)
-//            Condition.event.onNext(.update(misc.since, misc.language))
             var condition = Condition.init()
             condition.since = self.reactor!.currentState.since
             condition.language = self.reactor!.currentState.language
@@ -75,8 +70,8 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
         self.collectionView.register(Reusable.languageCell)
 
         themeService.rx
-            .bind({ [NSAttributedString.Key.foregroundColor: $0.textColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
-            .bind({ [NSAttributedString.Key.foregroundColor: $0.foregroundColor] }, to: self.segment.rx.titleTextAttributes(for: .selected))
+            .bind({ [NSAttributedString.Key.foregroundColor: $0.textDarkColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
+            .bind({ [NSAttributedString.Key.foregroundColor: $0.tintColor] }, to: self.segment.rx.titleTextAttributes(for: .selected))
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -124,7 +119,7 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: ConditionViewReactor) -> RxCollectionViewSectionedReloadDataSource<Condition.Language.Section> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: ConditionViewReactor) -> RxCollectionViewSectionedReloadDataSource<ConditionSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {

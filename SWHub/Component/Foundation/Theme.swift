@@ -17,72 +17,69 @@ let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 let themeService = ThemeType.service(initial: ThemeType.currentTheme())
 
 protocol Theme {
-    var backgroundColor: UIColor { get }                            // 背景
-    var foregroundColor: UIColor { get }                            // 前景
-    var primaryColor: UIColor { get }                               // 主色
-    var secondaryColor: UIColor { get }                             // 次色
-    var textColor: UIColor { get }                                  // 文本
-    var bodyColor: UIColor { get }                                  // 内容
-    var headColor: UIColor { get }                                  // 头部
-    var footColor: UIColor { get }                                  // 尾部
-    var borderColor: UIColor { get }                                // 边框
-    var indicatorColor: UIColor { get }                             // 指示器
-    var separatorColor: UIColor { get }                             // 分隔条
-    var placeholderColor: UIColor { get }                           // 占位符
-    var highlightedColor: UIColor { get }                           // 高亮的
-    var barStyle: UIBarStyle { get }                                // 栏样式
-    var statusBarStyle: UIStatusBarStyle { get }                    // 状态栏
-    var keyboardAppearance: UIKeyboardAppearance { get }            // 键盘表现
-    var blurStyle: UIBlurEffect.Style { get }                       // 毛玻璃
+    var bgColor: UIColor { get }
+    var fgColor: UIColor { get }
+    var tintColor: UIColor { get }
+    var dimColor: UIColor { get }
+    var dimLightColor: UIColor { get }
+    var dimDarkColor: UIColor { get }
+    var textColor: UIColor { get }
+    var textLightColor: UIColor { get }
+    var textDarkColor: UIColor { get }
+    var borderColor: UIColor { get }
+    var borderLightColor: UIColor { get }
+    var borderDarkColor: UIColor { get }
+    var barStyle: UIBarStyle { get }
+    var statusBarStyle: UIStatusBarStyle { get }
+    var keyboardAppearance: UIKeyboardAppearance { get }
+    var blurStyle: UIBlurEffect.Style { get }
 
     init(colorTheme: ColorTheme)
 }
 
 struct LightTheme: Theme {
-    let backgroundColor = UIColor.Material.white
-    var foregroundColor = UIColor.Material.red
-    let primaryColor = UIColor.Material.grey200
-    let secondaryColor = UIColor.Material.red
-    let textColor = UIColor.Material.grey900
-    let bodyColor = UIColor.Material.grey
-    let headColor = UIColor(hex: 0x666666)!
-    let footColor = UIColor.Material.grey
-    let borderColor = UIColor.Material.grey900
-    let indicatorColor = UIColor.orange
-    let separatorColor = UIColor(hex: 0xd1d1d1)!
-    let placeholderColor = UIColor.Material.grey
-    let highlightedColor = UIColor.green
+    let bgColor = UIColor.Material.white
+    let fgColor = UIColor.Material.black
+    var tintColor = UIColor.Material.red
+    let dimColor = UIColor(hex: 0xF3F3F3)!
+    let dimLightColor = UIColor(hex: 0xFAFAFA)!
+    let dimDarkColor = UIColor(hex: 0xFAFAFA)!
+    let textColor = UIColor(hex: 0x666666)!
+    let textLightColor = UIColor(hex: 0x999999)!
+    let textDarkColor = UIColor(hex: 0x333333)!
+    let borderColor = UIColor.Material.grey200
+    let borderLightColor = UIColor.Material.grey100
+    let borderDarkColor = UIColor.Material.grey300
     let barStyle = UIBarStyle.default
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
     let blurStyle = UIBlurEffect.Style.extraLight
 
     init(colorTheme: ColorTheme) {
-        self.foregroundColor = colorTheme.color
+        self.tintColor = colorTheme.color
     }
 }
 
 struct DarkTheme: Theme {
-    let backgroundColor = UIColor.Material.grey800
-    var foregroundColor = UIColor.Material.red
-    let primaryColor = UIColor.Material.grey900
-    let secondaryColor = UIColor.Material.red
+    let bgColor = UIColor(hex: 0x171a21)!
+    let fgColor = UIColor.Material.black
+    var tintColor = UIColor.Material.red
+    let dimColor = UIColor.Material.grey900
+    let dimLightColor = UIColor.Material.grey900
+    let dimDarkColor = UIColor.Material.grey900
     let textColor = UIColor.Material.grey50
-    let bodyColor = UIColor.Material.grey
-    let headColor = UIColor(hex: 0x666666)!
-    let footColor = UIColor.Material.grey
-    let borderColor = UIColor.Material.grey900
-    let indicatorColor = UIColor.orange
-    let separatorColor = UIColor(hex: 0xd1d1d1)!
-    let placeholderColor = UIColor.Material.grey
-    let highlightedColor = UIColor(hex: 0xffca03)!
+    let textLightColor = UIColor.Material.grey200
+    let textDarkColor = UIColor.Material.grey
+    let borderColor = UIColor.Material.grey200
+    let borderLightColor = UIColor.Material.grey100
+    let borderDarkColor = UIColor.Material.grey300
     let barStyle = UIBarStyle.black
     let statusBarStyle = UIStatusBarStyle.lightContent
     let keyboardAppearance = UIKeyboardAppearance.dark
     let blurStyle = UIBlurEffect.Style.dark
 
     init(colorTheme: ColorTheme) {
-        self.foregroundColor = colorTheme.color
+        self.tintColor = colorTheme.color
     }
 }
 

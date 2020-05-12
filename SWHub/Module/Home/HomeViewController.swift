@@ -12,6 +12,7 @@ import RxCocoa
 import ReactorKit
 import URLNavigator
 import Rswift
+import Iconic
 import Parchment
 import SnapKit
 import SwifterSwift
@@ -55,7 +56,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
 
-        self.navigationBar.addButtonToRight(R.image.nav_condition()!).rx.tap.subscribe(onNext: { [weak self] _ in
+        self.navigationBar.addButtonToRight(FontAwesomeIcon.reorderIcon.image(ofSize: .init(width: 20, height: 20), color: .fg)).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
 //            if var url = Router.condition.pattern.url, let misc = Misc.current() {
 //                url.appendQueryParameters([Parameter.since: misc.since.paramValue])
@@ -71,9 +72,9 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.navigationBar.titleView = self.paging.collectionView
 
         themeService.rx
-            .bind({ $0.primaryColor }, to: self.paging.view.rx.backgroundColor)
-            .bind({ $0.foregroundColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
-            .bind({ $0.textColor }, to: self.paging.rx.textColor)
+            .bind({ $0.dimColor }, to: self.paging.view.rx.backgroundColor)
+            .bind({ $0.tintColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
+            .bind({ $0.textDarkColor }, to: self.paging.rx.textColor)
             .disposed(by: self.rx.disposeBag)
         themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
@@ -111,7 +112,7 @@ extension HomeViewController: PagingViewControllerDataSource {
         case .repository:
             return TrendingRepoListViewController(self.navigator, TrendingRepoListViewReactor(self.reactor!.provider, nil))
         case .developer:
-            return TrendingDeveloperListViewController(self.navigator, TrendingDeveloperListViewReactor(self.reactor!.provider, nil))
+            return TrendingUserListViewController(self.navigator, TrendingUserListViewReactor(self.reactor!.provider, nil))
         }
     }
 

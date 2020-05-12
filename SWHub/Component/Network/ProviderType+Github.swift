@@ -16,6 +16,7 @@ extension ProviderType {
         return GithubNetworking(provider: NetworkProvider<GithubAPI>(endpointClosure: GithubNetworking.endpointsClosure(), requestClosure: GithubNetworking.endpointResolver(), stubClosure: GithubNetworking.APIKeysBasedStubBehaviour, plugins: GithubNetworking.plugins))
     }
 
+    /// 用户登录：https://api.github.com/user
     func profile() -> Observable<User> {
         return self.githubNetworking.requestObject(.profile, type: User.self)
     }

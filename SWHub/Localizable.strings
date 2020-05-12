@@ -6,17 +6,29 @@
   Copyright © 2020 杨建祥. All rights reserved.
 */
 
+"Yes" = "是";
+"No" = "否";
+"None" = "无";
+"OK" = "确认";
+"Cancel" = "取消";
+"Save" = "保存";
+"Exit" = "退出";
+"I see" = "知道了";
 "Watch" = "观察";
 "Star" = "打星";
 "Fork" = "复制";
-/* 共同 */
-"Common.Yes" = "是";
-"Common.No" = "否";
-"Common.OK" = "确认";
-"Common.ISee" = "知道了";
-"Common.Cancel" = "取消";
-"Common.Fan" = "返";
-"Common.Save" = "保存";
+"Daily" = "今日";
+"Weekly" = "本周";
+"Monthly" = "本月";
+"Repositories" = "仓库";
+"Followers" = "跟踪者";
+"Following" = "正在跟踪";
+"Logout" = "退出登录";
+"Clear cache" = "清除缓存";
+"Click to login" = "点击登录";
+"Trending.Repo.Stars.New" = "%@增加了%d个星";
+"User.Exit.Prompt" = "您确定要退出%@吗";
+"User.Join.Message" = "注册于%@";
 /* 刷新 */
 "Pull to refresh" = "下拉刷新";
 "Release to refresh" = "松开刷新";
@@ -24,9 +36,6 @@
 "Loading more" = "正在加载更多";
 "No more data" = "没有更多的了";
 /* 条件 */
-"Condition.Since.Daily" = "每日";
-"Condition.Since.Weekly" = "本周";
-"Condition.Since.Monthly" = "本月";
 "All languages" = "所有语言";
 /* 详情 */
 "Detail.Cell.Pull" = "拉取请求";
@@ -53,7 +62,6 @@
 "Home.Developer" = "开发者";
 /* 设置 */
 "Setting.Account" = "账户";
-"Setting.Account.Logout" = "退出";
 "Setting.Project" = "我的项目";
 "Setting.Preferences" = "首选项";
 "Setting.Preferences.Night" = "夜间模式";
