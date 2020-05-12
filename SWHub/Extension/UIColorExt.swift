@@ -10,12 +10,12 @@ import UIKit
 
 extension UIColor {
 
-    static var bg: UIColor {
-        return themeService.type.associatedObject.bgColor
+    static var background: UIColor {
+        return themeService.type.associatedObject.backgroundColor
     }
 
-    static var fg: UIColor {
-        return themeService.type.associatedObject.fgColor
+    static var foreground: UIColor {
+        return themeService.type.associatedObject.foregroundColor
     }
 
     static var dim: UIColor {

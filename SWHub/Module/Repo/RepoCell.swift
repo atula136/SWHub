@@ -101,8 +101,8 @@ class RepoCell: CollectionCell, ReactorKit.View {
         themeService.rx
             .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
             .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
-            .bind({ $0.detailColor }, to: self.statusLabel.rx.textColor)
-            .bind({ $0.titleColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.datetimeColor }, to: self.statusLabel.rx.textColor)
+            .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -170,7 +170,6 @@ class RepoCell: CollectionCell, ReactorKit.View {
             .bind(to: self.avatarImageView.rx.image)
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
-            .skip(6)
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

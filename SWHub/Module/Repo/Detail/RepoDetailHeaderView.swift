@@ -85,7 +85,7 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
 
         themeService.rx
             .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
-            .bind({ $0.bgColor }, to: [self.starButton.rx.borderColor, self.starButton.rx.tintColor])
+            .bind({ $0.backgroundColor }, to: [self.starButton.rx.borderColor, self.starButton.rx.tintColor])
             .bind({ $0.tintColor }, to: [self.starButton.rx.backgroundColor, self.watchersButton.rx.backgroundColor, self.stargazersButton.rx.backgroundColor, self.forkersButton.rx.backgroundColor])
             .disposed(by: self.rx.disposeBag)
     }
@@ -141,7 +141,6 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
             .bind(to: self.forkersButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
-            .skip(4)
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

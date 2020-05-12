@@ -17,8 +17,8 @@ let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 let themeService = ThemeType.service(initial: ThemeType.currentTheme())
 
 protocol Theme {
-    var bgColor: UIColor { get }
-    var fgColor: UIColor { get }
+    var backgroundColor: UIColor { get }
+    var foregroundColor: UIColor { get }
     var dimColor: UIColor { get }
     var maskColor: UIColor { get }
     var tintColor: UIColor { get }
@@ -40,17 +40,17 @@ protocol Theme {
 }
 
 struct LightTheme: Theme {
-    let bgColor = UIColor.Material.white
-    let fgColor = UIColor.Material.black
+    let backgroundColor = UIColor.Material.white
+    let foregroundColor = UIColor.Material.black
     let dimColor = UIColor.Material.grey100
     let maskColor = UIColor.Material.grey900
     var tintColor = UIColor.Material.red
-    let titleColor = UIColor.Material.grey400
+    let titleColor = UIColor.Material.grey900
     let detailColor = UIColor.Material.grey700
-    let datetimeColor = UIColor.Material.grey900
-    let border1Color = UIColor.Material.grey100
-    let border2Color = UIColor.Material.grey200
-    let border3Color = UIColor.Material.grey300
+    let datetimeColor = UIColor.Material.grey500
+    let border1Color = UIColor.Material.grey200
+    let border2Color = UIColor.Material.grey300
+    let border3Color = UIColor.Material.grey400
     let special1Color = UIColor.Material.white
     let special2Color = UIColor.Material.white
     let special3Color = UIColor.Material.white
@@ -65,17 +65,17 @@ struct LightTheme: Theme {
 }
 
 struct DarkTheme: Theme {
-    let bgColor = UIColor(hex: 0x171a21)!
-    let fgColor = UIColor.Material.black
+    let backgroundColor = UIColor(hex: 0x171a21)!
+    let foregroundColor = UIColor.Material.black
     let dimColor = UIColor.Material.grey900
     let maskColor = UIColor.Material.grey900
     var tintColor = UIColor.Material.red
-    let titleColor = UIColor.Material.grey50
-    let detailColor = UIColor.Material.grey200
-    let datetimeColor = UIColor.Material.grey
-    let border1Color = UIColor.Material.grey100
-    let border2Color = UIColor.Material.grey200
-    let border3Color = UIColor.Material.grey300
+    let titleColor = UIColor.Material.grey100
+    let detailColor = UIColor.Material.grey300
+    let datetimeColor = UIColor.Material.grey500
+    let border1Color = UIColor.Material.grey800
+    let border2Color = UIColor.Material.grey700
+    let border3Color = UIColor.Material.grey600
     let special1Color = UIColor.Material.white
     let special2Color = UIColor.Material.white
     let special3Color = UIColor.Material.white

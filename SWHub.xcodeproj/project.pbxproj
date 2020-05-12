@@ -104,8 +104,6 @@
 		79CC24AC24663E8100794CFD /* UserListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CC24AB24663E8100794CFD /* UserListViewReactor.swift */; };
 		79CC24AE24663E8B00794CFD /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CC24AD24663E8B00794CFD /* UserListViewController.swift */; };
 		79CC24B024663F2C00794CFD /* UserListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CC24AF24663F2C00794CFD /* UserListSection.swift */; };
-		79CE935624602FA6009D6243 /* InfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935524602FA6009D6243 /* InfoItem.swift */; };
-		79CE935824602FB1009D6243 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935724602FB1009D6243 /* InfoCell.swift */; };
 		79CE935E246034BC009D6243 /* TrendingUserSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CE935D246034BC009D6243 /* TrendingUserSection.swift */; };
 		79D261412462D28C00A979D3 /* WebViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D261402462D28C00A979D3 /* WebViewReactor.swift */; };
 		79D261432462D29900A979D3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D261422462D29900A979D3 /* WebViewController.swift */; };
@@ -265,8 +263,6 @@
 		79CC24AB24663E8100794CFD /* UserListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewReactor.swift; sourceTree = "<group>"; };
 		79CC24AD24663E8B00794CFD /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		79CC24AF24663F2C00794CFD /* UserListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListSection.swift; sourceTree = "<group>"; };
-		79CE935524602FA6009D6243 /* InfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItem.swift; sourceTree = "<group>"; };
-		79CE935724602FB1009D6243 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		79CE935D246034BC009D6243 /* TrendingUserSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingUserSection.swift; sourceTree = "<group>"; };
 		79D261402462D28C00A979D3 /* WebViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewReactor.swift; sourceTree = "<group>"; };
 		79D261422462D29900A979D3 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -565,8 +561,6 @@
 				7976ACC0245933F000093046 /* CollectionViewController.swift */,
 				79E67A46245C0E5700FE6093 /* SupplementaryView.swift */,
 				79E67A48245C0E9000FE6093 /* SupplementaryReactor.swift */,
-				79CE935524602FA6009D6243 /* InfoItem.swift */,
-				79CE935724602FB1009D6243 /* InfoCell.swift */,
 				79FA5443246271CB0089EB8F /* DefaultItem.swift */,
 				794307EB246271ED0050F3E3 /* DefaultCell.swift */,
 				794307ED246274560050F3E3 /* NormalItem.swift */,
@@ -1034,14 +1028,12 @@
 				790B88D9245F5989000C89D4 /* TrendingRepo.swift in Sources */,
 				792E3CF524694C290090E99F /* ProfileCell.swift in Sources */,
 				79094568245DD17900D69366 /* Tint.swift in Sources */,
-				79CE935624602FA6009D6243 /* InfoItem.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
 				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
 				79EDEA8024684D7F0034FC20 /* UserItem.swift in Sources */,
 				791959422467F0FF00C6DFFC /* RepoCell.swift in Sources */,
 				79042E98245D8FCC00DB30ED /* TintViewController.swift in Sources */,
-				79CE935824602FB1009D6243 /* InfoCell.swift in Sources */,
 				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
 				7906C31B245559180030764D /* R.generated.swift in Sources */,
 				794307F2246275A00050F3E3 /* RepoDetailItem.swift in Sources */,

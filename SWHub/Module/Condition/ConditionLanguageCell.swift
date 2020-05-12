@@ -78,7 +78,6 @@ class ConditionLanguageCell: CollectionCell, ReactorKit.View {
             .bind(to: self.checkImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
-            .skip(1)
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

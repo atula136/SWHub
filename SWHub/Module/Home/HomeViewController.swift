@@ -56,7 +56,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
 
-        self.navigationBar.addButtonToRight(FontAwesomeIcon.reorderIcon.image(ofSize: .init(width: 20, height: 20), color: .fg)).rx.tap.subscribe(onNext: { [weak self] _ in
+        self.navigationBar.addButtonToRight(FontAwesomeIcon.reorderIcon.image(ofSize: .init(width: 20, height: 20), color: .tint)).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
 //            if var url = Router.condition.pattern.url, let misc = Misc.current() {
 //                url.appendQueryParameters([Parameter.since: misc.since.paramValue])

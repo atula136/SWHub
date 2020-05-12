@@ -157,11 +157,11 @@ class ProfileCell: CollectionCell, ReactorKit.View {
 
         themeService.rx
             .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
-            .bind({ $0.titleColor }, to: self.descriptionLabel.rx.textColor)
-            .bind({ $0.titleColor }, to: self.statusLabel.rx.textColor)
+            .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.datetimeColor }, to: self.statusLabel.rx.textColor)
             .bind({ $0.tintColor }, to: self.indicatorImageView.rx.tintColor)
-            .bind({ $0.bgColor }, to: self.userView.rx.backgroundColor)
-            .bind({ $0.border1Color }, to: self.userView.rx.qmui_borderColor)
+            .bind({ $0.backgroundColor }, to: self.userView.rx.backgroundColor)
+            .bind({ $0.border1Color }, to: [self.userView.rx.qmui_borderColor, self.countView.rx.qmui_borderColor])
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -272,7 +272,6 @@ class ProfileCell: CollectionCell, ReactorKit.View {
             .bind(to: self.followingButton.rx.attributedTitle(for: .normal))
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
-            .skip(10)
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

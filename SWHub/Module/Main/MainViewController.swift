@@ -37,8 +37,6 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         themeService.rx
             .bind({ $0.dimColor }, to: self.tab.tabBar.rx.barTintColor)
             .bind({ $0.tintColor }, to: self.tab.tabBar.rx.tintColor)
-            //.bind({ $0.titleColor }, to: self.tab.tabBar.rx.imageTintColor)
-            //.bind({ $0.foregroundColor }, to: self.tab.tabBar.rx.selectedImageTintColor)
             .disposed(by: self.rx.disposeBag)
         if #available(iOS 10.0, *) {
             themeService.rx

@@ -54,7 +54,6 @@ class NormalCell: DefaultCell, ReactorKit.View {
             .bind(to: self.accessoryImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
-            .skip(5)
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
