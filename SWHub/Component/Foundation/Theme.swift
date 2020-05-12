@@ -49,7 +49,7 @@ struct LightTheme: Theme {
     let footColor = UIColor(hex: 0x999999)!
     let borderColor = UIColor(hex: 0xEEEEEE)!
     let indicatorColor = UIColor.orange
-    let separatorColor = UIColor(hex: 0xd1d1d1)!
+    let separatorColor = UIColor(hex: 0xDDDDDD)!
     let placeholderColor = UIColor.Material.grey
     let highlightedColor = UIColor.green
     let barStyle = UIBarStyle.default
@@ -73,7 +73,7 @@ struct DarkTheme: Theme {
     let footColor = UIColor.Material.grey
     let borderColor = UIColor(hex: 0xEEEEEE)!
     let indicatorColor = UIColor.orange
-    let separatorColor = UIColor(hex: 0xd1d1d1)!
+    let separatorColor = UIColor(hex: 0xDDDDDD)!
     let placeholderColor = UIColor.Material.grey
     let highlightedColor = UIColor(hex: 0xffca03)!
     let barStyle = UIBarStyle.black

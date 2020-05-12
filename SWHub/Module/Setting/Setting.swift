@@ -43,17 +43,13 @@ struct Setting: ModelType, Identifiable, Eventable {
 
     enum Key: Int, Codable {
         case profile
-        case project
         case login
-        case logout
         case night
         case color
         case cache
 
         var title: String? {
             switch self {
-            case .logout:
-                return R.string.localizable.exit()
             case .night:
                 return R.string.localizable.settingPreferencesNight()
             case .color:
@@ -67,8 +63,6 @@ struct Setting: ModelType, Identifiable, Eventable {
 
         var icon: UIImage? {
             switch self {
-            case .logout:
-                return FontAwesomeIcon.signoutIcon.image(ofSize: .s32, color: .tint).template
             case .night:
                 return FontAwesomeIcon.lightBulbIcon.image(ofSize: .s32, color: .tint).template
             case .color:

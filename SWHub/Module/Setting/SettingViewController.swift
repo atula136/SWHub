@@ -26,6 +26,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         static let switchCell = ReusableCell<SettingSwitchCell>()
         static let settingCell = ReusableCell<SettingNormalCell>()
         static let headerView = ReusableView<SettingHeaderView>()
+        static let footerView = ReusableView<SettingFooterView>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<SettingSection>
@@ -50,34 +51,18 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
         self.collectionView.register(Reusable.switchCell)
         self.collectionView.register(Reusable.settingCell)
         self.collectionView.register(Reusable.headerView, kind: .header)
+        self.collectionView.register(Reusable.footerView, kind: .footer)
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] item in
             guard let `self` = self else { return }
             switch item {
             case .login:
                 self.navigator.present(Router.login.pattern, wrap: NavigationController.self)
-            case .logout:
-                if let navigator = self.navigator as? Navigator,
-                    var url = Router.alert.pattern.url {
-                    url.appendQueryParameters([
-                        Parameter.title: self.reactor?.currentState.user?.login ?? "",
-                        Parameter.message: R.string.localizable.userExitPrompt(UIApplication.shared.displayName ?? "")
-                    ])
-                    navigator.rx.open(url, context: [AlertAction.cancel, AlertAction.destructive]).subscribe(onNext: { action in
-                        if let action = action as? AlertAction,
-                            action == .destructive {
-                            User.update(nil)
-                        }
-                    }).disposed(by: self.disposeBag)
-                }
             case .color:
                 self.navigator.push(Router.color.pattern)
             default:
                 break
             }
         }).disposed(by: self.disposeBag)
-        themeService.rx
-            .bind({ $0.dimColor }, to: self.collectionView.rx.backgroundColor)
-            .disposed(by: self.rx.disposeBag)
     }
 
     func bind(reactor: SettingViewReactor) {
@@ -121,7 +106,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         .bind(to: reactor.action)
                         .disposed(by: cell.disposeBag)
                     return cell
-                case .logout(let item), .color(let item), .cache(let item):
+                case .color(let item), .cache(let item):
                     let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
@@ -131,6 +116,21 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 switch kind {
                 case UICollectionView.elementKindSectionHeader:
                     return collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
+                case UICollectionView.elementKindSectionFooter:
+                    let footer = collectionView.dequeue(Reusable.footerView, kind: kind, for: indexPath)
+                    if let navigator = navigator as? Navigator,
+                        var url = Router.alert.pattern.url {
+                        url.appendQueryParameters([
+                            Parameter.title: reactor.currentState.user?.login ?? "",
+                            Parameter.message: R.string.localizable.userExitPrompt(UIApplication.shared.displayName ?? "")
+                        ])
+                        footer.rx.logout.flatMap { _ -> Observable<AlertActionType> in
+                            return navigator.rx.open(url, context: [AlertAction.cancel, AlertAction.destructive])
+                        }.map { $0 as? AlertAction }.pass(.destructive).subscribe(onNext: { _ in
+                            User.update(nil)
+                        }).disposed(by: footer.disposeBag)
+                    }
+                    return footer
                 default:
                     return collectionView.emptyView(for: indexPath, kind: kind)
                 }
@@ -182,7 +182,7 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
             return Reusable.loginCell.class.size(width: width, item: item)
         case let .night(item):
             return Reusable.switchCell.class.size(width: width, item: item)
-        case .logout(let item), .color(let item), .cache(let item):
+        case .color(let item), .cache(let item):
             return Reusable.settingCell.class.size(width: width, item: item)
         }
     }
@@ -192,6 +192,13 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
             return .zero
         }
         return CGSize(width: collectionView.sectionWidth(at: section), height: metric(20))
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == 0 {
+            return .zero
+        }
+        return CGSize(width: collectionView.sectionWidth(at: section), height: metric(70))
     }
 
 }

@@ -132,9 +132,6 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                     case .login:
                         header = R.string.localizable.settingAccount()
                         items.append(.login(SettingLoginItem(setting)))
-                    case .logout:
-                        header = R.string.localizable.settingAccount()
-                        items.append(.logout(SettingNormalItem(setting)))
                     case .night:
                         items.append(.night(SettingSwitchItem(setting)))
                     case .color:

@@ -23,6 +23,7 @@
 "Repositories" = "仓库";
 "Followers" = "跟踪者";
 "Following" = "正在跟踪";
+"Logout" = "退出登录";
 "Clear cache" = "清除缓存";
 "Click to login" = "点击登录";
 "Trending.Repo.Stars.New" = "%@增加了%d个星";

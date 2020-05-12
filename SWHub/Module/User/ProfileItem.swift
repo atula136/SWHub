@@ -25,9 +25,9 @@ class ProfileItem: CollectionItem, ReactorKit.Reactor {
         var name: String?
         var description: String?
         var company: String?
-        var city: String?
+        var location: String?
         var email: String?
-        var website: String?
+        var blog: String?
         var reposText: NSAttributedString?
         var followersText: NSAttributedString?
         var followingText: NSAttributedString?
@@ -44,9 +44,9 @@ class ProfileItem: CollectionItem, ReactorKit.Reactor {
             name: user.login,
             description: user.bio,
             company: user.company,
-            city: user.location,
+            location: user.location,
             email: user.email,
-            website: user.blog,
+            blog: user.blog,
             reposText: user.count(title: R.string.localizable.repositories(), value: (user.publicRepos ?? 0) + (user.totalPrivateRepos ?? 0)),
             followersText: user.count(title: R.string.localizable.followers(), value: (user.followers ?? 0)),
             followingText: user.count(title: R.string.localizable.following(), value: (user.following ?? 0)),
