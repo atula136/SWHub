@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 import ReactorKit
 import Iconic
+import RxOptional
 import SwifterSwift
 import Kingfisher
 import SWFrame
@@ -296,4 +297,14 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         return CGSize(width: width, height: flat(Metric.userHeight + Metric.countHeight + Metric.itemHeight * 4))
     }
 
+}
+
+extension Reactive where Base: ProfileCell {
+    var blog: ControlEvent<URL> {
+        let source = self.base.blogInfoView.rx.tap.map { [weak cell = self.base] _ -> URL? in
+            // cell?.reactor?.currentState.blog?.url
+            cell?.blogInfoView.titleLabel.text?.url
+        }.filterNil()
+        return ControlEvent(events: source)
+    }
 }

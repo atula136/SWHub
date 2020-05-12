@@ -8,9 +8,16 @@
 
 import UIKit
 import QMUIKit
+import RxSwift
+import RxCocoa
 import SWFrame
 
 class ProfileInfoView: UIView {
+
+    lazy var gesture: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer()
+        return tap
+    }()
 
     lazy var titleLabel: Label = {
         let label = Label()
@@ -36,6 +43,8 @@ class ProfileInfoView: UIView {
         super.init(frame: frame)
         self.qmui_borderPosition = .bottom
         self.qmui_borderWidth = pixelOne
+        self.addGestureRecognizer(self.gesture)
+
         self.addSubview(self.titleLabel)
         self.addSubview(self.iconImageView)
         self.addSubview(self.indicatorImageView)
@@ -64,4 +73,11 @@ class ProfileInfoView: UIView {
         self.titleLabel.top = self.titleLabel.topWhenCenter
     }
 
+}
+
+extension Reactive where Base: ProfileInfoView {
+    var tap: ControlEvent<Void> {
+        let source = self.base.gesture.rx.event.map { _ in }
+        return ControlEvent(events: source)
+    }
 }

@@ -97,6 +97,9 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 case let .profile(item):
                     let cell = collectionView.dequeue(Reusable.profileCell, for: indexPath)
                     cell.bind(reactor: item)
+                    cell.rx.blog.subscribe(onNext: { url in
+                        navigator.push(url)
+                    }).disposed(by: cell.disposeBag)
                     return cell
                 case let .login(item):
                     let cell = collectionView.dequeue(Reusable.loginCell, for: indexPath)
