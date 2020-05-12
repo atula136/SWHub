@@ -1,5 +1,5 @@
 //
-//  RepoDetailHeaderReactor.swift
+//  RepoDetailHeaderReactor2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -13,7 +13,7 @@ import ReactorKit
 import SwifterSwift
 import SWFrame
 
-class RepoDetailHeaderReactor: SupplementaryReactor, ReactorKit.Reactor {
+class RepoDetailHeaderReactor2: SupplementaryReactor, ReactorKit.Reactor {
 
     typealias Action = NoAction
 

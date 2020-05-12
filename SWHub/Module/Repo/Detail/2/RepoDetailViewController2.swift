@@ -1,5 +1,5 @@
 //
-//  RepoDetailViewController.swift
+//  RepoDetailViewController2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -17,13 +17,13 @@ import ReusableKit
 import RxDataSources
 import SWFrame
 
-class RepoDetailViewController: CollectionViewController, ReactorKit.View {
+class RepoDetailViewController2: CollectionViewController, ReactorKit.View {
     struct Reusable {
-        static let detailCell = ReusableCell<RepoDetailCell>()
-        static let headerView = ReusableView<RepoDetailHeaderView>()
+        static let detailCell = ReusableCell<RepoDetailCell2>()
+        static let headerView = ReusableView<RepoDetailHeaderView2>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<RepoDetailSection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<RepoDetailSection2>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -35,7 +35,7 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
         return layout
     }
 
-    init(_ navigator: NavigatorType, _ reactor: RepoDetailViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: RepoDetailViewReactor2) {
         defer {
             self.reactor = reactor
         }
@@ -57,7 +57,7 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
         self.collectionView.register(Reusable.headerView, kind: .header)
     }
 
-    func bind(reactor: RepoDetailViewReactor) {
+    func bind(reactor: RepoDetailViewReactor2) {
         super.bind(reactor: reactor)
         // action
         self.rx.viewDidLoad.map { Reactor.Action.load }
@@ -108,7 +108,7 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepoDetailViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepoDetailSection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepoDetailViewReactor2) -> RxCollectionViewSectionedReloadDataSource<RepoDetailSection2> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                     switch sectionItem {
@@ -122,7 +122,7 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
                 switch kind {
                 case UICollectionView.elementKindSectionHeader:
                     let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
-                    view.bind(reactor: RepoDetailHeaderReactor(reactor.currentState.repository))
+                    view.bind(reactor: RepoDetailHeaderReactor2(reactor.currentState.repository))
                     Observable.merge(view.rx.watchers.asObservable(), view.rx.stargazers.asObservable()).subscribe(onNext: { parameters in
                         if var url = Router.User.list.pattern.url,
                             let fullname = reactor.fullname {
@@ -155,7 +155,7 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
     }
 }
 
-extension RepoDetailViewController: UICollectionViewDelegateFlowLayout {
+extension RepoDetailViewController2: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
@@ -167,7 +167,7 @@ extension RepoDetailViewController: UICollectionViewDelegateFlowLayout {
 
 }
 
-extension Reactive where Base: RepoDetailViewController {
+extension Reactive where Base: RepoDetailViewController2 {
 //    var language: Binder<String?> {
 //        return Binder(self.base) { viewController, attr in
 //            Condition.Language.event.onNext(.select(attr))

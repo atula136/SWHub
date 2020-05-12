@@ -1,5 +1,5 @@
 //
-//  RepoDetailHeaderView.swift
+//  RepoDetailHeaderView2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -15,7 +15,7 @@ import ReactorKit
 import SwifterSwift
 import SWFrame
 
-class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
+class RepoDetailHeaderView2: SupplementaryView, ReactorKit.View {
 
     lazy var titleLabel: Label = {
         let label = Label()
@@ -123,7 +123,7 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
         self.forkersButton.bottom = self.watchersButton.bottom
     }
 
-    func bind(reactor: RepoDetailHeaderReactor) {
+    func bind(reactor: RepoDetailHeaderReactor2) {
         super.bind(reactor: reactor)
         reactor.state.map { $0.avatar }
             .bind(to: self.avatarImageView.rx.image())
@@ -146,7 +146,7 @@ class RepoDetailHeaderView: SupplementaryView, ReactorKit.View {
     }
 }
 
-extension Reactive where Base: RepoDetailHeaderView {
+extension Reactive where Base: RepoDetailHeaderView2 {
 
     var starred: Binder<Bool> {
         return Binder(self.base) { view, attr in

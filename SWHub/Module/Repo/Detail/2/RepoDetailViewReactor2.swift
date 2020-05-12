@@ -1,5 +1,5 @@
 //
-//  RepoDetailViewReactor.swift
+//  RepoDetailViewReactor2.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/6.
@@ -14,7 +14,7 @@ import SwifterSwift
 import ReactorKit
 import SWFrame
 
-class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class RepoDetailViewReactor2: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
@@ -36,7 +36,7 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var title: String?
         var error: Error?
         var repository: Repo!
-        var sections: [RepoDetailSection] = []
+        var sections: [RepoDetailSection2] = []
     }
 
     var fullname: String?
@@ -48,12 +48,6 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         self.initialState = State(
             title: stringDefault(self.title, self.fullname ?? "")
         )
-//        self.provider.readme(fullname: self.fullname ?? "").subscribe(onNext: { readme in
-//            let content = readme.content
-//            let html = content?.base64Decoded
-//            let abc = "Y2FuIHlvdSBoZWxwIG1l".base64Decoded
-//            print("")
-//        })
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -93,8 +87,8 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.error = error
         case let .setRepository(repository):
             state.repository = repository
-            let items = RepoDetailModel.Key.allValues.map { key -> RepoDetailSectionItem in
-                var model = RepoDetailModel(key: key)
+            let items = RepoDetailModel2.Key.allValues.map { key -> RepoDetailSectionItem2 in
+                var model = RepoDetailModel2(key: key)
                 switch key {
                 case .branch:
                     model.detail = repository.defaultBranch
@@ -103,7 +97,7 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 default:
                     break
                 }
-                return .detail(RepoDetailItem(model))
+                return .detail(RepoDetailItem2(model))
             }
             state.sections = [.details(items)]
         }
