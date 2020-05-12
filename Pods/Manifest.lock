@@ -137,7 +137,7 @@ DEPENDENCIES:
   - RxGesture (= 3.0.0)
   - RxOptional (= 4.0.0)
   - RxTheme (= 4.0.0)
-  - SWFrame (from `../SWFrame`)
+  - SWFrame (= 1.0.5)
   - SwiftLint (= 0.39.2)
 
 SPEC REPOS:
@@ -178,6 +178,7 @@ SPEC REPOS:
     - RxTheme
     - RxViewController
     - SnapKit
+    - SWFrame
     - SwifterSwift
     - SwiftLint
     - SwiftyBeaver
@@ -185,10 +186,6 @@ SPEC REPOS:
     - UICKeyChainStore
     - URLNavigator
     - WebViewJavascriptBridge
-
-EXTERNAL SOURCES:
-  SWFrame:
-    :path: "../SWFrame"
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -236,6 +233,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: c825158e27c0a2b08fb3f4b5cceea77c95e8d4b9
+PODFILE CHECKSUM: c76d474c6b286ae7a61a603f6c0a99eb93484697
 
 COCOAPODS: 1.9.1
