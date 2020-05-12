@@ -1,5 +1,5 @@
 //
-//  MyColor.swift
+//  Tint.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -10,7 +10,7 @@ import UIKit
 import ObjectMapper
 import SWFrame
 
-struct MyColor: ModelType, Identifiable, Eventable {
+struct Tint: ModelType, Identifiable, Eventable {
 
     enum Event {
         case updateColor(ColorTheme)

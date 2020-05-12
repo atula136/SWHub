@@ -1,5 +1,5 @@
 //
-//  MyColorViewController.swift
+//  TintViewController.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/2.
@@ -18,13 +18,13 @@ import RxViewController
 import RxDataSources
 import SWFrame
 
-class MyColorViewController: CollectionViewController, ReactorKit.View {
+class TintViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let colorCell = ReusableCell<MyColorCell>()
+        static let colorCell = ReusableCell<TintCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<MyColorSection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<TintSection>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -36,7 +36,7 @@ class MyColorViewController: CollectionViewController, ReactorKit.View {
         return layout
     }
 
-    init(_ navigator: NavigatorType, _ reactor: MyColorViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: TintViewReactor) {
         defer {
             self.reactor = reactor
         }
@@ -56,10 +56,10 @@ class MyColorViewController: CollectionViewController, ReactorKit.View {
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { sectionItem in
             switch sectionItem {
             case let .color(item):
-                if let color = item.model as? MyColor, !color.checked() {
+                if let color = item.model as? Tint, !color.checked() {
                     let theme = ThemeType.currentTheme().withColor(color: color.id!)
                     themeService.switch(theme)
-                    MyColor.event.onNext(.updateColor(color.id!))
+                    Tint.event.onNext(.updateColor(color.id!))
                 }
             }
         }).disposed(by: self.disposeBag)
@@ -69,7 +69,7 @@ class MyColorViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.rx.disposeBag)
     }
 
-    func bind(reactor: MyColorViewReactor) {
+    func bind(reactor: TintViewReactor) {
         super.bind(reactor: reactor)
         // action
         self.rx.viewDidLoad.map { Reactor.Action.load }
@@ -84,7 +84,7 @@ class MyColorViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: MyColorViewReactor) -> RxCollectionViewSectionedReloadDataSource<MyColorSection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TintViewReactor) -> RxCollectionViewSectionedReloadDataSource<TintSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
@@ -98,7 +98,7 @@ class MyColorViewController: CollectionViewController, ReactorKit.View {
     }
 }
 
-extension MyColorViewController: UICollectionViewDelegateFlowLayout {
+extension TintViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)

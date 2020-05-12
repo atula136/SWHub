@@ -14,8 +14,8 @@
 		79009F9C2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79009F9B2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json */; };
 		79009F9E246516FA00CC4C1F /* repos-rxhanson-Rectangle-branches.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79009F9D246516FA00CC4C1F /* repos-rxhanson-Rectangle-branches.1.json */; };
 		79020CB124559CDA00FF1978 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 79020CB024559CDA00FF1978 /* readme.txt */; };
-		79042E96245D8FC200DB30ED /* MyColorViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79042E95245D8FC200DB30ED /* MyColorViewReactor.swift */; };
-		79042E98245D8FCC00DB30ED /* MyColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79042E97245D8FCC00DB30ED /* MyColorViewController.swift */; };
+		79042E96245D8FC200DB30ED /* TintViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79042E95245D8FC200DB30ED /* TintViewReactor.swift */; };
+		79042E98245D8FCC00DB30ED /* TintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79042E97245D8FCC00DB30ED /* TintViewController.swift */; };
 		7906832C24564EAB00BFDCB2 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7906832B24564EAB00BFDCB2 /* AuthManager.swift */; };
 		7906C317245558B10030764D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7906C316245558B10030764D /* Theme.swift */; };
 		7906C319245558FD0030764D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7906C318245558FD0030764D /* Localizable.strings */; };
@@ -32,9 +32,9 @@
 		790767B02456C42000CD0AAF /* GithubNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790767AF2456C42000CD0AAF /* GithubNetworking.swift */; };
 		790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790767B32456CB3D00CD0AAF /* ResponseType.swift */; };
 		790767B62456CE5500CD0AAF /* ProviderType+Github.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790767B52456CE5500CD0AAF /* ProviderType+Github.swift */; };
-		79094568245DD17900D69366 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79094567245DD17900D69366 /* MyColor.swift */; };
-		7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79094569245DD1F200D69366 /* MyColorItem.swift */; };
-		7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456B245DD1F900D69366 /* MyColorCell.swift */; };
+		79094568245DD17900D69366 /* Tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79094567245DD17900D69366 /* Tint.swift */; };
+		7909456A245DD1F200D69366 /* TintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79094569245DD1F200D69366 /* TintItem.swift */; };
+		7909456C245DD1F900D69366 /* TintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456B245DD1F900D69366 /* TintCell.swift */; };
 		7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456D245DD2E200D69366 /* MyColorSection.swift */; };
 		790B88D4245EC97C000C89D4 /* PagingViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */; };
 		790B88D6245F5882000C89D4 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 790B88D5245F5882000C89D4 /* repositories.json */; };
@@ -168,8 +168,8 @@
 		79009F9B2465162000CC4C1F /* repos-rxhanson-Rectangle-issues.open1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-issues.open1.json"; sourceTree = "<group>"; };
 		79009F9D246516FA00CC4C1F /* repos-rxhanson-Rectangle-branches.1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-branches.1.json"; sourceTree = "<group>"; };
 		79020CB024559CDA00FF1978 /* readme.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
-		79042E95245D8FC200DB30ED /* MyColorViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorViewReactor.swift; sourceTree = "<group>"; };
-		79042E97245D8FCC00DB30ED /* MyColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorViewController.swift; sourceTree = "<group>"; };
+		79042E95245D8FC200DB30ED /* TintViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintViewReactor.swift; sourceTree = "<group>"; };
+		79042E97245D8FCC00DB30ED /* TintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintViewController.swift; sourceTree = "<group>"; };
 		7906832B24564EAB00BFDCB2 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		7906C316245558B10030764D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7906C318245558FD0030764D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -186,9 +186,9 @@
 		790767AF2456C42000CD0AAF /* GithubNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubNetworking.swift; sourceTree = "<group>"; };
 		790767B32456CB3D00CD0AAF /* ResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
 		790767B52456CE5500CD0AAF /* ProviderType+Github.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProviderType+Github.swift"; sourceTree = "<group>"; };
-		79094567245DD17900D69366 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
-		79094569245DD1F200D69366 /* MyColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorItem.swift; sourceTree = "<group>"; };
-		7909456B245DD1F900D69366 /* MyColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorCell.swift; sourceTree = "<group>"; };
+		79094567245DD17900D69366 /* Tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tint.swift; sourceTree = "<group>"; };
+		79094569245DD1F200D69366 /* TintItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintItem.swift; sourceTree = "<group>"; };
+		7909456B245DD1F900D69366 /* TintCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintCell.swift; sourceTree = "<group>"; };
 		7909456D245DD2E200D69366 /* MyColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorSection.swift; sourceTree = "<group>"; };
 		790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewControllerExt.swift; sourceTree = "<group>"; };
 		790B88D5245F5882000C89D4 /* repositories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = repositories.json; sourceTree = "<group>"; };
@@ -339,17 +339,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		79042E94245D8FB200DB30ED /* MyColor */ = {
+		79042E94245D8FB200DB30ED /* Tint */ = {
 			isa = PBXGroup;
 			children = (
-				79042E95245D8FC200DB30ED /* MyColorViewReactor.swift */,
-				79042E97245D8FCC00DB30ED /* MyColorViewController.swift */,
-				79094567245DD17900D69366 /* MyColor.swift */,
-				79094569245DD1F200D69366 /* MyColorItem.swift */,
-				7909456B245DD1F900D69366 /* MyColorCell.swift */,
+				79042E95245D8FC200DB30ED /* TintViewReactor.swift */,
+				79042E97245D8FCC00DB30ED /* TintViewController.swift */,
+				79094567245DD17900D69366 /* Tint.swift */,
+				79094569245DD1F200D69366 /* TintItem.swift */,
+				7909456B245DD1F900D69366 /* TintCell.swift */,
 				7909456D245DD2E200D69366 /* MyColorSection.swift */,
 			);
-			path = MyColor;
+			path = Tint;
 			sourceTree = "<group>";
 		};
 		7906C3152455589B0030764D /* Foundation */ = {
@@ -403,7 +403,7 @@
 				791160AF2460428C00737F4B /* Condition */,
 				79A8BDD9245FC82700E88DB2 /* Repo */,
 				79EE8A92245E88B400A2438C /* Home */,
-				79042E94245D8FB200DB30ED /* MyColor */,
+				79042E94245D8FB200DB30ED /* Tint */,
 				7976ACA2245826E900093046 /* Setting */,
 				7976ACA1245826E400093046 /* Search */,
 				7976ACA0245826DF00093046 /* Activity */,
@@ -979,7 +979,7 @@
 			files = (
 				7944097D246A4DFC00523299 /* ProfileInfoView.swift in Sources */,
 				791B56D3246A54B900A800F8 /* SettingFooterView.swift in Sources */,
-				7909456A245DD1F200D69366 /* MyColorItem.swift in Sources */,
+				7909456A245DD1F200D69366 /* TintItem.swift in Sources */,
 				79EE8AA4245E8ED300A2438C /* TrendingUserListViewController.swift in Sources */,
 				79FAF5E424628DAD00CEC4D0 /* RepoDetailHeaderView.swift in Sources */,
 				799CCE362466AE4D007A1474 /* SettingLoginItem.swift in Sources */,
@@ -1014,7 +1014,7 @@
 				79CE935E246034BC009D6243 /* TrendingUserSection.swift in Sources */,
 				79D2614B2462DD1000A979D3 /* SettingSwitchCell.swift in Sources */,
 				790B88DD245F59ED000C89D4 /* TrendingUser.swift in Sources */,
-				7909456C245DD1F900D69366 /* MyColorCell.swift in Sources */,
+				7909456C245DD1F900D69366 /* TintCell.swift in Sources */,
 				79EE8A94245E88CF00A2438C /* HomeViewReactor.swift in Sources */,
 				794E3BF124668D11003DDDFB /* RepoListViewReactor.swift in Sources */,
 				7906C32B24555DFD0030764D /* Appearance.swift in Sources */,
@@ -1033,14 +1033,14 @@
 				790B88E1245F61FA000C89D4 /* TrendingNetworking.swift in Sources */,
 				790B88D9245F5989000C89D4 /* TrendingRepo.swift in Sources */,
 				792E3CF524694C290090E99F /* ProfileCell.swift in Sources */,
-				79094568245DD17900D69366 /* MyColor.swift in Sources */,
+				79094568245DD17900D69366 /* Tint.swift in Sources */,
 				79CE935624602FA6009D6243 /* InfoItem.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
 				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
 				79EDEA8024684D7F0034FC20 /* UserItem.swift in Sources */,
 				791959422467F0FF00C6DFFC /* RepoCell.swift in Sources */,
-				79042E98245D8FCC00DB30ED /* MyColorViewController.swift in Sources */,
+				79042E98245D8FCC00DB30ED /* TintViewController.swift in Sources */,
 				79CE935824602FB1009D6243 /* InfoCell.swift in Sources */,
 				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
 				7906C31B245559180030764D /* R.generated.swift in Sources */,
@@ -1050,7 +1050,7 @@
 				7976ACB22458274300093046 /* SettingViewController.swift in Sources */,
 				790B88E3245F624A000C89D4 /* ProviderType+Trending.swift in Sources */,
 				79D8C81D2462085200A905F0 /* RepoDetailViewController.swift in Sources */,
-				79042E96245D8FC200DB30ED /* MyColorViewReactor.swift in Sources */,
+				79042E96245D8FC200DB30ED /* TintViewReactor.swift in Sources */,
 				7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */,
 				794409772469C60800523299 /* ConditionLanguageItem.swift in Sources */,
 				7976ACBF245933E200093046 /* CollectionViewReactor.swift in Sources */,

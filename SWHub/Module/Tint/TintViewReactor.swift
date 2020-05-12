@@ -1,5 +1,5 @@
 //
-//  MyColorViewReactor.swift
+//  TintViewReactor.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/2.
@@ -14,7 +14,7 @@ import ReactorKit
 import RxOptional
 import SWFrame
 
-class MyColorViewReactor: CollectionViewReactor, ReactorKit.Reactor {
+class TintViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
@@ -22,13 +22,13 @@ class MyColorViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Mutation {
         case setLoading(Bool)
-        case initial([MyColor])
+        case initial([Tint])
     }
 
     struct State {
         var isLoading = false
         var title: String?
-        var sections: [MyColorSection] = []
+        var sections: [TintSection] = []
     }
 
     var initialState = State()
@@ -46,7 +46,7 @@ class MyColorViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             guard self.currentState.isLoading == false else { return .empty() }
             return .concat([
                 .just(.setLoading(true)),
-                .just(.initial(ColorTheme.allValues.map { MyColor(id: $0) })),
+                .just(.initial(ColorTheme.allValues.map { Tint(id: $0) })),
                 .just(.setLoading(false))
             ])
         }
@@ -58,7 +58,7 @@ class MyColorViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
         case let .initial(colors):
-            state.sections = [.color(colors.map { MyColorItem($0) }.map { MyColorSectionItem.color($0) })]
+            state.sections = [.color(colors.map { TintItem($0) }.map { MyColorSectionItem.color($0) })]
         }
         return state
     }

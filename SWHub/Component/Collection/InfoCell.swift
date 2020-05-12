@@ -82,8 +82,8 @@ class InfoCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.indicatorImageView)
 
         themeService.rx
-            .bind({ $0.textDarkColor }, to: self.titleLabel.rx.textColor)
-            .bind({ $0.textLightColor }, to: self.subtitleLabel.rx.textColor)
+            .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.detailColor }, to: self.subtitleLabel.rx.textColor)
             .bind({ $0.tintColor }, to: self.indicatorImageView.rx.tintColor)
             .disposed(by: self.rx.disposeBag)
     }
@@ -146,6 +146,7 @@ class InfoCell: CollectionCell, ReactorKit.View {
             .bind(to: self.iconImageView.rx.image)
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
+            .skip(5)
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

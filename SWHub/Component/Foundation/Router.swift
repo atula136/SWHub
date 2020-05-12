@@ -140,7 +140,7 @@ enum Router {
 
         // 3. 页面
         navigator.register(self.color.pattern) { url, values, context in
-            MyColorViewController(navigator, MyColorViewReactor(provider, parameters(url, values, context)))
+            TintViewController(navigator, TintViewReactor(provider, parameters(url, values, context)))
         }
         navigator.register(self.condition.pattern) { url, values, context in
             ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))

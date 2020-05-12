@@ -1,5 +1,5 @@
 //
-//  MyColorCell.swift
+//  TintCell.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -14,7 +14,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class MyColorCell: DefaultCell, ReactorKit.View {
+class TintCell: DefaultCell, ReactorKit.View {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +28,7 @@ class MyColorCell: DefaultCell, ReactorKit.View {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bind(reactor: MyColorItem) {
+    func bind(reactor: TintItem) {
         super.bind(item: reactor)
         reactor.state.map { $0.title }
             .bind(to: self.titleLabel.rx.text)
@@ -56,6 +56,7 @@ class MyColorCell: DefaultCell, ReactorKit.View {
             }
         }.bind(to: self.accessoryImageView.rx.image).disposed(by: self.disposeBag)
         reactor.state.map { _ in }
+            .skip(5)
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }

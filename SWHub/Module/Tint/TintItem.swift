@@ -1,5 +1,5 @@
 //
-//  MyColorItem.swift
+//  TintItem.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class MyColorItem: DefaultItem, ReactorKit.Reactor {
+class TintItem: DefaultItem, ReactorKit.Reactor {
 
     enum AccessoryType: Equatable {
         case none
@@ -51,7 +51,7 @@ class MyColorItem: DefaultItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        guard let color = model as? MyColor else { return }
+        guard let color = model as? Tint else { return }
         self.initialState = State(
             icon: UIImage(color: color.id!.color, size: CGSize(width: 50, height: 50)),
             title: color.id?.title,
@@ -63,7 +63,7 @@ class MyColorItem: DefaultItem, ReactorKit.Reactor {
         var state = state
         switch mutation {
         case let .setColor(colorTheme):
-            if let color = self.model as? MyColor {
+            if let color = self.model as? Tint {
                 if color.id! == colorTheme {
                     state.accessory = .checkmark
                 } else {
@@ -75,7 +75,7 @@ class MyColorItem: DefaultItem, ReactorKit.Reactor {
     }
 
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let colorEvent = MyColor.event.flatMap { event -> Observable<Mutation> in
+        let colorEvent = Tint.event.flatMap { event -> Observable<Mutation> in
             switch event {
             case let .updateColor(colorTheme):
                 return .just(.setColor(colorTheme))

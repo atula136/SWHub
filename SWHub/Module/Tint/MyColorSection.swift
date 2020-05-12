@@ -1,5 +1,5 @@
 //
-//  MyColorSection.swift
+//  TintSection.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/3.
@@ -11,11 +11,11 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-enum MyColorSection {
+enum TintSection {
     case color([MyColorSectionItem])
 }
 
-extension MyColorSection: SectionModelType {
+extension TintSection: SectionModelType {
 
     var items: [MyColorSectionItem] {
         switch self {
@@ -23,7 +23,7 @@ extension MyColorSection: SectionModelType {
         }
     }
 
-    init(original: MyColorSection, items: [MyColorSectionItem]) {
+    init(original: TintSection, items: [MyColorSectionItem]) {
         switch original {
         case .color: self = .color(items)
         }
@@ -32,5 +32,5 @@ extension MyColorSection: SectionModelType {
 }
 
 enum MyColorSectionItem {
-    case color(MyColorItem)
+    case color(TintItem)
 }

@@ -43,8 +43,8 @@ class ConditionLanguageCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.checkImageView)
 
         themeService.rx
-            .bind({ $0.borderLightColor }, to: self.rx.qmui_borderColor)
-            .bind({ $0.textDarkColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
+            .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.tintColor }, to: self.checkImageView.rx.tintColor)
             .disposed(by: self.rx.disposeBag)
     }
@@ -78,6 +78,7 @@ class ConditionLanguageCell: CollectionCell, ReactorKit.View {
             .bind(to: self.checkImageView.rx.isHidden)
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }
+            .skip(1)
             .bind(to: self.rx.setNeedsLayout)
             .disposed(by: self.disposeBag)
     }
