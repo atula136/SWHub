@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 import SwifterSwift
 import Highlightr
+import MarkdownView
 import ReactorKit
 import SWFrame
 
@@ -53,11 +54,12 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             guard let fullname = self.fullname else { return .empty() }
             let requestReadme = self.provider.readme(fullname: fullname).flatMap { [weak self] readme -> Observable<Repo.Readme> in
                 guard let `self` = self, let url = readme.downloadUrl else { return .empty() }
-                return self.provider.download(url: url).map { content -> Repo.Readme in
-                    let highlightr = Highlightr()
-                    highlightr?.setTheme(to: "github")
+                return self.provider.download(url: url).map { markdown -> Repo.Readme in
+                    // let highlightr = Highlightr()
+                    // highlightr?.setTheme(to: "github")
                     var readme = readme
-                    readme.highlightedCode = highlightr?.highlight(content)
+                    readme.markdown = markdown
+                    // readme.highlightedCode = highlightr?.highlight(markdown)
                     return readme
                 }
             }.map { Mutation.setReadme($0) }
@@ -82,6 +84,10 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.sections = [.list([.readme(RepoReadmeItem(readme))])]
         }
         return state
+    }
+
+    func height(markdown: String) -> Observable<CGFloat> {
+        
     }
 
 }

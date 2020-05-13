@@ -1,5 +1,5 @@
 //
-//  RepoReadmeItem.swift
+//  RepoReadmeSourceItem.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/13.
@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class RepoReadmeItem: CollectionItem, ReactorKit.Reactor {
+class RepoReadmeSourceItem: CollectionItem, ReactorKit.Reactor {
 
     typealias Action = NoAction
 
@@ -22,8 +22,7 @@ class RepoReadmeItem: CollectionItem, ReactorKit.Reactor {
     }
 
     struct State {
-        var markdown: String?
-        var url: URL?
+        var content: NSAttributedString?
     }
 
     var initialState = State()
@@ -32,8 +31,7 @@ class RepoReadmeItem: CollectionItem, ReactorKit.Reactor {
         super.init(model)
         guard let readme = model as? Repo.Readme else { return }
         self.initialState = State(
-            markdown: readme.markdown,
-            url: readme.downloadUrl
+            content: readme.highlightedCode
         )
     }
 

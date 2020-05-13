@@ -275,6 +275,8 @@ extension Repo {
         var downloadUrl: URL?
         var links: Links?
         var highlightedCode: NSAttributedString?
+        var markdown: String?
+        var height: CGFloat?
 
         init() {
         }

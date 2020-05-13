@@ -74,8 +74,10 @@
 		794E3BF124668D11003DDDFB /* RepoListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF024668D11003DDDFB /* RepoListViewReactor.swift */; };
 		794E3BF324668D1C003DDDFB /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF224668D1C003DDDFB /* RepoListViewController.swift */; };
 		794E3BF524668D30003DDDFB /* RepoListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF424668D30003DDDFB /* RepoListSection.swift */; };
-		79532C06246BAD5A002AA20E /* RepoReadmeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79532C05246BAD5A002AA20E /* RepoReadmeItem.swift */; };
-		79532C08246BAD6E002AA20E /* RepoReadmeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79532C07246BAD6E002AA20E /* RepoReadmeCell.swift */; };
+		79532C06246BAD5A002AA20E /* RepoReadmeSourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */; };
+		79532C08246BAD6E002AA20E /* RepoReadmeSourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */; };
+		79754862246C15050044A128 /* RepoReadmeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79754861246C15050044A128 /* RepoReadmeItem.swift */; };
+		79754864246C150E0044A128 /* RepoReadmeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79754863246C150E0044A128 /* RepoReadmeCell.swift */; };
 		7976AC9C24581F6700093046 /* MainViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9B24581F6700093046 /* MainViewReactor.swift */; };
 		7976AC9E24581F7E00093046 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9D24581F7E00093046 /* MainViewController.swift */; };
 		7976ACA4245826FA00093046 /* MessageViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACA3245826FA00093046 /* MessageViewReactor.swift */; };
@@ -233,8 +235,10 @@
 		794E3BF024668D11003DDDFB /* RepoListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewReactor.swift; sourceTree = "<group>"; };
 		794E3BF224668D1C003DDDFB /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
 		794E3BF424668D30003DDDFB /* RepoListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListSection.swift; sourceTree = "<group>"; };
-		79532C05246BAD5A002AA20E /* RepoReadmeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeItem.swift; sourceTree = "<group>"; };
-		79532C07246BAD6E002AA20E /* RepoReadmeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeCell.swift; sourceTree = "<group>"; };
+		79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeSourceItem.swift; sourceTree = "<group>"; };
+		79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeSourceCell.swift; sourceTree = "<group>"; };
+		79754861246C15050044A128 /* RepoReadmeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeItem.swift; sourceTree = "<group>"; };
+		79754863246C150E0044A128 /* RepoReadmeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeCell.swift; sourceTree = "<group>"; };
 		7976AC9B24581F6700093046 /* MainViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewReactor.swift; sourceTree = "<group>"; };
 		7976AC9D24581F7E00093046 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7976ACA3245826FA00093046 /* MessageViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewReactor.swift; sourceTree = "<group>"; };
@@ -609,9 +613,11 @@
 				79D8C81E24620AB900A905F0 /* Repo.swift */,
 				7919593F2467F0F500C6DFFC /* RepoBasicItem.swift */,
 				791959412467F0FF00C6DFFC /* RepoBasicCell.swift */,
-				79532C05246BAD5A002AA20E /* RepoReadmeItem.swift */,
-				79532C07246BAD6E002AA20E /* RepoReadmeCell.swift */,
+				79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */,
+				79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */,
 				799F700C246BAEF500004589 /* RepoSection.swift */,
+				79754861246C15050044A128 /* RepoReadmeItem.swift */,
+				79754863246C150E0044A128 /* RepoReadmeCell.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -1023,7 +1029,7 @@
 				792F6D672455562F00856757 /* LoginViewController.swift in Sources */,
 				79D8C81B2462084900A905F0 /* RepoDetailViewReactor2.swift in Sources */,
 				79DAF291245D728D0006E6A5 /* NavigationBarExt.swift in Sources */,
-				79532C06246BAD5A002AA20E /* RepoReadmeItem.swift in Sources */,
+				79532C06246BAD5A002AA20E /* RepoReadmeSourceItem.swift in Sources */,
 				79D261452462DCF100A979D3 /* SettingNormalItem.swift in Sources */,
 				79FAF5E62462954100CEC4D0 /* RepoDetailHeaderReactor2.swift in Sources */,
 				7976ACB02458273900093046 /* SettingViewReactor.swift in Sources */,
@@ -1044,6 +1050,7 @@
 				790B88DF245F6046000C89D4 /* TrendingAPI.swift in Sources */,
 				79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */,
 				791160B3246042AF00737F4B /* ConditionViewController.swift in Sources */,
+				79754864246C150E0044A128 /* RepoReadmeCell.swift in Sources */,
 				791160BF2460A11200737F4B /* Condition.swift in Sources */,
 				7922DC9324615DAC0090A3EC /* StringExt.swift in Sources */,
 				7976ACB82459335600093046 /* SettingSection.swift in Sources */,
@@ -1059,6 +1066,7 @@
 				799F700F246BAF5800004589 /* RepoDetailViewReactor.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
 				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
+				79754862246C15050044A128 /* RepoReadmeItem.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
 				79EDEA8024684D7F0034FC20 /* UserItem.swift in Sources */,
 				799F700D246BAEF500004589 /* RepoSection.swift in Sources */,
@@ -1087,7 +1095,7 @@
 				791160B9246095B400737F4B /* ParameterExt.swift in Sources */,
 				79FA5444246271CB0089EB8F /* DefaultItem.swift in Sources */,
 				79D8C81F24620AB900A905F0 /* Repo.swift in Sources */,
-				79532C08246BAD6E002AA20E /* RepoReadmeCell.swift in Sources */,
+				79532C08246BAD6E002AA20E /* RepoReadmeSourceCell.swift in Sources */,
 				7976ACA62458270400093046 /* MessageViewController.swift in Sources */,
 				7976ACBD2459339D00093046 /* CollectionCell.swift in Sources */,
 				7906C32324555DC70030764D /* Runtime.swift in Sources */,
