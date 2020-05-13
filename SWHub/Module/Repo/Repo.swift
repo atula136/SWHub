@@ -41,7 +41,7 @@ struct Repo: ModelType, Subjective, Eventable {
     var defaultBranch: String?
     var tempCloneToken: String?
     var createdAt: String?
-    var updatedAt: String?
+    var updatedAt: Date?
     var pushedAt: String?
     var homepage: String?
     var gitUrl: String?
@@ -126,7 +126,6 @@ struct Repo: ModelType, Subjective, Eventable {
         defaultBranch               <- map["default_branch"]
         tempCloneToken              <- map["temp_clone_token"]
         createdAt                   <- map["created_at"]
-        updatedAt                   <- map["updated_at"]
         pushedAt                    <- map["pushed_at"]
         homepage                    <- map["homepage"]
         gitUrl                      <- map["git_url"]
@@ -175,42 +174,7 @@ struct Repo: ModelType, Subjective, Eventable {
         license                     <- map["license"]
         permissions                 <- map["permissions"]
         owner                       <- map["owner"]
-    }
-
-    func detail() -> NSAttributedString? {
-        var texts: [NSAttributedString] = []
-        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
-        let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
-        texts.append(.composed(of: [
-            starsImage, Special.space, starsString, Special.space, Special.tab
-        ]))
-
-        if let languageString = self.language?.styled(with: .color(.title)) {
-//            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
-            let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
-            texts.append(.composed(of: [
-                languageColorShape, Special.space, languageString
-            ]))
-        }
-        return .composed(of: texts)
-    }
-
-    func count(title: String, value: Int) -> NSAttributedString {
-        let titleText = title.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 12)), .alignment(.center))
-        let valueText = value.string.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 18)), .alignment(.center))
-        return .composed(of: [
-            titleText, Special.nextLine, valueText
-        ])
-    }
-
-    func starsText() -> NSAttributedString? {
-        var texts: [NSAttributedString] = []
-        let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
-        let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
-        texts.append(.composed(of: [
-            image, Special.space, string
-        ]))
-        return .composed(of: texts)
+        updatedAt                   <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
     }
 
     enum Event {
@@ -257,6 +221,52 @@ struct Repo: ModelType, Subjective, Eventable {
             pull                    <- map["pull"]
         }
     }
+
+    func basic() -> NSAttributedString? {
+            var texts: [NSAttributedString] = []
+            let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
+            let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
+            texts.append(.composed(of: [
+                starsImage, Special.space, starsString, Special.space, Special.tab
+            ]))
+
+            if let languageString = self.language?.styled(with: .color(.title)) {
+    //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
+                let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
+                texts.append(.composed(of: [
+                    languageColorShape, Special.space, languageString
+                ]))
+            }
+            return .composed(of: texts)
+        }
+
+        func count(title: String, value: Int) -> NSAttributedString {
+            let titleText = title.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 12)), .alignment(.center))
+            let valueText = value.string.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 18)), .alignment(.center))
+            return .composed(of: [
+                titleText, Special.nextLine, valueText
+            ])
+        }
+
+        func starsText() -> NSAttributedString? {
+            var texts: [NSAttributedString] = []
+            let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
+            let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
+            texts.append(.composed(of: [
+                image, Special.space, string
+            ]))
+            return .composed(of: texts)
+        }
+
+    func detail() -> NSAttributedString? {
+        let description = self.description?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
+        let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint)) ?? NSAttributedString()
+        let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.datetime)) ?? NSAttributedString()
+        return .composed(of: [
+            description, Special.nextLine, homepage, Special.nextLine, update
+        ])
+    }
+
 }
 
 extension Repo {

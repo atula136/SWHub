@@ -25,6 +25,7 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
+        case setRepo(Repo)
         case setReadme(Repo.Readme)
     }
 
@@ -32,6 +33,7 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var isLoading = false
         var title: String?
         var error: Error?
+        var repo: Repo!
         var readme: Repo.Readme!
         var sections: [RepoSection] = []
     }
@@ -55,6 +57,7 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
+                self.provider.repo(fullname: fullname).map { Mutation.setRepo($0) },
                 self.requestReadme(fullname).map { Mutation.setReadme($0) },
                 .just(.setLoading(false))
             ])
@@ -68,9 +71,12 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.isLoading = isLoading
         case let .setError(error):
             state.error = error
+        case let .setRepo(repo):
+            state.repo = repo
+            state.sections = self.sections(with: state)
         case let .setReadme(readme):
             state.readme = readme
-            state.sections = [.list([.readme(RepoReadmeItem(readme))])]
+            state.sections = self.sections(with: state)
         }
         return state
     }
@@ -111,6 +117,17 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
                 return readme
             }
         }
+    }
+
+    func sections(with state: State) -> [RepoSection] {
+        var items = [RepoSectionItem].init()
+        if let repo = state.repo {
+            items.append(.detail(RepoDetailItem(repo)))
+        }
+        if let readme = state.readme {
+            items.append(.readme(RepoReadmeItem(readme)))
+        }
+        return [.list(items)]
     }
 
 }
