@@ -52,21 +52,10 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
             guard let fullname = self.fullname else { return .empty() }
-            let requestReadme = self.provider.readme(fullname: fullname).flatMap { [weak self] readme -> Observable<Repo.Readme> in
-                guard let `self` = self, let url = readme.downloadUrl else { return .empty() }
-                return self.provider.download(url: url).map { markdown -> Repo.Readme in
-                    // let highlightr = Highlightr()
-                    // highlightr?.setTheme(to: "github")
-                    var readme = readme
-                    readme.markdown = markdown
-                    // readme.highlightedCode = highlightr?.highlight(markdown)
-                    return readme
-                }
-            }.map { Mutation.setReadme($0) }
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                requestReadme,
+                self.requestReadme(fullname).map { Mutation.setReadme($0) },
                 .just(.setLoading(false))
             ])
         }
@@ -86,8 +75,42 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         return state
     }
 
-    func height(markdown: String) -> Observable<CGFloat> {
-        
+    func markdownHeight(_ markdown: String) -> Observable<CGFloat> {
+        let mdView = MarkdownView()
+        mdView.isHidden = true
+        mdView.isScrollEnabled = false
+        mdView.width = screenWidth
+        if let window = UIApplication.shared.delegate?.window {
+            window?.addSubview(mdView)
+        }
+        return Observable.create { observer -> Disposable in
+            mdView.onRendered = { height in
+                observer.onNext(height)
+                observer.onCompleted()
+            }
+            mdView.load(markdown: markdown)
+            return Disposables.create {
+                mdView.removeFromSuperview()
+            }
+        }
+    }
+
+    func requestReadme(_ fullname: String) -> Observable<Repo.Readme> {
+        return self.provider.readme(fullname: fullname).flatMap { [weak self] readme -> Observable<Repo.Readme> in
+            guard let `self` = self, let url = readme.downloadUrl else { return .empty() }
+            return self.provider.download(url: url).map { markdown -> Repo.Readme in
+                var readme = readme
+                readme.markdown = markdown
+                return readme
+            }
+        }.flatMap { [weak self] readme -> Observable<Repo.Readme> in
+            guard let `self` = self, let markdown = readme.markdown else { return .empty() }
+            return self.markdownHeight(markdown).map { height -> Repo.Readme in
+                var readme = readme
+                readme.height = height
+                return readme
+            }
+        }
     }
 
 }
