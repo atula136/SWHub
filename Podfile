@@ -12,6 +12,7 @@ target 'SWHub' do
 	pod 'IQKeyboardManagerSwift', '6.5.5'
 	pod 'ReusableKit/RxSwift', '3.0.0'
 	pod 'Parchment', '2.3.0'
+	pod 'Highlightr', '2.1.0'
 	
 	# 网络
 	# pod 'Kingfisher', '4.10.1'

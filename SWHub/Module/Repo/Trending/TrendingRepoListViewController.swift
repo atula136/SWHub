@@ -18,7 +18,7 @@ import SWFrame
 class TrendingRepoListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let repoCell = ReusableCell<RepoCell>()
+        static let repoCell = ReusableCell<RepoBasicCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingRepoSection>

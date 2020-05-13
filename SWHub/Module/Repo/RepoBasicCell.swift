@@ -1,5 +1,5 @@
 //
-//  RepoCell.swift
+//  RepoBasicCell.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/10.
@@ -16,7 +16,7 @@ import SwifterSwift
 import Kingfisher
 import SWFrame
 
-class RepoCell: CollectionCell, ReactorKit.View {
+class RepoBasicCell: CollectionCell, ReactorKit.View {
 
     fileprivate struct Metric {
         static let avatarSize = CGSize(width: metric(25), height: metric(25))
@@ -146,7 +146,7 @@ class RepoCell: CollectionCell, ReactorKit.View {
         self.avatarImageView.image = nil
     }
 
-    func bind(reactor: RepoItem) {
+    func bind(reactor: RepoBasicItem) {
         super.bind(item: reactor)
         reactor.state.map { $0.name }
             .bind(to: self.nameLabel.rx.text)
@@ -175,7 +175,7 @@ class RepoCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        guard let item = item as? RepoItem else { return .zero }
+        guard let item = item as? RepoBasicItem else { return .zero }
         var height = 10 + Metric.avatarSize.height + 4
         height += (item.currentState.description ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.description)
         height += 65

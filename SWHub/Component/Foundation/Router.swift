@@ -149,7 +149,7 @@ enum Router {
             RepoListViewController(navigator, RepoListViewReactor(provider, parameters(url, values, context)))
         }
         navigator.register(Repo.detail.pattern) { url, values, context in
-            RepoDetailViewController2(navigator, RepoDetailViewReactor2(provider, parameters(url, values, context)))
+            RepoDetailViewController(navigator, RepoDetailViewReactor(provider, parameters(url, values, context)))
         }
         navigator.register(User.list.pattern) { url, values, context in
             UserListViewController(navigator, UserListViewReactor(provider, parameters(url, values, context)))

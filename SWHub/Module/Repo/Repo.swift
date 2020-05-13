@@ -269,11 +269,12 @@ extension Repo {
         var type: String?
         var encoding: String?
         var content: String?
-        var url: String?
-        var htmlUrl: String?
-        var gitUrl: String?
-        var downloadUrl: String?
+        var url: URL?
+        var htmlUrl: URL?
+        var gitUrl: URL?
+        var downloadUrl: URL?
         var links: Links?
+        var highlightedCode: NSAttributedString?
 
         init() {
         }
@@ -290,18 +291,18 @@ extension Repo {
             type                    <- map["type"]
             encoding                <- map["encoding"]
             content                 <- map["content"]
-            url                     <- map["url"]
-            htmlUrl                 <- map["html_url"]
-            gitUrl                  <- map["git_url"]
-            downloadUrl             <- map["download_url"]
+            url                     <- (map["url"], URLTransform())
+            htmlUrl                 <- (map["html_url"], URLTransform())
+            gitUrl                  <- (map["git_url"], URLTransform())
+            downloadUrl             <- (map["download_url"], URLTransform())
             links                   <- map["_links"]
         }
 
         struct Links: ModelType, Subjective {
             var id: Int?
-            var `self`: String?
-            var git: String?
-            var html: String?
+            var sef: URL?
+            var git: URL?
+            var html: URL?
 
             init() {
             }
@@ -311,11 +312,16 @@ extension Repo {
 
             mutating func mapping(map: Map) {
                 id                      <- map["id"]
-                `self`                  <- map["self"]
-                git                     <- map["git"]
-                html                    <- map["html"]
+                sef                     <- (map["self"], URLTransform())
+                git                     <- (map["git"], URLTransform())
+                html                    <- (map["html"], URLTransform())
             }
         }
+
+        enum CodingKeys: String, CodingKey {
+            case content
+        }
+
     }
 }
 

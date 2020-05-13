@@ -31,5 +31,5 @@ extension TrendingRepoSection: SectionModelType {
 }
 
 enum TrendingRepoSectionItem {
-    case repository(RepoItem)
+    case repository(RepoBasicItem)
 }

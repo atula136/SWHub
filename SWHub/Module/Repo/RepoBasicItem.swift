@@ -1,5 +1,5 @@
 //
-//  RepoItem.swift
+//  RepoBasicItem.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/10.
@@ -13,7 +13,7 @@ import ReactorKit
 import Kingfisher
 import SWFrame
 
-class RepoItem: CollectionItem, ReactorKit.Reactor {
+class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
 
     typealias Action = NoAction
 
