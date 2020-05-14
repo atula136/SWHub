@@ -93,12 +93,12 @@ class InfoView: UIView {
 
 extension Reactive where Base: InfoView {
 
-    var info: Binder<InfoModel> {
+    var info: Binder<InfoModel?> {
         return Binder(self.base) { view, info in
-            view.iconImageView.image = info.icon
-            view.titleLabel.text = info.title
-            view.detailLabel.text = info.detail
-            view.indicatorImageView.isHidden = !info.indicated
+            view.iconImageView.image = info?.icon
+            view.titleLabel.text = info?.title
+            view.detailLabel.text = info?.detail
+            view.indicatorImageView.isHidden = info?.indicated ?? true
             view.setNeedsLayout()
             view.layoutIfNeeded()
         }

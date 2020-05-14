@@ -13,23 +13,23 @@ import ReactorKit
 import RxDataSources
 
 enum TrendingRepoSection {
-    case repositories([TrendingRepoSectionItem])
+    case repos([TrendingRepoSectionItem])
 }
 
 extension TrendingRepoSection: SectionModelType {
     var items: [TrendingRepoSectionItem] {
         switch self {
-        case let .repositories(items): return items
+        case let .repos(items): return items
         }
     }
 
     init(original: TrendingRepoSection, items: [TrendingRepoSectionItem]) {
         switch original {
-        case .repositories: self = .repositories(items)
+        case .repos: self = .repos(items)
         }
     }
 }
 
 enum TrendingRepoSectionItem {
-    case repository(RepoBasicItem)
+    case repo(RepoBasicItem)
 }

@@ -154,6 +154,9 @@ enum Router {
         navigator.register(User.list.urlString) { url, values, context in
             UserListViewController(navigator, UserListViewReactor(provider, parameters(url, values, context)))
         }
+        navigator.register(User.detail.urlString) { url, values, context in
+            UserDetailViewController(navigator, UserDetailViewReactor(provider, parameters(url, values, context)))
+        }
         navigator.register(self.login.urlString) { url, values, context in
             LoginViewController(navigator, LoginViewReactor(provider, parameters(url, values, context)))
         }

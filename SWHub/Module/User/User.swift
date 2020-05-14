@@ -134,4 +134,36 @@ struct User: ModelType, Storable, Subjective {
         ])
     }
 
+    func companyInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.userIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.company ?? R.string.localizable.company()
+        info.indicated = self.company != nil ? true : false
+        return info
+    }
+
+    func locationInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.globeIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.location ?? R.string.localizable.location()
+        info.indicated = self.location != nil ? true : false
+        return info
+    }
+
+    func emailInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.inboxIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.email ?? R.string.localizable.email()
+        info.indicated = self.email != nil ? true : false
+        return info
+    }
+
+    func blogInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon._581Icon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.blog ?? R.string.localizable.blog()
+        info.indicated = self.blog != nil ? true : false
+        return info
+    }
+
 }

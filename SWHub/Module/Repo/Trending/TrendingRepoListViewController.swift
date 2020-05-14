@@ -54,7 +54,7 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] sectionItem in
             guard let `self` = self else { return }
             switch sectionItem {
-            case let .repository(item):
+            case let .repo(item):
                 if var url = Router.Repo.detail.urlString.url,
                     let fullname = item.currentState.name {
                     url.appendQueryParameters([Parameter.fullname: fullname])
@@ -104,7 +104,7 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .repository(item):
+                case let .repo(item):
                     let cell = collectionView.dequeue(Reusable.repoCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
@@ -118,7 +118,7 @@ extension TrendingRepoListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .repository(item):
+        case let .repo(item):
             return Reusable.repoCell.class.size(width: width, item: item)
         }
     }

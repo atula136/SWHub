@@ -31,6 +31,10 @@
 "Branches" = "Branches";
 "Readme" = "Readme";
 "User" = "User";
+"Company" = "Company";
+"Location" = "Location";
+"Email" = "Email";
+"Blog" = "Blog";
 "Logout" = "退出登录";
 "Clear cache" = "清除缓存";
 "Click to login" = "点击登录";

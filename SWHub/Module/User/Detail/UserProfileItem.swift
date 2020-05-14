@@ -23,28 +23,30 @@ class UserProfileItem: CollectionItem, ReactorKit.Reactor {
     }
 
     struct State {
-        var name: String?
-        var detail: NSAttributedString?
-        var counts: [NSAttributedString]?
-        var lang: InfoModel?
-        var issue: InfoModel?
-        var request: InfoModel?
-        var avatar: URL?
+//        var name: String?
+//        var detail: NSAttributedString?
+//        var counts: [NSAttributedString]?
+        var company: InfoModel?
+        var location: InfoModel?
+        var email: InfoModel?
+        var blog: InfoModel?
+        //var avatar: URL?
     }
 
     var initialState = State()
 
     required init(_ model: ModelType) {
         super.init(model)
-        guard let repo = model as? Repo else { return }
+        guard let user = model as? User else { return }
         self.initialState = State(
-            name: repo.fullName,
-            detail: repo.detail(),
-            counts: repo.counts(),
-            lang: repo.langInfo(),
-            issue: repo.issueInfo(),
-            request: repo.requestInfo(),
-            avatar: repo.owner?.avatar
+//            name: repo.fullName,
+//            detail: repo.detail(),
+//            counts: repo.counts(),
+            company: user.companyInfo(),
+            location: user.locationInfo(),
+            email: user.emailInfo(),
+            blog: user.blogInfo()
+            //avatar: repo.owner?.avatar
         )
     }
 

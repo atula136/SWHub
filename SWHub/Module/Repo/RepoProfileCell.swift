@@ -165,15 +165,12 @@ class RepoProfileCell: CollectionCell, ReactorKit.View {
             .bind(to: self.countView.rx.counts)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.lang }
-            .filterNil()
             .bind(to: self.langView.rx.info)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.issue }
-            .filterNil()
             .bind(to: self.issueView.rx.info)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.request }
-            .filterNil()
             .bind(to: self.requestView.rx.info)
             .disposed(by: self.disposeBag)
         reactor.state.map { _ in }

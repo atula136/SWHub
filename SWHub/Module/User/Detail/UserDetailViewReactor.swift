@@ -70,7 +70,7 @@ class UserDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.error = error
         case let .setUser(user):
             state.user = user
-            state.sections = self.sections(with: state)
+            state.sections = [.list([.profile(UserProfileItem(user))])]
         }
         return state
     }
@@ -112,17 +112,9 @@ class UserDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 //            }
 //        }
 //    }
-
-    func sections(with state: State) -> [UserSection] {
-//        var items = [RepoSectionItem].init()
-//        if let repo = state.repo {
-//            items.append(.profile(RepoProfileItem(repo)))
-//        }
-//        if let readme = state.readme {
-//            items.append(.readme(RepoReadmeItem(readme)))
-//        }
-//        return [.list(items)]
-        return []
-    }
+//
+//    func sections(with state: State) -> [UserSection] {
+//        return []
+//    }
 
 }
