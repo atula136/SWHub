@@ -758,8 +758,6 @@
 			children = (
 				79CB9CFA246D91E5006C46DF /* UserDetailViewReactor.swift */,
 				79CB9CFC246D91F3006C46DF /* UserDetailViewController.swift */,
-				79CB9D00246D932F006C46DF /* UserProfileItem.swift */,
-				79CB9D02246D933D006C46DF /* UserProfileCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -776,6 +774,8 @@
 		79E2AFAC2466390500D63053 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				79CB9D00246D932F006C46DF /* UserProfileItem.swift */,
+				79CB9D02246D933D006C46DF /* UserProfileCell.swift */,
 				79CB9CF9246D91D0006C46DF /* Detail */,
 				79EDEA8324685F270034FC20 /* Trending */,
 				794E3BEE24668CE9003DDDFB /* List */,

@@ -71,7 +71,7 @@ class InfoView: UIView {
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return CGSize(width: screenWidth, height: metric(40))
+        return CGSize(width: screenWidth, height: metric(44))
     }
 
     override func layoutSubviews() {
@@ -98,7 +98,8 @@ extension Reactive where Base: InfoView {
             view.iconImageView.image = info?.icon
             view.titleLabel.text = info?.title
             view.detailLabel.text = info?.detail
-            view.indicatorImageView.isHidden = info?.indicated ?? true
+            view.indicatorImageView.isHidden = !(info?.indicated ?? false)
+            view.titleLabel.textColor = (info?.enabled ?? false) ? .title : .status
             view.setNeedsLayout()
             view.layoutIfNeeded()
         }

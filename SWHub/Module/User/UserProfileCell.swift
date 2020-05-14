@@ -22,7 +22,7 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
     fileprivate struct Metric {
 //        static let avatarSize = CGSize.init(metric(25))
 //        static let countHeight = metric(50)
-        static let infoHeight = metric(40)
+        static let infoHeight = metric(44)
     }
 
 //    lazy var nameLabel: Label = {
