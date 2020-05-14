@@ -22,7 +22,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
 
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = FontAwesomeIcon.githubSignIcon.image(ofSize: .s64, color: .black).template
+        imageView.image = FontAwesomeIcon.githubSignIcon.image(ofSize: .init(64), color: .black).template
         imageView.sizeToFit()
         return imageView
     }()
@@ -55,7 +55,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
     lazy var loginButton: Button = {
         let button = Button(type: .custom)
         button.titleLabel?.font = .normal(18)
-        button.imageForNormal = FontAwesomeIcon.githubIcon.image(ofSize: .s32, color: .white).template
+        button.imageForNormal = FontAwesomeIcon.githubIcon.image(ofSize: .init(32), color: .white).template
         button.titleForNormal = R.string.localizable.loginTitle()
         button.centerTextAndImage(spacing: 10)
         button.cornerRadius = 5
@@ -83,7 +83,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
 
         themeService.rx
             .bind({ $0.titleColor }, to: [self.logoImageView.rx.tintColor, self.accountField.rx.textColor, self.passwordField.rx.textColor])
-            .bind({ $0.datetimeColor }, to: [self.accountField.rx.placeHolderColor, self.passwordField.rx.placeHolderColor])
+            .bind({ $0.statusColor }, to: [self.accountField.rx.placeHolderColor, self.passwordField.rx.placeHolderColor])
             .bind({ $0.border1Color }, to: [self.accountField.rx.borderColor, self.passwordField.rx.borderColor])
             .bind({ $0.tintColor }, to: [self.accountField.rx.tintColor, self.passwordField.rx.tintColor])
             .bind({ $0.dimColor }, to: self.loginButton.rx.titleColor(for: .normal))

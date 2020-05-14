@@ -222,49 +222,82 @@ struct Repo: ModelType, Subjective, Eventable {
         }
     }
 
+    func count(title: String, value: Int) -> NSAttributedString {
+        let valueText = value.string.styled(with: .color(.title), .font(.bold(16)), .alignment(.center))
+        let titleText = title.styled(with: .color(.detail), .font(.normal(14)), .alignment(.center))
+        return .composed(of: [
+            valueText, Special.nextLine, titleText
+        ])
+    }
+
     func basic() -> NSAttributedString? {
-            var texts: [NSAttributedString] = []
-            let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
-            let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
-            texts.append(.composed(of: [
-                starsImage, Special.space, starsString, Special.space, Special.tab
-            ]))
+        var texts: [NSAttributedString] = []
+        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
+        let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            starsImage, Special.space, starsString, Special.space, Special.tab
+        ]))
 
-            if let languageString = self.language?.styled(with: .color(.title)) {
+        if let languageString = self.language?.styled(with: .color(.title)) {
     //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
-                let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
-                texts.append(.composed(of: [
-                    languageColorShape, Special.space, languageString
-                ]))
-            }
-            return .composed(of: texts)
-        }
-
-        func count(title: String, value: Int) -> NSAttributedString {
-            let titleText = title.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 12)), .alignment(.center))
-            let valueText = value.string.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 18)), .alignment(.center))
-            return .composed(of: [
-                titleText, Special.nextLine, valueText
-            ])
-        }
-
-        func starsText() -> NSAttributedString? {
-            var texts: [NSAttributedString] = []
-            let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
-            let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
+            let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
             texts.append(.composed(of: [
-                image, Special.space, string
+                languageColorShape, Special.space, languageString
             ]))
-            return .composed(of: texts)
         }
+        return .composed(of: texts)
+    }
+
+    func starsText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
+        let image = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
 
     func detail() -> NSAttributedString? {
         let description = self.description?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
-        let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint)) ?? NSAttributedString()
-        let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.datetime)) ?? NSAttributedString()
+        let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint), .link(self.homepage?.url ?? URL(string: "http://m.baidu.com")!)) ?? NSAttributedString()
+        let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2)) ?? NSAttributedString()
         return .composed(of: [
             description, Special.nextLine, homepage, Special.nextLine, update
         ])
+    }
+
+    func counts() -> [NSAttributedString] {
+        let watchs = self.count(title: R.string.localizable.watchs(), value: self.subscribersCount ?? 0)
+        let stars = self.count(title: R.string.localizable.stars(), value: self.stargazersCount ?? 0)
+        let forks = self.count(title: R.string.localizable.forks(), value: self.forks ?? 0)
+        return [watchs, stars, forks]
+    }
+
+    func langInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.codeIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.language
+        info.detail = self.size?.kBytes
+        info.indicated = true
+        return info
+    }
+
+    func issueInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon._627Icon.image(ofSize: .init(20), color: .tint).template
+        info.title = R.string.localizable.issues()
+        info.detail = self.openIssues?.string
+        info.indicated = true
+        return info
+    }
+
+    func requestInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.codeForkIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = R.string.localizable.pullRequests()
+        info.indicated = true
+        return info
     }
 
 }

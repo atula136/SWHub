@@ -34,8 +34,8 @@ class RepoDetailHeaderView2: SupplementaryView, ReactorKit.View {
 
     lazy var starButton: Button = {
         let button = Button(type: .custom)
-        button.setImage(FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).template, for: .normal)
-        button.setImage(FontAwesomeIcon.starEmptyIcon.image(ofSize: .s16, color: .tint).template, for: .selected)
+        button.setImage(FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).template, for: .normal)
+        button.setImage(FontAwesomeIcon.starEmptyIcon.image(ofSize: .init(16), color: .tint).template, for: .selected)
         button.sizeToFit()
         button.size = CGSize(width: metric(30), height: metric(30))
         button.borderWidth = 1

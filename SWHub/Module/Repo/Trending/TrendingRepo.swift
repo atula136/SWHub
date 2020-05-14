@@ -48,7 +48,7 @@ struct TrendingRepo: ModelType, Storable {
     }
 
     func detail(since: String) -> NSAttributedString? {
-        let starImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .title).styled(with: .baselineOffset(-3))
+        let starImage = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .title).styled(with: .baselineOffset(-3))
         let starsString = (self.stars ?? 0).kFormatted().styled(with: .color(.title))
         let currentPeriodStarsString = "\((self.currentPeriodStars ?? 0).kFormatted())\(since.lowercased())".styled(with: .color(.title))
         let languageColorShape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .clear)]))
@@ -73,7 +73,7 @@ struct TrendingRepo: ModelType, Storable {
     func starsText() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
         let string = (self.stars ?? 0).kFormatted().styled(with: .color(.title))
-        let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .title).styled(with: .baselineOffset(-3))
+        let image = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .title).styled(with: .baselineOffset(-3))
         texts.append(.composed(of: [
             image, Special.space, string
         ]))
@@ -83,7 +83,7 @@ struct TrendingRepo: ModelType, Storable {
     func forksText() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
         let string = (self.forks ?? 0).kFormatted().styled(with: .color(.title))
-        let image = FontAwesomeIcon.codeForkIcon.image(ofSize: .s16, color: .title).styled(with: .baselineOffset(-3))
+        let image = FontAwesomeIcon.codeForkIcon.image(ofSize: .init(16), color: .title).styled(with: .baselineOffset(-3))
         texts.append(.composed(of: [
             image, Special.space, string
         ]))

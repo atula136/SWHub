@@ -38,8 +38,8 @@ extension UIColor {
         return themeService.type.associatedObject.detailColor
     }
 
-    static var datetime: UIColor {
-        return themeService.type.associatedObject.datetimeColor
+    static var status: UIColor {
+        return themeService.type.associatedObject.statusColor
     }
 
     static var border1: UIColor {

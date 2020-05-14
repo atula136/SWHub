@@ -45,7 +45,7 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         super.init(provider, parameters)
         self.fullname = stringMember(self.parameters, Parameter.fullname, nil)
         self.initialState = State(
-            title: stringDefault(self.title, self.fullname ?? "")
+            title: stringDefault(self.title, R.string.localizable.repositories())
         )
     }
 

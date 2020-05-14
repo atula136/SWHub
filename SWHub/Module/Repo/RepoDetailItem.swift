@@ -25,6 +25,10 @@ class RepoDetailItem: CollectionItem, ReactorKit.Reactor {
     struct State {
         var name: String?
         var detail: NSAttributedString?
+        var counts: [NSAttributedString]?
+        var lang: InfoModel?
+        var issue: InfoModel?
+        var request: InfoModel?
         var avatar: URL?
     }
 
@@ -36,6 +40,10 @@ class RepoDetailItem: CollectionItem, ReactorKit.Reactor {
         self.initialState = State(
             name: repo.fullName,
             detail: repo.detail(),
+            counts: repo.counts(),
+            lang: repo.langInfo(),
+            issue: repo.issueInfo(),
+            request: repo.requestInfo(),
             avatar: repo.owner?.avatar
         )
     }

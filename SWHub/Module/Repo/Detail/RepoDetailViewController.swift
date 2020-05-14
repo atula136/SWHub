@@ -25,6 +25,13 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<RepoSection>
 
+    override var layout: UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 15
+        return layout
+    }
+
     init(_ navigator: NavigatorType, _ reactor: RepoDetailViewReactor) {
         defer {
             self.reactor = reactor
@@ -45,6 +52,9 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
         }).disposed(by: self.disposeBag)
         self.collectionView.register(Reusable.detailCell)
         self.collectionView.register(Reusable.readmeCell)
+        themeService.rx
+            .bind({ $0.dimColor }, to: self.collectionView.rx.backgroundColor)
+            .disposed(by: self.rx.disposeBag)
     }
 
     func bind(reactor: RepoDetailViewReactor) {

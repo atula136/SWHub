@@ -25,6 +25,7 @@ languageColor
 默认头像
 首页底部没显示完整
 Button/Label
+更新与xx小时前/homepage跳转
 
 https://api.github.com/user/starred/rxhanson/Rectangle
 

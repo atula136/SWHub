@@ -28,7 +28,7 @@ class SettingLoginCell: CollectionCell, ReactorKit.View {
 
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = FontAwesomeIcon.githubSignIcon.image(ofSize: .s64, color: .black).template
+        imageView.image = FontAwesomeIcon.githubSignIcon.image(ofSize: .init(64), color: .black).template
         imageView.sizeToFit()
         return imageView
     }()

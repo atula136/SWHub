@@ -40,7 +40,7 @@ struct TrendingUser: ModelType, Storable {
     func repoText() -> NSAttributedString? {
         var texts: [NSAttributedString] = []
         let string = (self.repo?.name ?? "").styled(with: .color(.title))
-        let image = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .title).styled(with: .baselineOffset(-3))
+        let image = FontAwesomeIcon.bookIcon.image(ofSize: .init(16), color: .title).styled(with: .baselineOffset(-3))
         texts.append(.composed(of: [
             image, Special.space, string
         ]))

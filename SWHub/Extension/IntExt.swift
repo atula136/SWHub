@@ -10,12 +10,12 @@ import UIKit
 
 extension Int {
 
-    func sizeFromKB() -> String {
-        return (self * 1024).sizeFromByte()
+    var bytes: String {
+        return ByteCountFormatter.string(fromByteCount: Int64(self), countStyle: .file)
     }
 
-    func sizeFromByte() -> String {
-        return ByteCountFormatter.string(fromByteCount: Int64(self), countStyle: .file)
+    var kBytes: String {
+        return (self * 1024).bytes
     }
 
     func kFormatted() -> String {

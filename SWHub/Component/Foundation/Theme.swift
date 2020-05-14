@@ -24,7 +24,7 @@ protocol Theme {
     var tintColor: UIColor { get }
     var titleColor: UIColor { get }
     var detailColor: UIColor { get }
-    var datetimeColor: UIColor { get }
+    var statusColor: UIColor { get }
     var border1Color: UIColor { get }
     var border2Color: UIColor { get }
     var border3Color: UIColor { get }
@@ -47,7 +47,7 @@ struct LightTheme: Theme {
     var tintColor = UIColor.Material.red
     let titleColor = UIColor.Material.grey900
     let detailColor = UIColor.Material.grey700
-    let datetimeColor = UIColor.Material.grey500
+    let statusColor = UIColor.Material.grey500
     let border1Color = UIColor.Material.grey200
     let border2Color = UIColor.Material.grey300
     let border3Color = UIColor.Material.grey400
@@ -72,7 +72,7 @@ struct DarkTheme: Theme {
     var tintColor = UIColor.Material.red
     let titleColor = UIColor.Material.grey100
     let detailColor = UIColor.Material.grey300
-    let datetimeColor = UIColor.Material.grey500
+    let statusColor = UIColor.Material.grey500
     let border1Color = UIColor.Material.grey800
     let border2Color = UIColor.Material.grey700
     let border3Color = UIColor.Material.grey600

@@ -26,6 +26,10 @@
 "Watchs" = "Watchs";
 "Stars" = "Stars";
 "Forks" = "Forks";
+"Issues" = "Issues";
+"Pull requests" = "Pull requests";
+"Branches" = "Branches";
+"Readme" = "Readme";
 "Logout" = "退出登录";
 "Clear cache" = "清除缓存";
 "Click to login" = "点击登录";

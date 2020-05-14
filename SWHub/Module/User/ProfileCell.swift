@@ -158,7 +158,7 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         themeService.rx
             .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
             .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
-            .bind({ $0.datetimeColor }, to: self.statusLabel.rx.textColor)
+            .bind({ $0.statusColor }, to: self.statusLabel.rx.textColor)
             .bind({ $0.tintColor }, to: self.indicatorImageView.rx.tintColor)
             .bind({ $0.backgroundColor }, to: self.userView.rx.backgroundColor)
             .bind({ $0.border1Color }, to: [self.userView.rx.qmui_borderColor, self.countView.rx.qmui_borderColor])

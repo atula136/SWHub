@@ -21,6 +21,8 @@ extension ProviderType {
         return self.githubNetworking.requestObject(.profile, type: User.self)
     }
 
+    /// 仓库详情：https://api.github.com/repos/TelegramMessenger/Telegram-iOS
+    /// - Parameter fullname: 完整名称
     func repo(fullname: String) -> Observable<Repo> {
         return self.githubNetworking.requestObject(.repo(fullname: fullname), type: Repo.self)
     }

@@ -66,33 +66,33 @@ class CountView: UIView {
         self.secondButton.height = self.firstButton.height
         self.secondButton.left = self.firstButton.right
         self.secondButton.top = 0
-        self.firstButton.width = self.firstButton.width
-        self.firstButton.height = self.firstButton.height
-        self.firstButton.left = self.secondButton.right
-        self.firstButton.top = 0
+        self.thirdButton.width = self.firstButton.width
+        self.thirdButton.height = self.firstButton.height
+        self.thirdButton.left = self.secondButton.right
+        self.thirdButton.top = 0
     }
 
 }
 
 extension Reactive where Base: CountView {
 
-    var attrs: Binder<[NSAttributedString]> {
+    var counts: Binder<[NSAttributedString]> {
         return Binder(self.base) { view, attrs in
             if attrs.count >= 3 {
                 view.firstButton.setAttributedTitle(attrs[0], for: .normal)
                 view.secondButton.setAttributedTitle(attrs[1], for: .normal)
-                view.firstButton.setAttributedTitle(attrs[2], for: .normal)
+                view.thirdButton.setAttributedTitle(attrs[2], for: .normal)
             } else {
                 view.firstButton.setAttributedTitle(nil, for: .normal)
                 view.secondButton.setAttributedTitle(nil, for: .normal)
-                view.firstButton.setAttributedTitle(nil, for: .normal)
+                view.thirdButton.setAttributedTitle(nil, for: .normal)
             }
             view.setNeedsLayout()
         }
     }
 
     var tap: ControlEvent<Int> {
-        let source = ControlEvent.merge(self.base.firstButton.rx.tap.map { 0 }, self.base.firstButton.rx.tap.map { 1 }, self.base.firstButton.rx.tap.map { 2 })
+        let source = ControlEvent.merge(self.base.firstButton.rx.tap.map { 0 }, self.base.secondButton.rx.tap.map { 1 }, self.base.thirdButton.rx.tap.map { 2 })
         return ControlEvent(events: source)
     }
 

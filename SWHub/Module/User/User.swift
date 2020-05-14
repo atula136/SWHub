@@ -112,13 +112,13 @@ struct User: ModelType, Storable, Subjective {
     func detail() -> NSAttributedString? {
         var texts = [NSAttributedString]()
         if let repositoriesString = self.publicRepos?.string.styled(with: .color(.title)) {
-            let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
+            let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
             ]))
         }
         if let followersString = self.followers?.kFormatted().styled(with: .color(.title)) {
-            let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
+            let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 followersImage, Special.space, followersString
             ]))
