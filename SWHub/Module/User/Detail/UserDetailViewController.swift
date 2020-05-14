@@ -19,7 +19,7 @@ import SWFrame
 
 class UserDetailViewController: CollectionViewController, ReactorKit.View {
     struct Reusable {
-        static let detailCell = ReusableCell<RepoDetailCell>()
+        static let profileCell = ReusableCell<RepoProfileCell>()
         static let readmeCell = ReusableCell<RepoReadmeCell>()
     }
 
@@ -50,7 +50,7 @@ class UserDetailViewController: CollectionViewController, ReactorKit.View {
             guard let `self` = self else { return }
             self.navigator.push("\(UIApplication.shared.baseWebUrl)/\(self.reactor?.fullname ?? "")")
         }).disposed(by: self.disposeBag)
-        self.collectionView.register(Reusable.detailCell)
+        self.collectionView.register(Reusable.profileCell)
         self.collectionView.register(Reusable.readmeCell)
         themeService.rx
             .bind({ $0.dimColor }, to: self.collectionView.rx.backgroundColor)
@@ -85,8 +85,8 @@ class UserDetailViewController: CollectionViewController, ReactorKit.View {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .detail(item):
-                    let cell = collectionView.dequeue(Reusable.detailCell, for: indexPath)
+                case let .profile(item):
+                    let cell = collectionView.dequeue(Reusable.profileCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 case let .readme(item):
@@ -103,8 +103,8 @@ extension UserDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .detail(item):
-            return Reusable.detailCell.class.size(width: width, item: item)
+        case let .profile(item):
+            return Reusable.profileCell.class.size(width: width, item: item)
         case let .readme(item):
             return Reusable.readmeCell.class.size(width: width, item: item)
         }

@@ -19,7 +19,7 @@ import SWFrame
 
 class RepoDetailViewController: CollectionViewController, ReactorKit.View {
     struct Reusable {
-        static let detailCell = ReusableCell<RepoDetailCell>()
+        static let detailCell = ReusableCell<RepoProfileCell>()
         static let readmeCell = ReusableCell<RepoReadmeCell>()
     }
 
@@ -85,7 +85,7 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .detail(item):
+                case let .profile(item):
                     let cell = collectionView.dequeue(Reusable.detailCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
@@ -103,7 +103,7 @@ extension RepoDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .detail(item):
+        case let .profile(item):
             return Reusable.detailCell.class.size(width: width, item: item)
         case let .readme(item):
             return Reusable.readmeCell.class.size(width: width, item: item)

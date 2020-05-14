@@ -1,5 +1,5 @@
 //
-//  RepoDetailCell.swift
+//  RepoProfileCell.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/13.
@@ -17,7 +17,7 @@ import SwifterSwift
 import Kingfisher
 import SWFrame
 
-class RepoDetailCell: CollectionCell, ReactorKit.View {
+class RepoProfileCell: CollectionCell, ReactorKit.View {
 
     fileprivate struct Metric {
         static let avatarSize = CGSize.init(metric(25))
@@ -149,7 +149,7 @@ class RepoDetailCell: CollectionCell, ReactorKit.View {
         self.detailLabel.extendToBottom = self.userView.height
     }
 
-    func bind(reactor: RepoDetailItem) {
+    func bind(reactor: RepoProfileItem) {
         super.bind(item: reactor)
         reactor.state.map { $0.avatar }
             .bind(to: self.avatarImageView.rx.image)
@@ -193,7 +193,7 @@ class RepoDetailCell: CollectionCell, ReactorKit.View {
 
 }
 
-extension Reactive where Base: RepoDetailCell {
+extension Reactive where Base: RepoProfileCell {
 //    var blog: ControlEvent<URL> {
 //        let source = self.base.blogInfoView.rx.tap.map { [weak cell = self.base] _ -> URL? in
 //            cell?.blogInfoView.titleLabel.text?.url

@@ -37,6 +37,6 @@ extension RepoSection: SectionModelType {
 }
 
 enum RepoSectionItem {
-    case detail(RepoDetailItem)
+    case profile(RepoProfileItem)
     case readme(RepoReadmeItem)
 }

@@ -122,7 +122,7 @@ class UserDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     func sections(with state: State) -> [RepoSection] {
         var items = [RepoSectionItem].init()
         if let repo = state.repo {
-            items.append(.detail(RepoDetailItem(repo)))
+            items.append(.profile(RepoProfileItem(repo)))
         }
         if let readme = state.readme {
             items.append(.readme(RepoReadmeItem(readme)))
@@ -131,4 +131,3 @@ class UserDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     }
 
 }
-
