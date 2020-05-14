@@ -31,5 +31,5 @@ extension TrendingUserSection: SectionModelType {
 }
 
 enum TrendingUserSectionItem {
-    case user(UserItem)
+    case user(UserBasicItem)
 }

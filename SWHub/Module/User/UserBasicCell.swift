@@ -1,5 +1,5 @@
 //
-//  UserCell.swift
+//  UserBasicCell.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/10.
@@ -16,7 +16,7 @@ import SwifterSwift
 import Kingfisher
 import SWFrame
 
-class UserCell: CollectionCell, ReactorKit.View {
+class UserBasicCell: CollectionCell, ReactorKit.View {
 
     fileprivate struct Metric {
         static let avatarSize = CGSize(width: metric(25), height: metric(25))
@@ -109,7 +109,7 @@ class UserCell: CollectionCell, ReactorKit.View {
         self.repoButton.setAttributedTitle(nil, for: .normal)
     }
 
-    func bind(reactor: UserItem) {
+    func bind(reactor: UserBasicItem) {
         super.bind(item: reactor)
         reactor.state.map { $0.name }
             .bind(to: self.nameLabel.rx.text)
@@ -129,7 +129,7 @@ class UserCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        guard let item = item as? UserItem else { return .zero }
+        guard let item = item as? UserBasicItem else { return .zero }
         var height = 10 + Metric.avatarSize.height + 5 + Font.repo.lineHeight + 5
         height += (item.currentState.description ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.description)
         height += 5

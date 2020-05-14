@@ -21,7 +21,13 @@ extension ProviderType {
         return self.githubNetworking.requestObject(.profile, type: User.self)
     }
 
-    /// 仓库详情：https://api.github.com/repos/TelegramMessenger/Telegram-iOS
+    /// 用户信息：https://api.github.com/users/MaxDesiatov
+    /// - Parameter username: 用户名
+    func user(username: String) -> Observable<User> {
+        return self.githubNetworking.requestObject(.user(username: username), type: User.self)
+    }
+
+    /// 仓库详情：https://api.github.com/repos/khoren93/SwiftHub
     /// - Parameter fullname: 完整名称
     func repo(fullname: String) -> Observable<Repo> {
         return self.githubNetworking.requestObject(.repo(fullname: fullname), type: Repo.self)

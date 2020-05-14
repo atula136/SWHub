@@ -56,9 +56,9 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             guard let `self` = self else { return }
             switch item {
             case .login:
-                self.navigator.present(Router.login.pattern, wrap: NavigationController.self)
+                self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
             case .color:
-                self.navigator.push(Router.color.pattern)
+                self.navigator.push(Router.color.urlString)
             default:
                 break
             }
@@ -125,7 +125,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 case UICollectionView.elementKindSectionFooter:
                     let footer = collectionView.dequeue(Reusable.footerView, kind: kind, for: indexPath)
                     if let navigator = navigator as? Navigator,
-                        var url = Router.alert.pattern.url {
+                        var url = Router.alert.urlString.url {
                         url.appendQueryParameters([
                             Parameter.title: reactor.currentState.user?.login ?? "",
                             Parameter.message: R.string.localizable.userExitPrompt(UIApplication.shared.displayName ?? "")

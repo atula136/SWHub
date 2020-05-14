@@ -28,7 +28,7 @@ enum Router {
         case list
         case detail
 
-        var pattern: String {
+        var urlString: String {
             var path: String?
             switch self {
             case .list:
@@ -44,7 +44,7 @@ enum Router {
         case list
         case detail
 
-        var pattern: String {
+        var urlString: String {
             var path: String?
             switch self {
             case .list:
@@ -56,7 +56,7 @@ enum Router {
         }
     }
 
-    var pattern: String {
+    var urlString: String {
         var path: String?
         switch self {
         case .alert:
@@ -118,7 +118,7 @@ enum Router {
         navigator.register("https://<path:_>", webFactory)
 
         // 2. 弹窗
-        navigator.handle(self.alert.pattern) { url, _, context -> Bool in
+        navigator.handle(self.alert.urlString) { url, _, context -> Bool in
             let title = url.queryParameters[Parameter.title]
             let message = url.queryParameters[Parameter.message]
             guard title != nil || message != nil else { return false }
@@ -139,22 +139,22 @@ enum Router {
         }
 
         // 3. 页面
-        navigator.register(self.color.pattern) { url, values, context in
+        navigator.register(self.color.urlString) { url, values, context in
             TintViewController(navigator, TintViewReactor(provider, parameters(url, values, context)))
         }
-        navigator.register(self.condition.pattern) { url, values, context in
+        navigator.register(self.condition.urlString) { url, values, context in
             ConditionViewController(navigator, ConditionViewReactor(provider, parameters(url, values, context)))
         }
-        navigator.register(Repo.list.pattern) { url, values, context in
+        navigator.register(Repo.list.urlString) { url, values, context in
             RepoListViewController(navigator, RepoListViewReactor(provider, parameters(url, values, context)))
         }
-        navigator.register(Repo.detail.pattern) { url, values, context in
+        navigator.register(Repo.detail.urlString) { url, values, context in
             RepoDetailViewController(navigator, RepoDetailViewReactor(provider, parameters(url, values, context)))
         }
-        navigator.register(User.list.pattern) { url, values, context in
+        navigator.register(User.list.urlString) { url, values, context in
             UserListViewController(navigator, UserListViewReactor(provider, parameters(url, values, context)))
         }
-        navigator.register(self.login.pattern) { url, values, context in
+        navigator.register(self.login.urlString) { url, values, context in
             LoginViewController(navigator, LoginViewReactor(provider, parameters(url, values, context)))
         }
 

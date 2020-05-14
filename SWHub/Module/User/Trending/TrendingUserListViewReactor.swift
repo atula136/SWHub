@@ -79,7 +79,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             if toCache {
                 TrendingUser.storeArray(users)
             }
-            state.sections = [.users(users.map { TrendingUserSectionItem.user(UserItem($0)) })]
+            state.sections = [.users(users.map { TrendingUserSectionItem.user(UserBasicItem($0)) })]
         }
         return state
     }

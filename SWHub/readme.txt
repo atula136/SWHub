@@ -53,4 +53,8 @@ https://api.github.com/users/KalleHallden/subscriptions?page=1
 userReceivedEvents
 https://api.github.com/users/KalleHallden/received_events?page=1
 
-
+2、User
+checkFollowing/followUser/unfollowUser
+https://api.github.com/user/following/onevcat
+branches
+https://api.github.com/repos/khoren93/SwiftHub/branches?page=1

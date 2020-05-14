@@ -263,7 +263,7 @@ struct Repo: ModelType, Subjective, Eventable {
         let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint), .link(self.homepage?.url ?? URL(string: "http://m.baidu.com")!)) ?? NSAttributedString()
         let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2)) ?? NSAttributedString()
         return .composed(of: [
-            description, Special.nextLine, homepage, Special.nextLine, update
+            description, Special.nextLine, homepage, Special.lineSeparator, update
         ])
     }
 

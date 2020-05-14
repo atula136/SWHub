@@ -31,5 +31,5 @@ extension UserListSection: SectionModelType {
 }
 
 enum UserListSectionItem {
-    case user(UserItem)
+    case user(UserBasicItem)
 }

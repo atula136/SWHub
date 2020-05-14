@@ -55,7 +55,7 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
             guard let `self` = self else { return }
             switch sectionItem {
             case let .repository(item):
-                if var url = Router.Repo.detail.pattern.url,
+                if var url = Router.Repo.detail.urlString.url,
                     let fullname = item.currentState.name {
                     url.appendQueryParameters([Parameter.fullname: fullname])
                     self.navigator.push(url)
