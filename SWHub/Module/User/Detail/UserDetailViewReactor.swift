@@ -25,27 +25,25 @@ class UserDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
-        case setRepo(Repo)
-        case setReadme(Repo.Readme)
+        case setUser(User)
     }
 
     struct State {
         var isLoading = false
         var title: String?
         var error: Error?
-        var repo: Repo!
-        var readme: Repo.Readme!
-        var sections: [RepoSection] = []
+        var user: User!
+        var sections: [UserSection] = []
     }
 
-    var fullname: String?
+    var username: String?
     var initialState = State()
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-        self.fullname = stringMember(self.parameters, Parameter.fullname, nil)
+        self.username = stringMember(self.parameters, Parameter.username, nil)
         self.initialState = State(
-            title: stringDefault(self.title, R.string.localizable.repositories())
+            title: stringDefault(self.title, R.string.localizable.user())
         )
     }
 
@@ -53,12 +51,11 @@ class UserDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
-            guard let fullname = self.fullname else { return .empty() }
+            guard let username = self.username else { return .empty() }
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.provider.repo(fullname: fullname).map { Mutation.setRepo($0) },
-                self.requestReadme(fullname).map { Mutation.setReadme($0) },
+                self.provider.user(username: username).map { Mutation.setUser($0) },
                 .just(.setLoading(false))
             ])
         }
@@ -71,63 +68,61 @@ class UserDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.isLoading = isLoading
         case let .setError(error):
             state.error = error
-        case let .setRepo(repo):
-            state.repo = repo
-            state.sections = self.sections(with: state)
-        case let .setReadme(readme):
-            state.readme = readme
+        case let .setUser(user):
+            state.user = user
             state.sections = self.sections(with: state)
         }
         return state
     }
 
-    func markdownHeight(_ markdown: String) -> Observable<CGFloat> {
-        let mdView = MarkdownView()
-        mdView.isHidden = true
-        mdView.isScrollEnabled = false
-        mdView.width = screenWidth
-        if let window = UIApplication.shared.delegate?.window {
-            window?.addSubview(mdView)
-        }
-        return Observable.create { observer -> Disposable in
-            mdView.onRendered = { height in
-                observer.onNext(height)
-                observer.onCompleted()
-            }
-            mdView.load(markdown: markdown)
-            return Disposables.create {
-                mdView.removeFromSuperview()
-            }
-        }
-    }
+//    func markdownHeight(_ markdown: String) -> Observable<CGFloat> {
+//        let mdView = MarkdownView()
+//        mdView.isHidden = true
+//        mdView.isScrollEnabled = false
+//        mdView.width = screenWidth
+//        if let window = UIApplication.shared.delegate?.window {
+//            window?.addSubview(mdView)
+//        }
+//        return Observable.create { observer -> Disposable in
+//            mdView.onRendered = { height in
+//                observer.onNext(height)
+//                observer.onCompleted()
+//            }
+//            mdView.load(markdown: markdown)
+//            return Disposables.create {
+//                mdView.removeFromSuperview()
+//            }
+//        }
+//    }
 
-    func requestReadme(_ fullname: String) -> Observable<Repo.Readme> {
-        return self.provider.readme(fullname: fullname).flatMap { [weak self] readme -> Observable<Repo.Readme> in
-            guard let `self` = self, let url = readme.downloadUrl else { return .empty() }
-            return self.provider.download(url: url).map { markdown -> Repo.Readme in
-                var readme = readme
-                readme.markdown = markdown
-                return readme
-            }
-        }.flatMap { [weak self] readme -> Observable<Repo.Readme> in
-            guard let `self` = self, let markdown = readme.markdown else { return .empty() }
-            return self.markdownHeight(markdown).map { height -> Repo.Readme in
-                var readme = readme
-                readme.height = height
-                return readme
-            }
-        }
-    }
+//    func requestReadme(_ fullname: String) -> Observable<Repo.Readme> {
+//        return self.provider.readme(fullname: fullname).flatMap { [weak self] readme -> Observable<Repo.Readme> in
+//            guard let `self` = self, let url = readme.downloadUrl else { return .empty() }
+//            return self.provider.download(url: url).map { markdown -> Repo.Readme in
+//                var readme = readme
+//                readme.markdown = markdown
+//                return readme
+//            }
+//        }.flatMap { [weak self] readme -> Observable<Repo.Readme> in
+//            guard let `self` = self, let markdown = readme.markdown else { return .empty() }
+//            return self.markdownHeight(markdown).map { height -> Repo.Readme in
+//                var readme = readme
+//                readme.height = height
+//                return readme
+//            }
+//        }
+//    }
 
-    func sections(with state: State) -> [RepoSection] {
-        var items = [RepoSectionItem].init()
-        if let repo = state.repo {
-            items.append(.profile(RepoProfileItem(repo)))
-        }
-        if let readme = state.readme {
-            items.append(.readme(RepoReadmeItem(readme)))
-        }
-        return [.list(items)]
+    func sections(with state: State) -> [UserSection] {
+//        var items = [RepoSectionItem].init()
+//        if let repo = state.repo {
+//            items.append(.profile(RepoProfileItem(repo)))
+//        }
+//        if let readme = state.readme {
+//            items.append(.readme(RepoReadmeItem(readme)))
+//        }
+//        return [.list(items)]
+        return []
     }
 
 }

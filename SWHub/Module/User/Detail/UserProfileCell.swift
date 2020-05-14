@@ -149,7 +149,7 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
         self.detailLabel.extendToBottom = self.userView.height
     }
 
-    func bind(reactor: RepoProfileItem) {
+    func bind(reactor: UserProfileItem) {
         super.bind(item: reactor)
         reactor.state.map { $0.avatar }
             .bind(to: self.avatarImageView.rx.image)

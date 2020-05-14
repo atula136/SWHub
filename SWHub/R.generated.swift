@@ -117,7 +117,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 18 files.
+  /// This `R.file` struct is generated, and contains static references to 19 files.
   struct file {
     /// Resource file `Condition.json`.
     static let conditionJson = Rswift.FileResource(bundle: R.hostingBundle, name: "Condition", pathExtension: "json")
@@ -153,6 +153,8 @@ struct R: Rswift.Validatable {
     static let userStarredRxhansonRectangleJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user-starred-rxhanson-Rectangle", pathExtension: "json")
     /// Resource file `user.json`.
     static let userJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user", pathExtension: "json")
+    /// Resource file `user2.json`.
+    static let user2Json = Rswift.FileResource(bundle: R.hostingBundle, name: "user2", pathExtension: "json")
     /// Resource file `users-KalleHallden.json`.
     static let usersKalleHalldenJson = Rswift.FileResource(bundle: R.hostingBundle, name: "users-KalleHallden", pathExtension: "json")
 
@@ -255,6 +257,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "user-starred-rxhanson-Rectangle", withExtension: "json")`
     static func userStarredRxhansonRectangleJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.userStarredRxhansonRectangleJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "user2", withExtension: "json")`
+    static func user2Json(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.user2Json
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -473,7 +481,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 61 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 62 localization keys.
     struct localizable {
       /// Value: %@增加了%d个星
       static let trendingRepoStarsNew = Rswift.StringResource(key: "Trending.Repo.Stars.New", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -497,6 +505,8 @@ struct R: Rswift.Validatable {
       static let stars = Rswift.StringResource(key: "Stars", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Updated %@ ago
       static let repoUpdateDatetime = Rswift.StringResource(key: "Repo.Update.Datetime", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: User
+      static let user = Rswift.StringResource(key: "User", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Watchs
       static let watchs = Rswift.StringResource(key: "Watchs", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 下拉刷新
@@ -743,6 +753,19 @@ struct R: Rswift.Validatable {
 
         let format = NSLocalizedString("Repo.Update.Datetime", bundle: bundle, comment: "")
         return String(format: format, locale: locale, value1)
+      }
+
+      /// Value: User
+      static func user(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("User", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "User"
+        }
+
+        return NSLocalizedString("User", bundle: bundle, comment: "")
       }
 
       /// Value: Watchs

@@ -19,11 +19,10 @@ import SWFrame
 
 class UserDetailViewController: CollectionViewController, ReactorKit.View {
     struct Reusable {
-        static let profileCell = ReusableCell<RepoProfileCell>()
-        static let readmeCell = ReusableCell<RepoReadmeCell>()
+        static let profileCell = ReusableCell<UserProfileCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<RepoSection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<UserSection>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -32,7 +31,7 @@ class UserDetailViewController: CollectionViewController, ReactorKit.View {
         return layout
     }
 
-    init(_ navigator: NavigatorType, _ reactor: RepoDetailViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: UserDetailViewReactor) {
         defer {
             self.reactor = reactor
         }
@@ -46,18 +45,17 @@ class UserDetailViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.addButtonToRight(FontAwesomeIcon.githubIcon.image(ofSize: .init(width: 24, height: 24), color: .tint).template).rx.tap.subscribe(onNext: { [weak self] _ in
-            guard let `self` = self else { return }
-            self.navigator.push("\(UIApplication.shared.baseWebUrl)/\(self.reactor?.fullname ?? "")")
-        }).disposed(by: self.disposeBag)
+//        self.navigationBar.addButtonToRight(FontAwesomeIcon.githubIcon.image(ofSize: .init(width: 24, height: 24), color: .tint).template).rx.tap.subscribe(onNext: { [weak self] _ in
+//            guard let `self` = self else { return }
+//            self.navigator.push("\(UIApplication.shared.baseWebUrl)/\(self.reactor?.fullname ?? "")")
+//        }).disposed(by: self.disposeBag)
         self.collectionView.register(Reusable.profileCell)
-        self.collectionView.register(Reusable.readmeCell)
         themeService.rx
             .bind({ $0.dimColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
 
-    func bind(reactor: RepoDetailViewReactor) {
+    func bind(reactor: UserDetailViewReactor) {
         super.bind(reactor: reactor)
         // action
         self.rx.viewDidLoad.map { Reactor.Action.load }
@@ -81,16 +79,12 @@ class UserDetailViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepoDetailViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepoSection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: UserDetailViewReactor) -> RxCollectionViewSectionedReloadDataSource<UserSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
                 case let .profile(item):
                     let cell = collectionView.dequeue(Reusable.profileCell, for: indexPath)
-                    cell.bind(reactor: item)
-                    return cell
-                case let .readme(item):
-                    let cell = collectionView.dequeue(Reusable.readmeCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 }
@@ -105,8 +99,6 @@ extension UserDetailViewController: UICollectionViewDelegateFlowLayout {
         switch self.dataSource[indexPath] {
         case let .profile(item):
             return Reusable.profileCell.class.size(width: width, item: item)
-        case let .readme(item):
-            return Reusable.readmeCell.class.size(width: width, item: item)
         }
     }
 

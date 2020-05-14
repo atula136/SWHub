@@ -37,5 +37,5 @@ extension UserSection: SectionModelType {
 }
 
 enum UserSectionItem {
-    case detail(UserProfileItem)
+    case profile(UserProfileItem)
 }
