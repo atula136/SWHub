@@ -6,12 +6,14 @@ inhibit_all_warnings!
 
 target 'SWHub' do
 	# pod 'SWFrame', :path => '../SWFrame'
-	pod 'SWFrame', '1.0.5'
+	pod 'SWFrame', '1.0.6'
   
 	# 界面
 	pod 'IQKeyboardManagerSwift', '6.5.5'
 	pod 'ReusableKit/RxSwift', '3.0.0'
 	pod 'Parchment', '2.3.0'
+	pod 'Highlightr', '2.1.0'
+	pod 'MarkdownView', '1.5.0'
 	
 	# 网络
 	# pod 'Kingfisher', '4.10.1'

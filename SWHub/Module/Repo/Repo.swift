@@ -41,7 +41,7 @@ struct Repo: ModelType, Subjective, Eventable {
     var defaultBranch: String?
     var tempCloneToken: String?
     var createdAt: String?
-    var updatedAt: String?
+    var updatedAt: Date?
     var pushedAt: String?
     var homepage: String?
     var gitUrl: String?
@@ -126,7 +126,6 @@ struct Repo: ModelType, Subjective, Eventable {
         defaultBranch               <- map["default_branch"]
         tempCloneToken              <- map["temp_clone_token"]
         createdAt                   <- map["created_at"]
-        updatedAt                   <- map["updated_at"]
         pushedAt                    <- map["pushed_at"]
         homepage                    <- map["homepage"]
         gitUrl                      <- map["git_url"]
@@ -175,42 +174,7 @@ struct Repo: ModelType, Subjective, Eventable {
         license                     <- map["license"]
         permissions                 <- map["permissions"]
         owner                       <- map["owner"]
-    }
-
-    func detail() -> NSAttributedString? {
-        var texts: [NSAttributedString] = []
-        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.textDark))
-        let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
-        texts.append(.composed(of: [
-            starsImage, Special.space, starsString, Special.space, Special.tab
-        ]))
-
-        if let languageString = self.language?.styled(with: .color(.textDark)) {
-//            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
-            let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
-            texts.append(.composed(of: [
-                languageColorShape, Special.space, languageString
-            ]))
-        }
-        return .composed(of: texts)
-    }
-
-    func count(title: String, value: Int) -> NSAttributedString {
-        let titleText = title.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 12)), .alignment(.center))
-        let valueText = value.string.styled(with: .color(.white), .font(.boldSystemFont(ofSize: 18)), .alignment(.center))
-        return .composed(of: [
-            titleText, Special.nextLine, valueText
-        ])
-    }
-
-    func starsText() -> NSAttributedString? {
-        var texts: [NSAttributedString] = []
-        let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.textDark))
-        let image = FontAwesomeIcon.starIcon.image(ofSize: .s16, color: .tint).styled(with: .baselineOffset(-3))
-        texts.append(.composed(of: [
-            image, Special.space, string
-        ]))
-        return .composed(of: texts)
+        updatedAt                   <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
     }
 
     enum Event {
@@ -257,6 +221,85 @@ struct Repo: ModelType, Subjective, Eventable {
             pull                    <- map["pull"]
         }
     }
+
+    func count(title: String, value: Int) -> NSAttributedString {
+        let valueText = value.string.styled(with: .color(.title), .font(.bold(16)), .alignment(.center))
+        let titleText = title.styled(with: .color(.detail), .font(.normal(14)), .alignment(.center))
+        return .composed(of: [
+            valueText, Special.nextLine, titleText
+        ])
+    }
+
+    func basic() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
+        let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            starsImage, Special.space, starsString, Special.space, Special.tab
+        ]))
+
+        if let languageString = self.language?.styled(with: .color(.title)) {
+    //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
+            let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
+            texts.append(.composed(of: [
+                languageColorShape, Special.space, languageString
+            ]))
+        }
+        return .composed(of: texts)
+    }
+
+    func starsText() -> NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
+        let image = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
+
+    func detail() -> NSAttributedString? {
+        let description = self.description?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
+        let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint), .link(self.homepage?.url ?? URL(string: "http://m.baidu.com")!)) ?? NSAttributedString()
+        let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2)) ?? NSAttributedString()
+        return .composed(of: [
+            description, Special.nextLine, homepage, Special.lineSeparator, update
+        ])
+    }
+
+    func counts() -> [NSAttributedString] {
+        let watchs = self.count(title: R.string.localizable.watchs(), value: self.subscribersCount ?? 0)
+        let stars = self.count(title: R.string.localizable.stars(), value: self.stargazersCount ?? 0)
+        let forks = self.count(title: R.string.localizable.forks(), value: self.forks ?? 0)
+        return [watchs, stars, forks]
+    }
+
+    func langInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.codeIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.language
+        info.detail = self.size?.kBytes
+        info.indicated = true
+        return info
+    }
+
+    func issueInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon._627Icon.image(ofSize: .init(20), color: .tint).template
+        info.title = R.string.localizable.issues()
+        info.detail = self.openIssues?.string
+        info.indicated = true
+        return info
+    }
+
+    func requestInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.codeForkIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = R.string.localizable.pullRequests()
+        info.indicated = true
+        return info
+    }
+
 }
 
 extension Repo {
@@ -269,11 +312,14 @@ extension Repo {
         var type: String?
         var encoding: String?
         var content: String?
-        var url: String?
-        var htmlUrl: String?
-        var gitUrl: String?
-        var downloadUrl: String?
+        var url: URL?
+        var htmlUrl: URL?
+        var gitUrl: URL?
+        var downloadUrl: URL?
         var links: Links?
+        var highlightedCode: NSAttributedString?
+        var markdown: String?
+        var height: CGFloat?
 
         init() {
         }
@@ -290,18 +336,18 @@ extension Repo {
             type                    <- map["type"]
             encoding                <- map["encoding"]
             content                 <- map["content"]
-            url                     <- map["url"]
-            htmlUrl                 <- map["html_url"]
-            gitUrl                  <- map["git_url"]
-            downloadUrl             <- map["download_url"]
+            url                     <- (map["url"], URLTransform())
+            htmlUrl                 <- (map["html_url"], URLTransform())
+            gitUrl                  <- (map["git_url"], URLTransform())
+            downloadUrl             <- (map["download_url"], URLTransform())
             links                   <- map["_links"]
         }
 
         struct Links: ModelType, Subjective {
             var id: Int?
-            var `self`: String?
-            var git: String?
-            var html: String?
+            var sef: URL?
+            var git: URL?
+            var html: URL?
 
             init() {
             }
@@ -311,11 +357,16 @@ extension Repo {
 
             mutating func mapping(map: Map) {
                 id                      <- map["id"]
-                `self`                  <- map["self"]
-                git                     <- map["git"]
-                html                    <- map["html"]
+                sef                     <- (map["self"], URLTransform())
+                git                     <- (map["git"], URLTransform())
+                html                    <- (map["html"], URLTransform())
             }
         }
+
+        enum CodingKeys: String, CodingKey {
+            case content
+        }
+
     }
 }
 

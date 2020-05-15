@@ -56,16 +56,9 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
 
-        self.navigationBar.addButtonToRight(FontAwesomeIcon.reorderIcon.image(ofSize: .init(width: 20, height: 20), color: .fg)).rx.tap.subscribe(onNext: { [weak self] _ in
+        self.navigationBar.addButtonToRight(FontAwesomeIcon.reorderIcon.image(ofSize: .init(width: 20, height: 20), color: .tint)).rx.tap.subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
-//            if var url = Router.condition.pattern.url, let misc = Misc.current() {
-//                url.appendQueryParameters([Parameter.since: misc.since.paramValue])
-//                if let language = misc.language.urlParam {
-//                    url.appendQueryParameters([Parameter.language: language])
-//                }
-//                self.navigator.present(url, wrap: NavigationController.self)
-//            }
-            self.navigator.present(Router.condition.pattern, wrap: NavigationController.self)
+            self.navigator.present(Router.condition.urlString, wrap: NavigationController.self)
         }).disposed(by: self.disposeBag)
 
         self.paging.collectionView.size = CGSize(width: self.view.width, height: navigationBarHeight)
@@ -74,7 +67,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         themeService.rx
             .bind({ $0.dimColor }, to: self.paging.view.rx.backgroundColor)
             .bind({ $0.tintColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
-            .bind({ $0.textDarkColor }, to: self.paging.rx.textColor)
+            .bind({ $0.titleColor }, to: self.paging.rx.textColor)
             .disposed(by: self.rx.disposeBag)
         themeService.typeStream.delay(.milliseconds(10), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }

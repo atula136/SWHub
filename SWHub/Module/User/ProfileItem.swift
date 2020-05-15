@@ -69,13 +69,15 @@ class ProfileItem: CollectionItem, ReactorKit.Reactor {
         return .merge(mutation, nightEvent)
     }
 
-//    func transform(state: Observable<State>) -> Observable<State> {
-//        guard let user = self.model as? TrendingUser else { return state }
-//        return state.flatMap { state -> Observable<State> in
-//            var state = state
-//            state.repo = user.repoText()
-//            return .just(state)
-//        }
-//    }
+    func transform(state: Observable<State>) -> Observable<State> {
+        guard let user = self.model as? User else { return state }
+        return state.flatMap { state -> Observable<State> in
+            var state = state
+            state.reposText = user.count(title: R.string.localizable.repositories(), value: (user.publicRepos ?? 0) + (user.totalPrivateRepos ?? 0))
+            state.followersText = user.count(title: R.string.localizable.followers(), value: (user.followers ?? 0))
+            state.followingText = user.count(title: R.string.localizable.following(), value: (user.following ?? 0))
+            return .just(state)
+        }
+    }
 
 }

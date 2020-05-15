@@ -24,6 +24,8 @@ languageColor
 开机广告
 默认头像
 首页底部没显示完整
+Button/Label
+更新与xx小时前/homepage跳转
 
 https://api.github.com/user/starred/rxhanson/Rectangle
 
@@ -51,4 +53,8 @@ https://api.github.com/users/KalleHallden/subscriptions?page=1
 userReceivedEvents
 https://api.github.com/users/KalleHallden/received_events?page=1
 
-
+2、User
+checkFollowing/followUser/unfollowUser
+https://api.github.com/user/following/onevcat
+branches
+https://api.github.com/repos/khoren93/SwiftHub/branches?page=1

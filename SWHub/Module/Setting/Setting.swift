@@ -64,11 +64,11 @@ struct Setting: ModelType, Identifiable, Eventable {
         var icon: UIImage? {
             switch self {
             case .night:
-                return FontAwesomeIcon.lightBulbIcon.image(ofSize: .s32, color: .tint).template
+                return FontAwesomeIcon.lightBulbIcon.image(ofSize: .init(32), color: .tint).template
             case .color:
-                return FontAwesomeIcon.eyeOpenIcon.image(ofSize: .s32, color: .tint).template
+                return FontAwesomeIcon.eyeOpenIcon.image(ofSize: .init(32), color: .tint).template
             case .cache:
-                return FontAwesomeIcon.trashIcon.image(ofSize: .s32, color: .tint).template
+                return FontAwesomeIcon.trashIcon.image(ofSize: .init(32), color: .tint).template
             default:
                 return nil
             }

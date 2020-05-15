@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CGFloatLiteral
 
 struct Information {
 //        static let clientType = ClientType.app.rawValue
@@ -33,17 +34,19 @@ struct Constant {
 
     // MARK: 度量
     struct Metric {
-        static let margin: CGFloat = 10
-        static let padding: CGFloat = 4
-        static let tabBarHeight: CGFloat = 58
-        static let toolBarHeight: CGFloat = 66
-        static let navBarWithStatusBarHeight: CGFloat = 64
-        static let cornerRadius: CGFloat = 5
-        static let borderWidth: CGFloat = 1
-        static let buttonHeight: CGFloat = 40
-        static let textFieldHeight: CGFloat = 40
-        static let tableRowHeight: CGFloat = 40
-        static let segmentedControlHeight: CGFloat = 36
+//        static let margin: CGFloat = 10
+//        static let padding: CGFloat = 4
+//        static let tabBarHeight: CGFloat = 58
+//        static let toolBarHeight: CGFloat = 66
+//        static let navBarWithStatusBarHeight: CGFloat = 64
+//        static let cornerRadius: CGFloat = 5
+//        static let borderWidth: CGFloat = 1
+//        static let buttonHeight: CGFloat = 40
+//        static let textFieldHeight: CGFloat = 40
+//        static let tableRowHeight: CGFloat = 40
+//        static let segmentedControlHeight: CGFloat = 36
+        static let margin = 20.f
+        static let padding = 5.f
     }
 
     struct Font {

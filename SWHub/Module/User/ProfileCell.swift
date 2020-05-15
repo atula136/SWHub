@@ -155,30 +155,13 @@ class ProfileCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.emailInfoView)
         self.contentView.addSubview(self.blogInfoView)
 
-//        self.contentView.addSubview(self.companyView)
-//        self.companyView.addSubview(self.companyImageView)
-//        self.companyView.addSubview(self.companyLabel)
-//
-//        self.contentView.addSubview(self.cityView)
-//        self.cityView.addSubview(self.cityImageView)
-//        self.cityView.addSubview(self.cityLabel)
-//
-//        self.contentView.addSubview(self.emailView)
-//        self.emailView.addSubview(self.emailImageView)
-//        self.emailView.addSubview(self.emailLabel)
-//
-//        self.contentView.addSubview(self.websiteView)
-//        self.websiteView.addSubview(self.websiteImageView)
-//        self.websiteView.addSubview(self.websiteLabel)
-//        self.websiteView.addSubview(self.websiteIndicator)
-
         themeService.rx
-            .bind({ $0.textDarkColor }, to: self.nameLabel.rx.textColor)
-            .bind({ $0.textDarkColor }, to: self.descriptionLabel.rx.textColor)
-            .bind({ $0.textDarkColor }, to: self.statusLabel.rx.textColor)
+            .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
+            .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.statusColor }, to: self.statusLabel.rx.textColor)
             .bind({ $0.tintColor }, to: self.indicatorImageView.rx.tintColor)
-            .bind({ $0.bgColor }, to: self.userView.rx.backgroundColor)
-            .bind({ $0.borderColor }, to: self.userView.rx.qmui_borderColor)
+            .bind({ $0.backgroundColor }, to: self.userView.rx.backgroundColor)
+            .bind({ $0.border1Color }, to: [self.userView.rx.qmui_borderColor, self.countView.rx.qmui_borderColor])
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -302,7 +285,6 @@ class ProfileCell: CollectionCell, ReactorKit.View {
 extension Reactive where Base: ProfileCell {
     var blog: ControlEvent<URL> {
         let source = self.base.blogInfoView.rx.tap.map { [weak cell = self.base] _ -> URL? in
-            // cell?.reactor?.currentState.blog?.url
             cell?.blogInfoView.titleLabel.text?.url
         }.filterNil()
         return ControlEvent(events: source)

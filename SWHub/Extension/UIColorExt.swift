@@ -10,52 +10,60 @@ import UIKit
 
 extension UIColor {
 
-    static var bg: UIColor {
-        return themeService.type.associatedObject.bgColor
+    static var background: UIColor {
+        return themeService.type.associatedObject.backgroundColor
     }
 
-    static var fg: UIColor {
-        return themeService.type.associatedObject.fgColor
-    }
-
-    static var tint: UIColor {
-        return themeService.type.associatedObject.tintColor
+    static var foreground: UIColor {
+        return themeService.type.associatedObject.foregroundColor
     }
 
     static var dim: UIColor {
         return themeService.type.associatedObject.dimColor
     }
 
-    static var dimLight: UIColor {
-        return themeService.type.associatedObject.dimLightColor
+    static var mask: UIColor {
+        return themeService.type.associatedObject.maskColor
     }
 
-    static var dimDark: UIColor {
-        return themeService.type.associatedObject.dimDarkColor
+    static var tint: UIColor {
+        return themeService.type.associatedObject.tintColor
     }
 
-    static var text: UIColor {
-        return themeService.type.associatedObject.textColor
+    static var title: UIColor {
+        return themeService.type.associatedObject.titleColor
     }
 
-    static var textLight: UIColor {
-        return themeService.type.associatedObject.textLightColor
+    static var detail: UIColor {
+        return themeService.type.associatedObject.detailColor
     }
 
-    static var textDark: UIColor {
-        return themeService.type.associatedObject.textDarkColor
+    static var status: UIColor {
+        return themeService.type.associatedObject.statusColor
     }
 
-    static var border: UIColor {
-        return themeService.type.associatedObject.borderColor
+    static var border1: UIColor {
+        return themeService.type.associatedObject.border1Color
     }
 
-    static var borderLight: UIColor {
-        return themeService.type.associatedObject.borderLightColor
+    static var border2: UIColor {
+        return themeService.type.associatedObject.border2Color
     }
 
-    static var borderDark: UIColor {
-        return themeService.type.associatedObject.borderDarkColor
+    static var border3: UIColor {
+        return themeService.type.associatedObject.border3Color
+    }
+
+    static var special1: UIColor {
+        return themeService.type.associatedObject.special1Color
+    }
+
+    static var special2: UIColor {
+        return themeService.type.associatedObject.special2Color
+    }
+
+    static var special3: UIColor {
+        return themeService.type.associatedObject.special3Color
     }
 
 }

@@ -111,14 +111,14 @@ struct User: ModelType, Storable, Subjective {
 
     func detail() -> NSAttributedString? {
         var texts = [NSAttributedString]()
-        if let repositoriesString = self.publicRepos?.string.styled(with: .color(.textDark)) {
-            let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
+        if let repositoriesString = self.publicRepos?.string.styled(with: .color(.title)) {
+            let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
             ]))
         }
-        if let followersString = self.followers?.kFormatted().styled(with: .color(.textDark)) {
-            let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .s16, color: .tint).template.styled(with: .baselineOffset(-3))
+        if let followersString = self.followers?.kFormatted().styled(with: .color(.title)) {
+            let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
             texts.append(.composed(of: [
                 followersImage, Special.space, followersString
             ]))
@@ -127,11 +127,47 @@ struct User: ModelType, Storable, Subjective {
     }
 
     func count(title: String, value: Int) -> NSAttributedString {
-        let valueText = value.string.styled(with: .color(.fg), .font(.bold(17)), .alignment(.center))
-        let titleText = title.styled(with: .color(.text), .font(.normal(13)), .alignment(.center))
+        let valueText = value.string.styled(with: .color(.tint), .font(.bold(17)), .alignment(.center))
+        let titleText = title.styled(with: .color(.title), .font(.normal(13)), .alignment(.center))
         return .composed(of: [
             valueText, Special.nextLine, titleText
         ])
+    }
+
+    func companyInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.userIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.company ?? R.string.localizable.company()
+        info.indicated = false
+        info.enabled = self.company != nil ? true : false
+        return info
+    }
+
+    func locationInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.globeIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.location ?? R.string.localizable.location()
+        info.indicated = false
+        info.enabled = self.location != nil ? true : false
+        return info
+    }
+
+    func emailInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.inboxIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.email ?? R.string.localizable.email()
+        info.indicated = self.email != nil ? true : false
+        info.enabled = self.email != nil ? true : false
+        return info
+    }
+
+    func blogInfo() -> InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon._581Icon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.blog ?? R.string.localizable.blog()
+        info.indicated = self.blog != nil ? true : false
+        info.enabled = self.blog != nil ? true : false
+        return info
     }
 
 }

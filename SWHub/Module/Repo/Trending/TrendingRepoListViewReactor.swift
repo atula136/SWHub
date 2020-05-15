@@ -43,7 +43,7 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         super.init(provider, parameters)
         self.initialState = State(
             condition: Condition.current(),
-            sections: [.repositories((TrendingRepo.cachedArray() ?? []).map { .repository(RepoItem($0)) })]
+            sections: [.repos((TrendingRepo.cachedArray() ?? []).map { .repo(RepoBasicItem($0)) })]
         )
     }
 
@@ -85,9 +85,9 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.error = error
         case let .setCondition(condition):
             state.condition = condition
-        case let .start(repositories):
-            TrendingRepo.storeArray(repositories)
-            state.sections = [.repositories(repositories.map { .repository(RepoItem($0)) })]
+        case let .start(repos):
+            TrendingRepo.storeArray(repos)
+            state.sections = [.repos(repos.map { .repo(RepoBasicItem($0)) })]
         }
         return state
     }

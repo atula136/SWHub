@@ -2,13 +2,17 @@
 //  RepoDetailViewReactor.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/5/6.
+//  Created by 杨建祥 on 2020/5/13.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
 import UIKit
+import QMUIKit
 import RxSwift
 import RxCocoa
+import SwifterSwift
+import Highlightr
+import MarkdownView
 import ReactorKit
 import SWFrame
 
@@ -16,25 +20,22 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Action {
         case load
-        case star(Bool)
     }
 
     enum Mutation {
         case setLoading(Bool)
-        case setActivating(Bool)
-        case setStarred(Bool)
         case setError(Error?)
-        case setRepository(Repo)
+        case setRepo(Repo)
+        case setReadme(Repo.Readme)
     }
 
     struct State {
         var isLoading = false
-        var isActivating = false
-        var starred = false
         var title: String?
         var error: Error?
-        var repository: Repo!
-        var sections: [RepoDetailSection] = []
+        var repo: Repo!
+        var readme: Repo.Readme!
+        var sections: [RepoSection] = []
     }
 
     var fullname: String?
@@ -44,7 +45,7 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         super.init(provider, parameters)
         self.fullname = stringMember(self.parameters, Parameter.fullname, nil)
         self.initialState = State(
-            title: stringDefault(self.title, self.fullname ?? "")
+            title: stringDefault(self.title, R.string.localizable.repositories())
         )
     }
 
@@ -56,18 +57,9 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.provider.repo(fullname: fullname).map { Mutation.setRepository($0) },
-                self.provider.checkStarring(fullname: fullname).map { Mutation.setStarred($0) },
+                self.provider.repo(fullname: fullname).map { Mutation.setRepo($0) },
+                self.requestReadme(fullname).map { Mutation.setReadme($0) },
                 .just(.setLoading(false))
-            ])
-        case let .star(star):
-            guard self.currentState.starred != star else { return .empty() }
-            guard let fullname = self.fullname else { return .empty() }
-            let request = star ? self.provider.starRepo(fullname: fullname) : self.provider.unstarRepo(fullname: fullname)
-            return .concat([
-                .just(.setActivating(true)),
-                request.map { Mutation.setStarred(star) },
-                .just(.setActivating(false))
             ])
         }
     }
@@ -77,29 +69,65 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             state.isLoading = isLoading
-        case let .setActivating(isActivating):
-            state.isActivating = isActivating
-        case let .setStarred(starred):
-            state.starred = starred
         case let .setError(error):
             state.error = error
-        case let .setRepository(repository):
-            state.repository = repository
-            let items = RepoDetailModel.Key.allValues.map { key -> RepoDetailSectionItem in
-                var model = RepoDetailModel(key: key)
-                switch key {
-                case .branch:
-                    model.detail = repository.defaultBranch
-                case .star:
-                    model.detail = Constant.Network.starHistoryUrl
-                default:
-                    break
-                }
-                return .detail(RepoDetailItem(model))
-            }
-            state.sections = [.details(items)]
+        case let .setRepo(repo):
+            state.repo = repo
+            state.sections = self.sections(with: state)
+        case let .setReadme(readme):
+            state.readme = readme
+            state.sections = self.sections(with: state)
         }
         return state
+    }
+
+    func markdownHeight(_ markdown: String) -> Observable<CGFloat> {
+        let mdView = MarkdownView()
+        mdView.isHidden = true
+        mdView.isScrollEnabled = false
+        mdView.width = screenWidth
+        if let window = UIApplication.shared.delegate?.window {
+            window?.addSubview(mdView)
+        }
+        return Observable.create { observer -> Disposable in
+            mdView.onRendered = { height in
+                observer.onNext(height)
+                observer.onCompleted()
+            }
+            mdView.load(markdown: markdown)
+            return Disposables.create {
+                mdView.removeFromSuperview()
+            }
+        }
+    }
+
+    func requestReadme(_ fullname: String) -> Observable<Repo.Readme> {
+        return self.provider.readme(fullname: fullname).flatMap { [weak self] readme -> Observable<Repo.Readme> in
+            guard let `self` = self, let url = readme.downloadUrl else { return .empty() }
+            return self.provider.download(url: url).map { markdown -> Repo.Readme in
+                var readme = readme
+                readme.markdown = markdown
+                return readme
+            }
+        }.flatMap { [weak self] readme -> Observable<Repo.Readme> in
+            guard let `self` = self, let markdown = readme.markdown else { return .empty() }
+            return self.markdownHeight(markdown).map { height -> Repo.Readme in
+                var readme = readme
+                readme.height = height
+                return readme
+            }
+        }
+    }
+
+    func sections(with state: State) -> [RepoSection] {
+        var items = [RepoSectionItem].init()
+        if let repo = state.repo {
+            items.append(.profile(RepoProfileItem(repo)))
+        }
+        if let readme = state.readme {
+            items.append(.readme(RepoReadmeItem(readme)))
+        }
+        return [.list(items)]
     }
 
 }

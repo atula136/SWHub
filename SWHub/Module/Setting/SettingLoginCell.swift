@@ -28,7 +28,7 @@ class SettingLoginCell: CollectionCell, ReactorKit.View {
 
     lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = FontAwesomeIcon.githubSignIcon.image(ofSize: .s64, color: .black).template
+        imageView.image = FontAwesomeIcon.githubSignIcon.image(ofSize: .init(64), color: .black).template
         imageView.sizeToFit()
         return imageView
     }()
@@ -39,7 +39,7 @@ class SettingLoginCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.logoImageView)
         themeService.rx
-            .bind({ $0.textDarkColor }, to: self.titleLabel.rx.textColor)
+            .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.tintColor }, to: self.logoImageView.rx.tintColor)
             .disposed(by: self.rx.disposeBag)
     }

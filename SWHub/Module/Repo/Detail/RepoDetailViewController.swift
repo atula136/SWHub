@@ -2,7 +2,7 @@
 //  RepoDetailViewController.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/5/6.
+//  Created by 杨建祥 on 2020/5/13.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -19,19 +19,16 @@ import SWFrame
 
 class RepoDetailViewController: CollectionViewController, ReactorKit.View {
     struct Reusable {
-        static let detailCell = ReusableCell<RepoDetailCell>()
-        static let headerView = ReusableView<RepoDetailHeaderView>()
+        static let detailCell = ReusableCell<RepoProfileCell>()
+        static let readmeCell = ReusableCell<RepoReadmeCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<RepoDetailSection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<RepoSection>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = .init(horizontal: 30, vertical: 20)
-        layout.headerReferenceSize = CGSize(width: screenWidth, height: flat(10 + metric(90) + 20 + metric(30) + 10))
+        layout.minimumLineSpacing = 15
         return layout
     }
 
@@ -54,7 +51,10 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
             self.navigator.push("\(UIApplication.shared.baseWebUrl)/\(self.reactor?.fullname ?? "")")
         }).disposed(by: self.disposeBag)
         self.collectionView.register(Reusable.detailCell)
-        self.collectionView.register(Reusable.headerView, kind: .header)
+        self.collectionView.register(Reusable.readmeCell)
+        themeService.rx
+            .bind({ $0.dimColor }, to: self.collectionView.rx.backgroundColor)
+            .disposed(by: self.rx.disposeBag)
     }
 
     func bind(reactor: RepoDetailViewReactor) {
@@ -66,36 +66,9 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
         self.rx.emptyDataSet.map { Reactor.Action.load }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-//        self.segment.rx.selectedSegmentIndex.skip(1).distinctUntilChanged().map { Reactor.Action.since($0) }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
-//        self.collectionView.rx.itemSelected(dataSource: self.dataSource).map { sectionItem -> String? in
-//            switch sectionItem {
-//            case let .language(item):
-//                if let language = item.model as? Condition.Language {
-//                    return language.urlParam
-//                }
-//                return nil
-//            }}.distinctUntilChanged().map { Reactor.Action.language($0) }
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
-            // state
-//        reactor.state.map { $0.since.rawValue }
-//            .distinctUntilChanged()
-//            .ignore(self.segment.selectedSegmentIndex)
-//            .bind(to: self.segment.rx.selectedSegmentIndex)
-//            .disposed(by: self.disposeBag)
-//        reactor.state.map { $0.language.urlParam }
-//            .distinctUntilChanged()
-//            .bind(to: self.rx.language)
-//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.isLoading }
             .distinctUntilChanged()
             .bind(to: self.rx.loading())
-            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.isActivating }
-            .distinctUntilChanged()
-            .bind(to: self.rx.activating())
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.title }
             .bind(to: self.navigationBar.titleLabel.rx.text)
@@ -108,50 +81,20 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepoDetailViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepoDetailSection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepoDetailViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepoSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
-                    switch sectionItem {
-                    case let .detail(item):
-                        let cell = collectionView.dequeue(Reusable.detailCell, for: indexPath)
-                        cell.bind(reactor: item)
-                        return cell
-                    }
-            },
-            configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
-                switch kind {
-                case UICollectionView.elementKindSectionHeader:
-                    let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
-                    view.bind(reactor: RepoDetailHeaderReactor(reactor.currentState.repository))
-                    Observable.merge(view.rx.watchers.asObservable(), view.rx.stargazers.asObservable()).subscribe(onNext: { parameters in
-                        if var url = Router.User.list.pattern.url,
-                            let fullname = reactor.fullname {
-                            url.appendQueryParameters(parameters)
-                            url.appendQueryParameters([ Parameter.fullname: fullname ])
-                            navigator.push(url)
-                        }
-                    }).disposed(by: view.disposeBag)
-                    view.rx.forks.subscribe(onNext: { parameters in
-                        if var url = Router.Repo.list.pattern.url,
-                            let fullname = reactor.fullname {
-                            url.appendQueryParameters(parameters)
-                            url.appendQueryParameters([ Parameter.fullname: fullname ])
-                            navigator.push(url)
-                        }
-                    }).disposed(by: view.disposeBag)
-                    view.rx.star.map { Reactor.Action.star($0) }
-                        .bind(to: reactor.action)
-                        .disposed(by: view.disposeBag)
-                    reactor.state.map { $0.starred }
-                        .distinctUntilChanged()
-                        .bind(to: view.rx.starred)
-                        .disposed(by: view.disposeBag)
-                    return view
-                default:
-                    return collectionView.emptyView(for: indexPath, kind: kind)
+                switch sectionItem {
+                case let .profile(item):
+                    let cell = collectionView.dequeue(Reusable.detailCell, for: indexPath)
+                    cell.bind(reactor: item)
+                    return cell
+                case let .readme(item):
+                    let cell = collectionView.dequeue(Reusable.readmeCell, for: indexPath)
+                    cell.bind(reactor: item)
+                    return cell
                 }
-            }
-        )
+        })
     }
 }
 
@@ -160,8 +103,10 @@ extension RepoDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .detail(item):
+        case let .profile(item):
             return Reusable.detailCell.class.size(width: width, item: item)
+        case let .readme(item):
+            return Reusable.readmeCell.class.size(width: width, item: item)
         }
     }
 

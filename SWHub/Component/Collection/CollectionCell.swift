@@ -14,7 +14,7 @@ class CollectionCell: BaseCollectionCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         themeService.rx
-            .bind({ $0.bgColor }, to: self.contentView.rx.backgroundColor)
+            .bind({ $0.backgroundColor }, to: self.contentView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
 

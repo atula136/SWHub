@@ -18,7 +18,7 @@ import SWFrame
 class TrendingUserListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let userCell = ReusableCell<UserCell>()
+        static let userCell = ReusableCell<UserBasicCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingUserSection>
@@ -50,6 +50,17 @@ class TrendingUserListViewController: CollectionViewController, ReactorKit.View 
         super.viewDidLoad()
         self.collectionView.register(Reusable.userCell)
         self.collectionView.frame = CGRect(x: 0, y: 0, width: self.view.width, height: self.view.height - navigationContentTopConstant - tabBarHeight)
+        self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] sectionItem in
+            guard let `self` = self else { return }
+            switch sectionItem {
+            case let .user(item):
+                if var url = Router.User.detail.urlString.url,
+                    let username = (item.model as? TrendingUser)?.username {
+                    url.appendQueryParameters([Parameter.username: username])
+                    self.navigator.push(url)
+                }
+            }
+        }).disposed(by: self.disposeBag)
     }
 
     func bind(reactor: TrendingUserListViewReactor) {

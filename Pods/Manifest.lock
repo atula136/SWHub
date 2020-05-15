@@ -10,10 +10,12 @@ PODS:
   - FCUUID (1.3.1):
     - UICKeyChainStore (~> 2.1.0)
   - FLEX (3.0.0)
+  - Highlightr (2.1.0)
   - Iconic (1.5)
   - IQKeyboardManagerSwift (6.5.5)
   - KeychainAccess (3.2.0)
   - Kingfisher (4.10.1)
+  - MarkdownView (1.5.0)
   - MLeaksFinder (1.0.0):
     - FBRetainCycleDetector
   - Moya-ObjectMapper-Swift5 (2.8-swift5):
@@ -73,7 +75,7 @@ PODS:
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
   - SnapKit (4.2.0)
-  - SWFrame (1.0.5):
+  - SWFrame (1.0.6):
     - BonMot (= 5.4.1)
     - Cache (= 5.2.0)
     - CGFloatLiteral (= 0.5.0)
@@ -128,8 +130,10 @@ PODS:
 
 DEPENDENCIES:
   - FLEX (= 3.0.0)
+  - Highlightr (= 2.1.0)
   - Iconic (= 1.5)
   - IQKeyboardManagerSwift (= 6.5.5)
+  - MarkdownView (= 1.5.0)
   - MLeaksFinder (= 1.0.0)
   - Parchment (= 2.3.0)
   - R.swift (= 5.1.0)
@@ -137,7 +141,7 @@ DEPENDENCIES:
   - RxGesture (= 3.0.0)
   - RxOptional (= 4.0.0)
   - RxTheme (= 4.0.0)
-  - SWFrame (= 1.0.5)
+  - SWFrame (= 1.0.6)
   - SwiftLint (= 0.39.2)
 
 SPEC REPOS:
@@ -152,10 +156,12 @@ SPEC REPOS:
     - FBRetainCycleDetector
     - FCUUID
     - FLEX
+    - Highlightr
     - Iconic
     - IQKeyboardManagerSwift
     - KeychainAccess
     - Kingfisher
+    - MarkdownView
     - MLeaksFinder
     - Moya
     - Moya-ObjectMapper-Swift5
@@ -198,10 +204,12 @@ SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
   FLEX: d66c759bce0f6ebbbf472c742380874d846f2883
+  Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   Iconic: b202cfcb8a1e63e197e34e4e10662e1747073931
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  MarkdownView: 5bbee438c823db1cd189002d44c84fa909b3a896
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   Moya: 65485239114b3b327a17dc2e839f6c8b7143aae9
   Moya-ObjectMapper-Swift5: 02653eed3c084fd46b1526efe689ecfac00fee9f
@@ -224,7 +232,7 @@ SPEC CHECKSUMS:
   RxTheme: 0b642f47c7d197a803c6b9c083964188c34f7ddb
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SWFrame: 61d515ba2f872dcf418efa9d0391fb3f2509ac2a
+  SWFrame: c9981735537d5f83168d357ce576a5b5a4bd4337
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d
@@ -233,6 +241,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: c76d474c6b286ae7a61a603f6c0a99eb93484697
+PODFILE CHECKSUM: 1d00d05fedcbaae58ba1696487f3a2341fec4829
 
 COCOAPODS: 1.9.1

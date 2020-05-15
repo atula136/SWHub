@@ -17,18 +17,20 @@ let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 let themeService = ThemeType.service(initial: ThemeType.currentTheme())
 
 protocol Theme {
-    var bgColor: UIColor { get }
-    var fgColor: UIColor { get }
-    var tintColor: UIColor { get }
+    var backgroundColor: UIColor { get }
+    var foregroundColor: UIColor { get }
     var dimColor: UIColor { get }
-    var dimLightColor: UIColor { get }
-    var dimDarkColor: UIColor { get }
-    var textColor: UIColor { get }
-    var textLightColor: UIColor { get }
-    var textDarkColor: UIColor { get }
-    var borderColor: UIColor { get }
-    var borderLightColor: UIColor { get }
-    var borderDarkColor: UIColor { get }
+    var maskColor: UIColor { get }
+    var tintColor: UIColor { get }
+    var titleColor: UIColor { get }
+    var detailColor: UIColor { get }
+    var statusColor: UIColor { get }
+    var border1Color: UIColor { get }
+    var border2Color: UIColor { get }
+    var border3Color: UIColor { get }
+    var special1Color: UIColor { get }
+    var special2Color: UIColor { get }
+    var special3Color: UIColor { get }
     var barStyle: UIBarStyle { get }
     var statusBarStyle: UIStatusBarStyle { get }
     var keyboardAppearance: UIKeyboardAppearance { get }
@@ -38,18 +40,20 @@ protocol Theme {
 }
 
 struct LightTheme: Theme {
-    let bgColor = UIColor.Material.white
-    let fgColor = UIColor.Material.black
+    let backgroundColor = UIColor.Material.white
+    let foregroundColor = UIColor.Material.black
+    let dimColor = UIColor.Material.grey100
+    let maskColor = UIColor.Material.grey900
     var tintColor = UIColor.Material.red
-    let dimColor = UIColor(hex: 0xF3F3F3)!
-    let dimLightColor = UIColor(hex: 0xFAFAFA)!
-    let dimDarkColor = UIColor(hex: 0xFAFAFA)!
-    let textColor = UIColor(hex: 0x666666)!
-    let textLightColor = UIColor(hex: 0x999999)!
-    let textDarkColor = UIColor(hex: 0x333333)!
-    let borderColor = UIColor.Material.grey200
-    let borderLightColor = UIColor.Material.grey100
-    let borderDarkColor = UIColor.Material.grey300
+    let titleColor = UIColor.Material.grey900
+    let detailColor = UIColor.Material.grey700
+    let statusColor = UIColor.Material.grey500
+    let border1Color = UIColor.Material.grey200
+    let border2Color = UIColor.Material.grey300
+    let border3Color = UIColor.Material.grey400
+    let special1Color = UIColor.Material.white
+    let special2Color = UIColor.Material.white
+    let special3Color = UIColor.Material.white
     let barStyle = UIBarStyle.default
     let statusBarStyle = UIStatusBarStyle.default
     let keyboardAppearance = UIKeyboardAppearance.light
@@ -61,18 +65,20 @@ struct LightTheme: Theme {
 }
 
 struct DarkTheme: Theme {
-    let bgColor = UIColor(hex: 0x171a21)!
-    let fgColor = UIColor.Material.black
-    var tintColor = UIColor.Material.red
+    let backgroundColor = UIColor(hex: 0x171a21)!
+    let foregroundColor = UIColor.Material.black
     let dimColor = UIColor.Material.grey900
-    let dimLightColor = UIColor.Material.grey900
-    let dimDarkColor = UIColor.Material.grey900
-    let textColor = UIColor.Material.grey50
-    let textLightColor = UIColor.Material.grey200
-    let textDarkColor = UIColor.Material.grey
-    let borderColor = UIColor.Material.grey200
-    let borderLightColor = UIColor.Material.grey100
-    let borderDarkColor = UIColor.Material.grey300
+    let maskColor = UIColor.Material.grey900
+    var tintColor = UIColor.Material.red
+    let titleColor = UIColor.Material.grey100
+    let detailColor = UIColor.Material.grey300
+    let statusColor = UIColor.Material.grey500
+    let border1Color = UIColor.Material.grey800
+    let border2Color = UIColor.Material.grey700
+    let border3Color = UIColor.Material.grey600
+    let special1Color = UIColor.Material.white
+    let special2Color = UIColor.Material.white
+    let special3Color = UIColor.Material.white
     let barStyle = UIBarStyle.black
     let statusBarStyle = UIStatusBarStyle.lightContent
     let keyboardAppearance = UIKeyboardAppearance.dark

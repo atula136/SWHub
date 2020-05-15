@@ -17,6 +17,7 @@ import SWFrame
 
 enum GithubAPI {
     case profile
+    case user(username: String)
     case repo(fullname: String)
     case readme(fullname: String, ref: String?)
     case checkStarring(fullname: String)
@@ -45,8 +46,9 @@ extension GithubAPI: TargetType {
     var path: String {
         switch self {
         case .profile: return "/user"
+        case let .user(username): return "/users/\(username)"
         case let .repo(fullname): return "/repos/\(fullname)"
-        case let .readme(fullname): return "/repos/\(fullname)/readme"
+        case let .readme(fullname, _): return "/repos/\(fullname)/readme"
         case .checkStarring(let fullname),
              .starRepo(let fullname),
              .unstarRepo(let fullname):
