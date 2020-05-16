@@ -34,7 +34,7 @@ class UserBasicItem: CollectionItem, ReactorKit.Reactor {
         super.init(model)
         if let user = model as? User {
             self.initialState = State(
-                name: user.login,
+                name: user.username,
                 avatar: user.avatar?.url
             )
         } else if let user = model as? TrendingUser {

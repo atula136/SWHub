@@ -41,7 +41,7 @@ class ProfileItem: CollectionItem, ReactorKit.Reactor {
         super.init(model)
         guard let user = model as? User else { return }
         self.initialState = State(
-            name: user.login,
+            name: user.username,
             description: user.bio,
             company: user.company,
             location: user.location,

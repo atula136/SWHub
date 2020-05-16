@@ -38,9 +38,9 @@ class User: Object, ModelType, Identifiable {
     @objc dynamic var collaborators = 0
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var nodeId: String?
-    @objc dynamic var login: String?
+    @objc dynamic var username: String?
+    @objc dynamic var nickname: String?
     @objc dynamic var type: String?
-    @objc dynamic var name: String?
     @objc dynamic var company: String?
     @objc dynamic var blog: String?
     @objc dynamic var location: String?
@@ -134,9 +134,9 @@ class User: Object, ModelType, Identifiable {
         diskUsage                       <- map["disk_usage"]
         collaborators                   <- map["collaborators"]
         nodeId                          <- map["node_id"]
-        login                           <- map["login"]
+        username                        <- map["login"]
+        nickname                        <- map["name"]
         type                            <- map["type"]
-        name                            <- map["name"]
         company                         <- map["company"]
         blog                            <- map["blog"]
         location                        <- map["location"]
@@ -158,6 +158,9 @@ class User: Object, ModelType, Identifiable {
         receivedEventsUrl               <- map["received_events_url"]
         createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
         updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
+        if username == nil {
+            username                    <- map["username"]
+        }
     }
 
     func count(title: String, value: Int) -> NSAttributedString {

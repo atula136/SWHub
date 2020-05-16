@@ -127,7 +127,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                     if let navigator = navigator as? Navigator,
                         var url = Router.alert.urlString.url {
                         url.appendQueryParameters([
-                            Parameter.title: reactor.currentState.user?.login ?? "",
+                            Parameter.title: reactor.currentState.user?.username ?? "",
                             Parameter.message: R.string.localizable.userExitPrompt(UIApplication.shared.displayName ?? "")
                         ])
                         footer.rx.logout.flatMap { _ -> Observable<AlertActionType> in
