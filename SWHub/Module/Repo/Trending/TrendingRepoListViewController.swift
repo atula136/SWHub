@@ -21,7 +21,7 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
         static let repoCell = ReusableCell<RepoBasicCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingRepoSection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<RepoSection>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -54,13 +54,14 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] sectionItem in
             guard let `self` = self else { return }
             switch sectionItem {
-            case let .repo(item):
+            case let .basic(item):
                 if var url = Router.Repo.detail.urlString.url,
                     let fullname = item.currentState.name {
                     url.appendQueryParameters([Parameter.fullname: fullname])
                     self.navigator.push(url)
                 }
                 // self.navigator.push(Router.Repo.detail.pattern)
+            default: break
             }
         }).disposed(by: self.disposeBag)
     }
@@ -100,14 +101,15 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingRepoListViewReactor) -> RxCollectionViewSectionedReloadDataSource<TrendingRepoSection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingRepoListViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepoSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .repo(item):
+                case let .basic(item):
                     let cell = collectionView.dequeue(Reusable.repoCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
+                default: return collectionView.emptyCell(for: indexPath)
                 }
         })
     }
@@ -118,8 +120,9 @@ extension TrendingRepoListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .repo(item):
+        case let .basic(item):
             return Reusable.repoCell.class.size(width: width, item: item)
+        default: return .zero
         }
     }
 

@@ -33,8 +33,8 @@ extension ProviderType {
         return self.githubNetworking.requestObject(.repo(fullname: fullname), type: Repo.self)
     }
 
-    func readme(fullname: String) -> Observable<Repo.Readme> {
-        return self.githubNetworking.requestObject(.readme(fullname: fullname, ref: nil), type: Repo.Readme.self)
+    func readme(fullname: String) -> Observable<Readme> {
+        return self.githubNetworking.requestObject(.readme(fullname: fullname, ref: nil), type: Readme.self)
     }
 
     func checkStarring(fullname: String) -> Observable<Bool> {

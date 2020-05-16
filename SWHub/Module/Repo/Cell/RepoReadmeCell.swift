@@ -57,7 +57,7 @@ class RepoReadmeCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        guard let readme = item.model as? Repo.Readme else { return .zero }
+        guard let readme = item.model as? Readme else { return .zero }
         return CGSize(width: width, height: flat(readme.height ?? 0 + 10))
     }
 

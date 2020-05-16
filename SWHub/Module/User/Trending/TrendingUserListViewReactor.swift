@@ -60,7 +60,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.provider.developers(language: nil, since: "daily").map { Mutation.start($0, toCache: true) }.catchError({ .just(.setError($0)) }),
+//                self.provider.developers(language: nil, since: "daily").map { Mutation.start($0, toCache: true) }.catchError({ .just(.setError($0)) }),
                 .just(.setRefreshing(false))
             ])
         }

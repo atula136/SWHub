@@ -8,6 +8,9 @@ excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高�
     - Pods
     - SWHub/R.generated.swift
 
+force_try:
+    severity: warning # explicitly
+
 line_length:
     - 300 # warning
     - 400 # error

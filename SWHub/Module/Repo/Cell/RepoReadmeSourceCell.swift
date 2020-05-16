@@ -56,7 +56,7 @@ class RepoReadmeSourceCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        guard let readme = item.model as? Repo.Readme else { return .zero }
+        guard let readme = item.model as? Readme else { return .zero }
         let textView = UITextView()
         textView.attributedText = readme.highlightedCode
         let size = textView.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude))

@@ -25,7 +25,7 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setRefreshing(Bool)
         case setError(Error?)
         case setCondition(Condition)
-        case start([TrendingRepo])
+        case start([Repo])
     }
 
     struct State {
@@ -34,7 +34,7 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var title: String?
         var error: Error?
         var condition: Condition!
-        var sections: [TrendingRepoSection] = []
+        var sections: [RepoSection] = []
     }
 
     var initialState = State()
@@ -42,8 +42,8 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            condition: Condition.current(),
-            sections: [.repos((TrendingRepo.cachedArray() ?? []).map { .repo(RepoBasicItem($0)) })]
+            condition: Condition.current()
+            // sections: [.repos((TrendingRepo.cachedArray() ?? []).map { .repo(RepoBasicItem($0)) })]
         )
     }
 
@@ -57,7 +57,7 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                request.map { Mutation.start($0) }.catchError({ .just(.setError($0)) }),
+//                request.map { Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setLoading(false))
             ])
         case .refresh:
@@ -85,9 +85,10 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.error = error
         case let .setCondition(condition):
             state.condition = condition
-        case let .start(repos):
-            TrendingRepo.storeArray(repos)
-            state.sections = [.repos(repos.map { .repo(RepoBasicItem($0)) })]
+        case .start:
+            // TrendingRepo.storeArray(repos)
+            // state.sections = [.repos(repos.map { .repo(RepoBasicItem($0)) })]
+            print("")
         }
         return state
     }

@@ -49,7 +49,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         self.initialState = State(
             isNight: ThemeType.currentTheme().isDark,
             title: stringDefault(self.title, R.string.localizable.mainTabBarSetting()),
-            repo: SubjectFactory.current(Repo.self)
+            repo: nil // SubjectFactory.current(Repo.self) // YJX_TODO 存储
         )
     }
 
@@ -110,9 +110,10 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         return state
     }
 
-    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        return .merge(mutation, SubjectFactory.subject(User.self).asObservable().map(Mutation.setUser))
-    }
+    // YJX_TODO 存储
+//    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+//        return .merge(mutation, SubjectFactory.subject(User.self).asObservable().map(Mutation.setUser))
+//    }
 
     func sections(_ sections: [[ModelType]]) -> [SettingSection] {
         return sections.map { models -> SettingSection in

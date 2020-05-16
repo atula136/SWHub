@@ -51,6 +51,10 @@ final class AppDependency: NSObject, AppDependencyType {
     func application(_ application: UIApplication, leaveDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
     }
 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("本地路径: \(NSHomeDirectory())")
+    }
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
 //        var optionParam: [String: Any] = [:]
 //        for (kind, value) in options {

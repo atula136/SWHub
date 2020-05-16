@@ -26,7 +26,7 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setLoading(Bool)
         case setError(Error?)
         case setRepo(Repo)
-        case setReadme(Repo.Readme)
+        case setReadme(Readme)
     }
 
     struct State {
@@ -34,7 +34,7 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var title: String?
         var error: Error?
         var repo: Repo!
-        var readme: Repo.Readme!
+        var readme: Readme!
         var sections: [RepoSection] = []
     }
 
@@ -101,17 +101,17 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         }
     }
 
-    func requestReadme(_ fullname: String) -> Observable<Repo.Readme> {
-        return self.provider.readme(fullname: fullname).flatMap { [weak self] readme -> Observable<Repo.Readme> in
+    func requestReadme(_ fullname: String) -> Observable<Readme> {
+        return self.provider.readme(fullname: fullname).flatMap { [weak self] readme -> Observable<Readme> in
             guard let `self` = self, let url = readme.downloadUrl?.url else { return .empty() }
-            return self.provider.download(url: url).map { markdown -> Repo.Readme in
+            return self.provider.download(url: url).map { markdown -> Readme in
                 let readme = readme
                 readme.markdown = markdown
                 return readme
             }
-        }.flatMap { [weak self] readme -> Observable<Repo.Readme> in
+        }.flatMap { [weak self] readme -> Observable<Readme> in
             guard let `self` = self, let markdown = readme.markdown else { return .empty() }
-            return self.markdownHeight(markdown).map { height -> Repo.Readme in
+            return self.markdownHeight(markdown).map { height -> Readme in
                 let readme = readme
                 readme.height = height
                 return readme

@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxRealm
+import RealmSwift
 import ReactorKit
 import SWFrame
 
@@ -73,7 +75,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case let .setPassword(password):
             state.password = password
         case let .setUser(user):
-            SubjectFactory.update(User.self, user)
+            // SubjectFactory.update(User.self, user)
             state.user = user
         }
         return state

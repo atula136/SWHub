@@ -29,7 +29,7 @@ class RepoReadmeSourceItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        guard let readme = model as? Repo.Readme else { return }
+        guard let readme = model as? Readme else { return }
         self.initialState = State(
             content: readme.highlightedCode
         )

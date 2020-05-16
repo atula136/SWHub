@@ -24,8 +24,8 @@ extension ProviderType {
     /// - Parameters:
     ///   - language: 语言
     ///   - since: 时间
-    func repositories(language: String?, since: String?) -> Observable<[TrendingRepo]> {
-        return self.trendingNetworking.requestArray(.repositories(language: language, since: since), type: TrendingRepo.self)
+    func repositories(language: String?, since: String?) -> Observable<[Repo]> {
+        return self.trendingNetworking.requestArray(.repositories(language: language, since: since), type: Repo.self)
     }
 
     /// 用户趋势：https://github-trending-api.now.sh/developers?language=Swift&since=monthly
