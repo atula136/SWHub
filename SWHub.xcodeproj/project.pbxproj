@@ -518,6 +518,48 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		79402D1624700B5A00B95791 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				79D8C81E24620AB900A905F0 /* Repo.swift */,
+				7979453B246FE0500084B2F8 /* Repo.License.swift */,
+				7979453D246FE0D60084B2F8 /* Repo.Permissions.swift */,
+				7979453F246FE1300084B2F8 /* Repo.Readme.swift */,
+				79794541246FE2500084B2F8 /* Repo.Starred.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		79402D1724700B6E00B95791 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				7919593F2467F0F500C6DFFC /* RepoBasicItem.swift */,
+				79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */,
+				79754861246C15050044A128 /* RepoReadmeItem.swift */,
+				79B6CE9F246C2A570072C34C /* RepoProfileItem.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		79402D1824700B7600B95791 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				791959412467F0FF00C6DFFC /* RepoBasicCell.swift */,
+				79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */,
+				79754863246C150E0044A128 /* RepoReadmeCell.swift */,
+				796E997D246C2A9900DB6EAE /* RepoProfileCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		79402D1924700B8E00B95791 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				799F700C246BAEF500004589 /* RepoSection.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
 		794E3BEE24668CE9003DDDFB /* List */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,23 +683,13 @@
 		79A8BDD9245FC82700E88DB2 /* Repo */ = {
 			isa = PBXGroup;
 			children = (
+				79402D1924700B8E00B95791 /* Section */,
+				79402D1824700B7600B95791 /* Cell */,
+				79402D1724700B6E00B95791 /* Item */,
+				79402D1624700B5A00B95791 /* Model */,
 				794E3BEF24668CF5003DDDFB /* List */,
 				799374772464204E00EC322C /* Detail */,
 				79A8BDDC245FC90600E88DB2 /* Trending */,
-				79D8C81E24620AB900A905F0 /* Repo.swift */,
-				7919593F2467F0F500C6DFFC /* RepoBasicItem.swift */,
-				791959412467F0FF00C6DFFC /* RepoBasicCell.swift */,
-				79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */,
-				79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */,
-				799F700C246BAEF500004589 /* RepoSection.swift */,
-				79754861246C15050044A128 /* RepoReadmeItem.swift */,
-				79754863246C150E0044A128 /* RepoReadmeCell.swift */,
-				79B6CE9F246C2A570072C34C /* RepoProfileItem.swift */,
-				796E997D246C2A9900DB6EAE /* RepoProfileCell.swift */,
-				7979453B246FE0500084B2F8 /* Repo.License.swift */,
-				7979453D246FE0D60084B2F8 /* Repo.Permissions.swift */,
-				7979453F246FE1300084B2F8 /* Repo.Readme.swift */,
-				79794541246FE2500084B2F8 /* Repo.Starred.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";

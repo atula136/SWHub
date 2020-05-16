@@ -36,7 +36,7 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var noMoreData = false
         var title: String?
         var error: Error?
-        var sections: [RepoListSection] = []
+        var sections: [RepoSection] = []
     }
 
     var fullname: String?
@@ -114,12 +114,12 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             if toCache {
                 // Repo.storeArray(repos) // YJX_TODO 存储
             }
-            state.sections = [.repos(repos.map { .repo(RepoBasicItem($0)) })]
+            state.sections = [.list(repos.map { .basic(RepoBasicItem($0)) })]
         case let .append(repos):
             state.noMoreData = repos.count < self.pageSize
             var items = state.sections[0].items
-            items += repos.map { .repo(RepoBasicItem($0)) }
-            state.sections = [.repos(items)]
+            items += repos.map { .basic(RepoBasicItem($0)) }
+            state.sections = [.list(items)]
         }
         return state
     }

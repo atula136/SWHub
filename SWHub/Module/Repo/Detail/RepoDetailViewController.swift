@@ -85,6 +85,8 @@ class RepoDetailViewController: CollectionViewController, ReactorKit.View {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
+                case .basic:
+                    return collectionView.emptyCell(for: indexPath)
                 case let .profile(item):
                     let cell = collectionView.dequeue(Reusable.detailCell, for: indexPath)
                     cell.bind(reactor: item)
@@ -103,6 +105,8 @@ extension RepoDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
+        case .basic:
+            return .zero
         case let .profile(item):
             return Reusable.detailCell.class.size(width: width, item: item)
         case let .readme(item):

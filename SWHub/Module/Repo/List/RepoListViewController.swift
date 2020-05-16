@@ -18,10 +18,10 @@ import SWFrame
 class RepoListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let repoCell = ReusableCell<RepoBasicCell>()
+        static let basicCell = ReusableCell<RepoBasicCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<RepoListSection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<RepoSection>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -48,7 +48,7 @@ class RepoListViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.repoCell)
+        self.collectionView.register(Reusable.basicCell)
     }
 
     func bind(reactor: RepoListViewReactor) {
@@ -94,14 +94,15 @@ class RepoListViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepoListViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepoListSection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: RepoListViewReactor) -> RxCollectionViewSectionedReloadDataSource<RepoSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .repo(item):
-                    let cell = collectionView.dequeue(Reusable.repoCell, for: indexPath)
+                case let .basic(item):
+                    let cell = collectionView.dequeue(Reusable.basicCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
+                default: return collectionView.emptyCell(for: indexPath)
                 }
         })
     }
@@ -113,8 +114,9 @@ extension RepoListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .repo(item):
-            return Reusable.repoCell.class.size(width: width, item: item)
+        case let .basic(item):
+            return Reusable.basicCell.class.size(width: width, item: item)
+        default: return .zero
         }
     }
 
