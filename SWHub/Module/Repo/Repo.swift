@@ -30,16 +30,19 @@ class Repo: Object, ModelType, Identifiable, Eventable {
     @objc dynamic var watchersCount = 0
     @objc dynamic var forksCount = 0
     @objc dynamic var openIssuesCount = 0
-    @objc dynamic var forks = 0
     @objc dynamic var openIssues = 0
     @objc dynamic var watchers = 0
     @objc dynamic var networkCount = 0
     @objc dynamic var subscribersCount = 0
+    @objc dynamic var currentPeriodStars = 0
     @objc dynamic var nodeId: String?
     @objc dynamic var name: String?
+    @objc dynamic var author: String?
+    @objc dynamic var avatar: String?
     @objc dynamic var fullName: String?
     @objc dynamic var introduction: String?
     @objc dynamic var language: String?
+    @objc dynamic var languageColor: String?
     @objc dynamic var defaultBranch: String?
     @objc dynamic var tempCloneToken: String?
     @objc dynamic var createdAt: String?
@@ -92,6 +95,7 @@ class Repo: Object, ModelType, Identifiable, Eventable {
     @objc dynamic var license: License?
     @objc dynamic var permissions: Permissions?
     @objc dynamic var owner: User?
+    var builtBy = RealmSwift.List<User>()
 
     var basic: NSAttributedString? {
           var texts: [NSAttributedString] = []
@@ -133,7 +137,7 @@ class Repo: Object, ModelType, Identifiable, Eventable {
       var counts: [NSAttributedString] {
           let watchs = self.count(title: R.string.localizable.watchs(), value: self.subscribersCount)
           let stars = self.count(title: R.string.localizable.stars(), value: self.stargazersCount)
-          let forks = self.count(title: R.string.localizable.forks(), value: self.forks)
+          let forks = self.count(title: R.string.localizable.forks(), value: self.forksCount)
           return [watchs, stars, forks]
       }
 
@@ -185,16 +189,19 @@ class Repo: Object, ModelType, Identifiable, Eventable {
         watchersCount               <- map["watchers_count"]
         forksCount                  <- map["forks_count"]
         openIssuesCount             <- map["open_issues_count"]
-        forks                       <- map["forks"]
+        currentPeriodStars          <- map["currentPeriodStars"]
         openIssues                  <- map["open_issues"]
         watchers                    <- map["watchers"]
         networkCount                <- map["network_count"]
         subscribersCount            <- map["subscribers_count"]
         nodeId                      <- map["node_id"]
         name                        <- map["name"]
+        author                      <- map["author"]
+        avatar                      <- map["avatar"]
         fullName                    <- map["full_name"]
-        introduction                 <- map["description"]
+        introduction                <- map["description"]
         language                    <- map["language"]
+        languageColor               <- map["languageColor"]
         defaultBranch               <- map["default_branch"]
         tempCloneToken              <- map["temp_clone_token"]
         createdAt                   <- map["created_at"]
@@ -246,7 +253,14 @@ class Repo: Object, ModelType, Identifiable, Eventable {
         license                     <- map["license"]
         permissions                 <- map["permissions"]
         owner                       <- map["owner"]
+        builtBy                     <- map["builtBy"]
         updatedAt                   <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
+        if stargazersCount == 0 {
+            stargazersCount         <- map["stars"]
+        }
+        if forksCount == 0 {
+            forksCount              <- map["forks"]
+        }
     }
 
     enum Event {

@@ -49,6 +49,7 @@ class User: Object, ModelType, Identifiable {
     @objc dynamic var bio: String?
     @objc dynamic var gravatarId: String?
     @objc dynamic var url: String?
+    @objc dynamic var href: String?
     @objc dynamic var avatar: String?
     @objc dynamic var htmlUrl: String?
     @objc dynamic var followersUrl: String?
@@ -62,6 +63,7 @@ class User: Object, ModelType, Identifiable {
     @objc dynamic var receivedEventsUrl: String?
     @objc dynamic var createdAt: Date?
     @objc dynamic var updatedAt: Date?
+    @objc dynamic var repo: Repo?
 
     var detail: NSAttributedString? {
         var texts = [NSAttributedString]()
@@ -145,6 +147,7 @@ class User: Object, ModelType, Identifiable {
         bio                             <- map["bio"]
         gravatarId                      <- map["gravatar_id"]
         url                             <- map["url"]
+        href                            <- map["href"]
         avatar                          <- map["avatar_url"]
         htmlUrl                         <- map["html_url"]
         followersUrl                    <- map["followers_url"]
@@ -158,8 +161,12 @@ class User: Object, ModelType, Identifiable {
         receivedEventsUrl               <- map["received_events_url"]
         createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
         updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
+        repo                            <- map["repo"]
         if username == nil {
             username                    <- map["username"]
+        }
+        if avatar == nil {
+            avatar                      <- map["avatar"]
         }
     }
 
