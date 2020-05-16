@@ -35,7 +35,7 @@ class ConditionLanguageItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        guard let language = model as? Condition.Language else { return }
+        guard let language = model as? Language else { return }
         self.initialState = State(
             checked: language.checked,
             title: language.urlParam == nil ? NSLocalizedString(language.name ?? R.string.localizable.allLanguages(), comment: "") : language.name
@@ -46,20 +46,20 @@ class ConditionLanguageItem: CollectionItem, ReactorKit.Reactor {
         var state = state
         switch mutation {
         case let .setSelect(urlParam):
-            if let language = self.model as? Condition.Language {
+            if let language = self.model as? Language {
                 state.checked = urlParam == language.urlParam
             }
         }
         return state
     }
 
-    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let languageSelectEvent = Condition.Language.event.flatMap { event -> Observable<Mutation> in
-            switch event {
-            case let .select(urlParam):
-                return .just(.setSelect(urlParam))
-            }
-        }
-        return .merge(mutation, languageSelectEvent)
-    }
+//    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+//        let languageSelectEvent = Language.event.flatMap { event -> Observable<Mutation> in
+//            switch event {
+//            case let .select(urlParam):
+//                return .just(.setSelect(urlParam))
+//            }
+//        }
+//        return .merge(mutation, languageSelectEvent)
+//    }
 }

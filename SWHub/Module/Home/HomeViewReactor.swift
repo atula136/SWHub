@@ -20,13 +20,13 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     enum Mutation {
         case setLoading(Bool)
-        case setLanguages([Condition.Language])
+        case setLanguages([Language])
     }
 
     struct State {
         var isLoading = false
         var title: String?
-        var languages: [Condition.Language]?
+        var languages: [Language]?
         var items: [HomeKey] = [.repository, .developer]
     }
 
@@ -50,17 +50,17 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         }
     }
 
-    func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
-        switch mutation {
-        case let .setLoading(isLoading):
-            state.isLoading = isLoading
-        case let .setLanguages(languages):
-            state.languages = languages
-            Condition.Language.storeArray(languages)
-        }
-        return state
-    }
+//    func reduce(state: State, mutation: Mutation) -> State {
+//        var state = state
+//        switch mutation {
+//        case let .setLoading(isLoading):
+//            state.isLoading = isLoading
+//        case let .setLanguages(languages):
+//            state.languages = languages
+//            Condition.Language.storeArray(languages)
+//        }
+//        return state
+//    }
 
 }
 

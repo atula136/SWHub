@@ -90,12 +90,12 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
         reactor.state.map { $0.error }
             .bind(to: self.rx.error)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.condition }
-            .distinctUntilChanged()
-            .skip(1)
-            .mapToVoid()
-            .bind(to: self.rx.startPullToRefresh)
-            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.condition }
+//            .distinctUntilChanged()
+//            .skip(1)
+//            .mapToVoid()
+//            .bind(to: self.rx.startPullToRefresh)
+//            .disposed(by: self.disposeBag)
         reactor.state.map { $0.sections }
             .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)

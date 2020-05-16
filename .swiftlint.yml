@@ -1,4 +1,5 @@
 disabled_rules:
+    - force_try
     - nesting
 
 included: # 执行 linting 时包含的路径。如果出现这个 `--path` 会被忽略。
@@ -7,9 +8,6 @@ included: # 执行 linting 时包含的路径。如果出现这个 `--path` 会�
 excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高。
     - Pods
     - SWHub/R.generated.swift
-
-force_try:
-    severity: warning # explicitly
 
 line_length:
     - 300 # warning

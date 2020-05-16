@@ -6,45 +6,45 @@
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
-import UIKit
-import BonMot
-import Iconic
-import ObjectMapper
-import SWFrame
-
-struct TrendingUser: ModelType, Storable2 {
-
-    var id: Int?
-    var name: String?
-    var username: String?
-    var url: URL?
-    var avatar: URL?
-    var href: URL?
-    var repo: TrendingRepo?
-
-    init() {
-    }
-
-    init?(map: Map) {
-    }
-
-    mutating func mapping(map: Map) {
-        name            <- map["name"]
-        username        <- map["username"]
-        url             <- (map["url"], URLTransform())
-        avatar          <- (map["avatar"], URLTransform())
-        href            <- (map["href"], URLTransform())
-        repo            <- map["repo"]
-    }
-
-    func repoText() -> NSAttributedString? {
-        var texts: [NSAttributedString] = []
-        let string = (self.repo?.name ?? "").styled(with: .color(.title))
-        let image = FontAwesomeIcon.bookIcon.image(ofSize: .init(16), color: .title).styled(with: .baselineOffset(-3))
-        texts.append(.composed(of: [
-            image, Special.space, string
-        ]))
-        return .composed(of: texts)
-    }
-
-}
+//import UIKit
+//import BonMot
+//import Iconic
+//import ObjectMapper
+//import SWFrame
+//
+//struct TrendingUser: ModelType, Storable2 {
+//
+//    var id: Int?
+//    var name: String?
+//    var username: String?
+//    var url: URL?
+//    var avatar: URL?
+//    var href: URL?
+//    var repo: TrendingRepo?
+//
+//    init() {
+//    }
+//
+//    init?(map: Map) {
+//    }
+//
+//    mutating func mapping(map: Map) {
+//        name            <- map["name"]
+//        username        <- map["username"]
+//        url             <- (map["url"], URLTransform())
+//        avatar          <- (map["avatar"], URLTransform())
+//        href            <- (map["href"], URLTransform())
+//        repo            <- map["repo"]
+//    }
+//
+//    func repoText() -> NSAttributedString? {
+//        var texts: [NSAttributedString] = []
+//        let string = (self.repo?.name ?? "").styled(with: .color(.title))
+//        let image = FontAwesomeIcon.bookIcon.image(ofSize: .init(16), color: .title).styled(with: .baselineOffset(-3))
+//        texts.append(.composed(of: [
+//            image, Special.space, string
+//        ]))
+//        return .composed(of: texts)
+//    }
+//
+//}

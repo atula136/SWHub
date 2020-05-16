@@ -32,19 +32,24 @@ class UserBasicItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        if let user = model as? User {
-            self.initialState = State(
-                name: user.username,
-                avatar: user.avatar?.url
-            )
-        } else if let user = model as? TrendingUser {
-            self.initialState = State(
-                name: user.name,
-                description: user.repo?.description,
-                repo: user.repoText(),
-                avatar: user.avatar
-            )
-        }
+        guard let user = model as? User else { return }
+        self.initialState = State(
+            name: user.username,
+            avatar: user.avatar?.url
+        )
+//        if let user = model as? User {
+//            self.initialState = State(
+//                name: user.username,
+//                avatar: user.avatar?.url
+//            )
+//        } else if let user = model as? TrendingUser {
+//            self.initialState = State(
+//                name: user.name,
+//                description: user.repo?.description,
+//                repo: user.repoText(),
+//                avatar: user.avatar
+//            )
+//        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -61,13 +66,13 @@ class UserBasicItem: CollectionItem, ReactorKit.Reactor {
         return .merge(mutation, nightEvent)
     }
 
-    func transform(state: Observable<State>) -> Observable<State> {
-        guard let user = self.model as? TrendingUser else { return state }
-        return state.flatMap { state -> Observable<State> in
-            var state = state
-            state.repo = user.repoText()
-            return .just(state)
-        }
-    }
+//    func transform(state: Observable<State>) -> Observable<State> {
+//        guard let user = self.model as? TrendingUser else { return state }
+//        return state.flatMap { state -> Observable<State> in
+//            var state = state
+//            state.repo = user.repoText()
+//            return .just(state)
+//        }
+//    }
 
 }

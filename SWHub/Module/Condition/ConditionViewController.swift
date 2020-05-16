@@ -32,7 +32,7 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
 //    }
 
     lazy var segment: UISegmentedControl = {
-        let segment = UISegmentedControl(items: Condition.Since.allValues.map { $0.title })
+        let segment = UISegmentedControl(items: Since.allValues.map { $0.title })
         for index in 0..<segment.numberOfSegments {
             segment.setWidth(60, forSegmentAt: index)
         }
@@ -56,18 +56,18 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.save())
-        saveButton.rx.tap.subscribe(onNext: { [weak self] _ in
-            guard let `self` = self else { return }
-            var condition = Condition.init()
-            condition.since = self.reactor!.currentState.since
-            condition.language = self.reactor!.currentState.language
-            Condition.update(condition)
-            self.dismiss(animated: true, completion: nil)
-        }).disposed(by: self.disposeBag)
-        self.navigationBar.titleView = self.segment
-
-        self.collectionView.register(Reusable.languageCell)
+//        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.save())
+//        saveButton.rx.tap.subscribe(onNext: { [weak self] _ in
+//            guard let `self` = self else { return }
+//            var condition = Condition.init()
+//            condition.since = self.reactor!.currentState.since
+//            condition.language = self.reactor!.currentState.language
+//            Condition.update(condition)
+//            self.dismiss(animated: true, completion: nil)
+//        }).disposed(by: self.disposeBag)
+//        self.navigationBar.titleView = self.segment
+//
+//        self.collectionView.register(Reusable.languageCell)
 
         themeService.rx
             .bind({ [NSAttributedString.Key.foregroundColor: $0.titleColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
@@ -77,46 +77,46 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
 
     func bind(reactor: ConditionViewReactor) {
         super.bind(reactor: reactor)
-        // action
-        self.rx.viewDidLoad.map { Reactor.Action.load }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
-        self.rx.emptyDataSet.map { Reactor.Action.load }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
-        self.segment.rx.selectedSegmentIndex.skip(1).distinctUntilChanged().map { Reactor.Action.since($0) }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
-        self.collectionView.rx.itemSelected(dataSource: self.dataSource).map { sectionItem -> String? in
-            switch sectionItem {
-            case let .language(item):
-                if let language = item.model as? Condition.Language {
-                    return language.urlParam
-                }
-                return nil
-            }}.distinctUntilChanged().map { Reactor.Action.language($0) }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
-        // state
-        reactor.state.map { $0.since.rawValue }
-            .distinctUntilChanged()
-            .ignore(self.segment.selectedSegmentIndex)
-            .bind(to: self.segment.rx.selectedSegmentIndex)
-            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.language.urlParam }
-            .distinctUntilChanged()
-            .bind(to: self.rx.language)
-            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.isLoading }
-            .distinctUntilChanged()
-            .bind(to: self.rx.loading())
-            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.error }
-            .bind(to: self.rx.error)
-            .disposed(by: self.disposeBag)
-        reactor.state.map { $0.sections }
-            .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
-            .disposed(by: self.disposeBag)
+//        // action
+//        self.rx.viewDidLoad.map { Reactor.Action.load }
+//            .bind(to: reactor.action)
+//            .disposed(by: self.disposeBag)
+//        self.rx.emptyDataSet.map { Reactor.Action.load }
+//            .bind(to: reactor.action)
+//            .disposed(by: self.disposeBag)
+//        self.segment.rx.selectedSegmentIndex.skip(1).distinctUntilChanged().map { Reactor.Action.since($0) }
+//            .bind(to: reactor.action)
+//            .disposed(by: self.disposeBag)
+//        self.collectionView.rx.itemSelected(dataSource: self.dataSource).map { sectionItem -> String? in
+//            switch sectionItem {
+//            case let .language(item):
+//                if let language = item.model as? Condition.Language {
+//                    return language.urlParam
+//                }
+//                return nil
+//            }}.distinctUntilChanged().map { Reactor.Action.language($0) }
+//            .bind(to: reactor.action)
+//            .disposed(by: self.disposeBag)
+//        // state
+//        reactor.state.map { $0.since.rawValue }
+//            .distinctUntilChanged()
+//            .ignore(self.segment.selectedSegmentIndex)
+//            .bind(to: self.segment.rx.selectedSegmentIndex)
+//            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.language.urlParam }
+//            .distinctUntilChanged()
+//            .bind(to: self.rx.language)
+//            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.isLoading }
+//            .distinctUntilChanged()
+//            .bind(to: self.rx.loading())
+//            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.error }
+//            .bind(to: self.rx.error)
+//            .disposed(by: self.disposeBag)
+//        reactor.state.map { $0.sections }
+//            .bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+//            .disposed(by: self.disposeBag)
     }
 
     static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: ConditionViewReactor) -> RxCollectionViewSectionedReloadDataSource<ConditionSection> {
@@ -148,7 +148,7 @@ extension Reactive where Base: ConditionViewController {
 
     var language: Binder<String?> {
         return Binder(self.base) { _, attr in
-            Condition.Language.event.onNext(.select(attr))
+            // Language.event.onNext(.select(attr))
         }
     }
 }

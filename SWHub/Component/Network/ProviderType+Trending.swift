@@ -16,8 +16,8 @@ extension ProviderType {
         return TrendingNetworking(provider: NetworkProvider<TrendingAPI>(endpointClosure: TrendingNetworking.endpointsClosure(), requestClosure: TrendingNetworking.endpointResolver(), stubClosure: TrendingNetworking.APIKeysBasedStubBehaviour, plugins: TrendingNetworking.plugins))
     }
 
-    func languages() -> Observable<[Condition.Language]> {
-        return self.trendingNetworking.requestArray(.languages, type: Condition.Language.self)
+    func languages() -> Observable<[Language]> {
+        return self.trendingNetworking.requestArray(.languages, type: Language.self)
     }
 
     /// 仓库趋势：https://github-trending-api.now.sh/repositories?language=Swift&since=monthly
@@ -32,7 +32,7 @@ extension ProviderType {
     /// - Parameters:
     ///   - language: 语言
     ///   - since: 时间
-    func developers(language: String?, since: String?) -> Observable<[TrendingUser]> {
-        return self.trendingNetworking.requestArray(.developers(language: language, since: since), type: TrendingUser.self)
+    func developers(language: String?, since: String?) -> Observable<[User]> {
+        return self.trendingNetworking.requestArray(.developers(language: language, since: since), type: User.self)
     }
 }

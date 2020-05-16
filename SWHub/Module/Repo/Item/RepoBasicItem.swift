@@ -35,23 +35,30 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        if let repo = model as? Repo {
-            self.initialState = State(
-                name: repo.fullName,
-                description: repo.description,
-                avatar: repo.owner?.avatar?.url
-            )
-        } else if let repo = model as? TrendingRepo {
-            self.initialState = State(
-                name: "\(repo.author ?? "")/\(repo.name ?? "")",
-                description: repo.description,
-                status: R.string.localizable.trendingRepoStarsNew(Condition.current()!.since.title, repo.currentPeriodStars ?? 0),
-                language: repo.languageText(),
-                stars: repo.starsText(),
-                forks: repo.forksText(),
-                avatar: repo.avatar
-            )
-        }
+        guard let repo = model as? Repo else { return }
+        self.initialState = State(
+            name: repo.fullName,
+            description: repo.description,
+            avatar: repo.owner?.avatar?.url
+        )
+//        if let repo = model as? Repo {
+//            self.initialState = State(
+//                name: repo.fullName,
+//                description: repo.description,
+//                avatar: repo.owner?.avatar?.url
+//            )
+//        }
+//        else if let repo = model as? TrendingRepo {
+//            self.initialState = State(
+//                name: "\(repo.author ?? "")/\(repo.name ?? "")",
+//                description: repo.description,
+//                status: R.string.localizable.trendingRepoStarsNew(Condition.current()!.since.title, repo.currentPeriodStars ?? 0),
+//                language: repo.languageText(),
+//                stars: repo.starsText(),
+//                forks: repo.forksText(),
+//                avatar: repo.avatar
+//            )
+//        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -68,15 +75,15 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
         return .merge(mutation, nightEvent)
     }
 
-    func transform(state: Observable<State>) -> Observable<State> {
-        guard let repo = self.model as? TrendingRepo else { return state }
-        return state.flatMap { state -> Observable<State> in
-            var state = state
-            state.language = repo.languageText()
-            state.stars = repo.starsText()
-            state.forks = repo.forksText()
-            return .just(state)
-        }
-    }
+//    func transform(state: Observable<State>) -> Observable<State> {
+//        guard let repo = self.model as? TrendingRepo else { return state }
+//        return state.flatMap { state -> Observable<State> in
+//            var state = state
+//            state.language = repo.languageText()
+//            state.stars = repo.starsText()
+//            state.forks = repo.forksText()
+//            return .just(state)
+//        }
+//    }
 
 }

@@ -23,7 +23,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setLoading(Bool)
         case setRefreshing(Bool)
         case setError(Error?)
-        case start([TrendingUser], toCache: Bool)
+        case start([User], toCache: Bool)
     }
 
     struct State {
@@ -47,13 +47,13 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
             var load = Observable.just(Mutation.setError(nil))
-            load = load.concat(Observable.just(.setLoading(true)))
-            if let developers = TrendingUser.cachedArray() {
-                load = load.concat(Observable.just(.start(developers, toCache: false)))
-            } else {
-                load = load.concat(self.provider.developers(language: nil, since: "daily").map { Mutation.start($0, toCache: true) }.catchError({ .just(.setError($0)) }))
-            }
-            load = load.concat(Observable.just(.setLoading(false)))
+//            load = load.concat(Observable.just(.setLoading(true)))
+//            if let developers = TrendingUser.cachedArray() {
+//                load = load.concat(Observable.just(.start(developers, toCache: false)))
+//            } else {
+//                load = load.concat(self.provider.developers(language: nil, since: "daily").map { Mutation.start($0, toCache: true) }.catchError({ .just(.setError($0)) }))
+//            }
+//            load = load.concat(Observable.just(.setLoading(false)))
             return load
         case .refresh:
             guard self.currentState.isRefreshing == false else { return .empty() }
@@ -76,9 +76,9 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case let .setError(error):
             state.error = error
         case let .start(users, toCache):
-            if toCache {
-                TrendingUser.storeArray(users)
-            }
+//            if toCache {
+//                TrendingUser.storeArray(users)
+//            }
             state.sections = [.users(users.map { TrendingUserSectionItem.user(UserBasicItem($0)) })]
         }
         return state

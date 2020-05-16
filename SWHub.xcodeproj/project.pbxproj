@@ -95,6 +95,7 @@
 		799547CE245D4403002A7999 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CD245D4403002A7999 /* NavigationController.swift */; };
 		799547D0245D4998002A7999 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CF245D4998002A7999 /* UIApplicationExt.swift */; };
 		799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547D3245D607F002A7999 /* UIViewControllerExt.swift */; };
+		799979882470547900AFACE9 /* default-v0.realm in Resources */ = {isa = PBXBuildFile; fileRef = 799979872470547900AFACE9 /* default-v0.realm */; };
 		799CCE362466AE4D007A1474 /* SettingLoginItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE352466AE4D007A1474 /* SettingLoginItem.swift */; };
 		799CCE382466AE58007A1474 /* SettingLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE372466AE58007A1474 /* SettingLoginCell.swift */; };
 		799F700D246BAEF500004589 /* RepoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F700C246BAEF500004589 /* RepoSection.swift */; };
@@ -277,6 +278,7 @@
 		799547CD245D4403002A7999 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		799547CF245D4998002A7999 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
 		799547D3245D607F002A7999 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		799979872470547900AFACE9 /* default-v0.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-v0.realm"; sourceTree = "<group>"; };
 		799CCE352466AE4D007A1474 /* SettingLoginItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginItem.swift; sourceTree = "<group>"; };
 		799CCE372466AE58007A1474 /* SettingLoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginCell.swift; sourceTree = "<group>"; };
 		799F700C246BAEF500004589 /* RepoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSection.swift; sourceTree = "<group>"; };
@@ -460,8 +462,12 @@
 		792F6D5E245555B700856757 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				7999798D2470622300AFACE9 /* Section */,
+				7999798C2470621E00AFACE9 /* Cell */,
+				7999798B2470621900AFACE9 /* Item */,
+				7999798A2470621100AFACE9 /* Controller */,
+				799979892470620800AFACE9 /* Reactor */,
 				79ED3CA924701C7100EE1F56 /* Model */,
-				79ED3CA424700E3000EE1F56 /* Filter */,
 				79E2AFAC2466390500D63053 /* User */,
 				79D2613F2462D26C00A979D3 /* Web */,
 				791160AF2460428C00737F4B /* Condition */,
@@ -509,6 +515,7 @@
 		792F6D61245555CE00856757 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				799979862470544B00AFACE9 /* Realm */,
 				79CEFB31246FAFE60049419C /* Stub */,
 			);
 			path = Resource;
@@ -682,6 +689,51 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		799979862470544B00AFACE9 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				799979872470547900AFACE9 /* default-v0.realm */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		799979892470620800AFACE9 /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				79EE8A9C245E8D9700A2438C /* TrendingRepoListViewReactor.swift */,
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
+		7999798A2470621100AFACE9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				79EE8A9E245E8DA300A2438C /* TrendingRepoListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7999798B2470621900AFACE9 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		7999798C2470621E00AFACE9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7999798D2470622300AFACE9 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
 		79A8BDD9245FC82700E88DB2 /* Repo */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,8 +752,6 @@
 			isa = PBXGroup;
 			children = (
 				790B88D8245F5989000C89D4 /* TrendingRepo.swift */,
-				79EE8A9E245E8DA300A2438C /* TrendingRepoListViewController.swift */,
-				79EE8A9C245E8D9700A2438C /* TrendingRepoListViewReactor.swift */,
 				79322481245FF8D400BED07A /* TrendingRepoSection.swift */,
 			);
 			path = Trending;
@@ -833,13 +883,6 @@
 				79CB9CFE246D930F006C46DF /* UserSection.swift */,
 			);
 			path = User;
-			sourceTree = "<group>";
-		};
-		79ED3CA424700E3000EE1F56 /* Filter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Filter;
 			sourceTree = "<group>";
 		};
 		79ED3CA924701C7100EE1F56 /* Model */ = {
@@ -1021,6 +1064,7 @@
 				79DEC3F62461D0FC00264EE3 /* Condition.json in Resources */,
 				791160BB24609F3C00737F4B /* languages.json in Resources */,
 				79CEFB45246FAFE60049419C /* repositories.json in Resources */,
+				799979882470547900AFACE9 /* default-v0.realm in Resources */,
 				79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */,
 				79CEFB47246FAFE60049419C /* user-starred-rxhanson-Rectangle.json in Resources */,
 				79CEFB43246FAFE60049419C /* repos-rxhanson-Rectangle-stargazers.1.json in Resources */,
