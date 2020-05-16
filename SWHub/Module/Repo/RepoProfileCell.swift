@@ -182,7 +182,7 @@ class RepoProfileCell: CollectionCell, ReactorKit.View {
         guard let repo = item.model as? Repo else { return .zero }
         var height = 10.f
         height += Metric.avatarSize.height
-        height += (UILabel.sizeThatFitsAttributedString(repo.detail(), withConstraints: .init(width: screenWidth - Constant.Metric.margin * 2, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 0).height + 5)
+        height += (UILabel.sizeThatFitsAttributedString(repo.detail, withConstraints: .init(width: screenWidth - Constant.Metric.margin * 2, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 0).height + 5)
         height += Metric.countHeight
         height += Metric.infoHeight * 3
         return CGSize(width: width, height: flat(height))

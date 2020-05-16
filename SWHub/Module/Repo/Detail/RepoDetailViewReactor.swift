@@ -103,16 +103,16 @@ class RepoDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     func requestReadme(_ fullname: String) -> Observable<Repo.Readme> {
         return self.provider.readme(fullname: fullname).flatMap { [weak self] readme -> Observable<Repo.Readme> in
-            guard let `self` = self, let url = readme.downloadUrl else { return .empty() }
+            guard let `self` = self, let url = readme.downloadUrl?.url else { return .empty() }
             return self.provider.download(url: url).map { markdown -> Repo.Readme in
-                var readme = readme
+                let readme = readme
                 readme.markdown = markdown
                 return readme
             }
         }.flatMap { [weak self] readme -> Observable<Repo.Readme> in
             guard let `self` = self, let markdown = readme.markdown else { return .empty() }
             return self.markdownHeight(markdown).map { height -> Repo.Readme in
-                var readme = readme
+                let readme = readme
                 readme.height = height
                 return readme
             }

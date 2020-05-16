@@ -25,8 +25,8 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setRefreshing(Bool)
         case setLoadingMore(Bool)
         case setError(Error?)
-        case start([User2], toCache: Bool)
-        case append([User2])
+        case start([User], toCache: Bool)
+        case append([User])
     }
 
     struct State {
@@ -40,13 +40,13 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     }
 
     var fullname: String?
-    var request: (String, Int) -> Observable<[User2]> = { _, _ in .empty() }
+    var request: (String, Int) -> Observable<[User]> = { _, _ in .empty() }
     var initialState = State()
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         let list = ListType.init(rawValue: stringDefault(stringMember(self.parameters, Parameter.list, nil), ListType.watchers.rawValue)) ?? ListType.watchers
-        self.request = { (fullname: String, page: Int) -> Observable<[User2]> in
+        self.request = { (fullname: String, page: Int) -> Observable<[User]> in
             switch list {
             case .watchers:
                 return provider.watchers(fullname: fullname, page: page)
@@ -114,7 +114,7 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.error = error
         case let .start(users, toCache):
             if toCache {
-                User2.storeArray(users)
+                // User.storeArray(users) // YJX_TODO 存储
             }
             state.sections = [.users(users.map { .user(UserBasicItem($0)) })]
         case let .append(users):

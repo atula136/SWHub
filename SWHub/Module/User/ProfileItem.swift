@@ -39,7 +39,7 @@ class ProfileItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        guard let user = model as? User2 else { return }
+        guard let user = model as? User else { return }
         self.initialState = State(
             name: user.login,
             description: user.bio,
@@ -47,11 +47,11 @@ class ProfileItem: CollectionItem, ReactorKit.Reactor {
             location: user.location,
             email: user.email,
             blog: user.blog,
-            reposText: user.count(title: R.string.localizable.repositories(), value: (user.publicRepos ?? 0) + (user.totalPrivateRepos ?? 0)),
-            followersText: user.count(title: R.string.localizable.followers(), value: (user.followers ?? 0)),
-            followingText: user.count(title: R.string.localizable.following(), value: (user.following ?? 0)),
+            reposText: user.count(title: R.string.localizable.repositories(), value: user.publicRepos + user.totalPrivateRepos),
+            followersText: user.count(title: R.string.localizable.followers(), value: user.followers),
+            followingText: user.count(title: R.string.localizable.following(), value: user.following),
             createDate: user.createdAt,
-            avatar: user.avatar
+            avatar: user.avatar?.url
         )
     }
 
@@ -70,12 +70,12 @@ class ProfileItem: CollectionItem, ReactorKit.Reactor {
     }
 
     func transform(state: Observable<State>) -> Observable<State> {
-        guard let user = self.model as? User2 else { return state }
+        guard let user = self.model as? User else { return state }
         return state.flatMap { state -> Observable<State> in
             var state = state
-            state.reposText = user.count(title: R.string.localizable.repositories(), value: (user.publicRepos ?? 0) + (user.totalPrivateRepos ?? 0))
-            state.followersText = user.count(title: R.string.localizable.followers(), value: (user.followers ?? 0))
-            state.followingText = user.count(title: R.string.localizable.following(), value: (user.following ?? 0))
+            state.reposText = user.count(title: R.string.localizable.repositories(), value: user.publicRepos + user.totalPrivateRepos)
+            state.followersText = user.count(title: R.string.localizable.followers(), value: user.followers)
+            state.followingText = user.count(title: R.string.localizable.following(), value: user.following)
             return .just(state)
         }
     }

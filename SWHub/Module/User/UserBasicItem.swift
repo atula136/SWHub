@@ -32,10 +32,10 @@ class UserBasicItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        if let user = model as? User2 {
+        if let user = model as? User {
             self.initialState = State(
                 name: user.login,
-                avatar: user.avatar
+                avatar: user.avatar?.url
             )
         } else if let user = model as? TrendingUser {
             self.initialState = State(

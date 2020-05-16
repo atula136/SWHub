@@ -39,12 +39,12 @@ class RepoProfileItem: CollectionItem, ReactorKit.Reactor {
         guard let repo = model as? Repo else { return }
         self.initialState = State(
             name: repo.fullName,
-            detail: repo.detail(),
-            counts: repo.counts(),
-            lang: repo.langInfo(),
-            issue: repo.issueInfo(),
-            request: repo.requestInfo(),
-            avatar: repo.owner?.avatar
+            detail: repo.detail,
+            counts: repo.counts,
+            lang: repo.langInfo,
+            issue: repo.issueInfo,
+            request: repo.requestInfo,
+            avatar: repo.owner?.avatar?.url
         )
     }
 
@@ -63,7 +63,7 @@ class RepoProfileItem: CollectionItem, ReactorKit.Reactor {
     }
 
 //    func transform(state: Observable<State>) -> Observable<State> {
-//        guard let user = self.model as? User2 else { return state }
+//        guard let user = self.model as? User else { return state }
 //        return state.flatMap { state -> Observable<State> in
 //            var state = state
 //            state.reposText = user.count(title: R.string.localizable.repositories(), value: (user.publicRepos ?? 0) + (user.totalPrivateRepos ?? 0))

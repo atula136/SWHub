@@ -112,7 +112,7 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.error = error
         case let .start(repos, toCache):
             if toCache {
-                Repo.storeArray(repos)
+                // Repo.storeArray(repos) // YJX_TODO 存储
             }
             state.sections = [.repos(repos.map { .repo(RepoBasicItem($0)) })]
         case let .append(repos):

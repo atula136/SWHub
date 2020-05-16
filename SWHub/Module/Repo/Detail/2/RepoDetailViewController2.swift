@@ -124,7 +124,7 @@ class RepoDetailViewController2: CollectionViewController, ReactorKit.View {
                     let view = collectionView.dequeue(Reusable.headerView, kind: kind, for: indexPath)
                     view.bind(reactor: RepoDetailHeaderReactor2(reactor.currentState.repository))
                     Observable.merge(view.rx.watchers.asObservable(), view.rx.stargazers.asObservable()).subscribe(onNext: { parameters in
-                        if var url = Router.User2.list.urlString.url,
+                        if var url = Router.User.list.urlString.url,
                             let fullname = reactor.fullname {
                             url.appendQueryParameters(parameters)
                             url.appendQueryParameters([ Parameter.fullname: fullname ])

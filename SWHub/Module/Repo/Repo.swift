@@ -9,95 +9,167 @@
 import UIKit
 import BonMot
 import Iconic
+import RealmSwift
 import ObjectMapper
 import SWFrame
 
-struct Repo: ModelType, Subjective2, Eventable {
-    var `private` = false
-    var fork = false
-    var hasIssues = false
-    var hasProjects = false
-    var hasDownloads = false
-    var hasWiki = false
-    var hasPages = false
-    var archived = false
-    var disabled = false
-    var id: Int?
-    var size: Int?
-    var stargazersCount: Int?
-    var watchersCount: Int?
-    var forksCount: Int?
-    var openIssuesCount: Int?
-    var forks: Int?
-    var openIssues: Int?
-    var watchers: Int?
-    var networkCount: Int?
-    var subscribersCount: Int?
-    var nodeId: String?
-    var name: String?
-    var fullName: String?
-    var description: String?
-    var language: String?
-    var defaultBranch: String?
-    var tempCloneToken: String?
-    var createdAt: String?
-    var updatedAt: Date?
-    var pushedAt: String?
-    var homepage: String?
-    var gitUrl: String?
-    var sshUrl: String?
-    var cloneUrl: String?
-    var svnUrl: String?
-    var mirrorUrl: String?
-    var htmlUrl: String?
-    var url: String?
-    var forksUrl: String?
-    var keysUrl: String?
-    var collaboratorsUrl: String?
-    var teamsUrl: String?
-    var hooksUrl: String?
-    var issueEventsUrl: String?
-    var eventsUrl: String?
-    var assigneesUrl: String?
-    var branchesUrl: String?
-    var tagsUrl: String?
-    var blobsUrl: String?
-    var gitTagsUrl: String?
-    var gitRefsUrl: String?
-    var treesUrl: String?
-    var statusesUrl: String?
-    var languagesUrl: String?
-    var stargazersUrl: String?
-    var contributorsUrl: String?
-    var subscribersUrl: String?
-    var subscriptionUrl: String?
-    var commitsUrl: String?
-    var gitCommitsUrl: String?
-    var commentsUrl: String?
-    var issueCommentUrl: String?
-    var contentsUrl: String?
-    var compareUrl: String?
-    var mergesUrl: String?
-    var archiveUrl: String?
-    var downloadsUrl: String?
-    var issuesUrl: String?
-    var pullsUrl: String?
-    var milestonesUrl: String?
-    var notificationsUrl: String?
-    var labelsUrl: String?
-    var releasesUrl: String?
-    var deploymentsUrl: String?
-    var license: License?
-    var permissions: Permissions?
-    var owner: User2?
+class Repo: Object, ModelType, Identifiable, Eventable {
 
-    init() {
+    @objc dynamic var `private` = false
+    @objc dynamic var fork = false
+    @objc dynamic var hasIssues = false
+    @objc dynamic var hasProjects = false
+    @objc dynamic var hasDownloads = false
+    @objc dynamic var hasWiki = false
+    @objc dynamic var hasPages = false
+    @objc dynamic var archived = false
+    @objc dynamic var disabled = false
+    @objc dynamic var id = UUID().uuidString
+    @objc dynamic var size = 0
+    @objc dynamic var stargazersCount = 0
+    @objc dynamic var watchersCount = 0
+    @objc dynamic var forksCount = 0
+    @objc dynamic var openIssuesCount = 0
+    @objc dynamic var forks = 0
+    @objc dynamic var openIssues = 0
+    @objc dynamic var watchers = 0
+    @objc dynamic var networkCount = 0
+    @objc dynamic var subscribersCount = 0
+    @objc dynamic var nodeId: String?
+    @objc dynamic var name: String?
+    @objc dynamic var fullName: String?
+    @objc dynamic var introduction: String?
+    @objc dynamic var language: String?
+    @objc dynamic var defaultBranch: String?
+    @objc dynamic var tempCloneToken: String?
+    @objc dynamic var createdAt: String?
+    @objc dynamic var updatedAt: Date?
+    @objc dynamic var pushedAt: String?
+    @objc dynamic var homepage: String?
+    @objc dynamic var gitUrl: String?
+    @objc dynamic var sshUrl: String?
+    @objc dynamic var cloneUrl: String?
+    @objc dynamic var svnUrl: String?
+    @objc dynamic var mirrorUrl: String?
+    @objc dynamic var htmlUrl: String?
+    @objc dynamic var url: String?
+    @objc dynamic var forksUrl: String?
+    @objc dynamic var keysUrl: String?
+    @objc dynamic var collaboratorsUrl: String?
+    @objc dynamic var teamsUrl: String?
+    @objc dynamic var hooksUrl: String?
+    @objc dynamic var issueEventsUrl: String?
+    @objc dynamic var eventsUrl: String?
+    @objc dynamic var assigneesUrl: String?
+    @objc dynamic var branchesUrl: String?
+    @objc dynamic var tagsUrl: String?
+    @objc dynamic var blobsUrl: String?
+    @objc dynamic var gitTagsUrl: String?
+    @objc dynamic var gitRefsUrl: String?
+    @objc dynamic var treesUrl: String?
+    @objc dynamic var statusesUrl: String?
+    @objc dynamic var languagesUrl: String?
+    @objc dynamic var stargazersUrl: String?
+    @objc dynamic var contributorsUrl: String?
+    @objc dynamic var subscribersUrl: String?
+    @objc dynamic var subscriptionUrl: String?
+    @objc dynamic var commitsUrl: String?
+    @objc dynamic var gitCommitsUrl: String?
+    @objc dynamic var commentsUrl: String?
+    @objc dynamic var issueCommentUrl: String?
+    @objc dynamic var contentsUrl: String?
+    @objc dynamic var compareUrl: String?
+    @objc dynamic var mergesUrl: String?
+    @objc dynamic var archiveUrl: String?
+    @objc dynamic var downloadsUrl: String?
+    @objc dynamic var issuesUrl: String?
+    @objc dynamic var pullsUrl: String?
+    @objc dynamic var milestonesUrl: String?
+    @objc dynamic var notificationsUrl: String?
+    @objc dynamic var labelsUrl: String?
+    @objc dynamic var releasesUrl: String?
+    @objc dynamic var deploymentsUrl: String?
+    @objc dynamic var license: License?
+    @objc dynamic var permissions: Permissions?
+    @objc dynamic var owner: User?
+
+    var basic: NSAttributedString? {
+          var texts: [NSAttributedString] = []
+          let starsString = self.stargazersCount.kFormatted().styled(with: .color(.title))
+          let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
+          texts.append(.composed(of: [
+              starsImage, Special.space, starsString, Special.space, Special.tab
+          ]))
+
+          if let languageString = self.language?.styled(with: .color(.title)) {
+      //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
+              let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
+              texts.append(.composed(of: [
+                  languageColorShape, Special.space, languageString
+              ]))
+          }
+          return .composed(of: texts)
+      }
+
+      var starsText: NSAttributedString? {
+          var texts: [NSAttributedString] = []
+          let string = self.stargazersCount.kFormatted().styled(with: .color(.title))
+          let image = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
+          texts.append(.composed(of: [
+              image, Special.space, string
+          ]))
+          return .composed(of: texts)
+      }
+
+      var detail: NSAttributedString? {
+          let description = self.introduction?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
+          let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint), .link(self.homepage?.url ?? URL(string: "http://m.baidu.com")!)) ?? NSAttributedString()
+          let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2)) ?? NSAttributedString()
+          return .composed(of: [
+              description, Special.nextLine, homepage, Special.lineSeparator, update
+          ])
+      }
+
+      var counts: [NSAttributedString] {
+          let watchs = self.count(title: R.string.localizable.watchs(), value: self.subscribersCount)
+          let stars = self.count(title: R.string.localizable.stars(), value: self.stargazersCount)
+          let forks = self.count(title: R.string.localizable.forks(), value: self.forks)
+          return [watchs, stars, forks]
+      }
+
+      var langInfo: InfoModel {
+          var info = InfoModel.init()
+          info.icon = FontAwesomeIcon.codeIcon.image(ofSize: .init(20), color: .tint).template
+          info.title = self.language
+          info.detail = self.size.kBytes
+          info.indicated = true
+          return info
+      }
+
+      var issueInfo: InfoModel {
+          var info = InfoModel.init()
+          info.icon = FontAwesomeIcon._627Icon.image(ofSize: .init(20), color: .tint).template
+          info.title = R.string.localizable.issues()
+          info.detail = self.openIssues.string
+          info.indicated = true
+          return info
+      }
+
+      var requestInfo: InfoModel {
+          var info = InfoModel.init()
+          info.icon = FontAwesomeIcon.codeForkIcon.image(ofSize: .init(20), color: .tint).template
+          info.title = R.string.localizable.pullRequests()
+          info.indicated = true
+          return info
+      }
+
+    required init() {
     }
 
-    init?(map: Map) {
+    required init?(map: Map) {
     }
 
-    mutating func mapping(map: Map) {
+    func mapping(map: Map) {
         `private`                   <- map["private"]
         fork                        <- map["fork"]
         hasIssues                   <- map["has_issues"]
@@ -107,7 +179,7 @@ struct Repo: ModelType, Subjective2, Eventable {
         hasPages                    <- map["has_pages"]
         archived                    <- map["archived"]
         disabled                    <- map["disabled"]
-        id                          <- map["id"]
+        id                          <- (map["id"], StringTransform())
         size                        <- map["size"]
         stargazersCount             <- map["stargazers_count"]
         watchersCount               <- map["watchers_count"]
@@ -121,7 +193,7 @@ struct Repo: ModelType, Subjective2, Eventable {
         nodeId                      <- map["node_id"]
         name                        <- map["name"]
         fullName                    <- map["full_name"]
-        description                 <- map["description"]
+        introduction                 <- map["description"]
         language                    <- map["language"]
         defaultBranch               <- map["default_branch"]
         tempCloneToken              <- map["temp_clone_token"]
@@ -180,48 +252,6 @@ struct Repo: ModelType, Subjective2, Eventable {
     enum Event {
     }
 
-    struct License: ModelType, Subjective2 {
-        var id: Int?
-        var key: String?
-        var name: String?
-        var spdxId: String?
-        var url: String?
-        var nodeId: String?
-
-        init() {
-        }
-
-        init?(map: Map) {
-        }
-
-        mutating func mapping(map: Map) {
-            key                     <- map["key"]
-            name                    <- map["name"]
-            spdxId                  <- map["spdx_id"]
-            url                     <- map["url"]
-            nodeId                  <- map["node_id"]
-        }
-    }
-
-    struct Permissions: ModelType, Subjective2 {
-        var id: Int?
-        var admin = false
-        var push = false
-        var pull = false
-
-        init() {
-        }
-
-        init?(map: Map) {
-        }
-
-        mutating func mapping(map: Map) {
-            admin                   <- map["admin"]
-            push                    <- map["push"]
-            pull                    <- map["pull"]
-        }
-    }
-
     func count(title: String, value: Int) -> NSAttributedString {
         let valueText = value.string.styled(with: .color(.title), .font(.bold(16)), .alignment(.center))
         let titleText = title.styled(with: .color(.detail), .font(.normal(14)), .alignment(.center))
@@ -230,164 +260,4 @@ struct Repo: ModelType, Subjective2, Eventable {
         ])
     }
 
-    func basic() -> NSAttributedString? {
-        var texts: [NSAttributedString] = []
-        let starsString = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
-        let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
-        texts.append(.composed(of: [
-            starsImage, Special.space, starsString, Special.space, Special.tab
-        ]))
-
-        if let languageString = self.language?.styled(with: .color(.title)) {
-    //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
-            let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
-            texts.append(.composed(of: [
-                languageColorShape, Special.space, languageString
-            ]))
-        }
-        return .composed(of: texts)
-    }
-
-    func starsText() -> NSAttributedString? {
-        var texts: [NSAttributedString] = []
-        let string = (self.stargazersCount ?? 0).kFormatted().styled(with: .color(.title))
-        let image = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
-        texts.append(.composed(of: [
-            image, Special.space, string
-        ]))
-        return .composed(of: texts)
-    }
-
-    func detail() -> NSAttributedString? {
-        let description = self.description?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
-        let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint), .link(self.homepage?.url ?? URL(string: "http://m.baidu.com")!)) ?? NSAttributedString()
-        let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2)) ?? NSAttributedString()
-        return .composed(of: [
-            description, Special.nextLine, homepage, Special.lineSeparator, update
-        ])
-    }
-
-    func counts() -> [NSAttributedString] {
-        let watchs = self.count(title: R.string.localizable.watchs(), value: self.subscribersCount ?? 0)
-        let stars = self.count(title: R.string.localizable.stars(), value: self.stargazersCount ?? 0)
-        let forks = self.count(title: R.string.localizable.forks(), value: self.forks ?? 0)
-        return [watchs, stars, forks]
-    }
-
-    func langInfo() -> InfoModel {
-        var info = InfoModel.init()
-        info.icon = FontAwesomeIcon.codeIcon.image(ofSize: .init(20), color: .tint).template
-        info.title = self.language
-        info.detail = self.size?.kBytes
-        info.indicated = true
-        return info
-    }
-
-    func issueInfo() -> InfoModel {
-        var info = InfoModel.init()
-        info.icon = FontAwesomeIcon._627Icon.image(ofSize: .init(20), color: .tint).template
-        info.title = R.string.localizable.issues()
-        info.detail = self.openIssues?.string
-        info.indicated = true
-        return info
-    }
-
-    func requestInfo() -> InfoModel {
-        var info = InfoModel.init()
-        info.icon = FontAwesomeIcon.codeForkIcon.image(ofSize: .init(20), color: .tint).template
-        info.title = R.string.localizable.pullRequests()
-        info.indicated = true
-        return info
-    }
-
-}
-
-extension Repo {
-    struct Readme: ModelType, Subjective2 {
-        var id: Int?
-        var size: Int?
-        var name: String?
-        var path: String?
-        var sha: String?
-        var type: String?
-        var encoding: String?
-        var content: String?
-        var url: URL?
-        var htmlUrl: URL?
-        var gitUrl: URL?
-        var downloadUrl: URL?
-        var links: Links?
-        var highlightedCode: NSAttributedString?
-        var markdown: String?
-        var height: CGFloat?
-
-        init() {
-        }
-
-        init?(map: Map) {
-        }
-
-        mutating func mapping(map: Map) {
-            id                      <- map["id"]
-            size                    <- map["size"]
-            name                    <- map["name"]
-            path                    <- map["path"]
-            sha                     <- map["sha"]
-            type                    <- map["type"]
-            encoding                <- map["encoding"]
-            content                 <- map["content"]
-            url                     <- (map["url"], URLTransform())
-            htmlUrl                 <- (map["html_url"], URLTransform())
-            gitUrl                  <- (map["git_url"], URLTransform())
-            downloadUrl             <- (map["download_url"], URLTransform())
-            links                   <- map["_links"]
-        }
-
-        struct Links: ModelType, Subjective2 {
-            var id: Int?
-            var sef: URL?
-            var git: URL?
-            var html: URL?
-
-            init() {
-            }
-
-            init?(map: Map) {
-            }
-
-            mutating func mapping(map: Map) {
-                id                      <- map["id"]
-                sef                     <- (map["self"], URLTransform())
-                git                     <- (map["git"], URLTransform())
-                html                    <- (map["html"], URLTransform())
-            }
-        }
-
-        enum CodingKeys: String, CodingKey {
-            case content
-        }
-
-    }
-}
-
-extension Repo {
-
-    struct Starred: ModelType, Subjective2 {
-
-        var id: Int?
-        var message: String?
-        var documentationUrl: String?
-
-        init() {
-        }
-
-        init?(map: Map) {
-        }
-
-        mutating func mapping(map: Map) {
-            id                      <- map["id"]
-            message                 <- map["message"]
-            documentationUrl        <- map["documentation_url"]
-        }
-    }
 }

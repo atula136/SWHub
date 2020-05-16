@@ -24,7 +24,7 @@ enum Router {
     case category
     case condition
 
-    enum User2 {
+    enum User {
         case list
         case detail
 
@@ -151,10 +151,10 @@ enum Router {
         navigator.register(Repo.detail.urlString) { url, values, context in
             RepoDetailViewController(navigator, RepoDetailViewReactor(provider, parameters(url, values, context)))
         }
-        navigator.register(User2.list.urlString) { url, values, context in
+        navigator.register(User.list.urlString) { url, values, context in
             UserListViewController(navigator, UserListViewReactor(provider, parameters(url, values, context)))
         }
-        navigator.register(User2.detail.urlString) { url, values, context in
+        navigator.register(User.detail.urlString) { url, values, context in
             UserDetailViewController(navigator, UserDetailViewReactor(provider, parameters(url, values, context)))
         }
         navigator.register(self.login.urlString) { url, values, context in

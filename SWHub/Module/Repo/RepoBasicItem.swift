@@ -39,7 +39,7 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
             self.initialState = State(
                 name: repo.fullName,
                 description: repo.description,
-                avatar: repo.owner?.avatar
+                avatar: repo.owner?.avatar?.url
             )
         } else if let repo = model as? TrendingRepo {
             self.initialState = State(

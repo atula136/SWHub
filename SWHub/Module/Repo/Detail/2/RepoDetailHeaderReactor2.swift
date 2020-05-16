@@ -32,11 +32,11 @@ class RepoDetailHeaderReactor2: SupplementaryReactor, ReactorKit.Reactor {
         super.init(model)
         guard let repository = model as? Repo else { return }
         self.initialState = State(
-            avatar: repository.owner?.avatar,
+            avatar: repository.owner?.avatar?.url,
             title: repository.description,
-            follow: repository.count(title: R.string.localizable.watch(), value: repository.watchersCount ?? 0),
-            star: repository.count(title: R.string.localizable.star(), value: repository.stargazersCount ?? 0),
-            fork: repository.count(title: R.string.localizable.fork(), value: repository.forksCount ?? 0)
+            follow: repository.count(title: R.string.localizable.watch(), value: repository.watchersCount),
+            star: repository.count(title: R.string.localizable.star(), value: repository.stargazersCount),
+            fork: repository.count(title: R.string.localizable.fork(), value: repository.forksCount)
         )
     }
 }

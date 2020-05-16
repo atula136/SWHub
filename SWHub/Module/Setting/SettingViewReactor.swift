@@ -24,7 +24,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     enum Mutation {
         case setLoading(Bool)
-        case setUser(User2?)
+        case setUser(User?)
         case setNight(Bool)
         case setError(Error?)
         case setRepo(Repo)
@@ -36,7 +36,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var isNight = false
         var title: String?
         var error: Error?
-        var user: User2?
+        var user: User?
         var repo: Repo?
         var sections: [SettingSection] = []
     }
@@ -49,7 +49,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         self.initialState = State(
             isNight: ThemeType.currentTheme().isDark,
             title: stringDefault(self.title, R.string.localizable.mainTabBarSetting()),
-            repo: Repo.current()
+            repo: SubjectFactory.current(Repo.self)
         )
     }
 
@@ -111,7 +111,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     }
 
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        return .merge(mutation, User2.subject().asObservable().map(Mutation.setUser))
+        return .merge(mutation, SubjectFactory.subject(User.self).asObservable().map(Mutation.setUser))
     }
 
     func sections(_ sections: [[ModelType]]) -> [SettingSection] {
@@ -119,7 +119,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             var header = R.string.localizable.settingPreferences()
             var items: [SettingSectionItem] = []
             for model in models {
-                if let user = model as? User2 {
+                if let user = model as? User {
                     header = R.string.localizable.settingAccount()
                     items.append(.profile(ProfileItem(user)))
                 }

@@ -63,6 +63,57 @@ class User: Object, ModelType, Identifiable {
     @objc dynamic var createdAt: Date?
     @objc dynamic var updatedAt: Date?
 
+    var detail: NSAttributedString? {
+        var texts = [NSAttributedString]()
+        let repositoriesString = self.publicRepos.string.styled(with: .color(.title))
+        let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
+        ]))
+        let followersString = self.followers.kFormatted().styled(with: .color(.title))
+        let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            followersImage, Special.space, followersString
+        ]))
+        return .composed(of: texts)
+    }
+
+    var companyInfo: InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.userIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.company ?? R.string.localizable.company()
+        info.indicated = false
+        info.enabled = self.company != nil ? true : false
+        return info
+    }
+
+    var locationInfo: InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.globeIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.location ?? R.string.localizable.location()
+        info.indicated = false
+        info.enabled = self.location != nil ? true : false
+        return info
+    }
+
+    var emailInfo: InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.inboxIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.email ?? R.string.localizable.email()
+        info.indicated = self.email != nil ? true : false
+        info.enabled = self.email != nil ? true : false
+        return info
+    }
+
+    var blogInfo: InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon._581Icon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.blog ?? R.string.localizable.blog()
+        info.indicated = self.blog != nil ? true : false
+        info.enabled = self.blog != nil ? true : false
+        return info
+    }
+
     required init() {
     }
 
@@ -107,6 +158,14 @@ class User: Object, ModelType, Identifiable {
         receivedEventsUrl               <- map["received_events_url"]
         createdAt                       <- (map["created_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
         updatedAt                       <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
+    }
+
+    func count(title: String, value: Int) -> NSAttributedString {
+        let valueText = value.string.styled(with: .color(.tint), .font(.bold(17)), .alignment(.center))
+        let titleText = title.styled(with: .color(.title), .font(.normal(13)), .alignment(.center))
+        return .composed(of: [
+            valueText, Special.nextLine, titleText
+        ])
     }
 
 }

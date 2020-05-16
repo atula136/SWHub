@@ -51,7 +51,6 @@
 		792E3CF524694C290090E99F /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E3CF424694C290090E99F /* ProfileCell.swift */; };
 		792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D642455561D00856757 /* LoginViewReactor.swift */; };
 		792F6D672455562F00856757 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D662455562F00856757 /* LoginViewController.swift */; };
-		792F6D692455563700856757 /* User2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792F6D682455563700856757 /* User2.swift */; };
 		79322482245FF8D400BED07A /* TrendingRepoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79322481245FF8D400BED07A /* TrendingRepoSection.swift */; };
 		794307EC246271ED0050F3E3 /* DefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307EB246271ED0050F3E3 /* DefaultCell.swift */; };
 		794307EE246274560050F3E3 /* NormalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307ED246274560050F3E3 /* NormalItem.swift */; };
@@ -89,6 +88,10 @@
 		7976ACBD2459339D00093046 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACBC2459339D00093046 /* CollectionCell.swift */; };
 		7976ACBF245933E200093046 /* CollectionViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACBE245933E200093046 /* CollectionViewReactor.swift */; };
 		7976ACC1245933F000093046 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACC0245933F000093046 /* CollectionViewController.swift */; };
+		7979453C246FE0500084B2F8 /* Repo.License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7979453B246FE0500084B2F8 /* Repo.License.swift */; };
+		7979453E246FE0D60084B2F8 /* Repo.Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7979453D246FE0D60084B2F8 /* Repo.Permissions.swift */; };
+		79794540246FE1300084B2F8 /* Repo.Readme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7979453F246FE1300084B2F8 /* Repo.Readme.swift */; };
+		79794542246FE2500084B2F8 /* Repo.Starred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79794541246FE2500084B2F8 /* Repo.Starred.swift */; };
 		799547CE245D4403002A7999 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CD245D4403002A7999 /* NavigationController.swift */; };
 		799547D0245D4998002A7999 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CF245D4998002A7999 /* UIApplicationExt.swift */; };
 		799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547D3245D607F002A7999 /* UIViewControllerExt.swift */; };
@@ -227,7 +230,6 @@
 		792E3CF424694C290090E99F /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		792F6D642455561D00856757 /* LoginViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewReactor.swift; sourceTree = "<group>"; };
 		792F6D662455562F00856757 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		792F6D682455563700856757 /* User2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User2.swift; sourceTree = "<group>"; };
 		79322481245FF8D400BED07A /* TrendingRepoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepoSection.swift; sourceTree = "<group>"; };
 		794307EB246271ED0050F3E3 /* DefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCell.swift; sourceTree = "<group>"; };
 		794307ED246274560050F3E3 /* NormalItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalItem.swift; sourceTree = "<group>"; };
@@ -265,6 +267,10 @@
 		7976ACBC2459339D00093046 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		7976ACBE245933E200093046 /* CollectionViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewReactor.swift; sourceTree = "<group>"; };
 		7976ACC0245933F000093046 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		7979453B246FE0500084B2F8 /* Repo.License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.License.swift; sourceTree = "<group>"; };
+		7979453D246FE0D60084B2F8 /* Repo.Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.Permissions.swift; sourceTree = "<group>"; };
+		7979453F246FE1300084B2F8 /* Repo.Readme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.Readme.swift; sourceTree = "<group>"; };
+		79794541246FE2500084B2F8 /* Repo.Starred.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.Starred.swift; sourceTree = "<group>"; };
 		799547CD245D4403002A7999 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		799547CF245D4998002A7999 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
 		799547D3245D607F002A7999 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
@@ -648,6 +654,10 @@
 				79754863246C150E0044A128 /* RepoReadmeCell.swift */,
 				79B6CE9F246C2A570072C34C /* RepoProfileItem.swift */,
 				796E997D246C2A9900DB6EAE /* RepoProfileCell.swift */,
+				7979453B246FE0500084B2F8 /* Repo.License.swift */,
+				7979453D246FE0D60084B2F8 /* Repo.Permissions.swift */,
+				7979453F246FE1300084B2F8 /* Repo.Readme.swift */,
+				79794541246FE2500084B2F8 /* Repo.Starred.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -781,7 +791,6 @@
 				79CB9CF9246D91D0006C46DF /* Detail */,
 				79EDEA8324685F270034FC20 /* Trending */,
 				794E3BEE24668CE9003DDDFB /* List */,
-				792F6D682455563700856757 /* User2.swift */,
 				79EDEA7F24684D7F0034FC20 /* UserBasicItem.swift */,
 				79EDEA8124684D8C0034FC20 /* UserBasicCell.swift */,
 				792E3CF224694C1C0090E99F /* ProfileItem.swift */,
@@ -1085,6 +1094,7 @@
 				79CC24AE24663E8B00794CFD /* UserListViewController.swift in Sources */,
 				7976AC9C24581F6700093046 /* MainViewReactor.swift in Sources */,
 				790767B62456CE5500CD0AAF /* ProviderType+Github.swift in Sources */,
+				7979453C246FE0500084B2F8 /* Repo.License.swift in Sources */,
 				790767AE2456C27B00CD0AAF /* GithubAPI.swift in Sources */,
 				79CB9CFB246D91E5006C46DF /* UserDetailViewReactor.swift in Sources */,
 				794E3BF324668D1C003DDDFB /* RepoListViewController.swift in Sources */,
@@ -1092,7 +1102,6 @@
 				79D261472462DCFA00A979D3 /* SettingNormalCell.swift in Sources */,
 				791160B1246042A200737F4B /* ConditionViewReactor.swift in Sources */,
 				7906832C24564EAB00BFDCB2 /* AuthManager.swift in Sources */,
-				792F6D692455563700856757 /* User2.swift in Sources */,
 				79EE8A9D245E8D9700A2438C /* TrendingRepoListViewReactor.swift in Sources */,
 				79CC24AC24663E8100794CFD /* UserListViewReactor.swift in Sources */,
 				799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */,
@@ -1134,10 +1143,12 @@
 				790B88D9245F5989000C89D4 /* TrendingRepo.swift in Sources */,
 				792E3CF524694C290090E99F /* ProfileCell.swift in Sources */,
 				79094568245DD17900D69366 /* Tint.swift in Sources */,
+				79794540246FE1300084B2F8 /* Repo.Readme.swift in Sources */,
 				799F700F246BAF5800004589 /* RepoDetailViewReactor.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
 				79CEFB51246FB33F0049419C /* User.swift in Sources */,
 				799547CE245D4403002A7999 /* NavigationController.swift in Sources */,
+				79794542246FE2500084B2F8 /* Repo.Starred.swift in Sources */,
 				79754862246C15050044A128 /* RepoReadmeItem.swift in Sources */,
 				7906C32924555DEF0030764D /* Library.swift in Sources */,
 				79EDEA8024684D7F0034FC20 /* UserBasicItem.swift in Sources */,
@@ -1152,6 +1163,7 @@
 				794307F2246275A00050F3E3 /* RepoDetailItem2.swift in Sources */,
 				7976ACA82458271000093046 /* ActivityViewReactor.swift in Sources */,
 				7906C32524555DD60030764D /* Constant.swift in Sources */,
+				7979453E246FE0D60084B2F8 /* Repo.Permissions.swift in Sources */,
 				7976ACB22458274300093046 /* SettingViewController.swift in Sources */,
 				790B88E3245F624A000C89D4 /* ProviderType+Trending.swift in Sources */,
 				79D8C81D2462085200A905F0 /* RepoDetailViewController2.swift in Sources */,

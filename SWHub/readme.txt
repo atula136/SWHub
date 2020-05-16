@@ -29,6 +29,7 @@ Button/Label
 UILocalizedImage
 pod版本号 ~> 自动更新
 NavigationBar运行时修改theme在模拟器上会crash
+StringTransform -> IDTransform
 
 https://api.github.com/user/starred/rxhanson/Rectangle
 
