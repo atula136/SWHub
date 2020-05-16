@@ -10,7 +10,7 @@ import UIKit
 import ObjectMapper
 import SWFrame
 
-struct Misc: ModelType, Subjective {
+struct Misc: ModelType, Subjective2 {
 
     var id: Int?
     // var condition = Condition.init()

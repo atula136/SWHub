@@ -12,7 +12,7 @@ import Iconic
 import ObjectMapper
 import SWFrame
 
-struct Repo: ModelType, Subjective, Eventable {
+struct Repo: ModelType, Subjective2, Eventable {
     var `private` = false
     var fork = false
     var hasIssues = false
@@ -180,7 +180,7 @@ struct Repo: ModelType, Subjective, Eventable {
     enum Event {
     }
 
-    struct License: ModelType, Subjective {
+    struct License: ModelType, Subjective2 {
         var id: Int?
         var key: String?
         var name: String?
@@ -203,7 +203,7 @@ struct Repo: ModelType, Subjective, Eventable {
         }
     }
 
-    struct Permissions: ModelType, Subjective {
+    struct Permissions: ModelType, Subjective2 {
         var id: Int?
         var admin = false
         var push = false
@@ -303,7 +303,7 @@ struct Repo: ModelType, Subjective, Eventable {
 }
 
 extension Repo {
-    struct Readme: ModelType, Subjective {
+    struct Readme: ModelType, Subjective2 {
         var id: Int?
         var size: Int?
         var name: String?
@@ -343,7 +343,7 @@ extension Repo {
             links                   <- map["_links"]
         }
 
-        struct Links: ModelType, Subjective {
+        struct Links: ModelType, Subjective2 {
             var id: Int?
             var sef: URL?
             var git: URL?
@@ -372,7 +372,7 @@ extension Repo {
 
 extension Repo {
 
-    struct Starred: ModelType, Subjective {
+    struct Starred: ModelType, Subjective2 {
 
         var id: Int?
         var message: String?

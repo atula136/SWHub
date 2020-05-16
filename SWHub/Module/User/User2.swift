@@ -13,7 +13,7 @@ import ObjectMapper
 import KeychainAccess
 import SWFrame
 
-struct User2: ModelType, Storable, Subjective {
+struct User2: ModelType, Storable2, Subjective2 {
 
     fileprivate struct Key {
         static let token = "token"

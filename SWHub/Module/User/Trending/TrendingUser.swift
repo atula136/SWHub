@@ -12,7 +12,7 @@ import Iconic
 import ObjectMapper
 import SWFrame
 
-struct TrendingUser: ModelType, Storable {
+struct TrendingUser: ModelType, Storable2 {
 
     var id: Int?
     var name: String?

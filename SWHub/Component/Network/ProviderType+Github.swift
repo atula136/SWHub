@@ -17,8 +17,8 @@ extension ProviderType {
     }
 
     /// 用户登录：https://api.github.com/user
-    func profile() -> Observable<User2> {
-        return self.githubNetworking.requestObject(.profile, type: User2.self)
+    func profile() -> Observable<User> {
+        return self.githubNetworking.requestObject(.profile, type: User.self)
     }
 
     /// 用户信息：https://api.github.com/users/MaxDesiatov

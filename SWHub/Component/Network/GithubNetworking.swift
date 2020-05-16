@@ -42,7 +42,7 @@ struct GithubNetworking: NetworkingType {
     func request(_ token: GithubAPI) -> Observable<Moya.Response> {
         return self.provider.request(token)
     }
- 
+
     func requestRaw(_ target: GithubAPI) -> Observable<Moya.Response> {
         return self.request(target)
             .observeOn(MainScheduler.instance)

@@ -18,7 +18,7 @@ import SwifterSwift
 import Rswift
 import SWFrame
 
-struct Condition: ModelType, Subjective, Equatable /*, Eventable */ {
+struct Condition: ModelType, Subjective2, Equatable /*, Eventable */ {
 
 //    enum Event {
 //        case update(Since, Language)
@@ -71,7 +71,7 @@ struct Condition: ModelType, Subjective, Equatable /*, Eventable */ {
 
     }
 
-    struct Language: ModelType, Subjective, Eventable, Equatable {
+    struct Language: ModelType, Subjective2, Eventable, Equatable {
 
         enum Event {
             case select(String?)

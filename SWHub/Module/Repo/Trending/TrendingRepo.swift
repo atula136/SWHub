@@ -13,7 +13,7 @@ import ObjectMapper
 import SwifterSwift
 import SWFrame
 
-struct TrendingRepo: ModelType, Storable {
+struct TrendingRepo: ModelType, Storable2 {
     var id: Int?
     var stars: Int?
     var forks: Int?
