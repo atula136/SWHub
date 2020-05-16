@@ -89,7 +89,7 @@ struct Repo: ModelType, Subjective, Eventable {
     var deploymentsUrl: String?
     var license: License?
     var permissions: Permissions?
-    var owner: User?
+    var owner: User2?
 
     init() {
     }

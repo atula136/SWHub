@@ -24,7 +24,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case setLoading(Bool)
         case setAccount(String?)
         case setPassword(String?)
-        case setUser(User?)
+        case setUser(User2?)
     }
 
     struct State {
@@ -32,7 +32,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         var title: String?
         var account: String?
         var password: String?
-        var user: User?
+        var user: User2?
     }
 
     var initialState = State()
@@ -54,7 +54,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             guard let account = self.currentState.account else { return .empty() }
             guard let password = self.currentState.password else { return .empty() }
             guard !self.currentState.isLoading else { return .empty() }
-            User.token = "\(account):\(password)".base64Encoded
+            User2.token = "\(account):\(password)".base64Encoded
             return .concat([
                 .just(.setLoading(true)),
                 self.provider.profile().map(Mutation.setUser),
@@ -73,7 +73,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case let .setPassword(password):
             state.password = password
         case let .setUser(user):
-            User.update(user)
+            User2.update(user)
             state.user = user
         }
         return state

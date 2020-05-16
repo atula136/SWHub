@@ -45,19 +45,19 @@ struct TrendingNetworking: NetworkingType {
             .observeOn(MainScheduler.instance)
     }
 
-    func requestObject<T: ModelType>(_ target: TrendingAPI, type: T.Type) -> Observable<T> {
+    func requestObject<T: Mappable>(_ target: TrendingAPI, type: T.Type) -> Observable<T> {
         return self.request(target)
             .mapObject(T.self)
             .observeOn(MainScheduler.instance)
     }
 
-    func requestArray<T: ModelType>(_ target: TrendingAPI, type: T.Type) -> Observable<[T]> {
+    func requestArray<T: Mappable>(_ target: TrendingAPI, type: T.Type) -> Observable<[T]> {
         return self.request(target)
             .mapArray(T.self)
             .observeOn(MainScheduler.instance)
     }
 
-    func requestModel<T: ModelType>(_ target: TrendingAPI, type: T.Type) -> Observable<T> {
+    func requestModel<T: Mappable>(_ target: TrendingAPI, type: T.Type) -> Observable<T> {
         return .create { observer -> Disposable in
             let disposable = self.request(target).mapObject(ObjectResponse<T>.self).subscribe(onNext: { response in
                 if response.code == 200, response.data != nil {
@@ -81,7 +81,7 @@ struct TrendingNetworking: NetworkingType {
         }
     }
 
-    func requestModels<T: ModelType>(_ target: TrendingAPI, type: T.Type) -> Observable<[T]> {
+    func requestModels<T: Mappable>(_ target: TrendingAPI, type: T.Type) -> Observable<[T]> {
         return .create { observer -> Disposable in
             let disposable = self.request(target).mapObject(ArrayResponse<T>.self).subscribe(onNext: { response in
                 if response.code == 200, response.data != nil {
@@ -101,7 +101,7 @@ struct TrendingNetworking: NetworkingType {
         }
     }
 
-    func requestList<T: ModelType>(_ target: TrendingAPI, type: T.Type) -> Observable<List<T>> {
+    func requestList<T: Mappable>(_ target: TrendingAPI, type: T.Type) -> Observable<List<T>> {
         return .create { observer -> Disposable in
             let disposable = self.request(target).mapObject(ObjectResponse<List<T>>.self).subscribe(onNext: { response in
                 if response.code == 200, response.data != nil {

@@ -216,7 +216,7 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
     }
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
-        // guard let user = item.model as? User else { return .zero }
+        // guard let user = item.model as? User2 else { return .zero }
         var height = 10.f
         height += Metric.infoHeight * 4
 //        height += Metric.avatarSize.height

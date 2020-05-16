@@ -25,14 +25,14 @@ class UserDetailViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     enum Mutation {
         case setLoading(Bool)
         case setError(Error?)
-        case setUser(User)
+        case setUser(User2)
     }
 
     struct State {
         var isLoading = false
         var title: String?
         var error: Error?
-        var user: User!
+        var user: User2!
         var sections: [UserSection] = []
     }
 

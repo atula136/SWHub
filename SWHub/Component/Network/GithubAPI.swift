@@ -71,7 +71,7 @@ extension GithubAPI: TargetType {
     }
 
     var headers: [String: String]? {
-        if let token = User.token {
+        if let token = User2.token {
             return ["Authorization": "Basic \(token)"]
         }
         return nil

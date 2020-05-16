@@ -17,14 +17,14 @@ extension ProviderType {
     }
 
     /// 用户登录：https://api.github.com/user
-    func profile() -> Observable<User> {
-        return self.githubNetworking.requestObject(.profile, type: User.self)
+    func profile() -> Observable<User2> {
+        return self.githubNetworking.requestObject(.profile, type: User2.self)
     }
 
     /// 用户信息：https://api.github.com/users/MaxDesiatov
     /// - Parameter username: 用户名
-    func user(username: String) -> Observable<User> {
-        return self.githubNetworking.requestObject(.user(username: username), type: User.self)
+    func user(username: String) -> Observable<User2> {
+        return self.githubNetworking.requestObject(.user(username: username), type: User2.self)
     }
 
     /// 仓库详情：https://api.github.com/repos/khoren93/SwiftHub
@@ -49,12 +49,12 @@ extension ProviderType {
         return self.githubNetworking.requestRaw(.unstarRepo(fullname: fullname)).map { _ in }
     }
 
-    func watchers(fullname: String, page: Int) -> Observable<[User]> {
-        return self.githubNetworking.requestArray(.watchers(fullname: fullname, page: page), type: User.self)
+    func watchers(fullname: String, page: Int) -> Observable<[User2]> {
+        return self.githubNetworking.requestArray(.watchers(fullname: fullname, page: page), type: User2.self)
     }
 
-    func stargazers(fullname: String, page: Int) -> Observable<[User]> {
-        return self.githubNetworking.requestArray(.stargazers(fullname: fullname, page: page), type: User.self)
+    func stargazers(fullname: String, page: Int) -> Observable<[User2]> {
+        return self.githubNetworking.requestArray(.stargazers(fullname: fullname, page: page), type: User2.self)
     }
 
     func forks(fullname: String, page: Int) -> Observable<[Repo]> {

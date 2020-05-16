@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let a2 = String(describing: Subject)
 //        let aaa = UIApplication.shared.baseApiUrl
 //        let bbb = UIApplication.shared.baseWebUrl
-//        let abc = User.ListType.watchers.rawValue
+//        let abc = User2.ListType.watchers.rawValue
 //        let text = "做好描述(Description)：曩昔搜索引擎更正视于关键字，而如今对Description 的正视度渐渐进步。好的标签和描述可以大大进步网站排名，增长用户点击率。做好描述(Description)：曩昔搜索引擎更正视于关键字，而如今对Description 的正视度渐渐进步。好的标签和描述可以大大进步网站排名，增长用户点击率。"
 //        let label = Label()
 //        label.numberOfLines = 0

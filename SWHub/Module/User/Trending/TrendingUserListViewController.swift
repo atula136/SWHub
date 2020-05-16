@@ -54,7 +54,7 @@ class TrendingUserListViewController: CollectionViewController, ReactorKit.View 
             guard let `self` = self else { return }
             switch sectionItem {
             case let .user(item):
-                if var url = Router.User.detail.urlString.url,
+                if var url = Router.User2.detail.urlString.url,
                     let username = (item.model as? TrendingUser)?.username {
                     url.appendQueryParameters([Parameter.username: username])
                     self.navigator.push(url)

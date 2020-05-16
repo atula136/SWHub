@@ -39,7 +39,7 @@ func mappingMessage(map: Map) -> String {
     return message
 }
 
-struct ObjectResponse<Data: ModelType>: ResponseType, ModelType {
+struct ObjectResponse<Data: Mappable>: ResponseType, Mappable {
 
     var code: Int = 0
     var message: String = ""
@@ -61,7 +61,7 @@ struct ObjectResponse<Data: ModelType>: ResponseType, ModelType {
     }
 }
 
-struct ArrayResponse<Data: ModelType>: ResponseType, ModelType {
+struct ArrayResponse<Data: Mappable>: ResponseType, Mappable {
 
     var code: Int = 0
     var message: String = ""

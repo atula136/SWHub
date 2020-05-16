@@ -32,7 +32,7 @@ class UserBasicItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        if let user = model as? User {
+        if let user = model as? User2 {
             self.initialState = State(
                 name: user.login,
                 avatar: user.avatar
