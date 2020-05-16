@@ -50,8 +50,9 @@ PODS:
     - R.swift.Library (~> 5.1.0)
   - R.swift.Library (5.1.0)
   - ReachabilitySwift (5.0.0)
-  - ReactorKit (2.0.1):
+  - ReactorKit (2.1.0):
     - RxSwift (~> 5.0)
+    - WeakMapTable (~> 1.1)
   - Realm (4.4.1):
     - Realm/Headers (= 4.4.1)
   - Realm/Headers (4.4.1)
@@ -118,7 +119,7 @@ PODS:
     - QMUIKit/QMUIComponents/QMUILabel (= 4.0.4)
     - QMUIKit/QMUICore (= 4.0.4)
     - ReachabilitySwift (= 5.0.0)
-    - ReactorKit (= 2.0.1)
+    - ReactorKit (= 2.1.0)
     - RxCocoa (= 5.0.0)
     - RxDataSources (= 4.0.1)
     - RxRealmDataSources-JX (= 0.2.10-jx1)
@@ -155,6 +156,7 @@ PODS:
   - Toast-Swift (5.0.0)
   - UICKeyChainStore (2.1.2)
   - URLNavigator (2.3.0)
+  - WeakMapTable (1.1.0)
   - WebViewJavascriptBridge (6.0.3)
 
 DEPENDENCIES:
@@ -224,6 +226,7 @@ SPEC REPOS:
     - Toast-Swift
     - UICKeyChainStore
     - URLNavigator
+    - WeakMapTable
     - WebViewJavascriptBridge
 
 EXTERNAL SOURCES:
@@ -257,7 +260,7 @@ SPEC CHECKSUMS:
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  ReactorKit: a63c5e11e0fd32d59d672e54178b0ed2876b764b
+  ReactorKit: 12a93358c554bb3f167b16b14c40374fa9cd5acd
   Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
@@ -274,13 +277,14 @@ SPEC CHECKSUMS:
   RxTheme: 0b642f47c7d197a803c6b9c083964188c34f7ddb
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SWFrame: be2eb3af2226c7da564611a5d1e22249c3610696
+  SWFrame: 01277a879d589bde022b10f8f2eb93f1fae62704
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
   UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
+  WeakMapTable: d0327eda092be6a8f7c532942ae98dc7948f5d32
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
 PODFILE CHECKSUM: 18c7f44bb4021d9aac80ee4fe72a29635226c5ac
