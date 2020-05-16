@@ -51,8 +51,8 @@
     "NSObject+Rx": [
       "5.0.0"
     ],
-    "Moya-ObjectMapper-Swift5": [
-      "2.8-swift5"
+    "Moya-ObjectMapper-JX/RxSwift": [
+      "2.8-jx1"
     ],
     "URLNavigator": [
       "2.3.0"

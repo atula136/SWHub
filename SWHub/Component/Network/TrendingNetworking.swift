@@ -12,7 +12,7 @@ import RxCocoa
 import ObjectMapper
 import Moya
 import Alamofire
-import Moya_ObjectMapper_Swift5
+import Moya_ObjectMapper_JX
 import SWFrame
 
 struct TrendingNetworking: NetworkingType {

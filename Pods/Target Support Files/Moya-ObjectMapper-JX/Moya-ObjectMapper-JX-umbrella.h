@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Moya_ObjectMapper_Swift5VersionNumber;
-FOUNDATION_EXPORT const unsigned char Moya_ObjectMapper_Swift5VersionString[];
+FOUNDATION_EXPORT double Moya_ObjectMapper_JXVersionNumber;
+FOUNDATION_EXPORT const unsigned char Moya_ObjectMapper_JXVersionString[];
 
