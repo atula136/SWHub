@@ -35,7 +35,7 @@ class ConditionLanguageItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        guard let language = model as? Language else { return }
+        guard let language = model as? Code else { return }
         self.initialState = State(
             checked: language.checked,
             title: language.urlParam == nil ? NSLocalizedString(language.name ?? R.string.localizable.allLanguages(), comment: "") : language.name
@@ -46,7 +46,7 @@ class ConditionLanguageItem: CollectionItem, ReactorKit.Reactor {
         var state = state
         switch mutation {
         case let .setSelect(urlParam):
-            if let language = self.model as? Language {
+            if let language = self.model as? Code {
                 state.checked = urlParam == language.urlParam
             }
         }

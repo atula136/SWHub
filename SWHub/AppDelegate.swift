@@ -61,10 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let realm = try! Realm()
 //        var miscs = realm.objects(Misc.self).filter("user == nil")
 //        if miscs.count == 0 {
-//            let lang = Language(value: ["name": "All languages"])
-//            let filter = Filter(value: ["language": lang])
 //            let misc = Misc()
-//            misc.filter = filter
+//            misc.code = Code(value: ["name": "All languages"])
 //            try! realm.write {
 //                realm.add(misc)
 //            }

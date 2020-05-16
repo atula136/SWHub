@@ -99,4 +99,5 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 //            Condition.subject().asObservable().filterNil().distinctUntilChanged().map(Mutation.setCondition)
 //        )
 //    }
+
 }

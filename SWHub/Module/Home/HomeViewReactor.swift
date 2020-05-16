@@ -20,13 +20,13 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     enum Mutation {
         case setLoading(Bool)
-        case setLanguages([Language])
+        case setLanguages([Code])
     }
 
     struct State {
         var isLoading = false
         var title: String?
-        var languages: [Language]?
+        var languages: [Code]?
         var items: [HomeKey] = [.repository, .developer]
     }
 

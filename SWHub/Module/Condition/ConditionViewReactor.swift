@@ -23,14 +23,14 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setError(Error?)
         case setSince(Int)
         case setLanguage(String?)
-        case start([Language])
+        case start([Code])
     }
 
     struct State {
         var isLoading = false
         var error: Error?
         var since = Since.daily
-        var language = Language.init(value: ["name": "All languages"])
+        var language = Code.init(value: ["name": "All languages"])
         var sections: [ConditionSection] = []
     }
 

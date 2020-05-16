@@ -16,7 +16,7 @@ import SWFrame
 class Misc: Object, ModelType {
 
     @objc dynamic var since = 0
-    @objc dynamic var language: Language?
+    @objc dynamic var code: Code?
     @objc dynamic var user: User?
 
     required init() {
@@ -27,7 +27,7 @@ class Misc: Object, ModelType {
 
     func mapping(map: Map) {
         since           <- map["since"]
-        language        <- map["language"]
+        code            <- map["code"]
         user            <- map["user"]
     }
 

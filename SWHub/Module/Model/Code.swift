@@ -19,7 +19,7 @@ import RealmSwift
 import Rswift
 import SWFrame
 
-class Language: Object, ModelType {
+class Code: Object, ModelType {
 
     @objc dynamic var name: String?
     @objc dynamic var urlParam: String?
