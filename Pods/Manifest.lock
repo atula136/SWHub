@@ -52,6 +52,11 @@ PODS:
   - ReachabilitySwift (5.0.0)
   - ReactorKit (2.0.1):
     - RxSwift (~> 5.0)
+  - Realm (4.4.1):
+    - Realm/Headers (= 4.4.1)
+  - Realm/Headers (4.4.1)
+  - RealmSwift (4.4.1):
+    - Realm (= 4.4.1)
   - Result (4.1.0)
   - ReusableKit/Core (3.0.0)
   - ReusableKit/RxSwift (3.0.0):
@@ -71,9 +76,25 @@ PODS:
   - RxOptional (4.0.0):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
+  - RxRealm (2.0.0):
+    - RealmSwift (~> 4.0)
+    - RxSwift (~> 5.0)
+  - RxRealmDataSources-JX (0.2.10-jx1):
+    - RealmSwift (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxRealm (~> 2.0)
+    - RxSwift (~> 5.0)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - RxSwiftExt (5.2.0):
+    - RxSwiftExt/Core (= 5.2.0)
+    - RxSwiftExt/RxCocoa (= 5.2.0)
+  - RxSwiftExt/Core (5.2.0):
+    - RxSwift (~> 5.0)
+  - RxSwiftExt/RxCocoa (5.2.0):
+    - RxCocoa (~> 5.0)
+    - RxSwiftExt/Core
   - RxTheme (4.0.0):
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
@@ -88,6 +109,7 @@ PODS:
     - DZNEmptyDataSet (= 1.8.1)
     - ESPullToRefresh (= 2.9.2)
     - FCUUID (= 1.3.1)
+    - Iconic (= 1.5)
     - KeychainAccess (= 3.2.0)
     - Kingfisher (= 4.10.1)
     - Moya-ObjectMapper-JX/RxSwift (= 2.8-jx1)
@@ -99,6 +121,7 @@ PODS:
     - ReactorKit (= 2.0.1)
     - RxCocoa (= 5.0.0)
     - RxDataSources (= 4.0.1)
+    - RxRealmDataSources-JX (= 0.2.10-jx1)
     - RxViewController (= 1.0.0)
     - SnapKit (= 4.2.0)
     - SwifterSwift (= 5.1.0)
@@ -137,7 +160,6 @@ PODS:
 DEPENDENCIES:
   - FLEX (= 3.0.0)
   - Highlightr (= 2.1.0)
-  - Iconic (= 1.5)
   - IQKeyboardManagerSwift (= 6.5.5)
   - MarkdownView (= 1.5.0)
   - MLeaksFinder (= 1.0.0)
@@ -146,6 +168,7 @@ DEPENDENCIES:
   - ReusableKit/RxSwift (= 3.0.0)
   - RxGesture (= 3.0.0)
   - RxOptional (= 4.0.0)
+  - RxSwiftExt (= 5.2.0)
   - RxTheme (= 4.0.0)
   - SWFrame (from `../SWFrame`)
   - SwiftLint (= 0.39.2)
@@ -179,14 +202,19 @@ SPEC REPOS:
     - R.swift.Library
     - ReachabilitySwift
     - ReactorKit
+    - Realm
+    - RealmSwift
     - Result
     - ReusableKit
     - RxCocoa
     - RxDataSources
     - RxGesture
     - RxOptional
+    - RxRealm
+    - RxRealmDataSources-JX
     - RxRelay
     - RxSwift
+    - RxSwiftExt
     - RxTheme
     - RxViewController
     - SnapKit
@@ -230,18 +258,23 @@ SPEC CHECKSUMS:
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   ReactorKit: a63c5e11e0fd32d59d672e54178b0ed2876b764b
+  Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
+  RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   ReusableKit: e5f853ad4652e411f96b6119b2488afa12929be6
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxGesture: 0cd8e37ff9a266e1c31f46bcaed6de1c536bc81e
   RxOptional: 9904e2219d59260c3c171273d475b2126de187e8
+  RxRealm: 900f5c7e6f0a2d6527b56eaf7283f3035ec1e8ba
+  RxRealmDataSources-JX: 130b7d15d9be5df9ce9ebb058aa04ffb92346a62
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
   RxTheme: 0b642f47c7d197a803c6b9c083964188c34f7ddb
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SWFrame: a484a92cf0afe933fe176229c52b30d3ba6df398
+  SWFrame: be2eb3af2226c7da564611a5d1e22249c3610696
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d
@@ -250,6 +283,6 @@ SPEC CHECKSUMS:
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 7b9d773d651c63af68e8a99bf5c91b7e26835ffa
+PODFILE CHECKSUM: 18c7f44bb4021d9aac80ee4fe72a29635226c5ac
 
 COCOAPODS: 1.9.1

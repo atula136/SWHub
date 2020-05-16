@@ -27,6 +27,7 @@ languageColor
 Button/Label
 更新与xx小时前/homepage跳转
 UILocalizedImage
+pod version自动更新
 
 https://api.github.com/user/starred/rxhanson/Rectangle
 

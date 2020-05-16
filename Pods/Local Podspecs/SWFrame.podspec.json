@@ -51,8 +51,14 @@
     "NSObject+Rx": [
       "5.0.0"
     ],
+    "RxRealmDataSources-JX": [
+      "0.2.10-jx1"
+    ],
     "Moya-ObjectMapper-JX/RxSwift": [
       "2.8-jx1"
+    ],
+    "Iconic": [
+      "1.5"
     ],
     "URLNavigator": [
       "2.3.0"

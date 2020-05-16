@@ -21,10 +21,10 @@ target 'SWHub' do
 	# 响应
 	pod 'RxOptional', '4.0.0'
 	pod 'RxGesture', '3.0.0'
+	pod 'RxSwiftExt', '5.2.0'
 		
 	# 资源
 	pod 'RxTheme', '4.0.0'
-	pod 'Iconic', '1.5'
 	pod 'R.swift', '5.1.0'
 		
 	# 工具
