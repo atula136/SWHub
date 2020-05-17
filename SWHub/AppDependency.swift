@@ -33,8 +33,8 @@ final class AppDependency: NSObject, AppDependencyType {
         window?.backgroundColor = .white
         self.window = window
 
-        let mainViewReactor = MainViewReactor(self.provider, nil)
-        let mainViewController = MainViewController(self.navigator, mainViewReactor)
+        let mainViewReactor = TabBarViewReactor(self.provider, nil)
+        let mainViewController = TabBarViewController(self.navigator, mainViewReactor)
         self.window.rootViewController = mainViewController
         self.window.makeKeyAndVisible()
 
@@ -91,8 +91,8 @@ final class AppDependency: NSObject, AppDependencyType {
 //        window?.backgroundColor = .white
 //        self.window = window
 //
-//        let mainViewReactor = MainViewReactor(params: nil)
-//        let mainViewController = MainViewController(reactor: mainViewReactor)
+//        let mainViewReactor = TabBarViewReactor(params: nil)
+//        let mainViewController = TabBarViewController(reactor: mainViewReactor)
 //        self.window.rootViewController = mainViewController
 //        self.window.makeKeyAndVisible()
 //    }

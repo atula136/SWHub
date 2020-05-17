@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  TabBarViewController.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/4/28.
@@ -16,10 +16,10 @@ import Iconic
 import NSObject_Rx
 import SWFrame
 
-class MainViewController: TabBarViewController, ReactorKit.View {
+class TabBarViewController: SWFrame.TabBarViewController, ReactorKit.View {
 
     // MARK: - Init
-    init(_ navigator: NavigatorType, _ reactor: MainViewReactor) {
+    init(_ navigator: NavigatorType, _ reactor: TabBarViewReactor) {
         defer {
             self.reactor = reactor
         }
@@ -35,7 +35,7 @@ class MainViewController: TabBarViewController, ReactorKit.View {
         super.viewDidLoad()
         self.tab.viewControllers = self.reactor?.currentState.keys.map { NavigationController(rootViewController: self.viewController(with: $0)) }
         themeService.rx
-            .bind({ $0.dimColor }, to: self.tab.tabBar.rx.barTintColor)
+            .bind({ $0.dimColor }, to: [self.tab.tabBar.rx.barTintColor, self.safeBottomView.rx.backgroundColor])
             .bind({ $0.tintColor }, to: self.tab.tabBar.rx.tintColor)
             .disposed(by: self.rx.disposeBag)
         if #available(iOS 10.0, *) {
@@ -57,7 +57,7 @@ class MainViewController: TabBarViewController, ReactorKit.View {
     }
 
     // MARK: - Method
-    func bind(reactor: MainViewReactor) {
+    func bind(reactor: TabBarViewReactor) {
         super.bind(reactor: reactor)
 //        reactor.state.map { $0.keys }.subscribe(onNext: { [weak self] keys in
 //            guard let `self` = self else { return }

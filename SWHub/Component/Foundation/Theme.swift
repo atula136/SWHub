@@ -51,7 +51,7 @@ struct LightTheme: Theme {
     let border1Color = UIColor.Material.grey200
     let border2Color = UIColor.Material.grey300
     let border3Color = UIColor.Material.grey400
-    let special1Color = UIColor.Material.white
+    let special1Color = UIColor.Material.deepOrange900
     let special2Color = UIColor.Material.white
     let special3Color = UIColor.Material.white
     let barStyle = UIBarStyle.default

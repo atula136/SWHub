@@ -56,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            realm.add(filter)
 //        }
 //        // Observable.from([filter]).subscribe(Realm.rx.add())
-//        print("")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
