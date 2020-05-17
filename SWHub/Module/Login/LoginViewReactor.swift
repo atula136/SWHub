@@ -26,7 +26,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case setLoading(Bool)
         case setAccount(String?)
         case setPassword(String?)
-        case setUser(User?)
+        case setUser(User)
     }
 
     struct State {
@@ -56,10 +56,9 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             guard let account = self.currentState.account else { return .empty() }
             guard let password = self.currentState.password else { return .empty() }
             guard !self.currentState.isLoading else { return .empty() }
-            User.token = "\(account):\(password)".base64Encoded
             return .concat([
                 .just(.setLoading(true)),
-                self.provider.profile().map(Mutation.setUser),
+                self.provider.login(account: account, password: password).map(Mutation.setUser),
                 .just(.setLoading(false))
                 ])
         }
@@ -75,7 +74,17 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         case let .setPassword(password):
             state.password = password
         case let .setUser(user):
-            // SubjectFactory.update(User.self, user)
+            if let account = state.account,
+                let password = state.password {
+                User.token = "\(account):\(password)".base64Encoded
+            }
+            let realm = Realm.default
+            if let config = realm.objects(Config.self).first {
+                realm.beginWrite()
+                config.user = user
+                try! realm.commitWrite()
+            }
+            User.current.accept(user)
             state.user = user
         }
         return state

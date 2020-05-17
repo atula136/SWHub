@@ -45,15 +45,15 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-        let realm = try! Realm()
-        let misc = realm.objects(Misc.self).first
+        let realm = Realm.default
+        let config = realm.objects(Config.self).first
         var repos: [Repo] = []
         for repo in realm.objects(Repo.self).filter("#first = true") {
             repos.append(repo)
         }
         self.initialState = State(
-            since: Since(rawValue: misc?.since ?? 0) ?? Since.daily,
-            code: misc?.code ?? Code(value: ["name": "All languages"]),
+            since: Since(rawValue: config?.since ?? 0) ?? Since.daily,
+            code: config?.code ?? Code(value: ["name": "All languages"]),
             sections: [.list(repos.map { .basic(RepoBasicItem($0)) })]
         )
     }

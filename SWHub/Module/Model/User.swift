@@ -10,6 +10,8 @@ import UIKit
 import BonMot
 import Iconic
 import ObjectMapper
+import RxSwift
+import RxCocoa
 import RealmSwift
 import KeychainAccess
 import SWFrame
@@ -188,6 +190,16 @@ class User: Object, ModelType, Identifiable {
         return .composed(of: [
             valueText, Special.nextLine, titleText
         ])
+    }
+
+    static var current: BehaviorRelay<User?> {
+        let key = String(describing: self)
+        if let subject = subjects[key] as? BehaviorRelay<User?> {
+            return subject
+        }
+        let subject = BehaviorRelay<User?>(value: Realm.default.objects(Config.self).first?.user)
+        subjects[key] = subject
+        return subject
     }
 
 }

@@ -16,7 +16,7 @@ import Rswift
 import SWFrame
 
 enum GithubAPI {
-    case profile
+    case login(account: String, password: String)
     case user(username: String)
     case repo(fullname: String)
     case readme(fullname: String, ref: String?)
@@ -45,7 +45,7 @@ extension GithubAPI: TargetType {
 
     var path: String {
         switch self {
-        case .profile: return "/user"
+        case .login: return "/user"
         case let .user(username): return "/users/\(username)"
         case let .repo(fullname): return "/repos/\(fullname)"
         case let .readme(fullname, _): return "/repos/\(fullname)/readme"
@@ -71,8 +71,15 @@ extension GithubAPI: TargetType {
     }
 
     var headers: [String: String]? {
-        if let token = User.token {
-            return ["Authorization": "Basic \(token)"]
+        switch self {
+        case let .login(account, password):
+            if let token = "\(account):\(password)".base64Encoded {
+                return ["Authorization": "Basic \(token)"]
+            }
+        default:
+            if let token = User.token {
+                return ["Authorization": "Basic \(token)"]
+            }
         }
         return nil
     }

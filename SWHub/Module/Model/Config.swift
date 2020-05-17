@@ -1,8 +1,8 @@
 //
-//  Misc.swift
+//  Config.swift
 //  SWHub
 //
-//  Created by 杨建祥 on 2020/5/5.
+//  Created by 杨建祥 on 2020/5/17.
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ import RealmSwift
 import ObjectMapper
 import SWFrame
 
-class Misc: Object, ModelType {
+class Config: Object, ModelType {
 
     @objc dynamic var since = 0
     @objc dynamic var code: Code?
@@ -32,23 +32,3 @@ class Misc: Object, ModelType {
     }
 
 }
-
-//struct Misc: ModelType, Subjective2 {
-//
-//    var id: Int?
-//    // var condition = Condition.init()
-//
-//    init() {
-//    }
-//
-//    init?(map: Map) {
-//    }
-//
-//    mutating func mapping(map: Map) {
-//        // condition   <- map["condition"]
-//    }
-//
-//    static func objectStoreKey(id: String? = nil) -> String {
-//        return "Misc"
-//    }
-//}

@@ -45,7 +45,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         let realm = try! Realm()
-        let misc = realm.objects(Misc.self).first
+        let misc = realm.objects(Config.self).first
         var users: [User] = []
         for user in realm.objects(User.self).filter("#first = true") {
             users.append(user)

@@ -38,7 +38,7 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
         super.init(model)
         guard let repo = model as? Repo else { return }
         let realm = try! Realm()
-        let misc = realm.objects(Misc.self).first
+        let misc = realm.objects(Config.self).first
         let since = Since(rawValue: misc?.since ?? 0)?.title ?? Since.daily.title
         self.initialState = State(
             name: repo.fullName ?? "\(repo.author ?? "")/\(repo.name ?? "")",

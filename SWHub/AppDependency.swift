@@ -45,15 +45,15 @@ final class AppDependency: NSObject, AppDependencyType {
 
     func application(_ application: UIApplication, entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
 //        let realm = try! Realm()
-//        var miscs = realm.objects(Misc.self).filter("user == nil")
+//        var miscs = realm.objects(Config.self).filter("user == nil")
 //        if miscs.count == 0 {
-//            let misc = Misc()
+//            let misc = Config()
 //            misc.code = Code(value: ["name": "All languages"])
 //            try! realm.write {
 //                realm.add(misc)
 //            }
 //        }
-//        miscs = realm.objects(Misc.self).filter("user == nil")
+//        miscs = realm.objects(Config.self).filter("user == nil")
 //        let count = miscs.count
 //        print("")
         Runtime.work()

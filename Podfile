@@ -24,6 +24,7 @@ target 'SWHub' do
 	pod 'RxSwiftExt', '5.2.0'
 		
 	# 资源
+	pod 'Iconic', '1.5'
 	pod 'RxTheme', '4.0.0'
 	pod 'R.swift', '5.1.0'
 		

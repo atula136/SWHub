@@ -39,9 +39,6 @@
     "Photos"
   ],
   "dependencies": {
-    "RxCocoa": [
-      "5.0.0"
-    ],
     "RxViewController": [
       "1.0.0"
     ],
@@ -62,9 +59,6 @@
     ],
     "RealmSwift": [
       "4.4.1"
-    ],
-    "Iconic": [
-      "1.5"
     ],
     "URLNavigator": [
       "2.3.0"
