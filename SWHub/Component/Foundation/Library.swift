@@ -31,11 +31,12 @@ class Library: SWFrame.Library {
                 log.error("预置数据失败：\(error.localizedDescription)")
             }
         }
-//        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 1, migrationBlock: { migration, oldSchemaVersion in
-//            if oldSchemaVersion < 1 {
-//                // 版本1
-//            }
-//        })
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 1, migrationBlock: { _, oldSchemaVersion in
+            if oldSchemaVersion < 1 {
+                // 版本1
+            }
+            log.info("迁移数据完成")
+        })
     }
 
     class func setupIconic() {

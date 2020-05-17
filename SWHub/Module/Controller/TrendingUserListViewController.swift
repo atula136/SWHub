@@ -21,7 +21,7 @@ class TrendingUserListViewController: CollectionViewController, ReactorKit.View 
         static let userCell = ReusableCell<UserBasicCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<TrendingUserSection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<UserSection>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -53,13 +53,14 @@ class TrendingUserListViewController: CollectionViewController, ReactorKit.View 
         self.collectionView.rx.itemSelected(dataSource: self.dataSource).subscribe(onNext: { [weak self] sectionItem in
             guard let `self` = self else { return }
             switch sectionItem {
-            case let .user(item):
+            case let .basic(item):
 //                if var url = Router.User.detail.urlString.url,
 //                    let username = (item.model as? TrendingUser)?.username {
 //                    url.appendQueryParameters([Parameter.username: username])
 //                    self.navigator.push(url)
 //                }
                 print("")
+            default: break
             }
         }).disposed(by: self.disposeBag)
     }
@@ -93,14 +94,15 @@ class TrendingUserListViewController: CollectionViewController, ReactorKit.View 
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingUserListViewReactor) -> RxCollectionViewSectionedReloadDataSource<TrendingUserSection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: TrendingUserListViewReactor) -> RxCollectionViewSectionedReloadDataSource<UserSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .user(item):
+                case let .basic(item):
                     let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
+                default: return collectionView.emptyCell(for: indexPath)
                 }
         })
     }
@@ -112,8 +114,9 @@ extension TrendingUserListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .user(item):
+        case let .basic(item):
             return Reusable.userCell.class.size(width: width, item: item)
+        default: return .zero
         }
     }
 

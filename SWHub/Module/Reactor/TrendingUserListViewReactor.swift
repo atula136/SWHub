@@ -31,7 +31,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var isRefreshing = false
         var title: String?
         var error: Error?
-        var sections: [TrendingUserSection] = []
+        var sections: [UserSection] = []
     }
 
     var initialState = State()
@@ -79,7 +79,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 //            if toCache {
 //                TrendingUser.storeArray(users)
 //            }
-            state.sections = [.users(users.map { TrendingUserSectionItem.user(UserBasicItem($0)) })]
+            state.sections = [.list(users.map { .basic(UserBasicItem($0)) })]
         }
         return state
     }

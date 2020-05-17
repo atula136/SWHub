@@ -25,6 +25,7 @@ class User: Object, ModelType, Identifiable {
         set { Keychain.shared[Key.token] = newValue }
     }
 
+    @objc dynamic var first = false
     @objc dynamic var siteAdmin = false
     @objc dynamic var twoFactorAuthentication = false
     @objc dynamic var publicRepos = 0
@@ -123,6 +124,7 @@ class User: Object, ModelType, Identifiable {
     }
 
     func mapping(map: Map) {
+        first                           <- map["first"]
         siteAdmin                       <- map["site_admin"]
         twoFactorAuthentication         <- map["two_factor_authentication"]
         id                              <- (map["id"], StringTransform())

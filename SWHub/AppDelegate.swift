@@ -57,19 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
 //        // Observable.from([filter]).subscribe(Realm.rx.add())
 //        print("")
-
-//        let realm = try! Realm()
-//        var miscs = realm.objects(Misc.self).filter("user == nil")
-//        if miscs.count == 0 {
-//            let misc = Misc()
-//            misc.code = Code(value: ["name": "All languages"])
-//            try! realm.write {
-//                realm.add(misc)
-//            }
-//        }
-//        miscs = realm.objects(Misc.self).filter("user == nil")
-//        let count = miscs.count
-//        print("")
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

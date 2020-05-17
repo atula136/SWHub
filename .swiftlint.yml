@@ -34,6 +34,7 @@ identifier_name:
     min_length: # 只有最小长度
         error: 3 # 只有错误
     excluded: # 排除某些名字
+        - i
         - x
         - y
         - id

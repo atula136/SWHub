@@ -87,6 +87,7 @@ class UserDetailViewController: CollectionViewController, ReactorKit.View {
                     let cell = collectionView.dequeue(Reusable.profileCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
+                default: return collectionView.emptyCell(for: indexPath)
                 }
         })
     }
@@ -99,6 +100,7 @@ extension UserDetailViewController: UICollectionViewDelegateFlowLayout {
         switch self.dataSource[indexPath] {
         case let .profile(item):
             return Reusable.profileCell.class.size(width: width, item: item)
+        default: return .zero
         }
     }
 

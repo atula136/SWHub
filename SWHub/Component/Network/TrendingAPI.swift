@@ -16,9 +16,9 @@ import Rswift
 import SWFrame
 
 enum TrendingAPI {
-    case languages
-    case repositories(language: String?, since: String?)
-    case developers(language: String?, since: String?)
+    case langs
+    case repos(language: String?, since: String?)
+    case users(language: String?, since: String?)
 }
 
 extension TrendingAPI: TargetType {
@@ -29,9 +29,9 @@ extension TrendingAPI: TargetType {
 
     var path: String {
         switch self {
-        case .languages: return "/languages"
-        case .repositories: return "/repositories"
-        case .developers: return "/developers"
+        case .langs: return "/languages"
+        case .repos: return "/repositories"
+        case .users: return "/developers"
         }
     }
 
@@ -49,7 +49,7 @@ extension TrendingAPI: TargetType {
     var task: Task {
         var parameters: [String: Any] = [:]
         switch self {
-        case .repositories(let language, let since), .developers(let language, let since):
+        case .repos(let language, let since), .users(let language, let since):
             parameters["language"] = language
             parameters["since"] = since
         default:

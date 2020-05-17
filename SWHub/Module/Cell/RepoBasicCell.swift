@@ -23,7 +23,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
     }
 
     fileprivate struct Font {
-        static let description = UIFont.normal(14)
+        static let intro = UIFont.normal(14)
     }
 
     lazy var nameLabel: Label = {
@@ -34,10 +34,10 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         return label
     }()
 
-    lazy var descriptionLabel: Label = {
+    lazy var introLabel: Label = {
         let label = Label()
         label.numberOfLines = 0
-        label.font = Font.description
+        label.font = Font.intro
         label.sizeToFit()
         return label
     }()
@@ -92,7 +92,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         self.nameLabel.extendToRight = frame.size.width - 20
         self.nameLabel.centerY = self.avatarImageView.centerY
 
-        self.contentView.addSubview(self.descriptionLabel)
+        self.contentView.addSubview(self.introLabel)
         self.contentView.addSubview(self.languageLabel)
         self.contentView.addSubview(self.starsLabel)
         self.contentView.addSubview(self.forksLabel)
@@ -102,7 +102,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
             .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
             .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
             .bind({ $0.statusColor }, to: self.statusLabel.rx.textColor)
-            .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.detailColor }, to: self.introLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -112,11 +112,11 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.descriptionLabel.sizeToFit()
-        self.descriptionLabel.left = self.avatarImageView.left
-        self.descriptionLabel.extendToRight = self.contentView.width - 20
-        self.descriptionLabel.top = self.avatarImageView.bottom + 4
-        self.descriptionLabel.extendToBottom = self.contentView.height - 40
+        self.introLabel.sizeToFit()
+        self.introLabel.left = self.avatarImageView.left
+        self.introLabel.extendToRight = self.contentView.width - 20
+        self.introLabel.top = self.avatarImageView.bottom + 4
+        self.introLabel.extendToBottom = self.contentView.height - 40
 
         self.languageLabel.sizeToFit()
         self.languageLabel.bottom = self.contentView.height - 25
@@ -138,7 +138,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.nameLabel.text = nil
-        self.descriptionLabel.text = nil
+        self.introLabel.text = nil
         self.languageLabel.attributedText = nil
         self.starsLabel.attributedText = nil
         self.forksLabel.attributedText = nil
@@ -151,8 +151,8 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         reactor.state.map { $0.name }
             .bind(to: self.nameLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.description }
-            .bind(to: self.descriptionLabel.rx.text)
+        reactor.state.map { $0.intro }
+            .bind(to: self.introLabel.rx.text)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.status }
             .bind(to: self.statusLabel.rx.text)
@@ -177,7 +177,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let item = item as? RepoBasicItem else { return .zero }
         var height = 10 + Metric.avatarSize.height + 4
-        height += (item.currentState.description ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.description)
+        height += (item.currentState.intro ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.intro)
         height += 65
         return CGSize(width: width, height: flat(height))
     }

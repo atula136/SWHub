@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxRealm
+import RealmSwift
 import URLNavigator
 import SWFrame
 
@@ -42,6 +44,18 @@ final class AppDependency: NSObject, AppDependencyType {
     }
 
     func application(_ application: UIApplication, entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+//        let realm = try! Realm()
+//        var miscs = realm.objects(Misc.self).filter("user == nil")
+//        if miscs.count == 0 {
+//            let misc = Misc()
+//            misc.code = Code(value: ["name": "All languages"])
+//            try! realm.write {
+//                realm.add(misc)
+//            }
+//        }
+//        miscs = realm.objects(Misc.self).filter("user == nil")
+//        let count = miscs.count
+//        print("")
         Runtime.work()
         Library.setup()
         Appearance.config()

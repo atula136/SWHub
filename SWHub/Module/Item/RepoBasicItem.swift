@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import ReactorKit
+import RealmSwift
 import Kingfisher
 import SWFrame
 
@@ -23,7 +24,7 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
 
     struct State {
         var name: String?
-        var description: String?
+        var intro: String?
         var status: String?
         var language: NSAttributedString?
         var stars: NSAttributedString?
@@ -36,29 +37,18 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
     required init(_ model: ModelType) {
         super.init(model)
         guard let repo = model as? Repo else { return }
+        let realm = try! Realm()
+        let misc = realm.objects(Misc.self).first
+        let since = Since(rawValue: misc?.since ?? 0)?.title ?? Since.daily.title
         self.initialState = State(
-            name: repo.fullName,
-            description: repo.description,
-            avatar: repo.owner?.avatar?.url
+            name: repo.fullName ?? "\(repo.author ?? "")/\(repo.name ?? "")",
+            intro: repo.introduction,
+            status: R.string.localizable.trendingRepoStarsNew(since, repo.currentPeriodStars),
+            language: repo.languageText,
+            stars: repo.starsText,
+            forks: repo.forksText,
+            avatar: repo.avatar?.url
         )
-//        if let repo = model as? Repo {
-//            self.initialState = State(
-//                name: repo.fullName,
-//                description: repo.description,
-//                avatar: repo.owner?.avatar?.url
-//            )
-//        }
-//        else if let repo = model as? TrendingRepo {
-//            self.initialState = State(
-//                name: "\(repo.author ?? "")/\(repo.name ?? "")",
-//                description: repo.description,
-//                status: R.string.localizable.trendingRepoStarsNew(Condition.current()!.since.title, repo.currentPeriodStars ?? 0),
-//                language: repo.languageText(),
-//                stars: repo.starsText(),
-//                forks: repo.forksText(),
-//                avatar: repo.avatar
-//            )
-//        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {

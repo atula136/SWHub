@@ -92,10 +92,10 @@
 		7979453E246FE0D60084B2F8 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7979453D246FE0D60084B2F8 /* Permissions.swift */; };
 		79794540246FE1300084B2F8 /* Readme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7979453F246FE1300084B2F8 /* Readme.swift */; };
 		79794542246FE2500084B2F8 /* Starred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79794541246FE2500084B2F8 /* Starred.swift */; };
+		79810EB5247125D3009A3BC6 /* default-v0.realm in Resources */ = {isa = PBXBuildFile; fileRef = 79810EB4247125D3009A3BC6 /* default-v0.realm */; };
 		799547CE245D4403002A7999 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CD245D4403002A7999 /* NavigationController.swift */; };
 		799547D0245D4998002A7999 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CF245D4998002A7999 /* UIApplicationExt.swift */; };
 		799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547D3245D607F002A7999 /* UIViewControllerExt.swift */; };
-		7999798F2470690800AFACE9 /* default-v0.realm in Resources */ = {isa = PBXBuildFile; fileRef = 7999798E2470690800AFACE9 /* default-v0.realm */; };
 		799CCE362466AE4D007A1474 /* SettingLoginItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE352466AE4D007A1474 /* SettingLoginItem.swift */; };
 		799CCE382466AE58007A1474 /* SettingLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE372466AE58007A1474 /* SettingLoginCell.swift */; };
 		799F700D246BAEF500004589 /* RepoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F700C246BAEF500004589 /* RepoSection.swift */; };
@@ -275,10 +275,10 @@
 		7979453D246FE0D60084B2F8 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		7979453F246FE1300084B2F8 /* Readme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readme.swift; sourceTree = "<group>"; };
 		79794541246FE2500084B2F8 /* Starred.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starred.swift; sourceTree = "<group>"; };
+		79810EB4247125D3009A3BC6 /* default-v0.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-v0.realm"; sourceTree = "<group>"; };
 		799547CD245D4403002A7999 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		799547CF245D4998002A7999 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
 		799547D3245D607F002A7999 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
-		7999798E2470690800AFACE9 /* default-v0.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-v0.realm"; sourceTree = "<group>"; };
 		799CCE352466AE4D007A1474 /* SettingLoginItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginItem.swift; sourceTree = "<group>"; };
 		799CCE372466AE58007A1474 /* SettingLoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginCell.swift; sourceTree = "<group>"; };
 		799F700C246BAEF500004589 /* RepoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSection.swift; sourceTree = "<group>"; };
@@ -532,43 +532,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		79402D1624700B5A00B95791 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		79402D1724700B6E00B95791 /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				7919593F2467F0F500C6DFFC /* RepoBasicItem.swift */,
-				79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */,
-				79754861246C15050044A128 /* RepoReadmeItem.swift */,
-				79B6CE9F246C2A570072C34C /* RepoProfileItem.swift */,
-			);
-			path = Item;
-			sourceTree = "<group>";
-		};
-		79402D1824700B7600B95791 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				791959412467F0FF00C6DFFC /* RepoBasicCell.swift */,
-				79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */,
-				79754863246C150E0044A128 /* RepoReadmeCell.swift */,
-				796E997D246C2A9900DB6EAE /* RepoProfileCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		79402D1924700B8E00B95791 /* Section */ = {
-			isa = PBXGroup;
-			children = (
-				799F700C246BAEF500004589 /* RepoSection.swift */,
-			);
-			path = Section;
-			sourceTree = "<group>";
-		};
 		794E3BEE24668CE9003DDDFB /* List */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,7 +655,7 @@
 		799979862470544B00AFACE9 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				7999798E2470690800AFACE9 /* default-v0.realm */,
+				79810EB4247125D3009A3BC6 /* default-v0.realm */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -700,6 +663,7 @@
 		799979892470620800AFACE9 /* Reactor */ = {
 			isa = PBXGroup;
 			children = (
+				79EE8AA1245E8EC800A2438C /* TrendingUserListViewReactor.swift */,
 				79EE8A9C245E8D9700A2438C /* TrendingRepoListViewReactor.swift */,
 			);
 			path = Reactor;
@@ -708,6 +672,7 @@
 		7999798A2470621100AFACE9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				79EE8AA3245E8ED300A2438C /* TrendingUserListViewController.swift */,
 				79EE8A9E245E8DA300A2438C /* TrendingRepoListViewController.swift */,
 			);
 			path = Controller;
@@ -716,6 +681,10 @@
 		7999798B2470621900AFACE9 /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				7919593F2467F0F500C6DFFC /* RepoBasicItem.swift */,
+				79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */,
+				79754861246C15050044A128 /* RepoReadmeItem.swift */,
+				79B6CE9F246C2A570072C34C /* RepoProfileItem.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -723,6 +692,10 @@
 		7999798C2470621E00AFACE9 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				791959412467F0FF00C6DFFC /* RepoBasicCell.swift */,
+				79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */,
+				79754863246C150E0044A128 /* RepoReadmeCell.swift */,
+				796E997D246C2A9900DB6EAE /* RepoProfileCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -730,6 +703,8 @@
 		7999798D2470622300AFACE9 /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				799F700C246BAEF500004589 /* RepoSection.swift */,
+				79CB9CFE246D930F006C46DF /* UserSection.swift */,
 			);
 			path = Section;
 			sourceTree = "<group>";
@@ -737,10 +712,6 @@
 		79A8BDD9245FC82700E88DB2 /* Repo */ = {
 			isa = PBXGroup;
 			children = (
-				79402D1924700B8E00B95791 /* Section */,
-				79402D1824700B7600B95791 /* Cell */,
-				79402D1724700B6E00B95791 /* Item */,
-				79402D1624700B5A00B95791 /* Model */,
 				794E3BEF24668CF5003DDDFB /* List */,
 				799374772464204E00EC322C /* Detail */,
 				79A8BDDC245FC90600E88DB2 /* Trending */,
@@ -880,7 +851,6 @@
 				792E3CF224694C1C0090E99F /* ProfileItem.swift */,
 				792E3CF424694C290090E99F /* ProfileCell.swift */,
 				7944097C246A4DFC00523299 /* ProfileInfoView.swift */,
-				79CB9CFE246D930F006C46DF /* UserSection.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -905,8 +875,6 @@
 		79EDEA8324685F270034FC20 /* Trending */ = {
 			isa = PBXGroup;
 			children = (
-				79EE8AA3245E8ED300A2438C /* TrendingUserListViewController.swift */,
-				79EE8AA1245E8EC800A2438C /* TrendingUserListViewReactor.swift */,
 				79CE935D246034BC009D6243 /* TrendingUserSection.swift */,
 				790B88DC245F59ED000C89D4 /* TrendingUser.swift */,
 			);
@@ -1064,7 +1032,7 @@
 				79DEC3F62461D0FC00264EE3 /* Condition.json in Resources */,
 				791160BB24609F3C00737F4B /* languages.json in Resources */,
 				79CEFB45246FAFE60049419C /* repositories.json in Resources */,
-				7999798F2470690800AFACE9 /* default-v0.realm in Resources */,
+				79810EB5247125D3009A3BC6 /* default-v0.realm in Resources */,
 				79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */,
 				79CEFB47246FAFE60049419C /* user-starred-rxhanson-Rectangle.json in Resources */,
 				79CEFB43246FAFE60049419C /* repos-rxhanson-Rectangle-stargazers.1.json in Resources */,

@@ -36,6 +36,9 @@ PODS:
   - "NSObject+Rx (5.0.0)":
     - RxSwift (~> 5.0)
   - ObjectMapper (3.5.2)
+  - "ObjectMapper+Realm (1.0)":
+    - ObjectMapper
+    - RealmSwift
   - Parchment (2.3.0)
   - QMUIKit/QMUIComponents/QMUIButton (4.0.4):
     - QMUIKit/QMUICore
@@ -80,11 +83,6 @@ PODS:
   - RxRealm (2.0.0):
     - RealmSwift (~> 4.0)
     - RxSwift (~> 5.0)
-  - RxRealmDataSources-JX (0.2.10-jx1):
-    - RealmSwift (~> 4.0)
-    - RxCocoa (~> 5.0)
-    - RxRealm (~> 2.0)
-    - RxSwift (~> 5.0)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
@@ -115,14 +113,16 @@ PODS:
     - Kingfisher (= 4.10.1)
     - Moya-ObjectMapper-JX/RxSwift (= 2.8-jx1)
     - "NSObject+Rx (= 5.0.0)"
+    - "ObjectMapper+Realm (= 1.0)"
     - QMUIKit/QMUIComponents/QMUIButton (= 4.0.4)
     - QMUIKit/QMUIComponents/QMUILabel (= 4.0.4)
     - QMUIKit/QMUICore (= 4.0.4)
     - ReachabilitySwift (= 5.0.0)
     - ReactorKit (= 2.1.0)
+    - RealmSwift (= 4.4.1)
     - RxCocoa (= 5.0.0)
     - RxDataSources (= 4.0.1)
-    - RxRealmDataSources-JX (= 0.2.10-jx1)
+    - RxRealm (= 2.0.0)
     - RxViewController (= 1.0.0)
     - SnapKit (= 4.2.0)
     - SwifterSwift (= 5.1.0)
@@ -198,6 +198,7 @@ SPEC REPOS:
     - Moya-ObjectMapper-JX
     - "NSObject+Rx"
     - ObjectMapper
+    - "ObjectMapper+Realm"
     - Parchment
     - QMUIKit
     - R.swift
@@ -213,7 +214,6 @@ SPEC REPOS:
     - RxGesture
     - RxOptional
     - RxRealm
-    - RxRealmDataSources-JX
     - RxRelay
     - RxSwift
     - RxSwiftExt
@@ -255,6 +255,7 @@ SPEC CHECKSUMS:
   Moya-ObjectMapper-JX: 7c5720d790e21a03bd266ad46823e1fa01b96753
   "NSObject+Rx": 6151a97d171f7187c4183746acc42d9451952a7b
   ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
+  "ObjectMapper+Realm": bd713d57132bf05880a656695137764692f7d2bb
   Parchment: 72a7eb8072454a9500a53dd84776e04fba24e740
   QMUIKit: 73899f707bdd51f44d16e10d11f224fb821fbe74
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
@@ -270,14 +271,13 @@ SPEC CHECKSUMS:
   RxGesture: 0cd8e37ff9a266e1c31f46bcaed6de1c536bc81e
   RxOptional: 9904e2219d59260c3c171273d475b2126de187e8
   RxRealm: 900f5c7e6f0a2d6527b56eaf7283f3035ec1e8ba
-  RxRealmDataSources-JX: 130b7d15d9be5df9ce9ebb058aa04ffb92346a62
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
   RxTheme: 0b642f47c7d197a803c6b9c083964188c34f7ddb
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SWFrame: 01277a879d589bde022b10f8f2eb93f1fae62704
+  SWFrame: 8094b3f6555ba4bb650d8b537f5277ad9eab2a24
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d

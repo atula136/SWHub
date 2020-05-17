@@ -11,10 +11,12 @@ import BonMot
 import Iconic
 import RealmSwift
 import ObjectMapper
+import ObjectMapper_Realm
 import SWFrame
 
 class Repo: Object, ModelType, Identifiable, Eventable {
 
+    @objc dynamic var first = false
     @objc dynamic var `private` = false
     @objc dynamic var fork = false
     @objc dynamic var hasIssues = false
@@ -97,6 +99,16 @@ class Repo: Object, ModelType, Identifiable, Eventable {
     @objc dynamic var owner: User?
     var builtBy = RealmSwift.List<User>()
 
+    var languageText: NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let shape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .random)]))
+        let string = (self.language ?? R.string.localizable.none()).styled(with: .color(.title))
+        texts.append(.composed(of: [
+            shape, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
+
     var basic: NSAttributedString? {
           var texts: [NSAttributedString] = []
           let starsString = self.stargazersCount.kFormatted().styled(with: .color(.title))
@@ -124,6 +136,16 @@ class Repo: Object, ModelType, Identifiable, Eventable {
           ]))
           return .composed(of: texts)
       }
+
+    var forksText: NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = self.forksCount.kFormatted().styled(with: .color(.title))
+        let image = FontAwesomeIcon.codeForkIcon.image(ofSize: .init(16), color: .title).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
 
       var detail: NSAttributedString? {
           let description = self.introduction?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
@@ -174,6 +196,7 @@ class Repo: Object, ModelType, Identifiable, Eventable {
     }
 
     func mapping(map: Map) {
+        first                       <- map["first"]
         `private`                   <- map["private"]
         fork                        <- map["fork"]
         hasIssues                   <- map["has_issues"]
@@ -253,7 +276,7 @@ class Repo: Object, ModelType, Identifiable, Eventable {
         license                     <- map["license"]
         permissions                 <- map["permissions"]
         owner                       <- map["owner"]
-        builtBy                     <- map["builtBy"]
+        builtBy                     <- (map["builtBy"], ListTransform<User>())
         updatedAt                   <- (map["updated_at"], CustomDateFormatTransform(formatString: "yyyy-MM-dd'T'HH:mm:ss'Z'"))
         if stargazersCount == 0 {
             stargazersCount         <- map["stars"]
