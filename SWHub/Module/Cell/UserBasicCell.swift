@@ -24,7 +24,7 @@ class UserBasicCell: CollectionCell, ReactorKit.View {
 
     fileprivate struct Font {
         static let repo = UIFont.bold(14)
-        static let description = UIFont.normal(14)
+        static let intro = UIFont.normal(14)
     }
 
     lazy var nameLabel: Label = {
@@ -35,10 +35,10 @@ class UserBasicCell: CollectionCell, ReactorKit.View {
         return label
     }()
 
-    lazy var descriptionLabel: Label = {
+    lazy var introLabel: Label = {
         let label = Label()
         label.numberOfLines = 0
-        label.font = Font.description
+        label.font = Font.intro
         label.sizeToFit()
         return label
     }()
@@ -74,11 +74,11 @@ class UserBasicCell: CollectionCell, ReactorKit.View {
         self.nameLabel.centerY = self.avatarImageView.centerY
 
         self.contentView.addSubview(self.repoButton)
-        self.contentView.addSubview(self.descriptionLabel)
+        self.contentView.addSubview(self.introLabel)
 
         themeService.rx
             .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
-            .bind({ $0.detailColor }, to: self.descriptionLabel.rx.textColor)
+            .bind({ $0.detailColor }, to: self.introLabel.rx.textColor)
             .bind({ $0.titleColor }, to: [self.nameLabel.rx.textColor, self.repoButton.rx.titleColor(for: .normal)])
             .disposed(by: self.rx.disposeBag)
     }
@@ -94,17 +94,17 @@ class UserBasicCell: CollectionCell, ReactorKit.View {
         self.repoButton.left = self.avatarImageView.left
         self.repoButton.top = self.avatarImageView.bottom + 5
 
-        self.descriptionLabel.sizeToFit()
-        self.descriptionLabel.left = self.avatarImageView.left
-        self.descriptionLabel.extendToRight = self.contentView.width - 20
-        self.descriptionLabel.top = self.repoButton.bottom + 5
-        self.descriptionLabel.extendToBottom = self.contentView.height - 5
+        self.introLabel.sizeToFit()
+        self.introLabel.left = self.avatarImageView.left
+        self.introLabel.extendToRight = self.contentView.width - 20
+        self.introLabel.top = self.repoButton.bottom + 5
+        self.introLabel.extendToBottom = self.contentView.height - 5
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         self.nameLabel.text = nil
-        self.descriptionLabel.text = nil
+        self.introLabel.text = nil
         self.avatarImageView.image = nil
         self.repoButton.setAttributedTitle(nil, for: .normal)
     }
@@ -114,8 +114,8 @@ class UserBasicCell: CollectionCell, ReactorKit.View {
         reactor.state.map { $0.name }
             .bind(to: self.nameLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.description }
-            .bind(to: self.descriptionLabel.rx.text)
+        reactor.state.map { $0.intro }
+            .bind(to: self.introLabel.rx.text)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.avatar }
             .bind(to: self.avatarImageView.rx.image)
@@ -131,7 +131,7 @@ class UserBasicCell: CollectionCell, ReactorKit.View {
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let item = item as? UserBasicItem else { return .zero }
         var height = 10 + Metric.avatarSize.height + 5 + Font.repo.lineHeight + 5
-        height += (item.currentState.description ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.description)
+        height += (item.currentState.intro ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.intro)
         height += 5
         return CGSize(width: width, height: flat(height))
     }

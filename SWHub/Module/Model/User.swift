@@ -81,6 +81,16 @@ class User: Object, ModelType, Identifiable {
         return .composed(of: texts)
     }
 
+    var repoText: NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = (self.repo?.name ?? "").styled(with: .color(.title))
+        let image = FontAwesomeIcon.bookIcon.image(ofSize: .init(16), color: .title).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
+
     var companyInfo: InfoModel {
         var info = InfoModel.init()
         info.icon = FontAwesomeIcon.userIcon.image(ofSize: .init(20), color: .tint).template

@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxRealm
+import RealmSwift
 import ReactorKit
 import SWFrame
 
@@ -23,7 +25,9 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setLoading(Bool)
         case setRefreshing(Bool)
         case setError(Error?)
-        case start([User], toCache: Bool)
+        case setSince(Since)
+        case setCode(Code)
+        case start([User])
     }
 
     struct State {
@@ -31,6 +35,8 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var isRefreshing = false
         var title: String?
         var error: Error?
+        var since = Since.daily
+        var code = Code(value: ["name": "All languages"])
         var sections: [UserSection] = []
     }
 
@@ -38,7 +44,16 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
+        let realm = try! Realm()
+        let misc = realm.objects(Misc.self).first
+        var users: [User] = []
+        for user in realm.objects(User.self).filter("#first = true") {
+            users.append(user)
+        }
         self.initialState = State(
+            since: Since(rawValue: misc?.since ?? 0) ?? Since.daily,
+            code: misc?.code ?? Code(value: ["name": "All languages"]),
+            sections: [.list(users.map { .basic(UserBasicItem($0)) })]
         )
     }
 
@@ -46,21 +61,18 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
-            var load = Observable.just(Mutation.setError(nil))
-//            load = load.concat(Observable.just(.setLoading(true)))
-//            if let developers = TrendingUser.cachedArray() {
-//                load = load.concat(Observable.just(.start(developers, toCache: false)))
-//            } else {
-//                load = load.concat(self.provider.developers(language: nil, since: "daily").map { Mutation.start($0, toCache: true) }.catchError({ .just(.setError($0)) }))
-//            }
-//            load = load.concat(Observable.just(.setLoading(false)))
-            return load
+            return .concat([
+                .just(.setError(nil)),
+                .just(.setLoading(true)),
+                self.provider.users(language: self.currentState.code.urlParam, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
+                .just(.setLoading(false))
+            ])
         case .refresh:
             guard self.currentState.isRefreshing == false else { return .empty() }
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-//                self.provider.developers(language: nil, since: "daily").map { Mutation.start($0, toCache: true) }.catchError({ .just(.setError($0)) }),
+                self.provider.users(language: self.currentState.code.urlParam, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
                 .just(.setRefreshing(false))
             ])
         }
@@ -75,10 +87,23 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.isRefreshing = isRefreshing
         case let .setError(error):
             state.error = error
-        case let .start(users, toCache):
-//            if toCache {
-//                TrendingUser.storeArray(users)
-//            }
+        case let .setSince(since):
+            state.since = since
+        case let .setCode(code):
+            state.code = code
+        case let .start(models):
+            let realm = Realm.default
+            let result = realm.objects(User.self).filter("#first = true")
+            try! realm.write {
+                realm.delete(result)
+            }
+            let users = models.map { user -> User in
+                user.first = true
+                return user
+            }
+            try! realm.write {
+                realm.add(users)
+            }
             state.sections = [.list(users.map { .basic(UserBasicItem($0)) })]
         }
         return state

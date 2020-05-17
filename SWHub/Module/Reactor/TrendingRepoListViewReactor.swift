@@ -28,7 +28,6 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setError(Error?)
         case setSince(Since)
         case setCode(Code)
-        //case setCondition(Condition)
         case start([Repo])
     }
 
@@ -39,7 +38,6 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var error: Error?
         var since = Since.daily
         var code = Code(value: ["name": "All languages"])
-        //var condition: Condition!
         var sections: [RepoSection] = []
     }
 
@@ -94,14 +92,19 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.since = since
         case let .setCode(code):
             state.code = code
-        case let .start(repos):
-            Observable.collection(from: Realm.default.objects(User.self).filter("#first = true")).subscribe(Realm.rx.delete()).disposed(by: self.disposeBag)
-            Observable.collection(from: Realm.default.objects(Repo.self).filter("#first = true")).subscribe(Realm.rx.delete()).disposed(by: self.disposeBag)
-            let repos = repos.map { repo -> Repo in
+        case let .start(models):
+            let realm = Realm.default
+            let old = realm.objects(Repo.self).filter("#first = true")
+            try! realm.write {
+                realm.delete(old)
+            }
+            let repos = models.map { repo -> Repo in
                 repo.first = true
                 return repo
             }
-            Observable.from(optional: repos).subscribe(Realm.rx.add()).disposed(by: self.disposeBag)
+            try! realm.write {
+                realm.add(repos)
+            }
             state.sections = [.list(repos.map { .basic(RepoBasicItem($0)) })]
         }
         return state

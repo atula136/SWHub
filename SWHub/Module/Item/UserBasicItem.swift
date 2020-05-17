@@ -23,7 +23,7 @@ class UserBasicItem: CollectionItem, ReactorKit.Reactor {
 
     struct State {
         var name: String?
-        var description: String?
+        var intro: String?
         var repo: NSAttributedString?
         var avatar: URL?
     }
@@ -35,21 +35,10 @@ class UserBasicItem: CollectionItem, ReactorKit.Reactor {
         guard let user = model as? User else { return }
         self.initialState = State(
             name: user.username,
+            intro: user.repo?.introduction,
+            repo: user.repoText,
             avatar: user.avatar?.url
         )
-//        if let user = model as? User {
-//            self.initialState = State(
-//                name: user.username,
-//                avatar: user.avatar?.url
-//            )
-//        } else if let user = model as? TrendingUser {
-//            self.initialState = State(
-//                name: user.name,
-//                description: user.repo?.description,
-//                repo: user.repoText(),
-//                avatar: user.avatar
-//            )
-//        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {

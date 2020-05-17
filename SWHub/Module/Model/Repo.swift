@@ -286,15 +286,19 @@ class Repo: Object, ModelType, Identifiable, Eventable {
         }
     }
 
-    enum Event {
-    }
-
     func count(title: String, value: Int) -> NSAttributedString {
         let valueText = value.string.styled(with: .color(.title), .font(.bold(16)), .alignment(.center))
         let titleText = title.styled(with: .color(.detail), .font(.normal(14)), .alignment(.center))
         return .composed(of: [
             valueText, Special.nextLine, titleText
         ])
+    }
+
+    override class func ignoredProperties() -> [String] {
+        return ["builtBy"]
+    }
+
+    enum Event {
     }
 
 }

@@ -92,7 +92,6 @@
 		7979453E246FE0D60084B2F8 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7979453D246FE0D60084B2F8 /* Permissions.swift */; };
 		79794540246FE1300084B2F8 /* Readme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7979453F246FE1300084B2F8 /* Readme.swift */; };
 		79794542246FE2500084B2F8 /* Starred.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79794541246FE2500084B2F8 /* Starred.swift */; };
-		79810EB5247125D3009A3BC6 /* default-v0.realm in Resources */ = {isa = PBXBuildFile; fileRef = 79810EB4247125D3009A3BC6 /* default-v0.realm */; };
 		799547CE245D4403002A7999 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CD245D4403002A7999 /* NavigationController.swift */; };
 		799547D0245D4998002A7999 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547CF245D4998002A7999 /* UIApplicationExt.swift */; };
 		799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547D3245D607F002A7999 /* UIViewControllerExt.swift */; };
@@ -101,6 +100,7 @@
 		799F700D246BAEF500004589 /* RepoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F700C246BAEF500004589 /* RepoSection.swift */; };
 		799F700F246BAF5800004589 /* RepoDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F700E246BAF5800004589 /* RepoDetailViewReactor.swift */; };
 		799F7011246BAF6400004589 /* RepoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F7010246BAF6400004589 /* RepoDetailViewController.swift */; };
+		79A76F8B24713969009A7B85 /* default-v0.realm in Resources */ = {isa = PBXBuildFile; fileRef = 79A76F8A24713969009A7B85 /* default-v0.realm */; };
 		79AF4A8724554B08001BDB90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AF4A8624554B08001BDB90 /* AppDelegate.swift */; };
 		79AF4A9024554B09001BDB90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A8F24554B09001BDB90 /* Assets.xcassets */; };
 		79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79AF4A9124554B09001BDB90 /* LaunchScreen.storyboard */; };
@@ -275,7 +275,6 @@
 		7979453D246FE0D60084B2F8 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		7979453F246FE1300084B2F8 /* Readme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readme.swift; sourceTree = "<group>"; };
 		79794541246FE2500084B2F8 /* Starred.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starred.swift; sourceTree = "<group>"; };
-		79810EB4247125D3009A3BC6 /* default-v0.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-v0.realm"; sourceTree = "<group>"; };
 		799547CD245D4403002A7999 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		799547CF245D4998002A7999 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
 		799547D3245D607F002A7999 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
@@ -284,6 +283,7 @@
 		799F700C246BAEF500004589 /* RepoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSection.swift; sourceTree = "<group>"; };
 		799F700E246BAF5800004589 /* RepoDetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailViewReactor.swift; sourceTree = "<group>"; };
 		799F7010246BAF6400004589 /* RepoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailViewController.swift; sourceTree = "<group>"; };
+		79A76F8A24713969009A7B85 /* default-v0.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-v0.realm"; sourceTree = "<group>"; };
 		79AF4A8324554B08001BDB90 /* SWHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79AF4A8624554B08001BDB90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79AF4A8F24554B09001BDB90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -655,7 +655,7 @@
 		799979862470544B00AFACE9 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				79810EB4247125D3009A3BC6 /* default-v0.realm */,
+				79A76F8A24713969009A7B85 /* default-v0.realm */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -681,6 +681,8 @@
 		7999798B2470621900AFACE9 /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				79CB9D00246D932F006C46DF /* UserProfileItem.swift */,
+				79EDEA7F24684D7F0034FC20 /* UserBasicItem.swift */,
 				7919593F2467F0F500C6DFFC /* RepoBasicItem.swift */,
 				79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */,
 				79754861246C15050044A128 /* RepoReadmeItem.swift */,
@@ -692,6 +694,8 @@
 		7999798C2470621E00AFACE9 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				79CB9D02246D933D006C46DF /* UserProfileCell.swift */,
+				79EDEA8124684D8C0034FC20 /* UserBasicCell.swift */,
 				791959412467F0FF00C6DFFC /* RepoBasicCell.swift */,
 				79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */,
 				79754863246C150E0044A128 /* RepoReadmeCell.swift */,
@@ -841,13 +845,9 @@
 		79E2AFAC2466390500D63053 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				79CB9D00246D932F006C46DF /* UserProfileItem.swift */,
-				79CB9D02246D933D006C46DF /* UserProfileCell.swift */,
 				79CB9CF9246D91D0006C46DF /* Detail */,
 				79EDEA8324685F270034FC20 /* Trending */,
 				794E3BEE24668CE9003DDDFB /* List */,
-				79EDEA7F24684D7F0034FC20 /* UserBasicItem.swift */,
-				79EDEA8124684D8C0034FC20 /* UserBasicCell.swift */,
 				792E3CF224694C1C0090E99F /* ProfileItem.swift */,
 				792E3CF424694C290090E99F /* ProfileCell.swift */,
 				7944097C246A4DFC00523299 /* ProfileInfoView.swift */,
@@ -1032,7 +1032,7 @@
 				79DEC3F62461D0FC00264EE3 /* Condition.json in Resources */,
 				791160BB24609F3C00737F4B /* languages.json in Resources */,
 				79CEFB45246FAFE60049419C /* repositories.json in Resources */,
-				79810EB5247125D3009A3BC6 /* default-v0.realm in Resources */,
+				79A76F8B24713969009A7B85 /* default-v0.realm in Resources */,
 				79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */,
 				79CEFB47246FAFE60049419C /* user-starred-rxhanson-Rectangle.json in Resources */,
 				79CEFB43246FAFE60049419C /* repos-rxhanson-Rectangle-stargazers.1.json in Resources */,
