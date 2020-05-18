@@ -35,7 +35,7 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            title: stringDefault(self.title, R.string.localizable.mainTabBarHome())
+            title: stringDefault(self.title, R.string.localizable.trending())
         )
     }
 
@@ -71,9 +71,9 @@ enum HomeKey {
     var title: String {
         switch self {
         case .repo:
-            return R.string.localizable.homeRepo()
+            return R.string.localizable.repositories()
         case .user:
-            return R.string.localizable.homeDeveloper()
+            return R.string.localizable.developers()
         }
     }
 }

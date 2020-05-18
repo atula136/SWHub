@@ -62,3 +62,9 @@ checkFollowing/followUser/unfollowUser
 https://api.github.com/user/following/onevcat
 branches
 https://api.github.com/repos/khoren93/SwiftHub/branches?page=1
+
+
+登录
+筛选
+首页
+设置

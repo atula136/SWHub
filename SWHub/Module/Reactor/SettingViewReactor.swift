@@ -43,7 +43,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         super.init(provider, parameters)
         self.initialState = State(
             isNight: ThemeType.currentTheme().isDark,
-            title: stringDefault(self.title, R.string.localizable.mainTabBarSetting())
+            title: stringDefault(self.title, R.string.localizable.setting())
         )
     }
 

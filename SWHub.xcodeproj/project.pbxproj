@@ -123,7 +123,7 @@
 		79CEFB46246FAFE60049419C /* user2.json in Resources */ = {isa = PBXBuildFile; fileRef = 79CEFB37246FAFE60049419C /* user2.json */; };
 		79CEFB47246FAFE60049419C /* user-starred-rxhanson-Rectangle.json in Resources */ = {isa = PBXBuildFile; fileRef = 79CEFB38246FAFE60049419C /* user-starred-rxhanson-Rectangle.json */; };
 		79CEFB48246FAFE60049419C /* developers.json in Resources */ = {isa = PBXBuildFile; fileRef = 79CEFB39246FAFE60049419C /* developers.json */; };
-		79CEFB49246FAFE60049419C /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 79CEFB3A246FAFE60049419C /* user.json */; };
+		79CEFB49246FAFE60049419C /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 79CEFB3A246FAFE60049419C /* login.json */; };
 		79CEFB4A246FAFE60049419C /* repos-rxhanson-Rectangle-forks.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79CEFB3B246FAFE60049419C /* repos-rxhanson-Rectangle-forks.1.json */; };
 		79CEFB4B246FAFE60049419C /* repos-rxhanson-Rectangle-branches.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79CEFB3C246FAFE60049419C /* repos-rxhanson-Rectangle-branches.1.json */; };
 		79CEFB4C246FAFE60049419C /* repos-rxhanson-Rectangle-subscribers.1.json in Resources */ = {isa = PBXBuildFile; fileRef = 79CEFB3D246FAFE60049419C /* repos-rxhanson-Rectangle-subscribers.1.json */; };
@@ -309,7 +309,7 @@
 		79CEFB37246FAFE60049419C /* user2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user2.json; sourceTree = "<group>"; };
 		79CEFB38246FAFE60049419C /* user-starred-rxhanson-Rectangle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "user-starred-rxhanson-Rectangle.json"; sourceTree = "<group>"; };
 		79CEFB39246FAFE60049419C /* developers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = developers.json; sourceTree = "<group>"; };
-		79CEFB3A246FAFE60049419C /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
+		79CEFB3A246FAFE60049419C /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		79CEFB3B246FAFE60049419C /* repos-rxhanson-Rectangle-forks.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-forks.1.json"; sourceTree = "<group>"; };
 		79CEFB3C246FAFE60049419C /* repos-rxhanson-Rectangle-branches.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-branches.1.json"; sourceTree = "<group>"; };
 		79CEFB3D246FAFE60049419C /* repos-rxhanson-Rectangle-subscribers.1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "repos-rxhanson-Rectangle-subscribers.1.json"; sourceTree = "<group>"; };
@@ -698,7 +698,7 @@
 				79CEFB37246FAFE60049419C /* user2.json */,
 				79CEFB38246FAFE60049419C /* user-starred-rxhanson-Rectangle.json */,
 				79CEFB39246FAFE60049419C /* developers.json */,
-				79CEFB3A246FAFE60049419C /* user.json */,
+				79CEFB3A246FAFE60049419C /* login.json */,
 				79CEFB3B246FAFE60049419C /* repos-rxhanson-Rectangle-forks.1.json */,
 				79CEFB3C246FAFE60049419C /* repos-rxhanson-Rectangle-branches.1.json */,
 				79CEFB3D246FAFE60049419C /* repos-rxhanson-Rectangle-subscribers.1.json */,
@@ -862,7 +862,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79CEFB4C246FAFE60049419C /* repos-rxhanson-Rectangle-subscribers.1.json in Resources */,
-				79CEFB49246FAFE60049419C /* user.json in Resources */,
+				79CEFB49246FAFE60049419C /* login.json in Resources */,
 				791160B7246094A700737F4B /* Misc.json in Resources */,
 				79CEFB4A246FAFE60049419C /* repos-rxhanson-Rectangle-forks.1.json in Resources */,
 				79CEFB44246FAFE60049419C /* users-KalleHallden.json in Resources */,

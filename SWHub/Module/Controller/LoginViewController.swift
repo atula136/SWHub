@@ -33,7 +33,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         textField.keyboardType = .emailAddress
         textField.autocapitalizationType = .none
         textField.font = .normal(16)
-        textField.placeholder = R.string.localizable.loginTitle()
+        textField.placeholder = R.string.localizable.login()
         textField.borderWidth = 1
         textField.cornerRadius = 5
         textField.sizeToFit()
@@ -45,7 +45,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         textField.textAlignment = .center
         textField.isSecureTextEntry = true
         textField.font = .normal(16)
-        textField.placeholder = R.string.localizable.loginPassword()
+        textField.placeholder = R.string.localizable.password()
         textField.borderWidth = 1
         textField.cornerRadius = 5
         textField.sizeToFit()
@@ -56,7 +56,7 @@ class LoginViewController: ScrollViewController, ReactorKit.View {
         let button = Button(type: .custom)
         button.titleLabel?.font = .normal(18)
         button.imageForNormal = FontAwesomeIcon.githubIcon.image(ofSize: .init(32), color: .white).template
-        button.titleForNormal = R.string.localizable.loginTitle()
+        button.titleForNormal = R.string.localizable.login()
         button.centerTextAndImage(spacing: 10)
         button.cornerRadius = 5
         button.sizeToFit()

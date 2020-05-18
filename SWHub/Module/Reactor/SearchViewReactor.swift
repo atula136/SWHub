@@ -23,7 +23,7 @@ class SearchViewReactor: BaseViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         self.initialState = State(
-            title: stringDefault(self.title, R.string.localizable.mainTabBarSearch())
+            title: stringDefault(self.title, R.string.localizable.search())
         )
     }
 }

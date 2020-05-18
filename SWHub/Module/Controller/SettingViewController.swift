@@ -13,6 +13,7 @@ import ReactorKit
 import URLNavigator
 import Rswift
 import SwifterSwift
+import RealmSwift
 import ReusableKit
 import RxViewController
 import RxDataSources
@@ -133,7 +134,16 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         footer.rx.logout.flatMap { _ -> Observable<AlertActionType> in
                             return navigator.rx.open(url, context: [AlertAction.cancel, AlertAction.destructive])
                         }.map { $0 as? AlertAction }.pass(.destructive).subscribe(onNext: { _ in
-                            // User.update(nil) // YJX_TODO 存储
+                            guard let username = User.current.value?.username else { return }
+                            let realm = Realm.default
+                            let user = realm.objects(User.self).filter("username = %@", username)
+                            realm.beginWrite()
+                            realm.delete(user)
+                            if let config = realm.objects(Config.self).first {
+                                config.user = nil
+                            }
+                            try! realm.commitWrite()
+                            User.current.accept(nil)
                         }).disposed(by: footer.disposeBag)
                     }
                     return footer
@@ -201,10 +211,10 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if section == 0 {
-            return .zero
+        if section == 1 && self.reactor?.currentState.user != nil {
+            return CGSize(width: collectionView.sectionWidth(at: section), height: metric(70))
         }
-        return CGSize(width: collectionView.sectionWidth(at: section), height: metric(70))
+        return .zero
     }
 
 }
