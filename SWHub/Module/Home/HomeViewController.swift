@@ -47,11 +47,12 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
 
         self.addChild(self.paging)
         self.view.addSubview(self.paging.view)
+        let tabBarHeight = self.tabBarController?.tabBar.height ?? 0
         self.paging.view.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.top.equalToSuperview().offset(self.contentTop)
             make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-self.contentBottom)
+            make.bottom.equalToSuperview().offset(-tabBarHeight)
         }
         self.paging.didMove(toParent: self)
         self.paging.dataSource = self
@@ -65,7 +66,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         self.navigationBar.titleView = self.paging.collectionView
 
         themeService.rx
-            .bind({ $0.dimColor }, to: self.paging.view.rx.backgroundColor)
+            .bind({ $0.special1Color }, to: self.paging.view.rx.backgroundColor)
             .bind({ $0.tintColor }, to: [self.paging.rx.indicatorColor, self.paging.rx.selectedTextColor])
             .bind({ $0.titleColor }, to: self.paging.rx.textColor)
             .disposed(by: self.rx.disposeBag)
@@ -73,6 +74,10 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
             guard let `self` = self else { return }
             self.paging.reloadMenu()
         }).disposed(by: self.rx.disposeBag)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     func bind(reactor: HomeViewReactor) {
@@ -102,9 +107,9 @@ extension HomeViewController: PagingViewControllerDataSource {
 
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
         switch self.reactor!.currentState.items[index] {
-        case .repository:
+        case .repo:
             return TrendingRepoListViewController(self.navigator, TrendingRepoListViewReactor(self.reactor!.provider, nil))
-        case .developer:
+        case .user:
             return TrendingUserListViewController(self.navigator, TrendingUserListViewReactor(self.reactor!.provider, nil))
         }
     }

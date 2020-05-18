@@ -23,16 +23,6 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<RepoSection>
 
-//    override var layout: UICollectionViewLayout {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        //layout.minimumInteritemSpacing = 0
-//        //layout.minimumLineSpacing = 10
-//        //layout.sectionInset = .init(horizontal: 30, vertical: 20)
-//        //layout.sectionInset = .init(top: 10, left: 15, bottom: 10, right: 15)
-//        return layout
-//    }
-
     init(_ navigator: NavigatorType, _ reactor: TrendingRepoListViewReactor) {
         defer {
             self.reactor = reactor

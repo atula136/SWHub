@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import NSObject_Rx
+import SWFrame
 
 class Appearance {
 
@@ -16,12 +17,13 @@ class Appearance {
 
     public class func config() {
         // 导航栏
-//        let navBar = UINavigationBar.appearance()
-//        themeService.rx
-//            .bind({ $0.primaryColor }, to: navBar.rx.barTintColor)
-//            .bind({ $0.foregroundColor }, to: navBar.rx.tintColor)
-//            .bind({ [.foregroundColor: $0.textColor, .font: UIFont.systemFont(ofSize: 17)] }, to: navBar.rx.titleTextAttributes)
-//            .disposed(by: self.disposeBag)
-//        navBar.isTranslucent = false
+        let navBar = NavigationBar.appearance()
+        themeService.rx
+            .bind({ $0.tintColor }, to: navBar.rx.itemColor)
+            .bind({ $0.dimColor }, to: navBar.rx.backgroundColor)
+            .bind({ $0.border3Color }, to: navBar.rx.lineColor)
+            .bind({ $0.titleColor }, to: navBar.rx.titleColor)
+            .disposed(by: self.disposeBag)
     }
+
 }

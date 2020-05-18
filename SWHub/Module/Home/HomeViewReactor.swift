@@ -27,7 +27,7 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         var isLoading = false
         var title: String?
         var languages: [Code]?
-        var items: [HomeKey] = [.repository, .developer]
+        var items: [HomeKey] = [.repo, .user]
     }
 
     var initialState = State()
@@ -65,14 +65,14 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 }
 
 enum HomeKey {
-    case repository
-    case developer
+    case repo
+    case user
 
     var title: String {
         switch self {
-        case .repository:
+        case .repo:
             return R.string.localizable.homeRepo()
-        case .developer:
+        case .user:
             return R.string.localizable.homeDeveloper()
         }
     }
