@@ -1,5 +1,5 @@
 //
-//  ConditionLanguageCell.swift
+//  ConditionCodeCell.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/12.
@@ -18,7 +18,7 @@ import SwifterSwift
 import Rswift
 import SWFrame
 
-class ConditionLanguageCell: CollectionCell, ReactorKit.View {
+class ConditionCodeCell: CollectionCell, ReactorKit.View {
 
     lazy var titleLabel: Label = {
         let label = Label()
@@ -69,7 +69,7 @@ class ConditionLanguageCell: CollectionCell, ReactorKit.View {
         self.checkImageView.isHidden = true
     }
 
-    func bind(reactor: ConditionLanguageItem) {
+    func bind(reactor: ConditionCodeItem) {
         super.bind(item: reactor)
         reactor.state.map { $0.title }
             .bind(to: self.titleLabel.rx.text)

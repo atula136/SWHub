@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RxRealm
 import RealmSwift
+import ObjectMapper
 import URLNavigator
 import SWFrame
 
@@ -44,18 +45,17 @@ final class AppDependency: NSObject, AppDependencyType {
     }
 
     func application(_ application: UIApplication, entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-//        let realm = try! Realm()
-//        var miscs = realm.objects(Config.self).filter("user == nil")
-//        if miscs.count == 0 {
-//            let misc = Config()
-//            misc.code = Code(value: ["name": "All languages"])
-//            try! realm.write {
-//                realm.add(misc)
-//            }
+//        let realm = Realm.default
+//        realm.beginWrite()
+//        realm.add(Code())
+//        if let json = FileManager.default.json(withFilename: "languages.json"),
+//            let codes = Mapper<Code>().mapArray(JSONObject: json) {
+//            realm.add(codes)
 //        }
-//        miscs = realm.objects(Config.self).filter("user == nil")
-//        let count = miscs.count
-//        print("")
+//        let config = Config()
+//        config.active = true
+//        realm.add(config)
+//        try! realm.commitWrite()
         Runtime.work()
         Library.setup()
         Appearance.config()

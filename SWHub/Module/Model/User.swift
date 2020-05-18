@@ -197,7 +197,8 @@ class User: Object, ModelType, Identifiable {
         if let subject = subjects[key] as? BehaviorRelay<User?> {
             return subject
         }
-        let subject = BehaviorRelay<User?>(value: Realm.default.objects(Config.self).first?.user)
+        // let subject = BehaviorRelay<User?>(value: Realm.default.objects(Config.self).first?.user)
+        let subject = BehaviorRelay<User?>(value: nil) // TODO
         subjects[key] = subject
         return subject
     }

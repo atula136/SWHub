@@ -37,7 +37,7 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var title: String?
         var error: Error?
         var since = Since.daily
-        var code = Code(value: ["name": "All languages"])
+        var code = Code()
         var sections: [RepoSection] = []
     }
 
@@ -53,7 +53,7 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         }
         self.initialState = State(
             since: Since(rawValue: config?.since ?? 0) ?? Since.daily,
-            code: config?.code ?? Code(value: ["name": "All languages"]),
+            code: Code(value: ["id": config?.codeId]),
             sections: [.list(repos.map { .basic(RepoBasicItem($0)) })]
         )
     }
@@ -65,7 +65,7 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.provider.repos(language: self.currentState.code.urlParam, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
+                self.provider.repos(language: self.currentState.code.id, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
                 .just(.setLoading(false))
             ])
         case .refresh:
@@ -73,7 +73,7 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.provider.repos(language: self.currentState.code.urlParam, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
+                self.provider.repos(language: self.currentState.code.id, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
                 .just(.setRefreshing(false))
             ])
         }

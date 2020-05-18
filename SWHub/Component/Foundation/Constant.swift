@@ -16,6 +16,7 @@ struct Information {
 //        static let platform = "iPhone"
 //        static let source = "tiaotiaoapp"
     static let swhub = "tospery/SWHub"
+    static let allLanguages = "All languages"
 }
 
 struct Constant {

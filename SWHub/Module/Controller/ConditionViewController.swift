@@ -17,19 +17,10 @@ import SWFrame
 
 class ConditionViewController: CollectionViewController, ReactorKit.View {
     struct Reusable {
-        static let languageCell = ReusableCell<ConditionLanguageCell>()
+        static let codeCell = ReusableCell<ConditionCodeCell>()
     }
 
     let dataSource: RxCollectionViewSectionedReloadDataSource<ConditionSection>
-
-//    override var layout: UICollectionViewLayout {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        layout.minimumInteritemSpacing = 0
-//        layout.minimumLineSpacing = 10
-//        layout.sectionInset = .init(horizontal: 30, vertical: 20)
-//        return layout
-//    }
 
     lazy var segment: UISegmentedControl = {
         let segment = UISegmentedControl(items: Since.allValues.map { $0.title })
@@ -46,8 +37,6 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
         }
         self.dataSource = type(of: self).dataSourceFactory(navigator, reactor)
         super.init(navigator, reactor)
-        // self.hidesNavigationBar = boolMember(reactor.parameters, Parameter.hideNavBar, true)
-        // self.shouldRefresh = boolMember(reactor.parameters, Parameter.shouldRefresh, true)
     }
 
     required init?(coder: NSCoder) {
@@ -56,18 +45,22 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.save())
-//        saveButton.rx.tap.subscribe(onNext: { [weak self] _ in
-//            guard let `self` = self else { return }
+        let saveButton = self.navigationBar.addButtonToRight(nil, R.string.localizable.save())
+        saveButton.rx.tap.subscribe(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
 //            var condition = Condition.init()
 //            condition.since = self.reactor!.currentState.since
 //            condition.language = self.reactor!.currentState.language
 //            Condition.update(condition)
-//            self.dismiss(animated: true, completion: nil)
-//        }).disposed(by: self.disposeBag)
-//        self.navigationBar.titleView = self.segment
-//
-//        self.collectionView.register(Reusable.languageCell)
+            // Shot.event.onNext(.updateLiked(id: shotID, isLiked: isLiked))
+            let since = self.reactor!.currentState.since
+            let code = self.reactor!.currentState.code
+            Condition.event.onNext(.update(since, code))
+            self.dismiss(animated: true, completion: nil)
+        }).disposed(by: self.disposeBag)
+
+        self.navigationBar.titleView = self.segment
+        self.collectionView.register(Reusable.codeCell)
 
         themeService.rx
             .bind({ [NSAttributedString.Key.foregroundColor: $0.titleColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
@@ -123,8 +116,8 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .language(item):
-                    let cell = collectionView.dequeue(Reusable.languageCell, for: indexPath)
+                case let .code(item):
+                    let cell = collectionView.dequeue(Reusable.codeCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
                 }
@@ -137,8 +130,8 @@ extension ConditionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .language(item):
-            return Reusable.languageCell.class.size(width: width, item: item)
+        case let .code(item):
+            return Reusable.codeCell.class.size(width: width, item: item)
         }
     }
 

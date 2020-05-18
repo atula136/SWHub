@@ -68,3 +68,10 @@ https://api.github.com/repos/khoren93/SwiftHub/branches?page=1
 筛选
 首页
 设置
+
+
+1. Config保存用户设置，没有用户的是游客，有用户的是用户对于的设置，用户登录后恢复没有用户的为默认设置
+2. App的设置，用UserDefault保存
+        App
+设置 ->
+        User

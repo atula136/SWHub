@@ -6,23 +6,38 @@
 //  Copyright © 2020 杨建祥. All rights reserved.
 //
 
-//import UIKit
-//import QMUIKit
-//import RxSwift
-//import RxCocoa
-//import RxDataSources
-//import ReactorKit
-//import Kingfisher
-//import ObjectMapper
-//import SwifterSwift
-//import Rswift
-//import SWFrame
-//
+import UIKit
+import QMUIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
+import ReactorKit
+import Kingfisher
+import ObjectMapper
+import SwifterSwift
+import Rswift
+import SWFrame
+
+struct Condition: ModelType, Eventable {
+
+    init() {
+    }
+
+    init?(map: Map) {
+    }
+
+    mutating func mapping(map: Map) {
+    }
+
+    enum Event {
+        case update(Since, Code)
+    }
+
+}
+
 //struct Condition: ModelType, Subjective2, Equatable /*, Eventable */ {
 //
-//    enum Event {
-//        case update(Since, Language)
-//    }
+
 //
 //    var id: Int?
 //    var since = Since.daily

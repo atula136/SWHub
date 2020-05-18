@@ -1,5 +1,5 @@
 //
-//  ConditionLanguageItem.swift
+//  ConditionCodeItem.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/5/12.
@@ -18,7 +18,7 @@ import SwifterSwift
 import Rswift
 import SWFrame
 
-class ConditionLanguageItem: CollectionItem, ReactorKit.Reactor {
+class ConditionCodeItem: CollectionItem, ReactorKit.Reactor {
 
     typealias Action = NoAction
 
@@ -27,7 +27,7 @@ class ConditionLanguageItem: CollectionItem, ReactorKit.Reactor {
     }
 
     struct State {
-        var checked = false
+        var checked = false // TODO 采用state transform withLastFrom方式实现
         var title: String?
     }
 
@@ -35,19 +35,19 @@ class ConditionLanguageItem: CollectionItem, ReactorKit.Reactor {
 
     required init(_ model: ModelType) {
         super.init(model)
-        guard let language = model as? Code else { return }
+        guard let code = model as? Code else { return }
         self.initialState = State(
-            checked: language.checked,
-            title: language.urlParam == nil ? NSLocalizedString(language.name ?? R.string.localizable.allLanguages(), comment: "") : language.name
+            checked: code.checked,
+            title: NSLocalizedString(code.id == nil ? Information.allLanguages : code.name ?? "", comment: "")
         )
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case let .setSelect(urlParam):
-            if let language = self.model as? Code {
-                state.checked = urlParam == language.urlParam
+        case let .setSelect(id):
+            if let code = self.model as? Code {
+                state.checked = id == code.id
             }
         }
         return state

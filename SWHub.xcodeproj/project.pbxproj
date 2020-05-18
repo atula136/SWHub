@@ -52,8 +52,8 @@
 		794307F2246275A00050F3E3 /* RepoDetailItem2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307F1246275A00050F3E3 /* RepoDetailItem2.swift */; };
 		794307F4246275A90050F3E3 /* RepoDetailCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307F3246275A90050F3E3 /* RepoDetailCell2.swift */; };
 		794307F624627DEC0050F3E3 /* RepoDetailModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307F524627DEC0050F3E3 /* RepoDetailModel2.swift */; };
-		794409772469C60800523299 /* ConditionLanguageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794409762469C60800523299 /* ConditionLanguageItem.swift */; };
-		794409792469C61200523299 /* ConditionLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794409782469C61200523299 /* ConditionLanguageCell.swift */; };
+		794409772469C60800523299 /* ConditionCodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794409762469C60800523299 /* ConditionCodeItem.swift */; };
+		794409792469C61200523299 /* ConditionCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794409782469C61200523299 /* ConditionCodeCell.swift */; };
 		7944097B2469C64900523299 /* ConditionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944097A2469C64900523299 /* ConditionSection.swift */; };
 		7944097D246A4DFC00523299 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944097C246A4DFC00523299 /* ProfileInfoView.swift */; };
 		794E3BF124668D11003DDDFB /* RepoListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF024668D11003DDDFB /* RepoListViewReactor.swift */; };
@@ -94,6 +94,7 @@
 		799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547D3245D607F002A7999 /* UIViewControllerExt.swift */; };
 		799CCE362466AE4D007A1474 /* SettingLoginItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE352466AE4D007A1474 /* SettingLoginItem.swift */; };
 		799CCE382466AE58007A1474 /* SettingLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE372466AE58007A1474 /* SettingLoginCell.swift */; };
+		799F14BC2473081C00085D00 /* default-v0.realm in Resources */ = {isa = PBXBuildFile; fileRef = 799F14BB2473081C00085D00 /* default-v0.realm */; };
 		799F700D246BAEF500004589 /* RepoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F700C246BAEF500004589 /* RepoSection.swift */; };
 		799F700F246BAF5800004589 /* RepoDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F700E246BAF5800004589 /* RepoDetailViewReactor.swift */; };
 		799F7011246BAF6400004589 /* RepoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F7010246BAF6400004589 /* RepoDetailViewController.swift */; };
@@ -106,7 +107,6 @@
 		79B6CEA0246C2A570072C34C /* RepoProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B6CE9F246C2A570072C34C /* RepoProfileItem.swift */; };
 		79BFB55E246D201900AE700D /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BFB55D246D201900AE700D /* InfoModel.swift */; };
 		79C14DEE2471537500EED175 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C14DED2471537500EED175 /* Config.swift */; };
-		79C14DF02471545200EED175 /* default-v0.realm in Resources */ = {isa = PBXBuildFile; fileRef = 79C14DEF2471545200EED175 /* default-v0.realm */; };
 		79CB9CFB246D91E5006C46DF /* UserDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB9CFA246D91E5006C46DF /* UserDetailViewReactor.swift */; };
 		79CB9CFD246D91F3006C46DF /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB9CFC246D91F3006C46DF /* UserDetailViewController.swift */; };
 		79CB9CFF246D930F006C46DF /* UserSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CB9CFE246D930F006C46DF /* UserSection.swift */; };
@@ -232,8 +232,8 @@
 		794307F1246275A00050F3E3 /* RepoDetailItem2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailItem2.swift; sourceTree = "<group>"; };
 		794307F3246275A90050F3E3 /* RepoDetailCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailCell2.swift; sourceTree = "<group>"; };
 		794307F524627DEC0050F3E3 /* RepoDetailModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailModel2.swift; sourceTree = "<group>"; };
-		794409762469C60800523299 /* ConditionLanguageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionLanguageItem.swift; sourceTree = "<group>"; };
-		794409782469C61200523299 /* ConditionLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionLanguageCell.swift; sourceTree = "<group>"; };
+		794409762469C60800523299 /* ConditionCodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCodeItem.swift; sourceTree = "<group>"; };
+		794409782469C61200523299 /* ConditionCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCodeCell.swift; sourceTree = "<group>"; };
 		7944097A2469C64900523299 /* ConditionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionSection.swift; sourceTree = "<group>"; };
 		7944097C246A4DFC00523299 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoView.swift; sourceTree = "<group>"; };
 		794E3BF024668D11003DDDFB /* RepoListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewReactor.swift; sourceTree = "<group>"; };
@@ -274,6 +274,7 @@
 		799547D3245D607F002A7999 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		799CCE352466AE4D007A1474 /* SettingLoginItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginItem.swift; sourceTree = "<group>"; };
 		799CCE372466AE58007A1474 /* SettingLoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginCell.swift; sourceTree = "<group>"; };
+		799F14BB2473081C00085D00 /* default-v0.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-v0.realm"; sourceTree = "<group>"; };
 		799F700C246BAEF500004589 /* RepoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSection.swift; sourceTree = "<group>"; };
 		799F700E246BAF5800004589 /* RepoDetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailViewReactor.swift; sourceTree = "<group>"; };
 		799F7010246BAF6400004589 /* RepoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailViewController.swift; sourceTree = "<group>"; };
@@ -292,7 +293,6 @@
 		79B6CE9F246C2A570072C34C /* RepoProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoProfileItem.swift; sourceTree = "<group>"; };
 		79BFB55D246D201900AE700D /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
 		79C14DED2471537500EED175 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		79C14DEF2471545200EED175 /* default-v0.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-v0.realm"; sourceTree = "<group>"; };
 		79CB9CFA246D91E5006C46DF /* UserDetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewReactor.swift; sourceTree = "<group>"; };
 		79CB9CFC246D91F3006C46DF /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		79CB9CFE246D930F006C46DF /* UserSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSection.swift; sourceTree = "<group>"; };
@@ -419,14 +419,14 @@
 			isa = PBXGroup;
 			children = (
 				79FFAE31246B2D9C00B0CAE7 /* 2 */,
-				79A55DEE2471505A00C41117 /* View */,
-				797F199824714F09000B60AA /* Enum */,
-				7999798D2470622300AFACE9 /* Section */,
 				7999798C2470621E00AFACE9 /* Cell */,
-				7999798B2470621900AFACE9 /* Item */,
 				7999798A2470621100AFACE9 /* Controller */,
-				799979892470620800AFACE9 /* Reactor */,
+				797F199824714F09000B60AA /* Enum */,
+				7999798B2470621900AFACE9 /* Item */,
 				79ED3CA924701C7100EE1F56 /* Model */,
+				799979892470620800AFACE9 /* Reactor */,
+				7999798D2470622300AFACE9 /* Section */,
+				79A55DEE2471505A00C41117 /* View */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -501,7 +501,7 @@
 		799979862470544B00AFACE9 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				79C14DEF2471545200EED175 /* default-v0.realm */,
+				799F14BB2473081C00085D00 /* default-v0.realm */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -556,7 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				79094569245DD1F200D69366 /* TintItem.swift */,
-				794409762469C60800523299 /* ConditionLanguageItem.swift */,
+				794409762469C60800523299 /* ConditionCodeItem.swift */,
 				792E3CF224694C1C0090E99F /* ProfileItem.swift */,
 				7919593F2467F0F500C6DFFC /* RepoBasicItem.swift */,
 				79B6CE9F246C2A570072C34C /* RepoProfileItem.swift */,
@@ -575,7 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				7909456B245DD1F900D69366 /* TintCell.swift */,
-				794409782469C61200523299 /* ConditionLanguageCell.swift */,
+				794409782469C61200523299 /* ConditionCodeCell.swift */,
 				792E3CF424694C290090E99F /* ProfileCell.swift */,
 				799CCE372466AE58007A1474 /* SettingLoginCell.swift */,
 				79D2614A2462DD1000A979D3 /* SettingSwitchCell.swift */,
@@ -712,19 +712,19 @@
 		79ED3CA924701C7100EE1F56 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				79094567245DD17900D69366 /* Tint.swift */,
+				79ED3CA724701B9C00EE1F56 /* Code.swift */,
 				791160BE2460A11200737F4B /* Condition.swift */,
-				79D2614C2462DDCC00A979D3 /* Setting.swift */,
-				79D8C81E24620AB900A905F0 /* Repo.swift */,
+				79C14DED2471537500EED175 /* Config.swift */,
+				79ED3CA52470143500EE1F56 /* Filter.swift */,
 				7979453B246FE0500084B2F8 /* License.swift */,
+				79ED3CAA24701CE700EE1F56 /* Links.swift */,
 				7979453D246FE0D60084B2F8 /* Permissions.swift */,
 				7979453F246FE1300084B2F8 /* Readme.swift */,
+				79D8C81E24620AB900A905F0 /* Repo.swift */,
+				79D2614C2462DDCC00A979D3 /* Setting.swift */,
 				79794541246FE2500084B2F8 /* Starred.swift */,
+				79094567245DD17900D69366 /* Tint.swift */,
 				79CEFB50246FB33F0049419C /* User.swift */,
-				79ED3CA52470143500EE1F56 /* Filter.swift */,
-				79ED3CA724701B9C00EE1F56 /* Code.swift */,
-				79ED3CAA24701CE700EE1F56 /* Links.swift */,
-				79C14DED2471537500EED175 /* Config.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -871,7 +871,7 @@
 				79DEC3F62461D0FC00264EE3 /* Condition.json in Resources */,
 				791160BB24609F3C00737F4B /* languages.json in Resources */,
 				79CEFB45246FAFE60049419C /* repositories.json in Resources */,
-				79C14DF02471545200EED175 /* default-v0.realm in Resources */,
+				799F14BC2473081C00085D00 /* default-v0.realm in Resources */,
 				79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */,
 				79CEFB47246FAFE60049419C /* user-starred-rxhanson-Rectangle.json in Resources */,
 				79CEFB43246FAFE60049419C /* repos-rxhanson-Rectangle-stargazers.1.json in Resources */,
@@ -996,7 +996,7 @@
 				79FAF5E424628DAD00CEC4D0 /* RepoDetailHeaderView2.swift in Sources */,
 				799CCE362466AE4D007A1474 /* SettingLoginItem.swift in Sources */,
 				79CC24B024663F2C00794CFD /* UserListSection.swift in Sources */,
-				794409792469C61200523299 /* ConditionLanguageCell.swift in Sources */,
+				794409792469C61200523299 /* ConditionCodeCell.swift in Sources */,
 				7906C32124555DB60030764D /* Router.swift in Sources */,
 				7976ACA4245826FA00093046 /* MessageViewReactor.swift in Sources */,
 				79CC24AE24663E8B00794CFD /* UserListViewController.swift in Sources */,
@@ -1076,7 +1076,7 @@
 				79D8C81D2462085200A905F0 /* RepoDetailViewController2.swift in Sources */,
 				79042E96245D8FC200DB30ED /* TintViewReactor.swift in Sources */,
 				7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */,
-				794409772469C60800523299 /* ConditionLanguageItem.swift in Sources */,
+				794409772469C60800523299 /* ConditionCodeItem.swift in Sources */,
 				7976ACBF245933E200093046 /* CollectionViewReactor.swift in Sources */,
 				790767B02456C42000CD0AAF /* GithubNetworking.swift in Sources */,
 				79B2E56E245BD88900D6E162 /* IntExt.swift in Sources */,

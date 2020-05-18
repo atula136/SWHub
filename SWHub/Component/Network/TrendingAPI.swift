@@ -16,7 +16,7 @@ import Rswift
 import SWFrame
 
 enum TrendingAPI {
-    case langs
+    case codes
     case repos(language: String?, since: String?)
     case users(language: String?, since: String?)
 }
@@ -29,7 +29,7 @@ extension TrendingAPI: TargetType {
 
     var path: String {
         switch self {
-        case .langs: return "/languages"
+        case .codes: return "/languages"
         case .repos: return "/repositories"
         case .users: return "/developers"
         }

@@ -19,23 +19,23 @@ import Rswift
 import SWFrame
 
 enum ConditionSection {
-    case languages([ConditionSectionItem])
+    case list([ConditionSectionItem])
 }
 
 extension ConditionSection: SectionModelType {
     var items: [ConditionSectionItem] {
         switch self {
-        case let .languages(items): return items
+        case let .list(items): return items
         }
     }
 
     init(original: ConditionSection, items: [ConditionSectionItem]) {
         switch original {
-        case .languages: self = .languages(items)
+        case .list: self = .list(items)
         }
     }
 }
 
 enum ConditionSectionItem {
-    case language(ConditionLanguageItem)
+    case code(ConditionCodeItem)
 }

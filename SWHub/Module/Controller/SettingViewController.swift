@@ -137,11 +137,10 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                             guard let username = User.current.value?.username else { return }
                             let realm = Realm.default
                             let user = realm.objects(User.self).filter("username = %@", username)
+                            let config = realm.objects(Config.self).filter("user.username = %@", username)
                             realm.beginWrite()
                             realm.delete(user)
-                            if let config = realm.objects(Config.self).first {
-                                config.user = nil
-                            }
+                            realm.delete(config)
                             try! realm.commitWrite()
                             User.current.accept(nil)
                         }).disposed(by: footer.disposeBag)

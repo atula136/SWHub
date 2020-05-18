@@ -81,7 +81,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
             let realm = Realm.default
             if let config = realm.objects(Config.self).first {
                 realm.beginWrite()
-                config.user = user
+                // config.user = user          // TODO
                 try! realm.commitWrite()
             }
             User.current.accept(user)

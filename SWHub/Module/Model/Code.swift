@@ -21,19 +21,20 @@ import SWFrame
 
 class Code: Object, ModelType {
 
+    @objc dynamic var id: String?
     @objc dynamic var name: String?
-    @objc dynamic var urlParam: String?
     var checked = false
 
     required init() {
+        self.name = Information.allLanguages
     }
 
     required init?(map: Map) {
     }
 
     func mapping(map: Map) {
+        id              <- map["urlParam"]
         name            <- map["name"]
-        urlParam        <- map["urlParam"]
     }
 
 //        static func == (lhs: Language, rhs: Language) -> Bool {

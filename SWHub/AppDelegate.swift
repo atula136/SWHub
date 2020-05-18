@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-//        if let misc = Misc.current() {
+//        if let config = Misc.current() {
 //            print("")
 //        }
 //        let a1 = Condition.Language.self.init()

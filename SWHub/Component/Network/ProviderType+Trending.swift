@@ -16,8 +16,8 @@ extension ProviderType {
         return TrendingNetworking(provider: NetworkProvider<TrendingAPI>(endpointClosure: TrendingNetworking.endpointsClosure(), requestClosure: TrendingNetworking.endpointResolver(), stubClosure: TrendingNetworking.APIKeysBasedStubBehaviour, plugins: TrendingNetworking.plugins))
     }
 
-    func langs() -> Observable<[Code]> {
-        return self.trendingNetworking.requestArray(.langs, type: Code.self)
+    func codes() -> Observable<[Code]> {
+        return self.trendingNetworking.requestArray(.codes, type: Code.self)
     }
 
     /// 仓库趋势：https://github-trending-api.now.sh/repositories?language=Swift&since=monthly

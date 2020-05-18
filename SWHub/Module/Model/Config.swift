@@ -15,9 +15,10 @@ import SWFrame
 
 class Config: Object, ModelType {
 
+    @objc dynamic var active = false
     @objc dynamic var since = 0
-    @objc dynamic var code: Code?
-    @objc dynamic var user: User?
+    @objc dynamic var codeId: String?
+    @objc dynamic var userId: String?
 
     required init() {
     }
@@ -27,8 +28,8 @@ class Config: Object, ModelType {
 
     func mapping(map: Map) {
         since           <- map["since"]
-        code            <- map["code"]
-        user            <- map["user"]
+        codeId          <- map["codeId"]
+        userId          <- map["userId"]
     }
 
 }

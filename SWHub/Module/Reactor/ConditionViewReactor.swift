@@ -9,28 +9,25 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RealmSwift
 import ReactorKit
 import SWFrame
 
 class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     enum Action {
-        case load
-        case since(Int)
-        case language(String?)
+        case since(Int)         // TODO Home中请求code，每启动一次app更新一次，节省流量
+        case code(String?)
     }
     enum Mutation {
-        case setLoading(Bool)
         case setError(Error?)
         case setSince(Int)
-        case setLanguage(String?)
-        case start([Code])
+        case setCode(String?)
     }
 
     struct State {
-        var isLoading = false
         var error: Error?
         var since = Since.daily
-        var language = Code.init(value: ["name": "All languages"])
+        var code = Code()
         var sections: [ConditionSection] = []
     }
 
@@ -38,82 +35,52 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-//        let condition = Condition.current()!
-//        // since
-//        let value = stringMember(self.parameters, Parameter.since, condition.since.paramValue)!
-//        let since = value.since
-//        // language
-//        let urlParam = stringMember(self.parameters, Parameter.language, condition.language.urlParam)
-//        var language = Condition.Language.init()
-//        language.urlParam = urlParam
-//        // sections
-//        var sections: [ConditionSection] = []
-//        if let languages = Condition.Language.cachedArray() {
-//            let langs = self.languages(languages: languages, selected: language.urlParam)
-//            let items = langs.map { ConditionLanguageItem($0) }
-//            let sectionItems = items.map { ConditionSectionItem.language($0) }
-//            sections = [.languages(sectionItems)]
-//        }
-//        self.initialState = State(
-//            since: since,
-//            language: language,
-//            sections: sections
-//        )
+        let realm = Realm.default
+        let config = realm.objects(Config.self).first ?? Config()
+        // since
+        let value = stringMember(self.parameters, Parameter.since, config.since.string)!
+        let since = value.since
+        // code
+        let id = stringMember(self.parameters, Parameter.code, config.codeId)
+        let code = Code(value: ["id": id])
+        // sections
+        var sectionItems: [ConditionSectionItem] = []
+        let codes = realm.objects(Code.self)
+        for model in codes {
+            model.checked = model.id == code.id
+            sectionItems.append(.code(ConditionCodeItem(model)))
+        }
+        let sections: [ConditionSection] = [.list(sectionItems)]
+        self.initialState = State(
+            since: since,
+            code: code,
+            sections: sections
+        )
     }
 
-//    func mutate(action: Action) -> Observable<Mutation> {
-//        switch action {
-//        case .load:
-//            guard self.currentState.isLoading == false else { return .empty() }
-//            return .concat([
-//                .just(.setError(nil)),
-//                .just(.setLoading(true)),
-//                self.provider.languages().map { Mutation.start($0) },
-//                .just(.setLoading(false))
-//            ])
-//        case let .since(value):
-//            guard value != self.currentState.since.rawValue else { return .empty() }
-//            return .just(.setSince(value))
-//        case let .language(urlParam):
-//            guard urlParam != self.currentState.language.urlParam else { return .empty() }
-//            return .just(.setLanguage(urlParam))
-//        }
-//    }
-//
-//    func reduce(state: State, mutation: Mutation) -> State {
-//        var state = state
-//        switch mutation {
-//        case let .setLoading(isLoading):
-//            state.isLoading = isLoading
-//        case let .setError(error):
-//            state.error = error
-//        case let .setSince(value):
-//            if let since = Condition.Since.init(rawValue: value) {
-//                state.since = since
-//            }
-//        case let .setLanguage(urlParam):
-//            var language = Condition.Language.init()
-//            language.urlParam = urlParam
-//            state.language = language
-//        case let .start(languages):
-//            Condition.Language.storeArray(languages)
-//            let langs = self.languages(languages: languages, selected: state.language.urlParam)
-//            state.sections = [.languages(langs.map { ConditionLanguageItem($0) }.map { ConditionSectionItem.language($0) })]
-//        }
-//        return state
-//    }
-//
-//    func languages(languages: [Condition.Language], selected: String?) -> [Condition.Language] {
-//        var langs = languages
-//        langs.insert(Condition.Language.init(), at: 0)
-//        for (index, lang) in langs.filter({ $0.urlParam == selected }).enumerated() {
-//            var selected = lang
-//            selected.checked = true
-//            langs.remove(at: index)
-//            langs.insert(selected, at: index)
-//            break
-//        }
-//        return langs
-//    }
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case let .since(value):
+            guard value != self.currentState.since.rawValue else { return .empty() }
+            return .just(.setSince(value))
+        case let .code(id):
+            guard id != self.currentState.code.id else { return .empty() }
+            return .just(.setCode(id))
+        }
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setError(error):
+            state.error = error
+        case let .setSince(value):
+            guard let since = Since(rawValue: value) else { return state }
+            state.since = since
+        case let .setCode(id):
+            state.code = Code(value: ["id": id])
+        }
+        return state
+    }
 
 }

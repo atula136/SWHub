@@ -36,7 +36,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var title: String?
         var error: Error?
         var since = Since.daily
-        var code = Code(value: ["name": "All languages"])
+        var code = Code()
         var sections: [UserSection] = []
     }
 
@@ -45,14 +45,14 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         let realm = try! Realm()
-        let misc = realm.objects(Config.self).first
+        let config = realm.objects(Config.self).first
         var users: [User] = []
         for user in realm.objects(User.self).filter("#first = true") {
             users.append(user)
         }
         self.initialState = State(
-            since: Since(rawValue: misc?.since ?? 0) ?? Since.daily,
-            code: misc?.code ?? Code(value: ["name": "All languages"]),
+            since: Since(rawValue: config?.since ?? 0) ?? Since.daily,
+            code: Code(value: ["id": config?.codeId]),
             sections: [.list(users.map { .basic(UserBasicItem($0)) })]
         )
     }
@@ -64,7 +64,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.provider.users(language: self.currentState.code.urlParam, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
+                self.provider.users(language: self.currentState.code.id, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
                 .just(.setLoading(false))
             ])
         case .refresh:
@@ -72,7 +72,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.provider.users(language: self.currentState.code.urlParam, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
+                self.provider.users(language: self.currentState.code.id, since: self.currentState.since.paramValue).map { Mutation.start($0) }.catchError { .just(.setError($0))},
                 .just(.setRefreshing(false))
             ])
         }
