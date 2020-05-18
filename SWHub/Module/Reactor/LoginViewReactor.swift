@@ -78,13 +78,7 @@ class LoginViewReactor: ScrollViewReactor, ReactorKit.Reactor {
                 let password = state.password {
                 User.token = "\(account):\(password)".base64Encoded
             }
-            let realm = Realm.default
-            if let config = realm.objects(Config.self).first {
-                realm.beginWrite()
-                // config.user = user          // TODO
-                try! realm.commitWrite()
-            }
-            User.current.accept(user)
+            User.login(user)
             state.user = user
         }
         return state

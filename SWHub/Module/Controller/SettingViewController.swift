@@ -134,15 +134,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         footer.rx.logout.flatMap { _ -> Observable<AlertActionType> in
                             return navigator.rx.open(url, context: [AlertAction.cancel, AlertAction.destructive])
                         }.map { $0 as? AlertAction }.pass(.destructive).subscribe(onNext: { _ in
-                            guard let username = User.current.value?.username else { return }
-                            let realm = Realm.default
-                            let user = realm.objects(User.self).filter("username = %@", username)
-                            let config = realm.objects(Config.self).filter("user.username = %@", username)
-                            realm.beginWrite()
-                            realm.delete(user)
-                            realm.delete(config)
-                            try! realm.commitWrite()
-                            User.current.accept(nil)
+                            User.logout()
                         }).disposed(by: footer.disposeBag)
                     }
                     return footer

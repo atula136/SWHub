@@ -46,7 +46,7 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         let realm = Realm.default
-        let config = realm.objects(Config.self).first
+        let config = Config.subject.value
         var repos: [Repo] = []
         for repo in realm.objects(Repo.self).filter("#first = true") {
             repos.append(repo)

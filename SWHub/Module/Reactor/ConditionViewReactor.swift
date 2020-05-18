@@ -36,7 +36,7 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
         let realm = Realm.default
-        let config = realm.objects(Config.self).first ?? Config()
+        let config = Config.subject.value ?? Config()
         // since
         let value = stringMember(self.parameters, Parameter.since, config.since.string)!
         let since = value.since

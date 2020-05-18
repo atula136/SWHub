@@ -192,15 +192,75 @@ class User: Object, ModelType, Identifiable {
         ])
     }
 
-    static var current: BehaviorRelay<User?> {
+    class var subject: BehaviorRelay<User?> {
         let key = String(describing: self)
         if let subject = subjects[key] as? BehaviorRelay<User?> {
             return subject
         }
-        // let subject = BehaviorRelay<User?>(value: Realm.default.objects(Config.self).first?.user)
-        let subject = BehaviorRelay<User?>(value: nil) // TODO
+        let realm = Realm.default
+        var user: User?
+        if let id = realm.objects(Config.self).filter("active = true").first?.userId {
+            user = realm.objects(User.self).filter("id = %@", id).first
+        }
+        let subject = BehaviorRelay<User?>(value: user)
         subjects[key] = subject
         return subject
     }
+
+    // TODO subject放到另外一个类中
+    class var current: Self? {
+        return nil
+    }
+
+    class func login(_ user: User) {
+        let realm = Realm.default
+        let dft = Config()
+        let old = Config.subject.value!
+        var new = realm.objects(Config.self).filter("userId = %@", user.id).first
+        realm.beginWrite()
+        realm.add(user)
+        realm.delete(old)
+        realm.add(dft)
+        if new != nil {
+            new?.active = true
+        } else {
+            new = Config()
+            new?.active = true
+            new?.userId = user.id
+        }
+        try! realm.commitWrite()
+        User.subject.accept(user)
+        Config.subject.accept(new)
+    }
+
+    class func logout() {
+        User.token = nil
+        let realm = Realm.default
+        let user = User.subject.value!
+        let old = Config.subject.value!
+        let new = realm.objects(Config.self).filter("userId == nil").first!
+        realm.beginWrite()
+        realm.delete(user)
+        old.active = false
+        new.active = true
+        try! realm.commitWrite()
+        User.subject.accept(nil)
+        Config.subject.accept(new)
+    }
+
+//
+//    static var current: User? {
+//        let key = String(describing: self)
+//        if let subject = subjects[key] as? BehaviorRelay<User?> {
+//            return subject.value
+//        }
+//        let realm = Realm.default
+//        var user: User?
+//        if let id = realm.objects(Config.self).filter("active = true").first?.userId {
+//            user = realm.objects(User.self).filter("id = %@", id).first
+//        }
+//        subjects[key] = BehaviorRelay<User?>(value: user)
+//        return user
+//    }
 
 }

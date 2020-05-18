@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import BonMot
 import Iconic
 import RealmSwift
@@ -30,6 +32,17 @@ class Config: Object, ModelType {
         since           <- map["since"]
         codeId          <- map["codeId"]
         userId          <- map["userId"]
+    }
+
+    static var subject: BehaviorRelay<Config?> {
+        let key = String(describing: self)
+        if let subject = subjects[key] as? BehaviorRelay<Config?> {
+            return subject
+        }
+        let config = Realm.default.objects(Config.self).filter("active = true").first
+        let subject = BehaviorRelay<Config?>(value: config)
+        subjects[key] = subject
+        return subject
     }
 
 }
