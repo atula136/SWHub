@@ -37,7 +37,7 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
     required init(_ model: ModelType) {
         super.init(model)
         guard let repo = model as? Repo else { return }
-        let since = Since(rawValue: Config.subject.value?.since ?? 0)?.title ?? Since.daily.title
+        let since = Since(rawValue: Subjection.for(Config.self).value?.since ?? 0)?.title ?? Since.daily.title
         self.initialState = State(
             name: repo.fullName ?? "\(repo.author ?? "")/\(repo.name ?? "")",
             intro: repo.introduction,

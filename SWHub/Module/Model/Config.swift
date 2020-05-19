@@ -15,7 +15,7 @@ import RealmSwift
 import ObjectMapper
 import SWFrame
 
-class Config: Object, ModelType {
+final class Config: Object, ModelType, Subjective {
 
     @objc dynamic var active = false
     @objc dynamic var since = 0
@@ -34,15 +34,23 @@ class Config: Object, ModelType {
         userId          <- map["userId"]
     }
 
-    static var subject: BehaviorRelay<Config?> {
+//    static var subject: BehaviorRelay<Config?> {
+//        let key = String(describing: self)
+//        if let subject = subjects[key] as? BehaviorRelay<Config?> {
+//            return subject
+//        }
+//        let config = Realm.default.objects(Config.self).filter("active = true").first
+//        let subject = BehaviorRelay<Config?>(value: config)
+//        subjects[key] = subject
+//        return subject
+//    }
+
+    static var current: Config? {
         let key = String(describing: self)
         if let subject = subjects[key] as? BehaviorRelay<Config?> {
-            return subject
+            return subject.value
         }
-        let config = Realm.default.objects(Config.self).filter("active = true").first
-        let subject = BehaviorRelay<Config?>(value: config)
-        subjects[key] = subject
-        return subject
+        return Realm.default.objects(Config.self).filter("active = true").first
     }
 
 }

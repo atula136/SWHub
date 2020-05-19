@@ -90,7 +90,7 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     }
 
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        return .merge(mutation, User.subject.asObservable().map(Mutation.setUser))
+        return .merge(mutation, Subjection.for(User.self).asObservable().map(Mutation.setUser))
     }
 
     func sections(_ sections: [[ModelType]]) -> [SettingSection] {

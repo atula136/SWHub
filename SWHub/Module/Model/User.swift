@@ -16,7 +16,7 @@ import RealmSwift
 import KeychainAccess
 import SWFrame
 
-class User: Object, ModelType, Identifiable {
+final class User: Object, ModelType, Identifiable, Subjective {
 
     fileprivate struct Key {
         static let token = "token"
@@ -192,30 +192,35 @@ class User: Object, ModelType, Identifiable {
         ])
     }
 
-    class var subject: BehaviorRelay<User?> {
+//    class var subject: BehaviorRelay<User?> {
+//        let key = String(describing: self)
+//        if let subject = subjects[key] as? BehaviorRelay<User?> {
+//            return subject
+//        }
+//        let realm = Realm.default
+//        var user: User?
+//        if let id = realm.objects(Config.self).filter("active = true").first?.userId {
+//            user = realm.objects(User.self).filter("id = %@", id).first
+//        }
+//        let subject = BehaviorRelay<User?>(value: user)
+//        subjects[key] = subject
+//        return subject
+//    }
+
+    static var current: User? {
         let key = String(describing: self)
         if let subject = subjects[key] as? BehaviorRelay<User?> {
-            return subject
+            return subject.value
         }
         let realm = Realm.default
-        var user: User?
-        if let id = realm.objects(Config.self).filter("active = true").first?.userId {
-            user = realm.objects(User.self).filter("id = %@", id).first
-        }
-        let subject = BehaviorRelay<User?>(value: user)
-        subjects[key] = subject
-        return subject
+        guard let id = realm.objects(Config.self).filter("active = true").first?.userId else { return nil }
+        return realm.objects(User.self).filter("id = %@", id).first
     }
 
-    // TODO subject放到另外一个类中
-    class var current: Self? {
-        return nil
-    }
-
-    class func login(_ user: User) {
+    class func login(_ user: User) { // YJX_TODO 添加可变参数
         let realm = Realm.default
         let dft = Config()
-        let old = Config.subject.value!
+        let old = Subjection.for(Config.self).value!
         var new = realm.objects(Config.self).filter("userId = %@", user.id).first
         realm.beginWrite()
         realm.add(user)
@@ -229,23 +234,23 @@ class User: Object, ModelType, Identifiable {
             new?.userId = user.id
         }
         try! realm.commitWrite()
-        User.subject.accept(user)
-        Config.subject.accept(new)
+        Subjection.for(User.self).accept(user)
+        Subjection.for(Config.self).accept(new)
     }
 
     class func logout() {
         User.token = nil
         let realm = Realm.default
-        let user = User.subject.value!
-        let old = Config.subject.value!
+        let user = Subjection.for(User.self).value!
+        let old = Subjection.for(Config.self).value!
         let new = realm.objects(Config.self).filter("userId == nil").first!
         realm.beginWrite()
         realm.delete(user)
         old.active = false
         new.active = true
         try! realm.commitWrite()
-        User.subject.accept(nil)
-        Config.subject.accept(new)
+        Subjection.for(User.self).accept(nil)
+        Subjection.for(Config.self).accept(new)
     }
 
 //
