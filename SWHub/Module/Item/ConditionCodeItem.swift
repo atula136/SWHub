@@ -37,7 +37,7 @@ class ConditionCodeItem: CollectionItem, ReactorKit.Reactor {
         super.init(model)
         guard let code = model as? Code else { return }
         self.initialState = State(
-            checked: code.checked,
+            // checked: code.checked,
             title: NSLocalizedString(code.id == nil ? Information.allLanguages : code.name ?? "", comment: "")
         )
     }
@@ -54,12 +54,23 @@ class ConditionCodeItem: CollectionItem, ReactorKit.Reactor {
     }
 
 //    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-//        let languageSelectEvent = Language.event.flatMap { event -> Observable<Mutation> in
+//        let codeEvent = Code.event.flatMap { event -> Observable<Mutation> in
 //            switch event {
 //            case let .select(urlParam):
 //                return .just(.setSelect(urlParam))
 //            }
 //        }
-//        return .merge(mutation, languageSelectEvent)
+//        return .merge(mutation, codeEvent)
 //    }
+
+    func transform(state: Observable<State>) -> Observable<State> {
+        guard let code = self.model as? Code else { return state }
+        let update = Subjection.for(Code.self).withLatestFrom(state) { update, state -> State in
+            var state = state
+            state.checked = update?.id == code.id
+            return state
+        }
+        return .merge(state, update)
+    }
+
 }

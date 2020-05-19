@@ -192,21 +192,6 @@ final class User: Object, ModelType, Identifiable, Subjective {
         ])
     }
 
-//    class var subject: BehaviorRelay<User?> {
-//        let key = String(describing: self)
-//        if let subject = subjects[key] as? BehaviorRelay<User?> {
-//            return subject
-//        }
-//        let realm = Realm.default
-//        var user: User?
-//        if let id = realm.objects(Config.self).filter("active = true").first?.userId {
-//            user = realm.objects(User.self).filter("id = %@", id).first
-//        }
-//        let subject = BehaviorRelay<User?>(value: user)
-//        subjects[key] = subject
-//        return subject
-//    }
-
     static var current: User? {
         let key = String(describing: self)
         if let subject = subjects[key] as? BehaviorRelay<User?> {
@@ -237,6 +222,9 @@ final class User: Object, ModelType, Identifiable, Subjective {
         try! realm.commitWrite()
         Subjection.for(User.self).accept(user)
         Subjection.for(Config.self).accept(new!)
+        let since = Since(rawValue: new!.since) ?? Since.daily
+        let code = Code(value: ["id": new!.codeId])
+        Condition.event.onNext(.update(since, code))
     }
 
     class func logout() {
@@ -251,21 +239,9 @@ final class User: Object, ModelType, Identifiable, Subjective {
         try! realm.commitWrite()
         Subjection.for(User.self).accept(nil)
         Subjection.for(Config.self).accept(new)
+        let since = Since(rawValue: new.since) ?? Since.daily
+        let code = Code(value: ["id": new.codeId])
+        Condition.event.onNext(.update(since, code))
     }
-
-//
-//    static var current: User? {
-//        let key = String(describing: self)
-//        if let subject = subjects[key] as? BehaviorRelay<User?> {
-//            return subject.value
-//        }
-//        let realm = Realm.default
-//        var user: User?
-//        if let id = realm.objects(Config.self).filter("active = true").first?.userId {
-//            user = realm.objects(User.self).filter("id = %@", id).first
-//        }
-//        subjects[key] = BehaviorRelay<User?>(value: user)
-//        return user
-//    }
 
 }

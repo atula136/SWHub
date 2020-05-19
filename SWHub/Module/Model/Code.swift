@@ -19,11 +19,11 @@ import RealmSwift
 import Rswift
 import SWFrame
 
-class Code: Object, ModelType {
+final class Code: Object, ModelType, Subjective/*, Eventable*/ {
 
     @objc dynamic var id: String?
     @objc dynamic var name: String?
-    var checked = false
+    // var checked = false
 
     required init() {
         self.name = Information.allLanguages
@@ -40,5 +40,21 @@ class Code: Object, ModelType {
 //        static func == (lhs: Language, rhs: Language) -> Bool {
 //            return lhs.urlParam == rhs.urlParam
 //        }
+
+    static var current: Code? {
+        let key = String(describing: self)
+        if let subject = subjects[key] as? BehaviorRelay<Code?> {
+            return subject.value
+        }
+        let realm = Realm.default
+        if let id = realm.objects(Config.self).filter("active = true").first?.codeId {
+            return realm.objects(Code.self).filter("id = %@", id).first
+        }
+        return realm.objects(Code.self).filter("id == nil").first
+    }
+
+//    enum Event {
+//        case select(String?)
+//    }
 
 }
