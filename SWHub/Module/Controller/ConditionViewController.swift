@@ -58,11 +58,23 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
             config.codeId = code.id
             try! realm.commitWrite()
             Condition.event.onNext(.update(since, code))
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true) { [weak self] in
+                self?.shutdown.on(.next(()))
+            }
         }).disposed(by: self.disposeBag)
 
         self.navigationBar.titleView = self.segment
         self.collectionView.register(Reusable.codeCell)
+
+        self.shutdown.subscribe(onNext: { _ in
+            var code: Code?
+            let realm = Realm.default
+            if let id = realm.objects(Config.self).filter("active = true").first?.codeId {
+                code = realm.objects(Code.self).filter("id = %@", id).first
+            }
+            code = realm.objects(Code.self).filter("id == nil").first
+            Subjection.for(Code.self).accept(code)
+        }).disposed(by: self.disposeBag)
 
         themeService.rx
             .bind({ [NSAttributedString.Key.foregroundColor: $0.titleColor] }, to: self.segment.rx.titleTextAttributes(for: .normal))
