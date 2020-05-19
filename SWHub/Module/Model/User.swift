@@ -232,14 +232,14 @@ final class User: Object, ModelType, Identifiable, Subjective {
             new = Config()
             new?.active = true
             new?.userId = user.id
+            realm.add(new!)
         }
         try! realm.commitWrite()
         Subjection.for(User.self).accept(user)
-        Subjection.for(Config.self).accept(new)
+        Subjection.for(Config.self).accept(new!)
     }
 
     class func logout() {
-        User.token = nil
         let realm = Realm.default
         let user = Subjection.for(User.self).value!
         let old = Subjection.for(Config.self).value!

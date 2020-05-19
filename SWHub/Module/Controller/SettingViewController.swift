@@ -134,6 +134,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         footer.rx.logout.flatMap { _ -> Observable<AlertActionType> in
                             return navigator.rx.open(url, context: [AlertAction.cancel, AlertAction.destructive])
                         }.map { $0 as? AlertAction }.pass(.destructive).subscribe(onNext: { _ in
+                            User.token = nil
                             User.logout()
                         }).disposed(by: footer.disposeBag)
                     }
