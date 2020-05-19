@@ -47,7 +47,6 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var sectionItems: [ConditionSectionItem] = []
         let codes = realm.objects(Code.self)
         for model in codes {
-            // model.checked = model.id == code.id
             sectionItems.append(.code(ConditionCodeItem(model)))
         }
         let sections: [ConditionSection] = [.list(sectionItems)]

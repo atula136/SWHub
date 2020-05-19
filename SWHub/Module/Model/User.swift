@@ -202,7 +202,7 @@ final class User: Object, ModelType, Identifiable, Subjective {
         return realm.objects(User.self).filter("id = %@", id).first
     }
 
-    class func login(_ user: User) { // YJX_TODO 添加可变参数
+    class func login(_ user: User) {
         let realm = Realm.default
         let dft = Config()
         let old = Subjection.for(Config.self).value!

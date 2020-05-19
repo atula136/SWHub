@@ -34,17 +34,6 @@ final class Config: Object, ModelType, Subjective {
         userId          <- map["userId"]
     }
 
-//    static var subject: BehaviorRelay<Config?> {
-//        let key = String(describing: self)
-//        if let subject = subjects[key] as? BehaviorRelay<Config?> {
-//            return subject
-//        }
-//        let config = Realm.default.objects(Config.self).filter("active = true").first
-//        let subject = BehaviorRelay<Config?>(value: config)
-//        subjects[key] = subject
-//        return subject
-//    }
-
     static var current: Config? {
         let key = String(describing: self)
         if let subject = subjects[key] as? BehaviorRelay<Config?> {

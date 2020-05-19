@@ -25,8 +25,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setLoading(Bool)
         case setRefreshing(Bool)
         case setError(Error?)
-        case setSince(Since)
-        case setCode(Code)
+        case setCondition(Since, Code)
         case start([User])
     }
 
@@ -87,9 +86,8 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.isRefreshing = isRefreshing
         case let .setError(error):
             state.error = error
-        case let .setSince(since):
+        case let .setCondition(since, code):
             state.since = since
-        case let .setCode(code):
             state.code = code
         case let .start(models):
             let realm = Realm.default
@@ -107,6 +105,16 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.sections = [.list(users.map { .basic(UserBasicItem($0)) })]
         }
         return state
+    }
+
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        let condition = Condition.event.flatMap { event -> Observable<Mutation> in
+            switch event {
+            case let .update(since, code):
+                return .just(.setCondition(since, code))
+            }
+        }
+        return .merge(mutation, condition)
     }
 
 }
