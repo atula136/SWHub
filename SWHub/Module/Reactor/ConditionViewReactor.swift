@@ -39,7 +39,7 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         let config = Subjection.for(Config.self).value ?? Config()
         // since
         let value = stringMember(self.parameters, Parameter.since, config.since.string)!
-        let since = value.since
+        let since = Since(rawValue: value.int ?? 0) ?? Since.daily
         // code
         let id = stringMember(self.parameters, Parameter.code, config.codeId)
         let code = Code(value: ["id": id])
@@ -49,6 +49,8 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         for model in codes {
             sectionItems.append(.code(ConditionCodeItem(model)))
         }
+        // setting
+        Subjection.for(Code.self).accept(code)
         let sections: [ConditionSection] = [.list(sectionItems)]
         self.initialState = State(
             since: since,

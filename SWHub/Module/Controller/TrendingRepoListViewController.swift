@@ -80,7 +80,9 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
             .bind(to: self.rx.error)
             .disposed(by: self.disposeBag)
         Observable.combineLatest(reactor.state.map { $0.since }, reactor.state.map { $0.code }).distinctUntilChanged { arg0, arg1 -> Bool in
-            return arg0.0 == arg1.0 && arg0.1.id == arg1.1.id
+            let first = arg0.0 == arg0.0
+            let second = arg0.1.id == arg1.1.id
+            return first && second
         }.skip(1).mapToVoid()
             .bind(to: self.rx.startPullToRefresh)
             .disposed(by: self.disposeBag)

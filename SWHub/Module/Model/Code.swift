@@ -46,11 +46,12 @@ final class Code: Object, ModelType, Subjective/*, Eventable*/ {
         if let subject = subjects[key] as? BehaviorRelay<Code?> {
             return subject.value
         }
-        let realm = Realm.default
-        if let id = realm.objects(Config.self).filter("active = true").first?.codeId {
-            return realm.objects(Code.self).filter("id = %@", id).first
-        }
-        return realm.objects(Code.self).filter("id == nil").first
+//        let realm = Realm.default
+//        if let id = realm.objects(Config.self).filter("active = true").first?.codeId {
+//            return realm.objects(Code.self).filter("id = %@", id).first
+//        }
+//        return realm.objects(Code.self).filter("id == nil").first
+        return nil
     }
 
 //    enum Event {

@@ -51,7 +51,7 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
             guard let `self` = self else { return }
             let since = self.reactor!.currentState.since
             let code = self.reactor!.currentState.code
-            let config = Config.current!
+            let config = Subjection.for(Config.self).value!
             let realm = Realm.default
             realm.beginWrite()
             config.since = since.rawValue
