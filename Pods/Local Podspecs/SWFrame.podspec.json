@@ -48,9 +48,6 @@
     "NSObject+Rx": [
       "5.0.0"
     ],
-    "RxRealm": [
-      "2.0.0"
-    ],
     "Moya-ObjectMapper-JX/RxSwift": [
       "2.8-jx1"
     ],
@@ -86,9 +83,6 @@
     ],
     "BonMot": [
       "5.4.1"
-    ],
-    "Cache": [
-      "5.2.0"
     ],
     "CGFloatLiteral": [
       "0.5.0"

@@ -8,7 +8,6 @@
 
 import UIKit
 import Iconic
-import RxRealm
 import RealmSwift
 import IQKeyboardManagerSwift
 import SWFrame

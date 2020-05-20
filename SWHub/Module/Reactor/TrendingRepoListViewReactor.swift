@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxOptional
-import RxRealm
 import RealmSwift
 import ReactorKit
 import SWFrame

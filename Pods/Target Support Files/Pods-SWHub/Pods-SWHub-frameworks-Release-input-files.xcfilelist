@@ -2,7 +2,6 @@ ${PODS_ROOT}/Target Support Files/Pods-SWHub/Pods-SWHub-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/BonMot/BonMot.framework
 ${BUILT_PRODUCTS_DIR}/CGFloatLiteral/CGFloatLiteral.framework
-${BUILT_PRODUCTS_DIR}/Cache/Cache.framework
 ${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
 ${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework
@@ -34,7 +33,6 @@ ${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
 ${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework
 ${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework
 ${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework
-${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework
 ${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
 ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
 ${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework

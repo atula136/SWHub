@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RxRealm
 import RealmSwift
 import ObjectMapper
 import URLNavigator

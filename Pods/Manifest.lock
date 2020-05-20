@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (4.9.1)
   - BonMot (5.4.1)
-  - Cache (5.2.0)
   - CGFloatLiteral (0.5.0)
   - Differentiator (4.0.1)
   - DZNEmptyDataSet (1.8.1)
@@ -35,7 +34,7 @@ PODS:
     - RxSwift (~> 5.0)
   - "NSObject+Rx (5.0.0)":
     - RxSwift (~> 5.0)
-  - ObjectMapper (3.5.2)
+  - ObjectMapper (3.5.3)
   - "ObjectMapper+Realm (1.0)":
     - ObjectMapper
     - RealmSwift
@@ -80,9 +79,6 @@ PODS:
   - RxOptional (4.0.0):
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
-  - RxRealm (2.0.0):
-    - RealmSwift (~> 4.0)
-    - RxSwift (~> 5.0)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
@@ -103,7 +99,6 @@ PODS:
   - SnapKit (4.2.0)
   - SWFrame (1.1.0):
     - BonMot (= 5.4.1)
-    - Cache (= 5.2.0)
     - CGFloatLiteral (= 0.5.0)
     - DZNEmptyDataSet (= 1.8.1)
     - ESPullToRefresh (= 2.9.2)
@@ -120,7 +115,6 @@ PODS:
     - ReactorKit (= 2.1.0)
     - RealmSwift (= 4.4.1)
     - RxDataSources (= 4.0.1)
-    - RxRealm (= 2.0.0)
     - RxViewController (= 1.0.0)
     - SnapKit (= 4.2.0)
     - SwifterSwift (= 5.1.0)
@@ -178,7 +172,6 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - BonMot
-    - Cache
     - CGFloatLiteral
     - Differentiator
     - DZNEmptyDataSet
@@ -212,7 +205,6 @@ SPEC REPOS:
     - RxDataSources
     - RxGesture
     - RxOptional
-    - RxRealm
     - RxRelay
     - RxSwift
     - RxSwiftExt
@@ -235,7 +227,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BonMot: aa82119ff2ffa184223d8a31c72aed84fbb009e0
-  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   CGFloatLiteral: 0328648f666e3cb2263d5ee3972df9d320786d25
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
@@ -253,7 +244,7 @@ SPEC CHECKSUMS:
   Moya: 65485239114b3b327a17dc2e839f6c8b7143aae9
   Moya-ObjectMapper-JX: 7c5720d790e21a03bd266ad46823e1fa01b96753
   "NSObject+Rx": 6151a97d171f7187c4183746acc42d9451952a7b
-  ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   "ObjectMapper+Realm": bd713d57132bf05880a656695137764692f7d2bb
   Parchment: 72a7eb8072454a9500a53dd84776e04fba24e740
   QMUIKit: 73899f707bdd51f44d16e10d11f224fb821fbe74
@@ -269,14 +260,13 @@ SPEC CHECKSUMS:
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxGesture: 0cd8e37ff9a266e1c31f46bcaed6de1c536bc81e
   RxOptional: 9904e2219d59260c3c171273d475b2126de187e8
-  RxRealm: 900f5c7e6f0a2d6527b56eaf7283f3035ec1e8ba
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
   RxTheme: 0b642f47c7d197a803c6b9c083964188c34f7ddb
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SWFrame: 111538ea8aeb11e0a2190018314c3ab5c2bad24c
+  SWFrame: f04b0b5d2970799be15d29b72ba76c1398e9458b
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d
