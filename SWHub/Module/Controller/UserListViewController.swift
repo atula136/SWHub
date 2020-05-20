@@ -18,10 +18,10 @@ import SWFrame
 class UserListViewController: CollectionViewController, ReactorKit.View {
 
     struct Reusable {
-        static let userCell = ReusableCell<UserBasicCell>()
+        static let basicCell = ReusableCell<UserBasicCell>()
     }
 
-    let dataSource: RxCollectionViewSectionedReloadDataSource<UserListSection>
+    let dataSource: RxCollectionViewSectionedReloadDataSource<UserSection>
 
     override var layout: UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -48,7 +48,7 @@ class UserListViewController: CollectionViewController, ReactorKit.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(Reusable.userCell)
+        self.collectionView.register(Reusable.basicCell)
     }
 
     func bind(reactor: UserListViewReactor) {
@@ -94,14 +94,15 @@ class UserListViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
     }
 
-    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: UserListViewReactor) -> RxCollectionViewSectionedReloadDataSource<UserListSection> {
+    static func dataSourceFactory(_ navigator: NavigatorType, _ reactor: UserListViewReactor) -> RxCollectionViewSectionedReloadDataSource<UserSection> {
         return .init(
             configureCell: { dataSource, collectionView, indexPath, sectionItem in
                 switch sectionItem {
-                case let .user(item):
-                    let cell = collectionView.dequeue(Reusable.userCell, for: indexPath)
+                case let .basic(item):
+                    let cell = collectionView.dequeue(Reusable.basicCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
+                default: return collectionView.emptyCell(for: indexPath)
                 }
         })
     }
@@ -113,8 +114,9 @@ extension UserListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.sectionWidth(at: indexPath.section)
         switch self.dataSource[indexPath] {
-        case let .user(item):
-            return Reusable.userCell.class.size(width: width, item: item)
+        case let .basic(item):
+            return Reusable.basicCell.class.size(width: width, item: item)
+        default: return .zero
         }
     }
 

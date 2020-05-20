@@ -23,14 +23,14 @@ class UserProfileItem: CollectionItem, ReactorKit.Reactor {
     }
 
     struct State {
-//        var name: String?
-//        var detail: NSAttributedString?
-//        var counts: [NSAttributedString]?
+        var name: String?
+        var detail: NSAttributedString?
+        var counts: [NSAttributedString]?
         var company: InfoModel?
         var location: InfoModel?
         var email: InfoModel?
         var blog: InfoModel?
-        //var avatar: URL?
+        var avatar: URL?
     }
 
     var initialState = State()
@@ -39,14 +39,14 @@ class UserProfileItem: CollectionItem, ReactorKit.Reactor {
         super.init(model)
         guard let user = model as? User else { return }
         self.initialState = State(
-//            name: repo.fullName,
-//            detail: repo.detail(),
-//            counts: repo.counts(),
+            name: user.nickname ?? user.username,
+            detail: user.detail,
+            counts: user.counts,
             company: user.companyInfo,
             location: user.locationInfo,
             email: user.emailInfo,
-            blog: user.blogInfo
-            //avatar: repo.owner?.avatar
+            blog: user.blogInfo,
+            avatar: user.avatar?.url
         )
     }
 

@@ -68,19 +68,34 @@ final class User: Object, ModelType, Identifiable, Subjective {
     @objc dynamic var updatedAt: Date?
     @objc dynamic var repo: Repo?
 
+//    var detail: NSAttributedString? {
+//        var texts = [NSAttributedString]()
+//        let repositoriesString = self.publicRepos.string.styled(with: .color(.title))
+//        let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
+//        texts.append(.composed(of: [
+//            repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
+//        ]))
+//        let followersString = self.followers.kFormatted().styled(with: .color(.title))
+//        let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
+//        texts.append(.composed(of: [
+//            followersImage, Special.space, followersString
+//        ]))
+//        return .composed(of: texts)
+//    }
+
     var detail: NSAttributedString? {
-        var texts = [NSAttributedString]()
-        let repositoriesString = self.publicRepos.string.styled(with: .color(.title))
-        let repositoriesImage = FontAwesomeIcon.bookIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
-        texts.append(.composed(of: [
-            repositoriesImage, Special.space, repositoriesString, Special.space, Special.tab
-        ]))
-        let followersString = self.followers.kFormatted().styled(with: .color(.title))
-        let followersImage = FontAwesomeIcon.userIcon.image(ofSize: .init(16), color: .tint).template.styled(with: .baselineOffset(-3))
-        texts.append(.composed(of: [
-            followersImage, Special.space, followersString
-        ]))
-        return .composed(of: texts)
+        let intro = self.bio?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
+        let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2)) ?? NSAttributedString()
+        return .composed(of: [
+            intro, Special.nextLine, update
+        ])
+    }
+
+    var counts: [NSAttributedString] {
+        let repositories = self.count(title: R.string.localizable.repositories(), value: self.publicRepos + self.totalPrivateRepos)
+        let followers = self.count(title: R.string.localizable.followers(), value: self.followers)
+        let following = self.count(title: R.string.localizable.following(), value: self.following)
+        return [repositories, followers, following]
     }
 
     var repoText: NSAttributedString? {

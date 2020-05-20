@@ -27,7 +27,7 @@ class ConditionCodeItem: CollectionItem, ReactorKit.Reactor {
     }
 
     struct State {
-        var checked = false // TODO 采用state transform withLastFrom方式实现
+        var checked = false
         var title: String?
     }
 

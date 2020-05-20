@@ -36,7 +36,7 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var noMoreData = false
         var title: String?
         var error: Error?
-        var sections: [UserListSection] = []
+        var sections: [UserSection] = []
     }
 
     var fullname: String?
@@ -116,12 +116,12 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             if toCache {
                 // User.storeArray(users) // YJX_TODO 存储
             }
-            state.sections = [.users(users.map { .user(UserBasicItem($0)) })]
+            state.sections = [.list(users.map { .basic(UserBasicItem($0)) })]
         case let .append(users):
             state.noMoreData = users.count < self.pageSize
             var items = state.sections[0].items
-            items += users.map { .user(UserBasicItem($0)) }
-            state.sections = [.users(items)]
+            items += users.map { .basic(UserBasicItem($0)) }
+            state.sections = [.list(items)]
         }
         return state
     }

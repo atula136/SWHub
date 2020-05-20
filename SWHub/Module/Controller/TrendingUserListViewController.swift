@@ -54,12 +54,11 @@ class TrendingUserListViewController: CollectionViewController, ReactorKit.View 
             guard let `self` = self else { return }
             switch sectionItem {
             case let .basic(item):
-//                if var url = Router.User.detail.urlString.url,
-//                    let username = (item.model as? TrendingUser)?.username {
-//                    url.appendQueryParameters([Parameter.username: username])
-//                    self.navigator.push(url)
-//                }
-                print("")
+                if var url = Router.User.detail.urlString.url,
+                    let username = (item.model as? User)?.username {
+                    url.appendQueryParameters([Parameter.username: username])
+                    self.navigator.push(url)
+                }
             default: break
             }
         }).disposed(by: self.disposeBag)
