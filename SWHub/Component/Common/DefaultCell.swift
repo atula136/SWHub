@@ -60,7 +60,7 @@ class DefaultCell: CollectionCell {
         self.contentView.addSubview(self.accessoryImageView)
 
         themeService.rx
-            .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
+            .bind({ $0.borderLightColor }, to: self.rx.qmui_borderColor)
             .bind({ $0.titleColor }, to: [self.titleLabel.rx.textColor, self.detailLabel.rx.textColor])
             .bind({ $0.tintColor }, to: [self.iconImageView.rx.tintColor, self.accessoryImageView.rx.tintColor])
             .disposed(by: self.rx.disposeBag)

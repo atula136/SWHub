@@ -15,7 +15,6 @@ import SWFrame
 
 struct InfoModel: ModelType {
 
-    var enabled = true
     var indicated = true
     var title: String?
     var detail: String?

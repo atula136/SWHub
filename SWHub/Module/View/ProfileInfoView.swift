@@ -49,7 +49,7 @@ class ProfileInfoView: UIView {
         self.addSubview(self.iconImageView)
         self.addSubview(self.indicatorImageView)
         themeService.rx
-            .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
+            .bind({ $0.borderLightColor }, to: self.rx.qmui_borderColor)
             .bind({ $0.backgroundColor }, to: self.rx.backgroundColor)
             .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
             .bind({ $0.tintColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])

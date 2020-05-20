@@ -34,7 +34,7 @@ class RepoProfileCell: CollectionCell, ReactorKit.View {
 
     lazy var detailLabel: Label = {
         let label = Label()
-        label.numberOfLines = 0
+        label.numberOfLines = 6
         label.sizeToFit()
         return label
     }()
@@ -90,7 +90,7 @@ class RepoProfileCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.requestView)
         themeService.rx
             .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
-            .bind({ $0.border1Color }, to: self.userView.rx.qmui_borderColor)
+            .bind({ $0.borderLightColor }, to: self.userView.rx.qmui_borderColor)
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -182,7 +182,7 @@ class RepoProfileCell: CollectionCell, ReactorKit.View {
         guard let repo = item.model as? Repo else { return .zero }
         var height = 10.f
         height += Metric.avatarSize.height
-        height += (UILabel.sizeThatFitsAttributedString(repo.detail, withConstraints: .init(width: screenWidth - Constant.Metric.margin * 2, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 0).height + 10)
+        height += (UILabel.sizeThatFitsAttributedString(repo.detail, withConstraints: .init(width: screenWidth - Constant.Metric.margin * 2, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 6).height + 10)
         height += Metric.countHeight
         height += Metric.infoHeight * 3
         return CGSize(width: width, height: flat(height))

@@ -14,19 +14,26 @@ import ReactorKit
 import Iconic
 import RxOptional
 import SwifterSwift
+import TTTAttributedLabel
 import Kingfisher
 import SWFrame
 
 class UserProfileCell: CollectionCell, ReactorKit.View {
 
+    static let maxLines = 3
+
     fileprivate struct Metric {
         static let avatarSize = CGSize(metric(60))
+        static let nameHeight = flat(Font.name.lineHeight + 4)
+        static let timeHeight = flat(Font.time.lineHeight + 4)
         static let countHeight = metric(50)
         static let infoHeight = metric(44)
     }
 
     fileprivate struct Font {
-        static let name = UIFont.bold(16)
+        static let name = UIFont.bold(15)
+        static let intro = UIFont.normal(13)
+        static let time = UIFont.normal(12)
     }
 
     lazy var nameLabel: Label = {
@@ -36,9 +43,18 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
         return label
     }()
 
-    lazy var detailLabel: Label = {
+    lazy var introLabel: TTTAttributedLabel = {
+        let label = TTTAttributedLabel(frame: .zero)
+        label.font = Font.intro
+        label.verticalAlignment = .center
+        label.numberOfLines = UserProfileCell.maxLines
+        label.sizeToFit()
+        return label
+    }()
+
+    lazy var timeLabel: Label = {
         let label = Label()
-        label.numberOfLines = 0
+        label.font = Font.time
         label.sizeToFit()
         return label
     }()
@@ -93,7 +109,8 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.userView)
         self.userView.addSubview(self.avatarImageView)
         self.userView.addSubview(self.nameLabel)
-        self.userView.addSubview(self.detailLabel)
+        self.userView.addSubview(self.introLabel)
+        self.userView.addSubview(self.timeLabel)
         self.contentView.addSubview(self.countView)
         self.contentView.addSubview(self.companyView)
         self.contentView.addSubview(self.locationView)
@@ -101,7 +118,9 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.blogView)
         themeService.rx
             .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
-            .bind({ $0.border1Color }, to: self.userView.rx.qmui_borderColor)
+            .bind({ $0.contentColor }, to: self.introLabel.rx.textColor)
+            .bind({ $0.datetimeColor }, to: self.timeLabel.rx.textColor)
+            .bind({ $0.borderLightColor }, to: self.userView.rx.qmui_borderColor)
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -111,8 +130,9 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.nameLabel.text = nil
-        self.detailLabel.attributedText = nil
+        self.timeLabel.text = nil
+        self.introLabel.text = nil
+        self.timeLabel.text = nil
         self.avatarImageView.image = nil
     }
 
@@ -121,27 +141,40 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
         // info
         let width = self.contentView.width
         let height = Metric.infoHeight
-        self.blogView.width = width
-        self.blogView.height = height
-        self.blogView.left = 0
-        self.blogView.bottom = self.contentView.height
-        self.emailView.width = width
-        self.emailView.height = height
-        self.emailView.left = 0
-        self.emailView.bottom = self.blogView.top
-        self.locationView.width = width
-        self.locationView.height = height
-        self.locationView.left = 0
-        self.locationView.bottom = self.emailView.top
-        self.companyView.width = width
-        self.companyView.height = height
-        self.companyView.left = 0
-        self.companyView.bottom = self.locationView.top
+        var bottom = self.contentView.height
+        if !self.blogView.isHidden {
+            self.blogView.width = width
+            self.blogView.height = height
+            self.blogView.left = 0
+            self.blogView.bottom = bottom
+            bottom -= height
+        }
+        if !self.emailView.isHidden {
+            self.emailView.width = width
+            self.emailView.height = height
+            self.emailView.left = 0
+            self.emailView.bottom = bottom
+            bottom -= height
+        }
+        if !self.locationView.isHidden {
+            self.locationView.width = width
+            self.locationView.height = height
+            self.locationView.left = 0
+            self.locationView.bottom = bottom
+            bottom -= height
+        }
+        if !self.companyView.isHidden {
+            self.companyView.width = width
+            self.companyView.height = height
+            self.companyView.left = 0
+            self.companyView.bottom = bottom
+            bottom -= height
+        }
         // count
         self.countView.width = self.contentView.width
         self.countView.height = Metric.countHeight
         self.countView.left = 0
-        self.countView.bottom = self.companyView.top
+        self.countView.bottom = bottom
         // user
         self.userView.sizeToFit()
         self.userView.width = self.contentView.width
@@ -153,14 +186,19 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
         self.avatarImageView.left = Constant.Metric.margin
         self.avatarImageView.top = self.avatarImageView.topWhenCenter
         self.nameLabel.sizeToFit()
+        self.nameLabel.height = Metric.nameHeight
         self.nameLabel.left = self.avatarImageView.right + 10
         self.nameLabel.extendToRight = self.userView.width - Constant.Metric.margin
-        self.nameLabel.top = 10
-        self.detailLabel.sizeToFit()
-        self.detailLabel.left = self.nameLabel.left
-        self.detailLabel.extendToRight = self.nameLabel.right
-        self.detailLabel.top = self.nameLabel.bottom
-        self.detailLabel.extendToBottom = self.userView.height - 10
+        self.nameLabel.top = 5
+        self.timeLabel.sizeToFit()
+        self.timeLabel.height = Metric.timeHeight
+        self.timeLabel.left = self.nameLabel.left
+        self.timeLabel.bottom = self.userView.height - 5
+        self.introLabel.sizeToFit()
+        self.introLabel.left = self.nameLabel.left
+        self.introLabel.extendToRight = self.nameLabel.extendToRight
+        self.introLabel.top = self.nameLabel.bottom
+        self.introLabel.extendToBottom = self.timeLabel.top
     }
 
     func bind(reactor: UserProfileItem) {
@@ -171,8 +209,11 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
         reactor.state.map { $0.name }
             .bind(to: self.nameLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.detail }
-            .bind(to: self.detailLabel.rx.attributedText)
+        reactor.state.map { $0.intro }
+            .bind(to: self.introLabel.rx.text)
+            .disposed(by: self.disposeBag)
+        reactor.state.map { $0.time }
+            .bind(to: self.timeLabel.rx.text)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.counts }
             .filterNil()
@@ -197,21 +238,37 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let user = item.model as? User else { return .zero }
-        let name = flat(10 + Font.name.lineHeight + 10)
-        let detail = UILabel.sizeThatFitsAttributedString(user.detail, withConstraints: .init(width: screenWidth - Constant.Metric.margin - Metric.avatarSize.width - 10 - Constant.Metric.margin, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 0).height + 10
-        var height = flat(max(10 + Metric.avatarSize.height + 10, name + detail))
+        let limit = screenWidth - Constant.Metric.margin - Metric.avatarSize.width - 10 - Constant.Metric.margin
+        var text = user.bio?.height(thatFitsWidth: limit, font: Font.intro, maxLines: UserProfileCell.maxLines) ?? 0.f
+        text += Metric.nameHeight
+        text += Metric.timeHeight
+        var height = flat(max(Metric.avatarSize.height, text) + 10)
         height += Metric.countHeight
-        height += Metric.infoHeight * 4
+        if !(user.companyInfo.title?.isEmpty ?? true) {
+            height += Metric.infoHeight
+        }
+        if !(user.locationInfo.title?.isEmpty ?? true) {
+            height += Metric.infoHeight
+        }
+        if !(user.emailInfo.title?.isEmpty ?? true) {
+            height += Metric.infoHeight
+        }
+        if !(user.blogInfo.title?.isEmpty ?? true) {
+            height += Metric.infoHeight
+        }
         return CGSize(width: width, height: flat(height))
     }
 
 }
 
 extension Reactive where Base: UserProfileCell {
-//    var blog: ControlEvent<URL> {
-//        let source = self.base.blogInfoView.rx.tap.map { [weak cell = self.base] _ -> URL? in
-//            cell?.blogInfoView.titleLabel.text?.url
-//        }.filterNil()
-//        return ControlEvent(events: source)
-//    }
+
+    var blog: ControlEvent<URL> {
+        let source = self.base.blogView.rx.tap.map { [weak cell = self.base] _ -> URL? in
+            guard let user = cell?.model as? User else { return nil}
+            return user.blog?.url
+        }.filterNil()
+        return ControlEvent(events: source)
+    }
+
 }

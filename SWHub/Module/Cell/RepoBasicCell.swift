@@ -18,6 +18,8 @@ import SWFrame
 
 class RepoBasicCell: CollectionCell, ReactorKit.View {
 
+    static let maxLines = 3
+
     fileprivate struct Metric {
         static let avatarSize = CGSize(width: metric(25), height: metric(25))
     }
@@ -36,7 +38,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
 
     lazy var introLabel: Label = {
         let label = Label()
-        label.numberOfLines = 0
+        label.numberOfLines = RepoBasicCell.maxLines
         label.font = Font.intro
         label.sizeToFit()
         return label
@@ -99,10 +101,10 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.statusLabel)
 
         themeService.rx
-            .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
+            .bind({ $0.borderLightColor }, to: self.rx.qmui_borderColor)
             .bind({ $0.titleColor }, to: self.nameLabel.rx.textColor)
-            .bind({ $0.statusColor }, to: self.statusLabel.rx.textColor)
-            .bind({ $0.detailColor }, to: self.introLabel.rx.textColor)
+            .bind({ $0.datetimeColor }, to: self.statusLabel.rx.textColor)
+            .bind({ $0.contentColor }, to: self.introLabel.rx.textColor)
             .disposed(by: self.rx.disposeBag)
     }
 
@@ -115,7 +117,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         self.introLabel.sizeToFit()
         self.introLabel.left = self.avatarImageView.left
         self.introLabel.extendToRight = self.contentView.width - 20
-        self.introLabel.top = self.avatarImageView.bottom + 4
+        self.introLabel.top = self.avatarImageView.bottom
         self.introLabel.extendToBottom = self.contentView.height - 40
 
         self.languageLabel.sizeToFit()
@@ -176,8 +178,8 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let item = item as? RepoBasicItem else { return .zero }
-        var height = 10 + Metric.avatarSize.height + 4
-        height += (item.currentState.intro ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.intro)
+        var height = 10 + Metric.avatarSize.height
+        height += (item.currentState.intro ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.intro, maxLines: RepoBasicCell.maxLines)
         height += 65
         return CGSize(width: width, height: flat(height))
     }

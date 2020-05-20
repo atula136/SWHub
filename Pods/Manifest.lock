@@ -147,6 +147,7 @@ PODS:
   - SwiftLint (0.39.2)
   - SwiftyBeaver (1.9.0)
   - Toast-Swift (5.0.0)
+  - TTTAttributedLabel (2.0.0)
   - UICKeyChainStore (2.1.2)
   - URLNavigator (2.3.0)
   - WeakMapTable (1.1.0)
@@ -169,6 +170,7 @@ DEPENDENCIES:
   - SWFrame (from `../SWFrame`)
   - SwiftDate (= 6.1.0)
   - SwiftLint (= 0.39.2)
+  - TTTAttributedLabel (= 2.0.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -218,6 +220,7 @@ SPEC REPOS:
     - SwiftLint
     - SwiftyBeaver
     - Toast-Swift
+    - TTTAttributedLabel
     - UICKeyChainStore
     - URLNavigator
     - WeakMapTable
@@ -275,11 +278,12 @@ SPEC CHECKSUMS:
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
   URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
   WeakMapTable: d0327eda092be6a8f7c532942ae98dc7948f5d32
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: d74a69fab102363ba35db994b991b50a5cf7670d
+PODFILE CHECKSUM: 51f55ac27f4d5fcb6354ed7842c35148e5b74407
 
 COCOAPODS: 1.9.1

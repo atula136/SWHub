@@ -34,24 +34,24 @@ extension UIColor {
         return themeService.type.associatedObject.titleColor
     }
 
-    static var detail: UIColor {
-        return themeService.type.associatedObject.detailColor
+    static var content: UIColor {
+        return themeService.type.associatedObject.contentColor
     }
 
-    static var status: UIColor {
-        return themeService.type.associatedObject.statusColor
+    static var datetime: UIColor {
+        return themeService.type.associatedObject.datetimeColor
     }
 
-    static var border1: UIColor {
-        return themeService.type.associatedObject.border1Color
+    static var borderLight: UIColor {
+        return themeService.type.associatedObject.borderLightColor
     }
 
-    static var border2: UIColor {
-        return themeService.type.associatedObject.border2Color
+    static var border: UIColor {
+        return themeService.type.associatedObject.borderColor
     }
 
-    static var border3: UIColor {
-        return themeService.type.associatedObject.border3Color
+    static var borderDark: UIColor {
+        return themeService.type.associatedObject.borderDarkColor
     }
 
     static var special1: UIColor {

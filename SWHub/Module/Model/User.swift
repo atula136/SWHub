@@ -83,13 +83,14 @@ final class User: Object, ModelType, Identifiable, Subjective {
 //        return .composed(of: texts)
 //    }
 
-    var detail: NSAttributedString? {
-        let intro = self.bio?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
-        let update = R.string.localizable.userJoinedDatetime(self.updatedAt?.string(withFormat: "yyyy-MM-dd") ?? "").styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2))
-        return .composed(of: [
-            intro, Special.nextLine, update
-        ])
-    }
+//    var detail: NSAttributedString? {
+//        let name = (self.nickname ?? self.username)?.styled(with: .font(.bold(16)), .color(.title), .lineHeightMultiple(1.4)) ?? NSAttributedString()
+//        let intro = self.bio?.styled(with: .font(.normal(13)), .color(.content), .lineSpacing(2)) ?? NSAttributedString()
+//        let update = R.string.localizable.userJoinedDatetime(self.updatedAt?.string(withFormat: "yyyy-MM-dd") ?? "").styled(with: .font(.normal(12)), .color(.datetime), .lineHeightMultiple(1.2))
+//        return .composed(of: [
+//            name, Special.nextLine, intro, Special.nextLine, update
+//        ])
+//    }
 
     var counts: [NSAttributedString] {
         let repositories = self.count(title: R.string.localizable.repositories(), value: self.publicRepos + self.totalPrivateRepos)
@@ -111,36 +112,32 @@ final class User: Object, ModelType, Identifiable, Subjective {
     var companyInfo: InfoModel {
         var info = InfoModel.init()
         info.icon = FontAwesomeIcon.userIcon.image(ofSize: .init(20), color: .tint).template
-        info.title = self.company ?? R.string.localizable.company()
+        info.title = self.company
         info.indicated = false
-        info.enabled = self.company != nil ? true : false
         return info
     }
 
     var locationInfo: InfoModel {
         var info = InfoModel.init()
         info.icon = FontAwesomeIcon.globeIcon.image(ofSize: .init(20), color: .tint).template
-        info.title = self.location ?? R.string.localizable.location()
+        info.title = self.location
         info.indicated = false
-        info.enabled = self.location != nil ? true : false
         return info
     }
 
     var emailInfo: InfoModel {
         var info = InfoModel.init()
         info.icon = FontAwesomeIcon.inboxIcon.image(ofSize: .init(20), color: .tint).template
-        info.title = self.email ?? R.string.localizable.email()
+        info.title = self.email
         info.indicated = self.email != nil ? true : false
-        info.enabled = self.email != nil ? true : false
         return info
     }
 
     var blogInfo: InfoModel {
         var info = InfoModel.init()
         info.icon = FontAwesomeIcon._581Icon.image(ofSize: .init(20), color: .tint).template
-        info.title = self.blog ?? R.string.localizable.blog()
+        info.title = self.blog
         info.indicated = self.blog != nil ? true : false
-        info.enabled = self.blog != nil ? true : false
         return info
     }
 

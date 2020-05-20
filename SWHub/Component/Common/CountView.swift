@@ -44,7 +44,7 @@ class CountView: UIView {
         self.addSubview(self.thirdButton)
         themeService.rx
             .bind({ $0.backgroundColor }, to: self.rx.backgroundColor)
-            .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
+            .bind({ $0.borderLightColor }, to: self.rx.qmui_borderColor)
             .disposed(by: self.rx.disposeBag)
     }
 

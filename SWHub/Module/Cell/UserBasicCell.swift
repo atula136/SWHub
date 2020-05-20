@@ -18,6 +18,8 @@ import SWFrame
 
 class UserBasicCell: CollectionCell, ReactorKit.View {
 
+    static let maxLines = 3
+
     fileprivate struct Metric {
         static let avatarSize = CGSize(width: metric(25), height: metric(25))
     }
@@ -37,7 +39,7 @@ class UserBasicCell: CollectionCell, ReactorKit.View {
 
     lazy var introLabel: Label = {
         let label = Label()
-        label.numberOfLines = 0
+        label.numberOfLines = UserBasicCell.maxLines
         label.font = Font.intro
         label.sizeToFit()
         return label
@@ -77,8 +79,8 @@ class UserBasicCell: CollectionCell, ReactorKit.View {
         self.contentView.addSubview(self.introLabel)
 
         themeService.rx
-            .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
-            .bind({ $0.detailColor }, to: self.introLabel.rx.textColor)
+            .bind({ $0.borderLightColor }, to: self.rx.qmui_borderColor)
+            .bind({ $0.contentColor }, to: self.introLabel.rx.textColor)
             .bind({ $0.titleColor }, to: [self.nameLabel.rx.textColor, self.repoButton.rx.titleColor(for: .normal)])
             .disposed(by: self.rx.disposeBag)
     }
@@ -131,7 +133,7 @@ class UserBasicCell: CollectionCell, ReactorKit.View {
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let item = item as? UserBasicItem else { return .zero }
         var height = 10 + Metric.avatarSize.height + 5 + Font.repo.lineHeight + 5
-        height += (item.currentState.intro ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.intro)
+        height += (item.currentState.intro ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.intro, maxLines: UserBasicCell.maxLines)
         height += 5
         return CGSize(width: width, height: flat(height))
     }

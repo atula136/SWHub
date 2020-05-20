@@ -149,9 +149,9 @@ class Repo: Object, ModelType, Identifiable, Eventable {
     }
 
     var detail: NSAttributedString? {
-        let description = self.introduction?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
+        let description = self.introduction?.styled(with: .font(.normal(13)), .color(.content), .lineSpacing(2)) ?? NSAttributedString()
         let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint), .link(self.homepage?.url ?? URL(string: "http://m.baidu.com")!)) ?? NSAttributedString()
-        let update = R.string.localizable.repoUpdateDatetime(self.updatedAt?.toRelative(since: nil, style: nil, locale: Locales.english) ?? "").styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2))
+        let update = R.string.localizable.repoUpdateDatetime(self.updatedAt?.toRelative(since: nil, style: nil, locale: Locales.english) ?? "").styled(with: .font(.normal(12)), .color(.datetime), .lineHeightMultiple(1.2))
         return .composed(of: [
             description, Special.nextLine, homepage, Special.lineSeparator, update
         ])
@@ -289,7 +289,7 @@ class Repo: Object, ModelType, Identifiable, Eventable {
 
     func count(title: String, value: Int) -> NSAttributedString {
         let valueText = value.string.styled(with: .color(.title), .font(.bold(16)), .alignment(.center))
-        let titleText = title.styled(with: .color(.detail), .font(.normal(14)), .alignment(.center))
+        let titleText = title.styled(with: .color(.content), .font(.normal(14)), .alignment(.center))
         return .composed(of: [
             valueText, Special.nextLine, titleText
         ])

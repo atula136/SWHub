@@ -16,6 +16,7 @@ target 'SWHub' do
 	pod 'Parchment', '2.3.0'
 	pod 'Highlightr', '2.1.0'
 	pod 'MarkdownView', '1.5.0'
+	pod 'TTTAttributedLabel', '2.0.0'
 	
 	# 网络
 	# pod 'Kingfisher', '4.10.1'

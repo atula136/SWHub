@@ -24,7 +24,8 @@ class UserProfileItem: CollectionItem, ReactorKit.Reactor {
 
     struct State {
         var name: String?
-        var detail: NSAttributedString?
+        var intro: String?
+        var time: String?
         var counts: [NSAttributedString]?
         var company: InfoModel?
         var location: InfoModel?
@@ -40,7 +41,8 @@ class UserProfileItem: CollectionItem, ReactorKit.Reactor {
         guard let user = model as? User else { return }
         self.initialState = State(
             name: user.nickname ?? user.username,
-            detail: user.detail,
+            intro: user.bio ?? R.string.localizable.noPersonalIntroduction(),
+            time: R.string.localizable.userJoinedDatetime(user.updatedAt?.string(withFormat: "yyyy-MM-dd") ?? ""),
             counts: user.counts,
             company: user.companyInfo,
             location: user.locationInfo,

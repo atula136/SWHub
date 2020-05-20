@@ -34,7 +34,7 @@ class SettingFooterView: SupplementaryView {
         self.addSubview(self.logoutButton)
         themeService.rx
             .bind({ $0.backgroundColor }, to: self.logoutButton.rx.backgroundColor)
-            .bind({ $0.border1Color }, to: self.logoutButton.rx.borderColor)
+            .bind({ $0.borderLightColor }, to: self.logoutButton.rx.borderColor)
             .bind({ $0.titleColor }, to: self.logoutButton.rx.titleColor(for: .normal))
             .disposed(by: self.rx.disposeBag)
     }

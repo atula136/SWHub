@@ -51,6 +51,7 @@
 "Location" = "Location";
 "Email" = "Email";
 "Blog" = "Blog";
+"No personal introduction" = "No personal introduction";
 "Repo.Update.Datetime" = "Updated %@";
 "User.Joined.Datetime" = "Joined on %@";
 /* 详情 */

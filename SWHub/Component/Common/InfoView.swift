@@ -58,10 +58,10 @@ class InfoView: UIView {
         self.addSubview(self.iconImageView)
         self.addSubview(self.indicatorImageView)
         themeService.rx
-            .bind({ $0.border1Color }, to: self.rx.qmui_borderColor)
+            .bind({ $0.borderLightColor }, to: self.rx.qmui_borderColor)
             .bind({ $0.backgroundColor }, to: self.rx.backgroundColor)
             .bind({ $0.titleColor }, to: self.titleLabel.rx.textColor)
-            .bind({ $0.detailColor }, to: self.detailLabel.rx.textColor)
+            .bind({ $0.contentColor }, to: self.detailLabel.rx.textColor)
             .bind({ $0.tintColor }, to: [self.iconImageView.rx.tintColor, self.indicatorImageView.rx.tintColor])
             .disposed(by: self.rx.disposeBag)
     }
@@ -99,7 +99,7 @@ extension Reactive where Base: InfoView {
             view.titleLabel.text = info?.title
             view.detailLabel.text = info?.detail
             view.indicatorImageView.isHidden = !(info?.indicated ?? false)
-            view.titleLabel.textColor = (info?.enabled ?? false) ? .title : .status
+            view.isHidden = info?.title?.isEmpty ?? true
             view.setNeedsLayout()
             view.layoutIfNeeded()
         }

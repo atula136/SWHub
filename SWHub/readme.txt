@@ -15,6 +15,7 @@
 17. 首页 重名 趋势（Trending）
 18. 嵌套类型全路径
 20. 下拉刷新/加载更多，自定义UI
+21. 折叠说明文本
 测试模拟数据
 暗黑模式：下拉刷新活动指示器、Since文本
 设置页的暗黑模式的切换按钮的状态应该是单向的
@@ -68,6 +69,7 @@ https://api.github.com/repos/khoren93/SwiftHub/branches?page=1
 筛选
 首页
 设置
+Datetime
 
 
 一、框架
