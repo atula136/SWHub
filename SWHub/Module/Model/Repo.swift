@@ -10,6 +10,7 @@ import UIKit
 import BonMot
 import Iconic
 import RealmSwift
+import SwiftDate
 import ObjectMapper
 import ObjectMapper_Realm
 import SWFrame
@@ -147,14 +148,14 @@ class Repo: Object, ModelType, Identifiable, Eventable {
         return .composed(of: texts)
     }
 
-      var detail: NSAttributedString? {
-          let description = self.introduction?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
-          let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint), .link(self.homepage?.url ?? URL(string: "http://m.baidu.com")!)) ?? NSAttributedString()
-          let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2)) ?? NSAttributedString()
-          return .composed(of: [
-              description, Special.nextLine, homepage, Special.lineSeparator, update
-          ])
-      }
+    var detail: NSAttributedString? {
+        let description = self.introduction?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
+        let homepage = self.homepage?.styled(with: .font(.normal(12)), .color(.tint), .link(self.homepage?.url ?? URL(string: "http://m.baidu.com")!)) ?? NSAttributedString()
+        let update = R.string.localizable.repoUpdateDatetime(self.updatedAt?.toRelative(since: nil, style: nil, locale: Locales.english) ?? "").styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2))
+        return .composed(of: [
+            description, Special.nextLine, homepage, Special.lineSeparator, update
+        ])
+    }
 
       var counts: [NSAttributedString] {
           let watchs = self.count(title: R.string.localizable.watchs(), value: self.subscribersCount)

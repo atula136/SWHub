@@ -35,7 +35,6 @@
 "No more data" = "没有更多的了";
 "Trending.Repo.Stars.New" = "%@增加了%d个星";
 "User.Exit.Prompt" = "您确定要退出%@吗";
-"User.Join.Message" = "注册于%@";
 "Repositories" = "Repositories";
 "Developers" = "Developers";
 "Followers" = "Followers";
@@ -52,7 +51,8 @@
 "Location" = "Location";
 "Email" = "Email";
 "Blog" = "Blog";
-"Repo.Update.Datetime" = "Updated %@ ago";
+"Repo.Update.Datetime" = "Updated %@";
+"User.Joined.Datetime" = "Joined on %@";
 /* 详情 */
 "Detail.Cell.Pull" = "拉取请求";
 "Detail.Cell.Commit" = "提交";

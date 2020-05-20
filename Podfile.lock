@@ -122,6 +122,7 @@ PODS:
     - Toast-Swift (= 5.0.0)
     - URLNavigator (= 2.3.0)
     - WebViewJavascriptBridge (= 6.0.3)
+  - SwiftDate (6.1.0)
   - SwifterSwift (5.1.0):
     - SwifterSwift/AppKit (= 5.1.0)
     - SwifterSwift/CoreGraphics (= 5.1.0)
@@ -166,6 +167,7 @@ DEPENDENCIES:
   - RxSwiftExt (= 5.2.0)
   - RxTheme (= 4.0.0)
   - SWFrame (from `../SWFrame`)
+  - SwiftDate (= 6.1.0)
   - SwiftLint (= 0.39.2)
 
 SPEC REPOS:
@@ -211,6 +213,7 @@ SPEC REPOS:
     - RxTheme
     - RxViewController
     - SnapKit
+    - SwiftDate
     - SwifterSwift
     - SwiftLint
     - SwiftyBeaver
@@ -267,6 +270,7 @@ SPEC CHECKSUMS:
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SWFrame: f04b0b5d2970799be15d29b72ba76c1398e9458b
+  SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d
@@ -276,6 +280,6 @@ SPEC CHECKSUMS:
   WeakMapTable: d0327eda092be6a8f7c532942ae98dc7948f5d32
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 2af2d468d9689614d32874e431c2c574b348b317
+PODFILE CHECKSUM: d74a69fab102363ba35db994b991b50a5cf7670d
 
 COCOAPODS: 1.9.1

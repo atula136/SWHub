@@ -511,6 +511,8 @@ struct R: Rswift.Validatable {
       static let forks = Rswift.StringResource(key: "Forks", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Issues
       static let issues = Rswift.StringResource(key: "Issues", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Joined on %@
+      static let userJoinedDatetime = Rswift.StringResource(key: "User.Joined.Datetime", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Location
       static let location = Rswift.StringResource(key: "Location", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Pull requests
@@ -579,8 +581,6 @@ struct R: Rswift.Validatable {
       static let loadingMore = Rswift.StringResource(key: "Loading more", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 没有更多的了
       static let noMoreData = Rswift.StringResource(key: "No more data", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 注册于%@
-      static let userJoinMessage = Rswift.StringResource(key: "User.Join.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 活动
       static let activity = Rswift.StringResource(key: "Activity", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 消息
@@ -746,6 +746,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Issues", bundle: bundle, comment: "")
+      }
+
+      /// Value: Joined on %@
+      static func userJoinedDatetime(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("User.Joined.Datetime", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "User.Joined.Datetime"
+        }
+
+        let format = NSLocalizedString("User.Joined.Datetime", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
       }
 
       /// Value: Location
@@ -1192,21 +1207,6 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("No more data", bundle: bundle, comment: "")
-      }
-
-      /// Value: 注册于%@
-      static func userJoinMessage(_ value1: String, preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("User.Join.Message", bundle: hostingBundle, comment: "")
-          return String(format: format, locale: applicationLocale, value1)
-        }
-
-        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "User.Join.Message"
-        }
-
-        let format = NSLocalizedString("User.Join.Message", bundle: bundle, comment: "")
-        return String(format: format, locale: locale, value1)
       }
 
       /// Value: 活动

@@ -70,8 +70,15 @@ https://api.github.com/repos/khoren93/SwiftHub/branches?page=1
 设置
 
 
-1. Config保存用户设置，没有用户的是游客，有用户的是用户对于的设置，用户登录后恢复没有用户的为默认设置
-2. App的设置，用UserDefault保存
-        App
-设置 ->
-        User
+一、框架
+采用RxSwift和ReactorKit的响应式单向流框架，详情参见：
+https://github.com/ReactorKit/ReactorKit
+二、存储
+采用UserDefaults和Realm数据库方案
+1、部分全局数据（与用户无关），如App主题等，使用UserDefaults
+2、用户数据使用Realm，以便切换用户后，能还原用户的状态
+三、第三方框架
+1、RxSwift：响应式框架
+2、ReactorKit：单向流框架
+3、RealmSwift：Realm数据库
+

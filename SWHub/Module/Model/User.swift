@@ -85,7 +85,7 @@ final class User: Object, ModelType, Identifiable, Subjective {
 
     var detail: NSAttributedString? {
         let intro = self.bio?.styled(with: .font(.normal(13)), .color(.detail), .lineSpacing(2)) ?? NSAttributedString()
-        let update = self.updatedAt?.string().styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2)) ?? NSAttributedString()
+        let update = R.string.localizable.userJoinedDatetime(self.updatedAt?.string(withFormat: "yyyy-MM-dd") ?? "").styled(with: .font(.normal(12)), .color(.status), .lineHeightMultiple(1.2))
         return .composed(of: [
             intro, Special.nextLine, update
         ])

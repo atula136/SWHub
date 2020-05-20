@@ -20,14 +20,18 @@ import SWFrame
 class UserProfileCell: CollectionCell, ReactorKit.View {
 
     fileprivate struct Metric {
-        static let avatarSize = CGSize.init(metric(25))
+        static let avatarSize = CGSize(metric(60))
         static let countHeight = metric(50)
         static let infoHeight = metric(44)
     }
 
+    fileprivate struct Font {
+        static let name = UIFont.bold(16)
+    }
+
     lazy var nameLabel: Label = {
         let label = Label()
-        label.font = .bold(16)
+        label.font = Font.name
         label.sizeToFit()
         return label
     }()
@@ -147,16 +151,16 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
         self.avatarImageView.sizeToFit()
         self.avatarImageView.size = Metric.avatarSize
         self.avatarImageView.left = Constant.Metric.margin
-        self.avatarImageView.top = 10
+        self.avatarImageView.top = self.avatarImageView.topWhenCenter
         self.nameLabel.sizeToFit()
-        self.nameLabel.left = self.avatarImageView.right + Constant.Metric.padding
+        self.nameLabel.left = self.avatarImageView.right + 10
         self.nameLabel.extendToRight = self.userView.width - Constant.Metric.margin
-        self.nameLabel.centerY = self.avatarImageView.centerY
+        self.nameLabel.top = 10
         self.detailLabel.sizeToFit()
-        self.detailLabel.left = self.avatarImageView.left
+        self.detailLabel.left = self.nameLabel.left
         self.detailLabel.extendToRight = self.nameLabel.right
-        self.detailLabel.top = self.avatarImageView.bottom
-        self.detailLabel.extendToBottom = self.userView.height
+        self.detailLabel.top = self.nameLabel.bottom
+        self.detailLabel.extendToBottom = self.userView.height - 10
     }
 
     func bind(reactor: UserProfileItem) {
@@ -193,9 +197,9 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let user = item.model as? User else { return .zero }
-        var height = 10.f
-        height += Metric.avatarSize.height
-        height += (UILabel.sizeThatFitsAttributedString(user.detail, withConstraints: .init(width: screenWidth - Constant.Metric.margin * 2, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 0).height + 5)
+        let name = flat(10 + Font.name.lineHeight + 10)
+        let detail = UILabel.sizeThatFitsAttributedString(user.detail, withConstraints: .init(width: screenWidth - Constant.Metric.margin - Metric.avatarSize.width - 10 - Constant.Metric.margin, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 0).height + 10
+        var height = flat(max(10 + Metric.avatarSize.height + 10, name + detail))
         height += Metric.countHeight
         height += Metric.infoHeight * 4
         return CGSize(width: width, height: flat(height))
