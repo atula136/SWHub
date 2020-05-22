@@ -27,7 +27,6 @@
 		7909456A245DD1F200D69366 /* TintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79094569245DD1F200D69366 /* TintItem.swift */; };
 		7909456C245DD1F900D69366 /* TintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456B245DD1F900D69366 /* TintCell.swift */; };
 		7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7909456D245DD2E200D69366 /* MyColorSection.swift */; };
-		790A801C246D562600BE40FD /* UILabel+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 790A801B246D562600BE40FD /* UILabel+Ext.m */; };
 		790B88D4245EC97C000C89D4 /* PagingViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */; };
 		790B88DF245F6046000C89D4 /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88DE245F6046000C89D4 /* TrendingAPI.swift */; };
 		790B88E1245F61FA000C89D4 /* TrendingNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */; };
@@ -47,9 +46,6 @@
 		794307EC246271ED0050F3E3 /* DefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307EB246271ED0050F3E3 /* DefaultCell.swift */; };
 		794307EE246274560050F3E3 /* NormalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307ED246274560050F3E3 /* NormalItem.swift */; };
 		794307F0246274650050F3E3 /* NormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307EF246274650050F3E3 /* NormalCell.swift */; };
-		794307F2246275A00050F3E3 /* RepoDetailItem2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307F1246275A00050F3E3 /* RepoDetailItem2.swift */; };
-		794307F4246275A90050F3E3 /* RepoDetailCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307F3246275A90050F3E3 /* RepoDetailCell2.swift */; };
-		794307F624627DEC0050F3E3 /* RepoDetailModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794307F524627DEC0050F3E3 /* RepoDetailModel2.swift */; };
 		794409772469C60800523299 /* ConditionCodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794409762469C60800523299 /* ConditionCodeItem.swift */; };
 		794409792469C61200523299 /* ConditionCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794409782469C61200523299 /* ConditionCodeCell.swift */; };
 		7944097B2469C64900523299 /* ConditionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7944097A2469C64900523299 /* ConditionSection.swift */; };
@@ -58,6 +54,7 @@
 		794E3BF324668D1C003DDDFB /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794E3BF224668D1C003DDDFB /* RepoListViewController.swift */; };
 		79532C06246BAD5A002AA20E /* RepoReadmeSourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */; };
 		79532C08246BAD6E002AA20E /* RepoReadmeSourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */; };
+		795A84152477C71500644999 /* BaseViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A84142477C71500644999 /* BaseViewControllerExt.swift */; };
 		796E997E246C2A9900DB6EAE /* RepoProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E997D246C2A9900DB6EAE /* RepoProfileCell.swift */; };
 		796E9981246C2BCE00DB6EAE /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E9980246C2BCE00DB6EAE /* CountView.swift */; };
 		796E9983246C2BDC00DB6EAE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E9982246C2BDC00DB6EAE /* InfoView.swift */; };
@@ -134,8 +131,6 @@
 		79D261492462DD0700A979D3 /* SettingSwitchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D261482462DD0700A979D3 /* SettingSwitchItem.swift */; };
 		79D2614B2462DD1000A979D3 /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D2614A2462DD1000A979D3 /* SettingSwitchCell.swift */; };
 		79D2614D2462DDCC00A979D3 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D2614C2462DDCC00A979D3 /* Setting.swift */; };
-		79D8C81B2462084900A905F0 /* RepoDetailViewReactor2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8C81A2462084900A905F0 /* RepoDetailViewReactor2.swift */; };
-		79D8C81D2462085200A905F0 /* RepoDetailViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8C81C2462085200A905F0 /* RepoDetailViewController2.swift */; };
 		79D8C81F24620AB900A905F0 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D8C81E24620AB900A905F0 /* Repo.swift */; };
 		79DAF291245D728D0006E6A5 /* NavigationBarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */; };
 		79DEC3F62461D0FC00264EE3 /* Condition.json in Resources */ = {isa = PBXBuildFile; fileRef = 79DEC3F52461D0FC00264EE3 /* Condition.json */; };
@@ -153,10 +148,7 @@
 		79EE8A9F245E8DA300A2438C /* TrendingRepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8A9E245E8DA300A2438C /* TrendingRepoListViewController.swift */; };
 		79EE8AA2245E8EC800A2438C /* TrendingUserListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8AA1245E8EC800A2438C /* TrendingUserListViewReactor.swift */; };
 		79EE8AA4245E8ED300A2438C /* TrendingUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8AA3245E8ED300A2438C /* TrendingUserListViewController.swift */; };
-		79FA54422462707E0089EB8F /* RepoDetailSection2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA54412462707E0089EB8F /* RepoDetailSection2.swift */; };
 		79FA5444246271CB0089EB8F /* DefaultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA5443246271CB0089EB8F /* DefaultItem.swift */; };
-		79FAF5E424628DAD00CEC4D0 /* RepoDetailHeaderView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FAF5E324628DAD00CEC4D0 /* RepoDetailHeaderView2.swift */; };
-		79FAF5E62462954100CEC4D0 /* RepoDetailHeaderReactor2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FAF5E52462954100CEC4D0 /* RepoDetailHeaderReactor2.swift */; };
 		79FFAE30246B2A4300B0CAE7 /* ProviderType+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFAE2F246B2A4300B0CAE7 /* ProviderType+Network.swift */; };
 		FD3249B3375F87DD51CA1684 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */; };
 /* End PBXBuildFile section */
@@ -201,8 +193,6 @@
 		7909456B245DD1F900D69366 /* TintCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintCell.swift; sourceTree = "<group>"; };
 		7909456D245DD2E200D69366 /* MyColorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColorSection.swift; sourceTree = "<group>"; };
 		790A8018246D55B000BE40FD /* OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Bridging-Header.h"; sourceTree = "<group>"; };
-		790A801A246D562600BE40FD /* UILabel+Ext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Ext.h"; sourceTree = "<group>"; };
-		790A801B246D562600BE40FD /* UILabel+Ext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Ext.m"; sourceTree = "<group>"; };
 		790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewControllerExt.swift; sourceTree = "<group>"; };
 		790B88DE245F6046000C89D4 /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
 		790B88E0245F61FA000C89D4 /* TrendingNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingNetworking.swift; sourceTree = "<group>"; };
@@ -223,9 +213,6 @@
 		794307EB246271ED0050F3E3 /* DefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCell.swift; sourceTree = "<group>"; };
 		794307ED246274560050F3E3 /* NormalItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalItem.swift; sourceTree = "<group>"; };
 		794307EF246274650050F3E3 /* NormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCell.swift; sourceTree = "<group>"; };
-		794307F1246275A00050F3E3 /* RepoDetailItem2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailItem2.swift; sourceTree = "<group>"; };
-		794307F3246275A90050F3E3 /* RepoDetailCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailCell2.swift; sourceTree = "<group>"; };
-		794307F524627DEC0050F3E3 /* RepoDetailModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailModel2.swift; sourceTree = "<group>"; };
 		794409762469C60800523299 /* ConditionCodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCodeItem.swift; sourceTree = "<group>"; };
 		794409782469C61200523299 /* ConditionCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCodeCell.swift; sourceTree = "<group>"; };
 		7944097A2469C64900523299 /* ConditionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionSection.swift; sourceTree = "<group>"; };
@@ -234,6 +221,7 @@
 		794E3BF224668D1C003DDDFB /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
 		79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeSourceItem.swift; sourceTree = "<group>"; };
 		79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeSourceCell.swift; sourceTree = "<group>"; };
+		795A84142477C71500644999 /* BaseViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerExt.swift; sourceTree = "<group>"; };
 		796E997D246C2A9900DB6EAE /* RepoProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoProfileCell.swift; sourceTree = "<group>"; };
 		796E9980246C2BCE00DB6EAE /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
 		796E9982246C2BDC00DB6EAE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -316,8 +304,6 @@
 		79D261482462DD0700A979D3 /* SettingSwitchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchItem.swift; sourceTree = "<group>"; };
 		79D2614A2462DD1000A979D3 /* SettingSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
 		79D2614C2462DDCC00A979D3 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		79D8C81A2462084900A905F0 /* RepoDetailViewReactor2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailViewReactor2.swift; sourceTree = "<group>"; };
-		79D8C81C2462085200A905F0 /* RepoDetailViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailViewController2.swift; sourceTree = "<group>"; };
 		79D8C81E24620AB900A905F0 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarExt.swift; sourceTree = "<group>"; };
 		79DD8FD02463CFAF008F930B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
@@ -336,10 +322,7 @@
 		79EE8A9E245E8DA300A2438C /* TrendingRepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepoListViewController.swift; sourceTree = "<group>"; };
 		79EE8AA1245E8EC800A2438C /* TrendingUserListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingUserListViewReactor.swift; sourceTree = "<group>"; };
 		79EE8AA3245E8ED300A2438C /* TrendingUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingUserListViewController.swift; sourceTree = "<group>"; };
-		79FA54412462707E0089EB8F /* RepoDetailSection2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailSection2.swift; sourceTree = "<group>"; };
 		79FA5443246271CB0089EB8F /* DefaultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultItem.swift; sourceTree = "<group>"; };
-		79FAF5E324628DAD00CEC4D0 /* RepoDetailHeaderView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailHeaderView2.swift; sourceTree = "<group>"; };
-		79FAF5E52462954100CEC4D0 /* RepoDetailHeaderReactor2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailHeaderReactor2.swift; sourceTree = "<group>"; };
 		79FFAE2F246B2A4300B0CAE7 /* ProviderType+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProviderType+Network.swift"; sourceTree = "<group>"; };
 		97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D31A282BEF0A84BF48C2B7 /* Pods-SWHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWHub.debug.xcconfig"; path = "Target Support Files/Pods-SWHub/Pods-SWHub.debug.xcconfig"; sourceTree = "<group>"; };
@@ -410,7 +393,6 @@
 		792F6D5E245555B700856757 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				79FFAE31246B2D9C00B0CAE7 /* 2 */,
 				7999798C2470621E00AFACE9 /* Cell */,
 				7999798A2470621100AFACE9 /* Controller */,
 				797F199824714F09000B60AA /* Enum */,
@@ -426,8 +408,6 @@
 		792F6D5F245555BF00856757 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				790A801A246D562600BE40FD /* UILabel+Ext.h */,
-				790A801B246D562600BE40FD /* UILabel+Ext.m */,
 				79B2E56D245BD88900D6E162 /* IntExt.swift */,
 				79DAF290245D728D0006E6A5 /* NavigationBarExt.swift */,
 				790B88D3245EC97C000C89D4 /* PagingViewControllerExt.swift */,
@@ -436,6 +416,7 @@
 				799547CF245D4998002A7999 /* UIApplicationExt.swift */,
 				7976ACB52458494A00093046 /* UIColorExt.swift */,
 				799547D3245D607F002A7999 /* UIViewControllerExt.swift */,
+				795A84142477C71500644999 /* BaseViewControllerExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -717,21 +698,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		79FFAE31246B2D9C00B0CAE7 /* 2 */ = {
-			isa = PBXGroup;
-			children = (
-				794307F3246275A90050F3E3 /* RepoDetailCell2.swift */,
-				79FAF5E52462954100CEC4D0 /* RepoDetailHeaderReactor2.swift */,
-				79FAF5E324628DAD00CEC4D0 /* RepoDetailHeaderView2.swift */,
-				794307F1246275A00050F3E3 /* RepoDetailItem2.swift */,
-				794307F524627DEC0050F3E3 /* RepoDetailModel2.swift */,
-				79FA54412462707E0089EB8F /* RepoDetailSection2.swift */,
-				79D8C81C2462085200A905F0 /* RepoDetailViewController2.swift */,
-				79D8C81A2462084900A905F0 /* RepoDetailViewReactor2.swift */,
-			);
-			path = 2;
-			sourceTree = "<group>";
-		};
 		D8A78E795493EC5C4980DEE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -981,7 +947,6 @@
 				7909456A245DD1F200D69366 /* TintItem.swift in Sources */,
 				799F7011246BAF6400004589 /* RepoDetailViewController.swift in Sources */,
 				79EE8AA4245E8ED300A2438C /* TrendingUserListViewController.swift in Sources */,
-				79FAF5E424628DAD00CEC4D0 /* RepoDetailHeaderView2.swift in Sources */,
 				799CCE362466AE4D007A1474 /* SettingLoginItem.swift in Sources */,
 				794409792469C61200523299 /* ConditionCodeCell.swift in Sources */,
 				7906C32124555DB60030764D /* Router.swift in Sources */,
@@ -1001,11 +966,9 @@
 				79CC24AC24663E8100794CFD /* UserListViewReactor.swift in Sources */,
 				799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */,
 				792F6D672455562F00856757 /* LoginViewController.swift in Sources */,
-				79D8C81B2462084900A905F0 /* RepoDetailViewReactor2.swift in Sources */,
 				79DAF291245D728D0006E6A5 /* NavigationBarExt.swift in Sources */,
 				79532C06246BAD5A002AA20E /* RepoReadmeSourceItem.swift in Sources */,
 				79D261452462DCF100A979D3 /* SettingNormalItem.swift in Sources */,
-				79FAF5E62462954100CEC4D0 /* RepoDetailHeaderReactor2.swift in Sources */,
 				7976ACB02458273900093046 /* SettingViewReactor.swift in Sources */,
 				7976ACB62458494A00093046 /* UIColorExt.swift in Sources */,
 				7976ACAE2458272E00093046 /* SearchViewController.swift in Sources */,
@@ -1031,10 +994,10 @@
 				794307EC246271ED0050F3E3 /* DefaultCell.swift in Sources */,
 				794307F0246274650050F3E3 /* NormalCell.swift in Sources */,
 				796E9983246C2BDC00DB6EAE /* InfoView.swift in Sources */,
-				79FA54422462707E0089EB8F /* RepoDetailSection2.swift in Sources */,
 				790B88E1245F61FA000C89D4 /* TrendingNetworking.swift in Sources */,
 				797F199E24714F3D000B60AA /* Since.swift in Sources */,
 				79094568245DD17900D69366 /* Tint.swift in Sources */,
+				795A84152477C71500644999 /* BaseViewControllerExt.swift in Sources */,
 				79794540246FE1300084B2F8 /* Readme.swift in Sources */,
 				799F700F246BAF5800004589 /* RepoDetailViewReactor.swift in Sources */,
 				790767B42456CB3D00CD0AAF /* ResponseType.swift in Sources */,
@@ -1051,15 +1014,12 @@
 				791959422467F0FF00C6DFFC /* RepoBasicCell.swift in Sources */,
 				79042E98245D8FCC00DB30ED /* TintViewController.swift in Sources */,
 				792F6D652455561D00856757 /* LoginViewReactor.swift in Sources */,
-				790A801C246D562600BE40FD /* UILabel+Ext.m in Sources */,
 				7906C31B245559180030764D /* R.generated.swift in Sources */,
-				794307F2246275A00050F3E3 /* RepoDetailItem2.swift in Sources */,
 				7976ACA82458271000093046 /* ActivityViewReactor.swift in Sources */,
 				7906C32524555DD60030764D /* Constant.swift in Sources */,
 				7979453E246FE0D60084B2F8 /* Permissions.swift in Sources */,
 				7976ACB22458274300093046 /* SettingViewController.swift in Sources */,
 				790B88E3245F624A000C89D4 /* ProviderType+Trending.swift in Sources */,
-				79D8C81D2462085200A905F0 /* RepoDetailViewController2.swift in Sources */,
 				79042E96245D8FC200DB30ED /* TintViewReactor.swift in Sources */,
 				7909456E245DD2E200D69366 /* MyColorSection.swift in Sources */,
 				794409772469C60800523299 /* ConditionCodeItem.swift in Sources */,
@@ -1083,7 +1043,6 @@
 				7906C32324555DC70030764D /* Runtime.swift in Sources */,
 				799547D0245D4998002A7999 /* UIApplicationExt.swift in Sources */,
 				7906C31D245559E80030764D /* AppDependency.swift in Sources */,
-				794307F4246275A90050F3E3 /* RepoDetailCell2.swift in Sources */,
 				79E67A4B245C0F5600FE6093 /* SettingHeaderView.swift in Sources */,
 				79EE8AA2245E8EC800A2438C /* TrendingUserListViewReactor.swift in Sources */,
 				790B88D4245EC97C000C89D4 /* PagingViewControllerExt.swift in Sources */,
@@ -1093,7 +1052,6 @@
 				79CB9CFD246D91F3006C46DF /* UserDetailViewController.swift in Sources */,
 				79EE8A96245E88DB00A2438C /* HomeViewController.swift in Sources */,
 				79D261492462DD0700A979D3 /* SettingSwitchItem.swift in Sources */,
-				794307F624627DEC0050F3E3 /* RepoDetailModel2.swift in Sources */,
 				79EE8A9F245E8DA300A2438C /* TrendingRepoListViewController.swift in Sources */,
 				79D261432462D29900A979D3 /* WebViewController.swift in Sources */,
 				79E67A49245C0E9000FE6093 /* SupplementaryReactor.swift in Sources */,

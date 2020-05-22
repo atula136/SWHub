@@ -489,7 +489,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 63 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 65 localization keys.
     struct localizable {
       /// Value: %@增加了%d个星
       static let trendingRepoStarsNew = Rswift.StringResource(key: "Trending.Repo.Stars.New", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -499,6 +499,8 @@ struct R: Rswift.Validatable {
       static let branches = Rswift.StringResource(key: "Branches", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Company
       static let company = Rswift.StringResource(key: "Company", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Developer
+      static let developer = Rswift.StringResource(key: "Developer", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Developers
       static let developers = Rswift.StringResource(key: "Developers", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Email
@@ -523,6 +525,8 @@ struct R: Rswift.Validatable {
       static let readme = Rswift.StringResource(key: "Readme", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Repositories
       static let repositories = Rswift.StringResource(key: "Repositories", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Repository
+      static let repository = Rswift.StringResource(key: "Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Stars
       static let stars = Rswift.StringResource(key: "Stars", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Updated %@
@@ -670,6 +674,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Company", bundle: bundle, comment: "")
+      }
+
+      /// Value: Developer
+      static func developer(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Developer", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Developer"
+        }
+
+        return NSLocalizedString("Developer", bundle: bundle, comment: "")
       }
 
       /// Value: Developers
@@ -828,6 +845,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Repositories", bundle: bundle, comment: "")
+      }
+
+      /// Value: Repository
+      static func repository(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Repository", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Repository"
+        }
+
+        return NSLocalizedString("Repository", bundle: bundle, comment: "")
       }
 
       /// Value: Stars

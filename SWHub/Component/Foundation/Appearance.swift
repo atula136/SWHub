@@ -20,7 +20,7 @@ class Appearance {
         let navBar = NavigationBar.appearance()
         themeService.rx
             .bind({ $0.tintColor }, to: navBar.rx.itemColor)
-            .bind({ $0.dimColor }, to: navBar.rx.backgroundColor)
+            .bind({ $0.dimColor }, to: navBar.rx.barColor)
             .bind({ $0.borderColor }, to: navBar.rx.lineColor)
             .bind({ $0.titleColor }, to: navBar.rx.titleColor)
             .disposed(by: self.disposeBag)

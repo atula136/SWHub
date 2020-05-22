@@ -67,7 +67,7 @@ struct LightTheme: Theme {
 struct DarkTheme: Theme {
     let backgroundColor = UIColor(hex: 0x171a21)!
     let foregroundColor = UIColor.Material.black
-    let dimColor = UIColor.Material.grey900
+    let dimColor = UIColor(hex: 0x171a21)!
     let maskColor = UIColor.Material.grey900
     var tintColor = UIColor.Material.red
     let titleColor = UIColor.Material.grey100

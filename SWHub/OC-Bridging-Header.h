@@ -9,6 +9,5 @@
 #ifndef OC_Bridging_Header_h
 #define OC_Bridging_Header_h
 
-#import "UILabel+Ext.h"
 
 #endif /* OC_Bridging_Header_h */

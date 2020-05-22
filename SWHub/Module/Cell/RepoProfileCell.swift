@@ -14,6 +14,7 @@ import ReactorKit
 import Iconic
 import RxOptional
 import SwifterSwift
+import TTTAttributedLabel
 import Kingfisher
 import SWFrame
 
@@ -182,7 +183,7 @@ class RepoProfileCell: CollectionCell, ReactorKit.View {
         guard let repo = item.model as? Repo else { return .zero }
         var height = 10.f
         height += Metric.avatarSize.height
-        height += (UILabel.sizeThatFitsAttributedString(repo.detail, withConstraints: .init(width: screenWidth - Constant.Metric.margin * 2, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 6).height + 10)
+        height += (TTTAttributedLabel.sizeThatFitsAttributedString(repo.detail, withConstraints: .init(width: screenWidth - Constant.Metric.margin * 2, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 6).height + 10)
         height += Metric.countHeight
         height += Metric.infoHeight * 3
         return CGSize(width: width, height: flat(height))

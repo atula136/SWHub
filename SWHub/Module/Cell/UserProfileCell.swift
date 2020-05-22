@@ -14,6 +14,7 @@ import ReactorKit
 import Iconic
 import RxOptional
 import SwifterSwift
+import BonMot
 import TTTAttributedLabel
 import Kingfisher
 import SWFrame
@@ -239,7 +240,8 @@ class UserProfileCell: CollectionCell, ReactorKit.View {
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let user = item.model as? User else { return .zero }
         let limit = screenWidth - Constant.Metric.margin - Metric.avatarSize.width - 10 - Constant.Metric.margin
-        var text = user.bio?.height(thatFitsWidth: limit, font: Font.intro, maxLines: UserProfileCell.maxLines) ?? 0.f
+        let intro = (user.bio ?? "").styled(with: .font(Font.intro))
+        var text = TTTAttributedLabel.sizeThatFitsAttributedString(intro, withConstraints: CGSize(width: limit, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: UserProfileCell.maxLines.uInt).height
         text += Metric.nameHeight
         text += Metric.timeHeight
         var height = flat(max(Metric.avatarSize.height, text) + 10)

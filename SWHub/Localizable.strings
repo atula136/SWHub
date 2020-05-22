@@ -35,6 +35,8 @@
 "No more data" = "没有更多的了";
 "Trending.Repo.Stars.New" = "%@增加了%d个星";
 "User.Exit.Prompt" = "您确定要退出%@吗";
+"Repository" = "Repository";
+"Developer" = "Developer";
 "Repositories" = "Repositories";
 "Developers" = "Developers";
 "Followers" = "Followers";

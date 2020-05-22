@@ -13,6 +13,7 @@ import RxCocoa
 import ReactorKit
 import Iconic
 import SwifterSwift
+import TTTAttributedLabel
 import Kingfisher
 import SWFrame
 
@@ -178,8 +179,9 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
 
     override class func size(width: CGFloat, item: BaseCollectionItem) -> CGSize {
         guard let item = item as? RepoBasicItem else { return .zero }
+        let intro = (item.currentState.intro ?? "").styled(with: .font(Font.intro))
         var height = 10 + Metric.avatarSize.height
-        height += (item.currentState.intro ?? "").height(thatFitsWidth: width - 20 - 20, font: Font.intro, maxLines: RepoBasicCell.maxLines)
+        height += TTTAttributedLabel.sizeThatFitsAttributedString(intro, withConstraints: CGSize(width: width - 20 - 20, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: UInt(RepoBasicCell.maxLines)).height
         height += 65
         return CGSize(width: width, height: flat(height))
     }

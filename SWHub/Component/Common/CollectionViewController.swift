@@ -14,6 +14,10 @@ class CollectionViewController: SWFrame.CollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         themeService.rx
+//            .bind({ $0.tintColor }, to: self.navigationBar.rx.itemColor)
+//            .bind({ $0.dimColor }, to: self.navigationBar.rx.backgroundColor)
+//            .bind({ $0.borderColor }, to: self.navigationBar.rx.lineColor)
+//            .bind({ $0.titleColor }, to: self.navigationBar.rx.titleColor)
             .bind({ $0.backgroundColor }, to: self.collectionView.rx.backgroundColor)
             .disposed(by: self.rx.disposeBag)
     }
