@@ -13,10 +13,8 @@ import SWFrame
 class Runtime: SWFrame.Runtime {
     override class func work() {
         super.work()
-        // ExchangeImplementations(NavigationBar.self, #selector(NavigationBar.init(frame:)), #selector(NavigationBar.my_init(frame:)))
         ExchangeImplementations(UIApplication.self, #selector(getter: UIApplication.baseApiUrl), #selector(getter: UIApplication.myBaseApiUrl))
         ExchangeImplementations(UIApplication.self, #selector(getter: UIApplication.baseWebUrl), #selector(getter: UIApplication.myBaseWebUrl))
         ExchangeImplementations(BaseViewController.self, #selector(BaseViewController.viewDidLoad), #selector(BaseViewController.my_viewDidLoad))
-//        ExchangeImplementations(UIViewController.self, #selector(getter: UIViewController.preferredStatusBarStyle), #selector(getter: UIViewController.my_preferredStatusBarStyle))
     }
 }

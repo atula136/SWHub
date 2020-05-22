@@ -23,7 +23,6 @@ final class Code: Object, ModelType, Subjective/*, Eventable*/ {
 
     @objc dynamic var id: String?
     @objc dynamic var name: String?
-    // var checked = false
 
     required init() {
         self.name = Information.allLanguages
@@ -37,9 +36,9 @@ final class Code: Object, ModelType, Subjective/*, Eventable*/ {
         name            <- map["name"]
     }
 
-//        static func == (lhs: Language, rhs: Language) -> Bool {
-//            return lhs.urlParam == rhs.urlParam
-//        }
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 
     static var current: Code? {
         let key = String(describing: self)
@@ -52,9 +51,5 @@ final class Code: Object, ModelType, Subjective/*, Eventable*/ {
         }
         return realm.objects(Code.self).filter("id == nil").first
     }
-
-//    enum Event {
-//        case select(String?)
-//    }
 
 }

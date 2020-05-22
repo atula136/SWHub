@@ -164,14 +164,14 @@ class Repo: Object, ModelType, Identifiable, Eventable {
           return [watchs, stars, forks]
       }
 
-      var langInfo: InfoModel {
-          var info = InfoModel.init()
-          info.icon = FontAwesomeIcon.codeIcon.image(ofSize: .init(20), color: .tint).template
-          info.title = self.language
-          info.detail = self.size.kBytes
-          info.indicated = true
-          return info
-      }
+    var langInfo: InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.codeIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = self.language
+        info.detail = self.size.byteText()
+        info.indicated = true
+        return info
+    }
 
       var issueInfo: InfoModel {
           var info = InfoModel.init()

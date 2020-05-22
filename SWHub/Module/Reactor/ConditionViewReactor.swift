@@ -15,7 +15,7 @@ import SWFrame
 
 class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     enum Action {
-        case since(Int)         // TODO Home中请求code，每启动一次app更新一次，节省流量
+        case since(Int)
         case code(String?)
     }
     enum Mutation {

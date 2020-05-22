@@ -55,6 +55,7 @@
 		79532C06246BAD5A002AA20E /* RepoReadmeSourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */; };
 		79532C08246BAD6E002AA20E /* RepoReadmeSourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */; };
 		795A84152477C71500644999 /* BaseViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795A84142477C71500644999 /* BaseViewControllerExt.swift */; };
+		795A841F247846AD00644999 /* default-v0.realm in Resources */ = {isa = PBXBuildFile; fileRef = 795A841E247846AD00644999 /* default-v0.realm */; };
 		796E997E246C2A9900DB6EAE /* RepoProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E997D246C2A9900DB6EAE /* RepoProfileCell.swift */; };
 		796E9981246C2BCE00DB6EAE /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E9980246C2BCE00DB6EAE /* CountView.swift */; };
 		796E9983246C2BDC00DB6EAE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E9982246C2BDC00DB6EAE /* InfoView.swift */; };
@@ -88,7 +89,6 @@
 		799547D4245D607F002A7999 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799547D3245D607F002A7999 /* UIViewControllerExt.swift */; };
 		799CCE362466AE4D007A1474 /* SettingLoginItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE352466AE4D007A1474 /* SettingLoginItem.swift */; };
 		799CCE382466AE58007A1474 /* SettingLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CCE372466AE58007A1474 /* SettingLoginCell.swift */; };
-		799F14BC2473081C00085D00 /* default-v0.realm in Resources */ = {isa = PBXBuildFile; fileRef = 799F14BB2473081C00085D00 /* default-v0.realm */; };
 		799F700D246BAEF500004589 /* RepoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F700C246BAEF500004589 /* RepoSection.swift */; };
 		799F700F246BAF5800004589 /* RepoDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F700E246BAF5800004589 /* RepoDetailViewReactor.swift */; };
 		799F7011246BAF6400004589 /* RepoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799F7010246BAF6400004589 /* RepoDetailViewController.swift */; };
@@ -222,6 +222,7 @@
 		79532C05246BAD5A002AA20E /* RepoReadmeSourceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeSourceItem.swift; sourceTree = "<group>"; };
 		79532C07246BAD6E002AA20E /* RepoReadmeSourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeSourceCell.swift; sourceTree = "<group>"; };
 		795A84142477C71500644999 /* BaseViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerExt.swift; sourceTree = "<group>"; };
+		795A841E247846AD00644999 /* default-v0.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-v0.realm"; sourceTree = "<group>"; };
 		796E997D246C2A9900DB6EAE /* RepoProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoProfileCell.swift; sourceTree = "<group>"; };
 		796E9980246C2BCE00DB6EAE /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
 		796E9982246C2BDC00DB6EAE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -255,7 +256,6 @@
 		799547D3245D607F002A7999 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		799CCE352466AE4D007A1474 /* SettingLoginItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginItem.swift; sourceTree = "<group>"; };
 		799CCE372466AE58007A1474 /* SettingLoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLoginCell.swift; sourceTree = "<group>"; };
-		799F14BB2473081C00085D00 /* default-v0.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "default-v0.realm"; sourceTree = "<group>"; };
 		799F700C246BAEF500004589 /* RepoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSection.swift; sourceTree = "<group>"; };
 		799F700E246BAF5800004589 /* RepoDetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailViewReactor.swift; sourceTree = "<group>"; };
 		799F7010246BAF6400004589 /* RepoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailViewController.swift; sourceTree = "<group>"; };
@@ -474,7 +474,7 @@
 		799979862470544B00AFACE9 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				799F14BB2473081C00085D00 /* default-v0.realm */,
+				795A841E247846AD00644999 /* default-v0.realm */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -825,7 +825,7 @@
 				79DEC3F62461D0FC00264EE3 /* Condition.json in Resources */,
 				791160BB24609F3C00737F4B /* languages.json in Resources */,
 				79CEFB45246FAFE60049419C /* repositories.json in Resources */,
-				799F14BC2473081C00085D00 /* default-v0.realm in Resources */,
+				795A841F247846AD00644999 /* default-v0.realm in Resources */,
 				79AF4A9324554B09001BDB90 /* LaunchScreen.storyboard in Resources */,
 				79CEFB47246FAFE60049419C /* user-starred-rxhanson-Rectangle.json in Resources */,
 				79CEFB43246FAFE60049419C /* repos-rxhanson-Rectangle-stargazers.1.json in Resources */,

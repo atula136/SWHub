@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Rswift
+import RealmSwift
 import ReactorKit
 import RxOptional
 import SWFrame
@@ -51,10 +52,16 @@ class SettingViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
-            // TODO - 用户信息更新
+            guard let username = self.currentState.user?.username else { return .empty() }
             return .concat([
                 .just(.setLoading(true)),
-                //self.provider.repo(fullname: self.fullName).map(Mutation.setRepo).catchError({.just(.setError($0))}),
+                self.provider.user(username: username).do(onNext: { user in
+                    let realm = Realm.default
+                    realm.beginWrite()
+                    realm.add(user, update: .modified)
+                    try! realm.commitWrite()
+                    Subjection.for(User.self).accept(user)
+                }).flatMap({ _ in Observable.empty() }).catchError({.just(.setError($0))}),
                 .just(.setLoading(false))
             ])
         case let .night(isNight):

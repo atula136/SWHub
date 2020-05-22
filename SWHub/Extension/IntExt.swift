@@ -10,14 +10,6 @@ import UIKit
 
 extension Int {
 
-    var bytes: String {
-        return ByteCountFormatter.string(fromByteCount: Int64(self), countStyle: .file)
-    }
-
-    var kBytes: String {
-        return (self * 1024).bytes
-    }
-
     func kFormatted() -> String {
         let sign = ((self < 0) ? "-" : "" )
         if self < 1000 {

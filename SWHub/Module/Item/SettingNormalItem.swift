@@ -25,4 +25,20 @@ class SettingNormalItem: NormalItem {
             accessory: setting.accessory
         )
     }
+
+    override func transform(state: Observable<State>) -> Observable<State> {
+        guard let setting = self.model as? Setting else { return state }
+        switch setting.id! {
+        case .cache:
+            let update = ImageCache.default.rx.cacheSize().withLatestFrom(state) { size, state -> State in
+                var state = state
+                state.detail = size.byteText().styled(with: .alignment(.left))
+                return state
+            }
+            return .merge(state, update)
+        default:
+            return state
+        }
+    }
+
 }

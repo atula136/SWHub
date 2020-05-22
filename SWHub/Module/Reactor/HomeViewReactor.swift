@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RealmSwift
 import ReactorKit
 import SWFrame
 
@@ -20,13 +21,13 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
 
     enum Mutation {
         case setLoading(Bool)
-        case setLanguages([Code])
+        case setCodes([Code])
     }
 
     struct State {
         var isLoading = false
         var title: String?
-        var languages: [Code]?
+        var codes: [Code]?
         var items: [HomeKey] = [.repo, .user]
     }
 
@@ -43,24 +44,28 @@ class HomeViewReactor: ScrollViewReactor, ReactorKit.Reactor {
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
-            var load = Observable.just(Mutation.setLoading(true))
-            load = load.concat(self.provider.codes().map { Mutation.setLanguages($0) })
-            load = load.concat(Observable.just(.setLoading(false)))
-            return load
+            return .concat([
+                .just(.setLoading(true)),
+                self.provider.codes().map { Mutation.setCodes($0) },
+                .just(.setLoading(false))
+            ])
         }
     }
 
-//    func reduce(state: State, mutation: Mutation) -> State {
-//        var state = state
-//        switch mutation {
-//        case let .setLoading(isLoading):
-//            state.isLoading = isLoading
-//        case let .setLanguages(languages):
-//            state.languages = languages
-//            Condition.Language.storeArray(languages)
-//        }
-//        return state
-//    }
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
+        case let .setCodes(codes):
+            state.codes = codes
+            let realm = Realm.default
+            realm.beginWrite()
+            realm.add(codes, update: .modified)
+            try! realm.commitWrite()
+        }
+        return state
+    }
 
 }
 

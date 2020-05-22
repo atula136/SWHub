@@ -196,6 +196,10 @@ final class User: Object, ModelType, Identifiable, Subjective {
         }
     }
 
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+
     func count(title: String, value: Int) -> NSAttributedString {
         let valueText = value.string.styled(with: .color(.tint), .font(.bold(17)), .alignment(.center))
         let titleText = title.styled(with: .color(.title), .font(.normal(13)), .alignment(.center))
