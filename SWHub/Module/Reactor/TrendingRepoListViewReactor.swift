@@ -90,18 +90,14 @@ class TrendingRepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.since = since
             state.code = code
         case let .start(models):
-            let realm = Realm.default
-            let old = realm.objects(Repo.self).filter("#first = true")
-            try! realm.write {
-                realm.delete(old)
-            }
             let repos = models.map { repo -> Repo in
                 repo.first = true
                 return repo
             }
-            try! realm.write {
-                realm.add(repos)
-            }
+            let realm = Realm.default
+            realm.beginWrite()
+            realm.add(repos, update: .modified)
+            try! realm.commitWrite()
             state.sections = [.list(repos.map { .basic(RepoBasicItem($0)) })]
         }
         return state

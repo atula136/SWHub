@@ -25,7 +25,7 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setRefreshing(Bool)
         case setLoadingMore(Bool)
         case setError(Error?)
-        case start([User], toCache: Bool)
+        case start([User])
         case append([User])
     }
 
@@ -70,7 +70,7 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.request(fullname, self.pageStart).map { Mutation.start($0, toCache: false) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(fullname, self.pageStart).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex = self.pageStart
                 }),
@@ -81,7 +81,7 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.request(fullname, self.pageStart).map { Mutation.start($0, toCache: false) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(fullname, self.pageStart).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex = self.pageStart
                 }),
@@ -112,10 +112,7 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.isLoadingMore = isLoadingMore
         case let .setError(error):
             state.error = error
-        case let .start(users, toCache):
-            if toCache {
-                // User.storeArray(users) // YJX_TODO 存储
-            }
+        case let .start(users):
             state.sections = [.list(users.map { .basic(UserBasicItem($0)) })]
         case let .append(users):
             state.noMoreData = users.count < self.pageSize

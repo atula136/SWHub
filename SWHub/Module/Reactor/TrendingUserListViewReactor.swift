@@ -89,18 +89,14 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.since = since
             state.code = code
         case let .start(models):
-            let realm = Realm.default
-            let result = realm.objects(User.self).filter("#first = true")
-            try! realm.write {
-                realm.delete(result)
-            }
             let users = models.map { user -> User in
                 user.first = true
                 return user
             }
-            try! realm.write {
-                realm.add(users)
-            }
+            let realm = Realm.default
+            realm.beginWrite()
+            realm.add(users, update: .modified)
+            try! realm.commitWrite()
             state.sections = [.list(users.map { .basic(UserBasicItem($0)) })]
         }
         return state

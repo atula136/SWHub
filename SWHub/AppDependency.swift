@@ -44,17 +44,17 @@ final class AppDependency: NSObject, AppDependencyType {
     }
 
     func application(_ application: UIApplication, entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-//        let realm = Realm.default
-//        realm.beginWrite()
-//        realm.add(Code())
-//        if let json = FileManager.default.json(withFilename: "languages.json"),
-//            let codes = Mapper<Code>().mapArray(JSONObject: json) {
-//            realm.add(codes)
-//        }
-//        let config = Config()
-//        config.active = true
-//        realm.add(config)
-//        try! realm.commitWrite()
+        let realm = Realm.default
+        realm.beginWrite()
+        realm.add(Code())
+        if let json = FileManager.default.json(withFilename: "languages.json"),
+            let codes = Mapper<Code>().mapArray(JSONObject: json) {
+            realm.add(codes)
+        }
+        let config = Config()
+        config.active = true
+        realm.add(config)
+        try! realm.commitWrite()
         Runtime.work()
         Library.setup()
         Appearance.config()

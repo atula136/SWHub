@@ -295,6 +295,10 @@ class Repo: Object, ModelType, Identifiable, Eventable {
         ])
     }
 
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+
     override class func ignoredProperties() -> [String] {
         return ["builtBy"]
     }

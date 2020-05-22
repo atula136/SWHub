@@ -25,7 +25,7 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         case setRefreshing(Bool)
         case setLoadingMore(Bool)
         case setError(Error?)
-        case start([Repo], toCache: Bool)
+        case start([Repo])
         case append([Repo])
     }
 
@@ -68,7 +68,7 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.request(fullname, self.pageStart).map { Mutation.start($0, toCache: false) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(fullname, self.pageStart).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex = self.pageStart
                 }),
@@ -79,7 +79,7 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.request(fullname, self.pageStart).map { Mutation.start($0, toCache: false) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(fullname, self.pageStart).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex = self.pageStart
                 }),
@@ -110,10 +110,7 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             state.isLoadingMore = isLoadingMore
         case let .setError(error):
             state.error = error
-        case let .start(repos, toCache):
-            if toCache {
-                // Repo.storeArray(repos) // YJX_TODO 存储
-            }
+        case let .start(repos):
             state.sections = [.list(repos.map { .basic(RepoBasicItem($0)) })]
         case let .append(repos):
             state.noMoreData = repos.count < self.pageSize
