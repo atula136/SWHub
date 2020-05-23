@@ -38,7 +38,7 @@ class ConditionCodeItem: CollectionItem, ReactorKit.Reactor {
         guard let code = model as? Code else { return }
         self.initialState = State(
             // checked: code.checked,
-            title: NSLocalizedString(code.id == nil ? Information.allLanguages : code.name ?? "", comment: "")
+            title: NSLocalizedString(code.id.isEmpty ? Information.allLanguages : code.name ?? "", comment: "")
         )
     }
 

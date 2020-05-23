@@ -27,7 +27,7 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
     struct State {
         var error: Error?
         var since = Since.daily
-        var code = Code()
+        var code = Code.default
         var sections: [ConditionSection] = []
     }
 
@@ -45,6 +45,7 @@ class ConditionViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         let code = Code(value: ["id": id])
         // sections
         var sectionItems: [ConditionSectionItem] = []
+        sectionItems.append(.code(ConditionCodeItem(Code.default)))
         let codes = realm.objects(Code.self)
         for model in codes {
             sectionItems.append(.code(ConditionCodeItem(model)))

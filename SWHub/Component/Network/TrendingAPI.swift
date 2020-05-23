@@ -50,7 +50,9 @@ extension TrendingAPI: TargetType {
         var parameters: [String: Any] = [:]
         switch self {
         case .repos(let language, let since), .users(let language, let since):
-            parameters["language"] = language
+            if !(language?.isEmpty ?? true) {
+                parameters["language"] = language
+            }
             parameters["since"] = since
         default:
             break

@@ -34,7 +34,7 @@ class TrendingUserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var title: String?
         var error: Error?
         var since = Since.daily
-        var code = Code()
+        var code = Code.default
         var sections: [UserSection] = []
     }
 

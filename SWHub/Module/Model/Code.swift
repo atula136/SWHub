@@ -21,10 +21,13 @@ import SWFrame
 
 final class Code: Object, ModelType, Subjective/*, Eventable*/ {
 
-    @objc dynamic var id: String?
+    static let `default` = Code()
+
+    @objc dynamic var id = UUID().uuidString
     @objc dynamic var name: String?
 
     required init() {
+        self.id = ""
         self.name = Information.allLanguages
     }
 
@@ -49,7 +52,7 @@ final class Code: Object, ModelType, Subjective/*, Eventable*/ {
         if let id = realm.objects(Config.self).filter("active = true").first?.codeId {
             return realm.objects(Code.self).filter("id = %@", id).first
         }
-        return realm.objects(Code.self).filter("id == nil").first
+        return Code.default
     }
 
 }

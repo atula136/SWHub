@@ -72,7 +72,7 @@ class ConditionViewController: CollectionViewController, ReactorKit.View {
             if let id = realm.objects(Config.self).filter("active = true").first?.codeId {
                 code = realm.objects(Code.self).filter("id = %@", id).first
             }
-            code = realm.objects(Code.self).filter("id == nil").first
+            code = Code.default
             Subjection.for(Code.self).accept(code)
         }).disposed(by: self.disposeBag)
 

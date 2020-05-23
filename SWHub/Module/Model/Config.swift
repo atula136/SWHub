@@ -19,7 +19,7 @@ final class Config: Object, ModelType, Subjective {
 
     @objc dynamic var active = false
     @objc dynamic var since = 0
-    @objc dynamic var codeId: String?
+    @objc dynamic var codeId = ""
     @objc dynamic var userId: String?
 
     required init() {
