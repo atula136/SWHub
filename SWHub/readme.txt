@@ -45,8 +45,6 @@ user
 https://api.github.com/users/KalleHallden
 checkFollowing/followUser/unfollowUser
 https://api.github.com/user/following/KalleHallden
-userRepositories
-https://api.github.com/users/KalleHallden/repos?page=1
 userFollowers
 https://api.github.com/users/KalleHallden/followers?page=1
 userFollowing

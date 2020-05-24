@@ -39,40 +39,44 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var sections: [RepoSection] = []
     }
 
-    var fullname: String?
+    var type = ListType.repositories
+    var name: String?
     var request: (String, Int) -> Observable<[Repo]> = { _, _ in .empty() }
     var initialState = State()
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-        let type = stringMember(self.parameters, Parameter.listType, nil)?.int ?? 0
-        let list = ListType(rawValue: type) ?? ListType.repositories
-        self.request = { (fullname: String, page: Int) -> Observable<[Repo]> in
-            switch list {
+        let value = stringMember(self.parameters, Parameter.listType, nil)?.int ?? 0
+        self.type = ListType(rawValue: value) ?? ListType.repositories
+        self.name = stringMember(self.parameters, Parameter.username, nil)
+        self.request = { [weak self] (name: String, page: Int) -> Observable<[Repo]> in
+            guard let `self` = self else { return .empty() }
+            switch self.type {
+            case .repositories:
+                return provider.userRepos(username: name, page: page)
             case .forks:
-                return provider.forks(fullname: fullname, page: page)
+                return provider.forks(fullname: name, page: page)
             default:
                 return .empty()
             }
         }
-        self.fullname = stringMember(self.parameters, Parameter.fullname, nil)
         self.initialState = State(
-            title: self.title
+            title: stringDefault(self.title, self.type.title)
         )
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
-        guard let fullname = self.fullname else { return .empty() }
+        guard let name = self.name else { return .empty() }
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.request(fullname, self.pageStart).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(name, self.pageStart).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex = self.pageStart
-                }),
+                }).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setLoading(false))
             ])
         case .refresh:
@@ -80,10 +84,10 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.request(fullname, self.pageStart).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(name, self.pageStart).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex = self.pageStart
-                }),
+                }).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setRefreshing(false))
             ])
         case .loadMore:
@@ -91,10 +95,10 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoadingMore(true)),
-                self.request(fullname, self.pageIndex).map { Mutation.append($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(name, self.pageIndex).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex += 1
-                }),
+                }).map { Mutation.append($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setLoadingMore(false))
             ])
         }

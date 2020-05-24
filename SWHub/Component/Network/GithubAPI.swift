@@ -27,6 +27,7 @@ enum GithubAPI {
     case stargazers(fullname: String, page: Int)
     case forks(fullname: String, page: Int)
     case userRepos(username: String, page: Int)
+    case userFollowers(username: String, page: Int)
 }
 
 extension GithubAPI: TargetType {
@@ -49,6 +50,7 @@ extension GithubAPI: TargetType {
         case let .stargazers(fullname, _): return "/repos/\(fullname)/stargazers"
         case let .forks(fullname, _): return "/repos/\(fullname)/forks"
         case let .userRepos(username, _): return "/users/\(username)/repos"
+        case let .userFollowers(username, _): return "/users/\(username)/followers"
         }
     }
 
@@ -83,7 +85,7 @@ extension GithubAPI: TargetType {
         case let .readme(_, ref):
             parameters["ref"] = ref
         case .watchers(_, let page), .stargazers(_, let page), .forks(_, let page),
-             .userRepos(_, let page):
+             .userRepos(_, let page), .userFollowers(_, let page):
             parameters["page"] = page
         default:
             break

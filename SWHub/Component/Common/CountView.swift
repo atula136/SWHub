@@ -91,8 +91,8 @@ extension Reactive where Base: CountView {
         }
     }
 
-    var tap: ControlEvent<Int> {
-        let source = ControlEvent.merge(self.base.firstButton.rx.tap.map { 0 }, self.base.secondButton.rx.tap.map { 1 }, self.base.thirdButton.rx.tap.map { 2 })
+    var tap: ControlEvent<ListType> {
+        let source = ControlEvent.merge(self.base.firstButton.rx.tap.map { ListType.repositories }, self.base.secondButton.rx.tap.map { ListType.followers }, self.base.thirdButton.rx.tap.map { ListType.following })
         return ControlEvent(events: source)
     }
 

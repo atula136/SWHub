@@ -47,7 +47,7 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
             case let .basic(item):
                 if var url = Router.Repo.detail.urlString.url,
                     let fullname = item.currentState.name {
-                    url.appendQueryParameters([Parameter.fullname: fullname])
+                    url.appendQueryParameters([Parameter.username: fullname])
                     self.navigator.push(url)
                 }
             default: break

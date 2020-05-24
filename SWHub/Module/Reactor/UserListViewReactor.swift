@@ -39,42 +39,45 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
         var sections: [UserSection] = []
     }
 
-    var fullname: String?
+    var type = ListType.repositories
+    var name: String?
     var request: (String, Int) -> Observable<[User]> = { _, _ in .empty() }
     var initialState = State()
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-        let type = stringMember(self.parameters, Parameter.listType, nil)?.int ?? 0
-        let list = ListType(rawValue: type) ?? ListType.repositories
-        self.request = { (fullname: String, page: Int) -> Observable<[User]> in
-            switch list {
+        let value = stringMember(self.parameters, Parameter.listType, nil)?.int ?? 0
+        self.type = ListType(rawValue: value) ?? ListType.repositories
+        self.name = stringMember(self.parameters, Parameter.username, nil)
+        self.request = { [weak self] (name: String, page: Int) -> Observable<[User]> in
+            guard let `self` = self else { return .empty() }
+            switch self.type {
             case .watchers:
-                return provider.watchers(fullname: fullname, page: page)
+                return provider.watchers(fullname: name, page: page)
             case .stargazers:
-                return provider.stargazers(fullname: fullname, page: page)
+                return provider.stargazers(fullname: name, page: page)
             default:
                 return .empty()
             }
         }
-        self.fullname = stringMember(self.parameters, Parameter.fullname, nil)
+        self.name = stringMember(self.parameters, Parameter.username, nil)
         self.initialState = State(
             title: self.title
         )
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
-        guard let fullname = self.fullname else { return .empty() }
+        guard let name = self.name else { return .empty() }
         switch action {
         case .load:
             guard self.currentState.isLoading == false else { return .empty() }
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoading(true)),
-                self.request(fullname, self.pageStart).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(name, self.pageStart).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex = self.pageStart
-                }),
+                }).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setLoading(false))
             ])
         case .refresh:
@@ -82,10 +85,10 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setRefreshing(true)),
-                self.request(fullname, self.pageStart).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(name, self.pageStart).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex = self.pageStart
-                }),
+                }).map { Mutation.start($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setRefreshing(false))
             ])
         case .loadMore:
@@ -93,10 +96,10 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
             return .concat([
                 .just(.setError(nil)),
                 .just(.setLoadingMore(true)),
-                self.request(fullname, self.pageIndex).map { Mutation.append($0) }.catchError({ .just(.setError($0)) }).do(onCompleted: { [weak self] in
+                self.request(name, self.pageIndex).do(onCompleted: { [weak self] in
                     guard let `self` = self else { return }
                     self.pageIndex += 1
-                }),
+                }).map { Mutation.append($0) }.catchError({ .just(.setError($0)) }),
                 .just(.setLoadingMore(false))
             ])
         }
