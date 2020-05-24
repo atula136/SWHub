@@ -12,6 +12,7 @@ import SWFrame
 extension Parameter {
     static var since: String { "since" }
     static var code: String { "code" }
+    static var username: String { "username" }
     static var fullname: String { "fullname" }
-    static var list: String { "list" }
+    static var listType: String { "listType" }
 }

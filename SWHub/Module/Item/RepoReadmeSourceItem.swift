@@ -18,7 +18,7 @@ class RepoReadmeSourceItem: CollectionItem, ReactorKit.Reactor {
     typealias Action = NoAction
 
     enum Mutation {
-        case setDark(Bool)
+        case setNight(Bool)
     }
 
     struct State {
@@ -42,8 +42,9 @@ class RepoReadmeSourceItem: CollectionItem, ReactorKit.Reactor {
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
         let nightEvent = Setting.event.flatMap { event -> Observable<Mutation> in
             switch event {
-            case let .night(isNight):
-                return .just(.setDark(isNight))
+            case let .turnNight(isNight):
+                return .just(.setNight(isNight))
+            default: return .empty()
             }
         }
         return .merge(mutation, nightEvent)

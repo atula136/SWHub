@@ -19,14 +19,14 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
     typealias Action = NoAction
 
     enum Mutation {
-        case setDark(Bool)
+        case setNight(Bool)
     }
 
     struct State {
         var name: String?
         var intro: String?
         var status: String?
-        var language: NSAttributedString?
+        var code: NSAttributedString?
         var stars: NSAttributedString?
         var forks: NSAttributedString?
         var avatar: URL?
@@ -42,7 +42,7 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
             name: repo.fullName ?? "\(repo.author ?? "")/\(repo.name ?? "")",
             intro: repo.introduction,
             status: R.string.localizable.trendingRepoStarsNew(since, repo.currentPeriodStars),
-            language: repo.languageText,
+            code: repo.codeText,
             stars: repo.starsText,
             forks: repo.forksText,
             avatar: repo.avatar?.url
@@ -50,28 +50,26 @@ class RepoBasicItem: CollectionItem, ReactorKit.Reactor {
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
+        guard let repo = self.model as? Repo else { return state }
+        var state = state
+        switch mutation {
+        case .setNight:
+            state.code = repo.codeText
+            state.stars = repo.starsText
+            state.forks = repo.forksText
+        }
         return state
     }
 
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
         let nightEvent = Setting.event.flatMap { event -> Observable<Mutation> in
             switch event {
-            case let .night(isNight):
-                return .just(.setDark(isNight))
+            case let .turnNight(isNight):
+                return .just(.setNight(isNight))
+            default: return .empty()
             }
         }
         return .merge(mutation, nightEvent)
     }
-
-//    func transform(state: Observable<State>) -> Observable<State> {
-//        guard let repo = self.model as? TrendingRepo else { return state }
-//        return state.flatMap { state -> Observable<State> in
-//            var state = state
-//            state.language = repo.languageText()
-//            state.stars = repo.starsText()
-//            state.forks = repo.forksText()
-//            return .just(state)
-//        }
-//    }
 
 }

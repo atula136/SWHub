@@ -45,7 +45,8 @@ class UserListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-        let list = ListType.init(rawValue: stringDefault(stringMember(self.parameters, Parameter.list, nil), ListType.watchers.rawValue)) ?? ListType.watchers
+        let type = stringMember(self.parameters, Parameter.listType, nil)?.int ?? 0
+        let list = ListType(rawValue: type) ?? ListType.repositories
         self.request = { (fullname: String, page: Int) -> Observable<[User]> in
             switch list {
             case .watchers:

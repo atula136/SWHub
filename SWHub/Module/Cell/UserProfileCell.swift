@@ -273,4 +273,23 @@ extension Reactive where Base: UserProfileCell {
         return ControlEvent(events: source)
     }
 
+    var list: ControlEvent<URL> {
+        let source = self.base.countView.rx.tap.map { [weak cell = self.base] num -> URL? in
+            guard let user = cell?.model as? User, var url = Router.Repo.list.urlString.url else { return nil}
+            switch num {
+            case 0:
+                url.appendQueryParameters([Parameter.listType: ListType.repositories.rawValue.string])
+                if let username = user.username {
+                    url.appendQueryParameters([
+                        Parameter.username: username
+                    ])
+                }
+                return url
+            default:
+                return nil
+            }
+        }.filterNil()
+        return ControlEvent(events: source)
+    }
+
 }

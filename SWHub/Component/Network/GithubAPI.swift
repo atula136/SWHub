@@ -26,15 +26,7 @@ enum GithubAPI {
     case watchers(fullname: String, page: Int)
     case stargazers(fullname: String, page: Int)
     case forks(fullname: String, page: Int)
-//    case wechatInfo
-//    case homePages
-//    case homeModule(pageID: String)
-//    case dailyBest
-//    case helpInfo
-//    case helpQuestions(categoryID: String)
-//    case messageCenter
-//    case messageList(type: Message.TType, index: Int, size: Int)
-//    case productList(categoryId: String, sortType: Int, pageIndex: Int, pageSize: Int, pageSource: String)
+    case userRepos(username: String, page: Int)
 }
 
 extension GithubAPI: TargetType {
@@ -56,6 +48,7 @@ extension GithubAPI: TargetType {
         case let .watchers(fullname, _): return "/repos/\(fullname)/subscribers"
         case let .stargazers(fullname, _): return "/repos/\(fullname)/stargazers"
         case let .forks(fullname, _): return "/repos/\(fullname)/forks"
+        case let .userRepos(username, _): return "/users/\(username)/repos"
         }
     }
 
@@ -89,7 +82,8 @@ extension GithubAPI: TargetType {
         switch self {
         case let .readme(_, ref):
             parameters["ref"] = ref
-        case .watchers(_, let page), .stargazers(_, let page), .forks(_, let page):
+        case .watchers(_, let page), .stargazers(_, let page), .forks(_, let page),
+             .userRepos(_, let page):
             parameters["page"] = page
         default:
             break

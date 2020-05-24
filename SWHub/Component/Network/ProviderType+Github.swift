@@ -61,6 +61,10 @@ extension ProviderType {
         return self.githubNetworking.requestArray(.forks(fullname: fullname, page: page), type: Repo.self)
     }
 
+    func userRepos(username: String, page: Int) -> Observable<[Repo]> {
+        return self.githubNetworking.requestArray(.userRepos(username: username, page: page), type: Repo.self)
+    }
+
 }
 
 private let emptyDataStatusCodes: Set<Int> = [204, 205]

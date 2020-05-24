@@ -26,6 +26,24 @@ class SettingNormalItem: NormalItem {
         )
     }
 
+    override func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        guard let setting = self.model as? Setting else { return mutation }
+        switch setting.id! {
+        case .cache:
+            let clearCache = Setting.event.flatMap { event -> Observable<Mutation> in
+                switch event {
+                case .updateCache:
+                    return ImageCache.default.rx.cacheSize().map { Mutation.setDetail($0.byteText().styled(with: .alignment(.left))) }
+                default:
+                    return .empty()
+                }
+            }
+            return .merge(mutation, clearCache)
+        default:
+            return mutation
+        }
+    }
+
     override func transform(state: Observable<State>) -> Observable<State> {
         guard let setting = self.model as? Setting else { return state }
         switch setting.id! {

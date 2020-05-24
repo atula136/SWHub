@@ -8,7 +8,10 @@
 
 import UIKit
 
-enum ListType: String {
+enum ListType: Int {
+    case repositories
+    case followers
+    case following
     case watchers
     case stargazers
     case forks

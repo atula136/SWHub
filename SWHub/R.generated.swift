@@ -489,7 +489,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 65 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 66 localization keys.
     struct localizable {
       /// Value: %@增加了%d个星
       static let trendingRepoStarsNew = Rswift.StringResource(key: "Trending.Repo.Stars.New", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -593,6 +593,8 @@ struct R: Rswift.Validatable {
       static let message = Rswift.StringResource(key: "Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 清除缓存
       static let clearCache = Rswift.StringResource(key: "Clear cache", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 清除缓存成功
+      static let cacheClearedSuccessfully = Rswift.StringResource(key: "Cache cleared successfully", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 源代码
       static let detailCellCode = Rswift.StringResource(key: "Detail.Cell.Code", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 点击登录
@@ -1291,6 +1293,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Clear cache", bundle: bundle, comment: "")
+      }
+
+      /// Value: 清除缓存成功
+      static func cacheClearedSuccessfully(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Cache cleared successfully", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Cache cleared successfully"
+        }
+
+        return NSLocalizedString("Cache cleared successfully", bundle: bundle, comment: "")
       }
 
       /// Value: 源代码

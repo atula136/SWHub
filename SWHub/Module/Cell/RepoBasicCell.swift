@@ -45,7 +45,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         return label
     }()
 
-    lazy var languageLabel: Label = {
+    lazy var codeLabel: Label = {
         let label = Label()
         label.font = .normal(15)
         label.sizeToFit()
@@ -96,7 +96,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         self.nameLabel.centerY = self.avatarImageView.centerY
 
         self.contentView.addSubview(self.introLabel)
-        self.contentView.addSubview(self.languageLabel)
+        self.contentView.addSubview(self.codeLabel)
         self.contentView.addSubview(self.starsLabel)
         self.contentView.addSubview(self.forksLabel)
         self.contentView.addSubview(self.statusLabel)
@@ -121,16 +121,16 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         self.introLabel.top = self.avatarImageView.bottom
         self.introLabel.extendToBottom = self.contentView.height - 40
 
-        self.languageLabel.sizeToFit()
-        self.languageLabel.bottom = self.contentView.height - 25
-        self.languageLabel.left = self.avatarImageView.left
+        self.codeLabel.sizeToFit()
+        self.codeLabel.bottom = self.contentView.height - 25
+        self.codeLabel.left = self.avatarImageView.left
 
         self.starsLabel.sizeToFit()
-        self.starsLabel.bottom = self.languageLabel.bottom
+        self.starsLabel.bottom = self.codeLabel.bottom
         self.starsLabel.left = flat(self.contentView.width / 2.f - 20)
 
         self.forksLabel.sizeToFit()
-        self.forksLabel.bottom = self.languageLabel.bottom
+        self.forksLabel.bottom = self.codeLabel.bottom
         self.forksLabel.left = self.contentView.width - 70
 
         self.statusLabel.sizeToFit()
@@ -142,7 +142,7 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         super.prepareForReuse()
         self.nameLabel.text = nil
         self.introLabel.text = nil
-        self.languageLabel.attributedText = nil
+        self.codeLabel.attributedText = nil
         self.starsLabel.attributedText = nil
         self.forksLabel.attributedText = nil
         self.statusLabel.text = nil
@@ -160,8 +160,8 @@ class RepoBasicCell: CollectionCell, ReactorKit.View {
         reactor.state.map { $0.status }
             .bind(to: self.statusLabel.rx.text)
             .disposed(by: self.disposeBag)
-        reactor.state.map { $0.language }
-            .bind(to: self.languageLabel.rx.attributedText)
+        reactor.state.map { $0.code }
+            .bind(to: self.codeLabel.rx.attributedText)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.stars }
             .bind(to: self.starsLabel.rx.attributedText)

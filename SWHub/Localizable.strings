@@ -33,6 +33,7 @@
 "Loading..." = "加载中";
 "Loading more" = "正在加载更多";
 "No more data" = "没有更多的了";
+"Cache cleared successfully" = "清除缓存成功";
 "Trending.Repo.Stars.New" = "%@增加了%d个星";
 "User.Exit.Prompt" = "您确定要退出%@吗";
 "Repository" = "Repository";

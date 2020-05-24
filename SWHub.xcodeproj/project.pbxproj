@@ -148,6 +148,7 @@
 		79EE8A9F245E8DA300A2438C /* TrendingRepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8A9E245E8DA300A2438C /* TrendingRepoListViewController.swift */; };
 		79EE8AA2245E8EC800A2438C /* TrendingUserListViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8AA1245E8EC800A2438C /* TrendingUserListViewReactor.swift */; };
 		79EE8AA4245E8ED300A2438C /* TrendingUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE8AA3245E8ED300A2438C /* TrendingUserListViewController.swift */; };
+		79F718CA247A363900EEE6F3 /* users-repos.json in Resources */ = {isa = PBXBuildFile; fileRef = 79F718C9247A363900EEE6F3 /* users-repos.json */; };
 		79FA5444246271CB0089EB8F /* DefaultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FA5443246271CB0089EB8F /* DefaultItem.swift */; };
 		79FFAE30246B2A4300B0CAE7 /* ProviderType+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FFAE2F246B2A4300B0CAE7 /* ProviderType+Network.swift */; };
 		FD3249B3375F87DD51CA1684 /* Pods_SWHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */; };
@@ -322,6 +323,7 @@
 		79EE8A9E245E8DA300A2438C /* TrendingRepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingRepoListViewController.swift; sourceTree = "<group>"; };
 		79EE8AA1245E8EC800A2438C /* TrendingUserListViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingUserListViewReactor.swift; sourceTree = "<group>"; };
 		79EE8AA3245E8ED300A2438C /* TrendingUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingUserListViewController.swift; sourceTree = "<group>"; };
+		79F718C9247A363900EEE6F3 /* users-repos.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "users-repos.json"; sourceTree = "<group>"; };
 		79FA5443246271CB0089EB8F /* DefaultItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultItem.swift; sourceTree = "<group>"; };
 		79FFAE2F246B2A4300B0CAE7 /* ProviderType+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProviderType+Network.swift"; sourceTree = "<group>"; };
 		97081E0D77EA1820DC104AB3 /* Pods_SWHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -674,6 +676,7 @@
 				79CEFB3E246FAFE60049419C /* repos-rxhanson-Rectangle.json */,
 				79CEFB3F246FAFE60049419C /* repos-rxhanson-Rectangle-readme.json */,
 				79CEFB40246FAFE60049419C /* repos-rxhanson-Rectangle-issues.open1.json */,
+				79F718C9247A363900EEE6F3 /* users-repos.json */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				79CEFB41246FAFE60049419C /* empty.json in Resources */,
 				79CEFB4D246FAFE60049419C /* repos-rxhanson-Rectangle.json in Resources */,
 				79DEC3F62461D0FC00264EE3 /* Condition.json in Resources */,
+				79F718CA247A363900EEE6F3 /* users-repos.json in Resources */,
 				791160BB24609F3C00737F4B /* languages.json in Resources */,
 				79CEFB45246FAFE60049419C /* repositories.json in Resources */,
 				795A84272478E55B00644999 /* default-v0.realm in Resources */,

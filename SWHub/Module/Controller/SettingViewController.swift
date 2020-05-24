@@ -15,6 +15,7 @@ import Rswift
 import SwifterSwift
 import RealmSwift
 import ReusableKit
+import Kingfisher
 import RxViewController
 import RxDataSources
 import SWFrame
@@ -60,9 +61,25 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                 self.navigator.present(Router.login.urlString, wrap: NavigationController.self)
             case .color:
                 self.navigator.push(Router.color.urlString)
+            case .cache:
+                self.view.makeToastActivity(.center)
+                ImageCache.default.clearMemoryCache()
+                ImageCache.default.clearDiskCache {
+                    Setting.event.onNext(.updateCache)
+                    self.view.hideToastActivity()
+                    self.view.makeToast(R.string.localizable.cacheClearedSuccessfully())
+                }
             default:
                 break
             }
+        }).disposed(by: self.disposeBag)
+        self.collectionView.rx.willDisplayCell.subscribe(onNext: { _, indexPath in
+            if indexPath.section == 1 && indexPath.row == 2 {
+                Setting.event.onNext(.updateCache)
+            }
+        }).disposed(by: self.disposeBag)
+        self.rx.viewWillAppear.subscribe(onNext: { _ in
+            Setting.event.onNext(.updateCache)
         }).disposed(by: self.disposeBag)
         themeService.rx
             .bind({ $0.dimColor }, to: self.collectionView.rx.backgroundColor)
@@ -101,6 +118,9 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                     cell.rx.blog.subscribe(onNext: { url in
                         navigator.push(url)
                     }).disposed(by: cell.disposeBag)
+                    cell.rx.list.subscribe(onNext: { url in
+                        navigator.push(url)
+                    }).disposed(by: cell.disposeBag)
                     return cell
                 case let .login(item):
                     let cell = collectionView.dequeue(Reusable.loginCell, for: indexPath)
@@ -113,7 +133,11 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         .bind(to: reactor.action)
                         .disposed(by: cell.disposeBag)
                     return cell
-                case .color(let item), .cache(let item):
+                case .color(let item):
+                    let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
+                    cell.bind(reactor: item)
+                    return cell
+                case .cache(let item):
                     let cell = collectionView.dequeue(Reusable.settingCell, for: indexPath)
                     cell.bind(reactor: item)
                     return cell
@@ -220,7 +244,7 @@ extension Reactive where Base: SettingViewController {
                 theme = theme.toggled()
             }
             themeService.switch(theme)
-            Setting.event.onNext(.night(attr))
+            Setting.event.onNext(.turnNight(attr))
         }
     }
 }

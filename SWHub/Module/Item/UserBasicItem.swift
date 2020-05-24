@@ -18,7 +18,7 @@ class UserBasicItem: CollectionItem, ReactorKit.Reactor {
     typealias Action = NoAction
 
     enum Mutation {
-        case setDark(Bool)
+        case setNight(Bool)
     }
 
     struct State {
@@ -42,26 +42,24 @@ class UserBasicItem: CollectionItem, ReactorKit.Reactor {
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
+        guard let user = self.model as? User else { return state }
+        var state = state
+        switch mutation {
+        case .setNight:
+            state.repo = user.repoText
+        }
         return state
     }
 
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
         let nightEvent = Setting.event.flatMap { event -> Observable<Mutation> in
             switch event {
-            case let .night(isNight):
-                return .just(.setDark(isNight))
+            case let .turnNight(isNight):
+                return .just(.setNight(isNight))
+            default: return .empty()
             }
         }
         return .merge(mutation, nightEvent)
     }
-
-//    func transform(state: Observable<State>) -> Observable<State> {
-//        guard let user = self.model as? TrendingUser else { return state }
-//        return state.flatMap { state -> Observable<State> in
-//            var state = state
-//            state.repo = user.repoText()
-//            return .just(state)
-//        }
-//    }
 
 }

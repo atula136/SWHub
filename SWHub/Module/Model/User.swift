@@ -201,8 +201,8 @@ final class User: Object, ModelType, Identifiable, Subjective {
     }
 
     func count(title: String, value: Int) -> NSAttributedString {
-        let valueText = value.string.styled(with: .color(.tint), .font(.bold(17)), .alignment(.center))
-        let titleText = title.styled(with: .color(.title), .font(.normal(13)), .alignment(.center))
+        let valueText = value.string.styled(with: .color(.title), .font(.bold(17)), .alignment(.center))
+        let titleText = title.styled(with: .color(.content), .font(.normal(13)), .alignment(.center))
         return .composed(of: [
             valueText, Special.nextLine, titleText
         ])

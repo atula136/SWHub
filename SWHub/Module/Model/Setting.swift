@@ -38,7 +38,8 @@ struct Setting: ModelType, Identifiable, Eventable {
     }
 
     enum Event {
-        case night(Bool)
+        case turnNight(Bool)
+        case updateCache
     }
 
     enum Key: Int, Codable {

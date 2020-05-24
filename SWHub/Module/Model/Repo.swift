@@ -100,7 +100,7 @@ class Repo: Object, ModelType, Identifiable, Eventable {
     @objc dynamic var owner: User?
     var builtBy = RealmSwift.List<User>()
 
-    var languageText: NSAttributedString? {
+    var codeText: NSAttributedString? {
         var texts: [NSAttributedString] = []
         let shape = "●".styled(with: StringStyle([.color(self.languageColor?.color ?? .random)]))
         let string = (self.language ?? R.string.localizable.none()).styled(with: .color(.title))
@@ -110,33 +110,15 @@ class Repo: Object, ModelType, Identifiable, Eventable {
         return .composed(of: texts)
     }
 
-    var basic: NSAttributedString? {
-          var texts: [NSAttributedString] = []
-          let starsString = self.stargazersCount.kFormatted().styled(with: .color(.title))
-          let starsImage = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
-          texts.append(.composed(of: [
-              starsImage, Special.space, starsString, Special.space, Special.tab
-          ]))
-
-          if let languageString = self.language?.styled(with: .color(.title)) {
-      //            let languageColorShape = "●".styled(with: StringStyle([.color(UIColor(hexString: /*self.languageColor ?? */"") ?? .clear)]))
-              let languageColorShape = "●".styled(with: StringStyle([.color(.clear)]))
-              texts.append(.composed(of: [
-                  languageColorShape, Special.space, languageString
-              ]))
-          }
-          return .composed(of: texts)
-      }
-
-      var starsText: NSAttributedString? {
-          var texts: [NSAttributedString] = []
-          let string = self.stargazersCount.kFormatted().styled(with: .color(.title))
-          let image = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
-          texts.append(.composed(of: [
-              image, Special.space, string
-          ]))
-          return .composed(of: texts)
-      }
+    var starsText: NSAttributedString? {
+        var texts: [NSAttributedString] = []
+        let string = self.stargazersCount.kFormatted().styled(with: .color(.title))
+        let image = FontAwesomeIcon.starIcon.image(ofSize: .init(16), color: .tint).styled(with: .baselineOffset(-3))
+        texts.append(.composed(of: [
+            image, Special.space, string
+        ]))
+        return .composed(of: texts)
+    }
 
     var forksText: NSAttributedString? {
         var texts: [NSAttributedString] = []
@@ -157,12 +139,12 @@ class Repo: Object, ModelType, Identifiable, Eventable {
         ])
     }
 
-      var counts: [NSAttributedString] {
-          let watchs = self.count(title: R.string.localizable.watchs(), value: self.subscribersCount)
-          let stars = self.count(title: R.string.localizable.stars(), value: self.stargazersCount)
-          let forks = self.count(title: R.string.localizable.forks(), value: self.forksCount)
-          return [watchs, stars, forks]
-      }
+    var counts: [NSAttributedString] {
+        let watchs = self.count(title: R.string.localizable.watchs(), value: self.subscribersCount)
+        let stars = self.count(title: R.string.localizable.stars(), value: self.stargazersCount)
+        let forks = self.count(title: R.string.localizable.forks(), value: self.forksCount)
+        return [watchs, stars, forks]
+    }
 
     var langInfo: InfoModel {
         var info = InfoModel.init()
@@ -173,22 +155,22 @@ class Repo: Object, ModelType, Identifiable, Eventable {
         return info
     }
 
-      var issueInfo: InfoModel {
-          var info = InfoModel.init()
-          info.icon = FontAwesomeIcon._627Icon.image(ofSize: .init(20), color: .tint).template
-          info.title = R.string.localizable.issues()
-          info.detail = self.openIssues.string
-          info.indicated = true
-          return info
-      }
+    var issueInfo: InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon._627Icon.image(ofSize: .init(20), color: .tint).template
+        info.title = R.string.localizable.issues()
+        info.detail = self.openIssues.string
+        info.indicated = true
+        return info
+    }
 
-      var requestInfo: InfoModel {
-          var info = InfoModel.init()
-          info.icon = FontAwesomeIcon.codeForkIcon.image(ofSize: .init(20), color: .tint).template
-          info.title = R.string.localizable.pullRequests()
-          info.indicated = true
-          return info
-      }
+    var requestInfo: InfoModel {
+        var info = InfoModel.init()
+        info.icon = FontAwesomeIcon.codeForkIcon.image(ofSize: .init(20), color: .tint).template
+        info.title = R.string.localizable.pullRequests()
+        info.indicated = true
+        return info
+    }
 
     required init() {
     }
@@ -288,8 +270,8 @@ class Repo: Object, ModelType, Identifiable, Eventable {
     }
 
     func count(title: String, value: Int) -> NSAttributedString {
-        let valueText = value.string.styled(with: .color(.title), .font(.bold(16)), .alignment(.center))
-        let titleText = title.styled(with: .color(.content), .font(.normal(14)), .alignment(.center))
+        let valueText = value.string.styled(with: .color(.title), .font(.bold(17)), .alignment(.center))
+        let titleText = title.styled(with: .color(.content), .font(.normal(13)), .alignment(.center))
         return .composed(of: [
             valueText, Special.nextLine, titleText
         ])
