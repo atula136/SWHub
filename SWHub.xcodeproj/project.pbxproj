@@ -61,8 +61,8 @@
 		796E9983246C2BDC00DB6EAE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E9982246C2BDC00DB6EAE /* InfoView.swift */; };
 		79754862246C15050044A128 /* RepoReadmeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79754861246C15050044A128 /* RepoReadmeItem.swift */; };
 		79754864246C150E0044A128 /* RepoReadmeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79754863246C150E0044A128 /* RepoReadmeCell.swift */; };
-		7976AC9C24581F6700093046 /* TabBarViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9B24581F6700093046 /* TabBarViewReactor.swift */; };
-		7976AC9E24581F7E00093046 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9D24581F7E00093046 /* TabBarViewController.swift */; };
+		7976AC9C24581F6700093046 /* TabBarReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9B24581F6700093046 /* TabBarReactor.swift */; };
+		7976AC9E24581F7E00093046 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976AC9D24581F7E00093046 /* TabBarController.swift */; };
 		7976ACA4245826FA00093046 /* MessageViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACA3245826FA00093046 /* MessageViewReactor.swift */; };
 		7976ACA62458270400093046 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACA52458270400093046 /* MessageViewController.swift */; };
 		7976ACA82458271000093046 /* ActivityViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976ACA72458271000093046 /* ActivityViewReactor.swift */; };
@@ -229,8 +229,8 @@
 		796E9982246C2BDC00DB6EAE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		79754861246C15050044A128 /* RepoReadmeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeItem.swift; sourceTree = "<group>"; };
 		79754863246C150E0044A128 /* RepoReadmeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoReadmeCell.swift; sourceTree = "<group>"; };
-		7976AC9B24581F6700093046 /* TabBarViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewReactor.swift; sourceTree = "<group>"; };
-		7976AC9D24581F7E00093046 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		7976AC9B24581F6700093046 /* TabBarReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarReactor.swift; sourceTree = "<group>"; };
+		7976AC9D24581F7E00093046 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7976ACA3245826FA00093046 /* MessageViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewReactor.swift; sourceTree = "<group>"; };
 		7976ACA52458270400093046 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		7976ACA72458271000093046 /* ActivityViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewReactor.swift; sourceTree = "<group>"; };
@@ -491,7 +491,7 @@
 				79042E95245D8FC200DB30ED /* TintViewReactor.swift */,
 				79EE8A93245E88CF00A2438C /* HomeViewReactor.swift */,
 				791160B0246042A200737F4B /* ConditionViewReactor.swift */,
-				7976AC9B24581F6700093046 /* TabBarViewReactor.swift */,
+				7976AC9B24581F6700093046 /* TabBarReactor.swift */,
 				799F700E246BAF5800004589 /* RepoDetailViewReactor.swift */,
 				794E3BF024668D11003DDDFB /* RepoListViewReactor.swift */,
 				7976ACAF2458273900093046 /* SettingViewReactor.swift */,
@@ -520,7 +520,7 @@
 				79CC24AD24663E8B00794CFD /* UserListViewController.swift */,
 				79CB9CFC246D91F3006C46DF /* UserDetailViewController.swift */,
 				7976ACB12458274300093046 /* SettingViewController.swift */,
-				7976AC9D24581F7E00093046 /* TabBarViewController.swift */,
+				7976AC9D24581F7E00093046 /* TabBarController.swift */,
 				79EE8AA3245E8ED300A2438C /* TrendingUserListViewController.swift */,
 				79EE8A9E245E8DA300A2438C /* TrendingRepoListViewController.swift */,
 			);
@@ -956,7 +956,7 @@
 				7906C32124555DB60030764D /* Router.swift in Sources */,
 				7976ACA4245826FA00093046 /* MessageViewReactor.swift in Sources */,
 				79CC24AE24663E8B00794CFD /* UserListViewController.swift in Sources */,
-				7976AC9C24581F6700093046 /* TabBarViewReactor.swift in Sources */,
+				7976AC9C24581F6700093046 /* TabBarReactor.swift in Sources */,
 				790767B62456CE5500CD0AAF /* ProviderType+Github.swift in Sources */,
 				7979453C246FE0500084B2F8 /* License.swift in Sources */,
 				790767AE2456C27B00CD0AAF /* GithubAPI.swift in Sources */,
@@ -1050,7 +1050,7 @@
 				79E67A4B245C0F5600FE6093 /* SettingHeaderView.swift in Sources */,
 				79EE8AA2245E8EC800A2438C /* TrendingUserListViewReactor.swift in Sources */,
 				790B88D4245EC97C000C89D4 /* PagingViewControllerExt.swift in Sources */,
-				7976AC9E24581F7E00093046 /* TabBarViewController.swift in Sources */,
+				7976AC9E24581F7E00093046 /* TabBarController.swift in Sources */,
 				796E9981246C2BCE00DB6EAE /* CountView.swift in Sources */,
 				79B6CEA0246C2A570072C34C /* RepoProfileItem.swift in Sources */,
 				79CB9CFD246D91F3006C46DF /* UserDetailViewController.swift in Sources */,

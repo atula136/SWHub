@@ -1,5 +1,5 @@
 //
-//  TabBarViewReactor.swift
+//  TabBarReactor.swift
 //  SWHub
 //
 //  Created by 杨建祥 on 2020/4/28.
@@ -10,7 +10,7 @@ import UIKit
 import ReactorKit
 import SWFrame
 
-class TabBarViewReactor: SWFrame.TabBarViewReactor, ReactorKit.Reactor {
+class TabBarReactor: SWFrame.TabBarReactor, ReactorKit.Reactor {
 
     typealias Action = NoAction
 

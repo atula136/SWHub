@@ -34,7 +34,6 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
             self.reactor = reactor
         }
         super.init(navigator, reactor)
-        self.hidesBottomBarWhenPushed = true
         self.tabBarItem.title = reactor.currentState.title
     }
 
