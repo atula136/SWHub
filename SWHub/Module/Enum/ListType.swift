@@ -37,5 +37,5 @@ enum ListType: Int {
         case .forks: return Router.Repo.list.urlString.url
         }
     }
-    
+
 }

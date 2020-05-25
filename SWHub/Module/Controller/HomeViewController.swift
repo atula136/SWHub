@@ -76,6 +76,16 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
         }).disposed(by: self.rx.disposeBag)
     }
 
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        (self.tabBarController as? TabBarController)?.safeBottomView.isHidden = false
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        (self.tabBarController as? TabBarController)?.safeBottomView.isHidden = true
+//    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }

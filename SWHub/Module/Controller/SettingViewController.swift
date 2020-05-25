@@ -86,6 +86,20 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
             .disposed(by: self.rx.disposeBag)
     }
 
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        if #available(iOS 11.0, *), isNotchedScreen, let parent = self.tabBarController?.tabBar.superview {
+//            self.tabBarController?.tabBar.frame = CGRect(x: 0, y: parent.frame.size.height - tabBarHeight, width: parent.frame.size.width, height: tabBarHeight)
+//        }
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        if #available(iOS 11.0, *), isNotchedScreen, let parent = self.tabBarController?.tabBar.superview {
+//            self.tabBarController?.tabBar.frame = CGRect(x: 0, y: parent.frame.size.height - tabBarHeight, width: parent.frame.size.width, height: tabBarHeight)
+//        }
+//    }
+
     func bind(reactor: SettingViewReactor) {
         super.bind(reactor: reactor)
         // action

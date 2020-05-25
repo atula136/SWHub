@@ -14,5 +14,5 @@ extension Parameter {
     static var code: String { "code" }
     static var username: String { "username" }
     static var fullname: String { "fullname" }
-    static var listType: String { "listType" }
+    static var listtype: String { "listtype" }
 }

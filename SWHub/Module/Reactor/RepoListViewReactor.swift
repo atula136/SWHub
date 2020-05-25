@@ -46,7 +46,7 @@ class RepoListViewReactor: CollectionViewReactor, ReactorKit.Reactor {
 
     required init(_ provider: ProviderType, _ parameters: [String: Any]?) {
         super.init(provider, parameters)
-        let value = stringMember(self.parameters, Parameter.listType, nil)?.int ?? 0
+        let value = stringMember(self.parameters, Parameter.listtype, nil)?.int ?? 0
         self.type = ListType(rawValue: value) ?? ListType.repositories
         self.name = stringMember(self.parameters, Parameter.username, nil)
         self.request = { [weak self] (name: String, page: Int) -> Observable<[Repo]> in

@@ -274,14 +274,14 @@ extension Reactive where Base: UserProfileCell {
     }
 
     var list: ControlEvent<URL> {
-        let source = self.base.countView.rx.tap.map { [weak cell = self.base] listType -> URL? in
+        let source = self.base.countView.rx.tap.map { [weak cell = self.base] list -> URL? in
             guard let user = cell?.model as? User,
                 let username = user.username,
-                var url = listType.url else { return nil}
+                var url = list.url else { return nil}
             url.appendQueryParameters([
-                Parameter.title: listType.title,
+                Parameter.title: list.title,
                 Parameter.username: username,
-                Parameter.listType: listType.rawValue.string
+                Parameter.listtype: list.rawValue.string
             ])
             return url
         }.filterNil()

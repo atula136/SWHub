@@ -12,6 +12,7 @@ import RxCocoa
 import ReactorKit
 import SwifterSwift
 import URLNavigator
+import ESTabBarController_swift
 import Iconic
 import NSObject_Rx
 import SWFrame
@@ -35,7 +36,7 @@ class TabBarViewController: SWFrame.TabBarViewController, ReactorKit.View {
         super.viewDidLoad()
         self.tab.viewControllers = self.reactor?.currentState.keys.map { NavigationController(rootViewController: self.viewController(with: $0)) }
         themeService.rx
-            .bind({ $0.dimColor }, to: [self.tab.tabBar.rx.barTintColor, self.safeBottomView.rx.backgroundColor])
+            .bind({ $0.dimColor }, to: self.tab.tabBar.rx.barTintColor/*[self.tab.tabBar.rx.barTintColor, self.safeBottomView.rx.backgroundColor]*/)
             .bind({ $0.tintColor }, to: self.tab.tabBar.rx.tintColor)
             .disposed(by: self.rx.disposeBag)
         if #available(iOS 10.0, *) {
@@ -54,6 +55,8 @@ class TabBarViewController: SWFrame.TabBarViewController, ReactorKit.View {
                 }
             }
         }).disposed(by: self.rx.disposeBag)
+
+        self.view.backgroundColor = .red  // TODO
     }
 
     // MARK: - Method
@@ -73,8 +76,9 @@ class TabBarViewController: SWFrame.TabBarViewController, ReactorKit.View {
         switch key {
         case .home:
             viewController = HomeViewController(self.navigator, HomeViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .title).original
-            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .tint).original
+//            viewController?.tabBarItem.image = FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .title).original
+//            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .tint).original
+            viewController?.tabBarItem = ESTabBarItem(title: R.string.localizable.trending(), image: FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .title).original, selectedImage: FontAwesomeIcon.homeIcon.image(ofSize: s28, color: .tint).original)
         case .message:
             viewController = MessageViewController(self.navigator, MessageViewReactor(self.reactor!.provider, nil))
             viewController?.tabBarItem.image = FontAwesomeIcon.commentsIcon.image(ofSize: s28, color: .title).original
@@ -89,8 +93,9 @@ class TabBarViewController: SWFrame.TabBarViewController, ReactorKit.View {
             viewController?.tabBarItem.selectedImage = FontAwesomeIcon.bellIcon.image(ofSize: s28, color: .tint).original
         case .setting:
             viewController = SettingViewController(self.navigator, SettingViewReactor(self.reactor!.provider, nil))
-            viewController?.tabBarItem.image = FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .title).original
-            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .tint).original
+//            viewController?.tabBarItem.image = FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .title).original
+//            viewController?.tabBarItem.selectedImage = FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .tint).original
+            viewController?.tabBarItem = ESTabBarItem(title: R.string.localizable.setting(), image: FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .title).original, selectedImage: FontAwesomeIcon.cogIcon.image(ofSize: s28, color: .tint).original)
         }
         viewController?.hidesBottomBarWhenPushed = false
         if let item = viewController?.tabBarItem {
