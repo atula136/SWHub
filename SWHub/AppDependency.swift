@@ -13,7 +13,6 @@ import RealmSwift
 import ObjectMapper
 import URLNavigator
 import Iconic
-import ESTabBarController_swift
 import SWFrame
 
 final class AppDependency: NSObject, AppDependencyType {
@@ -39,26 +38,6 @@ final class AppDependency: NSObject, AppDependencyType {
         let viewController = TabBarController(self.navigator, reactor)
         self.window.rootViewController = viewController
         self.window.makeKeyAndVisible()
-
-//        let home = HomeViewController(self.navigator, HomeViewReactor(self.provider, nil))
-//        home.tabBarItem = ESTabBarItem(title: R.string.localizable.trending(), image: FontAwesomeIcon.homeIcon.image(ofSize: CGSize(28), color: .title).original, selectedImage: FontAwesomeIcon.homeIcon.image(ofSize: CGSize(28), color: .tint).original)
-//        let setting = SettingViewController(self.navigator, SettingViewReactor(self.provider, nil))
-//        setting.tabBarItem = ESTabBarItem(title: R.string.localizable.setting(), image: FontAwesomeIcon.cogIcon.image(ofSize: CGSize(28), color: .title).original, selectedImage: FontAwesomeIcon.cogIcon.image(ofSize: CGSize(28), color: .tint).original)
-//        let tabBarController = ESTabBarController()
-//        tabBarController.viewControllers = [home, setting]
-//        self.window.rootViewController = tabBarController
-//        self.window.makeKeyAndVisible()
-
-//        let home = HomeViewController(self.navigator, HomeViewReactor(self.provider, nil))
-//        home.tabBarItem.image = FontAwesomeIcon.homeIcon.image(ofSize: CGSize(28), color: .title).original
-//        home.tabBarItem.selectedImage = FontAwesomeIcon.homeIcon.image(ofSize: CGSize(28), color: .tint).original
-//        let setting = SettingViewController(self.navigator, SettingViewReactor(self.provider, nil))
-//        setting.tabBarItem.image = FontAwesomeIcon.cogIcon.image(ofSize: CGSize(28), color: .title).original
-//        setting.tabBarItem.selectedImage = FontAwesomeIcon.cogIcon.image(ofSize: CGSize(28), color: .tint).original
-//        let tabBarController = UITabBarController()
-//        tabBarController.viewControllers = [NavigationController(rootViewController: home), NavigationController(rootViewController: setting)]
-//        self.window.rootViewController = tabBarController
-//        self.window.makeKeyAndVisible()
 
         themeService.rx
             .bind({ $0.statusBarStyle }, to: UIApplication.shared.rx.statusBarStyle)
