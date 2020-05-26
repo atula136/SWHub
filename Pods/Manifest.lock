@@ -167,7 +167,7 @@ DEPENDENCIES:
   - RxOptional (= 4.0.0)
   - RxSwiftExt (= 5.2.0)
   - RxTheme (= 4.0.0)
-  - SWFrame (from `../SWFrame`)
+  - SWFrame (= 1.1.0)
   - SwiftDate (= 6.1.0)
   - SwiftLint (= 0.39.2)
   - TTTAttributedLabel (= 2.0.0)
@@ -215,6 +215,7 @@ SPEC REPOS:
     - RxTheme
     - RxViewController
     - SnapKit
+    - SWFrame
     - SwiftDate
     - SwifterSwift
     - SwiftLint
@@ -225,10 +226,6 @@ SPEC REPOS:
     - URLNavigator
     - WeakMapTable
     - WebViewJavascriptBridge
-
-EXTERNAL SOURCES:
-  SWFrame:
-    :path: "../SWFrame"
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -284,6 +281,6 @@ SPEC CHECKSUMS:
   WeakMapTable: d0327eda092be6a8f7c532942ae98dc7948f5d32
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: 51f55ac27f4d5fcb6354ed7842c35148e5b74407
+PODFILE CHECKSUM: ce5f575692a55dd3e05ba1c51388d5359863075d
 
 COCOAPODS: 1.9.1

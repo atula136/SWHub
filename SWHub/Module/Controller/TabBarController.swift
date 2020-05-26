@@ -54,8 +54,6 @@ class TabBarController: SWFrame.TabBarController, ReactorKit.View {
                 }
             }
         }).disposed(by: self.rx.disposeBag)
-
-        self.view.backgroundColor = .red  // TODO
     }
 
     // MARK: - Method
