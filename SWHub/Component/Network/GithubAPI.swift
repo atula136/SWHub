@@ -16,7 +16,7 @@ import Rswift
 import SWFrame
 
 enum GithubAPI {
-    case profile
+    case login(account: String, password: String)
     case user(username: String)
     case repo(fullname: String)
     case readme(fullname: String, ref: String?)
@@ -26,15 +26,8 @@ enum GithubAPI {
     case watchers(fullname: String, page: Int)
     case stargazers(fullname: String, page: Int)
     case forks(fullname: String, page: Int)
-//    case wechatInfo
-//    case homePages
-//    case homeModule(pageID: String)
-//    case dailyBest
-//    case helpInfo
-//    case helpQuestions(categoryID: String)
-//    case messageCenter
-//    case messageList(type: Message.TType, index: Int, size: Int)
-//    case productList(categoryId: String, sortType: Int, pageIndex: Int, pageSize: Int, pageSource: String)
+    case userRepos(username: String, page: Int)
+    case userFollowers(username: String, page: Int)
 }
 
 extension GithubAPI: TargetType {
@@ -45,7 +38,7 @@ extension GithubAPI: TargetType {
 
     var path: String {
         switch self {
-        case .profile: return "/user"
+        case .login: return "/user"
         case let .user(username): return "/users/\(username)"
         case let .repo(fullname): return "/repos/\(fullname)"
         case let .readme(fullname, _): return "/repos/\(fullname)/readme"
@@ -56,6 +49,8 @@ extension GithubAPI: TargetType {
         case let .watchers(fullname, _): return "/repos/\(fullname)/subscribers"
         case let .stargazers(fullname, _): return "/repos/\(fullname)/stargazers"
         case let .forks(fullname, _): return "/repos/\(fullname)/forks"
+        case let .userRepos(username, _): return "/users/\(username)/repos"
+        case let .userFollowers(username, _): return "/users/\(username)/followers"
         }
     }
 
@@ -71,8 +66,15 @@ extension GithubAPI: TargetType {
     }
 
     var headers: [String: String]? {
-        if let token = User.token {
-            return ["Authorization": "Basic \(token)"]
+        switch self {
+        case let .login(account, password):
+            if let token = "\(account):\(password)".base64Encoded {
+                return ["Authorization": "Basic \(token)"]
+            }
+        default:
+            if let token = User.token {
+                return ["Authorization": "Basic \(token)"]
+            }
         }
         return nil
     }
@@ -82,7 +84,8 @@ extension GithubAPI: TargetType {
         switch self {
         case let .readme(_, ref):
             parameters["ref"] = ref
-        case .watchers(_, let page), .stargazers(_, let page), .forks(_, let page):
+        case .watchers(_, let page), .stargazers(_, let page), .forks(_, let page),
+             .userRepos(_, let page), .userFollowers(_, let page):
             parameters["page"] = page
         default:
             break

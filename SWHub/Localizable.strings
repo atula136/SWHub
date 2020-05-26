@@ -13,14 +13,33 @@
 "Cancel" = "取消";
 "Save" = "保存";
 "Exit" = "退出";
-"I see" = "知道了";
-"Watch" = "观察";
-"Star" = "打星";
-"Fork" = "复制";
 "Daily" = "今日";
 "Weekly" = "本周";
 "Monthly" = "本月";
+"Trending" = "趋势";
+"Message" = "消息";
+"Search" = "搜索";
+"Activity" = "活动";
+"Setting" = "设置";
+"Login" = "登录";
+"Password" = "密码";
+"I see" = "知道了";
+"Logout" = "退出登录";
+"All languages" = "所有语言";
+"Clear cache" = "清除缓存";
+"Click to login" = "点击登录";
+"Pull to refresh" = "下拉刷新";
+"Release to refresh" = "松开刷新";
+"Loading..." = "加载中";
+"Loading more" = "正在加载更多";
+"No more data" = "没有更多的了";
+"Cache cleared successfully" = "清除缓存成功";
+"Trending.Repo.Stars.New" = "%@增加了%d个星";
+"User.Exit.Prompt" = "您确定要退出%@吗";
+"Repository" = "Repository";
+"Developer" = "Developer";
 "Repositories" = "Repositories";
+"Developers" = "Developers";
 "Followers" = "Followers";
 "Following" = "Following";
 "Watchs" = "Watchs";
@@ -35,21 +54,9 @@
 "Location" = "Location";
 "Email" = "Email";
 "Blog" = "Blog";
-"Logout" = "退出登录";
-"Clear cache" = "清除缓存";
-"Click to login" = "点击登录";
-"Repo.Update.Datetime" = "Updated %@ ago";
-"Trending.Repo.Stars.New" = "%@增加了%d个星";
-"User.Exit.Prompt" = "您确定要退出%@吗";
-"User.Join.Message" = "注册于%@";
-/* 刷新 */
-"Pull to refresh" = "下拉刷新";
-"Release to refresh" = "松开刷新";
-"Loading..." = "加载中";
-"Loading more" = "正在加载更多";
-"No more data" = "没有更多的了";
-/* 条件 */
-"All languages" = "所有语言";
+"No personal introduction" = "No personal introduction";
+"Repo.Update.Datetime" = "Updated %@";
+"User.Joined.Datetime" = "Joined on %@";
 /* 详情 */
 "Detail.Cell.Pull" = "拉取请求";
 "Detail.Cell.Commit" = "提交";
@@ -61,23 +68,10 @@
 "Detail.Cell.Code" = "源代码";
 "Detail.Cell.Star" = "打星历史";
 "Detail.Cell.Line" = "计算行数";
-/* 登录 */
-"Login.Title" = "登录";
-"Login.Password" = "密码";
-/* 主页 */
-"Main.TabBar.Home" = "首页";
-"Main.TabBar.Message" = "消息";
-"Main.TabBar.Search" = "搜索";
-"Main.TabBar.Activity" = "活动";
-"Main.TabBar.Setting" = "设置";
-/* 首页 */
-"Home.Repo" = "仓库";
-"Home.Developer" = "开发者";
 /* 设置 */
 "Setting.Account" = "账户";
 "Setting.Project" = "我的项目";
 "Setting.Preferences" = "首选项";
 "Setting.Preferences.Night" = "夜间模式";
 "Setting.Preferences.Theme" = "颜色主题";
-
 

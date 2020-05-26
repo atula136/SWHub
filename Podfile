@@ -6,14 +6,17 @@ inhibit_all_warnings!
 
 target 'SWHub' do
 	# pod 'SWFrame', :path => '../SWFrame'
-	pod 'SWFrame', '1.0.6'
-  
+	pod 'SWFrame', '1.1.0'
+ 
+	pod 'SwiftDate', '6.1.0'
+	
 	# 界面
 	pod 'IQKeyboardManagerSwift', '6.5.5'
 	pod 'ReusableKit/RxSwift', '3.0.0'
 	pod 'Parchment', '2.3.0'
 	pod 'Highlightr', '2.1.0'
 	pod 'MarkdownView', '1.5.0'
+	pod 'TTTAttributedLabel', '2.0.0'
 	
 	# 网络
 	# pod 'Kingfisher', '4.10.1'
@@ -21,10 +24,11 @@ target 'SWHub' do
 	# 响应
 	pod 'RxOptional', '4.0.0'
 	pod 'RxGesture', '3.0.0'
+	pod 'RxSwiftExt', '5.2.0'
 		
 	# 资源
-	pod 'RxTheme', '4.0.0'
 	pod 'Iconic', '1.5'
+	pod 'RxTheme', '4.0.0'
 	pod 'R.swift', '5.1.0'
 		
 	# 工具

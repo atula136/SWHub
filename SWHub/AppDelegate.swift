@@ -9,6 +9,9 @@
 import UIKit
 import SwifterSwift
 import KeychainAccess
+import RxSwift
+import RxCocoa
+import RealmSwift
 import ObjectMapper
 import SWFrame
 
@@ -30,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func test(launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-//        if let misc = Misc.current() {
+//        if let config = Misc.current() {
 //            print("")
 //        }
 //        let a1 = Condition.Language.self.init()
@@ -44,7 +47,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        label.font = .normal(20)
 //        label.text = text
 //        let size = label.sizeThatFits(CGSize(width: screenWidth, height: CGFloat.greatestFiniteMagnitude))
-//        print("")
+
+//        let filter = Filter()
+//        filter.language = Language(value: ["name": "All languages"])
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.add(filter)
+//        }
+//        // Observable.from([filter]).subscribe(Realm.rx.add())
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        self.dependency.applicationDidBecomeActive(application)
     }
 
     // MARK: - url handle

@@ -17,8 +17,8 @@ extension ProviderType {
     }
 
     /// 用户登录：https://api.github.com/user
-    func profile() -> Observable<User> {
-        return self.githubNetworking.requestObject(.profile, type: User.self)
+    func login(account: String, password: String) -> Observable<User> {
+        return self.githubNetworking.requestObject(.login(account: account, password: password), type: User.self)
     }
 
     /// 用户信息：https://api.github.com/users/MaxDesiatov
@@ -33,8 +33,8 @@ extension ProviderType {
         return self.githubNetworking.requestObject(.repo(fullname: fullname), type: Repo.self)
     }
 
-    func readme(fullname: String) -> Observable<Repo.Readme> {
-        return self.githubNetworking.requestObject(.readme(fullname: fullname, ref: nil), type: Repo.Readme.self)
+    func readme(fullname: String) -> Observable<Readme> {
+        return self.githubNetworking.requestObject(.readme(fullname: fullname, ref: nil), type: Readme.self)
     }
 
     func checkStarring(fullname: String) -> Observable<Bool> {
@@ -59,6 +59,22 @@ extension ProviderType {
 
     func forks(fullname: String, page: Int) -> Observable<[Repo]> {
         return self.githubNetworking.requestArray(.forks(fullname: fullname, page: page), type: Repo.self)
+    }
+
+    /// 用户仓库：https://api.github.com/users/KalleHallden/repos?page=1
+    /// - Parameters:
+    ///   - username: 用户名
+    ///   - page: 分页
+    func userRepos(username: String, page: Int) -> Observable<[Repo]> {
+        return self.githubNetworking.requestArray(.userRepos(username: username, page: page), type: Repo.self)
+    }
+
+    /// followers：https://api.github.com/users/KalleHallden/followers?page=1
+    /// - Parameters:
+    ///   - username: 用户名
+    ///   - page: 分页
+    func userFollowers(username: String, page: Int) -> Observable<[User]> {
+        return self.githubNetworking.requestArray(.userFollowers(username: username, page: page), type: User.self)
     }
 
 }

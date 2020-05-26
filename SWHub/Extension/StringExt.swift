@@ -10,17 +10,17 @@ import UIKit
 
 extension String {
 
-    var since: Condition.Since {
-        switch self {
-        case Condition.Since.daily.paramValue:
-            return .daily
-        case Condition.Since.weekly.paramValue:
-            return .weekly
-        case Condition.Since.monthly.paramValue:
-            return .monthly
-        default:
-            return .daily
-        }
-    }
+//    var since: Since {
+//        switch self {
+//        case Since.daily.paramValue:
+//            return .daily
+//        case Since.weekly.paramValue:
+//            return .weekly
+//        case Since.monthly.paramValue:
+//            return .monthly
+//        default:
+//            return .daily
+//        }
+//    }
 
 }

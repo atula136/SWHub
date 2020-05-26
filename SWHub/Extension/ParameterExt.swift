@@ -10,8 +10,9 @@ import UIKit
 import SWFrame
 
 extension Parameter {
-    static var language: String { "language" }
     static var since: String { "since" }
+    static var code: String { "code" }
+    static var username: String { "username" }
     static var fullname: String { "fullname" }
-    static var list: String { "list" }
+    static var listtype: String { "listtype" }
 }

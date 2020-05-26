@@ -15,6 +15,7 @@
 17. 首页 重名 趋势（Trending）
 18. 嵌套类型全路径
 20. 下拉刷新/加载更多，自定义UI
+21. 折叠说明文本
 测试模拟数据
 暗黑模式：下拉刷新活动指示器、Since文本
 设置页的暗黑模式的切换按钮的状态应该是单向的
@@ -26,6 +27,10 @@ languageColor
 首页底部没显示完整
 Button/Label
 更新与xx小时前/homepage跳转
+UILocalizedImage
+pod版本号 ~> 自动更新
+NavigationBar运行时修改theme在模拟器上会crash
+StringTransform -> IDTransform
 
 https://api.github.com/user/starred/rxhanson/Rectangle
 
@@ -40,8 +45,6 @@ user
 https://api.github.com/users/KalleHallden
 checkFollowing/followUser/unfollowUser
 https://api.github.com/user/following/KalleHallden
-userRepositories
-https://api.github.com/users/KalleHallden/repos?page=1
 userFollowers
 https://api.github.com/users/KalleHallden/followers?page=1
 userFollowing
@@ -58,3 +61,17 @@ checkFollowing/followUser/unfollowUser
 https://api.github.com/user/following/onevcat
 branches
 https://api.github.com/repos/khoren93/SwiftHub/branches?page=1
+
+
+一、框架
+采用RxSwift和ReactorKit的响应式单向流框架，详情参见：
+https://github.com/ReactorKit/ReactorKit
+二、存储
+采用UserDefaults和Realm数据库方案
+1、部分全局数据（与用户无关），如App主题等，使用UserDefaults
+2、用户数据使用Realm，以便切换用户后，能还原用户的状态
+三、第三方框架
+1、RxSwift：响应式框架
+2、ReactorKit：单向流框架
+3、RealmSwift：Realm数据库
+

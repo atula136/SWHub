@@ -9,7 +9,10 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RealmSwift
+import ObjectMapper
 import URLNavigator
+import Iconic
 import SWFrame
 
 final class AppDependency: NSObject, AppDependencyType {
@@ -31,9 +34,9 @@ final class AppDependency: NSObject, AppDependencyType {
         window?.backgroundColor = .white
         self.window = window
 
-        let mainViewReactor = MainViewReactor(self.provider, nil)
-        let mainViewController = MainViewController(self.navigator, mainViewReactor)
-        self.window.rootViewController = mainViewController
+        let reactor = TabBarReactor(self.provider, nil)
+        let viewController = TabBarController(self.navigator, reactor)
+        self.window.rootViewController = viewController
         self.window.makeKeyAndVisible()
 
         themeService.rx
@@ -42,6 +45,16 @@ final class AppDependency: NSObject, AppDependencyType {
     }
 
     func application(_ application: UIApplication, entryDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+//        let realm = Realm.default
+//        realm.beginWrite()
+//        if let json = FileManager.default.json(withFilename: "languages.json"),
+//            let codes = Mapper<Code>().mapArray(JSONObject: json) {
+//            realm.add(codes)
+//        }
+//        let config = Config()
+//        config.active = true
+//        realm.add(config)
+//        try! realm.commitWrite()
         Runtime.work()
         Library.setup()
         Appearance.config()
@@ -49,6 +62,10 @@ final class AppDependency: NSObject, AppDependencyType {
     }
 
     func application(_ application: UIApplication, leaveDidFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("本地路径: \(NSHomeDirectory())")
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
@@ -73,8 +90,8 @@ final class AppDependency: NSObject, AppDependencyType {
 //        window?.backgroundColor = .white
 //        self.window = window
 //
-//        let mainViewReactor = MainViewReactor(params: nil)
-//        let mainViewController = MainViewController(reactor: mainViewReactor)
+//        let mainViewReactor = TabBarViewReactor(params: nil)
+//        let mainViewController = TabBarViewController(reactor: mainViewReactor)
 //        self.window.rootViewController = mainViewController
 //        self.window.makeKeyAndVisible()
 //    }

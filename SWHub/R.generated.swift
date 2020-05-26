@@ -117,18 +117,22 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.file` struct is generated, and contains static references to 19 files.
+  /// This `R.file` struct is generated, and contains static references to 21 files.
   struct file {
     /// Resource file `Condition.json`.
     static let conditionJson = Rswift.FileResource(bundle: R.hostingBundle, name: "Condition", pathExtension: "json")
     /// Resource file `Misc.json`.
     static let miscJson = Rswift.FileResource(bundle: R.hostingBundle, name: "Misc", pathExtension: "json")
+    /// Resource file `default-v0.realm`.
+    static let defaultV0Realm = Rswift.FileResource(bundle: R.hostingBundle, name: "default-v0", pathExtension: "realm")
     /// Resource file `developers.json`.
     static let developersJson = Rswift.FileResource(bundle: R.hostingBundle, name: "developers", pathExtension: "json")
     /// Resource file `empty.json`.
     static let emptyJson = Rswift.FileResource(bundle: R.hostingBundle, name: "empty", pathExtension: "json")
     /// Resource file `languages.json`.
     static let languagesJson = Rswift.FileResource(bundle: R.hostingBundle, name: "languages", pathExtension: "json")
+    /// Resource file `login.json`.
+    static let loginJson = Rswift.FileResource(bundle: R.hostingBundle, name: "login", pathExtension: "json")
     /// Resource file `readme.txt`.
     static let readmeTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "readme", pathExtension: "txt")
     /// Resource file `repos-rxhanson-Rectangle-branches.1.json`.
@@ -151,12 +155,12 @@ struct R: Rswift.Validatable {
     static let repositoriesJson = Rswift.FileResource(bundle: R.hostingBundle, name: "repositories", pathExtension: "json")
     /// Resource file `user-starred-rxhanson-Rectangle.json`.
     static let userStarredRxhansonRectangleJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user-starred-rxhanson-Rectangle", pathExtension: "json")
-    /// Resource file `user.json`.
-    static let userJson = Rswift.FileResource(bundle: R.hostingBundle, name: "user", pathExtension: "json")
     /// Resource file `user2.json`.
     static let user2Json = Rswift.FileResource(bundle: R.hostingBundle, name: "user2", pathExtension: "json")
     /// Resource file `users-KalleHallden.json`.
     static let usersKalleHalldenJson = Rswift.FileResource(bundle: R.hostingBundle, name: "users-KalleHallden", pathExtension: "json")
+    /// Resource file `users-repos.json`.
+    static let usersReposJson = Rswift.FileResource(bundle: R.hostingBundle, name: "users-repos", pathExtension: "json")
 
     /// `bundle.url(forResource: "Condition", withExtension: "json")`
     static func conditionJson(_: Void = ()) -> Foundation.URL? {
@@ -167,6 +171,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Misc", withExtension: "json")`
     static func miscJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.miscJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "default-v0", withExtension: "realm")`
+    static func defaultV0Realm(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.defaultV0Realm
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -185,6 +195,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "languages", withExtension: "json")`
     static func languagesJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.languagesJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "login", withExtension: "json")`
+    static func loginJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.loginJson
       return fileResource.bundle.url(forResource: fileResource)
     }
 
@@ -248,12 +264,6 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
-    /// `bundle.url(forResource: "user", withExtension: "json")`
-    static func userJson(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.userJson
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
     /// `bundle.url(forResource: "user-starred-rxhanson-Rectangle", withExtension: "json")`
     static func userStarredRxhansonRectangleJson(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.userStarredRxhansonRectangleJson
@@ -272,207 +282,24 @@ struct R: Rswift.Validatable {
       return fileResource.bundle.url(forResource: fileResource)
     }
 
+    /// `bundle.url(forResource: "users-repos", withExtension: "json")`
+    static func usersReposJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.usersReposJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 22 images.
+  /// This `R.image` struct is generated, and contains static references to 1 images.
   struct image {
     /// Image `AppLaunch`.
     static let appLaunch = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppLaunch")
-    /// Image `xdetail_btn_starred`.
-    static let xdetail_btn_starred = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_btn_starred")
-    /// Image `xdetail_btn_unstarred`.
-    static let xdetail_btn_unstarred = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_btn_unstarred")
-    /// Image `xdetail_cell_branch`.
-    static let xdetail_cell_branch = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_branch")
-    /// Image `xdetail_cell_code`.
-    static let xdetail_cell_code = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_code")
-    /// Image `xdetail_cell_commit`.
-    static let xdetail_cell_commit = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_commit")
-    /// Image `xdetail_cell_contributor`.
-    static let xdetail_cell_contributor = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_contributor")
-    /// Image `xdetail_cell_event`.
-    static let xdetail_cell_event = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_event")
-    /// Image `xdetail_cell_line`.
-    static let xdetail_cell_line = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_line")
-    /// Image `xdetail_cell_notification`.
-    static let xdetail_cell_notification = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_notification")
-    /// Image `xdetail_cell_pull`.
-    static let xdetail_cell_pull = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_pull")
-    /// Image `xdetail_cell_release`.
-    static let xdetail_cell_release = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_release")
-    /// Image `xdetail_cell_star`.
-    static let xdetail_cell_star = Rswift.ImageResource(bundle: R.hostingBundle, name: "xdetail_cell_star")
-    /// Image `xnav_condition`.
-    static let xnav_condition = Rswift.ImageResource(bundle: R.hostingBundle, name: "xnav_condition")
-    /// Image `xnav_github`.
-    static let xnav_github = Rswift.ImageResource(bundle: R.hostingBundle, name: "xnav_github")
-    /// Image `xsetting_badge_collaborator`.
-    static let xsetting_badge_collaborator = Rswift.ImageResource(bundle: R.hostingBundle, name: "xsetting_badge_collaborator")
-    /// Image `xsetting_badge_repository`.
-    static let xsetting_badge_repository = Rswift.ImageResource(bundle: R.hostingBundle, name: "xsetting_badge_repository")
-    /// Image `xsetting_badge_star`.
-    static let xsetting_badge_star = Rswift.ImageResource(bundle: R.hostingBundle, name: "xsetting_badge_star")
-    /// Image `xsetting_badge_user`.
-    static let xsetting_badge_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "xsetting_badge_user")
-    /// Image `xsetting_cell_logout`.
-    static let xsetting_cell_logout = Rswift.ImageResource(bundle: R.hostingBundle, name: "xsetting_cell_logout")
-    /// Image `xsetting_cell_night`.
-    static let xsetting_cell_night = Rswift.ImageResource(bundle: R.hostingBundle, name: "xsetting_cell_night")
-    /// Image `xsetting_cell_theme`.
-    static let xsetting_cell_theme = Rswift.ImageResource(bundle: R.hostingBundle, name: "xsetting_cell_theme")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "AppLaunch", bundle: ..., traitCollection: ...)`
     static func appLaunch(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.appLaunch, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_btn_starred", bundle: ..., traitCollection: ...)`
-    static func xdetail_btn_starred(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_btn_starred, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_btn_unstarred", bundle: ..., traitCollection: ...)`
-    static func xdetail_btn_unstarred(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_btn_unstarred, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_branch", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_branch(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_branch, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_code", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_code(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_code, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_commit", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_commit(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_commit, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_contributor", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_contributor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_contributor, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_event", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_event(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_event, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_line", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_line(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_line, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_notification", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_notification(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_notification, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_pull", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_pull(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_pull, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_release", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_release(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_release, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xdetail_cell_star", bundle: ..., traitCollection: ...)`
-    static func xdetail_cell_star(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xdetail_cell_star, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xnav_condition", bundle: ..., traitCollection: ...)`
-    static func xnav_condition(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xnav_condition, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xnav_github", bundle: ..., traitCollection: ...)`
-    static func xnav_github(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xnav_github, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xsetting_badge_collaborator", bundle: ..., traitCollection: ...)`
-    static func xsetting_badge_collaborator(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xsetting_badge_collaborator, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xsetting_badge_repository", bundle: ..., traitCollection: ...)`
-    static func xsetting_badge_repository(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xsetting_badge_repository, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xsetting_badge_star", bundle: ..., traitCollection: ...)`
-    static func xsetting_badge_star(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xsetting_badge_star, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xsetting_badge_user", bundle: ..., traitCollection: ...)`
-    static func xsetting_badge_user(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xsetting_badge_user, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xsetting_cell_logout", bundle: ..., traitCollection: ...)`
-    static func xsetting_cell_logout(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xsetting_cell_logout, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xsetting_cell_night", bundle: ..., traitCollection: ...)`
-    static func xsetting_cell_night(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xsetting_cell_night, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "xsetting_cell_theme", bundle: ..., traitCollection: ...)`
-    static func xsetting_cell_theme(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.xsetting_cell_theme, compatibleWith: traitCollection)
     }
     #endif
 
@@ -491,6 +318,10 @@ struct R: Rswift.Validatable {
       static let branches = Rswift.StringResource(key: "Branches", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Company
       static let company = Rswift.StringResource(key: "Company", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Developer
+      static let developer = Rswift.StringResource(key: "Developer", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Developers
+      static let developers = Rswift.StringResource(key: "Developers", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Email
       static let email = Rswift.StringResource(key: "Email", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Followers
@@ -501,17 +332,23 @@ struct R: Rswift.Validatable {
       static let forks = Rswift.StringResource(key: "Forks", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Issues
       static let issues = Rswift.StringResource(key: "Issues", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Joined on %@
+      static let userJoinedDatetime = Rswift.StringResource(key: "User.Joined.Datetime", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Location
       static let location = Rswift.StringResource(key: "Location", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: No personal introduction
+      static let noPersonalIntroduction = Rswift.StringResource(key: "No personal introduction", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Pull requests
       static let pullRequests = Rswift.StringResource(key: "Pull requests", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Readme
       static let readme = Rswift.StringResource(key: "Readme", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Repositories
       static let repositories = Rswift.StringResource(key: "Repositories", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: Repository
+      static let repository = Rswift.StringResource(key: "Repository", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: Stars
       static let stars = Rswift.StringResource(key: "Stars", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: Updated %@ ago
+      /// Value: Updated %@
       static let repoUpdateDatetime = Rswift.StringResource(key: "Repo.Update.Datetime", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: User
       static let user = Rswift.StringResource(key: "User", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
@@ -523,8 +360,6 @@ struct R: Rswift.Validatable {
       static let detailCellEvent = Rswift.StringResource(key: "Detail.Cell.Event", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 今日
       static let daily = Rswift.StringResource(key: "Daily", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 仓库
-      static let homeRepo = Rswift.StringResource(key: "Home.Repo", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 保存
       static let save = Rswift.StringResource(key: "Save", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 加载中
@@ -533,16 +368,12 @@ struct R: Rswift.Validatable {
       static let cancel = Rswift.StringResource(key: "Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 否
       static let no = Rswift.StringResource(key: "No", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 复制
-      static let fork = Rswift.StringResource(key: "Fork", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 夜间模式
       static let settingPreferencesNight = Rswift.StringResource(key: "Setting.Preferences.Night", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 密码
-      static let loginPassword = Rswift.StringResource(key: "Login.Password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let password = Rswift.StringResource(key: "Password", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 已发布
       static let detailCellRelease = Rswift.StringResource(key: "Detail.Cell.Release", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 开发者
-      static let homeDeveloper = Rswift.StringResource(key: "Home.Developer", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 您确定要退出%@吗
       static let userExitPrompt = Rswift.StringResource(key: "User.Exit.Prompt", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 我的通知
@@ -553,8 +384,6 @@ struct R: Rswift.Validatable {
       static let detailCellBranch = Rswift.StringResource(key: "Detail.Cell.Branch", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 所有语言
       static let allLanguages = Rswift.StringResource(key: "All languages", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 打星
-      static let star = Rswift.StringResource(key: "Star", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 打星历史
       static let detailCellStar = Rswift.StringResource(key: "Detail.Cell.Star", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 拉取请求
@@ -562,7 +391,7 @@ struct R: Rswift.Validatable {
       /// Value: 提交
       static let detailCellCommit = Rswift.StringResource(key: "Detail.Cell.Commit", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 搜索
-      static let mainTabBarSearch = Rswift.StringResource(key: "Main.TabBar.Search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let search = Rswift.StringResource(key: "Search", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 无
       static let none = Rswift.StringResource(key: "None", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 是
@@ -577,34 +406,34 @@ struct R: Rswift.Validatable {
       static let loadingMore = Rswift.StringResource(key: "Loading more", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 没有更多的了
       static let noMoreData = Rswift.StringResource(key: "No more data", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 注册于%@
-      static let userJoinMessage = Rswift.StringResource(key: "User.Join.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 活动
-      static let mainTabBarActivity = Rswift.StringResource(key: "Main.TabBar.Activity", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let activity = Rswift.StringResource(key: "Activity", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 消息
-      static let mainTabBarMessage = Rswift.StringResource(key: "Main.TabBar.Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let message = Rswift.StringResource(key: "Message", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 清除缓存
       static let clearCache = Rswift.StringResource(key: "Clear cache", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 清除缓存成功
+      static let cacheClearedSuccessfully = Rswift.StringResource(key: "Cache cleared successfully", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 源代码
       static let detailCellCode = Rswift.StringResource(key: "Detail.Cell.Code", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 点击登录
       static let clickToLogin = Rswift.StringResource(key: "Click to login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 登录
-      static let loginTitle = Rswift.StringResource(key: "Login.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let login = Rswift.StringResource(key: "Login", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 知道了
       static let iSee = Rswift.StringResource(key: "I see", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 确认
       static let oK = Rswift.StringResource(key: "OK", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 观察
-      static let watch = Rswift.StringResource(key: "Watch", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 计算行数
       static let detailCellLine = Rswift.StringResource(key: "Detail.Cell.Line", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 设置
-      static let mainTabBarSetting = Rswift.StringResource(key: "Main.TabBar.Setting", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      static let setting = Rswift.StringResource(key: "Setting", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 贡献值
       static let detailCellContributor = Rswift.StringResource(key: "Detail.Cell.Contributor", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 账户
       static let settingAccount = Rswift.StringResource(key: "Setting.Account", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
+      /// Value: 趋势
+      static let trending = Rswift.StringResource(key: "Trending", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 退出
       static let exit = Rswift.StringResource(key: "Exit", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 退出登录
@@ -613,8 +442,6 @@ struct R: Rswift.Validatable {
       static let settingPreferencesTheme = Rswift.StringResource(key: "Setting.Preferences.Theme", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
       /// Value: 首选项
       static let settingPreferences = Rswift.StringResource(key: "Setting.Preferences", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
-      /// Value: 首页
-      static let mainTabBarHome = Rswift.StringResource(key: "Main.TabBar.Home", tableName: "Localizable", bundle: R.hostingBundle, locales: [], comment: nil)
 
       /// Value: %@增加了%d个星
       static func trendingRepoStarsNew(_ value1: String, _ value2: Int, preferredLanguages: [String]? = nil) -> String {
@@ -668,6 +495,32 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Company", bundle: bundle, comment: "")
+      }
+
+      /// Value: Developer
+      static func developer(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Developer", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Developer"
+        }
+
+        return NSLocalizedString("Developer", bundle: bundle, comment: "")
+      }
+
+      /// Value: Developers
+      static func developers(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Developers", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Developers"
+        }
+
+        return NSLocalizedString("Developers", bundle: bundle, comment: "")
       }
 
       /// Value: Email
@@ -735,6 +588,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Issues", bundle: bundle, comment: "")
       }
 
+      /// Value: Joined on %@
+      static func userJoinedDatetime(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          let format = NSLocalizedString("User.Joined.Datetime", bundle: hostingBundle, comment: "")
+          return String(format: format, locale: applicationLocale, value1)
+        }
+
+        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "User.Joined.Datetime"
+        }
+
+        let format = NSLocalizedString("User.Joined.Datetime", bundle: bundle, comment: "")
+        return String(format: format, locale: locale, value1)
+      }
+
       /// Value: Location
       static func location(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -746,6 +614,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Location", bundle: bundle, comment: "")
+      }
+
+      /// Value: No personal introduction
+      static func noPersonalIntroduction(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("No personal introduction", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "No personal introduction"
+        }
+
+        return NSLocalizedString("No personal introduction", bundle: bundle, comment: "")
       }
 
       /// Value: Pull requests
@@ -787,6 +668,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Repositories", bundle: bundle, comment: "")
       }
 
+      /// Value: Repository
+      static func repository(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Repository", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Repository"
+        }
+
+        return NSLocalizedString("Repository", bundle: bundle, comment: "")
+      }
+
       /// Value: Stars
       static func stars(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -800,7 +694,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Stars", bundle: bundle, comment: "")
       }
 
-      /// Value: Updated %@ ago
+      /// Value: Updated %@
       static func repoUpdateDatetime(_ value1: String, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
           let format = NSLocalizedString("Repo.Update.Datetime", bundle: hostingBundle, comment: "")
@@ -880,19 +774,6 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Daily", bundle: bundle, comment: "")
       }
 
-      /// Value: 仓库
-      static func homeRepo(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Home.Repo", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Home.Repo"
-        }
-
-        return NSLocalizedString("Home.Repo", bundle: bundle, comment: "")
-      }
-
       /// Value: 保存
       static func save(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -945,19 +826,6 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("No", bundle: bundle, comment: "")
       }
 
-      /// Value: 复制
-      static func fork(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Fork", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Fork"
-        }
-
-        return NSLocalizedString("Fork", bundle: bundle, comment: "")
-      }
-
       /// Value: 夜间模式
       static func settingPreferencesNight(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -972,16 +840,16 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 密码
-      static func loginPassword(preferredLanguages: [String]? = nil) -> String {
+      static func password(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Login.Password", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Password", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Login.Password"
+          return "Password"
         }
 
-        return NSLocalizedString("Login.Password", bundle: bundle, comment: "")
+        return NSLocalizedString("Password", bundle: bundle, comment: "")
       }
 
       /// Value: 已发布
@@ -995,19 +863,6 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Detail.Cell.Release", bundle: bundle, comment: "")
-      }
-
-      /// Value: 开发者
-      static func homeDeveloper(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Home.Developer", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Home.Developer"
-        }
-
-        return NSLocalizedString("Home.Developer", bundle: bundle, comment: "")
       }
 
       /// Value: 您确定要退出%@吗
@@ -1077,19 +932,6 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("All languages", bundle: bundle, comment: "")
       }
 
-      /// Value: 打星
-      static func star(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Star", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Star"
-        }
-
-        return NSLocalizedString("Star", bundle: bundle, comment: "")
-      }
-
       /// Value: 打星历史
       static func detailCellStar(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -1130,16 +972,16 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 搜索
-      static func mainTabBarSearch(preferredLanguages: [String]? = nil) -> String {
+      static func search(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Main.TabBar.Search", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Search", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Main.TabBar.Search"
+          return "Search"
         }
 
-        return NSLocalizedString("Main.TabBar.Search", bundle: bundle, comment: "")
+        return NSLocalizedString("Search", bundle: bundle, comment: "")
       }
 
       /// Value: 无
@@ -1233,45 +1075,30 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("No more data", bundle: bundle, comment: "")
       }
 
-      /// Value: 注册于%@
-      static func userJoinMessage(_ value1: String, preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("User.Join.Message", bundle: hostingBundle, comment: "")
-          return String(format: format, locale: applicationLocale, value1)
-        }
-
-        guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "User.Join.Message"
-        }
-
-        let format = NSLocalizedString("User.Join.Message", bundle: bundle, comment: "")
-        return String(format: format, locale: locale, value1)
-      }
-
       /// Value: 活动
-      static func mainTabBarActivity(preferredLanguages: [String]? = nil) -> String {
+      static func activity(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Main.TabBar.Activity", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Activity", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Main.TabBar.Activity"
+          return "Activity"
         }
 
-        return NSLocalizedString("Main.TabBar.Activity", bundle: bundle, comment: "")
+        return NSLocalizedString("Activity", bundle: bundle, comment: "")
       }
 
       /// Value: 消息
-      static func mainTabBarMessage(preferredLanguages: [String]? = nil) -> String {
+      static func message(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Main.TabBar.Message", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Message", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Main.TabBar.Message"
+          return "Message"
         }
 
-        return NSLocalizedString("Main.TabBar.Message", bundle: bundle, comment: "")
+        return NSLocalizedString("Message", bundle: bundle, comment: "")
       }
 
       /// Value: 清除缓存
@@ -1285,6 +1112,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Clear cache", bundle: bundle, comment: "")
+      }
+
+      /// Value: 清除缓存成功
+      static func cacheClearedSuccessfully(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Cache cleared successfully", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Cache cleared successfully"
+        }
+
+        return NSLocalizedString("Cache cleared successfully", bundle: bundle, comment: "")
       }
 
       /// Value: 源代码
@@ -1314,16 +1154,16 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 登录
-      static func loginTitle(preferredLanguages: [String]? = nil) -> String {
+      static func login(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Login.Title", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Login", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Login.Title"
+          return "Login"
         }
 
-        return NSLocalizedString("Login.Title", bundle: bundle, comment: "")
+        return NSLocalizedString("Login", bundle: bundle, comment: "")
       }
 
       /// Value: 知道了
@@ -1352,19 +1192,6 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("OK", bundle: bundle, comment: "")
       }
 
-      /// Value: 观察
-      static func watch(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Watch", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Watch"
-        }
-
-        return NSLocalizedString("Watch", bundle: bundle, comment: "")
-      }
-
       /// Value: 计算行数
       static func detailCellLine(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
@@ -1379,16 +1206,16 @@ struct R: Rswift.Validatable {
       }
 
       /// Value: 设置
-      static func mainTabBarSetting(preferredLanguages: [String]? = nil) -> String {
+      static func setting(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Main.TabBar.Setting", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Setting", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Main.TabBar.Setting"
+          return "Setting"
         }
 
-        return NSLocalizedString("Main.TabBar.Setting", bundle: bundle, comment: "")
+        return NSLocalizedString("Setting", bundle: bundle, comment: "")
       }
 
       /// Value: 贡献值
@@ -1415,6 +1242,19 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Setting.Account", bundle: bundle, comment: "")
+      }
+
+      /// Value: 趋势
+      static func trending(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Trending", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Trending"
+        }
+
+        return NSLocalizedString("Trending", bundle: bundle, comment: "")
       }
 
       /// Value: 退出
@@ -1467,19 +1307,6 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Setting.Preferences", bundle: bundle, comment: "")
-      }
-
-      /// Value: 首页
-      static func mainTabBarHome(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Main.TabBar.Home", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Main.TabBar.Home"
-        }
-
-        return NSLocalizedString("Main.TabBar.Home", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}
