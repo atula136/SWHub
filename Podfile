@@ -5,8 +5,8 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'SWHub' do
-	pod 'SWFrame', :path => '../SWFrame'
-	# pod 'SWFrame', '1.1.0'
+	# pod 'SWFrame', :path => '../SWFrame'
+	pod 'SWFrame', '1.1.0'
  
 	pod 'SwiftDate', '6.1.0'
 	
