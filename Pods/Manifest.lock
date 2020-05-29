@@ -115,6 +115,7 @@ PODS:
     - ReactorKit (= 2.1.0)
     - RealmSwift (= 4.4.1)
     - RxDataSources (= 4.0.1)
+    - RxSwiftExt (= 5.2.0)
     - RxViewController (= 1.0.0)
     - SnapKit (= 4.2.0)
     - SwifterSwift (= 5.1.0)
@@ -272,7 +273,7 @@ SPEC CHECKSUMS:
   RxTheme: 0b642f47c7d197a803c6b9c083964188c34f7ddb
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SWFrame: 296ce94e486352705446c9684e70210b4a267454
+  SWFrame: 1494505f7f710aa5a7518d1d6b3fcf4e9c6a6999
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447

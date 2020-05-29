@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
+import RxSwiftExt
 import SWFrame
 
 class NavigationController: SWFrame.NavigationController {
@@ -17,7 +18,7 @@ class NavigationController: SWFrame.NavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.isTranslucent = false
-        globalStatusBarStyle.mapToVoid().subscribe(onNext: { [weak self] _ in
+        globalStatusBarStyle.mapTo(()).subscribe(onNext: { [weak self] _ in
             guard let `self` = self else { return }
             self.setNeedsStatusBarAppearanceUpdate()
         }).disposed(by: self.rx.disposeBag)

@@ -39,6 +39,9 @@
     "Photos"
   ],
   "dependencies": {
+    "RxSwiftExt": [
+      "5.2.0"
+    ],
     "RxViewController": [
       "1.0.0"
     ],

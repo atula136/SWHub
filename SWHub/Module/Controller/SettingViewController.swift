@@ -18,6 +18,7 @@ import ReusableKit
 import Kingfisher
 import RxViewController
 import RxDataSources
+import RxSwiftExt
 import SWFrame
 
 class SettingViewController: CollectionViewController, ReactorKit.View {
@@ -171,7 +172,7 @@ class SettingViewController: CollectionViewController, ReactorKit.View {
                         ])
                         footer.rx.logout.flatMap { _ -> Observable<AlertActionType> in
                             return navigator.rx.open(url, context: [AlertAction.cancel, AlertAction.destructive])
-                        }.map { $0 as? AlertAction }.pass(.destructive).subscribe(onNext: { _ in
+                        }.map { $0 as? AlertAction }.ignoreWhen { $0 != .destructive }.subscribe(onNext: { _ in
                             User.token = nil
                             User.logout()
                         }).disposed(by: footer.disposeBag)

@@ -12,6 +12,7 @@ import RxCocoa
 import URLNavigator
 import ReactorKit
 import ReusableKit
+import RxSwiftExt
 import RxDataSources
 import SWFrame
 
@@ -83,7 +84,7 @@ class TrendingRepoListViewController: CollectionViewController, ReactorKit.View 
             let first = arg0.0 == arg0.0
             let second = arg0.1.id == arg1.1.id
             return first && second
-        }.skip(1).mapToVoid()
+            }.skip(1).mapTo(())
             .bind(to: self.rx.startPullToRefresh)
             .disposed(by: self.disposeBag)
         reactor.state.map { $0.sections }

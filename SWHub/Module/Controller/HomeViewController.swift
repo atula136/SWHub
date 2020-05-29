@@ -16,6 +16,7 @@ import Iconic
 import Parchment
 import SnapKit
 import SwifterSwift
+import RxSwiftExt
 import SWFrame
 
 class HomeViewController: ScrollViewController, ReactorKit.View {
@@ -97,7 +98,7 @@ class HomeViewController: ScrollViewController, ReactorKit.View {
             .disposed(by: self.disposeBag)
         // state
         reactor.state.map { $0.items }
-            .mapToVoid()
+            .mapTo(())
             .bind(to: self.paging.rx.reloadData)
             .disposed(by: self.disposeBag)
     }
