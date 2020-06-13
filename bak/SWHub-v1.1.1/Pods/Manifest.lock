@@ -1,0 +1,290 @@
+PODS:
+  - Alamofire (4.9.1)
+  - BonMot (5.4.1)
+  - CGFloatLiteral (0.5.0)
+  - Differentiator (4.0.1)
+  - DZNEmptyDataSet (1.8.1)
+  - ESPullToRefresh (2.9.2)
+  - FBRetainCycleDetector (0.1.4)
+  - FCUUID (1.3.1):
+    - UICKeyChainStore (~> 2.1.0)
+  - FLEX (3.0.0)
+  - Highlightr (2.1.0)
+  - Iconic (1.5)
+  - IQKeyboardManagerSwift (6.5.5)
+  - KeychainAccess (3.2.0)
+  - Kingfisher (4.10.1)
+  - MarkdownView (1.5.0)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
+  - Moya (14.0.0-alpha.1):
+    - Moya/Core (= 14.0.0-alpha.1)
+  - Moya-ObjectMapper-JX/Core (2.8-jx1):
+    - Moya (= 14.0.0-alpha.1)
+    - ObjectMapper (~> 3)
+  - Moya-ObjectMapper-JX/RxSwift (2.8-jx1):
+    - Moya-ObjectMapper-JX/Core
+    - Moya/RxSwift
+    - RxSwift (~> 5)
+  - Moya/Core (14.0.0-alpha.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Moya/RxSwift (14.0.0-alpha.1):
+    - Moya/Core
+    - RxSwift (~> 5.0)
+  - "NSObject+Rx (5.0.0)":
+    - RxSwift (~> 5.0)
+  - ObjectMapper (3.5.3)
+  - "ObjectMapper+Realm (1.0)":
+    - ObjectMapper
+    - RealmSwift
+  - Parchment (2.3.0)
+  - QMUIKit/QMUIComponents/QMUIButton (4.1.3):
+    - QMUIKit/QMUICore
+  - QMUIKit/QMUIComponents/QMUILabel (4.1.3):
+    - QMUIKit/QMUICore
+  - QMUIKit/QMUICore (4.1.3):
+    - QMUIKit/QMUILog
+    - QMUIKit/QMUIWeakObjectContainer
+  - QMUIKit/QMUILog (4.1.3)
+  - QMUIKit/QMUIWeakObjectContainer (4.1.3)
+  - R.swift (5.1.0):
+    - R.swift.Library (~> 5.1.0)
+  - R.swift.Library (5.1.0)
+  - ReachabilitySwift (5.0.0)
+  - ReactorKit (2.1.0):
+    - RxSwift (~> 5.0)
+    - WeakMapTable (~> 1.1)
+  - Realm (4.4.1):
+    - Realm/Headers (= 4.4.1)
+  - Realm/Headers (4.4.1)
+  - RealmSwift (4.4.1):
+    - Realm (= 4.4.1)
+  - Result (4.1.0)
+  - ReusableKit/Core (3.0.0)
+  - ReusableKit/RxSwift (3.0.0):
+    - ReusableKit/Core
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxGesture (3.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxOptional (4.0.0):
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - RxSwiftExt (5.2.0):
+    - RxSwiftExt/Core (= 5.2.0)
+    - RxSwiftExt/RxCocoa (= 5.2.0)
+  - RxSwiftExt/Core (5.2.0):
+    - RxSwift (~> 5.0)
+  - RxSwiftExt/RxCocoa (5.2.0):
+    - RxCocoa (~> 5.0)
+    - RxSwiftExt/Core
+  - RxTheme (4.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxViewController (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - SnapKit (4.2.0)
+  - SWFrame (1.1.1):
+    - BonMot (= 5.4.1)
+    - CGFloatLiteral (= 0.5.0)
+    - DZNEmptyDataSet (= 1.8.1)
+    - ESPullToRefresh (= 2.9.2)
+    - FCUUID (= 1.3.1)
+    - KeychainAccess (= 3.2.0)
+    - Kingfisher (= 4.10.1)
+    - Moya-ObjectMapper-JX/RxSwift (= 2.8-jx1)
+    - "NSObject+Rx (= 5.0.0)"
+    - "ObjectMapper+Realm (= 1.0)"
+    - QMUIKit/QMUIComponents/QMUIButton (= 4.1.3)
+    - QMUIKit/QMUIComponents/QMUILabel (= 4.1.3)
+    - QMUIKit/QMUICore (= 4.1.3)
+    - ReachabilitySwift (= 5.0.0)
+    - ReactorKit (= 2.1.0)
+    - RealmSwift (= 4.4.1)
+    - RxDataSources (= 4.0.1)
+    - RxSwiftExt (= 5.2.0)
+    - RxViewController (= 1.0.0)
+    - SnapKit (= 4.2.0)
+    - SwifterSwift (= 5.1.0)
+    - SwiftyBeaver (= 1.9.0)
+    - Toast-Swift (= 5.0.0)
+    - URLNavigator (= 2.3.0)
+    - WebViewJavascriptBridge (= 6.0.3)
+  - SwiftDate (6.1.0)
+  - SwifterSwift (5.1.0):
+    - SwifterSwift/AppKit (= 5.1.0)
+    - SwifterSwift/CoreGraphics (= 5.1.0)
+    - SwifterSwift/CoreLocation (= 5.1.0)
+    - SwifterSwift/Dispatch (= 5.1.0)
+    - SwifterSwift/Foundation (= 5.1.0)
+    - SwifterSwift/MapKit (= 5.1.0)
+    - SwifterSwift/SceneKit (= 5.1.0)
+    - SwifterSwift/SpriteKit (= 5.1.0)
+    - SwifterSwift/SwiftStdlib (= 5.1.0)
+    - SwifterSwift/UIKit (= 5.1.0)
+  - SwifterSwift/AppKit (5.1.0)
+  - SwifterSwift/CoreGraphics (5.1.0)
+  - SwifterSwift/CoreLocation (5.1.0)
+  - SwifterSwift/Dispatch (5.1.0)
+  - SwifterSwift/Foundation (5.1.0)
+  - SwifterSwift/MapKit (5.1.0)
+  - SwifterSwift/SceneKit (5.1.0)
+  - SwifterSwift/SpriteKit (5.1.0)
+  - SwifterSwift/SwiftStdlib (5.1.0)
+  - SwifterSwift/UIKit (5.1.0)
+  - SwiftLint (0.39.2)
+  - SwiftyBeaver (1.9.0)
+  - Toast-Swift (5.0.0)
+  - TTTAttributedLabel (2.0.0)
+  - UICKeyChainStore (2.1.2)
+  - URLNavigator (2.3.0)
+  - WeakMapTable (1.1.0)
+  - WebViewJavascriptBridge (6.0.3)
+
+DEPENDENCIES:
+  - FLEX (= 3.0.0)
+  - Highlightr (= 2.1.0)
+  - Iconic (= 1.5)
+  - IQKeyboardManagerSwift (= 6.5.5)
+  - MarkdownView (= 1.5.0)
+  - MLeaksFinder (= 1.0.0)
+  - Parchment (= 2.3.0)
+  - R.swift (= 5.1.0)
+  - ReusableKit/RxSwift (= 3.0.0)
+  - RxGesture (= 3.0.0)
+  - RxOptional (= 4.0.0)
+  - RxSwiftExt (= 5.2.0)
+  - RxTheme (= 4.0.0)
+  - SWFrame (from `../SWFrame`)
+  - SwiftDate (= 6.1.0)
+  - SwiftLint (= 0.39.2)
+  - TTTAttributedLabel (= 2.0.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - BonMot
+    - CGFloatLiteral
+    - Differentiator
+    - DZNEmptyDataSet
+    - ESPullToRefresh
+    - FBRetainCycleDetector
+    - FCUUID
+    - FLEX
+    - Highlightr
+    - Iconic
+    - IQKeyboardManagerSwift
+    - KeychainAccess
+    - Kingfisher
+    - MarkdownView
+    - MLeaksFinder
+    - Moya
+    - Moya-ObjectMapper-JX
+    - "NSObject+Rx"
+    - ObjectMapper
+    - "ObjectMapper+Realm"
+    - Parchment
+    - QMUIKit
+    - R.swift
+    - R.swift.Library
+    - ReachabilitySwift
+    - ReactorKit
+    - Realm
+    - RealmSwift
+    - Result
+    - ReusableKit
+    - RxCocoa
+    - RxDataSources
+    - RxGesture
+    - RxOptional
+    - RxRelay
+    - RxSwift
+    - RxSwiftExt
+    - RxTheme
+    - RxViewController
+    - SnapKit
+    - SwiftDate
+    - SwifterSwift
+    - SwiftLint
+    - SwiftyBeaver
+    - Toast-Swift
+    - TTTAttributedLabel
+    - UICKeyChainStore
+    - URLNavigator
+    - WeakMapTable
+    - WebViewJavascriptBridge
+
+EXTERNAL SOURCES:
+  SWFrame:
+    :path: "../SWFrame"
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  BonMot: aa82119ff2ffa184223d8a31c72aed84fbb009e0
+  CGFloatLiteral: 0328648f666e3cb2263d5ee3972df9d320786d25
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  ESPullToRefresh: efed00d52597065e9a84e1e52fa444fdb1a1dee0
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
+  FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
+  FLEX: d66c759bce0f6ebbbf472c742380874d846f2883
+  Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
+  Iconic: b202cfcb8a1e63e197e34e4e10662e1747073931
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  MarkdownView: 5bbee438c823db1cd189002d44c84fa909b3a896
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
+  Moya: 65485239114b3b327a17dc2e839f6c8b7143aae9
+  Moya-ObjectMapper-JX: 7c5720d790e21a03bd266ad46823e1fa01b96753
+  "NSObject+Rx": 6151a97d171f7187c4183746acc42d9451952a7b
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  "ObjectMapper+Realm": bd713d57132bf05880a656695137764692f7d2bb
+  Parchment: 72a7eb8072454a9500a53dd84776e04fba24e740
+  QMUIKit: 1063a99f90aedd6e2dd65026ce0df46e6785e67b
+  R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
+  R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  ReactorKit: 12a93358c554bb3f167b16b14c40374fa9cd5acd
+  Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
+  RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  ReusableKit: e5f853ad4652e411f96b6119b2488afa12929be6
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxGesture: 0cd8e37ff9a266e1c31f46bcaed6de1c536bc81e
+  RxOptional: 9904e2219d59260c3c171273d475b2126de187e8
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
+  RxTheme: 0b642f47c7d197a803c6b9c083964188c34f7ddb
+  RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SWFrame: 1494505f7f710aa5a7518d1d6b3fcf4e9c6a6999
+  SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
+  SwifterSwift: a9e8e144832638c2850b43da5feaf9598c6ad65b
+  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
+  SwiftyBeaver: d39e7c376bf15e9fffca8263b8fd1f42ea56aa2d
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
+  URLNavigator: 2593c0e2d293732ec5c44503cf54dceba1a68085
+  WeakMapTable: d0327eda092be6a8f7c532942ae98dc7948f5d32
+  WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
+
+PODFILE CHECKSUM: bf50d9a1cb5537d59deb87373433c0fdbe61e8fe
+
+COCOAPODS: 1.9.1
