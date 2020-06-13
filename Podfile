@@ -1,40 +1,40 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 inhibit_all_warnings!
 
 target 'SWHub' do
 	pod 'SWFrame', :path => '../SWFrame'
-	# pod 'SWFrame', '1.1.1'
+	# pod 'SWFrame', '2.0.0'
  
-	pod 'SwiftDate', '6.1.0'
+	# pod 'SwiftDate', '6.1.0'
 	
 	# 界面
-	pod 'IQKeyboardManagerSwift', '6.5.5'
-	pod 'ReusableKit/RxSwift', '3.0.0'
-	pod 'Parchment', '2.3.0'
-	pod 'Highlightr', '2.1.0'
-	pod 'MarkdownView', '1.5.0'
-	pod 'TTTAttributedLabel', '2.0.0'
+	# pod 'IQKeyboardManagerSwift', '6.5.5'
+	# pod 'ReusableKit/RxSwift', '3.0.0'
+	# pod 'Parchment', '2.3.0'
+	# pod 'Highlightr', '2.1.0'
+	# pod 'MarkdownView', '1.5.0'
+	# pod 'TTTAttributedLabel', '2.0.0'
 	
 	# 网络
 	# pod 'Kingfisher', '4.10.1'
 	
 	# 响应
-	pod 'RxOptional', '4.0.0'
-	pod 'RxGesture', '3.0.0'
-	pod 'RxSwiftExt', '5.2.0'
+	# pod 'RxOptional', '4.0.0'
+	# pod 'RxGesture', '3.0.0'
+	# pod 'RxSwiftExt', '5.2.0'
 		
 	# 资源
-	pod 'Iconic', '1.5'
-	pod 'RxTheme', '4.0.0'
-	pod 'R.swift', '5.1.0'
+	# pod 'Iconic', '1.5'
+	# pod 'RxTheme', '4.0.0'
+	# pod 'R.swift', '5.1.0'
 		
 	# 工具
-	pod 'SwiftLint', '0.39.2'
-	pod 'FLEX', '3.0.0'
-	pod 'MLeaksFinder', '1.0.0'
+	# pod 'SwiftLint', '0.39.2'
+	# pod 'FLEX', '3.0.0'
+	# pod 'MLeaksFinder', '1.0.0'
 		
 	# 平台
 	
