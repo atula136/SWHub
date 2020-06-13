@@ -1,6 +1,0 @@
-framework module Moya_ObjectMapper_JX {
-  umbrella header "Moya-ObjectMapper-JX-umbrella.h"
-
-  export *
-  module * { export * }
-}
