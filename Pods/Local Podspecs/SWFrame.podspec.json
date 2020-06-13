@@ -42,20 +42,23 @@
     "RxSwiftExt": [
       "5.2.0"
     ],
-    "RxViewController": [
-      "1.0.0"
-    ],
     "RxDataSources": [
       "4.0.1"
+    ],
+    "RxViewController": [
+      "1.0.0"
     ],
     "NSObject+Rx": [
       "5.1.0"
     ],
+    "Moya/RxSwift": [
+      "14.0.0"
+    ],
+    "ObjectMapper": [
+      "4.2.0"
+    ],
     "ReachabilitySwift": [
       "5.0.0"
-    ],
-    "Moya-ObjectMapper/RxSwift": [
-      "2.9"
     ],
     "SwiftyBeaver": [
       "1.9.1"
